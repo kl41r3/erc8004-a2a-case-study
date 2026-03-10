@@ -41,8 +41,8 @@ ANNOTATED_DIR.mkdir(parents=True, exist_ok=True)
 
 BACKENDS = {
     "minimax": {
-        "base_url": "https://api.minimax.chat/v1",
-        "model": "MiniMax-Text-01",
+        "base_url": "https://api.minimaxi.com/v1",
+        "model": "MiniMax-M2.5",
         "api_key_env": "MINIMAX_API_KEY",
     },
     "openai": {
@@ -112,7 +112,11 @@ def annotate_openai_compat(client, model: str, record: dict) -> dict:
             ],
         )
         raw = resp.choices[0].message.content.strip()
-        # Strip markdown code fences if present
+        # Strip <think>...</think> reasoning block (MiniMax-M2.5, o1-style models)
+        if "<think>" in raw:
+            import re
+            raw = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
+        # Strip markdown code fences
         if raw.startswith("```"):
             raw = "\n".join(raw.split("\n")[1:])
             raw = raw.split("```")[0].strip()
