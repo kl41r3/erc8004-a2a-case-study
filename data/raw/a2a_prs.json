@@ -21649,5 +21649,2005 @@
     "author": "Tehsmash",
     "raw_text": "bump",
     "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2514037133"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2514065390,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-11T12:30:56Z",
+    "author": "Tehsmash",
+    "raw_text": "Makes sense, do we need to call this out explicitly somewhere? Like:\r\n\r\nThe AgentCard must only declare support for features which are fully supported by all exposed interfaces. For example: if the Agent declares support for streaming, all declared transports **MUST** support streaming.",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2514065390"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2514086651,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-11T12:37:13Z",
+    "author": "Tehsmash",
+    "raw_text": "I like that a lot actually, as its already a list and not a map we could have two different entries with the same \"transport\" type, and having them ordered sets preference.\r\n\r\nOnly issue with this is how we handle it on the client side, today the clients can also declare a preference, in this case they would walk the list and match the first entry which has the their preferred transport type?",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2514086651"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2514120267,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-11T12:48:19Z",
+    "author": "Tehsmash",
+    "raw_text": "A URL is a specific type of URI, declaring this a URI allows us to support different protocol bindings which use a URI to declare how to talk to an agent. For example a protocol might use a DID to uniquely locate and identify an agent:\r\n\r\n```\r\ndid:example:123456789abcdefghi\r\n```\r\n\r\nThis is a valid URI, but not a valid URL.",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2514120267"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2514136337,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-11T12:53:26Z",
+    "author": "Tehsmash",
+    "raw_text": "Perhaps we can revisit this for sockets and pub/sub at some point. This might be worth a wrapper object to provide space for different type of push notification in the future. \r\n\r\nFor example, we can just have this for now:\r\n```\r\n# push notification config\r\n{\r\n\t\"id\": \"my webhook notification config\",\r\n\t\"webhook\": {\r\n\t\t\"url\": ...\r\n\t\t...\r\n\t}\r\n}\r\n```\r\n\r\nBut it allows for this in the future:\r\n```\r\n{\r\n\t\"id\": \"my pub/sub notification config\",\r\n\t\"pubsub_queue\": {\r\n\t\t\"queue_name\": ...\r\n\t\t...\r\n\t}\r\n}\r\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2514136337"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2514161076,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-11T13:01:53Z",
+    "author": "Tehsmash",
+    "raw_text": "I actually just left the same comment because I hadn't seen this conversation, apologies.\r\n\r\nMy main concern is that we end up reintroducing two \"normative\" sources specification.md and a2a.proto, which must be kept in sync and I'm worried that we're likely to see mistakes made which results in them drifting.\r\n\r\nWe're not really making the spec easier to read if we're still including the proto with the deprecated fields. I think we should pick one or the other.",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2514161076"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2514790089,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1201",
+    "date": "2025-11-11T16:02:00Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe introductory text of this document mentions linking to an A2A announcement or blog post, if available. The current link points to the homepage. If a more specific announcement link for A2A Net exists, consider using that instead to provide more context for readers. If not, the current link is acceptable.",
+    "url": "https://github.com/a2aproject/A2A/pull/1201#discussion_r2514790089"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2515569234,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1202",
+    "date": "2025-11-11T20:01:26Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThis change is good, but it introduces an inconsistency in the document and could be improved with better formatting.\n\n1. The introductory sentence on line 3 still mentions four SDKs with Go being 'in progress'. Please update it to reflect that there are now five stable SDKs.\n2. For better readability of the source markdown, please align the table columns. You can add spaces to align the pipes `|`.\n\n```suggestion\n| Go         | [Stable](https://github.com/a2aproject/a2a-go)     |\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1202#discussion_r2515569234"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2515569243,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1202",
+    "date": "2025-11-11T20:01:26Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nFor consistency with the other SDKs in the list, consider adding an emoji to represent the Go SDK. The chipmunk emoji (🐿️) is sometimes used to represent the Go gopher mascot.\n\n```suggestion\n    - [🐿️ A2A Go SDK](https://github.com/a2aproject/a2a-go) `go get github.com/a2aproject/a2a-go`\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1202#discussion_r2515569243"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2515897009,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1202",
+    "date": "2025-11-11T21:31:27Z",
+    "author": "holtskinner",
+    "raw_text": "```suggestion\r\n    - [🐍 A2A Python SDK](https://github.com/a2aproject/a2a-python) `pip install a2a-sdk`\r\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1202#discussion_r2515897009"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2515900812,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1202",
+    "date": "2025-11-11T21:32:51Z",
+    "author": "holtskinner",
+    "raw_text": "```suggestion\r\n    - [🐿️ A2A Go SDK](https://github.com/a2aproject/a2a-go) `go get github.com/a2aproject/a2a-go`\r\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1202#discussion_r2515900812"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2517263289,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1071",
+    "date": "2025-11-12T07:46:54Z",
+    "author": "yarolegovich",
+    "raw_text": "> A value of zero is a request to not include any messages",
+    "url": "https://github.com/a2aproject/A2A/pull/1071#discussion_r2517263289"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2517872178,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T11:03:11Z",
+    "author": "yarolegovich",
+    "raw_text": "> The stream MUST close when the task reaches a terminal state (e.g. completed, failed, cancelled, rejected).\n\nIn `0.3.0` there's a [TaskStatusUpdateEvent.final](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#421-taskstatusupdateevent) field which existing SDKs use as a completion indicator instead of the task state.\n\nI think it would be good to remove it and rely on the \"task reaches a terminal state\" condition for detecting when to stop processing events, unifying the logic for status updates and task.",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2517872178"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2518002026,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T11:50:46Z",
+    "author": "yarolegovich",
+    "raw_text": "typo: bullet point shouldn't be here\n\n<img width=\"328\" height=\"98\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8f2fbfb4-01bd-4d61-a47c-b41e2a1d79db\" />",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2518002026"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2518009600,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T11:53:34Z",
+    "author": "yarolegovich",
+    "raw_text": "should it behave similar to `subscribe` method, sending the current state of the task at the moment of registration first?",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2518009600"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2518016229,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T11:55:53Z",
+    "author": "yarolegovich",
+    "raw_text": "won't it be confusing to get a `TaskNotFoundError` when `taskId` is valid but `configId` didn't match any existing configuration? Should there be a separate `PushConfigNotFoundError` instead?",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2518016229"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2518026822,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T11:59:49Z",
+    "author": "yarolegovich",
+    "raw_text": "typo: `Metadata keys and are strings` -> `Metadata keys are strings`",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2518026822"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2518057877,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T12:09:38Z",
+    "author": "yarolegovich",
+    "raw_text": "Would be good to specify what an agent is expected to do if a Message has both taskId and contextId, but contextId of the referenced task is different. Must reject?",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2518057877"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2518106407,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T12:24:21Z",
+    "author": "yarolegovich",
+    "raw_text": "would be good to specify semantics of an artifact update event with `append=true` when it's the first event for this artifact. Go SDK treats this as an [error](https://github.com/a2aproject/a2a-go/blob/a4d8fbb/internal/taskupdate/manager.go#L105), Pythin SDK just [ignores](https://github.com/a2aproject/a2a-python/blob/18289eb/src/a2a/utils/helpers.py#L105) the event. \r\n\r\nI think letting `append` be `true` for artifact-creation event will make the SDK easier to use. \r\n\r\n`lastChunk` probably also requires clarification. is it just informational (eg. for UIs to render some progress indicator) or does it carry some additional semantics like no chunks allowed after receiving the `lastChunk=true`?",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2518106407"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2518111804,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T12:26:05Z",
+    "author": "yarolegovich",
+    "raw_text": "should `X-A2A-Notification-Token` be specified here as well and should the X- prefix be removed for push notifications?",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2518111804"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2518156298,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T12:40:16Z",
+    "author": "yarolegovich",
+    "raw_text": "I think it would be helpful to specify whether this metadata should be incorporated into the task object metadata. Currently SDKs do not store it, as there's artifact-level metadata which gets stored.\nThis metadata only gets passed to event consumers (if any) or disappears otherwise.",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2518156298"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2518170425,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T12:44:55Z",
+    "author": "yarolegovich",
+    "raw_text": "typo: boldface not applied due to extra space",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2518170425"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2518186298,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T12:49:51Z",
+    "author": "yarolegovich",
+    "raw_text": "this doesn't match auth-required state description:\n\n> **`auth-required`**: Represents the state that some authentication is needed from the upstream client. Authentication is expected to come out-of-band thus this is not an interrupted or terminal state.\n\ncredentials should be obtained and delivered out-of-band",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2518186298"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2518224966,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T13:01:44Z",
+    "author": "yarolegovich",
+    "raw_text": "nit: if arrows are meant to represent \"depends on\" relation, shouldn't they be reversed (transports -> operations -> data model).",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2518224966"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2518241220,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-12T13:07:15Z",
+    "author": "yarolegovich",
+    "raw_text": "Just curious, will it not always be a subset of metadata keys? Couldn't quickly find a related discussion anywhere?",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2518241220"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2519708512,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1204",
+    "date": "2025-11-12T20:24:18Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nThe current method of populating `INCLUDE_FLAGS` creates separate array elements for `-I` and the path (e.g., `\"-I\"`, `\"/path/to/dir\"`). While the `protoc` command handles this, the verification loop on lines 51-57 is not built for it and relies on brittle behavior. It iterates over `-I` and the path separately, which is confusing and could fail in unexpected ways.\n\nIt's more robust to combine the flag and path into a single array element (e.g., `\"-I/path/to/dir\"`). This makes the verification loop logic straightforward and correct.\n\n```suggestion\nINCLUDE_FLAGS=(\"-I$PROTO_DIR\")\nif [ -n \"$GOOGLEAPIS_DIR\" ]; then\n  INCLUDE_FLAGS+=(\"-I$GOOGLEAPIS_DIR\")\nelif [ -d \"$ROOT_DIR/third_party/googleapis\" ]; then\n  INCLUDE_FLAGS+=(\"-I$ROOT_DIR/third_party/googleapis\")\nelif [ -d \"/usr/local/include/google/api\" ]; then\n  INCLUDE_FLAGS+=(\"-I/usr/local/include\")\nfi\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1204#discussion_r2519708512"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2519708522,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1204",
+    "date": "2025-11-12T20:24:18Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe dependency checks are great for ensuring the script's environment is correctly set up. To improve readability and reduce code duplication, you could refactor these checks into a helper function.\n\n```suggestion\ncheck_command() {\n  if ! command -v \"$1\" >/dev/null 2>&1; then\n    echo \"Error: $1 not found on PATH\" >&2\n    exit 1\n  fi\n}\n\n# Check dependencies\ncheck_command \"protoc\"\ncheck_command \"protoc-gen-openapi\"\ncheck_command \"yq\"\ncheck_command \"jq\"\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1204#discussion_r2519708522"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2523695607,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-13T14:29:48Z",
+    "author": "yarolegovich",
+    "raw_text": "Would be good to specify case-matching rules.",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2523695607"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2525119420,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1205",
+    "date": "2025-11-13T22:22:21Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe list of build tools incorrectly mentions `protoc-gen-openapi`, which is the tool being replaced by this pull request. This should be updated to `protoc-gen-jsonschema` to accurately reflect the new development environment.\n\n```suggestion\n- **protoc-gen-jsonschema** (bufbuild) - JSON Schema generator for protobuf\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1205#discussion_r2525119420"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2525119431,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1205",
+    "date": "2025-11-13T22:22:21Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThere's a small typo in the plugin name. It should be `protoc-gen-jsonschema` to match the new tooling, not `protoc-gen-openapi`.\n\n```suggestion\n3. **Go programming language** (for protoc-gen-jsonschema plugin)\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1205#discussion_r2525119431"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2525119433,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1205",
+    "date": "2025-11-13T22:22:21Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe logic to find and copy the `protoc-gen-jsonschema` binary can be simplified. Instead of checking a hardcoded default path before checking the `GOPATH` from the environment, it's more robust to rely solely on `go env GOPATH`, which should be the single source of truth in the devcontainer environment.\n\n```suggestion\n  go_bin_path=\"$(go env GOPATH)/bin/protoc-gen-jsonschema\"\n  if [ -f \"$go_bin_path\" ]; then\n    sudo cp \"$go_bin_path\" /usr/local/bin/\n  fi\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1205#discussion_r2525119433"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2528155121,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1205",
+    "date": "2025-11-14T16:30:21Z",
+    "author": "holtskinner",
+    "raw_text": "The spec-json and spec-proto pages can be combined into a single page and use tabs similar to how `specification.md` does now\r\n\r\n\r\n```md\r\n\r\n# A2A Definition/Schema\r\n\r\n=== \"JSON\"\r\n\r\n    The A2A protocol JSON Schema definition (JSON Schema 2020-12 compliant).\r\n    \r\n    This schema is automatically generated from the protocol buffer definitions and bundled into a single file with all message definitions.\r\n    \r\n    ## Download\r\n    \r\n    You can download the schema file directly: [a2a.json](spec-json/a2a.json)\r\n    \r\n    ## Schema Definition\r\n    \r\n    ```json\r\n    --8<-- \"spec-json/a2a.json\"\r\n    ```\r\n\r\n=== \"gRPC\"\r\n\r\n    The normative A2A protocol definition in Protocol Buffers (proto3 syntax).\r\n    \r\n    This is the source of truth for the A2A protocol specification.\r\n    \r\n    ## Download\r\n    \r\n    You can download the proto file directly: [a2a.proto](spec-proto/a2a.proto)\r\n    \r\n    ## Protocol Definition\r\n    \r\n    ```protobuf\r\n    --8<-- \"spec-proto/a2a.proto\"\r\n    ```\r\n\r\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1205#discussion_r2528155121"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2528184274,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1205",
+    "date": "2025-11-14T16:37:03Z",
+    "author": "holtskinner",
+    "raw_text": "I think this will need to stay for the versioning to continue to work. Unless we want to switch to a different system for managing documentation versions?",
+    "url": "https://github.com/a2aproject/A2A/pull/1205#discussion_r2528184274"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2528187239,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1205",
+    "date": "2025-11-14T16:37:40Z",
+    "author": "holtskinner",
+    "raw_text": "Strictly speaking, this \"page\"/redirect isn't actually necessary, I added it as a convenience, but I'm not sure it's even being used.",
+    "url": "https://github.com/a2aproject/A2A/pull/1205#discussion_r2528187239"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2528190282,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1205",
+    "date": "2025-11-14T16:38:24Z",
+    "author": "holtskinner",
+    "raw_text": "I think this will need to stay as a convenience for how the SDK docs are generated, unless something is different with your new docs creation script.",
+    "url": "https://github.com/a2aproject/A2A/pull/1205#discussion_r2528190282"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2528556533,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1205",
+    "date": "2025-11-14T18:44:13Z",
+    "author": "muscariello",
+    "raw_text": "Good idea",
+    "url": "https://github.com/a2aproject/A2A/pull/1205#discussion_r2528556533"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2534608014,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1206",
+    "date": "2025-11-17T15:48:22Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThis appears to be a stylistic change unrelated to the main purpose of this pull request. To keep pull requests focused on a single change, it's best to revert this or move it to a separate PR.\n\n```suggestion\nexport interface ListTaskPushNotificationConfigParams extends TaskIdParams {}\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1206#discussion_r2534608014"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2539634730,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-18T20:29:30Z",
+    "author": "vinoo999",
+    "raw_text": "```suggestion\r\nThe agent MAY return a Task for complex processing with status/artifact updates or MAY return a single Message for a direct streaming response without task overhead. The implementation MUST provide immediate feedback on progress and intermediate results.\r\n```\r\n\r\nGiven that Message in the event stream must be the ONLY response event this verbiage could be made clearer. Would be great to see if we can also get a comment on this [feat issue](https://github.com/a2aproject/A2A/issues/822#issuecomment-3084892313) for Message streaming if this can be a follow-up to 1.0.\r\n\r\nI'm also a little confused what \"The implementation MUST provide immediate feedback on progress and intermediate results.\" Is this just suggesting that intermediate results should not be aggregated on the server to return a single Task or Message?",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2539634730"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2540717301,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-19T06:33:17Z",
+    "author": "vinoo999",
+    "raw_text": "It feels like this is only necessary so that A2A-Clients know which extensions may have been activated in the response from the server. \r\n\r\nThere is no parallel to this in `Task`. Should this field be deprecated?",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2540717301"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2540885591,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-19T07:40:36Z",
+    "author": "vinoo999",
+    "raw_text": "Are `Part` metadata not encapsulated in extensions? if so should we make this explicit as Parts also have custom metadata supported. If extension related metadata should only be extended in that point we should be explicit.",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2540885591"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2540921842,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-19T07:54:10Z",
+    "author": "vinoo999",
+    "raw_text": "will this be removed? per https://github.com/a2aproject/A2A/pull/1160/files?diff=split&w=0#r2517872178",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2540921842"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2540948080,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-19T08:03:45Z",
+    "author": "vinoo999",
+    "raw_text": "https://github.com/a2aproject/A2A/pull/1160/files?diff=split&w=0#r2518241220\r\n\r\nSimilar comment to ^\r\n\r\nIf an extension is a input modifier maybe there is a field required here but seems that there should be some specific terminology whether an extension is \"activated\" on a result or if this field is intended as a helper to decode metadata/parse results as a boolean (I would argue that should be encapsulated in metadata itself)\r\n\r\nLike ^ comment can this be deprecated?",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2540948080"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2540961289,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-19T08:08:46Z",
+    "author": "vinoo999",
+    "raw_text": "agree. this should be removed/deprecated as well as `TaskStatusUpdateEvent`. The underlying Message in TaskStatus or in Artifact here can contain metadata unless there is streaming extension specific metadata that needs to be encapsulated here.\r\n\r\nEither removal or guidance for usage I think is necessary in the spec",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2540961289"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2546124849,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1211",
+    "date": "2025-11-20T13:43:54Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe comment for `uri` states that it is a \"unique URI identifying the extension\". This implies that the field should be mandatory. To enforce this contract, it's recommended to mark this field as `REQUIRED`.\n\n```suggestion\n  string uri = 1 [(google.api.field_behavior) = REQUIRED];\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1211#discussion_r2546124849"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2546124861,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1211",
+    "date": "2025-11-20T13:43:54Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThere's a minor typo in the comment: `too` should be `to`.\n\n```suggestion\n  // Url to send the notification to\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1211#discussion_r2546124861"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2546124865,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1211",
+    "date": "2025-11-20T13:43:54Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe previous comment explaining the \"OR of ANDs\" logic for security requirements was very helpful for developers to understand how to implement security checks. While this might be in the main documentation, having it here provides valuable context. Consider adding it back.\n\n```suggestion\n  // Security requirements for contacting the agent.\n  // This list represents a logical OR of security requirement objects. Each object\n  // is a set of security schemes that must be used together (a logical AND).\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1211#discussion_r2546124865"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2546124872,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1211",
+    "date": "2025-11-20T13:43:54Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe previous comment for this message (formerly `SendStreamingMessageSuccessResponse`) was very descriptive about the expected sequence of messages in the stream. This is very useful information for an implementer. Consider adding a more descriptive comment explaining the possible event sequences.\n\n```\n// Response message for streaming RPCs.\n// The stream will contain a sequence of events. For a task-based interaction,\n// it typically starts with a `Task` object, followed by zero or more\n// `TaskStatusUpdateEvent` or `TaskArtifactUpdateEvent` messages. For a simple\n// message response, it may contain a single `Message` object.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1211#discussion_r2546124872"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2548025607,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1214",
+    "date": "2025-11-20T23:21:26Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThere are a couple of typos in this sentence. \"decisions\" should be singular \"decision\", and \"signficant\" should be \"significant\".\n\n```suggestion\nThis decision was made with some reservation due to the dependency on ProtoJSON mechanisms and potential impact on protocol bindings unrelated to protobuf and gRPC. However, the decision is reversible if we identify significant issues during implementation, at which point we can duplicate the ProtoJSON conventions in the A2A specification where applicable and describe differences as needed.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1214#discussion_r2548025607"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2548025614,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1214",
+    "date": "2025-11-20T23:21:26Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThere's a minor grammatical error here. \"needs\" should be singular \"need\".\n\n```suggestion\n* Removes the need to define data type handling rules for dates and numbers in the A2A specification\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1214#discussion_r2548025614"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2548025621,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1214",
+    "date": "2025-11-20T23:21:26Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe `adr-001-protojson-serialization.md` file included in this PR doesn't have a \"Pros and Cons of the Options\" section. To maintain consistency between the template and the example ADR, you might want to mark this section as optional in the template.\n\nMarking it as optional seems reasonable, as the \"Decision Drivers\" and \"Consequences\" sections often cover enough detail for a concise ADR.\n\n```suggestion\n## [Optional] Pros and Cons of the Options\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1214#discussion_r2548025621"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2548408901,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1141",
+    "date": "2025-11-21T03:22:46Z",
+    "author": "darrelmiller",
+    "raw_text": "The mkdocs formatter seems to need four characters for doing nested lists, so these markdown changes are going to be problematic.",
+    "url": "https://github.com/a2aproject/A2A/pull/1141#discussion_r2548408901"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2548410421,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1141",
+    "date": "2025-11-21T03:23:56Z",
+    "author": "darrelmiller",
+    "raw_text": "I think this is a really interesting proposal.  I don't know if we want to try and get it added for v1.  However, it would be great if you could verify that this is now in the right place after the big refactor of the specification.",
+    "url": "https://github.com/a2aproject/A2A/pull/1141#discussion_r2548410421"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2548493665,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1160",
+    "date": "2025-11-21T04:25:13Z",
+    "author": "darrelmiller",
+    "raw_text": "Yeah.  I'm torn.  I really want all the comments out of the proto definitions, but I know the all SDK folks are going to say that those comments get injected into source code and show up as tooltips. \r\n\r\nI wonder if the macro that injects the snippets can be extended to produce a nice table out of the proto definition?  It would be even better if we could have \"description\" and \"notes\".",
+    "url": "https://github.com/a2aproject/A2A/pull/1160#discussion_r2548493665"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2548510117,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1141",
+    "date": "2025-11-21T04:38:25Z",
+    "author": "Phil-Hills",
+    "raw_text": "Thanks for the thoughtful review, Darrel! I’ve verified the placement after the spec refactor, and section 10.3 Content Integrity Profile (v1) is now in the correct location within the Appendices block. It sits immediately after the Enterprise-Ready Features discussion and aligns with the other optional, non-core protocol extensions.\n\nIf you’d prefer it grouped differently or promoted/demoted within the appendix structure, I’m happy to adjust. Otherwise, this placement should match the new organization of the specification.",
+    "url": "https://github.com/a2aproject/A2A/pull/1141#discussion_r2548510117"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2548516366,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1141",
+    "date": "2025-11-21T04:43:21Z",
+    "author": "Phil-Hills",
+    "raw_text": "Thanks for the heads-up! I can revert the nested-list indentation back to the original mkdocs-compatible 4-space format. My goal wasn’t to modify the formatting outside the new section, so I’ll fix the spacing to avoid breaking the doc generator.",
+    "url": "https://github.com/a2aproject/A2A/pull/1141#discussion_r2548516366"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2548577875,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1218",
+    "date": "2025-11-21T05:27:11Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nThe description 'signature over the 64-hex hash' is ambiguous and suggests a non-standard practice. Cryptographic signatures are typically computed over raw binary data (the hash digest), not their hexadecimal string representation. Signing the 64-character hex string is less efficient and could lead to implementation errors.\n\nI recommend clarifying that the signature is computed over the 32-byte raw SHA-256 hash digest. The verification step on line 1884 should also be updated to reflect this.\n\nFor example, you could change this line's description to: '...signature over the 32-byte SHA-256 hash digest...'",
+    "url": "https://github.com/a2aproject/A2A/pull/1218#discussion_r2548577875"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2548577880,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1218",
+    "date": "2025-11-21T05:27:11Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThis new 'Content Integrity Profile' introduces several optional fields for artifacts (`hash`, `signature`, `schemaRef`, `links`). To keep the specification, TypeScript types, and Protobuf definitions aligned, these fields should also be added to the `Artifact` interface in `types/src/types.ts` and the `Artifact` message in `specification/grpc/a2a.proto`. Was this planned for a follow-up PR?",
+    "url": "https://github.com/a2aproject/A2A/pull/1218#discussion_r2548577880"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2548577883,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1218",
+    "date": "2025-11-21T05:27:11Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe definition for 'canonical JSON' is brief. To ensure consistent implementations across different platforms and languages, consider adopting a well-defined standard like [RFC 8785 (JSON Canonicalization Scheme - JCS)](https://tools.ietf.org/html/rfc8785). This would remove ambiguity around details like number serialization, handling of duplicate keys, and Unicode character encoding, which are not covered by 'Keys are sorted lexicographically at every level; whitespace is insignificant'.",
+    "url": "https://github.com/a2aproject/A2A/pull/1218#discussion_r2548577883"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2550967626,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1222",
+    "date": "2025-11-21T21:10:46Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![critical](https://www.gstatic.com/codereviewagent/critical.svg)\n\nThis change introduces a breaking change by renaming `supports_authenticated_extended_card` to `supports_extended_agent_card` and removing the old field. According to the project's Change Control and Deprecation Lifecycle policy (Section 1.4 of `specification.md`), when a field is renamed, the old field should be kept and marked as deprecated to maintain backward compatibility until the next major release.[^1]\n\nTo adhere to the policy, you should re-introduce the old field and mark it as deprecated. This will prevent breaking existing clients that rely on the `supportsAuthenticatedExtendedCard` JSON field.\n\n```suggestion\n  optional bool supports_extended_agent_card = 13;\n  // DEPRECATED: Use supports_extended_agent_card instead.\n  optional bool supports_authenticated_extended_card = 20 [deprecated = true];\n```\n\n#### Rules References\n[^1]: The project's change control policy in `docs/specification.md` (line 127) states: 'When a proto message or field is renamed, the new name is added while existing published names remain available, but marked deprecated, until the next major release.'",
+    "url": "https://github.com/a2aproject/A2A/pull/1222#discussion_r2550967626"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2550967641,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1222",
+    "date": "2025-11-21T21:10:47Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nTo align with the deprecation policy of keeping old fields available but marked as deprecated, the documentation should reflect this. Please list both the new field and the old one with a 'DEPRECATED' notice. This should be applied to all relevant documentation sections where this field is mentioned.\n\n```suggestion\n- **`supportsExtendedAgentCard`** (optional, boolean): Whether the agent supports providing an extended agent card when authenticated.\n- **`supportsAuthenticatedExtendedCard`** (optional, boolean): DEPRECATED: Use `supportsExtendedAgentCard`.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1222#discussion_r2550967641"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2551006216,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1223",
+    "date": "2025-11-21T21:30:46Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nGreat clarification to align the documentation. To make the link to the 'Push Notification Payload' section more robust, I suggest using the explicit HTML anchor defined in `specification.md`. The current link (`#433-push-notification-payload`) relies on the markdown renderer's auto-generated ID from the heading, which can be brittle. The target document contains an explicit anchor `<span id=\"434-push-notification-payload\"></span>`, and using that will make the link more resilient to future changes.\n\n```suggestion\n- **Notification Payload:** The A2A protocol defines the HTTP body payload as a [`StreamResponse`](../specification.md#323-stream-response) object, matching the format used in streaming operations. The payload contains one of: `task`, `message`, `statusUpdate`, or `artifactUpdate`. See [Push Notification Payload](../specification.md#434-push-notification-payload) for detailed structure.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1223#discussion_r2551006216"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2551028093,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1223",
+    "date": "2025-11-21T21:38:24Z",
+    "author": "madankumarpichamuthu",
+    "raw_text": "review comment addressed",
+    "url": "https://github.com/a2aproject/A2A/pull/1223#discussion_r2551028093"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2551196337,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1224",
+    "date": "2025-11-21T23:21:33Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe JSON in this example is invalid due to a missing comma. The `parts` array is followed by the `messageId` field, but there is no comma separating them, which will cause parsing errors.\n\n```suggestion\n          \"parts\": [\n            {\n              \"text\": \"Generate an image of a sailboat on the ocean.\"\n            }\n          ],\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1224#discussion_r2551196337"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2552017627,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1225",
+    "date": "2025-11-22T04:19:38Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe regular expression for `optional` fields incorrectly includes `(repeated\\s+)?`. In Protobuf 3, a field cannot be both `optional` and `repeated`. This could lead to incorrect parsing. The logic has been updated to correctly handle only `optional` fields and remove the possibility of matching `repeated` here.\n\n```suggestion\n    optional_match = re.match(\n        r'optional\\s+([\\w.]+)\\s+([\\w_]+)\\s*=\\s*\\d+(\\s*\\[(.*?)])?;',\n        field_def\n    )\n    if optional_match:\n        return {\n            'field_type': optional_match.group(1),\n            'field_name': optional_match.group(2),\n            'annotations': optional_match.group(4) or '',\n            'is_repeated': False,\n            'is_optional': True,\n            'is_required': False\n        }\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1225#discussion_r2552017627"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2552017637,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1225",
+    "date": "2025-11-22T04:19:39Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThis function is quite long and has a high cyclomatic complexity due to handling multiple states (inside/outside message, inside/outside oneof, etc.). Consider refactoring it into smaller, more focused functions to improve readability and maintainability. For example, you could have separate helper functions to process lines when inside a message, handle `oneof` blocks, or process field definitions.",
+    "url": "https://github.com/a2aproject/A2A/pull/1225#discussion_r2552017637"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2552017639,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1225",
+    "date": "2025-11-22T04:19:39Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe logic to skip certain comments is duplicated here. You can reuse the `_should_skip_comment` helper function for consistency and maintainability, just like it's used in `_parse_proto_message_full`. This same change should be applied on lines 377-379 and 392-394 as well.\n\n```suggestion\n                if not _should_skip_comment(comment_text):\n                    description_lines.append(comment_text)\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1225#discussion_r2552017639"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2552017641,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1225",
+    "date": "2025-11-22T04:19:39Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe `type_map` dictionary is defined twice, once for map values and once for other types. This can be consolidated into a single definition at the beginning of the function to reduce code duplication and improve maintainability.\n\n```python\ndef _format_proto_type(proto_type: str, is_repeated: bool) -> str:\n    \"\"\"\n    Format proto type to a more readable format.\n    \"\"\"\n    type_map = {\n        'string': 'string',\n        'int32': 'integer',\n        'int64': 'integer',\n        'bool': 'boolean',\n        'bytes': 'bytes',\n        'google.protobuf.Struct': 'object',\n        'google.protobuf.Timestamp': 'timestamp',\n    }\n\n    # Check for map type first\n    map_match = re.match(r'map<(.+)>', proto_type)\n    if map_match:\n        value_type = map_match.group(1)\n        readable_value_type = type_map.get(value_type, value_type)\n        return f'map of {readable_value_type}'\n\n    readable_type = type_map.get(proto_type, proto_type)\n\n    if is_repeated:\n        return f'array of {readable_type}'\n\n    return readable_type\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1225#discussion_r2552017641"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2552017646,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1225",
+    "date": "2025-11-22T04:19:39Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThere are a couple of typos in this comment: `desriptive` should be `descriptive`, and `conceptbut` should be `concept but`.\n\n```suggestion\n  // a descriptive concept but represents a more focused set of behaviors that the\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1225#discussion_r2552017646"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2555398752,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1235",
+    "date": "2025-11-24T09:29:45Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThis change to use `POST` is correct and follows best practices for list methods with complex request bodies (e.g., Google's AIP-132). For better long-term maintainability, consider adding a comment above `rpc ListTasks` to explain why `POST` is used instead of the more common `GET`. This will help future developers understand the design choice without needing to check the version control history.\n\nExample:\n\n```proto\n// List tasks with optional filtering and pagination.\n// NOTE: This RPC uses POST to allow for a complex request body.\nrpc ListTasks(ListTasksRequest) returns (ListTasksResponse) {\n  // ...\n}\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1235#discussion_r2555398752"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2565859181,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1241",
+    "date": "2025-11-26T17:19:44Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThanks for clarifying the response structure. To improve readability and adopt a more standard multi-line comment format, consider structuring the comment like this. It makes the `oneof` nature of the `SendMessageResponse` object even clearer and aligns better with common documentation practices.\n\n```suggestion\n  \"result\": {\n    /* SendMessageResponse object, contains one of:\n     * \"task\": { Task object }\n     * \"message\": { Message object }\n    */\n  }\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1241#discussion_r2565859181"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2570969987,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1242",
+    "date": "2025-11-28T09:26:18Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nFor consistency with other parts of the document where object names are backticked (e.g., `Task`, `Message`), it would be better to enclose `Message` in backticks here as well.\n\n```suggestion\n1. **Message-only stream:** If the agent returns a [`Message`](#414-message), the stream MUST contain exactly one `Message` object and then close immediately. No task tracking or updates are provided.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1242#discussion_r2570969987"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2572205523,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1246",
+    "date": "2025-11-28T17:27:01Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nThe URL pattern for this `Create` method appears to be incorrect. The `parent` variable is defined to match `tasks/*/pushNotificationConfigs`, but the `parent` field in `CreateTaskPushNotificationConfigRequest` is documented as `tasks/{task_id}`. To align with AIP-133 and be consistent with `ListTaskPushNotificationConfig`, the path should be `/v1/{parent=tasks/*}/pushNotificationConfigs`.\n\n```suggestion\n      post: \"/v1/{parent=tasks/*}/pushNotificationConfigs\"\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1246#discussion_r2572205523"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2572205528,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1246",
+    "date": "2025-11-28T17:27:02Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe anchor ID `75-taskspushnotificationconfigset` is inconsistent with the section's new title \"Create Push Notification Config\". To improve clarity, please update the anchor ID to reflect the new name. Per the project's contribution guidelines, you may want to keep the old anchor as a hidden span for backward compatibility.\n\n```suggestion\n<span id=\"75-taskspushnotificationconfigcreate\"></span>\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1246#discussion_r2572205528"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2572205531,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1246",
+    "date": "2025-11-28T17:27:02Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThis internal link points to an anchor `75-taskspushnotificationconfigset` that is inconsistent with the method's new name \"Create\". After updating the anchor ID in section 3.1.7, please update this link to point to the new, consistent anchor.\n\n```suggestion\n- Operations: Create ([Section 3.1.7](#75-taskspushnotificationconfigcreate)), Get ([Section 3.1.8](#76-taskspushnotificationconfigget)), List ([Section 3.1.9](#319-list-push-notification-configs)), Delete ([Section 3.1.10](#3110-delete-push-notification-config))\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1246#discussion_r2572205531"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2572537464,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1222",
+    "date": "2025-11-28T21:23:59Z",
+    "author": "darrelmiller",
+    "raw_text": "This will be a major release.",
+    "url": "https://github.com/a2aproject/A2A/pull/1222#discussion_r2572537464"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2573296717,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1256",
+    "date": "2025-11-30T02:04:00Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nWhile the updated comments provide much-needed clarity, they also highlight a potential ambiguity in the design of `AuthenticationInfo`. The `schemes` field is a `repeated string`, allowing a client to specify multiple supported authentication schemes for its webhook (e.g., `Bearer` and `Basic`). However, the `credentials` field is a single `string`.\n\nThis becomes problematic because the format of credentials is often scheme-specific. For example, a `Bearer` token is different from `Basic` auth credentials (`base64(user:pass)`).\n\nHow is an agent supposed to use the single `credentials` string if multiple schemes are listed? It's unclear which scheme the credentials belong to or how to format the `Authorization` header.\n\nTo resolve this, you could consider one of the following:\n\n1.  **Clarify in comments (non-breaking):** Add a comment recommending that clients specify only one scheme in the `schemes` list if credentials are required, to avoid ambiguity.\n2.  **Refactor the message (breaking change):** A more robust long-term solution would be to refactor this message to explicitly link credentials to their scheme. For example:\n\n    ```proto\n    message AuthSchemeWithCredentials {\n      string scheme = 1;\n      string credentials = 2;\n    }\n\n    message AuthenticationInfo {\n      repeated AuthSchemeWithCredentials schemes = 1;\n    }\n    ```\n\nGiven this PR is focused on clarification, option 1 might be more appropriate for now. A follow-up issue could be created to discuss a potential breaking change for a future version.",
+    "url": "https://github.com/a2aproject/A2A/pull/1256#discussion_r2573296717"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2574865075,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-11-30T21:12:08Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nFor better readability, consider removing the comma after `specification`. The phrase 'used by the specification' is a restrictive clause modifying 'Patch version numbers' and doesn't require a comma.\n\n```suggestion\nThe specific version of the A2A protocol in use is identified using the `Major.Minor` elements (e.g. `1.0`) of the corresponding A2A specification version. Patch version numbers used by the specification do not affect protocol compatibility. Patch version numbers SHOULD NOT be used in requests, responses and Agent Cards, and MUST not be considered when clients and servers negotiate protocol versions.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2574865075"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2574865082,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-11-30T21:12:08Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThis sentence could be rephrased for improved clarity and to be more neutral. The current wording 'due to agents not properly handling new protocol features and fields' could be interpreted as blaming agent implementations. A rephrasing could focus on the inherent risks of version mismatches that the protocol design aims to prevent.\n\n```suggestion\nClients that receive a `VersionNotSupportedError` can choose to retry the request with an earlier supported version, or fail the request. This explicit failure handling helps prevent unexpected behavior that could arise if an agent processes a request containing protocol features or fields it does not recognize.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2574865082"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2575190930,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-11-30T23:35:49Z",
+    "author": "darrelmiller",
+    "raw_text": "This suggestion changes the meaning of the sentence.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2575190930"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2578008887,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-01T17:33:58Z",
+    "author": "holtskinner",
+    "raw_text": "Can you add an inline link to the definition for `protocolVersion`?",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2578008887"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2578011946,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-01T17:34:51Z",
+    "author": "holtskinner",
+    "raw_text": "Can you add an example of this?",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2578011946"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2578013235,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-01T17:35:14Z",
+    "author": "holtskinner",
+    "raw_text": "Can you add an inline link to `VersionNotSupportedError`?",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2578013235"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2578331205,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-01T19:22:47Z",
+    "author": "darrelmiller",
+    "raw_text": "Yep. will do.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2578331205"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2585022144,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1269",
+    "date": "2025-12-03T13:00:16Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nFor better readability and to follow common Protobuf style, it's recommended to order fields by their tag number. Here, `tenant` has tag 4 but is defined before fields with lower tag numbers.\n\n```suggestion\nmessage SetTaskPushNotificationConfigRequest {\n  // The parent task resource for this config.\n  // Format: tasks/{task_id}\n  string parent = 1 [(google.api.field_behavior) = REQUIRED];\n  // The ID for the new config.\n  string config_id = 2 [(google.api.field_behavior) = REQUIRED];\n  // The configuration to create.\n  TaskPushNotificationConfig config = 3 [(google.api.field_behavior) = REQUIRED];\n  // Optional tenant, provided as a path parameter.\n  string tenant = 4;\n}\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1269#discussion_r2585022144"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2585184548,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-03T13:46:55Z",
+    "author": "Tehsmash",
+    "raw_text": "I think we mentioned in the TSC call that we should make protocolVersion a list to make it easier for older clients to still find newer Agents that they can talk to. Do we want to update this here, or merge this and follow up with making it a list?  (Related ticket https://github.com/a2aproject/A2A/issues/1104)",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2585184548"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2585224416,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-03T13:55:55Z",
+    "author": "Tehsmash",
+    "raw_text": "One issue I see here: is how does the Client know that the Agent is compliant with the latest patch version of the specification? \n\nIf I have an Agent which is running 1.2.0 and then tomorrow 1.2.1 is released from the A2A repo.\nClient's asking for 1.2 are being told to assume that the Agent 1.2.1 but it is actually still being handled as 1.2.0 because I've not had a chance to upgrade my Agent yet.\n\nI think we might need to word this like:\n\n```\nMUST process the request according to the semantics defined in the latest patch version with the same `Major.Minor` that they support.\n\nAgent's should try to upgrade to the latest patch version as soon as possible after the specification is released.\n```\n\nI also wonder if the Agent should return the full specific version in the header, so that clients are able to see which specific version and potentially which security vulns they are exposed too by using this version.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2585224416"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2585252366,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-03T14:02:52Z",
+    "author": "Tehsmash",
+    "raw_text": "Its not described anywhere that Clients should try to use the latest version they support by default. This should probably be added to the Client responsibilities.\n\nIf a user of a client asked for an older version of the spec by default and they get `VersionNotSupportedError` can they then negotiate a higher version, if both client and server support it.\n\nIdeally with the \"protocolVersions\" list we discussed in the TSC, clients will pre-empt this negotiation anyway and pick a version which they both understand based on the AgentCard details.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2585252366"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2588235030,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1269",
+    "date": "2025-12-04T09:29:27Z",
+    "author": "Tehsmash",
+    "raw_text": "This doesn't seem like this belongs here, AgentInterface isn't an input into any of the Operations.",
+    "url": "https://github.com/a2aproject/A2A/pull/1269#discussion_r2588235030"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2588259130,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1269",
+    "date": "2025-12-04T09:36:44Z",
+    "author": "Tehsmash",
+    "raw_text": "I've noticed this happening in a few PRs, it looks like different people have rules in their development environments for line length, this change probably shouldn't be in this PR.",
+    "url": "https://github.com/a2aproject/A2A/pull/1269#discussion_r2588259130"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2588402617,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1269",
+    "date": "2025-12-04T10:15:55Z",
+    "author": "herczyn",
+    "raw_text": "this was from the parent PR, fixed.",
+    "url": "https://github.com/a2aproject/A2A/pull/1269#discussion_r2588402617"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2588462418,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1269",
+    "date": "2025-12-04T10:32:36Z",
+    "author": "herczyn",
+    "raw_text": "fixed",
+    "url": "https://github.com/a2aproject/A2A/pull/1269#discussion_r2588462418"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2590575238,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-04T21:06:05Z",
+    "author": "ToddSegal",
+    "raw_text": "Should we be noting that different Major versions are not guaranteed to be compatible with each other. But \"minor version N is compatible with all minor versions N-1, N-2, ... for the same major version M\". \r\n\r\nOr does that not belong to this PR?",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2590575238"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2590624918,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-04T21:23:00Z",
+    "author": "amye",
+    "raw_text": "Yes, but probably not in this PR specifically. I think that's a separate call out, but I will defer to @darrelmiller.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2590624918"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2590683444,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-04T21:46:37Z",
+    "author": "darrelmiller",
+    "raw_text": "> Should we be noting that different Major versions are not guaranteed to be compatible with each other. But \"minor version N is compatible with all minor versions N-1, N-2, ... for the same major version M\".\r\n> \r\n> Or does that not belong to this PR?\r\n\r\nI wasn't sure what a major update means with this strategy.  Thinking more about this, I think what this means is when an agent upgrades 1.2 to 1.3, there is an expectation that a client will be able to fallback to 1.2 and the agent still support the 1.2 client.  Does this mean that when an agent releases 2.0, it doesn't have to support 1.9 anymore?  Or does it mean that the 2.0 release should be at a different URL?",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2590683444"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2591895645,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1277",
+    "date": "2025-12-05T08:54:18Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![critical](https://www.gstatic.com/codereviewagent/critical.svg)\n\nThe enum value for `TASK_STATE_PAUSED` is `8`, which is already used by `TASK_STATE_AUTH_REQUIRED`. Enum values within the same enum must be unique. Please use the next available unique value, which is `9`.\n\n```suggestion\n  TASK_STATE_PAUSED = 9;\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1277#discussion_r2591895645"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2591895653,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1277",
+    "date": "2025-12-05T08:54:18Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe comments for `PauseTaskRequest` appear to be copied from `CancelTaskRequest` and are incorrect. They should refer to pausing a task and the `tasks/pause` method, not canceling.\n\n```suggestion\n// Represents a request for the `tasks/pause` method.\nmessage PauseTaskRequest {\n  // Optional tenant, provided as a path parameter.\n  string tenant = 2;\n  // The resource name of the task to pause.\n  // Format: tasks/{task_id}\n  string name = 1;\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1277#discussion_r2591895653"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2591895659,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1277",
+    "date": "2025-12-05T08:54:18Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe comments for `ResumeTaskRequest` appear to be copied from `CancelTaskRequest` and are incorrect. They should refer to resuming a task and the `tasks/resume` method, not canceling.\n\n```suggestion\n// Represents a request for the `tasks/resume` method.\nmessage ResumeTaskRequest {\n  // Optional tenant, provided as a path parameter.\n  string tenant = 2;\n  // The resource name of the task to resume.\n  // Format: tasks/{task_id}\n  string name = 1;\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1277#discussion_r2591895659"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2592128145,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-05T10:11:26Z",
+    "author": "Tehsmash",
+    "raw_text": "I think we said that we follow Semantic versioning so:\r\n\r\nMajor = breaking, deprecated fields should be removed, a client on 1.1 should not expect a 2.0 version to accept its request because fields might be missing etc.\r\n\r\nMinor = additions only, older clients using old fields (1.1) should still continue to work on newer versions (1.2). However, this works today for clients sending requests, however there is a problem in responses because there could be unknown fields for the client and the strict validation of the response will fail. We could allow clients to ignore additional fields when parsing the response. \r\n \r\nPatch = bug fixes only",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2592128145"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2593326661,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-05T16:50:27Z",
+    "author": "darrelmiller",
+    "raw_text": "@Tehsmash With the proposed text, even a v1.2 client will get a versionUnsupportedError from a v1.1 Agent and the client is expected to re-request with a v1.1 header.\nIt is not clear to me that this behaviour needs to change for major version bumps.\n\nIt is true that an agent that supports v1.2 should continue to allow v1.2 clients to use fields that were deprecated in v1.2. And major version bumps will allow removal of deprecated properties. I think that is mentioned in the document introduction. I will review and see if some reorg is required.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2593326661"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2593342042,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-05T16:55:47Z",
+    "author": "darrelmiller",
+    "raw_text": "Also, patch versions are only editorial and clarifications. The term \"bug fix\" is nebulous when it comes to spec updates because it raises the question \"bug according to who?\". The response of \"well we meant to write this behaviour not that behaviour\" in the spec is not very helpful to implementations.\nSo, patch versions should almost never create behaviour changes.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2593342042"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2593959898,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1281",
+    "date": "2025-12-05T20:51:58Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nFor improved readability, you could rephrase this sentence to avoid repeating \"under\" and to make the flow smoother. Breaking it into two sentences could also enhance clarity.\n\n```suggestion\nThe A2A Protocol is an open source project under the Linux Foundation, contributed by Google. It is licensed under the [Apache License 2.0](LICENSE) and is open to contributions from the community.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1281#discussion_r2593959898"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2594138306,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1283",
+    "date": "2025-12-05T22:26:55Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThere's a small typo here. It seems 'a the' should be 'the'.\n\n```suggestion\n- **Cancel Task** operations are idempotent - multiple cancellation requests have the same effect. A duplicate cancellation request MAY return `TaskNotFoundError` if the task has already been cancelled and purged.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1283#discussion_r2594138306"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2597563499,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1196",
+    "date": "2025-12-08T08:32:42Z",
+    "author": "vongosling",
+    "raw_text": "struct type is json object. If we send a binary, simple string, do we need to convert?",
+    "url": "https://github.com/a2aproject/A2A/pull/1196#discussion_r2597563499"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2597591078,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1196",
+    "date": "2025-12-08T08:39:49Z",
+    "author": "vongosling",
+    "raw_text": "We don't care how to pull or push the event to the agent, right? If we return empty, it really is as it does",
+    "url": "https://github.com/a2aproject/A2A/pull/1196#discussion_r2597591078"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2598184616,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1196",
+    "date": "2025-12-08T11:07:27Z",
+    "author": "aglicacha",
+    "raw_text": "That's a good question. The information being published may exist in different forms, so it may be better to impose less constraints on its content format. Perhaps using bytes would be better? @darrelmiller What do you think?",
+    "url": "https://github.com/a2aproject/A2A/pull/1196#discussion_r2598184616"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2598187127,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1196",
+    "date": "2025-12-08T11:08:22Z",
+    "author": "aglicacha",
+    "raw_text": "Indeed, the pub/sub model does not restrict how messages are specifically sent and received, which provides implementers with ample freedom and extensibility.  @darrelmiller  Glad to hear your opinions and suggestions.",
+    "url": "https://github.com/a2aproject/A2A/pull/1196#discussion_r2598187127"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2598540904,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1288",
+    "date": "2025-12-08T12:56:33Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nFor consistency with other timestamp fields in this file (e.g., `TaskStatus.timestamp` on line 217), it would be helpful to include an example of the expected ISO 8601 format. This improves clarity for developers using this field.\n\n```suggestion\n// Filter tasks updated after the provided timestamp in ISO 8601 format (e.g., \"2023-10-27T10:00:00Z\").\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1288#discussion_r2598540904"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2599105751,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1289",
+    "date": "2025-12-08T15:41:16Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nUsing the `:latest` tag for the Docker image can lead to unexpected failures if a new version of `super-linter` introduces breaking changes. To ensure reproducible builds and stability, it's best practice to pin the image to a specific version. Please find a recent, stable version tag (e.g., `v6.4.0`) from the [super-linter releases page](https://github.com/super-linter/super-linter/releases) and use that instead.\n\n```suggestion\n  ghcr.io/super-linter/super-linter:v6.4.0\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1289#discussion_r2599105751"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2599105765,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1289",
+    "date": "2025-12-08T15:41:16Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe `shellcheck` rule `SC2086` (related to double quoting to prevent globbing and word splitting) is disabled globally via `SHELLCHECK_OPTS`. While this might be inherited from the CI configuration, globally disabling this check can hide potential bugs in shell scripts within the codebase. It's generally safer to disable specific checks on a line-by-line basis where they are known to be false positives (e.g., `# shellcheck disable=SC2086`). Could you check if this global suppression is necessary?",
+    "url": "https://github.com/a2aproject/A2A/pull/1289#discussion_r2599105765"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2599105767,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1289",
+    "date": "2025-12-08T15:41:16Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nFor a better interactive experience when running this script from your terminal, consider adding the `-t` flag to `docker run`. This allocates a pseudo-TTY, which will enable colorized output from the linter and improve readability.\n\n```suggestion\ndocker run --rm -t \\\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1289#discussion_r2599105767"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2599105770,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1289",
+    "date": "2025-12-08T15:41:16Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe default branch is hardcoded as `main`. If the repository's default branch ever changes, this script will need to be updated manually. To make the script more robust for the future, you could consider determining the default branch dynamically. For example:\n```bash\nDEFAULT_BRANCH=$(git remote show origin | grep 'HEAD branch' | cut -d' ' -f5)\n```\nThen use `-e DEFAULT_BRANCH=${DEFAULT_BRANCH}` in the `docker run` command. Since the goal is to mirror CI, this is a low-priority suggestion, but it could improve long-term maintainability.",
+    "url": "https://github.com/a2aproject/A2A/pull/1289#discussion_r2599105770"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2599243176,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1289",
+    "date": "2025-12-08T16:15:59Z",
+    "author": "ognis1205",
+    "raw_text": "The goal of this PR is strictly to reproduce the same linting behavior locally as in CI. I'd prefer to keep it as-is in this PR.",
+    "url": "https://github.com/a2aproject/A2A/pull/1289#discussion_r2599243176"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2603644335,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1296",
+    "date": "2025-12-09T17:33:14Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nRelying on the `gitvote` tool's default duration makes the configuration less explicit for anyone reading this file in the future. For better maintainability, consider adding a comment to clarify the intended voting period.\n\n```yaml\n    # Voting duration is omitted to use the tool's default.\n    pass_threshold: 51\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1296#discussion_r2603644335"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2603651634,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1297",
+    "date": "2025-12-09T17:35:15Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nA voting duration of 52 weeks (1 year) is exceptionally long and could significantly hinder the project's decision-making agility. It's advisable to use a much shorter period, such as 2 weeks, which is a more common practice for open-source projects to ensure timely progress. If this extended duration is intentional, please add a YAML comment explaining the rationale.\n\n```yaml\n    duration: 2w\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1297#discussion_r2603651634"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2607271658,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1256",
+    "date": "2025-12-10T16:04:22Z",
+    "author": "holtskinner",
+    "raw_text": "@darrelmiller Gemini makes a good point here. Maybe not the specific refactor it suggests, but it could make sense to use `AuthenticationInfo` as a repeated field in `PushNotificationConfig`",
+    "url": "https://github.com/a2aproject/A2A/pull/1256#discussion_r2607271658"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2607275959,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1246",
+    "date": "2025-12-10T16:05:32Z",
+    "author": "holtskinner",
+    "raw_text": "@darrelmiller ?",
+    "url": "https://github.com/a2aproject/A2A/pull/1246#discussion_r2607275959"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2607373726,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1298",
+    "date": "2025-12-10T16:30:57Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nSince protobuf `string` types must be valid UTF-8, it's important to clarify this constraint for implementers. For text files with encodings other than UTF-8, `file_with_bytes` should be used. Please consider adding a note about the UTF-8 requirement.\n\n```suggestion\n    // The plain text content of the file (for text-based file formats). The content MUST be valid UTF-8.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1298#discussion_r2607373726"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2608310677,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/906",
+    "date": "2025-12-10T21:43:47Z",
+    "author": "salah8584",
+    "raw_text": "Hi",
+    "url": "https://github.com/a2aproject/A2A/pull/906#discussion_r2608310677"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2608311388,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/906",
+    "date": "2025-12-10T21:44:05Z",
+    "author": "salah8584",
+    "raw_text": "Salahadinmed86@gmail.com",
+    "url": "https://github.com/a2aproject/A2A/pull/906#discussion_r2608311388"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2609811937,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1301",
+    "date": "2025-12-11T09:21:02Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe list numbering is incorrect after removing the item for legacy clients. It should be renumbered to be sequential (1, 2, 3).\n\n```suggestion\n1. Parse `supportedInterfaces` if present, and select the first supported transport\n2. Prefer earlier entries in the ordered list when multiple options are supported\n3. Use the correct URL for the selected transport\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1301#discussion_r2609811937"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2610582206,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1303",
+    "date": "2025-12-11T13:25:38Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nTo improve long-term maintainability and prevent accidental reuse of field tags, it's a good practice to explicitly mark the tags of removed fields as `reserved`.\n\nThis makes it clear that tags 3 and 4 were used for the deprecated `implicit` and `password` flows and should not be reused.\n\n```\n    // Tags 3 and 4 are reserved for deprecated OAuth flows.\n    reserved 3, 4;\n    // Configuration for the OAuth Device Code flow.\n    DeviceCodeOAuthFlow device_code = 5;\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1303#discussion_r2610582206"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2610615377,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1303",
+    "date": "2025-12-11T13:35:16Z",
+    "author": "msardara",
+    "raw_text": "Should we retain tag 5 for device_code to preserve backward compatibility, or is it acceptable to break compatibility and switch to tag 3 instead?",
+    "url": "https://github.com/a2aproject/A2A/pull/1303#discussion_r2610615377"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2610923496,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1306",
+    "date": "2025-12-11T14:58:36Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nTo maintain consistency with the other documentation updates in this PR and to better highlight the new capabilities of `DataPart`, consider making this description more specific. The current change from 'structured data' to 'JSON data' is correct, but could be more descriptive to align with other documentation changes.\n\n```suggestion\n    - Consider more complex input and output modalities (e.g., handling file uploads/downloads, or any JSON value via `DataPart`).\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1306#discussion_r2610923496"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2611798997,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1307",
+    "date": "2025-12-11T19:24:48Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe summary of features for `AgentCapabilities` is missing `state_transition_history`. For completeness, it would be good to add it to the list of supported features.\n\n```\n    -   `capabilities`: (`AgentCapabilities`) Features supported (streaming, push notifications, state transition history, extended agent card, extensions).\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1307#discussion_r2611798997"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2611935129,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1307",
+    "date": "2025-12-11T20:15:06Z",
+    "author": "madankumarpichamuthu",
+    "raw_text": "will fix this in the next push",
+    "url": "https://github.com/a2aproject/A2A/pull/1307#discussion_r2611935129"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2612157489,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1308",
+    "date": "2025-12-11T21:40:57Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThis behavior change description is inconsistent with other parts of the specification (e.g., line 2914) which state that streams also close on *interrupted* states like `input-required`. To provide a complete and consistent migration guide, please update this line to include interrupted states as a condition for stream closure.\n\n```suggestion\nStreams now MUST close when a task reaches any terminal or interrupted state. No further updates will be sent after states like COMPLETED, FAILED, CANCELLED, REJECTED, or INPUT_REQUIRED.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1308#discussion_r2612157489"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2612157496,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1308",
+    "date": "2025-12-11T21:40:57Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe description of stream termination here is inconsistent with other parts of the documentation. `docs/specification.md` (line 2914) and `docs/tutorials/python/7-streaming-and-multiturn.md` (line 82) state that streams also close on *interrupted* states like `input-required`. To ensure consistency, please update this line to include interrupted states as a condition for stream termination.\n\n```suggestion\n- **Stream Termination:** When a task reaches a terminal or interrupted state (e.g., COMPLETED, FAILED, CANCELLED, REJECTED, or INPUT_REQUIRED), the server closes the stream and sends no further updates.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1308#discussion_r2612157496"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2612157502,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1308",
+    "date": "2025-12-11T21:40:57Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nTo prevent future reuse of the field number `4` with a different meaning, which could break wire compatibility, it's a good practice to explicitly reserve it. Please add `reserved 4;` to the `TaskStatusUpdateEvent` message before the metadata field.\n\n```\n  reserved 4;\n  // Optional metadata to associate with the task update.\n  google.protobuf.Struct metadata = 5;\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1308#discussion_r2612157502"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2612600492,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-12T01:49:37Z",
+    "author": "ToddSegal",
+    "raw_text": "1.4 servers should be able to interact with ANY 1.X client. These servers should have full fidelity/100% support for all features in 1.0-1.4. Anything specific feature in 1.X where X > 4, will be ignored/not supported.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2612600492"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2613597783,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1309",
+    "date": "2025-12-12T09:48:21Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nFor clarity and more formal language, consider rephrasing this rule. The phrase `different than` is often replaced with `different from` in technical specifications. Also, being more explicit about what is mismatching can prevent ambiguity.\n\n```suggestion\n- Agents **MUST** reject messages containing mismatching `contextId` and `taskId` (i.e., the provided `contextId` is different from that of the referenced [`Task`](#411-task)).\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1309#discussion_r2613597783"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2613597789,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1309",
+    "date": "2025-12-12T09:48:21Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThis comment block has a few minor grammatical issues and could be made clearer with some punctuation and articles. Adding commas and articles like 'the' and 'and' where appropriate will improve readability.\n\n```suggestion\n// Message is one unit of communication between client and server. It can be\n// associated with a context and/or a task. For server messages, context_id must\n// be provided, and task_id only if a task was created. For client messages, both\n// fields are optional, with the caveat that if both are provided, they have to\n// match (the context_id has to be the one that is set on the task). If only\n// task_id is provided, the server will infer context_id from it.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1309#discussion_r2613597789"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2613720429,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1309",
+    "date": "2025-12-12T10:29:19Z",
+    "author": "lkawka",
+    "raw_text": "context groups tasks and **messages**, if we're being precise.",
+    "url": "https://github.com/a2aproject/A2A/pull/1309#discussion_r2613720429"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2614004254,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1309",
+    "date": "2025-12-12T12:11:27Z",
+    "author": "herczyn",
+    "raw_text": "good point, fixed",
+    "url": "https://github.com/a2aproject/A2A/pull/1309#discussion_r2614004254"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2614040119,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1310",
+    "date": "2025-12-12T12:24:51Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThis sentence is a bit repetitive with \"composition of the TSC\" appearing twice. For better clarity and flow, you could rephrase the part after the parenthesis.\n\n```suggestion\n    b. **\"Steady State.\"** The TSC will decide upon a \"steady state\" composition of the TSC (whether by election, subproject technical leads, or other method as determined by the TSC), to take effect from the date that is 18 months following the inception of the Project, or at such other point as determined by the TSC.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1310#discussion_r2614040119"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2618754452,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1308",
+    "date": "2025-12-15T10:02:33Z",
+    "author": "Tehsmash",
+    "raw_text": "I don't think we need to keep this in the spec.md, this should be tracked in issues/git history/release notes.",
+    "url": "https://github.com/a2aproject/A2A/pull/1308#discussion_r2618754452"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2620136643,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-15T16:47:20Z",
+    "author": "Tehsmash",
+    "raw_text": "I'm not sure about 1.5+ Client talking to 1.4 server without \"downgrading\" itself.\nI'm concerned about the client sending parameters to the server and them getting silently ignored especially if there is a behaviour difference related to the sent options.\nFor example imagine if we added \"blocking: true/false\" in 1.5 version, a 1.4 server ignoring this would be a completely different behaviour, however a client 1.4 or below should work with a 1.4 server.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2620136643"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2620277193,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1312",
+    "date": "2025-12-15T17:35:13Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nFor better readability and to provide more context to users, consider adding a brief, one-line description for each integration in the list. This will help users quickly understand what each framework is for without having to click the link.\n\n```suggestion\n- [Agent Development Kit (ADK)](https://google.github.io/adk-docs/a2a/) - Google's toolkit for building AI agents.\n- [AG2](https://docs.ag2.ai/latest/docs/user-guide/a2a/) - An open-source agent-native application server.\n- [BeeAI Framework](https://framework.beeai.dev/integrations/a2a) - A framework for building and deploying AI agents.\n- [CrewAI](https://docs.crewai.com/en/learn/a2a-agent-delegation) - A framework for orchestrating role-playing, autonomous AI agents.\n- [Hector](https://github.com/kadirpekel/hector) - A platform for building and deploying AI agents.\n- [KaibanJS](https://docs.kaibanjs.com/how-to/A2A-Protocol-Integration) - A TypeScript framework for building AI applications.\n- [LangGraph](https://docs.langchain.com/langgraph-platform/server-a2a) - A library for building stateful, multi-actor applications with LLMs.\n- [LiteLLM](https://docs.litellm.ai/docs/a2a) - A library to simplify calling LLM APIs.\n- [Microsoft Agent Framework](https://learn.microsoft.com/en-us/agent-framework/user-guide/agents/agent-types/a2a-agent) - Microsoft's framework for building agentic experiences.\n- [Pydantic AI](https://ai.pydantic.dev/a2a/) - A framework for building AI models with Pydantic.\n- [Strands Agents](https://strandsagents.com/latest/documentation/docs/a2a) - A framework for building and deploying autonomous agents.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1312#discussion_r2620277193"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2621869158,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1314",
+    "date": "2025-12-16T05:42:08Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![critical](https://www.gstatic.com/codereviewagent/critical.svg)\n\nThese changes to use `task_id` and `config_id` are good for API usability, but they break the HTTP mapping for the `GetTaskPushNotificationConfig` RPC (lines 97-105), which still expects a `name` field. You'll need to update the RPC definition to use the new fields.\n\nFor example:\n```proto\nrpc GetTaskPushNotificationConfig(GetTaskPushNotificationConfigRequest) returns (TaskPushNotificationConfig) {\n  option (google.api.http) = {\n    get: \"/tasks/{task_id}/pushNotificationConfigs/{config_id}\"\n    additional_bindings: {\n      get: \"/{tenant}/tasks/{task_id}/pushNotificationConfigs/{config_id}\"\n    }\n  };\n  option (google.api.method_signature) = \"task_id,config_id\";\n  option (google.api.method_signature) = \"tenant,task_id,config_id\";\n}\n```\n\nAdditionally, the comments for the new fields could be more precise. `config_id` is an ID, not a full resource name. Consider adding comments for both fields for clarity.\n\n```\n  // The ID of the task.\n  string task_id = 1;\n  // The ID of the config to retrieve.\n  string config_id = 3;\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1314#discussion_r2621869158"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2621869161,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1314",
+    "date": "2025-12-16T05:42:08Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![critical](https://www.gstatic.com/codereviewagent/critical.svg)\n\nSimilar to the `Get` request, these changes break the HTTP mapping for the `DeleteTaskPushNotificationConfig` RPC (lines 126-134). You'll need to update its definition as well.\n\nFor example:\n```proto\nrpc DeleteTaskPushNotificationConfig(DeleteTaskPushNotificationConfigRequest) returns (google.protobuf.Empty) {\n  option (google.api.http) = {\n    delete: \"/tasks/{task_id}/pushNotificationConfigs/{config_id}\"\n    additional_bindings: {\n      delete: \"/{tenant}/tasks/{task_id}/pushNotificationConfigs/{config_id}\"\n    }\n  };\n  option (google.api.method_signature) = \"task_id,config_id\";\n  option (google.api.method_signature) = \"tenant,task_id,config_id\";\n}\n```\n\nAlso, the comment for `config_id` contains a copy-paste error ('retrieve' instead of 'delete') and is misleading (it's an ID, not a resource name). Consider adding a comment for `task_id` as well for consistency.\n\n```\n  // The ID of the task.\n  string task_id = 1;\n  // The ID of the config to delete.\n  string config_id = 3;\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1314#discussion_r2621869161"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2623434740,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1316",
+    "date": "2025-12-16T14:11:07Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThank you for adding AmikoNet. For maintainability, this list should be kept in alphabetical order. I noticed the list has some existing sorting issues (e.g., `AliCloud` on line 18 should come before `Almawave.it` on line 17). Your placement of `AmikoNet` is reasonable given the context. While not a blocker for this PR, it would be great if you could also fix the sorting for this small section to improve the overall quality of the document. An ideal ordering would be `AliCloud`, `Almawave.it`, then `AmikoNet`.",
+    "url": "https://github.com/a2aproject/A2A/pull/1316#discussion_r2623434740"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2623456405,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1316",
+    "date": "2025-12-16T14:15:31Z",
+    "author": "williamwa",
+    "raw_text": "moved it",
+    "url": "https://github.com/a2aproject/A2A/pull/1316#discussion_r2623456405"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2624187878,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1310",
+    "date": "2025-12-16T17:43:27Z",
+    "author": "holtskinner",
+    "raw_text": "I think this one should stay as is",
+    "url": "https://github.com/a2aproject/A2A/pull/1310#discussion_r2624187878"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2624188442,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1310",
+    "date": "2025-12-16T17:43:38Z",
+    "author": "holtskinner",
+    "raw_text": "```suggestion\r\nextensions in their Agent Card, and clients can then opt-in to the behavior\r\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1310#discussion_r2624188442"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2624737534,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1319",
+    "date": "2025-12-16T21:04:49Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nWhile this change is correct, it's a high-level summary. To ensure the specification is consistent and complete, other related sections should also be updated:\n\n*   **Context Identifier Semantics (Section 3.4.1):** This section should be updated to describe how agents should behave based on the new `can_receive_client_generated_context_id` capability. For instance, what should an agent do if it receives a client-generated `contextId` but doesn't support this feature?\n*   **Capability Validation (Section 3.3.4):** This section should include validation rules for the new `can_receive_client_generated_context_id` capability.\n*   **`docs/topics/key-concepts.md`:** This file (not in the PR) still describes `contextId` as a \"server-generated identifier\" and should be updated to align with this change.\n\nMaking these updates will prevent ambiguity for implementers of the protocol.",
+    "url": "https://github.com/a2aproject/A2A/pull/1319#discussion_r2624737534"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2624737538,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1319",
+    "date": "2025-12-16T21:04:49Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThis comment change is correct and aligns with allowing client-generated context IDs. To make this feature fully specified, consider also updating the documentation in `docs/specification.md` to describe how an agent should behave if it receives a client-generated `context_id` but does not have the `can_receive_client_generated_context_id` capability set to `true`.",
+    "url": "https://github.com/a2aproject/A2A/pull/1319#discussion_r2624737538"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2624918558,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-16T22:11:04Z",
+    "author": "ToddSegal",
+    "raw_text": "\"blocking: true/false\" would be required to be an optional parameter with a well-specified default if omitted to be a \"minor version\" update. If it is required and omission creates a behavior change, it is breaking and therefore major.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2624918558"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2625616354,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1310",
+    "date": "2025-12-17T05:06:54Z",
+    "author": "didier-durand",
+    "raw_text": "Hi Holt, I believe that there is no hypen here since it's a verb.\r\n\r\n<img width=\"854\" height=\"373\" alt=\"image\" src=\"https://github.com/user-attachments/assets/09ab259b-5542-44f0-9e2d-09973b0ec53b\" />",
+    "url": "https://github.com/a2aproject/A2A/pull/1310#discussion_r2625616354"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2625618901,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1310",
+    "date": "2025-12-17T05:08:26Z",
+    "author": "didier-durand",
+    "raw_text": "No, it  should by without  hyphen: see the answer by Google that I pasted below",
+    "url": "https://github.com/a2aproject/A2A/pull/1310#discussion_r2625618901"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2637951695,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-21T16:46:00Z",
+    "author": "darrelmiller",
+    "raw_text": "@Tehsmash Nobody should ever have to update anything based on patch versions. They are editorial only.  If someone deployed bad code because of bad wording that gets fixed in an edit, then there may be a compatibility issue, but we should consider that no different than if an implementer simply misread a specification.  Patch versions are only to indicate that we changed some text in the specification, not that we changed the protocol in any way, even \"bug fixes\".",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2637951695"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2637965817,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-21T17:11:08Z",
+    "author": "darrelmiller",
+    "raw_text": "For the moment I am not going to add a recommendation for a client to use the latest version they support.  I don't want to infer that a client should do a negotiation if they already know based on protocolVersions that the agent doesn't support the client's latest version.  \r\n\r\nI will add the list of protocolVersions to this PR if I don't find another one covering it.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2637965817"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2637987207,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-21T17:41:40Z",
+    "author": "darrelmiller",
+    "raw_text": "@ToddSegal Based on our discussions around ProtoJSON not being able to parse unrecognized properties, we realized that we would not be able to round-trip these unrecognized properties.\r\nConsider we added an optional Skill_Id to the message object in v1.1.  A v1.0 agent would not be able to process that and store it in the Task Message History.  Using a default value would indicate that no skill was associated, but that would not be true.\r\nThe current proposal is to require the client to acknowledge that the agent does not support v1.1 and resend the request using a v1.0 compliant message if the client accepts that v1.1 behaviour is not essential.  This can be automated in SDK tooling if the client decides it is fine with auto-fallback.\r\nI think this makes every agent's life easier because nobody has to deal with messages from different versions of the protocol that it doesn't understand. \r\n\r\nRelated to your comment about an agent supporting all previous minor versions, this has an impact on the proposal to change \"protocolVersion\" into \"protocolVersions\" in the agentCard.  I was concerned about requiring agents to have\r\n`protocolVersion: [\"1.0\",\"1.1\",\"1.2\",\"1.3\",\"1.4\",\"1.5\"]`\r\nwhich seems pretty redundant.  Would any agent not support just \"1.2\" for example?\r\n\r\nMaybe the only reason for multiple protocol versions is so that we can do this\r\n`protocolVersions: [\"0.3\",\"1.3\"]`\r\n\r\nThis would indicate that \"0.3\", \"1.1\", \"1.2\" and \"1.3\" are supported.  There is an edge case that versions \"0.2\" and \"0.1\" are likely not supported because there were breaking changes there.\r\nWe could maybe add wording saying that \"any version with a major value of 1 or greater automatically infers all prior minor versions are supported\".",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2637987207"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2638040243,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2025-12-21T19:10:28Z",
+    "author": "darrelmiller",
+    "raw_text": "> 1.4 servers should be able to interact with ANY 1.X client.\r\n\r\nWith the above strategy, if an agent really does want to explicitly support any 1.X client, then they could do the following:\r\n\r\n`protocolVersions: [\"1.99\"]`\r\n\r\nand attempt to handle unrecognized properties.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2638040243"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2641915298,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1322",
+    "date": "2025-12-23T04:45:59Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe instruction to \"Remove optional fields that have default values\" could be misinterpreted and lead to incorrect canonicalization, causing signature verification failures. The Protocol Buffer JSON mapping rules are more nuanced: fields explicitly marked as `optional` are included if set (even to a default value), while other fields with default values are omitted. Clarifying this distinction is important for developers to implement signing correctly.\n\n```suggestion\n2. Omit fields set to their default value (e.g., `0`, `false`, empty strings/arrays), unless the field is defined as `required` or `optional` in the A2A protocol specification.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1322#discussion_r2641915298"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889626,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:34Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nThe `ParseURL` function doesn't seem to be using the `opts.Insecure` flag. This means that even if the user provides a flag to skip TLS verification (like `-k` in the `test` command), it won't be honored when parsing an Agent Card from a URL. You should create a custom `http.Transport` with the appropriate `TLSClientConfig`.\n\nYou'll also need to add `\"crypto/tls\"` to the imports.\n\n```go\n    transport := &http.Transport{\n        TLSClientConfig: &tls.Config{InsecureSkipVerify: opts.Insecure},\n    }\n\tclient := &http.Client{\n\t\tTimeout: opts.Timeout,\n        Transport: transport,\n\t}\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889626"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889635,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:35Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nThis file is a duplicate of `cli/schemas/agentcard.json`. Maintaining two copies of the schema is error-prone and can lead to inconsistencies. It would be better to have a single source of truth. You can use the `//go:embed` directive in `cli/internal/validator/schema.go` to embed the schema file from the `cli/schemas/` directory directly, for example: `//go:embed ../../schemas/agentcard.json`. This file can then be deleted.",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889635"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889640,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:35Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nThe error handling in `TestConnection` is inconsistent. In some cases (e.g., `http.NewRequest` or `httpClient.Do` failure), an error message is stored in the `result` object, but the function returns a `nil` error. The caller in `cmd/test.go` checks the returned error value, so it will not detect these failures. The function should consistently return a non-nil `error` when a failure occurs to ensure callers can handle it correctly.",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889640"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889641,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:35Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe `RunE` function for a cobra command is designed to return an error, which is then handled by cobra's execution logic. This function currently prints errors to `stderr` and then calls `os.Exit()` directly. This bypasses cobra's error handling and makes the code harder to test. It's better to return a wrapped error and let the caller handle exiting. The `fmt.Fprintf` call can be removed as cobra will print the returned error.\n\n```suggestion\nreturn fmt.Errorf(\"failed to parse file: %w\", err)\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889641"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889648,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:35Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nWhen parsing a streaming event, an unmarshalling error is silently ignored with `continue`. This could hide issues with the agent's response and make debugging difficult. It would be better to send an error event on the channel so the client can be aware of the malformed data.\n\n```suggestion\nif err := json.Unmarshal([]byte(data), &event); err != nil {\n\t\t\t\t\tevents <- StreamEvent{Type: \"error\", Error: fmt.Sprintf(\"failed to parse stream event: %v\", err)}\n\t\t\t\t\tcontinue\n\t\t\t\t}\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889648"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889651,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:35Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nSimilar to other commands, this `RunE` function should return an error instead of calling `os.Exit` directly. This allows for better integration with cobra's error handling and improves testability. The `fmt.Fprintf` call can be removed as cobra will print the returned error.\n\n```suggestion\nreturn fmt.Errorf(\"failed to parse file: %w\", err)\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889651"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889657,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:35Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe `RunE` function should return an error instead of calling `os.Exit`. This improves testability and follows cobra best practices. Cobra will handle printing the error, and this change allows cobra to manage the process lifetime and exit codes more cleanly.\n\n```go\nif _, err := os.Stat(filePath); os.IsNotExist(err) {\n\t\treturn fmt.Errorf(\"file not found: %s\", filePath)\n\t}\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889657"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889660,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:35Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nAs with other commands, it's better to return an error from `RunE` rather than calling `os.Exit` directly. This integrates better with cobra's error handling and makes the command more testable.",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889660"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889662,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:35Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThese `fmt.Printf` calls write directly to `os.Stdout`, but the function signature includes an `io.Writer` (`w`) for output. To ensure output is correctly directed (e.g., during tests or redirection), you should use `fmt.Fprintf(w, ...)` instead.\n\n```suggestion\nfmt.Fprintf(w, \"Input Modes:  %s\\n\", strings.Join(card.DefaultInputModes, \", \"))\n\tfmt.Fprintf(w, \"Output Modes: %s\\n\", strings.Join(card.DefaultOutputModes, \", \"))\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889662"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889665,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:35Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe way version information is passed from `ldflags` to the `main` package and then to the `cmd` package is a bit indirect. It can be simplified by setting the variables in the `cmd` package directly from `ldflags`. This would involve:\n1. Removing the `version` and `buildTime` variables from this `main` package.\n2. Removing the `cmd.SetVersion` call from `main()`.\n3. Removing the `SetVersion` function from the `cmd` package.\n4. Updating the `LDFLAGS` in the `Makefile` to target the variables in the `cmd` package directly, e.g., `-X github.com/a2aproject/a2a/cli/internal/cmd.version=$(VERSION)`.\n\nAdditionally, the `gitCommit` variable in the `version` command is never set. You could enhance the `Makefile` to also inject the git commit hash.",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889665"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889667,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:35Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe `rm -f` commands in the `clean` target can be combined into a single line for conciseness and clarity.\n\n```\nrm -f $(BINARY_NAME) coverage.out coverage.html\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889667"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889668,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:35Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe functions in this file, `MarshalJSON` and `WriteJSONTo`, appear to be unused or redundant. The `WriteJSON` function in `output.go` provides the necessary functionality and is used by the command implementations. This file can likely be removed to reduce code duplication and confusion.",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889668"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2642889669,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1323",
+    "date": "2025-12-23T11:26:35Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe instructions for PowerShell completion are a bit sparse. It would be more helpful to provide the command for loading completions into the current session, as shown in the command's own help text, and clarify how to make it persistent.\n\n```suggestion\na2a completion powershell | Out-String | Invoke-Expression\n# Add the command above to your PowerShell profile for it to be loaded on each new session.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1323#discussion_r2642889669"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2644815034,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1326",
+    "date": "2025-12-24T05:12:18Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe closing tag for the last link is malformed. It should be `</a>` instead of `</`. This breaks the HTML and can cause rendering issues for the rest of the document.\n\n```suggestion\n        | <a href=\"https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=as\">অসমীয়া</a>\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1326#discussion_r2644815034"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2644815038,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1326",
+    "date": "2025-12-24T05:12:18Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe `align` attribute on `<div>` tags is obsolete in HTML5. It's recommended to use CSS for alignment, for example with `style=\"text-align: ...\"`. This also makes it consistent with other parts of the file that use inline styles. Additionally, there's a minor trailing space in the `<summary>` tag that can be removed.\n\n```suggestion\n<div style=\"text-align: right;\">\n  <details>\n    <summary>🌐 Language</summary>\n    <div>\n      <div style=\"text-align: center;\">\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1326#discussion_r2644815038"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2646312381,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1256",
+    "date": "2025-12-24T22:19:06Z",
+    "author": "darrelmiller",
+    "raw_text": "@holtskinner  Yes, we need to fix this.  I would choose to remove the `repeated` completely.  Why would a calling agent provide multiple options for the server agent to use, considering it is providing all the information needed for the server agent to authenticate the callback.  I think a single scheme should be sufficient.",
+    "url": "https://github.com/a2aproject/A2A/pull/1256#discussion_r2646312381"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2647612773,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1327",
+    "date": "2025-12-26T06:12:45Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nIf you adopt the suggestion to use an enum for `agent_type` in `a2a.proto`, this documentation should be updated to reflect that. You would also need to add a new section to document the enum values, similar to how `TaskState` is documented.\n\nFor example, you could add a new section for the `AgentType` enum:\n```markdown\n<a id=\"AgentType\"></a>\n\n#### 4.4.8. AgentType\n\n{{ proto_to_table(\"specification/grpc/a2a.proto\", \"AgentType\") }}\n```\n\nThis will ensure the specification remains consistent and well-documented.\n\n```suggestion\n- **`agentType`** (optional, enum): An optional categorization of the agent type. This helps consumers identify the kind of agent they are interacting with. See [`AgentType`](#AgentType) for possible values.\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1327#discussion_r2647612773"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2647612777,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1327",
+    "date": "2025-12-26T06:12:45Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nFor better type safety and to prevent potential typos, consider defining `agent_type` as an enum instead of a string. This makes the expected values explicit and can prevent subtle bugs. If you anticipate this list of types will be extended frequently by third parties, a string offers more flexibility. However, given the provided examples, a controlled set via an enum seems more robust.\n\nYou could define the enum like this, perhaps before the `AgentCard` message:\n```proto\n// Defines the possible types of an agent.\nenum AgentType {\n  // The agent type is not specified.\n  AGENT_TYPE_UNSPECIFIED = 0;\n  // A large language model-based agent.\n  AGENT_TYPE_LLM = 1;\n  // An agent that executes a defined workflow.\n  AGENT_TYPE_WORKFLOW = 2;\n  // A general-purpose assistant agent.\n  AGENT_TYPE_ASSISTANT = 3;\n}\n```\n\nThen, you can update the `agent_type` field in `AgentCard`.\n\n```suggestion\n  // An optional categorization of the agent type.\n  // This helps consumers identify the kind of agent they are interacting with.\n  optional AgentType agent_type = 20;\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1327#discussion_r2647612777"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693421,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:42Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![critical](https://www.gstatic.com/codereviewagent/critical.svg)\n\n`asyncio` has been part of the Python standard library since Python 3.4. Listing it in `requirements.txt` is unnecessary for modern Python versions and can cause installation conflicts or issues, especially since the specified version `3.4.3` refers to an old backport. This line should be removed.",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693421"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693422,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:42Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nUsing `sys.path.append('..')` is an anti-pattern that makes the code brittle and dependent on the execution directory. It can lead to hard-to-debug import issues. A better approach is to structure your project as a package and run scripts as modules (e.g., `python -m reference_implementation.examples.demo`) or install the package in editable mode (`pip install -e .`). This comment applies to all agent files and the `demo.py` script.",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693422"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693423,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:42Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nThe `NeuroGuard` circom template is designed to process `eeg` data (`signal input eeg[n];`), which is inconsistent with the rest of the notebook that focuses on mouse movement data (x, y coordinates). This seems to be a placeholder that doesn't match the notebook's context. The circuit should be updated to reflect the kind of data being processed, for example by taking `x` and `y` coordinate signals as input.",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693423"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693424,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:42Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe bare `except:` block is too broad and will catch any exception, including system-level ones like `KeyboardInterrupt` or `SystemExit`. This can hide bugs and make debugging difficult. It's better to catch a more specific exception, or at least `except Exception:`. A `try...except` block without a specific exception is a bad practice.\n\n```\n        except Exception:\n            return None\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693424"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693426,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:42Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe type hint `List` is used in `process_message` but is not imported. This will cause a `NameError` for users copying this example. Please add `from typing import List`.\n\n```suggestion\nfrom typing import List\nfrom core.a2a_base import BaseAgent, AgentSkill, Message, Task, TaskStatus\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693426"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693430,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:42Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe `json` module is imported but never used in this file. It should be removed to keep the code clean. This also applies to `orchestrator_agent.py`, `project_manager_agent.py`, and `researcher_agent.py`.",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693430"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693431,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:42Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe `process_message` method signature is missing type hints. Adding them improves code clarity, enables static analysis, and makes the example consistent with the base agent definition.\n\n```suggestion\n    async def process_message(self, messages: List[Message]) -> Task:\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693431"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693433,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:42Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThis import statement is missing `List`, `Message`, and `Task` which are needed for the type hints suggested for `process_message` to improve clarity and consistency.\n\n```suggestion\nfrom typing import List\nfrom core.a2a_base import BaseAgent, AgentSkill, Message, Task\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693433"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693435,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:42Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nCatching a broad `Exception` can hide bugs and make debugging difficult. It's better to catch more specific exceptions that you expect to occur during dataset loading, such as network errors from the `datasets` library (e.g., `datasets.exceptions.ConnectionError`).",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693435"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693437,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:42Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nCatching a broad `Exception` can hide bugs and make debugging difficult. It's better to catch more specific exceptions that you expect to occur during dataset loading, such as `FileNotFoundError` or exceptions from the `datasets` library (e.g., `datasets.exceptions.DatasetNotFoundError`).",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693437"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693438,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:43Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nCatching a broad `Exception` can hide bugs and make debugging difficult. It's better to catch more specific exceptions that you expect to occur. This also applies to the `try...except` block in the `process_message` method.",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693438"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693441,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:43Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nCatching a broad `Exception` can hide bugs and make debugging difficult. It's better to catch more specific exceptions that you expect to occur, such as the `ValueError` you raise within the `try` block.",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693441"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693442,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:43Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nCatching a broad `Exception` can hide bugs and make debugging difficult. It's better to catch more specific exceptions that you expect to occur, such as the `ValueError` you raise within the `try` block.",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693442"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693444,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:43Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe `Callable` type is imported from `typing` but is never used in the file. It should be removed to keep imports clean.\n\n```suggestion\nfrom typing import List, Dict, Any, Optional\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693444"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693445,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:43Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe `json` module is imported but never used in this file. It should be removed.",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693445"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659693446,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1337",
+    "date": "2026-01-04T14:09:43Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nThe same `jitter` array is added to both the `x` and `y` coordinates. This creates correlated noise, where the perturbation is always in the same direction along the `x=y` diagonal. To generate more realistic and less predictable noise, you should use separate, independent jitter for each coordinate.\n\n```\n        jitter_x = np.random.uniform(-0.02, 0.02, points)\n        jitter_y = np.random.uniform(-0.02, 0.02, points)\n        return pd.DataFrame({\"x\": x + jitter_x, \"y\": y + jitter_y})\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1337#discussion_r2659693446"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659787704,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1338",
+    "date": "2026-01-04T16:45:10Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![high](https://www.gstatic.com/codereviewagent/high-priority.svg)\n\nThe call to `human_engine.get_trace(0)` on line 270 could return `None`, which would cause a `TypeError` on the next line when `len(h_sample)` is called. It's important to add a check to ensure `h_sample` is not `None` before proceeding.\n\n```\nh_sample = human_engine.get_trace(0)\nif h_sample is not None:\n    p_sample = poison_engine.generate_trace(len(h_sample))\n    log(f\"DATA SOURCE: {human_engine.mode}\", \"DATA\")\n    log(f\"SAMPLE VARIANCE: {np.var(h_sample['x']):.4f}\", \"DATA\")\nelse:\n    log(\"Could not retrieve a human sample trace for verification.\", \"WARN\")\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1338#discussion_r2659787704"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659787706,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1338",
+    "date": "2026-01-04T16:45:10Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nUsing a bare `except:` block is generally discouraged as it can catch unexpected errors (like `SystemExit` or `KeyboardInterrupt`) and make debugging more difficult. It's better to catch specific exceptions that you expect to occur. This also allows for logging the specific error, which is helpful for debugging.\n\n```\n        except Exception as e:\n            log(f'Error getting trace at index {index}: {e}', 'WARN')\n            return None\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1338#discussion_r2659787706"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659787707,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1338",
+    "date": "2026-01-04T16:45:10Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![medium](https://www.gstatic.com/codereviewagent/medium-priority.svg)\n\nThe model's accuracy is being evaluated on the same data it was trained on. This can lead to an overly optimistic accuracy score and doesn't reflect how the model will perform on new, unseen data. For a more robust evaluation, you should split your data into a training set and a testing set.\n\nFor example, using `scikit-learn`:\n```python\nfrom sklearn.model_selection import train_test_split\n\n# ... after creating X and y\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=SEED)\n\nscaler = StandardScaler()\nX_train_scaled = scaler.fit_transform(X_train)\nX_test_scaled = scaler.transform(X_test)\n\nclf = MLPClassifier(hidden_layer_sizes=(32, 16), max_iter=800, random_state=SEED)\nclf.fit(X_train_scaled, y_train)\n\n# Score on the unseen test set\nacc = clf.score(X_test_scaled, y_test)\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1338#discussion_r2659787707"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659787709,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1338",
+    "date": "2026-01-04T16:45:11Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nFor better readability and adherence to the PEP 8 style guide, it's recommended to have one import per line.\n\n```\nimport sys\nimport subprocess\nimport time\nimport random\nimport os\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1338#discussion_r2659787709"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2659787711,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1338",
+    "date": "2026-01-04T16:45:11Z",
+    "author": "gemini-code-assist[bot]",
+    "raw_text": "![low](https://www.gstatic.com/codereviewagent/low-priority.svg)\n\nIn the `NeuroGuard` Circom template, the input signal is named `eeg`. This name is typically associated with electroencephalography and might be confusing in the context of mouse movement data. Consider renaming it to something more descriptive, like `mouse_features` or `input_signal`, to improve clarity. You'll also need to update its usage on lines 544 and 545.\n\n```\n    signal input mouse_features[n];\n\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1338#discussion_r2659787711"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2661405135,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2026-01-05T12:55:24Z",
+    "author": "Tehsmash",
+    "raw_text": "```suggestion\n  \"protocolVersions\": [\"0.3\"],\n```",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2661405135"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2661472619,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2026-01-05T13:18:31Z",
+    "author": "Tehsmash",
+    "raw_text": "> Patch version numbers SHOULD NOT be used in requests, responses and Agent Cards, and MUST not be considered when clients and servers negotiate protocol versions.\n\nFrom a security perspective it could be useful for a client to know the exact patch version the server is running assuming that we use patch versions to include that kind of bug fix in the spec.\n\nSo perhaps:\n\n```\nPatch version numbers SHOULD NOT be used in requests and Agent Cards, and MUST not be considered when clients and servers negotiate protocol versions. Responses should include the complete negotiated version number providing clients information about the exact protocol version running on the Agent side.\n```\n\nActually as a separate issue I don't want to derail this PR, this makes me wonder whether we should allow clients to specify a minimum patch version requirement to ensure they can say something like >=1.0.4 (where 1.0.4 contains a security fix).",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2661472619"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2663062351,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2026-01-05T23:14:01Z",
+    "author": "darrelmiller",
+    "raw_text": "Thanks. I thought I had caught all of those.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2663062351"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2663081521,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2026-01-05T23:24:15Z",
+    "author": "darrelmiller",
+    "raw_text": "In previous discussions on this topic, we had said that SDKs would leverage the patch version to identify updates to the SDK.  e.g.  Python SDK might be at 1.0.34 and .NET at 1.0.11 and they both support the 1.0 protocol. \r\nIf we allow using the specification version to indicate security fixes, then it is going to get confusing to say Python SDK 1.0.35 includes Specification 1.0.1 security fix.  I would guess most security fixes are going to be in the SDK rather than the specification, and if there is a security bug in the specification that needs closing, then I'm fine with us using a minor version for that.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2663081521"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2665038475,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2026-01-06T14:05:21Z",
+    "author": "Tehsmash",
+    "raw_text": "Does that mean that the spec should have no patch versions for any reason?\r\n\r\nI'm not 100% sure keeping the SDK's version in sync with the spec's version is a good idea. In python for example the ecosystem uses semantic versioning pretty heavily to indicate bug fixes only, compatible and incompatible changes. Many people will pin to a Major.Minor but allow for patch releases through `~` operator in requirements. Using patch number for all releases breaks that assumption and also will prevent SDKs from making breaking API changes without a major spec release happening at the same time.\r\n\r\nAlso if SDKs start to support multiple versions of the spec so that clients can talk to agents on different versions, having the SDK version in sync with the spec adds to the confusion. i.e. Python SDK 1.0.34 supports 1.0 and 0.3 but Python SDK 2.0.3 supports 2.0 and 1.0 but not 0.3.",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2665038475"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2665695152,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1259",
+    "date": "2026-01-06T17:30:51Z",
+    "author": "Tehsmash",
+    "raw_text": "As discussed in the TSC call, patch releases for the spec repo should only be for non-functional changes to the spec text / comments in the proto etc. As soon as functional changes to the a2a.proto are made this requires a minor release. Do we need to put this in the spec somewhere?",
+    "url": "https://github.com/a2aproject/A2A/pull/1259#discussion_r2665695152"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2668387960,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1214",
+    "date": "2026-01-07T13:11:13Z",
+    "author": "ishymko",
+    "raw_text": "Should we also update the spec which currently documents a different format? https://github.com/a2aproject/A2A/blob/60f83c3faac4770b231f038406c9e02282887a25/docs/specification.md?plain=1#L1194-L1201",
+    "url": "https://github.com/a2aproject/A2A/pull/1214#discussion_r2668387960"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2673093237,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1310",
+    "date": "2026-01-08T16:43:55Z",
+    "author": "holtskinner",
+    "raw_text": "Interesting, didn't realize there was a distinction",
+    "url": "https://github.com/a2aproject/A2A/pull/1310#discussion_r2673093237"
+  },
+  {
+    "source": "pr_review_comment",
+    "platform": "github",
+    "comment_id": 2673286709,
+    "pr_url": "https://api.github.com/repos/a2aproject/A2A/pulls/1214",
+    "date": "2026-01-08T17:42:53Z",
+    "author": "darrelmiller",
+    "raw_text": "I'll create a separate issue for that.",
+    "url": "https://github.com/a2aproject/A2A/pull/1214#discussion_r2673286709"
   }
 ]

@@ -1,5 +1,5 @@
 # RQ1 Governance Metrics — Findings Summary
-Generated: 2026-03-10 16:31 UTC
+Generated: 2026-03-10 16:40 UTC
 
 ---
 
@@ -11,8 +11,8 @@ Generated: 2026-03-10 16:31 UTC
 | Proposal / first public date | 2025-08-13 | 2025-04-09 |
 | Consensus / launch | 2026-01-29 | N/A (ongoing) |
 | Days to consensus | **169** | N/A |
-| Total discussion records | 124 | 3025 |
-| Unique discussion contributors | 62 | 530 (+69 review comment authors) |
+| Total discussion records | 124 | 4923 |
+| Unique discussion contributors | 62 | 596 (+81 review comment authors) |
 | Unique institutions | TBD (annotation pending) | TBD (annotation pending) |
 | Openness index | TBD | TBD |
 | Total commits | N/A | 522 |
@@ -40,7 +40,7 @@ _Annotation pending — run: uv run python scripts/annotate_llm.py_
 |------|--------|------|---------|
 | ERC-8004 | Ethereum Magicians forum | https://ethereum-magicians.org/t/erc-8004-trustless-agents/25098 | 113 posts |
 | ERC-8004 | GitHub ethereum/ERCs (core PRs only) | https://github.com/ethereum/ERCs/pulls?q=erc-8004 | 11 comments |
-| Google A2A | GitHub google/A2A | https://github.com/google/A2A | 522 commits, 3025 discussion records |
+| Google A2A | GitHub google/A2A | https://github.com/google/A2A | 522 commits, 4923 discussion records |
 
 ---
 
