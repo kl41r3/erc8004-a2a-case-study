@@ -1,0 +1,80 @@
+{
+  "total_raw": 149,
+  "kept": 11,
+  "dropped": 138,
+  "kept_by_pr": {
+    "1248": {
+      "count": 1,
+      "description": "Update ERC-8004: Add Requires field"
+    },
+    "1458": {
+      "count": 2,
+      "description": "Update ERC-8004: Update erc-8004.md"
+    },
+    "1462": {
+      "count": 2,
+      "description": "Update ERC-8004: Update erc-8004.md (typos)"
+    },
+    "1470": {
+      "count": 1,
+      "description": "Update ERC-8004: Move to Draft"
+    },
+    "1472": {
+      "count": 1,
+      "description": "Update ERC-8004: align metadataValue to bytes"
+    },
+    "1477": {
+      "count": 2,
+      "description": "Update ERC-8004: add co-author (Onchain Metadata; see PR #1237)"
+    },
+    "1488": {
+      "count": 2,
+      "description": "Update ERC-8004: Updates from community feedback"
+    }
+  },
+  "dropped_by_pr": {
+    "1359": {
+      "count": 58
+    },
+    "1515": {
+      "count": 3
+    },
+    "1520": {
+      "count": 5
+    },
+    "1523": {
+      "count": 3
+    },
+    "1525": {
+      "count": 2
+    },
+    "1532": {
+      "count": 3
+    },
+    "1536": {
+      "count": 3
+    },
+    "1545": {
+      "count": 8
+    },
+    "1557": {
+      "count": 14
+    },
+    "1558": {
+      "count": 4
+    },
+    "1560": {
+      "count": 3
+    },
+    "1561": {
+      "count": 12
+    },
+    "1579": {
+      "count": 15
+    },
+    "1581": {
+      "count": 5
+    }
+  },
+  "drop_reason": "PR mentions ERC-8004 as dependency but is not a lifecycle update to the spec itself"
+}

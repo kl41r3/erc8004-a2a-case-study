@@ -1,0 +1,47 @@
+{
+  "a2a_commits.json": {
+    "sha256": "ca8a78fde7986ed062709bb8cbea01de1360b7caecdea5967f6c15d8c25b5f23",
+    "records": 100,
+    "bytes": 123918
+  },
+  "a2a_issues.json": {
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "records": 0,
+    "bytes": 2
+  },
+  "a2a_manifest.json": {
+    "sha256": "39a201d38cf28161daf0fdbb48eccc693f21ecb60c8b97c856a75f1bfa784d97",
+    "records": null,
+    "bytes": 730
+  },
+  "a2a_prs.json": {
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "records": 0,
+    "bytes": 2
+  },
+  "filter_log.json": {
+    "sha256": "d9c71ddb9977cd14f36be183392b5ba8d0f9066a2748c83e1617a1d48595353f",
+    "records": null,
+    "bytes": 1481
+  },
+  "forum_posts.json": {
+    "sha256": "4b3711e5a45b7e4a835fb32a4fca87cd9a2015a4347f2b963cd7e8fb27da6eb6",
+    "records": 113,
+    "bytes": 152165
+  },
+  "github_comments.json": {
+    "sha256": "23b6e3ebe5e99b227e4b3a3a76c9936f1a7156f1d9f467de3df876675b9166a5",
+    "records": 149,
+    "bytes": 77155
+  },
+  "github_comments_filtered.json": {
+    "sha256": "3e2b3eb4c263af7c538cd85179889242bcb3cfc0a054aa1569da6a66108fe61d",
+    "records": 11,
+    "bytes": 4910
+  },
+  "manifest.json": {
+    "sha256": "7f6ed2bdc8030715eb0b96b2c637e0e2ad1fbfce2ebacdc8a7bd77b68919af16",
+    "records": null,
+    "bytes": 245
+  }
+}

@@ -1,0 +1,1002 @@
+[
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "aca981cee3",
+    "date": "2026-03-06T20:55:06Z",
+    "author": "amye",
+    "author_name": "Amye Scavarda Perrin",
+    "message": "Update GOVERNANCE.md (#1598)\n\nAdding new TSC member from AWS",
+    "url": "https://github.com/a2aproject/A2A/commit/aca981cee3e7a3f22a4df8fb8a5302406f7a1cf5"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "dec790aa06",
+    "date": "2026-03-05T11:33:36Z",
+    "author": "herczyn",
+    "author_name": "Kuba Herczyński",
+    "message": "fix(docs): Clearer wording around context id. (#1588)\n\nclient side context id passing can be supported, server can choose to\nreject, client's should know how to fallback accordingly\nif server accepts, server must respond with the context id\nif server cannot accept client side context id it MUST respond with an\nerror (i.e. it SHOULD not respond with a task with a different context\nid?)\nservers may not accept a client side context id for a number of reasons:\nclashes, validation errors, not supporting context ids\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/dec790aa063943e3ac70e972f9da513c25ab420c"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "010b9cc936",
+    "date": "2026-03-04T12:33:14Z",
+    "author": "herczyn",
+    "author_name": "Kuba Herczyński",
+    "message": "fix(spec): Remove config from binding. (#1587)\n\nFix error caused by #1500:\n\n× Failed to build `a2a-sdk @\nfile:///home/runner/work/a2a-python/a2a-python`\n  ├─▶ The build backend returned an error\n  ╰─▶ Call to `hatchling.build.build_editable` failed (exit status: 1)\n\n      [stderr]\n      Failure: failed_precondition: plugin\n\"buf.build/grpc-ecosystem/openapiv2:v2.28.0\" failed: no field \"config\"\n      found in TaskPushNotificationConfig",
+    "url": "https://github.com/a2aproject/A2A/commit/010b9cc936fbafd66610282ad66070da2cb28855"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "d1ed0da587",
+    "date": "2026-03-03T17:56:38Z",
+    "author": "herczyn",
+    "author_name": "Kuba Herczyński",
+    "message": "refactor(spec)!: Combine `TaskPushNotificationConfig` and `PushNotificationConfig` (#1500)\n\n**this PR:**\n- removes CreateTaskPushNotificationConfigRequest and replace it with\nTaskPushNotificationConfig (same fields).\n- flattend TaskPushNotificationConfig and PushNotificationConfig\nremoving the latter\n- puts TaskPushNotificationConfig in SendMessageConfig instead of the\nremoved PushNotificationConfig\n\n**why:** more readable structure, with less messages but with the same\npossibilities\n\nRelease-As: 1.0.0\n\n---------\n\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/d1ed0da587d2d634ba0b81a40d082cee0850b81b"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "dbb1bf8e60",
+    "date": "2026-03-02T23:09:02Z",
+    "author": "agenttrust",
+    "author_name": "AgentTrust.ai",
+    "message": "docs: add AgentTrust to partners list (#1568)\n\nThis PR adds [AgentTrust](https://agenttrust.ai) to the partners list,\nalphabetically between AG2AI and AI21 Labs.\n\n**About AgentTrust:**\nAgentTrust is trust and identity infrastructure for agentic\ncollaboration. We provide hosted A2A endpoints with Agent Card\ndiscovery, Ed25519 message signing, human-in-the-loop escalation, and\nprompt injection detection.\n\n**What we've built:**\n- Hosted A2A endpoints — agents get a public A2A identity at\n`/a2a/{slug}` without running a server\n- Standard Agent Card served at `/.well-known/agent.json` per agent\n- Direct A2A JSON-RPC ingress (`tasks/send`) with allowlist,\nInjectionGuard, and HITL rules\n- Ed25519 message signing — cryptographic identity verification between\nagents\n- Negotiation lifecycle extending A2A task states via metadata\nextensions (`propose_complete`, `disputed`, `rejected`)\n- MCP server with 13 tools —\n[npm](https://www.npmjs.com/package/@agenttrust/mcp-server) |\n[GitHub](https://github.com/agenttrust/mcp-server)\n- Webhook delivery with HMAC-SHA256 signatures\n\n**Links:**\n- Website: https://agenttrust.ai\n- MCP Server: https://github.com/agenttrust/mcp-server\n- npm: https://www.npmjs.com/package/@agenttrust/mcp-server\n\nBuilt on Google's A2A protocol. We fill the identity and trust gap — A2A\ndefines how agents talk, AgentTrust helps them prove who they are.\n\n---------\n\nCo-authored-by: AgentTrust <hello@agenttrust.ai>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Amye Scavarda Perrin <amye@amye.org>",
+    "url": "https://github.com/a2aproject/A2A/commit/dbb1bf8e60abb1da4f718304b409c1cef5febb78"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "789bc73d8b",
+    "date": "2026-03-02T22:45:10Z",
+    "author": "pinchwork",
+    "author_name": "Pinchwork",
+    "message": "docs: add Pinchwork to partners list (#1498)\n\nHi Amye and team,\n\nFollowing up on issue #1443 (\"Add Pinchwork as A2A-compatible agent\nmarketplace\") — thank you for the warm welcome and for pointing us to\nthe partners list!\n\nThis PR adds [Pinchwork](https://pinchwork.dev) to the partners list,\nalphabetically between Personal AI and Poppulo.\n\n**About Pinchwork:**\nPinchwork is an agent-to-agent task marketplace where AI agents can post\ntasks, pick up work, and earn credits — all via a simple API. We have a\nlive A2A endpoint at `/.well-known/agent-card.json` and a JSON-RPC A2A\nendpoint at `/a2a`, supporting `message/send`, `tasks/get`, and\n`tasks/cancel`.\n\nWe're excited to be part of the A2A ecosystem and look forward to\ncontributing to interoperability between agents.\n\nResolves #1443\n\nCo-authored-by: Pinchwork <hello@pinchwork.dev>\nCo-authored-by: Amye Scavarda Perrin <amye@amye.org>",
+    "url": "https://github.com/a2aproject/A2A/commit/789bc73d8b22e2c5de9a56140220f84166531198"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "4890b77d6f",
+    "date": "2026-02-26T19:14:05Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "docs: Fix embedded version of `AgentExtension` in extensions (#1550)",
+    "url": "https://github.com/a2aproject/A2A/commit/4890b77d6fdfa7bf6c8c6558d24ff92a240c7c0a"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "a3e2e1f8c6",
+    "date": "2026-02-24T16:35:28Z",
+    "author": "ishymko",
+    "author_name": "Ivan Shymko",
+    "message": "build: use go 1.25 to work with latest buf (#1509)\n\nhttps://github.com/a2aproject/A2A/actions/runs/22359664144 fails with\n\n```\ngo: github.com/bufbuild/buf/cmd/buf@latest: github.com/bufbuild/buf@v1.66.0 requires go >= 1.25.6 (running go 1.24.12; GOTOOLCHAIN=local)\n```\n\nLong term docs.yml probably shouldn't use `@latest` to avoid such\nbreakages in CI without code changes.\n\nRe #1510 (adding `no-issue` as it's not `Fixes`)",
+    "url": "https://github.com/a2aproject/A2A/commit/a3e2e1f8c6bd38929a369e512ab85ee70839ef80"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "629190aea9",
+    "date": "2026-02-18T16:13:47Z",
+    "author": "gijswalraven",
+    "author_name": "Gijs Walraven",
+    "message": "docs: wrap Task in result.task in life-of-a-task examples (#1492)\n\n## Issue\n\nCloses #1368 — Clarify whether JSON-RPC result should wrap Task/Message\nobjects\n\n## Problem\n\nBoth response examples in `docs/topics/life-of-a-task.md` returned Task\nfields directly inside `result`:\n\n```json\n\"result\": {\n  \"id\": \"task-boat-gen-123\",\n  \"status\": { ... },\n  \"artifacts\": [ ... ]\n}\n```\n\nThe v1.0 specification defines `SendMessageResponse` as:\n\n```\noneof response {\n  Task task = 1;\n  Message message = 2;\n}\n```\n\nThis means the result **must** contain either a `\"task\"` or `\"message\"`\nwrapper key, not direct Task fields.\n\n## Fix\n\nBoth response examples now correctly wrap the Task:\n\n```json\n\"result\": {\n  \"task\": {\n    \"id\": \"task-boat-gen-123\",\n    \"status\": { ... },\n    \"artifacts\": [ ... ]\n  }\n}\n```\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-authored-by: Gijs Walraven <gijs.walraven@delaware.pro>\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/629190aea9fe5838bb712008e6d24156680af197"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "8bf133addc",
+    "date": "2026-02-18T16:12:17Z",
+    "author": "gijswalraven",
+    "author_name": "Gijs Walraven",
+    "message": "docs: use correct v1.0 method name \"SendMessage\" in life-of-a-task example (#1491)\n\n## Summary\n\nThe follow-up scenario example in \\`docs/topics/life-of-a-task.md\\` used\n\\`\"message.send\"\\` (dot notation) for the first request, while the\nsecond request in the same example correctly used \\`\"SendMessage\"\\`\n(v1.0 PascalCase). This made the file internally inconsistent and showed\na method name that doesn't exist in any version of the protocol.\n\n## Change\n\n\\`\\`\\`diff\n- \"method\": \"message.send\",\n+ \"method\": \"SendMessage\",\n\\`\\`\\`\n\n**File:** \\`docs/topics/life-of-a-task.md\\`\n\n## Related\n\n- Closes #1493\n- Related to #1367 (method name inconsistencies across documentation)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-authored-by: Gijs Walraven <gijs.walraven@delaware.pro>\nCo-authored-by: Claude Sonnet 4.5 <noreply@anthropic.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/8bf133addc9d55ad23808e2bf2a2cd86ef9f456b"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "7245512250",
+    "date": "2026-02-18T16:11:37Z",
+    "author": "gijswalraven",
+    "author_name": "Gijs Walraven",
+    "message": "docs: correct `Part` discriminator values and remove stale `v0.3.x` type names (#1490)\n\n## Summary\n\nFixes documentation inconsistencies related to Part discriminator field\nvalues, identified in #1365.\n\n## Changes\n\n### `docs/specification.md` — Appendix A.2.1\n\n- **Legacy Part `kind` values**: corrected from PascalCase (`\"kind\":\n\"TextPart\"`, `\"kind\": \"FilePart\"`, `\"kind\": \"DataPart\"`) to lowercase\n(`\"kind\": \"text\"`, `\"kind\": \"file\"`, `\"kind\": \"data\"`), consistent with\nwhat `whats-new-v1.md` documents as the v0.3.0 format\n- **Legacy FilePart structure**: added the missing nested `file` object\nwrapper\n- **Legacy streaming event `kind` values**: corrected from PascalCase\n(`TaskStatusUpdateEvent`, `TaskArtifactUpdateEvent`) to camelCase\n(`taskStatusUpdate`, `taskArtifactUpdate`)\n- **Current `DataPart` migration target**: removed incorrect\ndouble-wrapping (`{ \"data\": { \"data\": {...} } }` → `{ \"data\": {...},\n\"mediaType\": \"application/json\" }`)\n- **Current streaming event member names**: aligned with\n`whats-new-v1.md` (`taskStatusUpdate` / `taskArtifactUpdate`)\n\n### `docs/topics/key-concepts.md`\n\n- Updated Part description to use v1.0 terminology, removing references\nto the removed `TextPart`, `FilePart`, and `DataPart` types\n\n### `docs/tutorials/python/8-next-steps.md`\n\n- Replaced reference to removed `DataPart` type with v1.0 Part field\nnames\n\n### `CONTRIBUTING.md`\n\n- Added **Documentation Guidelines** section with correct v1.0 Part\nexamples (member-presence pattern) and guidance on the correct v0.3.x\nlowercase `kind` discriminator values for migration docs\n\n## Related\n\n- Closes #1365\n- External community site fix:\nhttps://github.com/sing1ee/a2a-directory/pull/12\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\n---------\n\nCo-authored-by: Gijs Walraven <gijs.walraven@delaware.pro>",
+    "url": "https://github.com/a2aproject/A2A/commit/72455122503fe8ace5c6b0991e3727a147eaf707"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "1997c9d630",
+    "date": "2026-02-17T22:37:58Z",
+    "author": "herczyn",
+    "author_name": "Kuba Herczyński",
+    "message": "fix(spec): Remove reserved and fix tags ordering (#1494)\n\nfixes #1495 1495",
+    "url": "https://github.com/a2aproject/A2A/commit/1997c9d63058ca0b89361a7d6e508f4641a6f68b"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "b2daedcadf",
+    "date": "2026-02-17T18:16:53Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "docs: Add What's New in V1 to Docs TOC (#1489)\n\n<img width=\"966\" height=\"661\" alt=\"Screenshot 2026-02-17 at 11 46 47 AM\"\nsrc=\"https://github.com/user-attachments/assets/6730cd94-bbf6-4f0a-8e33-d3a0ae2833ae\"\n/>",
+    "url": "https://github.com/a2aproject/A2A/commit/b2daedcadfa8700c2b289b5402de0edabffb7bf4"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "857a995a3d",
+    "date": "2026-02-17T18:06:57Z",
+    "author": "Tehsmash",
+    "author_name": "Sam Betts",
+    "message": "docs(spec): Correct wording around `blocking=true` (#1398)\n\nThis corrects the wording so that blocking=True includes terminal and\ninterrupted states as triggers for returning to the client.\n\nFixes: #1264\n\n---------\n\nSigned-off-by: Sam Betts <1769706+Tehsmash@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/857a995a3dc54f65489ba054b3fc16317777c073"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "393898dfee",
+    "date": "2026-02-17T17:59:50Z",
+    "author": "yarolegovich",
+    "author_name": "Yaroslav",
+    "message": "fix(spec)!: remove duplicated ID from the create task push config request (#1487)\n\nID is already present in the config object.\nIt is not used in path segment bindings and also uses inconsistent\nnaming with other push-related rpc payloads.\n\nfixes https://github.com/a2aproject/A2A/issues/1451\n\nFollow-up to #1389\n\n---------\n\nCo-authored-by: Kuba Herczyński <herczyn@google.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/393898dfeefa37186aced5b61733c5d2c0d9c34a"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "cf735cb870",
+    "date": "2026-02-17T17:40:07Z",
+    "author": "yarolegovich",
+    "author_name": "Yaroslav",
+    "message": "fix(spec)!: pluralize configs in `ListTaskPushNotificationConfigs` (#1486)\n\nPluralize PushNotificationConfig in ListTaskPushNotificationConfig\nrequest and responses.\n\nThis is consistent with ListTasks.\n\nPart of #1451\n\n---------\n\nCo-authored-by: Kuba Herczyński <herczyn@google.com>\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/cf735cb87056ff6d62abd21a1a66ccb14a23c38e"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "c441b910b6",
+    "date": "2026-02-17T17:35:16Z",
+    "author": "yarolegovich",
+    "author_name": "Yaroslav",
+    "message": "fix(spec): add metadata to `CancelTaskRequest` (#1485)\n\nIn v0.3 almost all requests had metadata. Event push-related RPCs were\nextending TaskIDParams inheriting the metadata field from them.\n\nIn v1.0 only SendMessage request has it. The absence of metadata is\nespecially problematic in CancelTaskRequest because in some sense it\nreaches the agent. It makes it harder to develop an extension which\nmodifies agentic behavior if there's no way to influence request or\nresponse of event produced in response to cancelation request.\n\nfixes #1484\n\nCo-authored-by: Kuba Herczyński <herczyn@google.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/c441b910b64d45514ae929a42e7367c2a9a2f6c3"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "a54e80904a",
+    "date": "2026-02-17T17:09:04Z",
+    "author": "herczyn",
+    "author_name": "Kuba Herczyński",
+    "message": "fix(spec)!: Add LF prefix to the package. (#1474)\n\nFixes #1473\n\nRelease-As: 1.0.0\n\n---------\n\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/a54e80904aa32c74a14bc2c3d21bf82936ccbbdd"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "73d5f59a32",
+    "date": "2026-02-17T16:28:14Z",
+    "author": "ishymko",
+    "author_name": "Ivan Shymko",
+    "message": "docs(spec): Fix whats-new-v1.md (#1460)\n\nChanges below as they appear in the file.\n\n- `blocking` flag existed in 0.3:\n[source](https://a2a-protocol.org/v0.3.0/specification/#712-messagesendconfiguration-object)\n- `SendMessage`: remove \"MAY return Message\"/\"MUST return Task\" which\nare not in the spec, remove service parameters mention as they are\ncovered above\n- streaming was specified for gRPC in proto definition as `returns\n(stream StreamResponse)`\n- `SubscribeToTask` is not a new operation\n- blocking has no effect for streaming operations:\n[source](https://a2a-protocol.org/latest/specification/#322-sendmessageconfiguration)\n- `TaskNotCancelableError` was mentioned in 0.3:\n[source](https://a2a-protocol.org/v0.3.0/specification/#82-a2a-specific-errors)\n- RFC 7515 was mentioned for Agent Card signatures in 0.3:\n[source](https://a2a-protocol.org/v0.3.0/specification/#556-agentcardsignature-object),\nkept only RFC 8785 for canonicalization which wasn't\n- `agentId` field does not exist and never did\n- extension declarations (AgentExtension object) did not change between\n[0.3](https://a2a-protocol.org/v0.3.0/specification/#5521-agentextension-object)\nand\n[1.0](https://a2a-protocol.org/latest/specification/#444-agentextension)\n- Mutual TLS existed in 0.3:\n[source](https://a2a-protocol.org/v0.3.0/specification/#553-securityscheme-object)\n- subscribing to tasks not originally created via streaming is not a\nbehavior change and is not explicitly mentioned in 1.0\n- `token` is not removed from `PushNotificationConfig`:\n[source](https://a2a-protocol.org/latest/specification/#431-pushnotificationconfig)\n- `configId` does not exist in `PushNotificationConfig`\n([source](https://a2a-protocol.org/latest/specification/#431-pushnotificationconfig))\nand `id` was there in 0.3\n([source](https://a2a-protocol.org/v0.3.0/specification/#68-pushnotificationconfig-object))\n- `PushNotificationNotSupportedError` existed in 0.3:\n[source](https://a2a-protocol.org/v0.3.0/specification/#82-a2a-specific-errors)\n- `SendMessageRequest` example fixed to match the spec\n- `createdAt` and `lastModified` do not exist in `Task`:\n[source](https://a2a-protocol.org/latest/specification/#411-task)\n- changes to nested `Task` objects removed as they are covered in\nrespective sections (`TaskStatus`, `Message`, `Artifact`)\n- `timestamp` was not added to `Message`:\n[source](https://a2a-protocol.org/latest/specification/#414-message)\n- there is no \"stricter typing\" for `metadata`\n- \"retained\" should not be in the changelog\n- `createdAt` was not added to `Artifact`:\n[source](https://a2a-protocol.org/latest/specification/#417-artifact)\n- `signatures` field was there in 0.3:\n[source](https://a2a-protocol.org/v0.3.0/specification/#55-agentcard-object-structure)\n\nRe #1436.\n\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/73d5f59a322eec5d15f6698d8bd34fb17019d438"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "a9cffef493",
+    "date": "2026-02-17T16:16:45Z",
+    "author": "darrelmiller",
+    "author_name": "Darrel",
+    "message": "ci(linter): Add API Linter job to workflow for proto file validation (#1257)\n\ndocs(spec): Adjust comments in `a2a.proto` to follow standard practices.\n\n---------\n\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/a9cffef4930002d672e37ffc16f21adabc0259f6"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "fde2bd8da8",
+    "date": "2026-02-17T16:11:23Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "ci(docs): Update `llms-full.txt` script to include text versions of sdk docs and updated proto path (#1476)",
+    "url": "https://github.com/a2aproject/A2A/commit/fde2bd8da8dcd4c6c5373de20f6e4e5b878d82f9"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "cd16c5276b",
+    "date": "2026-02-17T16:10:26Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "fix(spec): Adjust field number for `ListTasksRequest.tenant` to prevent missing number (#1470)\n\nIntroduced in https://github.com/a2aproject/A2A/pull/1195\n\n- Breaking change should be fine because `ListTasksRequest` is new for\n1.0.0\n\nRelease-As: 1.0.0",
+    "url": "https://github.com/a2aproject/A2A/commit/cd16c5276b4c662ca1823678d07487a624cad606"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "05603f973f",
+    "date": "2026-02-17T16:07:02Z",
+    "author": "yarolegovich",
+    "author_name": "Yaroslav",
+    "message": "docs(spec): minor spec corrections (#1482)\n\n* Removed outdated part format from examples\n* Added a missing TaskNotFoundError to non-streaming rpc errors list\n* Removed outdated final flag from status update examples\n\nThe referenced issues has some other things:\n1. Should ListTaskPushNotificationConfig be pluralized into\nListTaskPushNotificationConfigs?\n2. Should all request operating on push configs settle on either\nconfigID or ID naming. Create vs (Delete|List|Get) RPCs differ at the\nmoment.\n3. In CreateRequest we have ID based on the request root level and in\nconfig payload. Should the former be removed?\n\nhttps://github.com/a2aproject/A2A/issues/1451",
+    "url": "https://github.com/a2aproject/A2A/commit/05603f973f9b4e8672205c212653be6f1563ce2b"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "f63f6551c5",
+    "date": "2026-02-12T22:43:14Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "docs: Fix link redirect issues (#1471)\n\nFixes #1467",
+    "url": "https://github.com/a2aproject/A2A/commit/f63f6551c5eea8a573ad6111c9963d2200ef9675"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "68727dcb35",
+    "date": "2026-02-11T16:40:02Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "docs: Update A2A course link in README",
+    "url": "https://github.com/a2aproject/A2A/commit/68727dcb35599d0ccf4cb38a9173d47b4c182c19"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "7cf67271cf",
+    "date": "2026-02-11T16:39:23Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "docs: Add DeepLearning.AI Course to README and docs (#1469)",
+    "url": "https://github.com/a2aproject/A2A/commit/7cf67271cfc95baf1cf0b2d317b1df2d9c8776a9"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "a3d78dcad3",
+    "date": "2026-02-10T19:19:52Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "docs(spec): Convert Proto Table display in specification to use existing libraries (#1427)\n\nConvert bespoke `macros.py` to use `proto-schema-parser` and `tabulate`\nto display tables\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/a3d78dcad3c222fb528a9601457fc88c5ae04128"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "c24b1151d1",
+    "date": "2026-02-10T17:45:49Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "docs(spec): Update inconsistencies in documentation for 1.0 Spec (#1466)\n\nIn the future, we should probably explore refactoring the docs set to\navoid these becoming out of sync going forward\n\nThis pull request updates the project documentation to align with the\nv1.0 Agent2Agent (A2A) Protocol Specification defined in\nspecification/a2a.proto. It ensures that all conceptual guides,\nsummaries, and tutorials reflect the current normative definitions,\n  RPC method names, and wire formats.\n\n  Summary of Changes\n\n\n1. RPC Method Naming Updates\nStandardized all method references to use the v1.0 PascalCase naming\nconvention:\n\n   * `message/send` → `SendMessage`\n   * `message/stream` → `SendStreamingMessage`\n   * `tasks/get` → `GetTask`\n   * `tasks/list` → `ListTasks`\n   * `tasks/cancel` → `CancelTask`\n* `tasks/pushNotificationConfig/set` →\n`CreateTaskPushNotificationConfig`\n   * `tasks/resubscribe` → `SubscribeToTask`\n   * `agent/getAuthenticatedExtendedCard` → `GetExtendedAgentCard`\n\n2. JSON Example & Wire Format Corrections\nUpdated examples across all \"Topic\" files and the Python Quickstart to\nmatch v1.0 breaking changes:\n* Removed `kind` discriminators: Examples for Message, Task, Part, and\nStreamResponse now use member-based polymorphism (e.g.,\n     {\"text\": \"...\"} instead of {\"kind\": \"text\", \"text\": \"...\"}).\n* Enum Standardization: Changed role and state enums from\nkebab-case/lowercase to SCREAMING_SNAKE_CASE with type prefixes (e.g.,\n     `\"ROLE_USER\"`, `\"TASK_STATE_COMPLETED\"`).\n* Response Wrapping: Updated examples to reflect that `SendMessage` and\n`SendStreamingMessage` return a unified response object where\n     the message or task is nested within the result.\n\n  3. LLM Context (`docs/llms.txt`)\n* Completely refreshed the protocol summary and RPC method list to\nensure LLM-based tools (like Gemini CLI) have an accurate\n     representation of the v1.0 API surface and error codes.\n\n  4. Link & Anchor Maintenance\n* Updated internal documentation links and spans to point to the correct\nsections in the specification.md (e.g., correcting the\n     anchor for GetExtendedAgentCard).\n\n  Why this is needed\nThe v1.0 release introduced significant structural improvements for\nProtoJSON compliance and architectural consistency. Documentation\nexamples were previously showing v0.3.0 patterns which would cause\nintegration errors for developers using the latest SDKs.",
+    "url": "https://github.com/a2aproject/A2A/commit/c24b1151d1201d2a29ce4840a0d7797cee8b5d33"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "3f6ad2d9d6",
+    "date": "2026-02-10T17:17:45Z",
+    "author": "ishymko",
+    "author_name": "Ivan Shymko",
+    "message": "docs(spec): Fix MTLS scheme proto embedding (#1462)\n\nCurrently properties for `MutualTlsSecurityScheme` are not renderred\n([source](https://a2a-protocol.org/latest/specification/#456-mutualtlssecurityscheme)):\n<img width=\"1273\" height=\"374\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/be4c7dbb-749d-4391-aec8-fdd55c0dd625\"\n/>\n\nThis PR makes casing consistent for both mkdocs anchors and heading.\n\nTested via `mkdocs serve`:\n<img width=\"1505\" height=\"626\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/348a6ef9-3868-43bf-8319-efe63092b95b\"\n/>\n\nRe https://github.com/a2aproject/A2A/pull/1460#discussion_r2783691658",
+    "url": "https://github.com/a2aproject/A2A/commit/3f6ad2d9d6d7c3d7080748b1c5ba6852a3eab95e"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "741ccaa3af",
+    "date": "2026-02-09T15:21:26Z",
+    "author": "ishymko",
+    "author_name": "Ivan Shymko",
+    "message": "docs(spec): Fix streaming examples (#1458)\n\n1. Reference `StreamResponse` instead of duplicated and inconsistent\ndefinitions in JSON-RPC and HTTP+JSON/REST message streaming protocol\nbindings. Currently JSON-RPC example also contains outdated `/* Task |\nMessage | TaskArtifactUpdateEvent | TaskStatusUpdateEvent */` definition\nwhich implies `kind` field.\n2. Minor consistency fix:\n```diff\n-Referenced Objects:\n+**Referenced Objects:**\n```\n\nFixes #1459.",
+    "url": "https://github.com/a2aproject/A2A/commit/741ccaa3af19fbe6f9ba26a47d8781fe68af475f"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "8c17173de3",
+    "date": "2026-02-06T18:56:45Z",
+    "author": "ognis1205",
+    "author_name": "Shingo OKAWA",
+    "message": "ci: add local script to run super-linter (#1289)\n\n## Summary\n\nThis PR adds a local helper script (`scripts/lint.sh`) to run GitHub\nSuper Linter in a Docker container.\nIt mirrors the configuration used in our CI workflow, allowing\ncontributors to validate linting rules locally before opening a Pull\nRequest.\n\n## Details\n\n - Added `scripts/lint.sh` for running Super Linter locally\n- Uses the same environment variables and config files as\n`.github/workflows/linter.yaml`\n\n## Motivation\n\nThe CI lint job sometimes fails due to rule violations that are hard to\nreproduce locally.\nThis script ensures consistent developer experience by enabling\ncontributors to run the exact same linter setup.\n\n## Notes\n\n - No functional changes to source code\n - CI behavior remains unchanged\n \n Closes #1290\n\nSigned-off-by: Shingo OKAWA <shingo.okawa.g.h.c@gmail.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/8c17173de37af56ed1ef2e91bb82603ca45e3735"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "ed97dea512",
+    "date": "2026-02-05T17:23:18Z",
+    "author": "darrelmiller",
+    "author_name": "Darrel",
+    "message": "docs(spec): What changed from v0.3.0 to v1.0 (#1436)\n\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/ed97dea512ed42f8e17229f826827a3701e44833"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "ce73987171",
+    "date": "2026-02-05T17:05:49Z",
+    "author": "herczyn",
+    "author_name": "Kuba Herczyński",
+    "message": "docs(spec): Fix wording around A2A-version header. (#1435)\n\nfixes #1417\n\n---------\n\nCo-authored-by: Darrel <darrmi@microsoft.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/ce73987171b835bbea8b60263edc56c0d267305a"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "47eda410c3",
+    "date": "2026-02-05T01:02:04Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "docs: Update A2A Intro Video thumbnail resolution",
+    "url": "https://github.com/a2aproject/A2A/commit/47eda410c3b0380cb9ed00ea675592b5afc5a2c0"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "d22ee06d36",
+    "date": "2026-02-03T22:07:54Z",
+    "author": "amye",
+    "author_name": "Amye Scavarda Perrin",
+    "message": "doc: Update GOVERNANCE.md (#1447)\n\nAdding link to LFX meetings",
+    "url": "https://github.com/a2aproject/A2A/commit/d22ee06d3681df43cdbdf538b6299e160d280cf1"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "6292104e35",
+    "date": "2026-01-29T20:09:21Z",
+    "author": "darrelmiller",
+    "author_name": "Darrel",
+    "message": "fix(spec): Added clarification on timestamps in HTTP query params (#1425)",
+    "url": "https://github.com/a2aproject/A2A/commit/6292104e359efca05bd8703174517b6f961ae4e1"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "b86d8bb2ed",
+    "date": "2026-01-29T20:00:02Z",
+    "author": "muscariello",
+    "author_name": "Luca Muscariello",
+    "message": "docs: clean up documentation build chain and fix broken links (#1400)\n\n- Move a2a.proto to specification/ root\n- Update build scripts and macros to support new proto location\n- Fix broken internal links and anchor references in specification.md\n- Update .gitignore to properly exclude generated SDK docs\n- Configure Sphinx to suppress external SDK warnings\n- Fix MkDocs redirects and Python SDK toctree structure\n\n---------\n\nSigned-off-by: Luca Muscariello <muscariello@ieee.org>",
+    "url": "https://github.com/a2aproject/A2A/commit/b86d8bb2edd20a972951666823cf6c9f51317550"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "b03d141aea",
+    "date": "2026-01-29T19:44:25Z",
+    "author": "darrelmiller",
+    "author_name": "Darrel",
+    "message": "fix(spec): Added clarifying text around messages and artifacts (#1424)\n\nThis pull request updates the A2A protocol specification to clarify the\ndistinction between Messages and Artifacts, and makes a minor adjustment\nto protocol negotiation requirements.\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>",
+    "url": "https://github.com/a2aproject/A2A/commit/b03d141aeab6abd71a229e85c81f7e4c00b537ec"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "2596c1c5e0",
+    "date": "2026-01-29T19:26:14Z",
+    "author": "Tehsmash",
+    "author_name": "Sam Betts",
+    "message": "fix(spec)!: Switch to non-complex IDs in requests (#1389)\n\nSome operations like GetTask / SubscribeToTask still used complex /\ncompound identifiers like `tasks/<uuid>` which requires the\nclients/servers to deconstruct/construct these IDs as they are normally\nusing just the UUID to store the resource in the DB etc.\n\nThis commit refactors them so they are just the IDs, in some cases this\nmeant that we needed to split one field into two i.e. parent + name.\n\nFixes: #1390\n\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/2596c1c5e0effd941880e8487d38d78b74b9c0bf"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "227e2493c3",
+    "date": "2026-01-29T19:22:35Z",
+    "author": "herczyn",
+    "author_name": "Kuba Herczyński",
+    "message": "feat(spec): Provide ability for SDKs to be backwards compatible. (#1401)\n\nfixes #1417\nfor context see #1416\n\n---------\n\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/227e2493c317004b7e6f7ef4a484e220ffd0b77e"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "f6129cafa1",
+    "date": "2026-01-29T17:03:42Z",
+    "author": "didier-durand",
+    "author_name": "Didier Durand",
+    "message": "docs: fix some typos in various files. (#1198)\n\nHi,\nAs per title, fixing typos in various files: see commit diffs for\ndetails\nCheers\nDidier\n\n---------\n\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/f6129cafa142815f5d8065aea2fb37b29196ec00"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "59ea3f614c",
+    "date": "2026-01-29T17:00:33Z",
+    "author": "openaitx-system",
+    "author_name": "Open AI Tx",
+    "message": "docs: Auto-translate README and Wiki (#1326)\n\nAdded language badges to the README for easier access to translated\nversions: German, Spanish, French, Japanese, Korean, Portuguese, and\nRussian 20 languages.\nSystem will auto-update translation for README and Wiki when this\nrepository updated, and support multiple languages google/bing SEO\nsearch, and it's open source project, we can change web or local file\nmode.\n\nThe updated links can be previewed in my forked repository:\nhttps://github.com/openaitx-system/A2A/tree/Auto_translate_README_and_Wiki\n\nDemo links : \n-\n[Español](https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=es)\n-\n[简体中文](https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=zh-CN)\n-\n[日本語](https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ja)\n-\n[한국어](https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=ko)\n-\n[Français](https://openaitx.github.io/view.html?user=a2aproject&project=A2A&lang=fr)\n..\n\n\n<img width=\"1178\" height=\"537\" alt=\"Image\"\nsrc=\"https://github.com/user-attachments/assets/7cd54a88-59c1-455f-9c7d-2db7f05b2962\n\" />\n\nIf this doesn't align with your expectations, feel free to close this\nPR. Thanks for your time! 🙌\n\n---------\n\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/59ea3f614c999f6444e36f379e64d263299ed2d0"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "f6e786c652",
+    "date": "2026-01-29T17:00:10Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "chore: Modify CODEOWNERS for updated directory paths\n\nUpdated CODEOWNERS to reflect new directory structure.",
+    "url": "https://github.com/a2aproject/A2A/commit/f6e786c6526f4ab3cb3d2ac82d70478dbb33699e"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "871924e804",
+    "date": "2026-01-29T16:57:43Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "chore: Update CODEOWNERS\n\nAdd Tech Writing and Google A2A Eng as owners for non-spec files",
+    "url": "https://github.com/a2aproject/A2A/commit/871924e804cb4b8746971d80c03ad4337fc040e0"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "4dd980f6ff",
+    "date": "2026-01-29T15:51:18Z",
+    "author": "madankumarpichamuthu",
+    "author_name": "madankumarpichamuthu",
+    "message": "fix(spec)!: Standardize spelling of \"canceled\" to use American Spelling throughout (#1283)\n\nFixes inconsistent spelling of cancel-related terms across the\nspecification and documentation. The proto definition uses\nTASK_STATE_CANCELLED (double 'l'), but various documentation files were\nusing single 'l' spelling.\n\nChanges:\n- cancelled → canceled\n- cancellable → cancelable\n- `TaskNotCancellableError` → `TaskNotCancelableError`\n\nFiles modified:\n- docs/specification.md\n- docs/llms.txt\n- docs/topics/life-of-a-task.md\n\nAll documentation now consistently uses single 'l' to match the proto\ndefinition and JSON naming conventions.\n\nFixes #1270\n\nRelease-As: 1.0.0\n\n---------\n\nSigned-off-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Darrel <darrmi@microsoft.com>\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/4dd980f6ff1989177faffa631a695aba811c56ad"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "0655ff324a",
+    "date": "2026-01-29T10:52:29Z",
+    "author": "madankumarpichamuthu",
+    "author_name": "madankumarpichamuthu",
+    "message": "fix: Clarify blocking calls return on interrupted states (#1403)\n\nUpdates the specification to clarify that blocking SendMessage calls\nmust return when tasks reach interrupted states (input_required,\nauth_required) in addition to terminal states. This prevents deadlock\nscenarios where tasks waiting for user input would cause blocking calls\nto hang indefinitely.\n\nChanges:\n- specification/grpc/a2a.proto: Updated blocking field comment to\ninclude \"terminal or interrupted state\"\n- specification/grpc/a2a.proto: Fixed AUTH_REQUIRED classification to be\nan \"interrupted state\" (consistent with INPUT_REQUIRED)\n- docs/specification.md: Updated blocking behavior description to\ninclude interrupted states and changed \"final task state\" to \"current\ntask state\"\n\nThis enables proper client workflows where blocking calls can return on\nINPUT_REQUIRED or AUTH_REQUIRED, allowing clients to provide the needed\ninformation and resume with subsequent SendMessage calls.\n\nFixes #1264\n\n---------\n\nCo-authored-by: madankumarpichamuthu <madankumarpichamuthu@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/0655ff324a93b7e0eaebc108666e6703998b4a9c"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "bfae8f7791",
+    "date": "2026-01-28T16:48:33Z",
+    "author": "darrelmiller",
+    "author_name": "Darrel",
+    "message": "fix: Simplify Part message structure by flattening FilePart and DataPart (#1411)\n\nThis change simplifies the Part message design by:\n- Renaming oneof 'part' to 'content' for clarity\n- Flattening FilePart fields (file_with_uri -> url, file_with_bytes ->\nbytes) directly into Part\n- Flattening DataPart by using google.protobuf.Value instead of Struct\n- Moving media_type and filename to Part level (available for all\ncontent types)\n- Removing separate FilePart and DataPart messages\n\nAlso updated migration guidance documentation to reference ancillary\ndocuments instead of requiring an in-spec appendix.\n\nRelated to issue #1255\n\nReplaces PR #1363\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>",
+    "url": "https://github.com/a2aproject/A2A/commit/bfae8f7791e019f21f6662dd73fce0b3ab261cd6"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "810eaa1c6e",
+    "date": "2026-01-27T17:53:46Z",
+    "author": "madankumarpichamuthu",
+    "author_name": "madankumarpichamuthu",
+    "message": "docs(spec)!: Align enum format with ADR-001 ProtoJSON specification (#1384)\n\nUpdates specification to use ProtoJSON enum format\n(SCREAMING_SNAKE_CASE) instead of kebab-case, aligning with ADR-001\ndecision.\n\nChanges:\n- Updated Section 5.5 enum value formatting rules\n- Added reference to ADR-001 and ProtoJSON specification\n- Updated all JSON examples to use SCREAMING_SNAKE_CASE enums:\n  - Role enums: user -> ROLE_USER, agent -> ROLE_AGENT\n- Task state enums: working -> TASK_STATE_WORKING, completed ->\nTASK_STATE_COMPLETED, etc.\n\nThis aligns the specification with the TSC-approved ADR-001 decision to\nleverage ProtoJSON for JSON serialization.\n\nFixes #1344\n\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Amye Scavarda Perrin <amye@amye.org>",
+    "url": "https://github.com/a2aproject/A2A/commit/810eaa1c6e6462f845a00774f8622b998272116e"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "3e6c7db907",
+    "date": "2026-01-27T17:39:39Z",
+    "author": "darrelmiller",
+    "author_name": "Darrel",
+    "message": "fix(spec): Fix/1251 clarify authentication scheme (#1256)\n\nFixes #1251\n\n---------\n\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>",
+    "url": "https://github.com/a2aproject/A2A/commit/3e6c7db90790c2d05dad3ab1a313de26debe5cb7"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "5b101cce0f",
+    "date": "2026-01-27T17:07:50Z",
+    "author": "madankumarpichamuthu",
+    "author_name": "madankumarpichamuthu",
+    "message": "refactor(spec)!: Remove redundant `final` field from `TaskStatusUpdateEvent` (#1308)\n\nTerminal states (COMPLETED, FAILED, CANCELLED, REJECTED) already\nindicate task completion, making the final field redundant. This creates\nconsistency across streaming, polling, and push notification\ncommunication patterns.\n\nChanges:\n- Removed final field (field 4) from TaskStatusUpdateEvent in proto\n- Updated examples to remove final: true references\n- Clarified that streams close upon terminal states\n- Added migration guidance in Appendix A.2.2\n\nFixes #1232\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Darrel <darrmi@microsoft.com>\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>",
+    "url": "https://github.com/a2aproject/A2A/commit/5b101cce0fff449c1120ad50ce360acf7c90bac3"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "19e2059852",
+    "date": "2026-01-27T17:06:05Z",
+    "author": "vinoo999",
+    "author_name": "Vinay Ramesh",
+    "message": "docs: provide clarity in task id specification to address #1406 (#1407)\n\n# Description\nProvides clarity on server generated task ids in the specification\ndocumentation to address underspecification of Message payloads and\nexpected error handling.\n\nFixes: #1406\n\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/19e20598522b29891640f8484c371351f98c15b5"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "229d005bff",
+    "date": "2026-01-26T17:41:30Z",
+    "author": "hugo-romero-mm",
+    "author_name": "hugo-romero-mm",
+    "message": "docs(partners): Add MasOrange to partners list (#1409)\n\nHi A2A Team,\nI’d like to submit [MasOrange](https://masorange.es/en/) to be added to\nthe A2A partners list: https://a2a-protocol.org/latest/partners/\n\nA2A integration: We are working with A2A as a core building block for\nagent discovery and agent-to-agent interoperability across our\necosystem. We also maintain ongoing discussions with Google on\nA2A-related topics, including Gemini Enterprise integrations and agentic\ncloud capabilities, providing them direct feedback. We are implementing\nA2A as the default protocol for exposing and connecting agentic systems\nwithin MasOrange, adapting its usage to our security and governance\nrequirements, with future potential benefits for the OSS community.\n\n\nBest regards,\nHugo Romero, AI Engineer at MasOrange\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/229d005bff3e0b6875044a414021ab1572a10f1a"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "bb527d4299",
+    "date": "2026-01-26T16:12:40Z",
+    "author": "ishymko",
+    "author_name": "Ivan Shymko",
+    "message": "docs: Bring back Python SDK reference (#1415)\n\nCurrently [`SDK Reference >\nPython`](https://a2a-protocol.org/latest/sdk/python.md) link gives 404:\n\n<img width=\"1138\" height=\"308\" alt=\"image\"\nsrc=\"https://github.com/user-attachments/assets/2bd3bda0-0536-4450-8e82-5ec9ee5ce044\"\n/>\n\n1. Fix the link to open\n[this](https://a2a-protocol.org/latest/sdk/python/api/index.html)\ninstead. This was setup in #949 and is generated automatically from the\nlatest docs. Looks like it was accidentally changed to `python.md` (the\none not used ever before, it used to be `python/index.md`) in #1160.\n2. Fix redirect to use absolute URL with `latest`. This is required due\nto https://github.com/mkdocs/mkdocs-redirects/issues/18, current way\nisn't going to work. `v0.3.0` tag of the website (the one you get after\nclicking `Latest Released Version` from\n[here](https://a2a-protocol.org/latest/specification/)) doesn't have the\ngenerated documentation either way, see\n[here](https://github.com/a2aproject/A2A/tree/gh-pages/v0.3.0/sdk/python).\n3. Replace `Google LLC` with `The Linux Foundation` in the generated SDK\nreference.\n4. Update copyright year in both places.\n\nTested via `mkdocs serve`.\n\nFixes #1347.",
+    "url": "https://github.com/a2aproject/A2A/commit/bb527d42998d3232e278025acdf84e5dfc9f9596"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "d14f410711",
+    "date": "2026-01-25T16:42:23Z",
+    "author": "madankumarpichamuthu",
+    "author_name": "madankumarpichamuthu",
+    "message": "fix: Restore CreateTaskPushNotificationConfig method naming (#1402)\n\nBypassing tech-writing review as it is a simple rename and the majority of the changes are in the specification.  Changes to conceptual docs are just for aligning names.\n\nRestores the intentional rename from \"Set\" to \"Create\" for push\nnotification configuration methods that was lost during refactoring.\nWhen the protocol was updated to support multiple Push Notification\nConfigurations, the method was changed from \"Set\" (which implies\nreplacing a single config) to \"Create\" (which implies creating a new\ninstance among many).\n\nChanges across all documentation and proto files:\n- specification/grpc/a2a.proto: Renamed RPC method and request message\n- docs/specification.md: Updated all references, section titles, and\nmethod tables\n- docs/topics/streaming-and-async.md: Updated links and text\n- docs/llms.txt: Updated method reference\n\nFixes #1394\n\n---------\n\nCo-authored-by: madankumarpichamuthu <madankumarpichamuthu@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/d14f4107119bf0fe0dff9e2c577eb4ab70b51793"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "c768a44da0",
+    "date": "2026-01-25T16:25:26Z",
+    "author": "madankumarpichamuthu",
+    "author_name": "madankumarpichamuthu",
+    "message": "fix: Remove unimplemented state_transition_history capability field (#1396)\n\nRemoves the `state_transition_history` field from `AgentCapabilities`\nmessage as it has no corresponding API implementation. This capability\nflag could mislead clients into expecting functionality that doesn't\nexist in v1.0.\n\nThe field can be reintroduced in a future version when a proper\nimplementation is designed, including:\n- Adding status_history field to Task message\n- Adding include_status_history parameters to Get/List operations\n- Defining behavior for history storage and retrieval\n\nFixes #1228\n\nCo-authored-by: madankumarpichamuthu <madankumarpichamuthu@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>",
+    "url": "https://github.com/a2aproject/A2A/commit/c768a44da0f719595e375636f3cab9898ff6df75"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "92e6fb712e",
+    "date": "2026-01-22T10:54:32Z",
+    "author": "madankumarpichamuthu",
+    "author_name": "madankumarpichamuthu",
+    "message": "docs(spec): Update outdated method references in proto file comments (#1282)\n\nFixes inconsistencies between proto file documentation and the actual\nmethod names defined in section 5.3 of the specification.\n\nUpdated method references in proto comments:\n- message/send → SendMessage\n- tasks/get → GetTask\n- tasks/cancel → CancelTask\n- tasks/pushNotificationConfig/delete → DeleteTaskPushNotificationConfig\n- tasks/pushNotificationConfig/set → SetTaskPushNotificationConfig\n- tasks/pushNotificationConfig/list → ListTaskPushNotificationConfig\n\nThese changes align the proto documentation with the Method Mapping\nReference table in section 5.3 of specification.md, which defines the\ncanonical method names for JSON-RPC and gRPC bindings.\n\nFixes #1267\n\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>",
+    "url": "https://github.com/a2aproject/A2A/commit/92e6fb712ebeddd732a0a124b95d5ff8db4e0d41"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "057295311b",
+    "date": "2026-01-21T16:30:25Z",
+    "author": "yarolegovich",
+    "author_name": "Yaroslav",
+    "message": "fix(spec): make `history_length` optional (#1071)\n\n### Description\n\nBoth fields are optional in\n[types.ts](https://github.com/yarolegovich/A2A/blob/main/types/src/types.ts#L637)\nand [jsonrpc\nschema](https://github.com/a2aproject/A2A/blob/main/specification/json/a2a.json#L1683).\nFor both cases it might be useful to differentiate 0 and unset. For\nexample:\n1. A client calls GetTask and doesn't want History to be fetched /\nincluded in the response.\n2. A client calls SendMessage and doesn't want history to be persisted\nat all.\n\nThe change is backward-compatible and makes it possible for a2a servers\nto provide consistent behavior regardless of the selected transport.\n\nFixes #1072\n\n---------\n\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/057295311b8ddda63bdda56c82a694c76d307e37"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "4befaeacaf",
+    "date": "2026-01-20T17:19:25Z",
+    "author": "madankumarpichamuthu",
+    "author_name": "madankumarpichamuthu",
+    "message": "docs: Remove v1 from HTTP binding URLs in specification (#1383)\n\nUpdates specification documentation to align with proto file changes by\nremoving /v1/ prefix from all HTTP REST endpoint URLs.\n\nChanges:\n- Updated all HTTP endpoint examples (POST, GET, DELETE)\n- Updated API operation reference table\n- Removed /v1/ from 41 occurrences throughout the specification\n\nFixes #1350",
+    "url": "https://github.com/a2aproject/A2A/commit/4befaeacafc29c0a95b6cb55d61c04b065cb1cd6"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "f9a8f5b85d",
+    "date": "2026-01-15T16:32:26Z",
+    "author": "jmesnil",
+    "author_name": "Jeff Mesnil",
+    "message": "fix(spec): Update security schemes example (#1364)\n\nUpdate security scheme example to use the correct key for the security\nschemes instead of the `type` field.\n\nThis fixes #1355\n\nSigned-off-by: Jeff Mesnil <jmesnil@redhat.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/f9a8f5b85d5b07824c52d55d63f7d71ccc6303c5"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "ca615d78e5",
+    "date": "2026-01-14T21:37:15Z",
+    "author": "amye",
+    "author_name": "Amye Scavarda Perrin",
+    "message": "Update GOVERNANCE.md (#1371)\n\nspetschulatSFDC is now the Salesforce rep!",
+    "url": "https://github.com/a2aproject/A2A/commit/ca615d78e5703b39f51a2d0b5b2f92bc4fd4abae"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "40d6286fbe",
+    "date": "2026-01-14T13:41:30Z",
+    "author": "madankumarpichamuthu",
+    "author_name": "madankumarpichamuthu",
+    "message": "refactor(spec)!: Move `extendedAgentCard` field to `AgentCapabilities` (#1307)\n\nRelocates `supports_extended_agent_card` from AgentCard to\nAgentCapabilities for architectural consistency. All optional features\nthat enable specific operations now reside in the capabilities object.\n\nRationale:\n- Consistent placement: streaming, push_notifications, and\nstate_transition_history are all in AgentCapabilities\n- Improved discoverability: developers naturally check capabilities for\noptional features\n- Semantic correctness: extended agent card support is a capability\n\nChanges:\n- Proto: Removed field 13 from AgentCard, added field 5 to\nAgentCapabilities\n- Field renamed: supports_extended_agent_card → extended_agent_card\n- Updated all references: AgentCard.supportsExtendedAgentCard →\nAgentCard.capabilities.extendedAgentCard\n- Updated JSON examples to reflect new structure\n- Added migration guidance in Appendix A.2.2 of specification\n\nBreaking change: Clients and agents must update capability checking\nlogic. See specification Appendix A.2.2 for migration steps.\n\nFixes #1229\n\n---------\n\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/40d6286fbe29fb083d416b77e84122df8d70ae9d"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "0e204bf878",
+    "date": "2026-01-14T13:34:02Z",
+    "author": "Tehsmash",
+    "author_name": "Sam Betts",
+    "message": "fix(spec)!: Fixes for the last_updated_after field (#1358)\n\nThis PR combines two fixes for the ListTaskRequest last_updated_after\nfield one changes the field to a timestamp type and one renames it and\nclarifies the ordering of the task list result.\n\nOriginal PR for the timestamp type fix was:\nhttps://github.com/a2aproject/A2A/pull/1288\n\nFixes: #1287\nFixes: #1206\n\n---------\n\nCo-authored-by: Yaroslav Shevchuk <yarolegovich@gmail.com>\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/0e204bf878eb63619e205d3419ebc48d4cd35849"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "525ff38e5f",
+    "date": "2026-01-14T03:24:49Z",
+    "author": "msardara",
+    "author_name": "Mauro Sardara",
+    "message": "feat(spec)!: modernize oauth 2.0 flows - remove implicit/password, add device code / pkce (#1303)\n\n## Description\n\nModernizes OAuth 2.0 flow support by removing deprecated\nflows and adding modern, secure alternatives.\n\nFixes: #1234 \n\n## Changes\n\n### Breaking Changes\n\n**Removed (deprecated by OAuth 2.0 Security BCP):**\n- `ImplicitOAuthFlow` - Use Authorization Code + PKCE instead\n- `PasswordOAuthFlow` - Use Authorization Code + PKCE or Device Code\ninstead\n\n### Added\n\n**New OAuth Flow:**\n- `DeviceCodeOAuthFlow` (RFC 8628) - For CLI tools, IoT devices, and\ninput-constrained scenarios\n\n**Enhanced Security:**\n- `pkce_required` field added to `AuthorizationCodeOAuthFlow` (RFC 7636)\n\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/525ff38e5fe2a118f5be5d25189708b590616dd4"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "e6c5699c55",
+    "date": "2026-01-14T03:16:06Z",
+    "author": "darrelmiller",
+    "author_name": "Darrel",
+    "message": "docs: Added adr template and protojson adr (#1214)\n\nAdded ADR that captures decision to use ProtoJSON as the normative\nreference for JSON serialization\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>",
+    "url": "https://github.com/a2aproject/A2A/commit/e6c5699c55bb792854393e3c9c3cd58e41201e4f"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "a4afeea788",
+    "date": "2026-01-14T03:10:38Z",
+    "author": "darrelmiller",
+    "author_name": "Darrel",
+    "message": "fix(spec): Clarify versioning strategy and client responsibilities in protocol specification (#1259)\n\nFixes #1258\n\n### High level summary of changes:\n\n- protocolVersion in AgentCard is now an array called protocolVersions\n- Servers are expected to return UnsupportedVersionError if they get a\nrequest with an A2A-Version header higher than they support.\n- Clients are expected to fallback to a supported version if that is\nacceptable to them. Tooling should help here.\n- Not every minor version needs to be enumerated in the protocolVersions\narray. 2.2 infers support for 2.1 and 2.0.\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Sam Betts <1769706+Tehsmash@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/a4afeea788b3877101f7a63c2e50091709490058"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "1e5f462064",
+    "date": "2026-01-14T03:00:11Z",
+    "author": "Tehsmash",
+    "author_name": "Sam Betts",
+    "message": "fix(spec)!: Make \"message\" field name consistent between protocol bindings (#1302)\n\nWhile this is a reserved word for proto itself, best practise is to\navoid field names that conflict with language (python etc) keywords, as\n\"message\" isn't a language keyword this improves the consistency and\nreadability when using the types generated from the proto and avoids\nneeding to translate the name for JSON encoding.\n\nCloses: #1230\n\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/1e5f46206403982cc629a0dad535856b28c269aa"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "e8c0f0fd61",
+    "date": "2026-01-12T18:34:26Z",
+    "author": "vinoo999",
+    "author_name": "Vinay Ramesh",
+    "message": "docs(spec): patched security scheme and add anchor tag for Security (#1279)\n\nMinor patch to `security_scheme` reference to `securityScheme` and added\na missing anchor tag for `Security`. Another docs change should be added\nto clarify usage of `Security`. Opened\nhttps://github.com/a2aproject/A2A/discussions/1278 for clarification.\n\nFixes https://github.com/a2aproject/A2A/issues/1280\n\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/e8c0f0fd610351987dee368aded7195154699e2b"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "cc8e67ebea",
+    "date": "2026-01-08T16:55:51Z",
+    "author": "didier-durand",
+    "author_name": "Didier Durand",
+    "message": "docs: fixing some typos in various files (#1310)\n\nHi,\nGiving a second read to the repo, I found these additional typos: see\ncommit diffs.\nDidier\n\n---------\n\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/cc8e67ebea8c52df078a667baf2628ab2872483e"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "48f58461c2",
+    "date": "2026-01-08T16:44:37Z",
+    "author": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "message": "chore(deps): bump actions/cache from 4 to 5 in the github-actions group (#1332)\n\nBumps the github-actions group with 1 update:\n[actions/cache](https://github.com/actions/cache).\n\nUpdates `actions/cache` from 4 to 5\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/actions/cache/releases\">actions/cache's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v5.0.0</h2>\n<blockquote>\n<p>[!IMPORTANT]\n<strong><code>actions/cache@v5</code> runs on the Node.js 24 runtime and\nrequires a minimum Actions Runner version of\n<code>2.327.1</code>.</strong></p>\n<p>If you are using self-hosted runners, ensure they are updated before\nupgrading.</p>\n</blockquote>\n<hr />\n<h2>What's Changed</h2>\n<ul>\n<li>Upgrade to use node24 by <a\nhref=\"https://github.com/salmanmkc\"><code>@​salmanmkc</code></a> in <a\nhref=\"https://redirect.github.com/actions/cache/pull/1630\">actions/cache#1630</a></li>\n<li>Prepare v5.0.0 release by <a\nhref=\"https://github.com/salmanmkc\"><code>@​salmanmkc</code></a> in <a\nhref=\"https://redirect.github.com/actions/cache/pull/1684\">actions/cache#1684</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/actions/cache/compare/v4.3.0...v5.0.0\">https://github.com/actions/cache/compare/v4.3.0...v5.0.0</a></p>\n<h2>v4.3.0</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Add note on runner versions by <a\nhref=\"https://github.com/GhadimiR\"><code>@​GhadimiR</code></a> in <a\nhref=\"https://redirect.github.com/actions/cache/pull/1642\">actions/cache#1642</a></li>\n<li>Prepare <code>v4.3.0</code> release by <a\nhref=\"https://github.com/Link\"><code>@​Link</code></a>- in <a\nhref=\"https://redirect.github.com/actions/cache/pull/1655\">actions/cache#1655</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/GhadimiR\"><code>@​GhadimiR</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/actions/cache/pull/1642\">actions/cache#1642</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/actions/cache/compare/v4...v4.3.0\">https://github.com/actions/cache/compare/v4...v4.3.0</a></p>\n<h2>v4.2.4</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Update README.md by <a\nhref=\"https://github.com/nebuk89\"><code>@​nebuk89</code></a> in <a\nhref=\"https://redirect.github.com/actions/cache/pull/1620\">actions/cache#1620</a></li>\n<li>Upgrade <code>@actions/cache</code> to <code>4.0.5</code> and move\n<code>@protobuf-ts/plugin</code> to dev depdencies by <a\nhref=\"https://github.com/Link\"><code>@​Link</code></a>- in <a\nhref=\"https://redirect.github.com/actions/cache/pull/1634\">actions/cache#1634</a></li>\n<li>Prepare release <code>4.2.4</code> by <a\nhref=\"https://github.com/Link\"><code>@​Link</code></a>- in <a\nhref=\"https://redirect.github.com/actions/cache/pull/1636\">actions/cache#1636</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/nebuk89\"><code>@​nebuk89</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/actions/cache/pull/1620\">actions/cache#1620</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/actions/cache/compare/v4...v4.2.4\">https://github.com/actions/cache/compare/v4...v4.2.4</a></p>\n<h2>v4.2.3</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Update to use <code>@​actions/cache</code> 4.0.3 package &amp;\nprepare for new release by <a\nhref=\"https://github.com/salmanmkc\"><code>@​salmanmkc</code></a> in <a\nhref=\"https://redirect.github.com/actions/cache/pull/1577\">actions/cache#1577</a>\n(SAS tokens for cache entries are now masked in debug logs)</li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/salmanmkc\"><code>@​salmanmkc</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/actions/cache/pull/1577\">actions/cache#1577</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/actions/cache/compare/v4.2.2...v4.2.3\">https://github.com/actions/cache/compare/v4.2.2...v4.2.3</a></p>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/actions/cache/blob/main/RELEASES.md\">actions/cache's\nchangelog</a>.</em></p>\n<blockquote>\n<h1>Releases</h1>\n<h2>Changelog</h2>\n<h3>5.0.1</h3>\n<ul>\n<li>Update <code>@azure/storage-blob</code> to <code>^12.29.1</code> via\n<code>@actions/cache@5.0.1</code> <a\nhref=\"https://redirect.github.com/actions/cache/pull/1685\">#1685</a></li>\n</ul>\n<h3>5.0.0</h3>\n<blockquote>\n<p>[!IMPORTANT]\n<code>actions/cache@v5</code> runs on the Node.js 24 runtime and\nrequires a minimum Actions Runner version of <code>2.327.1</code>.\nIf you are using self-hosted runners, ensure they are updated before\nupgrading.</p>\n</blockquote>\n<h3>4.3.0</h3>\n<ul>\n<li>Bump <code>@actions/cache</code> to <a\nhref=\"https://redirect.github.com/actions/toolkit/pull/2132\">v4.1.0</a></li>\n</ul>\n<h3>4.2.4</h3>\n<ul>\n<li>Bump <code>@actions/cache</code> to v4.0.5</li>\n</ul>\n<h3>4.2.3</h3>\n<ul>\n<li>Bump <code>@actions/cache</code> to v4.0.3 (obfuscates SAS token in\ndebug logs for cache entries)</li>\n</ul>\n<h3>4.2.2</h3>\n<ul>\n<li>Bump <code>@actions/cache</code> to v4.0.2</li>\n</ul>\n<h3>4.2.1</h3>\n<ul>\n<li>Bump <code>@actions/cache</code> to v4.0.1</li>\n</ul>\n<h3>4.2.0</h3>\n<p>TLDR; The cache backend service has been rewritten from the ground up\nfor improved performance and reliability. <a\nhref=\"https://github.com/actions/cache\">actions/cache</a> now integrates\nwith the new cache service (v2) APIs.</p>\n<p>The new service will gradually roll out as of <strong>February 1st,\n2025</strong>. The legacy service will also be sunset on the same date.\nChanges in these release are <strong>fully backward\ncompatible</strong>.</p>\n<p><strong>We are deprecating some versions of this action</strong>. We\nrecommend upgrading to version <code>v4</code> or <code>v3</code> as\nsoon as possible before <strong>February 1st, 2025.</strong> (Upgrade\ninstructions below).</p>\n<p>If you are using pinned SHAs, please use the SHAs of versions\n<code>v4.2.0</code> or <code>v3.4.0</code></p>\n<p>If you do not upgrade, all workflow runs using any of the deprecated\n<a href=\"https://github.com/actions/cache\">actions/cache</a> will\nfail.</p>\n<p>Upgrading to the recommended versions will not break your\nworkflows.</p>\n<h3>4.1.2</h3>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/actions/cache/commit/9255dc7a253b0ccc959486e2bca901246202afeb\"><code>9255dc7</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/actions/cache/issues/1686\">#1686</a>\nfrom actions/cache-v5.0.1-release</li>\n<li><a\nhref=\"https://github.com/actions/cache/commit/8ff5423e8b66eacab4e638ee52abbd2cb831366a\"><code>8ff5423</code></a>\nchore: release v5.0.1</li>\n<li><a\nhref=\"https://github.com/actions/cache/commit/9233019a152bc768059ac1768b8e4403b5da16c1\"><code>9233019</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/actions/cache/issues/1685\">#1685</a>\nfrom salmanmkc/node24-storage-blob-fix</li>\n<li><a\nhref=\"https://github.com/actions/cache/commit/b975f2bb844529e1063ad882c609b224bcd66eb6\"><code>b975f2b</code></a>\nfix: add peer property to package-lock.json for dependencies</li>\n<li><a\nhref=\"https://github.com/actions/cache/commit/d0a0e1813491d01d574c95f8d189f62622bbb2ae\"><code>d0a0e18</code></a>\nfix: update license files for <code>@​actions/cache</code>,\nfast-xml-parser, and strnum</li>\n<li><a\nhref=\"https://github.com/actions/cache/commit/74de208dcfcbe85c0e7154e7b17e4105fe2554ff\"><code>74de208</code></a>\nfix: update <code>@​actions/cache</code> to ^5.0.1 for Node.js 24\npunycode fix</li>\n<li><a\nhref=\"https://github.com/actions/cache/commit/ac7f1152ead02e89c14b5456d14ab17591e74cfb\"><code>ac7f115</code></a>\npeer</li>\n<li><a\nhref=\"https://github.com/actions/cache/commit/b0f846b50b6061d7a2ca6f1a2fea61d4a65d1a16\"><code>b0f846b</code></a>\nfix: update <code>@​actions/cache</code> with storage-blob fix for\nNode.js 24 punycode depr...</li>\n<li><a\nhref=\"https://github.com/actions/cache/commit/a7833574556fa59680c1b7cb190c1735db73ebf0\"><code>a783357</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/actions/cache/issues/1684\">#1684</a>\nfrom actions/prepare-cache-v5-release</li>\n<li><a\nhref=\"https://github.com/actions/cache/commit/3bb0d78750a39cefce0c2b5a0a9801052b4359ad\"><code>3bb0d78</code></a>\ndocs: highlight v5 runner requirement in releases</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/actions/cache/compare/v4...v5\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\n[![Dependabot compatibility\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=actions/cache&package-manager=github_actions&previous-version=4&new-version=5)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot merge` will merge this PR after your CI passes on it\n- `@dependabot squash and merge` will squash and merge this PR after\nyour CI passes on it\n- `@dependabot cancel merge` will cancel a previously requested merge\nand block automerging\n- `@dependabot reopen` will reopen this PR if it is closed\n- `@dependabot close` will close this PR and stop Dependabot recreating\nit. You can achieve the same result by closing it manually\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore <dependency name> major version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's major version (unless you unignore this specific\ndependency's major version or upgrade to it yourself)\n- `@dependabot ignore <dependency name> minor version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's minor version (unless you unignore this specific\ndependency's minor version or upgrade to it yourself)\n- `@dependabot ignore <dependency name>` will close this group update PR\nand stop Dependabot creating any more for the specific dependency\n(unless you unignore this specific dependency or upgrade to it yourself)\n- `@dependabot unignore <dependency name>` will remove all of the ignore\nconditions of the specified dependency\n- `@dependabot unignore <dependency name> <ignore condition>` will\nremove the ignore condition of the specified dependency and ignore\nconditions\n\n\n</details>\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/48f58461c2718c6981804843717be9ecf2041523"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "60f83c3faa",
+    "date": "2026-01-06T16:29:53Z",
+    "author": "Tehsmash",
+    "author_name": "Sam Betts",
+    "message": "fix(spec)!: Remove deprecated fields from a2a.proto for v1.0 release (#1301)\n\nAs v1.0 is a major release and may contain breaking changes this commit\ncleans up the deprecated fields in the a2a.proto and references to this\nin the spec doc.\n\nCloses: #1227",
+    "url": "https://github.com/a2aproject/A2A/commit/60f83c3faac4770b231f038406c9e02282887a25"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "a336a5a484",
+    "date": "2025-12-24T16:33:17Z",
+    "author": "herczyn",
+    "author_name": "Kuba Herczyński",
+    "message": "fix(spec): Clarify contextId behavior when message is sent with taskId but without contextId (#1309)\n\nFixes #1249.\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>",
+    "url": "https://github.com/a2aproject/A2A/commit/a336a5a4846fdf85079d4e310339ea0128922ee7"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "d803564477",
+    "date": "2025-12-18T21:00:44Z",
+    "author": "williamwa",
+    "author_name": "William Wang",
+    "message": "doc: add amikonet to partners list (#1316)\n\nHi A2A Team,\n\nI would like to submit AmikoNet (https://amikonet.ai/) to be added to\nthe A2A partners list.\n\nAbout AmikoNet: AmikoNet is the first social network where AI agents and\nhumans interact as equals.\n\nOur platform enables AI agents to have their own profiles(which include\nits agent card), create content, and collaborate with both humans and\nother agents. All content is stored in markdown format optimized for AI\nagent consumption.\n\nA2A Integration: We use Google A2A as our core protocol for agent\ndiscovery, allowing autonomous agents to find and connect with each\nother across our network. This makes AmikoNet a natural fit for the A2A\necosystem.\n\nWe're excited to be part of the A2A community and help advance the\nstandard for AI agent collaboration.\n\nBest regards,\n\nWilliam\nAmiko Team",
+    "url": "https://github.com/a2aproject/A2A/commit/d803564477643439ea1257af619fdc9c1ee32889"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "1a2d580a3e",
+    "date": "2025-12-15T17:59:10Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "docs: Update COMMUNITY.md (#1312)\n\n- Removed previous events section from community documentation.\n- Updated list of A2A Integrations",
+    "url": "https://github.com/a2aproject/A2A/commit/1a2d580a3ec4c1cc667c2d1c835ceeac76ff7af3"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "33f065d3da",
+    "date": "2025-12-11T15:31:35Z",
+    "author": "didier-durand",
+    "author_name": "Didier Durand",
+    "message": "ci: prevent 2 workflows from failing on forks. (#1305)\n\nHi,\n\nThe 2 modified workflows (See commit diffs) fail when executed on forks.\nThey are triggered by the push coming when synching a fork with master.\n\nThe added ìf`conditions prevent them from running and failing when on\nfork\n\nDidier",
+    "url": "https://github.com/a2aproject/A2A/commit/33f065d3daf6c4bc6f0ada184bab149eadc1985a"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "dec450b3c4",
+    "date": "2025-12-11T15:30:47Z",
+    "author": "didier-durand",
+    "author_name": "Didier Durand",
+    "message": "docs: fix typos in `specification.md` (#1304)\n\nHi,\nRecent changes in in specification.md brought some typos: this PR fixes\nthem.\nSee commit diffs for details.\nDidier",
+    "url": "https://github.com/a2aproject/A2A/commit/dec450b3c4f22299edf792c7537e87121e9ae671"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "290c87f0c2",
+    "date": "2025-12-10T16:12:16Z",
+    "author": "kadirpekel",
+    "author_name": "kadirpekel",
+    "message": "docs: Add Hector to A2A Protocol Integrations (#1129)\n\nThis PR adds Hector to the A2A integrations list. Hector is a pure\nA2A-native declarative AI agent platform written in Go that enables\nbuilding powerful agents through YAML configuration alone, with zero\ncode required. Unlike other frameworks that retrofit A2A support, Hector\nis built from the ground up on the A2A protocol specification, providing\n100% compliance with agent discovery, task execution, streaming (SSE),\nand session management. Its unique value proposition is seamless\nintegration of external A2A agents via simple YAML configuration (type:\n\"a2a\", url: \"https://agent-url\"), enabling true multi-agent\norchestration across heterogeneous systems and demonstrating the full\npotential of A2A interoperability.\n\nHomepage: https://gohector.dev\nRepository: https://github.com/kadirpekel/hector\n\nWould love to see Hector to the A2A integrations list if you also agree.\nI believe it demonstrates the protocol's potential for true agent\ninteroperability.",
+    "url": "https://github.com/a2aproject/A2A/commit/290c87f0c221b2423e4611a476e67187eda9773e"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "1004abcafc",
+    "date": "2025-12-09T17:34:37Z",
+    "author": "amye",
+    "author_name": "Amye Scavarda Perrin",
+    "message": "Update .gitvote.yml (#1297)\n\nduration is now 52w",
+    "url": "https://github.com/a2aproject/A2A/commit/1004abcafc6f6b9b83a3c87bab87c761ff29d741"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "22d15cd172",
+    "date": "2025-12-09T17:31:29Z",
+    "author": "amye",
+    "author_name": "Amye Scavarda Perrin",
+    "message": "Update .gitvote.yml (#1296)\n\nDropping duration",
+    "url": "https://github.com/a2aproject/A2A/commit/22d15cd17215fd70a8cfc340e0c8cf5bc89e77eb"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "6e65c7fbaf",
+    "date": "2025-12-05T20:56:36Z",
+    "author": "amye",
+    "author_name": "Amye Scavarda Perrin",
+    "message": "[docs] Update README.md (#1281)\n\nUpdating readme to reflect ownership of LF\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/6e65c7fbaf1de394f82ad21316202e0bcdd30dbe"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "f74fe490a8",
+    "date": "2025-12-05T20:19:17Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "docs: Fix broken link to Python SDK Docs",
+    "url": "https://github.com/a2aproject/A2A/commit/f74fe490a86d127bb94257b63b0077d2fb4ee0ed"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "c56ea72d5b",
+    "date": "2025-12-05T19:01:13Z",
+    "author": "awickham10",
+    "author_name": "Andrew Wickham",
+    "message": "docs: Update A2A-Extensions header to align with current standard (#1248)\n\nReplace the `X-A2A-Extensions` header with `A2A-Extensions` to align\nwith rfc6648.\n\nFixes #1238",
+    "url": "https://github.com/a2aproject/A2A/commit/c56ea72d5bb136944e52b40331d83ddedbce7c04"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "c42ef44805",
+    "date": "2025-12-05T18:57:32Z",
+    "author": "madankumarpichamuthu",
+    "author_name": "madankumarpichamuthu",
+    "message": "docs: Remove deprecated `kind` discriminators from Life of a Task example (#1224)\n\nRemoves usage of deprecated 'kind' discriminators from the Life of a\nTask documentation to align with v1.0 specification changes.\n\nChanges:\n- Removed 'kind' field from Part objects (4 occurrences) - deprecated in\nv1.0 per spec section A.2.1\n- Removed invalid 'kind' field from Task objects (2 occurrences) - never\npart of Task specification\n- Updated Part field names: mimeType → mediaType, bytes → fileWithBytes\n\nThe specification (section A.2.1) states that v1.0 removed the 'kind'\ndiscriminator for Part types and streaming events, using JSON member\nnames as discriminators instead. Task objects never had a 'kind' field\nin the proto definition.\n\nFixes #1220",
+    "url": "https://github.com/a2aproject/A2A/commit/c42ef4480522c725a451500868ce19bb0f28d519"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "c196824396",
+    "date": "2025-12-05T18:54:19Z",
+    "author": "madankumarpichamuthu",
+    "author_name": "madankumarpichamuthu",
+    "message": "fix(spec)!: Rename `supportsAuthenticatedExtendedCard` to `supportsExtendedAgentCard` (#1222)\n\nFixes naming inconsistency between the agent card property and the\nGetExtendedAgentCard method. The property name now matches the method\nnaming convention.\n\n- Updated proto definition: supports_authenticated_extended_card →\nsupports_extended_agent_card\n- Updated all documentation references across specification.md and\nllms.txt\n- Maintains semantic meaning while improving consistency\n\nFixes #1215",
+    "url": "https://github.com/a2aproject/A2A/commit/c196824396bb4af4c595f30e2c503a5ab1dbac4b"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "8704c88a72",
+    "date": "2025-12-05T18:15:20Z",
+    "author": "madankumarpichamuthu",
+    "author_name": "madankumarpichamuthu",
+    "message": "docs: Clarify push notification payload format in topics documentation (#1223)\n\nFixes inconsistency between topics and specification documentation\nregarding push notification payloads. The topics documentation\npreviously stated the payload was not strictly defined, while the\nspecification explicitly defines it as StreamResponse format.\n\n- Updated docs/topics/streaming-and-async.md to specify StreamResponse\nformat\n- Added references to specification sections for detailed structure\n- Aligns with specification.md sections 3.1.7 and 4.3.3\n\nFixes #1216",
+    "url": "https://github.com/a2aproject/A2A/commit/8704c88a725b840b013627c56acef7d7ce6ad3dc"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "1bd263f537",
+    "date": "2025-12-04T10:33:39Z",
+    "author": "herczyn",
+    "author_name": "herczyn",
+    "message": "feat(spec): Remove v1s from a2a url http bindings. (#1269)\n\nthese can still be part of the agent card.\n\nfixes #1268\n\n---------\n\nSigned-off-by: Luca Muscariello <muscariello@ieee.org>\nSigned-off-by: Luca Muscariello <lumuscar@cisco.com>\nSigned-off-by: Yuri Zhao <yu.zhao5@huawei.com>\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>\nCo-authored-by: Darrel <darrmi@microsoft.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Sam Betts <1769706+Tehsmash@users.noreply.github.com>\nCo-authored-by: yuri <yu.zhao5@huawei.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Martin Harrigan <martinharrigan@gmail.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/1bd263f5373fdc8fa7c17ec8bdb24088996b6828"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "cfbce32cb0",
+    "date": "2025-12-04T01:27:26Z",
+    "author": "herczyn",
+    "author_name": "herczyn",
+    "message": "feat(spec): Natively Support Multi-tenancy on gRPC through an additional scope field on the request. (#1195)\n\nAdd scope field to the requests and AgentInterface, deprecate the three\nfields defining transports in favor of a new supported_interfaces field.\n\nfixes #1148",
+    "url": "https://github.com/a2aproject/A2A/commit/cfbce32cb0ac2a630597eb8b771691cac5b20a4b"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "b6ef9eec55",
+    "date": "2025-11-29T08:52:52Z",
+    "author": "iliesicatrinel",
+    "author_name": "iliesicatrinel",
+    "message": "fix(spec): Remove metadata field from ListTasksRequest (#1235)\n\nThe ListTasksRequest message includes a google.protobuf.Struct metadata\nfield, which cannot be represented as simple URL query parameter\nrequired by HTTP GET requests. This causes service config generation to\nfail with `http: map field 'google.protobuf.Struct.fields' referred to\nby message 'a2a.v1.ListTasksRequest`.\n\nSince it's unclear whether metadata will be useful for ListTasks, I\npropose to remove it at least for now to fix the specification.\n\nFixes #1236 🦕\n\n---------\n\nCo-authored-by: Darrel <darrmi@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/b6ef9eec558c877fb69024df090a8bb63c542a1c"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "d381cea9d0",
+    "date": "2025-11-28T21:01:09Z",
+    "author": "iliesicatrinel",
+    "author_name": "iliesicatrinel",
+    "message": "docs(spec): Update specification to use proto_to_table macro for all core operations (#1242)\n\nWe should use the proto_to_table macro for describing inputs/outputs of\noperations to avoid having to modify the specification manually after\nprotobuf definition changes.\n\nOther changes:\n- small updates to capitalization/markdown annotations to ensure\nconsistency with the rest of the specification\n- modified proto_to_table to return `None` string if proto is empty\n(e.g. `GetExtendedAgentRequest`). We should use macro for this request\neven if it's empty, because we may add fields\n(https://github.com/a2aproject/A2A/pull/1195).\n\nFixes https://github.com/a2aproject/A2A/issues/1243 🦕\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Darrel Miller <darrel.miller@microsoft.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/d381cea9d0ebeec9b8a5df913aaebed4c0a6bc69"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "5792804372",
+    "date": "2025-11-26T20:36:32Z",
+    "author": "ehsavoie",
+    "author_name": "Emmanuel Hugonnet",
+    "message": "fix(doc): Makes JSON-RPC SendMessage response clearer (#1241)\n\nFixing issue #1240 by providing something more in line with what is\nexpected.\n\nFixes https://github.com/a2aproject/A2A/issues/1240 🦕\n\n---------\n\nSigned-off-by: Emmanuel Hugonnet <ehugonne@redhat.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/57928043727e5e002a1395dadfb5f699d0626b1c"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "18ca2533bf",
+    "date": "2025-11-25T17:11:28Z",
+    "author": "darrelmiller",
+    "author_name": "Darrel",
+    "message": "docs(spec): Updated specification to render data models as a table generated from the proto instead of a raw proto snippet (#1225)\n\nIn the currently published specification the data model definitions\ninclude a proto snippet and then have a list of fields under the\nsnippet. This creates duplicated information. To prevent this\nduplication while maintaining an easy to read presentation of the\nabstract data models, this PR uses a Python macro to convert the proto\ninto a markdown table.\n\nAlso took the opportunity to do an editorial pass on the comments in the\na2a.proto before the field descriptions were removed from the\nspecification.md. Some of this content came from the types.ts file that\noften had information that was not in a2a.proto.\n\nA preview of the changes can be seen here\nhttps://purple-moss-0838db51e.3.azurestaticapps.net/specification/#41-core-objects\n\n# Proto to Markdown Table Conversion\n\nThe macro system provides two main functions (`proto_to_table` and\n`proto_enum_to_table`) that convert Protocol Buffer definitions into\nformatted markdown tables:\n\n1. **Locates Definitions**: Reads the `.proto` file and uses region\nmarkers (`--8<-- [start:Name]` and `--8<-- [end:Name]`) to extract\nspecific message or enum definitions.\n\n2. **Parses Structure**: Analyzes the proto content to separate three\nsections:\n- **Description**: Comments appearing before the message/enum\ndeclaration\n- **Fields/Values**: The actual field or enum value definitions with\ntheir inline comments\n   - **Notes**: Comments appearing after the closing brace\n\n3. **Extracts Field Details**: For each field, it captures:\n- Field name (converted from snake_case to camelCase, or using\n`json_name` annotation)\n- Type (mapped to readable formats like \"string\", \"array of integer\",\n\"map of string\")\n- Required status (based on `REQUIRED` annotation or `optional` keyword)\n   - Description (from preceding comment lines)\n\n4. **Generates Output**: Assembles the markdown output with:\n   - Description text at the top\n- A formatted table with columns for Field/Type/Required/Description (or\nValue/Description for enums)\n   - Special notes for `oneof` groups\n   - Additional notes from comments after the definition\n\nThe conversion automatically handles multi-line field definitions, map\ntypes, repeated fields, and filters out protolint directives and region\nmarkers from the output.\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/18ca2533bf18d0458f65e4c9eaead3e586fce25d"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "d8dd640d2b",
+    "date": "2025-11-21T17:21:39Z",
+    "author": "harrigan",
+    "author_name": "Martin Harrigan",
+    "message": "docs: fix conflicting description of artifact name (#1153)\n\nThe heading says the artifact name is updated but the following text and\nJSON shows that it remains the same.",
+    "url": "https://github.com/a2aproject/A2A/commit/d8dd640d2b1b972aabdca566edbef9adb1642f49"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "498d3ab398",
+    "date": "2025-11-21T17:19:07Z",
+    "author": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "message": "chore(deps): bump the github-actions group across 1 directory with 2 updates (#1213)\n\nBumps the github-actions group with 2 updates in the / directory:\n[actions/checkout](https://github.com/actions/checkout) and\n[actions/setup-go](https://github.com/actions/setup-go).\n\nUpdates `actions/checkout` from 5 to 6\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/actions/checkout/releases\">actions/checkout's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v6.0.0</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Update README to include Node.js 24 support details and requirements\nby <a href=\"https://github.com/salmanmkc\"><code>@​salmanmkc</code></a>\nin <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2248\">actions/checkout#2248</a></li>\n<li>Persist creds to a separate file by <a\nhref=\"https://github.com/ericsciple\"><code>@​ericsciple</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2286\">actions/checkout#2286</a></li>\n<li>v6-beta by <a\nhref=\"https://github.com/ericsciple\"><code>@​ericsciple</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2298\">actions/checkout#2298</a></li>\n<li>update readme/changelog for v6 by <a\nhref=\"https://github.com/ericsciple\"><code>@​ericsciple</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2311\">actions/checkout#2311</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/actions/checkout/compare/v5.0.0...v6.0.0\">https://github.com/actions/checkout/compare/v5.0.0...v6.0.0</a></p>\n<h2>v6-beta</h2>\n<h2>What's Changed</h2>\n<p>Updated persist-credentials to store the credentials under\n<code>$RUNNER_TEMP</code> instead of directly in the local git\nconfig.</p>\n<p>This requires a minimum Actions Runner version of <a\nhref=\"https://github.com/actions/runner/releases/tag/v2.329.0\">v2.329.0</a>\nto access the persisted credentials for <a\nhref=\"https://docs.github.com/en/actions/tutorials/use-containerized-services/create-a-docker-container-action\">Docker\ncontainer action</a> scenarios.</p>\n<h2>v5.0.1</h2>\n<h2>What's Changed</h2>\n<ul>\n<li>Port v6 cleanup to v5 by <a\nhref=\"https://github.com/ericsciple\"><code>@​ericsciple</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2301\">actions/checkout#2301</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/actions/checkout/compare/v5...v5.0.1\">https://github.com/actions/checkout/compare/v5...v5.0.1</a></p>\n</blockquote>\n</details>\n<details>\n<summary>Changelog</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/actions/checkout/blob/main/CHANGELOG.md\">actions/checkout's\nchangelog</a>.</em></p>\n<blockquote>\n<h1>Changelog</h1>\n<h2>V6.0.0</h2>\n<ul>\n<li>Persist creds to a separate file by <a\nhref=\"https://github.com/ericsciple\"><code>@​ericsciple</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2286\">actions/checkout#2286</a></li>\n<li>Update README to include Node.js 24 support details and requirements\nby <a href=\"https://github.com/salmanmkc\"><code>@​salmanmkc</code></a>\nin <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2248\">actions/checkout#2248</a></li>\n</ul>\n<h2>V5.0.1</h2>\n<ul>\n<li>Port v6 cleanup to v5 by <a\nhref=\"https://github.com/ericsciple\"><code>@​ericsciple</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2301\">actions/checkout#2301</a></li>\n</ul>\n<h2>V5.0.0</h2>\n<ul>\n<li>Update actions checkout to use node 24 by <a\nhref=\"https://github.com/salmanmkc\"><code>@​salmanmkc</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2226\">actions/checkout#2226</a></li>\n</ul>\n<h2>V4.3.1</h2>\n<ul>\n<li>Port v6 cleanup to v4 by <a\nhref=\"https://github.com/ericsciple\"><code>@​ericsciple</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2305\">actions/checkout#2305</a></li>\n</ul>\n<h2>V4.3.0</h2>\n<ul>\n<li>docs: update README.md by <a\nhref=\"https://github.com/motss\"><code>@​motss</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1971\">actions/checkout#1971</a></li>\n<li>Add internal repos for checking out multiple repositories by <a\nhref=\"https://github.com/mouismail\"><code>@​mouismail</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1977\">actions/checkout#1977</a></li>\n<li>Documentation update - add recommended permissions to Readme by <a\nhref=\"https://github.com/benwells\"><code>@​benwells</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2043\">actions/checkout#2043</a></li>\n<li>Adjust positioning of user email note and permissions heading by <a\nhref=\"https://github.com/joshmgross\"><code>@​joshmgross</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2044\">actions/checkout#2044</a></li>\n<li>Update README.md by <a\nhref=\"https://github.com/nebuk89\"><code>@​nebuk89</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2194\">actions/checkout#2194</a></li>\n<li>Update CODEOWNERS for actions by <a\nhref=\"https://github.com/TingluoHuang\"><code>@​TingluoHuang</code></a>\nin <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2224\">actions/checkout#2224</a></li>\n<li>Update package dependencies by <a\nhref=\"https://github.com/salmanmkc\"><code>@​salmanmkc</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/2236\">actions/checkout#2236</a></li>\n</ul>\n<h2>v4.2.2</h2>\n<ul>\n<li><code>url-helper.ts</code> now leverages well-known environment\nvariables by <a href=\"https://github.com/jww3\"><code>@​jww3</code></a>\nin <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1941\">actions/checkout#1941</a></li>\n<li>Expand unit test coverage for <code>isGhes</code> by <a\nhref=\"https://github.com/jww3\"><code>@​jww3</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1946\">actions/checkout#1946</a></li>\n</ul>\n<h2>v4.2.1</h2>\n<ul>\n<li>Check out other refs/* by commit if provided, fall back to ref by <a\nhref=\"https://github.com/orhantoy\"><code>@​orhantoy</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1924\">actions/checkout#1924</a></li>\n</ul>\n<h2>v4.2.0</h2>\n<ul>\n<li>Add Ref and Commit outputs by <a\nhref=\"https://github.com/lucacome\"><code>@​lucacome</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1180\">actions/checkout#1180</a></li>\n<li>Dependency updates by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>- <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1777\">actions/checkout#1777</a>,\n<a\nhref=\"https://redirect.github.com/actions/checkout/pull/1872\">actions/checkout#1872</a></li>\n</ul>\n<h2>v4.1.7</h2>\n<ul>\n<li>Bump the minor-npm-dependencies group across 1 directory with 4\nupdates by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1739\">actions/checkout#1739</a></li>\n<li>Bump actions/checkout from 3 to 4 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1697\">actions/checkout#1697</a></li>\n<li>Check out other refs/* by commit by <a\nhref=\"https://github.com/orhantoy\"><code>@​orhantoy</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1774\">actions/checkout#1774</a></li>\n<li>Pin actions/checkout's own workflows to a known, good, stable\nversion. by <a href=\"https://github.com/jww3\"><code>@​jww3</code></a> in\n<a\nhref=\"https://redirect.github.com/actions/checkout/pull/1776\">actions/checkout#1776</a></li>\n</ul>\n<h2>v4.1.6</h2>\n<ul>\n<li>Check platform to set archive extension appropriately by <a\nhref=\"https://github.com/cory-miller\"><code>@​cory-miller</code></a> in\n<a\nhref=\"https://redirect.github.com/actions/checkout/pull/1732\">actions/checkout#1732</a></li>\n</ul>\n<h2>v4.1.5</h2>\n<ul>\n<li>Update NPM dependencies by <a\nhref=\"https://github.com/cory-miller\"><code>@​cory-miller</code></a> in\n<a\nhref=\"https://redirect.github.com/actions/checkout/pull/1703\">actions/checkout#1703</a></li>\n<li>Bump github/codeql-action from 2 to 3 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1694\">actions/checkout#1694</a></li>\n<li>Bump actions/setup-node from 1 to 4 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1696\">actions/checkout#1696</a></li>\n<li>Bump actions/upload-artifact from 2 to 4 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a\nhref=\"https://redirect.github.com/actions/checkout/pull/1695\">actions/checkout#1695</a></li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/actions/checkout/commit/1af3b93b6815bc44a9784bd300feb67ff0d1eeb3\"><code>1af3b93</code></a>\nupdate readme/changelog for v6 (<a\nhref=\"https://redirect.github.com/actions/checkout/issues/2311\">#2311</a>)</li>\n<li><a\nhref=\"https://github.com/actions/checkout/commit/71cf2267d89c5cb81562390fa70a37fa40b1305e\"><code>71cf226</code></a>\nv6-beta (<a\nhref=\"https://redirect.github.com/actions/checkout/issues/2298\">#2298</a>)</li>\n<li><a\nhref=\"https://github.com/actions/checkout/commit/069c6959146423d11cd0184e6accf28f9d45f06e\"><code>069c695</code></a>\nPersist creds to a separate file (<a\nhref=\"https://redirect.github.com/actions/checkout/issues/2286\">#2286</a>)</li>\n<li><a\nhref=\"https://github.com/actions/checkout/commit/ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493\"><code>ff7abcd</code></a>\nUpdate README to include Node.js 24 support details and requirements (<a\nhref=\"https://redirect.github.com/actions/checkout/issues/2248\">#2248</a>)</li>\n<li>See full diff in <a\nhref=\"https://github.com/actions/checkout/compare/v5...v6\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\nUpdates `actions/setup-go` from 5 to 6\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/actions/setup-go/releases\">actions/setup-go's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v6.0.0</h2>\n<h2>What's Changed</h2>\n<h3>Breaking Changes</h3>\n<ul>\n<li>Improve toolchain handling to ensure more reliable and consistent\ntoolchain selection and management by <a\nhref=\"https://github.com/matthewhughes934\"><code>@​matthewhughes934</code></a>\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/460\">actions/setup-go#460</a></li>\n<li>Upgrade Nodejs runtime from node20 to node 24 by <a\nhref=\"https://github.com/salmanmkc\"><code>@​salmanmkc</code></a> in <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/624\">actions/setup-go#624</a></li>\n</ul>\n<p>Make sure your runner is on version v2.327.1 or later to ensure\ncompatibility with this release. <a\nhref=\"https://github.com/actions/runner/releases/tag/v2.327.1\">See\nRelease Notes</a></p>\n<h3>Dependency Upgrades</h3>\n<ul>\n<li>Upgrade <code>@​types/jest</code> from 29.5.12 to 29.5.14 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/589\">actions/setup-go#589</a></li>\n<li>Upgrade <code>@​actions/tool-cache</code> from 2.0.1 to 2.0.2 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/591\">actions/setup-go#591</a></li>\n<li>Upgrade <code>@​typescript-eslint/parser</code> from 8.31.1 to\n8.35.1 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/590\">actions/setup-go#590</a></li>\n<li>Upgrade undici from 5.28.5 to 5.29.0 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/594\">actions/setup-go#594</a></li>\n<li>Upgrade typescript from 5.4.2 to 5.8.3 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/538\">actions/setup-go#538</a></li>\n<li>Upgrade eslint-plugin-jest from 28.11.0 to 29.0.1 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/603\">actions/setup-go#603</a></li>\n<li>Upgrade <code>form-data</code> to bring in fix for critical\nvulnerability by <a\nhref=\"https://github.com/matthewhughes934\"><code>@​matthewhughes934</code></a>\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/618\">actions/setup-go#618</a></li>\n<li>Upgrade actions/checkout from 4 to 5 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a>[bot]\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/631\">actions/setup-go#631</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a\nhref=\"https://github.com/matthewhughes934\"><code>@​matthewhughes934</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/618\">actions/setup-go#618</a></li>\n<li><a href=\"https://github.com/salmanmkc\"><code>@​salmanmkc</code></a>\nmade their first contribution in <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/624\">actions/setup-go#624</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/actions/setup-go/compare/v5...v6.0.0\">https://github.com/actions/setup-go/compare/v5...v6.0.0</a></p>\n<h2>v5.5.0</h2>\n<h2>What's Changed</h2>\n<h3>Bug fixes:</h3>\n<ul>\n<li>Update self-hosted environment validation by <a\nhref=\"https://github.com/priyagupta108\"><code>@​priyagupta108</code></a>\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/556\">actions/setup-go#556</a></li>\n<li>Add manifest validation and improve error handling by <a\nhref=\"https://github.com/priyagupta108\"><code>@​priyagupta108</code></a>\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/586\">actions/setup-go#586</a></li>\n<li>Update template link by <a\nhref=\"https://github.com/jsoref\"><code>@​jsoref</code></a> in <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/527\">actions/setup-go#527</a></li>\n</ul>\n<h3>Dependency  updates:</h3>\n<ul>\n<li>Upgrade <code>@​action/cache</code> from 4.0.2 to 4.0.3 by <a\nhref=\"https://github.com/aparnajyothi-y\"><code>@​aparnajyothi-y</code></a>\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/574\">actions/setup-go#574</a></li>\n<li>Upgrade <code>@​actions/glob</code> from 0.4.0 to 0.5.0 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/573\">actions/setup-go#573</a></li>\n<li>Upgrade ts-jest from 29.1.2 to 29.3.2 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/582\">actions/setup-go#582</a></li>\n<li>Upgrade eslint-plugin-jest from 27.9.0 to 28.11.0 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/537\">actions/setup-go#537</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a href=\"https://github.com/jsoref\"><code>@​jsoref</code></a> made\ntheir first contribution in <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/527\">actions/setup-go#527</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a\nhref=\"https://github.com/actions/setup-go/compare/v5...v5.5.0\">https://github.com/actions/setup-go/compare/v5...v5.5.0</a></p>\n<h2>v5.4.0</h2>\n<h2>What's Changed</h2>\n<h3>Dependency updates :</h3>\n<ul>\n<li>Upgrade semver from 7.6.0 to 7.6.3 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/535\">actions/setup-go#535</a></li>\n<li>Upgrade eslint-config-prettier from 8.10.0 to 10.0.1 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/536\">actions/setup-go#536</a></li>\n<li>Upgrade <code>@​action/cache</code> from 4.0.0 to 4.0.2 by <a\nhref=\"https://github.com/aparnajyothi-y\"><code>@​aparnajyothi-y</code></a>\nin <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/568\">actions/setup-go#568</a></li>\n<li>Upgrade undici from 5.28.4 to 5.28.5 by <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> in <a\nhref=\"https://redirect.github.com/actions/setup-go/pull/541\">actions/setup-go#541</a></li>\n</ul>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/actions/setup-go/commit/4dc6199c7b1a012772edbd06daecab0f50c9053c\"><code>4dc6199</code></a>\nBump semver and <code>@​types/semver</code> (<a\nhref=\"https://redirect.github.com/actions/setup-go/issues/652\">#652</a>)</li>\n<li><a\nhref=\"https://github.com/actions/setup-go/commit/f3787be646645f6c7bfecfa3e48f82a00d113834\"><code>f3787be</code></a>\nAdd comprehensive breaking changes documentation for v6 (<a\nhref=\"https://redirect.github.com/actions/setup-go/issues/674\">#674</a>)</li>\n<li><a\nhref=\"https://github.com/actions/setup-go/commit/3a0c2c82458cbb45a3cbfeeb2b91ce8f85420560\"><code>3a0c2c8</code></a>\nBump actions/publish-action from 0.3.0 to 0.4.0 (<a\nhref=\"https://redirect.github.com/actions/setup-go/issues/641\">#641</a>)</li>\n<li><a\nhref=\"https://github.com/actions/setup-go/commit/faf52423ec0d44c58f68e83b614bfcd99dded66f\"><code>faf5242</code></a>\nAdd support for .tool-versions file in setup-go, update workflow (<a\nhref=\"https://redirect.github.com/actions/setup-go/issues/673\">#673</a>)</li>\n<li><a\nhref=\"https://github.com/actions/setup-go/commit/7bc60db215a8b16959b0b5cccfdc95950d697b25\"><code>7bc60db</code></a>\nFall back to downloading from go.dev/dl instead of\nstorage.googleapis.com/gol...</li>\n<li><a\nhref=\"https://github.com/actions/setup-go/commit/c0137caad775660c0844396c52da96e560aba63d\"><code>c0137ca</code></a>\nBump eslint-config-prettier from 10.0.1 to 10.1.8 and document breaking\nchang...</li>\n<li><a\nhref=\"https://github.com/actions/setup-go/commit/44694675825211faa026b3c33043df3e48a5fa00\"><code>4469467</code></a>\nBump actions/checkout from 4 to 5 (<a\nhref=\"https://redirect.github.com/actions/setup-go/issues/631\">#631</a>)</li>\n<li><a\nhref=\"https://github.com/actions/setup-go/commit/e093d1e9bb74ffc381514c57dcb7832730010598\"><code>e093d1e</code></a>\nNode 24 upgrade (<a\nhref=\"https://redirect.github.com/actions/setup-go/issues/624\">#624</a>)</li>\n<li><a\nhref=\"https://github.com/actions/setup-go/commit/1d76b952eb9246b03e20e15a9ef98c6d4af389ef\"><code>1d76b95</code></a>\nImprove toolchain handling (<a\nhref=\"https://redirect.github.com/actions/setup-go/issues/460\">#460</a>)</li>\n<li><a\nhref=\"https://github.com/actions/setup-go/commit/e75c3e80bcde46e322cd5845ae46582947c9becd\"><code>e75c3e8</code></a>\nBump <code>form-data</code> to bring in fix for critical vulnerability\n(<a\nhref=\"https://redirect.github.com/actions/setup-go/issues/618\">#618</a>)</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/actions/setup-go/compare/v5...v6\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot merge` will merge this PR after your CI passes on it\n- `@dependabot squash and merge` will squash and merge this PR after\nyour CI passes on it\n- `@dependabot cancel merge` will cancel a previously requested merge\nand block automerging\n- `@dependabot reopen` will reopen this PR if it is closed\n- `@dependabot close` will close this PR and stop Dependabot recreating\nit. You can achieve the same result by closing it manually\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore <dependency name> major version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's major version (unless you unignore this specific\ndependency's major version or upgrade to it yourself)\n- `@dependabot ignore <dependency name> minor version` will close this\ngroup update PR and stop Dependabot creating any more for the specific\ndependency's minor version (unless you unignore this specific\ndependency's minor version or upgrade to it yourself)\n- `@dependabot ignore <dependency name>` will close this group update PR\nand stop Dependabot creating any more for the specific dependency\n(unless you unignore this specific dependency or upgrade to it yourself)\n- `@dependabot unignore <dependency name>` will remove all of the ignore\nconditions of the specified dependency\n- `@dependabot unignore <dependency name> <ignore condition>` will\nremove the ignore condition of the specified dependency and ignore\nconditions\n\n\n</details>\n\n---------\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/498d3ab398409a8ec2855ea62caf6b121af01dd5"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "61d1e3a6f9",
+    "date": "2025-11-21T16:19:44Z",
+    "author": "yzhao244",
+    "author_name": "yuri",
+    "message": "docs: Readme files accuracy fix (#1186)\n\n## Problem\nThere are a couple of readme file with spelling, capitalization fixes to\nalign with rest of documents.\n\n\n## Solution\n“a2a specification” -> “A2A specification”.\n“Helloworld” -> “Hello World”.\n\n\n## Changes\ndocs/topics/a2a-and-mcp.md\ndocs/tutorials/python/4-agent-executor.md\ndocs/tutorials/python/7-streaming-and-multiturn.md\nspecification/grpc/README.md\n\n## Testing\n✅ Documentation builds successfully with mkdocs\n✅ Markdown linting passes\n✅ All internal anchor links verified\n✅ No broken cross-references\n\n## Issue\nFixes #1185\n\n---------\n\nSigned-off-by: Yuri Zhao <yu.zhao5@huawei.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/61d1e3a6f9a5d497b117b746e8547156e15f1e43"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "b078419954",
+    "date": "2025-11-20T19:52:09Z",
+    "author": "darrelmiller",
+    "author_name": "Darrel",
+    "message": "docs(spec): Large refactor of specification to separate application protocol definition from mapping to transports. (#1160)\n\nRelated to #1151 \n\nFixes https://github.com/a2aproject/A2A/issues/998\nFixes https://github.com/a2aproject/A2A/issues/1091\nFixes https://github.com/a2aproject/A2A/issues/1072\nFixes https://github.com/a2aproject/A2A/issues/1058\nFixes https://github.com/a2aproject/A2A/issues/975\nFixes https://github.com/a2aproject/A2A/issues/1105\nFixes https://github.com/a2aproject/A2A/issues/989\nFixes https://github.com/a2aproject/A2A/issues/1189\nFixes https://github.com/a2aproject/A2A/issues/1187\nFixes https://github.com/a2aproject/A2A/issues/1177\nFixes https://github.com/a2aproject/A2A/issues/1180\nFixes https://github.com/a2aproject/A2A/issues/1172\n\n\n\nIn order to more effectively describe the A2A protocol in a consistent\nway across different protocols, this PR refactors the specification to\ndescribe the application protocol in a transport agnostic way, and then\nhave separate sections that describe how each of the transports map to\nthe abstract application protocol. To see a preview of what it looks\nlike you can go here\nhttps://purple-moss-0838db51e.3.azurestaticapps.net/specification/\n\nThe goal of the TSC is to use the changes in this PR as the baseline for\na v1.0 Release Candidate. This will give SDK maintainers an stable\ndocument to validate the changes in the specification through\nimplementations before v1.0 release.\n\nThere are many pending feature requests for the A2A specifications that\nthe TSC are supportive of. However, getting a stable, consistent,\nunambiguous, multi-protocol specification is necessary before additional\nfeatures can be added safely.\n\n## Document Restructuring \n\n- [A2A\nOperations](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#3-a2a-protocol-operations)\nare described independent of wire protocol\n- [Protocol Data\nModel](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#4-protocol-data-model)\nis described using protobuf as source of truth. All other serializations\nare derived from that.\n- Protocol bindings (formerly described as transports) are now described\nin their own sections\n-\n[JSON-RPC](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#9-json-rpc-protocol-binding)\n-\n[gRPC](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#10-grpc-protocol-binding)\n-\n[HTTP](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#11-httpjsonrest-protocol-binding)\n- [Operation Parameters\n](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#32-operation-parameter-objects)\ndescribe structures reused across different operations\n- [Operation\nSemantics](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#33-operation-semantics)\ndescribe common behavior patterns across operations\n\n## New Sections\n\n- [Requirements\nLanguage](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#21-requirements-language)\n- [Capability\nValidation](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#334-capability-validation)\n- [Abstract description of error\nhandling](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#332-error-handling)\n- [Abstract description of\n\"headers\"](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#325-headers)\n-\n[Extensions](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#46-extensions)\n-\n[Versioning](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#36-versioning)\n- [Custom Binding\nGuidelines](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#12-custom-binding-guidelines)\n- [JSON Field Naming\nConventions](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#54-json-field-naming-convention)\n- [Data Type\nConventions](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#55-data-type-conventions)\n- [Security\nConsiderations](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#77-security-considerations)\n- [Agent Card\nSigning](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#84-agent-card-signing)\n- [IANA\nConsiderations](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#13-iana-considerations)\n\n## Protocol Clarifications\n\n- Defining order for events returned from [Stream\nMessage](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#312-stream-message)\n- [JSON\nExamples](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#416-filepart)\nprovided for protobuf definitions of data model objects that previously\nused discriminators\n- Clarification of returned errors where multiple are applicable. e.g.\n[Cancel\nTask](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#315-cancel-task)\n- Defined returned events and usage scenarios for\n[Resubscribe](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#316-resubscribe-to-task)\n- Defined protocol binding for errors using protocol native capabilities\nfor all bindings\n-\n[JSON-RPC](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#94-error-handling)\n-\n[gRPC](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#104-error-handling)\n-\n[HTTP](https://purple-moss-0838db51e.3.azurestaticapps.net/specification/#115-error-handling)\n  \n## Artifact Generation\n\nThe scripts have been changed to enable a2a.json to be generated from\nthe a2a.proto so that a2a.proto and specification.md are the only\nnormative source. Additional work is required to align the generated\na2a.json with the original one.\n\nRelease-As: 1.0\n\n---------\n\nSigned-off-by: Luca Muscariello <muscariello@ieee.org>\nSigned-off-by: Luca Muscariello <lumuscar@cisco.com>\nCo-authored-by: Luca Muscariello <muscariello@ieee.org>\nCo-authored-by: Holt Skinner <13262395+holtskinner@users.noreply.github.com>\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>\nCo-authored-by: Sam Betts <1769706+Tehsmash@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/b0784199543eebf2e95dcb02e9336cb213923506"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "5f2609186c",
+    "date": "2025-11-18T17:07:56Z",
+    "author": "holtskinner",
+    "author_name": "Holt Skinner",
+    "message": "docs: Add Ask Code Wiki badge to README",
+    "url": "https://github.com/a2aproject/A2A/commit/5f2609186c5fab3bb79ae0b5ec085f4f02ab910a"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "0534ba6a9e",
+    "date": "2025-11-13T16:59:26Z",
+    "author": "benclarkeio",
+    "author_name": "Ben Clarke",
+    "message": "docs: add A2A Net to partners list (#1201)\n\nAdded A2A Net to the list of partners.",
+    "url": "https://github.com/a2aproject/A2A/commit/0534ba6a9ea4e03b6c5fd538f8db17834d13e987"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "b069cc7b19",
+    "date": "2025-11-11T23:34:05Z",
+    "author": "Yotaro111",
+    "author_name": "YoTaro (Yot) Watanabe",
+    "message": "docs Add NTT DATA to partners list (#1200)\n\nUpdate partners with NTT DATA\n\n---------\n\nCo-authored-by: gemini-code-assist[bot] <176961590+gemini-code-assist[bot]@users.noreply.github.com>",
+    "url": "https://github.com/a2aproject/A2A/commit/b069cc7b19a4be4c67c3c878334fddb26d9b83af"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "7c8181e045",
+    "date": "2025-11-11T21:37:02Z",
+    "author": "ivanmkc",
+    "author_name": "Ivan Cheung",
+    "message": "docs: Updated references to Go (#1202)",
+    "url": "https://github.com/a2aproject/A2A/commit/7c8181e04593b8da76f6e76a778ca0c64e493539"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "202aa069e6",
+    "date": "2025-10-29T17:43:03Z",
+    "author": "fjuma",
+    "author_name": "Farah Juma",
+    "message": "fix: Update the Java tutorials and descriptions (#1181)\n\nUpdating the Java section for the Tutorials page to list the current\nsamples.\n\nFixes https://github.com/a2aproject/A2A/issues/1182",
+    "url": "https://github.com/a2aproject/A2A/commit/202aa069e66f701bacf2156d42d8916fc96a5188"
+  },
+  {
+    "source": "commit",
+    "platform": "github",
+    "sha": "6fd5c38914",
+    "date": "2025-10-29T15:20:59Z",
+    "author": "zeroasterisk",
+    "author_name": "alan blount",
+    "message": "docs: updated a2a logo SVGs (#1184)",
+    "url": "https://github.com/a2aproject/A2A/commit/6fd5c389147b0095fd718d51d0a68dfa52bff698"
+  }
+]
