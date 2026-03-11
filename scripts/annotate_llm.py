@@ -105,7 +105,7 @@ def annotate_openai_compat(client, model: str, record: dict) -> dict:
     try:
         resp = client.chat.completions.create(
             model=model,
-            max_tokens=256,
+            max_tokens=1024,
             messages=[
                 {"role": "system", "content": ANNOTATION_PROMPT},
                 {"role": "user", "content": user_msg},
@@ -148,7 +148,7 @@ def annotate_anthropic(record: dict, model: str) -> dict:
     try:
         resp = client.messages.create(
             model=model,
-            max_tokens=256,
+            max_tokens=1024,
             system=ANNOTATION_PROMPT,
             messages=[{"role": "user", "content": user_msg}],
         )
