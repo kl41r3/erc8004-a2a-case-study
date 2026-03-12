@@ -1,5 +1,5 @@
 # RQ1 Governance Metrics — Findings Summary
-Generated: 2026-03-12 09:01 UTC
+Generated: 2026-03-12 16:38 UTC
 
 ---
 
@@ -11,8 +11,8 @@ Generated: 2026-03-12 09:01 UTC
 | Proposal / first public date | 2025-08-13 | 2025-04-09 |
 | Consensus / launch | 2026-01-29 | N/A (ongoing) |
 | Days to consensus | **169** | N/A |
-| Total discussion records | 124 | 4923 |
-| Unique discussion contributors | 62 | 596 (+81 review comment authors) |
+| Total discussion records | 149 | 4923 |
+| Unique discussion contributors | 71 | 596 (+81 review comment authors) |
 | Unique institutions | 5 | 7 |
 | Openness index | 1.0 | 0.958 |
 | Total commits | N/A | 522 |
@@ -26,11 +26,11 @@ Generated: 2026-03-12 09:01 UTC
 
 ## ERC-8004 Participation Breakdown (LLM-annotated)
 
-  - Independent: 101 (81.5%)
-  - MetaMask: 12 (9.7%)
-  - Unknown: 8 (6.5%)
-  - Ethereum Foundation: 2 (1.6%)
-  - Sparsity: 1 (0.8%)
+  - Independent: 115 (77.2%)
+  - MetaMask: 16 (10.7%)
+  - Unknown: 14 (9.4%)
+  - Ethereum Foundation: 3 (2.0%)
+  - Sparsity: 1 (0.7%)
 
 
 ## Google A2A Participation Breakdown (LLM-annotated)
@@ -50,7 +50,7 @@ Generated: 2026-03-12 09:01 UTC
 | Case | Source | Link | Records |
 |------|--------|------|---------|
 | ERC-8004 | Ethereum Magicians forum | https://ethereum-magicians.org/t/erc-8004-trustless-agents/25098 | 113 posts |
-| ERC-8004 | GitHub ethereum/ERCs (core PRs only) | https://github.com/ethereum/ERCs/pulls?q=erc-8004 | 11 comments |
+| ERC-8004 | GitHub ethereum/ERCs (core PRs only) | https://github.com/ethereum/ERCs/pulls?q=erc-8004 | 36 comments |
 | Google A2A | GitHub google/A2A | https://github.com/google/A2A | 522 commits, 4923 discussion records |
 
 ---

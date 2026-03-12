@@ -1,47 +1,29 @@
 {
   "a2a_commits.json": {
-    "sha256": "d80a78d2f79443cdff863d8400895371fc9e6a988ae312a2ac4c09e315d67a35",
-    "records": 522,
-    "bytes": 526516
+    "sha256": "d80a78d2f79443cdff863d8400895371fc9e6a988ae312a2ac4c09e315d67a35"
   },
   "a2a_issues.json": {
-    "sha256": "e48ebc63933380b4a68c42ea30c98168e64710640b269849d9066eeadf79cbbb",
-    "records": 3104,
-    "bytes": 4207511
+    "sha256": "e48ebc63933380b4a68c42ea30c98168e64710640b269849d9066eeadf79cbbb"
   },
   "a2a_manifest.json": {
-    "sha256": "87bb67ca5d99c9f10d10b811fddf679d30f5925a29d871e7a52e8199df267d02",
-    "records": null,
-    "bytes": 742
+    "sha256": "87bb67ca5d99c9f10d10b811fddf679d30f5925a29d871e7a52e8199df267d02"
   },
   "a2a_prs.json": {
-    "sha256": "a7043491cc4ace44bc01eb0fbe681e659c284765493d046e7a22adc942a67747",
-    "records": 1955,
-    "bytes": 1830532
+    "sha256": "a7043491cc4ace44bc01eb0fbe681e659c284765493d046e7a22adc942a67747"
   },
   "filter_log.json": {
-    "sha256": "d9c71ddb9977cd14f36be183392b5ba8d0f9066a2748c83e1617a1d48595353f",
-    "records": null,
-    "bytes": 1481
+    "sha256": "d10eacd49162a76cde3c3f7b0f327b5303266456eca1d19020a754112db4f877"
   },
   "forum_posts.json": {
-    "sha256": "4b3711e5a45b7e4a835fb32a4fca87cd9a2015a4347f2b963cd7e8fb27da6eb6",
-    "records": 113,
-    "bytes": 152165
+    "sha256": "4b3711e5a45b7e4a835fb32a4fca87cd9a2015a4347f2b963cd7e8fb27da6eb6"
   },
   "github_comments.json": {
-    "sha256": "23b6e3ebe5e99b227e4b3a3a76c9936f1a7156f1d9f467de3df876675b9166a5",
-    "records": 149,
-    "bytes": 77155
+    "sha256": "41a65aa867db3e6441024854604ba951e3987e0776c32b02a84027ef2a28c8ba"
   },
   "github_comments_filtered.json": {
-    "sha256": "3e2b3eb4c263af7c538cd85179889242bcb3cfc0a054aa1569da6a66108fe61d",
-    "records": 11,
-    "bytes": 4910
+    "sha256": "41a65aa867db3e6441024854604ba951e3987e0776c32b02a84027ef2a28c8ba"
   },
   "manifest.json": {
-    "sha256": "7f6ed2bdc8030715eb0b96b2c637e0e2ad1fbfce2ebacdc8a7bd77b68919af16",
-    "records": null,
-    "bytes": 245
+    "sha256": "7f6ed2bdc8030715eb0b96b2c637e0e2ad1fbfce2ebacdc8a7bd77b68919af16"
   }
 }
