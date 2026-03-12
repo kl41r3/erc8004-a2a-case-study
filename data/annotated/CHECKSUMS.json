@@ -1,0 +1,9 @@
+{
+  "annotated_records.json": {
+    "sha256": "633ebf269f4f21ef4ca48603c964dc93bcc956d7a5d6d5f479ff15834c33df99",
+    "total_records": 4789,
+    "ok": 4407,
+    "errors": 382,
+    "bytes": 7599487
+  }
+}

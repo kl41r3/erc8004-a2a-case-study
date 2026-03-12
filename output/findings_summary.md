@@ -1,5 +1,5 @@
 # RQ1 Governance Metrics — Findings Summary
-Generated: 2026-03-10 16:40 UTC
+Generated: 2026-03-12 09:01 UTC
 
 ---
 
@@ -13,8 +13,8 @@ Generated: 2026-03-10 16:40 UTC
 | Days to consensus | **169** | N/A |
 | Total discussion records | 124 | 4923 |
 | Unique discussion contributors | 62 | 596 (+81 review comment authors) |
-| Unique institutions | TBD (annotation pending) | TBD (annotation pending) |
-| Openness index | TBD | TBD |
+| Unique institutions | 5 | 7 |
+| Openness index | 1.0 | 0.958 |
 | Total commits | N/A | 522 |
 | Commit authors | N/A | 131 |
 | Forum reply rate | 0.46 | N/A |
@@ -26,11 +26,22 @@ Generated: 2026-03-10 16:40 UTC
 
 ## ERC-8004 Participation Breakdown (LLM-annotated)
 
-_Annotation pending — run: uv run python scripts/annotate_llm.py_
+  - Independent: 101 (81.5%)
+  - MetaMask: 12 (9.7%)
+  - Unknown: 8 (6.5%)
+  - Ethereum Foundation: 2 (1.6%)
+  - Sparsity: 1 (0.8%)
+
 
 ## Google A2A Participation Breakdown (LLM-annotated)
 
-_Annotation pending — run: uv run python scripts/annotate_llm.py_
+  - Independent: 2745 (58.8%)
+  - Google: 983 (21.1%)
+  - Unknown: 928 (19.9%)
+  - Microsoft: 5 (0.1%)
+  - Coinbase: 2 (0.0%)
+  - Huawei: 1 (0.0%)
+
 
 ---
 
