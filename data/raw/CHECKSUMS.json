@@ -1,29 +1,50 @@
 {
   "a2a_commits.json": {
-    "sha256": "d80a78d2f79443cdff863d8400895371fc9e6a988ae312a2ac4c09e315d67a35"
+    "sha256": "d80a78d2f79443cdff863d8400895371fc9e6a988ae312a2ac4c09e315d67a35",
+    "size_bytes": 526516
+  },
+  "a2a_discussions.json": {
+    "sha256": "1f060770b539c79761b6d12d929db4d996536398b9da9c31124f861897730049",
+    "size_bytes": 1255948
+  },
+  "a2a_gitvote_prs.json": {
+    "sha256": "2a8177162d53d048502e42a451ae82d8daac1e888d0a336be989c028cab349b1",
+    "size_bytes": 123430
   },
   "a2a_issues.json": {
-    "sha256": "e48ebc63933380b4a68c42ea30c98168e64710640b269849d9066eeadf79cbbb"
+    "sha256": "e48ebc63933380b4a68c42ea30c98168e64710640b269849d9066eeadf79cbbb",
+    "size_bytes": 4207511
   },
   "a2a_manifest.json": {
-    "sha256": "87bb67ca5d99c9f10d10b811fddf679d30f5925a29d871e7a52e8199df267d02"
+    "sha256": "ce23267adfa1d06a61845e286f5d52b740ecbc91655eb45cb2d8bec9a4678fd1",
+    "size_bytes": 954
   },
   "a2a_prs.json": {
-    "sha256": "a7043491cc4ace44bc01eb0fbe681e659c284765493d046e7a22adc942a67747"
+    "sha256": "a7043491cc4ace44bc01eb0fbe681e659c284765493d046e7a22adc942a67747",
+    "size_bytes": 1830532
+  },
+  "erc-8004_manifest.json": {
+    "sha256": "5a28fa75d5ccb970570c8b258388df2309b3f4287ce54cffca339104cafeb04f",
+    "size_bytes": 244
   },
   "filter_log.json": {
-    "sha256": "d10eacd49162a76cde3c3f7b0f327b5303266456eca1d19020a754112db4f877"
+    "sha256": "d10eacd49162a76cde3c3f7b0f327b5303266456eca1d19020a754112db4f877",
+    "size_bytes": 1144
   },
   "forum_posts.json": {
-    "sha256": "4b3711e5a45b7e4a835fb32a4fca87cd9a2015a4347f2b963cd7e8fb27da6eb6"
-  },
-  "github_comments.json": {
-    "sha256": "41a65aa867db3e6441024854604ba951e3987e0776c32b02a84027ef2a28c8ba"
+    "sha256": "4b3711e5a45b7e4a835fb32a4fca87cd9a2015a4347f2b963cd7e8fb27da6eb6",
+    "size_bytes": 152165
   },
   "github_comments_filtered.json": {
-    "sha256": "41a65aa867db3e6441024854604ba951e3987e0776c32b02a84027ef2a28c8ba"
+    "sha256": "41a65aa867db3e6441024854604ba951e3987e0776c32b02a84027ef2a28c8ba",
+    "size_bytes": 19394
   },
-  "manifest.json": {
-    "sha256": "7f6ed2bdc8030715eb0b96b2c637e0e2ad1fbfce2ebacdc8a7bd77b68919af16"
+  "profiles_forum.json": {
+    "sha256": "1a21fbc4d0c63c3039a24fe7bc00846fa9520d76658d4981178e8d305094eef5",
+    "size_bytes": 15056
+  },
+  "profiles_github.json": {
+    "sha256": "4040c865e2620daa72f3ae78998ce5da14f59a180fc1f8de42297cd6be733ecc",
+    "size_bytes": 11992
   }
 }

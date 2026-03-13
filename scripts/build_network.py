@@ -58,7 +58,7 @@ INSTITUTION_COLORS: dict[str, str] = {
     "MetaMask":            "#F6851B",  # MetaMask orange
     "ConsenSys":           "#3c3c3d",  # dark gray
     "Ethereum Foundation": "#627EEA",  # Ethereum purple/blue
-    "Google":              "#4285F4",  # Google blue
+    "Google":              "#34A853",  # Google green (distinct from blue nodes)
     "Microsoft":           "#00A4EF",  # Microsoft blue
     "Coinbase":            "#0052FF",  # Coinbase blue
     "Gnosis":              "#008C73",  # Gnosis teal
@@ -352,8 +352,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   #legend {{ display: flex; flex-wrap: wrap; gap: 8px; }}
   .legend-item {{ display: flex; align-items: center; gap: 4px; font-size: 12px; }}
   .legend-dot {{ width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }}
-  #info {{ padding: 8px 20px; background: #0f3460; font-size: 13px; color: #aaa; }}
-  #network {{ width: 100%; height: calc(100vh - 110px); }}
+  #info {{ padding: 6px 20px; background: #0f3460; font-size: 12px; color: #bbb; display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }}
+  .edge-legend {{ display: flex; align-items: center; gap: 6px; }}
+  .edge-line {{ display: inline-block; width: 28px; height: 2px; }}
+  .edge-solid {{ background: #666; }}
+  .edge-dashed {{ background: none; border-top: 2px dashed #aaa; }}
+  #network {{ width: 100%; height: calc(100vh - 115px); }}
 </style>
 </head>
 <body>
@@ -364,10 +368,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   </div>
 </div>
 <div id="info">
-  Nodes sized by record count &nbsp;|&nbsp;
-  <b>Solid edges</b>: direct reply &nbsp;|&nbsp;
-  <b>Dashed edges</b>: co-participation in same PR/issue &nbsp;|&nbsp;
-  Drag nodes, scroll to zoom, click to highlight
+  <span>Node size = record count</span>
+  <span class="edge-legend"><span class="edge-line edge-solid"></span> Solid edge: direct reply (forum reply chain)</span>
+  <span class="edge-legend"><span class="edge-line edge-dashed"></span> Dashed edge: co-participation (both commented on same PR/issue)</span>
+  <span>Drag to move &bull; Scroll to zoom &bull; Click to highlight</span>
 </div>
 <div id="network"></div>
 <script>

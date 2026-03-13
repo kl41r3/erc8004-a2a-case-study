@@ -19,5 +19,11 @@
   "issue_comments_count": 900,
   "prs_count": 755,
   "pr_review_comments_count": 1000,
-  "total_discussion_records": 3161
+  "total_discussion_records": 3161,
+  "discussions": {
+    "total_discussions": 234,
+    "total_records": 822,
+    "file": "a2a_discussions.json",
+    "note": "fetched via GitHub GraphQL API; includes discussion bodies, comments, and replies"
+  }
 }

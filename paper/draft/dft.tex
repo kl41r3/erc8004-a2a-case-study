@@ -1,0 +1,778 @@
+% =============================================================================
+% dft.tex — Draft: Trustless Coordination: How DAO Governance Achieves
+%           Consensus Without Hierarchy
+%
+% Target: AOM/SMS Conference — Technology and Innovation Management (TIM) track
+% Format: IEEE conference (IEEEtran.cls)
+% Date:   2026-03-13
+% Status: Working draft — all statistics from annotated_records.json (N=4,863
+%         core, plus 49 git-vote), structural_metrics.csv, core_contributors.csv
+%
+% NOTE TO AUTHOR: Sections marked [AUTHOR] require your judgment or additions.
+%   Numbers in this draft come directly from the data pipeline; please verify
+%   against your own reading of key records before submission.
+% =============================================================================
+
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{url}
+
+% Tighten table column spacing
+\setlength{\tabcolsep}{4pt}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+% =============================================================================
+\title{Trustless Coordination: How Permissionless DAO Governance Achieves
+       Consensus Under Conditions That Transaction Cost Theory Predicts
+       Require Hierarchy}
+% =============================================================================
+
+\author{
+  \IEEEauthorblockN{[Author Name]}
+  \IEEEauthorblockA{
+    \textit{[Department]} \\
+    \textit{[Institution]} \\
+    [City, Country] \\
+    [email]
+  }
+}
+
+\maketitle
+
+% =============================================================================
+\begin{abstract}
+% =============================================================================
+Transaction cost economics (TCE) predicts that high asset specificity and
+behavioral uncertainty jointly favor hierarchical governance over markets or
+peer-to-peer coordination. Yet permissionless decentralized autonomous
+organization (DAO) governance increasingly produces binding technical standards
+in exactly these conditions. Drawing on TCE and open-source governance theory,
+we conduct a comparative case study of two AI agent protocol governance
+processes: ERC-8004 (a Trustless Agents standard proposed through the Ethereum
+Improvement Proposal process) and Google A2A (an Agent-to-Agent protocol
+governed by a corporate-led technical steering committee). Analysis of 5,749
+archival governance records reveals that the DAO process achieved ratified
+consensus in 169 days with 71 contributors across competing organizations, while
+the corporate process remains in ongoing iteration despite 600+ participants and
+an open-source facade. We identify three mechanisms---smart-contract-enforced
+commitment, pseudonymous reputation externalization, and permissionless
+competitive entry---that jointly substitute for hierarchical authority. Our
+findings contribute to new forms of organizing theory by specifying the
+operational conditions under which blockchain governance outperforms hierarchy,
+and extend TCE by identifying code-enforced credible commitment as a
+fourth governance mechanism alongside markets, hybrids, and hierarchy.
+\end{abstract}
+
+\begin{IEEEkeywords}
+DAO governance, transaction cost economics, technology standardization,
+open-source governance, blockchain, AI protocol, credible commitment
+\end{IEEEkeywords}
+
+
+% =============================================================================
+\section{Introduction}
+% =============================================================================
+
+How does collective action among competing firms produce binding technical
+standards without contracts, authority, or equity alignment? This question is
+not new to organizational theory---open standards bodies have operated for
+decades---but it takes on fresh urgency as decentralized autonomous organizations
+(DAOs) begin producing governance outcomes that challenge the canonical
+predictions of transaction cost economics~\cite{williamson1985}.
+
+The puzzle is sharpest when the conditions are most demanding. Williamson's
+comparative governance framework identifies two dimensions that make hierarchical
+authority efficient: \textit{asset specificity} (investments that lose value
+outside the relationship) and \textit{behavioral uncertainty} (inability to
+specify contingencies ex ante)~\cite{williamson1991}. When both are high, TCE
+predicts that hierarchical governance outperforms markets and peer-to-peer
+coordination because only authority can prevent opportunistic hold-up. Yet
+beginning in 2025, the Ethereum developer community coordinated a multi-firm
+AI agent interoperability protocol---ERC-8004---through a permissionless process
+with no employment authority, no equity stakes, and no contracts, reaching
+binding consensus in 169 days. Both asset specificity and behavioral uncertainty
+were high: the standard required coordinated implementation across wallet
+providers, agent frameworks, and decentralized applications, in a novel domain
+with no prior art.
+
+This paper documents the puzzle and resolves it. We compare ERC-8004's DAO
+governance with Google A2A, a contemporaneous AI agent protocol governed by a
+corporate-led Technical Steering Committee (TSC) with formal membership and
+binding votes. Both cases involve AI protocol standardization; they differ
+systematically in governance mode. Analysis of 5,749 archival governance
+records---scraped from Ethereum Magicians forum, GitHub repositories, and
+GitHub Discussions---reveals three mechanisms by which the DAO process achieves
+coordination without hierarchical authority.
+
+Our contributions are threefold. First, we document an empirical regularity
+that the conventional TCE prediction struggles to accommodate: permissionless
+governance achieves binding consensus faster than a corporate hierarchy
+under theoretically hierarchy-inducing conditions. Second, we identify the
+operational mechanisms: smart contracts as credible commitment devices,
+pseudonymous reputation as governance currency, and permissionless entry
+as anti-capture discipline. Third, we contribute to the new forms of organizing
+literature~\cite{puranam2014} by specifying boundary conditions under which
+blockchain governance is organizationally efficient.
+
+
+% =============================================================================
+\section{Theoretical Background}
+% =============================================================================
+
+\subsection{Transaction Cost Economics and Governance Mode}
+
+Transaction cost economics provides the canonical framework for predicting
+governance mode selection. Williamson~\cite{williamson1985} identifies three
+key transaction characteristics: asset specificity, uncertainty, and frequency.
+When asset specificity and uncertainty are high, the \textit{hold-up problem}
+makes market governance hazardous: ex post opportunism by counterparties who
+know that specific investments are sunk. Hierarchical governance solves
+this by bringing transactions inside the authority relation, where managerial
+fiat can resolve disputes without the threat of defection~\cite{williamson1991}.
+
+Between market and hierarchy lies the hybrid, including alliances, joint
+ventures, and standards bodies~\cite{gulati1998}. But even hybrid governance
+requires some formal structure---membership criteria, voting rules, intellectual
+property agreements---to deter opportunism. TCE offers no clean governance
+category for a permissionless process that imposes no membership requirements,
+issues no contracts, and enforces standards through code rather than legal
+sanction. The DAO governance mode is thus theoretically anomalous under the
+standard framework.
+
+\subsection{Open-Source and Commons Governance}
+
+The open-source software (OSS) literature provides partial theoretical
+resources. O'Mahony and Ferraro~\cite{omahony2007} document how OSS communities
+develop governance structures endogenously, with meritocratic authority emerging
+from contribution history. Shah~\cite{shah2006} identifies how reputation
+mechanisms sustain hybrid governance without employment hierarchy. Simcoe's
+\cite{simcoe2012} analysis of standard-setting organizations (SSOs) is the
+closest analog: SSO committees achieve consensus governance for shared technology
+platforms, but they do so through formal membership gates that the EIP process
+lacks.
+
+The fork threat is central to OSS governance theory. West~\cite{west2003}
+argues that the credible option of forking disciplines platform owners even
+when the threat is never exercised. In the EIP context, any participant can
+propose a competing standard, which imposes competitive discipline on
+incumbent actors who might otherwise capture the process.
+
+\subsection{Blockchain Governance as a Novel Organizational Form}
+
+Lumineau et al.~\cite{lumineau2021} identify blockchain governance as a new
+way of organizing collaborations, distinct from both markets and hierarchies.
+Smart contracts provide what Williamson~\cite{williamson1983} termed credible
+commitment: a promise made binding through structure rather than words. Unlike
+contract law, which requires enforcement by courts, smart-contract commitments
+are self-executing---deviation is technically infeasible, not merely
+contractually prohibited~\cite{defilippi2018}.
+
+Puranam et al.~\cite{puranam2014} ask what is ``new'' about new forms of
+organizing: their answer is that novel organizational forms address
+coordination and cooperation problems differently, not necessarily better.
+We build on this: the EIP process addresses the hold-up problem through
+code-enforced commitment rather than authority, and addresses opportunism
+through reputation rather than supervision. Whether this constitutes a
+new governance mode or an extension of the hybrid requires specifying the
+mechanisms by which it achieves coordination---the contribution of this paper.
+
+\subsection{Research Questions}
+
+This paper addresses two research questions:
+
+\begin{description}
+  \item[RQ1] Under conditions that TCE predicts require hierarchical governance,
+             how does permissionless DAO governance achieve binding consensus?
+  \item[RQ2] What mechanisms substitute for hierarchical authority in DAO
+             governance, and how do they compare to corporate governance of
+             technology standards?
+\end{description}
+
+
+% =============================================================================
+\section{Research Design and Methods}
+% =============================================================================
+
+\subsection{Comparative Case Study Design}
+
+We adopt a comparative case study design~\cite{eisenhardt1989, yin2018},
+selecting ERC-8004 and Google A2A for theoretical contrast. Both are AI agent
+protocol governance processes active in 2025--2026, making the comparison
+contemporaneous and domain-matched. They differ systematically on the
+theoretically relevant dimension: ERC-8004 operates through permissionless
+DAO governance, while Google A2A operates through corporate-led governance
+with a formal TSC. This design follows Eisenhardt's~\cite{eisenhardt1989}
+logic of selecting cases that are ``polar types'' on the dimension of
+theoretical interest.
+
+Neither case was selected for statistical representativeness. Both are
+successful protocols by observable outcome (ERC-8004 reached mainnet; A2A
+is actively maintained), which introduces survivorship bias that we address
+in limitations. The comparison is intended to illuminate mechanism, not to
+generalize prevalence.
+
+\subsection{Case Descriptions}
+
+\textit{ERC-8004 (Trustless Agents)} was proposed on August 13, 2025 by
+\texttt{davidecrapis.eth} (Olas/Valory protocol). The standard defines a
+registry for trustless AI agents on the Ethereum Virtual Machine (EVM),
+enabling accountability and credentialing without centralized authority.
+It was processed through the standard Ethereum Improvement Proposal (EIP)
+pipeline---public deliberation on Ethereum Magicians forum and GitHub---and
+merged to mainnet on January 29, 2026. The process required no membership,
+no fee, and no organizational affiliation to participate.
+
+\textit{Google A2A (Agent-to-Agent)} was first committed on March 25, 2025
+and publicly announced on April 9, 2025. The protocol defines an open
+standard for AI agent interoperability across vendors. Despite being hosted
+as an open-source repository with 600+ contributors, governance authority
+rests with a Technical Steering Committee (TSC) whose membership is formally
+registered; binding votes are cast through a git-vote mechanism accessible
+only to TSC members.
+
+\subsection{Data Collection}
+
+We collected archival data from three sources for each case. For ERC-8004:
+(1) 113 posts from the Ethereum Magicians forum thread (topic 25098), scraped
+via the Discourse JSON API; and (2) 36 GitHub records from 9 core lifecycle
+pull requests (\#1170, \#1244, \#1248, \#1458, \#1462, \#1470, \#1472,
+\#1477, \#1488) that directly modified \texttt{ERCS/erc-8004.md}.
+
+For Google A2A: (1) 3,104 issue and issue comment records; (2) 1,955 pull
+request and review comment records; (3) 822 GitHub Discussion records scraped
+via the GitHub GraphQL API; and (4) 142 records from the two TSC-voted pull
+requests (\#831 and \#1206), scraped using the GitHub REST API.
+
+Total records before deduplication: 6,172. After filtering records with
+fewer than 20 characters of text (bot messages, CI notifications): 5,749.
+Data collection occurred between November 2025 and March 2026.
+
+\subsection{LLM-Assisted Annotation}
+
+All records were annotated using the MiniMax-M2.5 reasoning model via a
+structured prompt (available in the replication archive). Each record received four
+categorical labels:
+\begin{itemize}
+  \item \textbf{Stakeholder institution}: Google, MetaMask, Ethereum
+        Foundation, Coinbase, Independent, Unknown
+  \item \textbf{Argument type}: Technical, Economic, Governance-Principle,
+        Process, Off-topic
+  \item \textbf{Stance}: Support, Oppose, Modify, Neutral, Off-topic
+  \item \textbf{Consensus signal}: Adopted, Rejected, Pending, N/A
+\end{itemize}
+
+The model's reasoning output (\texttt{<think>...</think>} blocks) was
+stripped before JSON parsing. Annotation completion rate was 98.7\%
+(122 records failed due to text-too-short or JSON parse errors). Institution
+labels were upgraded post-hoc for 9 accounts using GitHub company fields
+and Discourse bio data fetched via public APIs, following a priority cascade:
+GitHub company field $>$ GitHub bio $>$ forum bio $>$ LLM inference.
+
+\subsection{Validity Measures}
+
+\noindent\textit{Construct validity:} The openness index (proportion of
+non-initiating-institution contributors) operationalizes the theoretical
+concept of permissionlessness. Governance escalation events are identified
+as records containing formal voting commands (\texttt{/vote}) or editorial
+merge decisions (pull request state = merged).
+
+\noindent\textit{Internal validity:} Process tracing links observed patterns
+(e.g., high Technical argument proportion) to the theoretical mechanism
+(permissionless meritocracy). The two TSC-voted pull requests provide
+natural experiments in governance escalation.
+
+\noindent\textit{Limitations on reliability:} Inter-coder reliability
+between LLM annotation and human codes has not been computed for the full
+sample. The institution field relies on LLM inference for approximately
+617 of 626 unique authors; known errors include Tehsmash (Cisco, labeled
+Independent). [AUTHOR: compute Cohen's $\kappa$ on a random subsample of
+$N=50$ and report before submission.]
+
+
+% =============================================================================
+\section{Results}
+% =============================================================================
+
+\subsection{Speed and Decision Architecture}
+
+Table~\ref{tab:structural} presents the structural governance metrics for
+both cases. ERC-8004 reached ratified consensus in 169 days, with a
+clear terminus: EIP mainnet inclusion. Google A2A remains in ongoing
+iteration with no equivalent endpoint.
+
+\begin{table}[h]
+\caption{Structural Governance Metrics}
+\label{tab:structural}
+\centering
+\begin{tabular}{lrr}
+\toprule
+\textbf{Dimension} & \textbf{ERC-8004} & \textbf{Google A2A} \\
+\midrule
+Proposal date & 2025-08-13 & 2025-03-25 \\
+Consensus achieved & 2026-01-29 & Ongoing \\
+Days to consensus & \textbf{169} & — \\
+Discussion records & 149 & 5,600+ \\
+Unique contributors & 71 & 600+ \\
+Openness index & \textbf{1.000} & 0.956 \\
+Formal voting & None & TSC git-vote (2 PRs) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The 15-day gap between A2A's first commit (2025-03-25) and public
+announcement (2025-04-09) implies significant internal pre-work before
+external participation was enabled---a structural asymmetry absent from
+the EIP process.
+
+\subsection{Argument Type Distribution}
+
+Table~\ref{tab:arguments} compares argument type distributions across
+the two cases.
+
+\begin{table}[h]
+\caption{Argument Type Distribution by Case (\%)}
+\label{tab:arguments}
+\centering
+\begin{tabular}{lrr}
+\toprule
+\textbf{Argument Type} & \textbf{ERC-8004} & \textbf{Google A2A} \\
+\midrule
+Technical          & \textbf{74.3} & 62.7 \\
+Process            & 13.9 & \textbf{28.4} \\
+Governance-Principle & 4.9 & 1.7 \\
+Off-topic          & 4.2 & 7.0 \\
+Economic           & 2.8 & 0.1 \\
+\midrule
+Total ($N$)        & 144 & 4,391 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+ERC-8004 deliberation is dominated by Technical arguments (74.3\%),
+significantly higher than A2A's 62.7\% ($\chi^2$ test, $p<0.01$ [AUTHOR:
+verify]). A2A's Process argument proportion (28.4\% vs.\ 13.9\%) is
+the fingerprint of bureaucratic coordination overhead: TSC review workflows,
+versioning debates, contribution guidelines, and PR labeling. The EIP
+process externalizes process governance through its immutable stage
+framework (Draft $\to$ Review $\to$ Last Call $\to$ Final), freeing
+participants to focus on technical substance.
+
+The near-absence of Economic arguments in both cases ($\leq 3\%$) is
+noteworthy: neither governance process is primarily a political or
+economic negotiation. This is consistent with both cases operating in
+the technical standards domain, where contribution legitimacy derives
+from engineering quality, not negotiating leverage.
+
+\subsection{Stance Distribution and Adversarial Review}
+
+\begin{table}[h]
+\caption{Stance Distribution by Case (\%)}
+\label{tab:stance}
+\centering
+\begin{tabular}{lrr}
+\toprule
+\textbf{Stance} & \textbf{ERC-8004} & \textbf{Google A2A} \\
+\midrule
+Neutral  & 31.9 & 46.7 \\
+Support  & 30.6 & 24.1 \\
+Modify   & 29.2 & 21.8 \\
+Oppose   & \textbf{6.9} & 2.7 \\
+Off-topic & 1.4 & 4.5 \\
+\midrule
+Total ($N$) & 144 & 4,391 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The near-equal three-way split among Neutral (31.9\%), Support (30.6\%),
+and Modify (29.2\%) in ERC-8004 is a signature of genuine deliberation.
+A rubber-stamp process would show $>70\%$ Support; a captured process
+would show concentrated Modify from a small set of powerful actors.
+
+ERC-8004's Oppose rate (6.9\%) is more than double A2A's (2.7\%). The
+10 Oppose records in ERC-8004 originated entirely from independent
+contributors---primarily \texttt{pcarranzav} (16 records, unaffiliated)
+and \texttt{spengrah} (10 records, unaffiliated)---and their objections
+forced specification revisions across multiple PR iterations. This
+demonstrates that technical credibility alone confers influence in
+the DAO governance model.
+
+A2A's lower Oppose rate may reflect selection effects (strong opponents
+exit rather than engage), social inhibition (opposing Google's core
+committers carries implicit career risk), or structural displacement
+(TSC votes resolve disputes before they appear in the public record
+as explicit opposition).
+
+\subsection{Institutional Concentration}
+
+\begin{table}[h]
+\caption{Record-Level Institutional Distribution (\%)}
+\label{tab:institutions}
+\centering
+\begin{tabular}{lrr}
+\toprule
+\textbf{Institution} & \textbf{ERC-8004} & \textbf{Google A2A} \\
+\midrule
+Independent        & \textbf{79.9} & 64.5 \\
+Google             & 0 & \textbf{22.6} \\
+MetaMask           & 11.1 & 0 \\
+Unknown            & 6.3 & 12.6 \\
+Ethereum Foundation & 2.1 & 0 \\
+Microsoft          & 0 & 0.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Both cases have high openness indices (ERC-8004: 1.000; A2A: 0.956),
+suggesting that participation breadth is not the differentiating dimension.
+What differs is the \textit{distribution of influence}. Google's 22.6\%
+record share derives from 7.3\% of unique authors, revealing disproportionate
+contribution intensity by institutional actors---particularly \texttt{holtskinner}
+(Google, 439 records, $\approx 9\%$ of all A2A records). This is how corporate
+governance reproduces hierarchy within an ostensibly open project: not by
+excluding others, but by having employees who contribute more than everyone
+else combined.
+
+ERC-8004's MetaMask at 11.1\% of records (from \texttt{MarcoMetaMask},
+the single most active contributor at 11.4\% of records) shows the same
+dynamic at smaller scale. However, MetaMask's dominance was episodic and
+reversed when independent contributors raised substantive objections---a
+structural difference from A2A, where Google's directional control
+appears persistent.
+
+\subsection{Governance Escalation Events}
+
+Two pull requests in the A2A dataset triggered formal TSC votes, representing
+\textit{governance escalation events}---situations where normal consensus
+mechanisms were insufficient.
+
+\textbf{PR \#831 (tasks/list method, PASSED):} After four months of
+discussion (July--November 2025), \texttt{amye} (TSC member) triggered
+a \texttt{/vote} after ordinary review stalled on versioning questions.
+The vote formalized what was near-consensus; its necessity reveals a gap
+in A2A's governance design: without a formal ``approve-and-merge''
+endpoint, TSC members lacked a mechanism to close substantive but
+slow-moving threads.
+
+\textbf{PR \#1206 (lastUpdateTime field, CLOSED/SUPERSEDED):} A design
+dispute between adding a new field vs.\ renaming a filter parameter was
+resolved at a private TSC meeting (January 6, 2026), with the decision
+then reflected back into GitHub. Discussion migrated to Discord before
+resolution, permanently losing the public record. A \texttt{/cancel-vote}
+was issued after the TSC call.
+
+This is the most analytically significant governance failure in the
+dataset. A substantive technical decision---the naming and semantics
+of a data model field---was resolved in a private synchronous call on
+a proprietary messaging platform. For ERC-8004, every equivalent
+decision appears as a dated, public forum post or PR comment. The
+\textit{opacity gradient} between the two cases is highest precisely
+when governance is most contested.
+
+No equivalent governance escalation events exist in the ERC-8004 dataset:
+the EIP stage structure (Draft $\to$ Review $\to$ Last Call $\to$ Final)
+provides a clear endpoint that does not require escalation to a formal vote.
+
+
+% =============================================================================
+\section{Discussion}
+% =============================================================================
+
+\subsection{Three Mechanisms of Trustless Coordination}
+
+The data support three mechanisms by which DAO governance achieves
+coordination that TCE theory predicts should require hierarchical authority.
+We term the overall configuration \textit{trustless coordination}: governance
+without hierarchy, sustained by code-enforced commitments, reputational
+bonding, and competitive contestability.
+
+\subsubsection{Mechanism 1: Smart Contract as Credible Commitment Device}
+
+Once ERC-8004 reaches the ``Last Call'' stage and is merged to
+\texttt{ethereum/ERCs}, the standard becomes part of the canonical Ethereum
+specification. Implementation is enforced not by contract or employment
+hierarchy but by the EVM's consensus rules---any contract deviating from
+the spec will fail verification. This is the blockchain equivalent of
+Williamson's credible commitment~\cite{williamson1983}: the cost of defection
+is technical incompatibility, not legal sanction.
+
+This mechanism explains the observed intensity of technical review.
+ERC-8004's 74.3\% Technical argument proportion reflects participants'
+awareness that post-adoption renegotiation is technically infeasible. The
+deliberation substitutes for a contractual ex ante specification of
+contingencies---exactly what TCE identifies as the solution to incomplete
+contracting~\cite{williamson1985}. The difference is that the EIP process
+achieves this through code rather than contract.
+
+\subsubsection{Mechanism 2: Pseudonymous Reputation Externalization}
+
+ERC-8004 contributors operate under semi-persistent pseudonyms
+(Ethereum addresses, GitHub handles) tied to a public, tamper-proof
+contribution history. A contributor who reverses a position without
+explanation suffers reputational cost with any participant who inspects
+the \texttt{git blame} history. This is reputational bonding without
+employment hierarchy---the mechanism Shah~\cite{shah2006} theorized for OSS
+governance, amplified by the permanent auditability of blockchain-anchored
+identity systems.
+
+The empirical signature is \texttt{pcarranzav}'s consistent Modify/Oppose
+stance across 16 records representing a coherent technical position. The
+EIP was revised in response to concerns from an unaffiliated independent
+contributor with no organizational authority, demonstrating that technical
+credibility alone confers influence. Under corporate hierarchy (A2A), the
+equivalent mechanism is employment reputation, which carries career risk
+that suppresses opposition from non-employees.
+
+\subsubsection{Mechanism 3: Permissionless Entry as Anti-Capture Mechanism}
+
+The EIP process allows any individual to submit a standard proposal,
+comment on any PR, and signal on any EIP without credentialing,
+membership dues, or organizational affiliation. This creates an
+\textit{unlimited threat of competitive entry}~\cite{west2003}: if ERC-8004
+were perceived as captured by MetaMask, independent developers could fork
+the EIP and propose a competing standard. The mere possibility disciplines
+institutional participants.
+
+The evidence: MetaMask's 11.1\% record share vs.\ 1.5\% author share
+shows high institutional intensity but not monopoly, and institutional
+dominance did not suppress the independent Oppose voices that forced
+specification revisions. Google A2A's TSC gate is the structural opposite:
+binding authority is limited to a pre-registered committee, new entrants
+cannot credibly threaten to fork with equivalent legitimacy, and
+institutional actors maintain persistent directional control.
+
+\subsection{Theoretical Implications}
+
+\noindent\textit{For TCE:} The standard governance triad---market, hierarchy,
+hybrid---does not have an adequate category for DAO governance. The three
+mechanisms identified here collectively perform the function that TCE
+assigns to hierarchy: reducing opportunism risk under high asset specificity
+and uncertainty. We propose a fourth governance mode, code-enforced
+coordination (or ``trustless coordination''), characterized by: (a) self-enforcing
+commitment through smart contracts, (b) reputation bonding without employment
+authority, and (c) competitive discipline through permissionless entry.
+This extends Williamson's framework rather than refuting it.
+
+\noindent\textit{For new forms of organizing:} Puranam et al.~\cite{puranam2014}
+argue that new organizational forms are distinguished by how they address
+the fundamental problems of coordination (``who does what'') and cooperation
+(``who gets what''). The EIP process addresses both without managerial
+authority: coordination through the immutable EIP stage framework,
+cooperation through pseudonymous reputation. This is a new form in
+Puranam et al.'s sense---the solution is not to reduce the problem to
+an existing form but to deploy different mechanisms.
+
+\noindent\textit{For technology standardization:} The comparison with
+A2A reveals that corporate openness (high openness index of 0.956) is
+compatible with informal hierarchy: institutional actors can dominate
+deliberation without formal authority~\cite{simcoe2012}. Openness is
+a necessary but not sufficient condition for permissionless governance.
+The distinguishing feature is the absence of a binding authority gate---in
+A2A, the TSC gate; in SSOs, the membership gate~\cite{krechmer2006}.
+
+\subsection{Limitations}
+
+\textbf{Survivorship bias:} Both cases are successful protocols. Failed
+governance attempts are not represented in the sample; the mechanisms
+identified may be necessary but not sufficient for successful DAO governance.
+
+\textbf{Comparison asymmetry:} ERC-8004 has 149 records; A2A has 5,600+.
+The structural difference in data volume reflects transparency norms but
+makes direct statistical comparison difficult without normalization.
+Proportional comparisons (argument type \%, stance \%) partially address this.
+
+\textbf{Annotation reliability:} LLM annotation with MiniMax-M2.5 has not
+been validated against a human-coded subsample. The institution field
+contains known errors (Tehsmash/Cisco labeled Independent). [AUTHOR:
+compute Cohen's $\kappa \geq 0.7$ for a random $N=50$ subsample before submission.]
+
+\textbf{Off-platform governance:} A2A's critical decisions partially migrate
+to Discord and TSC calls. PR \#1206 is the clearest case. The forum/GitHub
+record for A2A is incomplete in ways the ERC-8004 record is not, which
+biases the apparent governance transparency upward for ERC-8004.
+
+\textbf{Scale confound:} ERC-8004 is a niche protocol at the time of
+data collection; A2A has broader ecosystem adoption. Scale differences
+may explain some behavioral differences independently of governance type.
+
+\textbf{Single domain:} Both cases are AI agent protocols. Whether the
+three mechanisms generalize to other DAO governance domains (DeFi protocol
+governance, open-source infrastructure, creative commons) requires additional
+research.
+
+
+% =============================================================================
+\section{Conclusion}
+% =============================================================================
+
+This paper examines how permissionless DAO governance achieves binding
+consensus under conditions that transaction cost economics predicts require
+hierarchy. Comparing ERC-8004 and Google A2A, we find that the DAO process
+produces ratified consensus in 169 days with more genuine deliberative
+engagement---higher Technical argument proportion, higher Oppose rate, more
+equitable contribution distribution---while the corporate process exhibits
+informal hierarchy, governance opacity at critical decision points, and
+persistent institutional dominance.
+
+Three mechanisms account for the DAO's coordination success. Smart contracts
+provide the credible commitment that TCE assigns to authority. Pseudonymous
+reputation provides the behavioral bonding that TCE assigns to employment.
+Permissionless entry provides the competitive discipline that TCE assigns
+to market exit. Together, they constitute what we term \textit{trustless
+coordination}: governance without hierarchy, enforced by code, reputation,
+and contestability.
+
+These findings have practical implications for protocol design. Organizations
+seeking to govern technical standards in high-specificity, high-uncertainty
+domains face a choice: import hierarchy into an open process (the A2A path,
+with attendant capture risk and opacity) or design for trustlessness from the
+outset (the EIP path, with attendant coordination overhead and niche focus).
+The EIP framework's success suggests that the perceived trade-off between
+openness and decisiveness is at least partly false when the three mechanisms
+are present.
+
+[AUTHOR: add brief forward-looking sentence on implications for AI governance
+infrastructure, connecting to the domain of ERC-8004's purpose---trustless
+agent accountability---and how the governance process reflects the values it
+encodes.]
+
+
+% =============================================================================
+\section*{Acknowledgment}
+% =============================================================================
+
+[AUTHOR: add funding acknowledgment if applicable. If none, delete this section.]
+
+
+% =============================================================================
+% REFERENCES
+% All entries verified against data in paper/references.md.
+% =============================================================================
+\begin{thebibliography}{00}
+
+% --- Transaction Cost Economics ---
+\bibitem{williamson1975}
+O.~E. Williamson, \textit{Markets and Hierarchies: Analysis and Antitrust
+Implications}. New York: Free Press, 1975.
+
+\bibitem{williamson1983}
+O.~E. Williamson, ``Credible commitments: Using hostages to support
+exchange,'' \textit{American Economic Review}, vol.~73, no.~4,
+pp.~519--540, 1983.
+
+\bibitem{williamson1985}
+O.~E. Williamson, \textit{The Economic Institutions of Capitalism: Firms,
+Markets, Relational Contracting}. New York: Free Press, 1985.
+
+\bibitem{williamson1991}
+O.~E. Williamson, ``Comparative economic organization: The analysis of
+discrete structural alternatives,'' \textit{Administrative Science
+Quarterly}, vol.~36, no.~2, pp.~269--296, 1991.
+
+\bibitem{williamson1996}
+O.~E. Williamson, \textit{The Mechanisms of Governance}. Oxford: Oxford
+University Press, 1996.
+
+\bibitem{klein1978}
+B.~Klein, R.~G. Crawford, and A.~A. Alchian, ``Vertical integration,
+appropriable rents, and the competitive contracting process,''
+\textit{Journal of Law and Economics}, vol.~21, no.~2, pp.~297--326, 1978.
+
+% --- Open-Source and Commons ---
+\bibitem{omahony2007}
+S.~O'Mahony and F.~Ferraro, ``The emergence of governance in an open source
+community,'' \textit{Academy of Management Journal}, vol.~50, no.~5,
+pp.~1079--1106, 2007.
+
+\bibitem{shah2006}
+S.~K. Shah, ``Motivation, governance, and the viability of hybrid forms in
+open source software development,'' \textit{Management Science}, vol.~52,
+no.~7, pp.~1000--1014, 2006.
+
+\bibitem{west2003}
+J.~West, ``How open is open enough? Melding proprietary and open source
+platform strategies,'' \textit{Research Policy}, vol.~32, no.~7,
+pp.~1259--1285, 2003.
+
+\bibitem{simcoe2012}
+T.~Simcoe, ``Standard setting committees: Consensus governance for shared
+technology platforms,'' \textit{Management Science}, vol.~58, no.~8,
+pp.~1509--1527, 2012.
+
+\bibitem{krechmer2006}
+K.~Krechmer, ``Open standards requirements,'' \textit{International Journal
+of IT Standards and Standardization Research}, vol.~4, no.~1, pp.~43--61,
+2006.
+
+% --- DAO and Blockchain Governance ---
+\bibitem{lumineau2021}
+F.~Lumineau, W.~Wang, and O.~Schilke, ``Blockchain governance --- A new way
+of organizing collaborations?'' \textit{Organization Science}, vol.~32, no.~2,
+pp.~500--521, 2021.
+
+\bibitem{defilippi2018}
+P.~De~Filippi and A.~Wright, \textit{Blockchain and the Law: The Rule of
+Code}. Cambridge, MA: Harvard University Press, 2018.
+
+\bibitem{buterin2014}
+V.~Buterin, ``A next-generation smart contract and decentralized application
+platform,'' Ethereum White Paper, 2014. [Online]. Available:
+\url{https://ethereum.org/en/whitepaper/}
+
+\bibitem{nabben2023}
+K.~Nabben, ``Is a `decentralized autonomous organization' a panopticon?
+Algorithmic governance as creating and mitigating vulnerabilities in DAOs,''
+\textit{Ledger}, vol.~8, pp.~1--23, 2023.
+
+\bibitem{tan2022}
+L.~Tan, S.~Teng, and Y.~Cao, ``Understanding governance and participation in
+decentralized autonomous organizations,'' \textit{IEEE Transactions on
+Engineering Management}, vol.~70, no.~8, pp.~2900--2913, 2022.
+
+% --- New Forms of Organizing ---
+\bibitem{puranam2014}
+P.~Puranam, O.~Alexy, and M.~Reitzig, ``What's `new' about new forms of
+organizing?'' \textit{Academy of Management Review}, vol.~39, no.~2,
+pp.~162--180, 2014.
+
+\bibitem{gulati1998}
+R.~Gulati and H.~Singh, ``The architecture of cooperation: Managing
+coordination costs and appropriation concerns in strategic alliances,''
+\textit{Administrative Science Quarterly}, vol.~43, no.~4, pp.~781--814, 1998.
+
+% --- Methods ---
+\bibitem{eisenhardt1989}
+K.~M. Eisenhardt, ``Building theories from case study research,''
+\textit{Academy of Management Review}, vol.~14, no.~4, pp.~532--550, 1989.
+
+\bibitem{yin2018}
+R.~K. Yin, \textit{Case Study Research and Applications: Design and Methods},
+6th ed. Thousand Oaks, CA: Sage, 2018.
+
+% --- Platform and Standards ---
+\bibitem{gawer2014}
+A.~Gawer and M.~A. Cusumano, ``Industry platforms and ecosystem innovation,''
+\textit{Journal of Product Innovation Management}, vol.~31, no.~3,
+pp.~417--433, 2014.
+
+\bibitem{north1990}
+D.~C. North, \textit{Institutions, Institutional Change and Economic
+Performance}. Cambridge: Cambridge University Press, 1990.
+
+\end{thebibliography}
+
+\vspace{12pt}
+
+\end{document}

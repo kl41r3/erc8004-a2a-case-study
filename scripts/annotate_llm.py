@@ -178,22 +178,18 @@ def load_records() -> list[dict]:
     else:
         print(f"  MISSING: {forum_path}")
 
-    # ERC-8004: filtered GitHub comments
+    # ERC-8004: filtered GitHub comments (sole authoritative file)
     gh_filtered = RAW_DIR / "github_comments_filtered.json"
-    gh_raw = RAW_DIR / "github_comments.json"
     if gh_filtered.exists():
         data = json.loads(gh_filtered.read_text())
         for r in data:
             records.append({**r, "_case": "ERC-8004"})
-        print(f"  Loaded {len(data)} GitHub comments filtered (ERC-8004)")
-    elif gh_raw.exists():
-        print(f"  WARNING: using unfiltered github_comments.json — run filter_github.py first")
-        data = json.loads(gh_raw.read_text())
-        for r in data:
-            records.append({**r, "_case": "ERC-8004"})
+        print(f"  Loaded {len(data)} GitHub comments (ERC-8004)")
+    else:
+        print(f"  MISSING: {gh_filtered} — run scrape_erc8004_prs.py first")
 
-    # Google A2A: issues + PRs
-    for fname, label in [("a2a_issues.json", "A2A issues"), ("a2a_prs.json", "A2A PRs")]:
+    # Google A2A: issues + PRs + discussions
+    for fname, label in [("a2a_issues.json", "A2A issues"), ("a2a_prs.json", "A2A PRs"), ("a2a_discussions.json", "A2A discussions")]:
         path = RAW_DIR / fname
         if path.exists():
             data = json.loads(path.read_text())

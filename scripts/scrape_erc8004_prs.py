@@ -10,8 +10,7 @@ Problem with original scrape_erc8004.py:
 This script:
   - Fetches each of the 9 PRs directly by number
   - Collects: PR body, issue comments, review comments, reviews (with bodies)
-  - Writes data/raw/github_comments.json  (overwrites)
-  - Then re-runs the filter to update github_comments_filtered.json
+  - Writes data/raw/github_comments_filtered.json  (the sole authoritative GitHub file)
 
 Usage:
   uv run python scripts/scrape_erc8004_prs.py
@@ -236,19 +235,10 @@ def main():
     for src, count in sorted(by_source.items()):
         print(f"  {src}: {count}")
 
-    # Write github_comments.json (replaces old search-based data)
-    out_path = RAW_DIR / "github_comments.json"
+    # Write directly to github_comments_filtered.json (sole authoritative file)
+    out_path = RAW_DIR / "github_comments_filtered.json"
     out_path.write_text(json.dumps(all_records, indent=2, ensure_ascii=False))
     print(f"\nSaved {len(all_records)} records → {out_path}")
-
-    # Auto-run filter
-    print("\nRunning filter_github.py…")
-    import importlib.util, sys
-    filter_path = Path(__file__).parent / "filter_github.py"
-    spec = importlib.util.spec_from_file_location("filter_github", filter_path)
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    mod.main()
 
 
 if __name__ == "__main__":

@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## The Most Important Philosophy
+
+Everything should be traceable. Provide links when you give a fact. Provides explanation when you give a conclusion, for example, location of codes, name of files, or the exact methods that you used. 
+
 ## Research Context
 
 This is an academic research pipeline for **RQ1: DAO governance vs. corporate governance in technology standardization**. Two cases are compared:

@@ -16,5 +16,6 @@ wheels/
 # macOS
 .DS_Store
 
-# notes
-human-notes/
+# notes (tracked — contains tasks, paper drafts, and vocabulary)
+# human-notes/
+# paper/
