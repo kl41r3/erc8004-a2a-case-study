@@ -1,0 +1,606 @@
+{
+  "forum_profiles": {
+    "BitmineMarine": {
+      "handle": "BitmineMarine",
+      "found": true,
+      "name": "Bitmine Marine",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "CertifiedCryp": {
+      "handle": "CertifiedCryp",
+      "found": true,
+      "name": "",
+      "bio_raw": "True believer in DeFi - Jesus flipping tables!\n\nGoals include: minimizing human error; optimizing strategies to remove human emotion; create & curate tools for traders & makers alike.\n\nMission: Crypto is currently valued at a fraction of its inherent value because it suffers from a culture problem - much like our country.  Since its inception Crypto has been more welcoming to & consistently celebrated black hat methods, triumphs, modus operandi & ethos.  I believe this is what has tens of trillions on the sidelines & aim to assist a driving force behind a cultural shift toward supporting white hat ethos.  I often offer the example of what we see far too often on the internet these days - a child missing, likely abducted; a mother & police trying to find her; the goal is to get Crypto to no longer facilitate the evading & eluding of authoritiies of the kidknapper & in its stead support & facilitate the reuniting of mother & child by LEO/Sheriff. \n\nAnother crucial area where crypto has not met its potential is the intrinsic value of the ethical use of anonymous transactions has been largely ignored.  \n\nI'm anxious to learn about ETH & hope soon to be developing tools & helping deliver faster data tools & analysis to traders & makers.\n\nHbot Cohort 12 (& likely 13) coding dev in training",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": "Chamberi, Madrid / midtown bryn mawr Southern Hills, Tulsa, OK"
+    },
+    "Cyberpaisa": {
+      "handle": "Cyberpaisa",
+      "found": true,
+      "name": "Cyber",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "CypherVae": {
+      "handle": "CypherVae",
+      "found": false
+    },
+    "Eth": {
+      "handle": "Eth",
+      "found": true,
+      "name": "Woody",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "KBryan": {
+      "handle": "KBryan",
+      "found": true,
+      "name": "kwame",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "Marco-MetaMask": {
+      "handle": "Marco-MetaMask",
+      "found": true,
+      "name": "Marco De Rossi",
+      "bio_raw": "I run AI at MetaMask. ERC-8004 author. I've founded and scaled companies in Web3 and Education. My life commitment agenda: https://survival-tech.org",
+      "website": "https://survival-tech.org",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "Metanize": {
+      "handle": "Metanize",
+      "found": true,
+      "name": "Metanize - BODE Genesis",
+      "bio_raw": "Passionate about decentralized freedom, and self custody. Lending a hand to establish the Brothers Of DeFi Consortium as an upstart, educating and advocating on behalf of DeFi adoption. \n\nBrooklyn Tech Week, developed into a New York cultural tech space for startups.\n\nBlockchain Crypto Summit (2017-Present) - annual DeFi, Crypto gathering. \n\nI love a good SciFi flick. ",
+      "website": "http://BrooklynTechWeek.org",
+      "user_title": "",
+      "groups": [],
+      "location": "NYC"
+    },
+    "Moshiii": {
+      "handle": "Moshiii",
+      "found": true,
+      "name": "Moshi Wei",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "Nithin-Varma": {
+      "handle": "Nithin-Varma",
+      "found": true,
+      "name": "Nithin Mengani",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "S8ken": {
+      "handle": "S8ken",
+      "found": true,
+      "name": "",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "Spaded": {
+      "handle": "Spaded",
+      "found": false
+    },
+    "Sparksss": {
+      "handle": "Sparksss",
+      "found": true,
+      "name": "Sparksss",
+      "bio_raw": "",
+      "website": "",
+      "user_title": "",
+      "groups": [],
+      "location": ""
+    },
+    "SumeetChougule": {
+      "handle": "SumeetChougule",
+      "found": true,
+      "name": "Sumeet Chougule",
+      "bio_raw": "Creating ChaosChain at Nethermind | Astrophysicist",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "VickyFu": {
+      "handle": "VickyFu",
+      "found": true,
+      "name": "InvitedTea",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "Walodja1987": {
+      "handle": "Walodja1987",
+      "found": true,
+      "name": "Walodja1987",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "alftom": {
+      "handle": "alftom",
+      "found": true,
+      "name": "Alfred Tom",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "azanux": {
+      "handle": "azanux",
+      "found": true,
+      "name": "Charles",
+      "bio_raw": "",
+      "website": "",
+      "user_title": "",
+      "groups": [],
+      "location": ""
+    },
+    "bransdotcom": {
+      "handle": "bransdotcom",
+      "found": true,
+      "name": "",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "comeToThinkOfEth": {
+      "handle": "comeToThinkOfEth",
+      "found": true,
+      "name": "",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "daniel-ospina": {
+      "handle": "daniel-ospina",
+      "found": true,
+      "name": "Daniel Ospina",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "davidecrapis.eth": {
+      "handle": "davidecrapis.eth",
+      "found": true,
+      "name": "Davide Crapis",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "dcbuild3r": {
+      "handle": "dcbuild3r",
+      "found": true,
+      "name": "dcbuilder.eth",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "deiu": {
+      "handle": "deiu",
+      "found": true,
+      "name": "",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "denverbaumgartner": {
+      "handle": "denverbaumgartner",
+      "found": true,
+      "name": "denver",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "dievardump": {
+      "handle": "dievardump",
+      "found": true,
+      "name": "Simon Fremaux",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "ernestognw": {
+      "handle": "ernestognw",
+      "found": true,
+      "name": "Ernesto García",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "felixnorden": {
+      "handle": "felixnorden",
+      "found": true,
+      "name": "Felix Nordén",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "gpt3_eth": {
+      "handle": "gpt3_eth",
+      "found": true,
+      "name": "Frank He",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "hjs_foundation": {
+      "handle": "hjs_foundation",
+      "found": true,
+      "name": "JEP",
+      "bio_raw": "",
+      "website": "",
+      "user_title": "",
+      "groups": [],
+      "location": ""
+    },
+    "jdutreve": {
+      "handle": "jdutreve",
+      "found": true,
+      "name": "Jean-Philippe Dutrève",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "kimomon": {
+      "handle": "kimomon",
+      "found": true,
+      "name": null,
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "kinglouis": {
+      "handle": "kinglouis",
+      "found": true,
+      "name": null,
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "leonprou": {
+      "handle": "leonprou",
+      "found": true,
+      "name": "Leon Prouger",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "matevz-oasis": {
+      "handle": "matevz-oasis",
+      "found": true,
+      "name": "",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "micheda": {
+      "handle": "micheda",
+      "found": true,
+      "name": "Michele Dallachiesa",
+      "bio_raw": "",
+      "website": "",
+      "user_title": "",
+      "groups": [],
+      "location": ""
+    },
+    "mlegls": {
+      "handle": "mlegls",
+      "found": true,
+      "name": "疒奀",
+      "bio_raw": "github: github.com/mlegls\ntelegram: t.me/mlegls",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": "Shanghai"
+    },
+    "node0": {
+      "handle": "node0",
+      "found": true,
+      "name": "",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "nuhgid": {
+      "handle": "nuhgid",
+      "found": true,
+      "name": "Gideon",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "orgtrust.eth": {
+      "handle": "orgtrust.eth",
+      "found": true,
+      "name": "Richard Pedersen",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "pcarranzav": {
+      "handle": "pcarranzav",
+      "found": true,
+      "name": "Pablo",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "peersky": {
+      "handle": "peersky",
+      "found": true,
+      "name": "",
+      "bio_raw": "Founder at Peeramid Labs\n| ex OpenZeppelin \n\n",
+      "website": "http://www.peersky.xyz",
+      "user_title": "",
+      "groups": [],
+      "location": ""
+    },
+    "rithikha": {
+      "handle": "rithikha",
+      "found": true,
+      "name": "Rithikha",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "sarkazein": {
+      "handle": "sarkazein",
+      "found": true,
+      "name": "Sarkazein",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "sbacha": {
+      "handle": "sbacha",
+      "found": true,
+      "name": "sam bacha",
+      "bio_raw": "\nGitHub: github.com/sambacha\nTelegram: t.me/sambacha\nTwitter: twitter.com/blockrotator",
+      "website": "https://sambacha.github.io/primitives/",
+      "user_title": "",
+      "groups": [],
+      "location": "USA"
+    },
+    "soispoke": {
+      "handle": "soispoke",
+      "found": true,
+      "name": "",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "spengrah": {
+      "handle": "spengrah",
+      "found": true,
+      "name": "Spencer Graham",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "sterlingcrispin": {
+      "handle": "sterlingcrispin",
+      "found": true,
+      "name": "Sterling Crispin",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "tantodefi": {
+      "handle": "tantodefi",
+      "found": true,
+      "name": "Tantō Defi",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "ten-io-meta": {
+      "handle": "ten-io-meta",
+      "found": true,
+      "name": "Ten.IO",
+      "bio_raw": "",
+      "website": "",
+      "user_title": "",
+      "groups": [],
+      "location": ""
+    },
+    "theagora": {
+      "handle": "theagora",
+      "found": true,
+      "name": "",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "tim-cotten": {
+      "handle": "tim-cotten",
+      "found": true,
+      "name": "Tim Cotten",
+      "bio_raw": "",
+      "website": "",
+      "user_title": "",
+      "groups": [],
+      "location": ""
+    },
+    "tokmakoff": {
+      "handle": "tokmakoff",
+      "found": true,
+      "name": "Andrew Tokmakoff",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "treza-labs": {
+      "handle": "treza-labs",
+      "found": true,
+      "name": "Treza Labs",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "vkpatva": {
+      "handle": "vkpatva",
+      "found": true,
+      "name": "Viraj Patva",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "voidcenter": {
+      "handle": "voidcenter",
+      "found": true,
+      "name": "Justin Zhang",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "wanderosity": {
+      "handle": "wanderosity",
+      "found": true,
+      "name": "Wanderosity",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "weedeej": {
+      "handle": "weedeej",
+      "found": true,
+      "name": "Dixie J.",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "xiaowh7": {
+      "handle": "xiaowh7",
+      "found": true,
+      "name": "Seven",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    },
+    "zonu": {
+      "handle": "zonu",
+      "found": true,
+      "name": "zonu",
+      "bio_raw": "",
+      "website": "",
+      "user_title": null,
+      "groups": [],
+      "location": ""
+    }
+  },
+  "identity_map": [
+    {
+      "forum_handle": "Marco-MetaMask",
+      "github_handle": "MarcoMetaMask",
+      "matched_on": "display_name",
+      "name": "Marco De Rossi"
+    },
+    {
+      "forum_handle": "davidecrapis.eth",
+      "github_handle": "dcrapis",
+      "matched_on": "display_name",
+      "name": "Davide Crapis"
+    }
+  ]
+}

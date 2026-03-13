@@ -24,6 +24,12 @@ uv run python scripts/patch_a2a_missing_pages.py                 # recover any t
 uv run python scripts/annotate_llm.py --backend minimax          # LLM annotation (MiniMax-M2.5)
 uv run python scripts/compute_metrics.py                         # governance metrics + comparison table
 
+# Stakeholder enrichment (run after annotation)
+uv run python scripts/enrich_profiles.py                         # fetch Discourse + GitHub profiles → data/raw/profiles_*.json
+uv run python scripts/enrich_institutions.py                     # merge profiles into per-author records → data/annotated/author_profiles.json
+uv run python scripts/identify_core_contributors.py              # core contributor analysis + manual checklist → analysis/core_contributors.csv
+uv run python scripts/build_network.py                           # interactive relationship graphs → output/network_*.html
+
 # Annotation with other backends
 uv run python scripts/annotate_llm.py --backend anthropic        # requires ANTHROPIC_API_KEY
 uv run python scripts/annotate_llm.py --backend openai           # requires OPENAI_API_KEY + OPENAI_BASE_URL
@@ -52,6 +58,24 @@ annotate_llm.py    ──►  data/annotated/annotated_records.json
                                 │
                          analysis/structural_metrics.csv
                          output/findings_summary.md
+
+enrich_profiles.py ──►  data/raw/profiles_forum.json    (Discourse bio/company)
+                         data/raw/profiles_github.json   (GitHub bio/company)
+                                │
+                    enrich_institutions.py
+                                │
+                         data/annotated/author_profiles.json
+                                │
+                    identify_core_contributors.py
+                                │
+                         analysis/core_contributors.csv
+                         analysis/cross_case_overlap.csv
+                                │
+                    build_network.py
+                                │
+                         output/network_erc8004.html     (vis.js interactive)
+                         output/network_a2a.html
+                         analysis/network_edges_*.csv    (Gephi-compatible)
 ```
 
 ### Key Design Decisions
@@ -112,3 +136,8 @@ m = {f.name: {'sha256': hashlib.sha256(f.read_bytes()).hexdigest()} for f in sor
 Commit types: `feat`, `fix`, `data`, `analysis`, `docs`, `chore`
 
 Tag milestones after significant data events (e.g., `v0.3-a2a-complete`). Progress reports live in `reports/` with naming `R{N}_{date}_{topic}.md`; `reports/INDEX.md` is the master index.
+
+
+## Report and Rigor
+
+Write a report to record your progress rigorously, with traceable links.
