@@ -16,6 +16,9 @@ wheels/
 # macOS
 .DS_Store
 
-# notes (tracked — contains tasks, paper drafts, and vocabulary)
-# human-notes/
-# paper/
+# LaTeX build artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
