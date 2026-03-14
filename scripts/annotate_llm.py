@@ -57,6 +57,15 @@ BACKENDS = {
     },
 }
 
+BOT_AUTHORS = {
+    "gemini-code-assist[bot]",
+    "google-cla[bot]",
+    "github-actions[bot]",
+    "codecov[bot]",
+    "dependabot[bot]",
+    "git-vote[bot]",
+}
+
 ANNOTATION_PROMPT = """\
 You are a governance researcher annotating discussion records from a technology standardization process.
 For each record, output ONLY a JSON object with these fields:
@@ -193,8 +202,11 @@ def load_records() -> list[dict]:
         path = RAW_DIR / fname
         if path.exists():
             data = json.loads(path.read_text())
-            # Only annotate records with non-trivial text
+            # Only annotate records with non-trivial text, skip known bots
             for r in data:
+                author = r.get("author", "")
+                if author in BOT_AUTHORS or author.endswith("[bot]"):
+                    continue
                 if len((r.get("raw_text") or "").strip()) >= 20:
                     records.append({**r, "_case": "Google-A2A"})
             print(f"  Loaded {len(data)} {label} (Google A2A)")

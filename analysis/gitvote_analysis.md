@@ -39,69 +39,19 @@ Adds a new `tasks/list` RPC method to the A2A spec, allowing clients to query ta
 ### LLM annotation summary (human comments only)
 
 **Argument types:**
-- Technical: 26
-- Process: 11
-- Governance-Principle: 2
+- Technical: 1
 
 **Stance distribution:**
-- Modify: 14
-- Support: 13
-- Neutral: 12
+- Neutral: 1
 
 **Institutions involved:**
-- Independent: 29
-- Google: 6
-- Microsoft: 4
+- Google: 1
 
 ### Key annotated comments
 
-**edenreich** (Independent, Technical, stance=Neutral)
-> # Description  Thank you for opening a Pull Request! Before submitting your PR, there are a few things you can do to make sure it goes smoothly:  - [x] Follow the [`CONTRIBUTING` Guide](https://g
-*Key point: Add tasks/list method with filtering and pagination to specification*
-
-**edenreich** (Independent, Technical, stance=Neutral)
-> Not sure about this linting error of 404.html file, I didn't even touched this file. I guess it will be fixed on the main upstream.
-*Key point: Linting error in 404.html file not caused by author, expected to be fixed upstream*
-
-**holtskinner** (Google, Process, stance=Support)
-> I did a rebase to pull in the updates from main so the lint errors don't mess with your PR.  @kthota-g and @pstephengoogle Can you please review/approve this change to the spec?
-*Key point: Requesting review and approval from kthota-g and pstephengoogle for spec changes after main rebase*
-
-**ReubenBond** (Independent, Technical, stance=Modify)
-> If I send a `tasks/list` command to a public-facing compliant A2A server without specifying a `contextId`, will I receive everyone's tasks? I believe the answer should be no, but the spec appears to n
-*Key point: Spec should clarify implicit scope when contextId omitted in tasks/list - implementation-defined or explicit parameter*
-
-**edenreich** (Independent, Technical, stance=Support)
-> > If I send a `tasks/list` command to a public-facing compliant A2A server without specifying a `contextId`, will I receive everyone's tasks? I believe the answer should be no, but the spec appears to
-*Key point: Asks whether tasks/list without contextId exposes all users' tasks; suggests implementation-defined implicit scoping.*
-
-**edenreich** (Independent, Process, stance=Neutral)
-> I had to cleanup some changes that are not related to this Pull Request scope - it seems like some of the changes were removed from main upstream on the latest version - not sure exactly what went wro
-*Key point: Describes cleanup of unrelated changes due to rebase issues with upstream main branch.*
-
-**darrelmiller** (Microsoft, Process, stance=Neutral)
-> @a2aproject/a2a-tsc I'm assuming that including this feature would require a minor version bump.  Features like this are a good reason for why we need to implement a proposal system because if we don'
-*Key point: Features require minor version bumps; need proposal system to prevent merge conflicts during version changes.*
-
-**darrelmiller** (Microsoft, Technical, stance=Modify)
-> @edenreich   I would expect the two most common filter criteria would be: - all in-progress tasks - recently completed tasks  The current set of filter criteria make those scenarios a bit tricky
-*Key point: Suggests adding status array filter, lastUpdateDateTime filter, and taskReference result option for efficiency.*
-
-**edenreich** (Independent, Technical, stance=Support)
->  > @edenreich >  > I would expect the two most common filter criteria would be: >  > * all in-progress tasks > * recently completed tasks >  > The current set of filter criteria make those sce
-*Key point: Supports adding status array filter and lastUpdateDateTime for better task filtering and observability.*
-
-**swapydapy** (Independent, Technical, stance=Support)
-> +1 to filters for lastUpdatedtime, list of task statuses.  Also should we consider a param to include artifacts or not, to make the Task result payload smaller.
-*Key point: Supports adding lastUpdatedTime and task status filters; suggests param to optionally include artifacts to reduce payload size.*
-
-**edenreich** (Independent, Technical, stance=Support)
-> > +1 to filters for lastUpdatedtime, list of task statuses. >  > Also should we consider a param to include artifacts or not, to make the Task result payload smaller.  @swapydapy Yea makes sense, 
-*Key point: Supports adding filters for lastUpdatedTime, task statuses, and artifact inclusion parameter to reduce payload size.*
-
-**edenreich** (Independent, Technical, stance=Neutral)
-> @darrelmiller @swapydapy I've added both filters to make it more flexible can you have a look?
-*Key point: Requesting review of added filters for flexibility*
+**pstephengoogle** (Google, Technical, stance=Neutral)
+> > > > @edenreich The suggestion to exclude artifacts is an alternative way to address the size concerns I had. > >  > >  > > Great! > > > I am good with these changes. My concern now is if we merg
+*Key point: Discussing version bump to 0.4.0, SDK 0.3.x support requirements, and backward compatibility for new endpoints*
 
 ---
 
@@ -125,59 +75,9 @@ Proposes adding a `lastUpdateTime` field to the Task data model, needed by `task
 
 ### LLM annotation summary (human comments only)
 
-**Argument types:**
-- Technical: 4
-- Process: 4
-- Off-topic: 1
-
-**Stance distribution:**
-- Modify: 3
-- Support: 2
-- Oppose: 2
-- Neutral: 2
-
-**Institutions involved:**
-- Independent: 5
-- Cisco: 2
-- Microsoft: 2
+*(No annotation available)*
 
 ### Key annotated comments
-
-**lkawka** (Independent, Technical, stance=Support)
-> The new `task/list` method's [specification](https://github.com/a2aproject/A2A/blob/main/docs/specification.md#74-taskslist) dictates that tasks must be ordered by the last update time. However, the c
-*Key point: Add last update time field to Task message for stable task ordering by update time*
-
-**amye** (Independent, Technical, stance=Oppose)
-> Sigh, it really does need duration. Reverting!
-*Key point: Contributor reverts their change, confirming duration field is required*
-
-**He-Pin** (Independent, Off-topic, stance=Neutral)
-> I think is is great, mcp just added this too.
-*Key point: Brief positive comment without substantive engagement with proposal*
-
-**geneknit** (Independent, Technical, stance=Modify)
-> Discussion moving to Discord and the main issue. Concern about having two that serve the same value. cc: @darrelmiller
-*Key point: Concern about having two features serve the same value in the protocol*
-
-**Tehsmash** (Cisco, Technical, stance=Modify)
-> After discussion in the TSC meeting on 2026/01/6, we agreed to leave the fields in Task as they are and change the filter for ListTasks to `status_timestamp_after` to indicate that its based on the ta
-*Key point: Change ListTasks filter to status_timestamp_after to reflect task status only*
-
-**darrelmiller** (Microsoft, Process, stance=Modify)
-> @Tehsmash I think that means we could close this PR and combine the proposed naming change with this PR to change the datatype https://github.com/a2aproject/A2A/pull/1288 
-*Key point: Close this PR and combine the proposed naming change with PR #1288*
-
-**Tehsmash** (Cisco, Process, stance=Support)
-> > @Tehsmash I think that means we could close this PR and combine the proposed naming change with this PR to change the datatype #1288  👍  happy for it to be combined (whatever makes it turn around 
-*Key point: Supports combining this PR with #1288 to expedite the naming change.*
-
-**darrelmiller** (Microsoft, Process, stance=Oppose)
-> Closing this PR in favour of #1358 
-*Key point: Closing this PR, redirecting to alternative PR #1358*
-
-**amye** (Independent, Process, stance=Neutral)
-> /cancel-vote   #1358 has the correct one + gitvote has added Stephen already, so yay! We'll restart this. 
-*Key point: Cancelling current vote; will restart as #1358 has correct version and Stephen added to gitvote.*
 
 ---
 

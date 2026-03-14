@@ -1,10 +1,8 @@
 {
   "annotated_records.json": {
-    "sha256": "6ff2859eebe4abae738578c6fd53e401cfca918391e0f323498269b36a3f4843",
-    "size_bytes": 9146997
+    "sha256": "99ebfd47b32a967ddc04c4cc1642f2aa11d1c70301d7c53e594757d953a5f8c5"
   },
   "author_profiles.json": {
-    "sha256": "9549a520b71821f2faf9d68ef7ca1d1ec08b28246d1da29b614bc5a794462960",
-    "size_bytes": 348687
+    "sha256": "8a5c761abbffe9adad7e82204c9232a9b844eecb8059c86a9420f5a1d93f5fd0"
   }
 }
