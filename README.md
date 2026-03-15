@@ -23,8 +23,6 @@ workspace/
 │   └── annotated/    # LLM-annotated records and author profiles
 ├── analysis/         # Derived metrics and network export files
 ├── output/           # Final visualizations and summary reports
-│   └── preparation/  # Researcher-facing notes (not for publication)
-├── reports/          # Progress reports (R01–R07)
 └── paper/            # LaTeX draft
 ```
 
@@ -71,14 +69,4 @@ uv run python scripts/visualise/build_bipartite.py
 ```
 GITHUB_PERSONAL_ACCESS_TOKEN=...
 MINIMAX_API_KEY=...
-ANTHROPIC_API_KEY=...   # optional
-OPENAI_API_KEY=...      # optional
-OPENAI_BASE_URL=...     # optional
 ```
-
-## Technical Notes
-
-- **curl over requests**: Python 3.14 has SSL EOF errors on `ethereum-magicians.org`; all HTTP uses `subprocess` + system `curl`.
-- **Discourse pagination**: numeric topic ID only — `/t/25098/posts.json?post_ids[]=...`; slug+ID form returns 404.
-- **ERC-8004 core PRs**: #1170, #1244, #1248, #1458, #1462, #1470, #1472, #1477, #1488 — only PRs that directly modify `ERCS/erc-8004.md`.
-- **Institution provenance**: 3-tier priority — `eip_header_email` > `manual_R07` > `lm_inferred`. See `data/annotated/author_profiles.json`.
