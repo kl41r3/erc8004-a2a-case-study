@@ -22,3 +22,10 @@ wheels/
 *.fls
 *.log
 *.synctex.gz
+
+# Private / local only
+human-notes/
+paper/
+reports/
+.claude/
+tmp.md
