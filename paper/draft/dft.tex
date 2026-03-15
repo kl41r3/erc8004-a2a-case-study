@@ -4,9 +4,10 @@
 %
 % Target: AOM/SMS Conference — Technology and Innovation Management (TIM) track
 % Format: IEEE conference (IEEEtran.cls)
-% Date:   2026-03-13
-% Status: Working draft — all statistics from annotated_records.json (N=4,863
-%         core, plus 49 git-vote), structural_metrics.csv, core_contributors.csv
+% Date:   2026-03-15
+% Status: Working draft — all statistics from annotated_records.json (N=5,421
+%         total), structural_metrics.csv, core_contributors.csv.
+%         Institution data: R07 manual investigation (109 authors verified).
 %
 % NOTE TO AUTHOR: Sections marked [AUTHOR] require your judgment or additions.
 %   Numbers in this draft come directly from the data pipeline; please verify
@@ -62,10 +63,10 @@ in exactly these conditions. Drawing on TCE and open-source governance theory,
 we conduct a comparative case study of two AI agent protocol governance
 processes: ERC-8004 (a Trustless Agents standard proposed through the Ethereum
 Improvement Proposal process) and Google A2A (an Agent-to-Agent protocol
-governed by a corporate-led technical steering committee). Analysis of 5,749
+governed by a corporate-led technical steering committee). Analysis of 5,421
 archival governance records reveals that the DAO process achieved ratified
-consensus in 169 days with 71 contributors across competing organizations, while
-the corporate process remains in ongoing iteration despite 600+ participants and
+consensus in 169 days with 69 unique contributors across competing organizations, while
+the corporate process remains in ongoing iteration despite 771 participants and
 an open-source facade. We identify three mechanisms---smart-contract-enforced
 commitment, pseudonymous reputation externalization, and permissionless
 competitive entry---that jointly substitute for hierarchical authority. Our
@@ -111,7 +112,7 @@ This paper documents the puzzle and resolves it. We compare ERC-8004's DAO
 governance with Google A2A, a contemporaneous AI agent protocol governed by a
 corporate-led Technical Steering Committee (TSC) with formal membership and
 binding votes. Both cases involve AI protocol standardization; they differ
-systematically in governance mode. Analysis of 5,749 archival governance
+systematically in governance mode. Analysis of 5,421 archival governance
 records---scraped from Ethereum Magicians forum, GitHub repositories, and
 GitHub Discussions---reveals three mechanisms by which the DAO process achieves
 coordination without hierarchical authority.
@@ -226,7 +227,7 @@ generalize prevalence.
 \subsection{Case Descriptions}
 
 \textit{ERC-8004 (Trustless Agents)} was proposed on August 13, 2025 by
-\texttt{davidecrapis.eth} (Olas/Valory protocol). The standard defines a
+\texttt{davidecrapis.eth} (Ethereum Foundation). The standard defines a
 registry for trustless AI agents on the Ethereum Virtual Machine (EVM),
 enabling accountability and credentialing without centralized authority.
 It was processed through the standard Ethereum Improvement Proposal (EIP)
@@ -237,7 +238,7 @@ no fee, and no organizational affiliation to participate.
 \textit{Google A2A (Agent-to-Agent)} was first committed on March 25, 2025
 and publicly announced on April 9, 2025. The protocol defines an open
 standard for AI agent interoperability across vendors. Despite being hosted
-as an open-source repository with 600+ contributors, governance authority
+as an open-source repository with 771 non-bot contributors, governance authority
 rests with a Technical Steering Committee (TSC) whose membership is formally
 registered; binding votes are cast through a git-vote mechanism accessible
 only to TSC members.
@@ -255,8 +256,9 @@ request and review comment records; (3) 822 GitHub Discussion records scraped
 via the GitHub GraphQL API; and (4) 142 records from the two TSC-voted pull
 requests (\#831 and \#1206), scraped using the GitHub REST API.
 
-Total records before deduplication: 6,172. After filtering records with
-fewer than 20 characters of text (bot messages, CI notifications): 5,749.
+Total records before filtering: 6,172. After removing records with fewer than
+20 characters of text (bot messages, CI notifications) and bot authors: 5,421
+(ERC-8004: 149; Google A2A: 5,272).
 Data collection occurred between November 2025 and March 2026.
 
 \subsection{LLM-Assisted Annotation}
@@ -276,9 +278,12 @@ categorical labels:
 The model's reasoning output (\texttt{<think>...</think>} blocks) was
 stripped before JSON parsing. Annotation completion rate was 98.7\%
 (122 records failed due to text-too-short or JSON parse errors). Institution
-labels were upgraded post-hoc for 9 accounts using GitHub company fields
-and Discourse bio data fetched via public APIs, following a priority cascade:
-GitHub company field $>$ GitHub bio $>$ forum bio $>$ LLM inference.
+labels follow a three-tier provenance cascade: (1) EIP header email
+(highest confidence, 2 authors); (2) R07 manual investigation---a systematic
+review of GitHub profiles, LinkedIn, and EIP metadata for the top 109
+contributors across both cases, yielding 40 institution upgrades---;
+and (3) LLM inference (517 remaining authors). The original LLM-inferred label
+is preserved in a separate \texttt{institution\_lm} field for all records.
 
 \subsection{Validity Measures}
 
@@ -295,10 +300,11 @@ natural experiments in governance escalation.
 
 \noindent\textit{Limitations on reliability:} Inter-coder reliability
 between LLM annotation and human codes has not been computed for the full
-sample. The institution field relies on LLM inference for approximately
-617 of 626 unique authors; known errors include Tehsmash (Cisco, labeled
-Independent). [AUTHOR: compute Cohen's $\kappa$ on a random subsample of
-$N=50$ and report before submission.]
+sample. Institution labels for 517 of 626 unique authors remain LLM-inferred;
+109 were manually verified via R07 investigation, correcting 40 labels
+(including material cases such as \texttt{pcarranzav} to The Graph and
+\texttt{davidecrapis.eth} to Ethereum Foundation). [AUTHOR: compute Cohen's
+$\kappa$ on a random subsample of $N=50$ and report before submission.]
 
 
 % =============================================================================
@@ -323,9 +329,10 @@ iteration with no equivalent endpoint.
 Proposal date & 2025-08-13 & 2025-03-25 \\
 Consensus achieved & 2026-01-29 & Ongoing \\
 Days to consensus & \textbf{169} & — \\
-Discussion records & 149 & 5,600+ \\
-Unique contributors & 71 & 600+ \\
-Openness index & \textbf{1.000} & 0.956 \\
+Discussion records & 149 & 5,272 \\
+Unique contributors (non-bot) & 69 & 771 \\
+Top institution share & MetaMask 12.6\% & Google 25.0\% \\
+Independent share & 44.4\% & 44.1\% \\
 Formal voting & None & TSC git-vote (2 PRs) \\
 \bottomrule
 \end{tabular}
@@ -355,7 +362,7 @@ Governance-Principle & 4.9 & 1.7 \\
 Off-topic          & 4.2 & 7.0 \\
 Economic           & 2.8 & 0.1 \\
 \midrule
-Total ($N$)        & 144 & 4,391 \\
+Total ($N$)        & 149 & 5,272 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -391,7 +398,7 @@ Modify   & 29.2 & 21.8 \\
 Oppose   & \textbf{6.9} & 2.7 \\
 Off-topic & 1.4 & 4.5 \\
 \midrule
-Total ($N$) & 144 & 4,391 \\
+Total ($N$) & 149 & 5,272 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -402,12 +409,12 @@ A rubber-stamp process would show $>70\%$ Support; a captured process
 would show concentrated Modify from a small set of powerful actors.
 
 ERC-8004's Oppose rate (6.9\%) is more than double A2A's (2.7\%). The
-10 Oppose records in ERC-8004 originated entirely from independent
-contributors---primarily \texttt{pcarranzav} (16 records, unaffiliated)
-and \texttt{spengrah} (10 records, unaffiliated)---and their objections
-forced specification revisions across multiple PR iterations. This
-demonstrates that technical credibility alone confers influence in
-the DAO governance model.
+10 Oppose records in ERC-8004 originated primarily from non-EF contributors---
+\texttt{pcarranzav} (16 records, The Graph) with the highest Modify+Oppose rate,
+and \texttt{spengrah} (Hats Protocol)---neither of whom holds any procedural
+authority in the EIP process. Their objections forced specification revisions
+across multiple PR iterations, demonstrating that technical credibility alone
+confers influence in the DAO governance model.
 
 A2A's lower Oppose rate may reflect selection effects (strong opponents
 exit rather than engage), social inhibition (opposing Google's core
@@ -423,34 +430,36 @@ as explicit opposition).
 \centering
 \begin{tabular}{lrr}
 \toprule
-\textbf{Institution} & \textbf{ERC-8004} & \textbf{Google A2A} \\
+\textbf{Institution} & \textbf{ERC-8004 (\%)} & \textbf{Google A2A (\%)} \\
 \midrule
-Independent        & \textbf{79.9} & 64.5 \\
-Google             & 0 & \textbf{22.6} \\
-MetaMask           & 11.1 & 0 \\
-Unknown            & 6.3 & 12.6 \\
-Ethereum Foundation & 2.1 & 0 \\
-Microsoft          & 0 & 0.3 \\
+Independent          & \textbf{44.4} & \textbf{44.1} \\
+Unknown              & 13.3 & 15.1 \\
+MetaMask             & \textbf{12.6} & — \\
+Ethereum Foundation  & 10.4 & — \\
+The Graph            & 5.9 & — \\
+Google               & — & \textbf{25.0} \\
+Microsoft            & — & 9.4 \\
+Cisco                & — & 3.8 \\
+Other named          & 13.4 & 2.6 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Both cases have high openness indices (ERC-8004: 1.000; A2A: 0.956),
-suggesting that participation breadth is not the differentiating dimension.
-What differs is the \textit{distribution of influence}. Google's 22.6\%
-record share derives from 7.3\% of unique authors, revealing disproportionate
-contribution intensity by institutional actors---particularly \texttt{holtskinner}
-(Google, 439 records, $\approx 9\%$ of all A2A records). This is how corporate
-governance reproduces hierarchy within an ostensibly open project: not by
-excluding others, but by having employees who contribute more than everyone
-else combined.
+The independent contributor share is nearly identical across cases (44.4\%
+vs.\ 44.1\%), suggesting that participation breadth is not the differentiating
+dimension. What differs is the \textit{distribution of named institutional
+influence}. Google's 25.0\% record share---the highest single institution in
+either case---reveals disproportionate contribution intensity, particularly from
+\texttt{holtskinner} (Google, $\approx$560 records, $\approx$10\% of all A2A records).
+This is how corporate governance reproduces hierarchy within an ostensibly open
+project: not by excluding others, but by having employees who contribute at
+orders-of-magnitude higher rates than external participants.
 
-ERC-8004's MetaMask at 11.1\% of records (from \texttt{MarcoMetaMask},
-the single most active contributor at 11.4\% of records) shows the same
-dynamic at smaller scale. However, MetaMask's dominance was episodic and
-reversed when independent contributors raised substantive objections---a
-structural difference from A2A, where Google's directional control
-appears persistent.
+ERC-8004's top institution (MetaMask, 12.6\% of records) is less than half of
+Google's A2A share, and MetaMask's contribution intensity was episodic---its
+dominance reversed when The Graph's \texttt{pcarranzav} and Hats Protocol's
+\texttt{spengrah} raised substantive objections that forced specification
+revisions. No equivalent independent-driven reversal appears in the A2A record.
 
 \subsection{Governance Escalation Events}
 
@@ -529,11 +538,12 @@ identity systems.
 
 The empirical signature is \texttt{pcarranzav}'s consistent Modify/Oppose
 stance across 16 records representing a coherent technical position. The
-EIP was revised in response to concerns from an unaffiliated independent
-contributor with no organizational authority, demonstrating that technical
-credibility alone confers influence. Under corporate hierarchy (A2A), the
-equivalent mechanism is employment reputation, which carries career risk
-that suppresses opposition from non-employees.
+EIP was revised in response to concerns from a contributor from The Graph
+(Edge and Node), who holds no procedural authority in the EIP process---no
+membership seat, no editorial role. Technical credibility alone conferred
+influence. Under corporate hierarchy (A2A), the equivalent mechanism is
+employment reputation, which carries career risk that suppresses opposition
+from non-employees.
 
 \subsubsection{Mechanism 3: Permissionless Entry as Anti-Capture Mechanism}
 
@@ -545,10 +555,10 @@ were perceived as captured by MetaMask, independent developers could fork
 the EIP and propose a competing standard. The mere possibility disciplines
 institutional participants.
 
-The evidence: MetaMask's 11.1\% record share vs.\ 1.5\% author share
-shows high institutional intensity but not monopoly, and institutional
-dominance did not suppress the independent Oppose voices that forced
-specification revisions. Google A2A's TSC gate is the structural opposite:
+The evidence: MetaMask's 12.6\% record share with only one highly active
+contributor shows high institutional intensity but not monopoly, and
+institutional dominance did not suppress the Oppose voices from The Graph
+and Hats Protocol that forced specification revisions. Google A2A's TSC gate is the structural opposite:
 binding authority is limited to a pre-registered committee, new entrants
 cannot credibly threaten to fork with equivalent legitimacy, and
 institutional actors maintain persistent directional control.
@@ -575,9 +585,9 @@ Puranam et al.'s sense---the solution is not to reduce the problem to
 an existing form but to deploy different mechanisms.
 
 \noindent\textit{For technology standardization:} The comparison with
-A2A reveals that corporate openness (high openness index of 0.956) is
-compatible with informal hierarchy: institutional actors can dominate
-deliberation without formal authority~\cite{simcoe2012}. Openness is
+A2A reveals that high independent-contributor breadth ($\approx$44\% in both cases)
+is compatible with informal institutional hierarchy: a single founding institution
+(Google, 25.0\% of records) can dominate deliberation without formal authority~\cite{simcoe2012}. Openness is
 a necessary but not sufficient condition for permissionless governance.
 The distinguishing feature is the absence of a binding authority gate---in
 A2A, the TSC gate; in SSOs, the membership gate~\cite{krechmer2006}.
@@ -588,14 +598,15 @@ A2A, the TSC gate; in SSOs, the membership gate~\cite{krechmer2006}.
 governance attempts are not represented in the sample; the mechanisms
 identified may be necessary but not sufficient for successful DAO governance.
 
-\textbf{Comparison asymmetry:} ERC-8004 has 149 records; A2A has 5,600+.
+\textbf{Comparison asymmetry:} ERC-8004 has 149 records; A2A has 5,272.
 The structural difference in data volume reflects transparency norms but
 makes direct statistical comparison difficult without normalization.
 Proportional comparisons (argument type \%, stance \%) partially address this.
 
 \textbf{Annotation reliability:} LLM annotation with MiniMax-M2.5 has not
-been validated against a human-coded subsample. The institution field
-contains known errors (Tehsmash/Cisco labeled Independent). [AUTHOR:
+been validated against a human-coded subsample. Institution labels were manually
+verified for 109 of 626 authors (R07 investigation), correcting 40 labels;
+517 remain LLM-inferred. [AUTHOR:
 compute Cohen's $\kappa \geq 0.7$ for a random $N=50$ subsample before submission.]
 
 \textbf{Off-platform governance:} A2A's critical decisions partially migrate

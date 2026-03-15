@@ -1,75 +1,70 @@
-# RQ1 Governance Metrics — Findings Summary
-Generated: 2026-03-12 16:38 UTC
+# Findings Summary: DAO vs. Corporate Governance in AI Protocol Standardization
+
+*Last updated: 2026-03-15. Based on 5,421 annotated records across two cases.*
 
 ---
 
-## Comparative Governance Metrics
+## The Puzzle
 
-| Metric | ERC-8004 (DAO) | Google A2A (Corporate) |
-|--------|---------------|------------------------|
-| Governance type | Permissionless DAO | Corporate Hierarchy |
-| Proposal / first public date | 2025-08-13 | 2025-04-09 |
-| Consensus / launch | 2026-01-29 | N/A (ongoing) |
-| Days to consensus | **169** | N/A |
-| Total discussion records | 149 | 4923 |
-| Unique discussion contributors | 71 | 596 (+81 review comment authors) |
-| Unique institutions | 5 | 7 |
-| Openness index | 1.0 | 0.958 |
-| Total commits | N/A | 522 |
-| Commit authors | N/A | 131 |
-| Forum reply rate | 0.46 | N/A |
+Transaction cost economics predicts that high asset specificity and behavioral uncertainty favor hierarchy. ERC-8004 (a trustless AI agent protocol) was developed under exactly these conditions — yet 71 contributors from competing organizations reached binding consensus in **169 days** through a permissionless DAO process, without contracts or authority.
 
-> Openness index = unique contributors from outside initiating org / total unique contributors.
-> Values 0–1; closer to 1.0 = more open.
+Google A2A addressed the same problem via a corporate-led Technical Steering Committee. After one year of open development, it remains in ongoing iteration with no binding consensus date.
 
 ---
 
-## ERC-8004 Participation Breakdown (LLM-annotated)
+## Key Comparisons
 
-  - Independent: 115 (77.2%)
-  - MetaMask: 16 (10.7%)
-  - Unknown: 14 (9.4%)
-  - Ethereum Foundation: 3 (2.0%)
-  - Sparsity: 1 (0.7%)
-
-
-## Google A2A Participation Breakdown (LLM-annotated)
-
-  - Independent: 2745 (58.8%)
-  - Google: 983 (21.1%)
-  - Unknown: 928 (19.9%)
-  - Microsoft: 5 (0.1%)
-  - Coinbase: 2 (0.0%)
-  - Huawei: 1 (0.0%)
-
+| | ERC-8004 (DAO) | Google A2A (Corporate) |
+|---|---|---|
+| Governance | Permissionless EIP process | Corporate TSC + open-source |
+| First public | 2025-08-13 | 2025-04-09 |
+| Consensus | **2026-01-29 (169 days)** | Ongoing |
+| Discussion records | 149 | 5,272 |
+| Unique contributors | 69 | 771 |
+| Top institution share | MetaMask: 12.6% of records | Google: 25.0% of records |
+| Independent share | 44.4% of records | 44.1% of records |
 
 ---
 
-## Data Sources
+## Participation Structure
 
-| Case | Source | Link | Records |
-|------|--------|------|---------|
-| ERC-8004 | Ethereum Magicians forum | https://ethereum-magicians.org/t/erc-8004-trustless-agents/25098 | 113 posts |
-| ERC-8004 | GitHub ethereum/ERCs (core PRs only) | https://github.com/ethereum/ERCs/pulls?q=erc-8004 | 36 comments |
-| Google A2A | GitHub google/A2A | https://github.com/google/A2A | 522 commits, 4923 discussion records |
+**ERC-8004** — distributed, multi-institutional:
+- 69 unique contributors; no single actor exceeds 13% of records
+- Named institutions confirmed (R07): MetaMask (12.6%), Ethereum Foundation (10.4%), The Graph (5.9%), Hats Protocol (3.7%), Nethermind (3.0%)
+- Core EIP co-authors: MetaMask, Ethereum Foundation, Google, Coinbase (per EIP header)
+- Most active critic: `pcarranzav` (The Graph, 16 records) — highest Modify+Oppose rate, no organizational power within the EIP process
 
----
-
-## Theoretical Interpretation (Draft)
-
-**Williamson puzzle**: ERC-8004 involved high asset specificity (AI agent protocol)
-and high uncertainty (novel domain). TCE predicts hierarchy. Instead, competing
-firms cooperated via permissionless DAO in 169 days.
-
-**Contrast**: Google A2A was developed entirely inside Google's corporate hierarchy.
-Both produced a technically similar protocol addressing the same problem.
-The governance form differed radically.
-
-**Three DAO-enabling mechanisms (proposed)**:
-1. Blockchain-enforced commitment substitutes for contractual safeguards
-2. On-chain reputation removes free-rider incentive
-3. Permissionless participation lowers coordination costs across heterogeneous stakeholders
+**Google A2A** — hierarchically concentrated:
+- 771 unique contributors, but power-law concentrated: `holtskinner` (Google) alone = ~10% of all records
+- Top 5 contributors all organizationally affiliated: Google ×3, Microsoft, Cisco
+- `darrelmiller` (Microsoft, 286+ records) simultaneously: IETF HTTPAPI WG Chair + LF A2A TSC member — a single institutional bridge between corporate and formal standards infrastructure
+- Independent contributors appear only at positions 6+ in contribution ranking
 
 ---
 
-*To complete: run `uv run python scripts/annotate_llm.py` (requires MiniMax/OpenAI/Anthropic API key with balance).*
+## Argument Type Analysis
+
+**ERC-8004:** Technical debate dominates (74.3%). Governance-Principle arguments (4.9%) are present but not the primary mode. Process arguments (13.9%) reflect EIP lifecycle management.
+
+**A2A:** Broader argument distribution across Technical, Process, and Economic types — consistent with an ongoing product development process rather than a finite standardization event.
+
+**Cross-case pattern:** Both cases show ~44% independent contributor records, but ERC-8004 independents engage in substantive technical critique (high Modify+Oppose rates), while A2A independents primarily contribute feature requests and implementation questions.
+
+---
+
+## Three Enabling Mechanisms (Proposed)
+
+1. **Smart-contract-enforced commitment** — blockchain finality substitutes for contractual safeguards; no party can unilaterally reverse ratified EIPs
+2. **Pseudonymous reputation externalization** — on-chain identity creates reputational stakes across organizational boundaries, reducing free-rider risk
+3. **Permissionless competitive entry** — any actor can fork, implement, or critique the specification; this threat disciplines incumbent contributors
+
+These jointly substitute for hierarchical authority, resolving the Williamson puzzle.
+
+---
+
+## Data Quality
+
+- 5,421 total annotated records (5,421 via LLM; ERC-8004 annotation quality verified against manual sample)
+- Institution attribution: 109 of 626 authors enriched via R07 manual investigation (GitHub company fields, EIP header email, LinkedIn); 517 remain LLM-inferred
+- ERC-8004 GitHub data: 7 of 9 core PRs have human participants; #1470 and #1488 contain only bot activity
+- Cross-case overlap: 1 confirmed human (voidcenter / Sparsity.ai) appears in both cases

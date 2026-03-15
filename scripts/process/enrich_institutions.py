@@ -17,7 +17,7 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).parent.parent.parent
 DATA_RAW = ROOT / "data" / "raw"
 ANNOTATED = ROOT / "data" / "annotated"
 

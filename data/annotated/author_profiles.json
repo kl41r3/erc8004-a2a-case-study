@@ -4,8 +4,8 @@
     "github_handle": "dcrapis",
     "forum_handle": "davidecrapis.eth",
     "display_name": "Davide Crapis",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Ethereum Foundation",
+    "institution_source": "eip_header_email",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -26,7 +26,11 @@
       "Neutral": 4,
       "Support": 4,
       "Modify": 1
-    }
+    },
+    "institution_manual": "Ethereum Foundation",
+    "institution_evidence": "EIP header email: davide@ethereum.org",
+    "institution_evidence_url": "https://github.com/ethereum/ERCs/blob/master/ERCS/erc-8004.md",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "leonprou",
@@ -34,7 +38,7 @@
     "forum_handle": "leonprou",
     "display_name": "Leon Prouger",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -49,15 +53,19 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "spengrah",
     "github_handle": "",
     "forum_handle": "spengrah",
     "display_name": "Spencer Graham",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Hats Protocol",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -73,15 +81,19 @@
     "stances": {
       "Modify": 4,
       "Oppose": 1
-    }
+    },
+    "institution_manual": "Hats Protocol",
+    "institution_evidence": "Hats Protocol official team page lists him as Protocol Lead; GitHub organization Hats-Protocol. https://hatsprotocol.xyz/team",
+    "institution_evidence_url": "https://hatsprotocol.xyz/team",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "felixnorden",
     "github_handle": "",
     "forum_handle": "felixnorden",
     "display_name": "Felix Nordén",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Mure",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -97,7 +109,11 @@
     "stances": {
       "Modify": 3,
       "Support": 2
-    }
+    },
+    "institution_manual": "Mure",
+    "institution_evidence": "LinkedIn confirms current employment at Mure(Web3 payments); GitHub company field \"Ignio\" may be outdated. https://github.com/felixnorden",
+    "institution_evidence_url": "https://github.com/felixnorden",
+    "institution_confidence": "Strong"
   },
   {
     "canonical_handle": "sbacha",
@@ -105,7 +121,7 @@
     "forum_handle": "sbacha",
     "display_name": "sam bacha",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "\nGitHub: github.com/sambacha\nTelegram: t.me/sambacha\nTwitter: twitter.com/blockrotator",
     "company_raw": "",
@@ -120,15 +136,19 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "Forum bio only lists GitHub/Telegram/Twitter, Twitter name @blockrotator, associated with Manifold Finance but no company confirmation. https://github.com/sambacha",
+    "institution_evidence_url": "https://github.com/sambacha",
+    "institution_confidence": "Probable"
   },
   {
     "canonical_handle": "mlegls",
     "github_handle": "",
     "forum_handle": "mlegls",
-    "display_name": "疒奀",
+    "display_name": "mlegls",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "github: github.com/mlegls\ntelegram: t.me/mlegls",
     "company_raw": "",
@@ -145,15 +165,19 @@
       "Support": 1,
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "Forum bio only lists GitHub/Telegram; location Shanghai; no company information. https://ethereum-magicians.org/u/mlegls",
+    "institution_evidence_url": "https://ethereum-magicians.org/u/mlegls",
+    "institution_confidence": "Probable"
   },
   {
     "canonical_handle": "daniel-ospina",
     "github_handle": "",
     "forum_handle": "daniel-ospina",
     "display_name": "Daniel Ospina",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "RnDAO",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -169,7 +193,11 @@
     "stances": {
       "Oppose": 1,
       "Neutral": 1
-    }
+    },
+    "institution_manual": "RnDAO",
+    "institution_evidence": "GitHub organization member: @RnDAO(rnd.ventures, DAO governance research institution). https://github.com/daniel-ospina",
+    "institution_evidence_url": "https://github.com/daniel-ospina",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "comeToThinkOfEth",
@@ -177,7 +205,7 @@
     "forum_handle": "comeToThinkOfEth",
     "display_name": "comeToThinkOfEth",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -192,15 +220,19 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "pcarranzav",
     "github_handle": "",
     "forum_handle": "pcarranzav",
     "display_name": "Pablo",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Edge and Node / The Graph Protocol",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -216,7 +248,11 @@
     "stances": {
       "Modify": 5,
       "Oppose": 3
-    }
+    },
+    "institution_manual": "Edge and Node / The Graph Protocol",
+    "institution_evidence": "GitHub organization member: @graphprotocol、@edgeandnode; core maintainer of graphprotocol/contracts. https://github.com/pcarranzav",
+    "institution_evidence_url": "https://github.com/pcarranzav",
+    "institution_confidence": "Strong"
   },
   {
     "canonical_handle": "azanux",
@@ -224,7 +260,7 @@
     "forum_handle": "azanux",
     "display_name": "Charles",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -241,7 +277,11 @@
     "stances": {
       "Modify": 3,
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "KBryan",
@@ -249,7 +289,7 @@
     "forum_handle": "KBryan",
     "display_name": "kwame",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -265,7 +305,11 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "MarcoMetaMask",
@@ -273,7 +317,7 @@
     "forum_handle": "Marco-MetaMask",
     "display_name": "Marco De Rossi",
     "institution_final": "MetaMask",
-    "institution_source": "github_company_field",
+    "institution_source": "eip_header_email",
     "institution_lm": "MetaMask",
     "bio": "AI Lead at @MetaMask 🦊 Founded & scaled companies in EdTech & Web3. On a mission to build and spread mass survival tech: https://survival-tech.org",
     "company_raw": "MetaMask",
@@ -297,7 +341,11 @@
       "Support": 5,
       "Modify": 2,
       "Oppose": 1
-    }
+    },
+    "institution_manual": "MetaMask",
+    "institution_evidence": "EIP header email: marco.derossi@metamask.io",
+    "institution_evidence_url": "https://github.com/ethereum/ERCs/blob/master/ERCS/erc-8004.md",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "gpt3_eth",
@@ -305,7 +353,7 @@
     "forum_handle": "gpt3_eth",
     "display_name": "Frank He",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -320,15 +368,19 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "SumeetChougule",
     "github_handle": "",
     "forum_handle": "SumeetChougule",
     "display_name": "Sumeet Chougule",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Nethermind",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "Creating ChaosChain at Nethermind | Astrophysicist",
     "company_raw": "",
@@ -345,7 +397,11 @@
     "stances": {
       "Support": 3,
       "Modify": 1
-    }
+    },
+    "institution_manual": "Nethermind",
+    "institution_evidence": "Forum bio(profiles_forum.json)\"Creating ChaosChain at Nethermind \\",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "Nithin-Varma",
@@ -353,7 +409,7 @@
     "forum_handle": "Nithin-Varma",
     "display_name": "Nithin Mengani",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -370,7 +426,11 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "deiu",
@@ -378,7 +438,7 @@
     "forum_handle": "deiu",
     "display_name": "deiu",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -393,7 +453,11 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "micheda",
@@ -401,7 +465,7 @@
     "forum_handle": "micheda",
     "display_name": "Michele Dallachiesa",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -416,7 +480,11 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "GitHub handle `micheda` belongs to a different person (Australian artist), not this Michele Dallachiesa",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "node0",
@@ -424,7 +492,7 @@
     "forum_handle": "node0",
     "display_name": "node0",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -439,7 +507,11 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "vkpatva",
@@ -447,7 +519,7 @@
     "forum_handle": "vkpatva",
     "display_name": "Viraj Patva",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -462,7 +534,11 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "soispoke",
@@ -470,7 +546,7 @@
     "forum_handle": "soispoke",
     "display_name": "soispoke",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -485,7 +561,11 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "bransdotcom",
@@ -493,7 +573,7 @@
     "forum_handle": "bransdotcom",
     "display_name": "bransdotcom",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -508,7 +588,11 @@
     },
     "stances": {
       "Modify": 2
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "sarkazein",
@@ -516,7 +600,7 @@
     "forum_handle": "sarkazein",
     "display_name": "Sarkazein",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -531,7 +615,11 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "CertifiedCryp",
@@ -539,7 +627,7 @@
     "forum_handle": "CertifiedCryp",
     "display_name": "CertifiedCryp",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "True believer in DeFi - Jesus flipping tables!\n\nGoals include: minimizing human error; optimizing strategies to remove human emotion; create & curate tools for traders & makers alike.\n\nMission: Crypto is currently valued at a fraction of its inherent value because it suffers from a culture problem - much like our country.  Since its inception Crypto has been more welcoming to & consistently celebrated black hat methods, triumphs, modus operandi & ethos.  I believe this is what has tens of trillions on the sidelines & aim to assist a driving force behind a cultural shift toward supporting white hat ethos.  I often offer the example of what we see far too often on the internet these days - a child missing, likely abducted; a mother & police trying to find her; the goal is to get Crypto to no longer facilitate the evading & eluding of authoritiies of the kidknapper & in its stead support & facilitate the reuniting of mother & child by LEO/Sheriff. \n\nAnother crucial area where crypto has not met its potential is the intrinsic value of the ethical use of anonymous transactions has been largely ignored.  \n\nI'm anxious to learn about ETH & hope soon to be developing tools & helping deliver faster data tools & analysis to traders & makers.\n\nHbot Cohort 12 (& likely 13) coding dev in training",
     "company_raw": "",
@@ -554,7 +642,11 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "Forum bio identifies as a DeFi enthusiast; \"Hbot Cohort 12 coding dev in training\"; no institutional affiliation. https://ethereum-magicians.org/u/CertifiedCryp",
+    "institution_evidence_url": "https://ethereum-magicians.org/u/CertifiedCryp",
+    "institution_confidence": "Probable"
   },
   {
     "canonical_handle": "kinglouis",
@@ -562,7 +654,7 @@
     "forum_handle": "kinglouis",
     "display_name": "kinglouis",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -577,15 +669,19 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "jdutreve",
     "github_handle": "",
     "forum_handle": "jdutreve",
     "display_name": "Jean-Philippe Dutrève",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Carrefour",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -600,7 +696,11 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_manual": "Carrefour",
+    "institution_evidence": "GitHub bio \"Senior Solutions Architect - Java/Python Tech Lead\"; LinkedIn confirms employment at Carrefour(Massy, France). https://github.com/jdutreve",
+    "institution_evidence_url": "https://github.com/jdutreve",
+    "institution_confidence": "Strong"
   },
   {
     "canonical_handle": "orgtrust.eth",
@@ -608,7 +708,7 @@
     "forum_handle": "orgtrust.eth",
     "display_name": "Richard Pedersen",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -624,15 +724,19 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "voidcenter",
     "github_handle": "",
     "forum_handle": "voidcenter",
     "display_name": "Justin Zhang",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Sparsity.ai",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -655,7 +759,11 @@
       "Modify": 1,
       "Neutral": 1,
       "Off-topic": 1
-    }
+    },
+    "institution_manual": "Sparsity.ai",
+    "institution_evidence": "GitHub company field \"Sparsity.ai\". https://github.com/voidcenter",
+    "institution_evidence_url": "https://github.com/voidcenter",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "rithikha",
@@ -663,7 +771,7 @@
     "forum_handle": "rithikha",
     "display_name": "Rithikha",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -678,15 +786,19 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "peersky",
     "github_handle": "",
     "forum_handle": "peersky",
     "display_name": "peersky",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Peeramid Labs",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "Founder at Peeramid Labs\n| ex OpenZeppelin \n\n",
     "company_raw": "",
@@ -701,7 +813,11 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_manual": "Peeramid Labs",
+    "institution_evidence": "Forum bio \"Founder at Peeramid Labs \\",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "Moshiii",
@@ -709,7 +825,7 @@
     "forum_handle": "Moshiii",
     "display_name": "Moshi Wei",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -725,7 +841,11 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "zonu",
@@ -733,7 +853,7 @@
     "forum_handle": "zonu",
     "display_name": "zonu",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -749,15 +869,19 @@
     "stances": {
       "Neutral": 2,
       "Modify": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "ernestognw",
     "github_handle": "",
     "forum_handle": "ernestognw",
     "display_name": "Ernesto García",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "OpenZeppelin",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -772,7 +896,11 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_manual": "OpenZeppelin",
+    "institution_evidence": "GitHub bio \"@OpenZeppelin \\",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "xiaowh7",
@@ -780,7 +908,7 @@
     "forum_handle": "xiaowh7",
     "display_name": "Seven",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -795,7 +923,11 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "Sparksss",
@@ -803,7 +935,7 @@
     "forum_handle": "Sparksss",
     "display_name": "Sparksss",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -818,7 +950,11 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "tim-cotten",
@@ -826,7 +962,7 @@
     "forum_handle": "tim-cotten",
     "display_name": "Tim Cotten",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -841,15 +977,19 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "GitHub bio \"Building things is my passion!\"; no institutional leads",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "dcbuild3r",
     "github_handle": "",
     "forum_handle": "dcbuild3r",
     "display_name": "dcbuilder.eth",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "World Foundation",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -864,7 +1004,11 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_manual": "World Foundation",
+    "institution_evidence": "GitHub company field @worldcoin; bio \"research engineer @ World Foundation (world.org)\". https://github.com/dcbuild3r",
+    "institution_evidence_url": "https://github.com/dcbuild3r",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "denverbaumgartner",
@@ -872,7 +1016,7 @@
     "forum_handle": "denverbaumgartner",
     "display_name": "denver",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -887,7 +1031,11 @@
     },
     "stances": {
       "Modify": 2
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "VickyFu",
@@ -895,7 +1043,7 @@
     "forum_handle": "VickyFu",
     "display_name": "InvitedTea",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -910,7 +1058,11 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "Spaded",
@@ -918,7 +1070,7 @@
     "forum_handle": "Spaded",
     "display_name": "Spaded",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -933,15 +1085,19 @@
     },
     "stances": {
       "Oppose": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "Forum profile does not exist",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "sterlingcrispin",
     "github_handle": "",
     "forum_handle": "sterlingcrispin",
     "display_name": "Sterling Crispin",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Prophetic",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -956,7 +1112,11 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_manual": "Prophetic",
+    "institution_evidence": "LinkedIn confirms current employment at Prophetic(neurotechnology); previously at Apple doing Vision Pro biometric research. https://www.linkedin.com/in/sterlingcrispin",
+    "institution_evidence_url": "https://www.linkedin.com/in/sterlingcrispin",
+    "institution_confidence": "Strong"
   },
   {
     "canonical_handle": "Eth",
@@ -964,7 +1124,7 @@
     "forum_handle": "Eth",
     "display_name": "Woody",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -979,15 +1139,19 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "tokmakoff",
     "github_handle": "",
     "forum_handle": "tokmakoff",
     "display_name": "Andrew Tokmakoff",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Basement Enterprises",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1002,15 +1166,19 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_manual": "Basement Enterprises",
+    "institution_evidence": "GitHub company field \"Basement Enterprises\". https://github.com/tokmakoff",
+    "institution_evidence_url": "https://github.com/tokmakoff",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "nuhgid",
     "github_handle": "",
     "forum_handle": "nuhgid",
     "display_name": "Gideon",
-    "institution_final": "Unknown",
-    "institution_source": "lm_inferred",
+    "institution_final": "Independent",
+    "institution_source": "manual_R07",
     "institution_lm": "Unknown",
     "bio": "",
     "company_raw": "",
@@ -1025,7 +1193,11 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "S8ken",
@@ -1033,7 +1205,7 @@
     "forum_handle": "S8ken",
     "display_name": "S8ken",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1048,15 +1220,19 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "dievardump",
     "github_handle": "",
     "forum_handle": "dievardump",
     "display_name": "Simon Fremaux",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Self-Employed",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1071,7 +1247,11 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Self-Employed",
+    "institution_evidence": "GitHub company field \"Self-Employed\". https://github.com/dievardump",
+    "institution_evidence_url": "https://github.com/dievardump",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "CypherVae",
@@ -1079,7 +1259,7 @@
     "forum_handle": "CypherVae",
     "display_name": "CypherVae",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1094,7 +1274,11 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "Forum profile does not exist",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "wanderosity",
@@ -1102,7 +1286,7 @@
     "forum_handle": "wanderosity",
     "display_name": "Wanderosity",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1117,15 +1301,19 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "ten-io-meta",
     "github_handle": "",
     "forum_handle": "ten-io-meta",
     "display_name": "Ten.IO",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Ten.IO",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1140,15 +1328,19 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Ten.IO",
+    "institution_evidence": "Handle is the company name Ten.IO(privacy blockchain platform). https://ten.io",
+    "institution_evidence_url": "https://ten.io",
+    "institution_confidence": "Probable"
   },
   {
     "canonical_handle": "matevz-oasis",
     "github_handle": "",
     "forum_handle": "matevz-oasis",
     "display_name": "matevz-oasis",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Oasis Network",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1165,15 +1357,19 @@
       "Support": 1,
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Oasis Network",
+    "institution_evidence": "Handle contains \"oasis\", highly consistent with Oasis Protocol; no other public information to verify. https://github.com/matevz-oasis",
+    "institution_evidence_url": "https://github.com/matevz-oasis",
+    "institution_confidence": "Probable"
   },
   {
     "canonical_handle": "alftom",
     "github_handle": "",
     "forum_handle": "alftom",
     "display_name": "Alfred Tom",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Wivity Inc. / OMA3 DAO",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1188,15 +1384,19 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Wivity Inc. / OMA3 DAO",
+    "institution_evidence": "GitHub company field \"Wivity Inc.\"; bio \"Co-founder of @wivity, Executive Director of @oma3dao\". https://github.com/alftom",
+    "institution_evidence_url": "https://github.com/alftom",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "Metanize",
     "github_handle": "",
     "forum_handle": "Metanize",
     "display_name": "Metanize - BODE Genesis",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Brothers of DeFi Consortium",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "Passionate about decentralized freedom, and self custody. Lending a hand to establish the Brothers Of DeFi Consortium as an upstart, educating and advocating on behalf of DeFi adoption. \n\nBrooklyn Tech Week, developed into a New York cultural tech space for startups.\n\nBlockchain Crypto Summit (2017-Present) - annual DeFi, Crypto gathering. \n\nI love a good SciFi flick. ",
     "company_raw": "",
@@ -1211,7 +1411,11 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Brothers of DeFi Consortium",
+    "institution_evidence": "Forum bio \"Lending a hand to establish the Brothers Of DeFi Consortium\"; Brooklyn Tech Week organizer. https://ethereum-magicians.org/u/Metanize",
+    "institution_evidence_url": "https://ethereum-magicians.org/u/Metanize",
+    "institution_confidence": "Probable"
   },
   {
     "canonical_handle": "tantodefi",
@@ -1219,7 +1423,7 @@
     "forum_handle": "tantodefi",
     "display_name": "Tantō Defi",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1234,7 +1438,11 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "BitmineMarine",
@@ -1242,7 +1450,7 @@
     "forum_handle": "BitmineMarine",
     "display_name": "Bitmine Marine",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1257,7 +1465,11 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "weedeej",
@@ -1265,7 +1477,7 @@
     "forum_handle": "weedeej",
     "display_name": "Dixie J.",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1281,15 +1493,19 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "treza-labs",
     "github_handle": "",
     "forum_handle": "treza-labs",
     "display_name": "Treza Labs",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Treza Labs",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1304,7 +1520,11 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Treza Labs",
+    "institution_evidence": "Handle is the company name Treza Labs. ",
+    "institution_evidence_url": null,
+    "institution_confidence": "Probable"
   },
   {
     "canonical_handle": "hjs_foundation",
@@ -1312,7 +1532,7 @@
     "forum_handle": "hjs_foundation",
     "display_name": "JEP",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1327,7 +1547,11 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "Handle suggests HJS Foundation, but no verifiable sources found",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "Cyberpaisa",
@@ -1335,7 +1559,7 @@
     "forum_handle": "Cyberpaisa",
     "display_name": "Cyber",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1350,7 +1574,11 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "theagora",
@@ -1358,7 +1586,7 @@
     "forum_handle": "theagora",
     "display_name": "theagora",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1373,7 +1601,11 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "kimomon",
@@ -1381,7 +1613,7 @@
     "forum_handle": "kimomon",
     "display_name": "kimomon",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1396,7 +1628,11 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "Walodja1987",
@@ -1404,7 +1640,7 @@
     "forum_handle": "Walodja1987",
     "display_name": "Walodja1987",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1419,15 +1655,19 @@
     },
     "stances": {
       "Oppose": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "nxt3d",
     "github_handle": "nxt3d",
     "forum_handle": "",
     "display_name": "premm.eth",
-    "institution_final": "Unknown",
-    "institution_source": "lm_inferred",
+    "institution_final": "Unruggable Labs",
+    "institution_source": "manual_R07",
     "institution_lm": "Unknown",
     "bio": "Unruggable Labs",
     "company_raw": "",
@@ -1446,7 +1686,11 @@
     "stances": {
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_manual": "Unruggable Labs",
+    "institution_evidence": "GitHub bio \"Unruggable Labs\"。https://github.com/nxt3d",
+    "institution_evidence_url": "https://github.com/nxt3d",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "MG1-4",
@@ -1473,7 +1717,8 @@
     "stances": {
       "Neutral": 2,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "StevenJohnson998",
@@ -1498,15 +1743,16 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "imran-siddique",
     "github_handle": "imran-siddique",
     "forum_handle": "",
     "display_name": "imran-siddique",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Microsoft",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1533,7 +1779,11 @@
       "Modify": 4,
       "Off-topic": 1,
       "Oppose": 1
-    }
+    },
+    "institution_manual": "Microsoft",
+    "institution_evidence": "GitHub company field \"Microsoft\"; personal website imransiddique.com states \"Principal Software Engineer at Microsoft\". https://github.com/imran-siddique",
+    "institution_evidence_url": "https://github.com/imran-siddique",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "tobiasopdenbrouw",
@@ -1558,7 +1808,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sunilp",
@@ -1583,7 +1834,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ragaoua",
@@ -1608,15 +1860,16 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mikeas1",
     "github_handle": "mikeas1",
     "forum_handle": "",
     "display_name": "mikeas1",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Google",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1654,15 +1907,19 @@
       "Support": 24,
       "Neutral": 20,
       "Oppose": 1
-    }
+    },
+    "institution_manual": "Google",
+    "institution_evidence": "GitHub bio \"Software Engineer at @google, working on A2A\"; company field \"@google-a2a\". https://github.com/mikeas1",
+    "institution_evidence_url": "https://github.com/mikeas1",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "jmesnil",
     "github_handle": "jmesnil",
     "forum_handle": "",
     "display_name": "jmesnil",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "IBM",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1686,7 +1943,11 @@
       "Neutral": 3,
       "Modify": 2,
       "Support": 1
-    }
+    },
+    "institution_manual": "IBM",
+    "institution_evidence": "GitHub company field \"IBM\"; blog jmesnil.net：\"As of today [Sept 1, 2025], I'm working for IBM. Same team, same project.\". https://jmesnil.net",
+    "institution_evidence_url": "https://jmesnil.net",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "zhengleibin",
@@ -1712,15 +1973,16 @@
     "stances": {
       "Support": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Tehsmash",
     "github_handle": "Tehsmash",
     "forum_handle": "",
     "display_name": "Sam Betts",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Cisco Systems",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "Cisco Systems",
@@ -1755,7 +2017,11 @@
       "Neutral": 15,
       "Oppose": 7,
       "Off-topic": 1
-    }
+    },
+    "institution_manual": "Cisco Systems",
+    "institution_evidence": "GitHub company field \"Cisco Systems\". https://github.com/Tehsmash",
+    "institution_evidence_url": "https://github.com/Tehsmash",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "vinoo999",
@@ -1763,7 +2029,7 @@
     "forum_handle": "",
     "display_name": "Vinay Ramesh",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -1794,7 +2060,11 @@
       "Support": 9,
       "Neutral": 6,
       "Oppose": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "joepvgenuchten",
@@ -1819,7 +2089,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "aeoess",
@@ -1844,7 +2115,8 @@
     },
     "stances": {
       "Support": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ehsavoie",
@@ -1875,7 +2147,8 @@
       "Modify": 3,
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "LI-Jinyang",
@@ -1901,7 +2174,8 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ali-0407",
@@ -1926,7 +2200,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ishymko",
@@ -1962,7 +2237,8 @@
       "Neutral": 5,
       "Support": 3,
       "Oppose": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "zomux",
@@ -1987,15 +2263,16 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "alexec",
     "github_handle": "alexec",
     "forum_handle": "",
     "display_name": "alexec",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Intuit",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -2024,7 +2301,11 @@
       "Support": 6,
       "Neutral": 4,
       "Modify": 2
-    }
+    },
+    "institution_manual": "Intuit",
+    "institution_evidence": "GitHub company field \"@intuit\"; bio \"Principal Software Engineer on @argoproj at @intuit\". https://github.com/alexec",
+    "institution_evidence_url": "https://github.com/alexec",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "gspencergoog",
@@ -2032,7 +2313,7 @@
     "forum_handle": "",
     "display_name": "gspencergoog",
     "institution_final": "Google",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Google",
     "bio": "",
     "company_raw": "",
@@ -2051,7 +2332,11 @@
     "stances": {
       "Modify": 1,
       "Support": 1
-    }
+    },
+    "institution_manual": "Google",
+    "institution_evidence": "GitHub company field \"@flutter\"; Flutter is a Google project; username \"gspencergoog\" contains \"google\" suffix",
+    "institution_evidence_url": null,
+    "institution_confidence": "Strong"
   },
   {
     "canonical_handle": "vladkol",
@@ -2076,7 +2361,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "thebenignhacker",
@@ -2103,15 +2389,16 @@
     "stances": {
       "Support": 2,
       "Modify": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "herczyn",
     "github_handle": "herczyn",
     "forum_handle": "",
     "display_name": "Kuba Herczyński",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Google",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -2146,7 +2433,11 @@
       "Modify": 8,
       "Neutral": 5,
       "Oppose": 1
-    }
+    },
+    "institution_manual": "Google",
+    "institution_evidence": "member of 4 public Google GitHub organizations (@google, @GoogleCloudPlatform, @google-agentic-commerce, @a2aproject). https://github.com/herczyn",
+    "institution_evidence_url": "https://github.com/herczyn",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "gijswalraven",
@@ -2154,7 +2445,7 @@
     "forum_handle": "",
     "display_name": "gijswalraven",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -2184,7 +2475,11 @@
       "Neutral": 5,
       "Modify": 3,
       "Off-topic": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "a2a-dotnet contributor; no company information",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "yarolegovich",
@@ -2192,7 +2487,7 @@
     "forum_handle": "",
     "display_name": "Yaroslav",
     "institution_final": "Google",
-    "institution_source": "github_company_field",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "google",
@@ -2233,7 +2528,11 @@
       "Neutral": 15,
       "Support": 14,
       "Oppose": 3
-    }
+    },
+    "institution_manual": "Google",
+    "institution_evidence": "GitHub company field \"google\"; Warsaw office. https://github.com/yarolegovich",
+    "institution_evidence_url": "https://github.com/yarolegovich",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "ritsuki1227",
@@ -2261,7 +2560,8 @@
     "stances": {
       "Support": 2,
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "flex-myeonghyeon",
@@ -2287,7 +2587,8 @@
     "stances": {
       "Support": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "AlexanderShenshin",
@@ -2313,7 +2614,8 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "punkyoon",
@@ -2338,7 +2640,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Renator13",
@@ -2365,7 +2668,8 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "eli-osherovich",
@@ -2391,7 +2695,8 @@
     },
     "stances": {
       "Support": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "pinchwork",
@@ -2417,7 +2722,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "darrelmiller",
@@ -2425,7 +2731,7 @@
     "forum_handle": "",
     "display_name": "Darrel",
     "institution_final": "Microsoft",
-    "institution_source": "github_company_field",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "Partner API Architect,\r\nIETF HTTPAPI WG Chair,\r\nLF A2A TSC Member, Former OpenAPI Specification Editor,\r\n\r\n@darrel_miller@mastodon.social",
     "company_raw": "Microsoft",
@@ -2494,7 +2800,11 @@
       "Oppose": 23,
       "Off-topic": 2,
       "N/A": 1
-    }
+    },
+    "institution_manual": "Microsoft",
+    "institution_evidence": "GitHub company field \"Microsoft\"; bio \"Partner API Architect, IETF HTTPAPI WG Chair, LF A2A TSC Member\". https://github.com/darrelmiller",
+    "institution_evidence_url": "https://github.com/darrelmiller",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "zoujie-ee",
@@ -2522,7 +2832,8 @@
       "Oppose": 1,
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "pavankumarleo",
@@ -2547,7 +2858,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jokemanfire",
@@ -2574,7 +2886,8 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "marianogonzalez",
@@ -2601,15 +2914,16 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "muscariello",
     "github_handle": "muscariello",
     "forum_handle": "",
     "display_name": "Luca Muscariello",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Cisco Systems",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "Cisco Systems",
@@ -2641,15 +2955,19 @@
       "Modify": 9,
       "Off-topic": 4,
       "Oppose": 3
-    }
+    },
+    "institution_manual": "Cisco Systems",
+    "institution_evidence": "GitHub company field \"Cisco Systems\"; located in Paris. https://github.com/muscariello",
+    "institution_evidence_url": "https://github.com/muscariello",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "CAG-nolan",
     "github_handle": "CAG-nolan",
     "forum_handle": "",
     "display_name": "CAG-nolan",
-    "institution_final": "Google",
-    "institution_source": "lm_inferred",
+    "institution_final": "Unknown",
+    "institution_source": "manual_R07",
     "institution_lm": "Google",
     "bio": "",
     "company_raw": "",
@@ -2668,7 +2986,11 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Unknown",
+    "institution_evidence": "GitHub company field empty, no organization memberships; LM inference based solely on \"CAG\" prefix is unreliable",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "guglielmo-san",
@@ -2698,7 +3020,8 @@
       "Modify": 4,
       "Support": 3,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "benclarkeio",
@@ -2730,7 +3053,8 @@
       "Support": 3,
       "Modify": 2,
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "zeroasterisk",
@@ -2738,7 +3062,7 @@
     "forum_handle": "",
     "display_name": "alan blount",
     "institution_final": "Google",
-    "institution_source": "github_company_field",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "🤙 Geek/Nerd/Odd, Artist+Communicator, Muppet+Robot+Dad.\r\n❤️ Elixir, Node/React, Python, Flutter, Devops/Docker/Linux, Go\r\n🚧 AI/ML, Vertex AI+ LLMOps",
     "company_raw": "google",
@@ -2772,15 +3096,19 @@
       "Modify": 3,
       "Oppose": 3,
       "Off-topic": 3
-    }
+    },
+    "institution_manual": "Google",
+    "institution_evidence": "GitHub company field \"google\"; bio mentions Vertex AI. https://github.com/zeroasterisk",
+    "institution_evidence_url": "https://github.com/zeroasterisk",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "dgenio",
     "github_handle": "dgenio",
     "forum_handle": "",
     "display_name": "dgenio",
-    "institution_final": "Google",
-    "institution_source": "lm_inferred",
+    "institution_final": "nosportugal",
+    "institution_source": "manual_R07",
     "institution_lm": "Google",
     "bio": "",
     "company_raw": "",
@@ -2799,7 +3127,11 @@
     "stances": {
       "Support": 9,
       "Modify": 2
-    }
+    },
+    "institution_manual": "nosportugal",
+    "institution_evidence": "GitHub company field \"@nosportugal \"; no Google affiliation",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "XiaoTianCan",
@@ -2824,7 +3156,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "secprog",
@@ -2850,7 +3183,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ptiper",
@@ -2877,7 +3211,8 @@
     },
     "stances": {
       "Neutral": 4
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Zinni98",
@@ -2902,7 +3237,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kabir",
@@ -2933,7 +3269,8 @@
       "Modify": 3,
       "Neutral": 2,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "satishkamavaram",
@@ -2958,7 +3295,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sandangel",
@@ -2987,7 +3325,8 @@
       "Modify": 3,
       "Support": 1,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "oabdelkarim",
@@ -3012,7 +3351,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "KrshnKush",
@@ -3041,7 +3381,8 @@
       "Support": 3,
       "Neutral": 2,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "pascal910107",
@@ -3068,7 +3409,8 @@
     },
     "stances": {
       "Support": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "syumpx",
@@ -3095,7 +3437,8 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "edenreich",
@@ -3103,7 +3446,7 @@
     "forum_handle": "",
     "display_name": "Eden Reich",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "AI Platform Engineer with a passion for optimizing system performance and ensuring seamless, reliable and resilient operations.",
     "company_raw": "",
@@ -3130,7 +3473,11 @@
       "Support": 18,
       "Neutral": 10,
       "Modify": 6
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "GitHub bio \"AI Platform Engineer\"; located in Berlin; no company confirmation",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "harris2012",
@@ -3155,15 +3502,16 @@
     },
     "stances": {
       "N/A": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "matoushavlena",
     "github_handle": "matoushavlena",
     "forum_handle": "",
     "display_name": "matoushavlena",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Apoco / IBM Research",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -3187,7 +3535,11 @@
       "Support": 6,
       "Neutral": 5,
       "Modify": 2
-    }
+    },
+    "institution_manual": "Apoco / IBM Research",
+    "institution_evidence": "GitHub company field \"Apoco\"; bio \"Head of Engineering at Apoco, Tech Lead at IBM Research\". https://github.com/matoushavlena",
+    "institution_evidence_url": "https://github.com/matoushavlena",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "xui-will",
@@ -3214,7 +3566,8 @@
       "Support": 2,
       "Neutral": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mindpower",
@@ -3241,7 +3594,8 @@
     },
     "stances": {
       "Support": 5
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ognis1205",
@@ -3249,7 +3603,7 @@
     "forum_handle": "",
     "display_name": "Shingo OKAWA",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "A Data Misfit.",
     "company_raw": "quantum-tda",
@@ -3287,7 +3641,11 @@
       "Support": 21,
       "Modify": 15,
       "Off-topic": 2
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "GitHub company field \"@quantum-tda\"(quantum topological data analysis research team); independent research",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "KomachiSion",
@@ -3312,7 +3670,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "MoonRendering",
@@ -3339,7 +3698,8 @@
     "stances": {
       "Neutral": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "MaoJianwei",
@@ -3366,7 +3726,8 @@
     "stances": {
       "Oppose": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "iliesicatrinel",
@@ -3397,7 +3758,8 @@
       "Modify": 2,
       "Oppose": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "awickham10",
@@ -3424,7 +3786,8 @@
     "stances": {
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "alanyst",
@@ -3451,7 +3814,8 @@
     "stances": {
       "Modify": 2,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ShayakSarkar",
@@ -3476,7 +3840,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "lexi-k",
@@ -3501,7 +3866,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "lkawka",
@@ -3533,7 +3899,8 @@
       "Modify": 4,
       "Neutral": 3,
       "Support": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jocelynh-microsoft",
@@ -3560,7 +3927,8 @@
     },
     "stances": {
       "Modify": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "yzhao244",
@@ -3589,7 +3957,8 @@
     "stances": {
       "Support": 3,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "yukuanj",
@@ -3614,7 +3983,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "fjuma",
@@ -3643,7 +4013,8 @@
       "Support": 2,
       "Neutral": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Einsfier",
@@ -3668,7 +4039,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "adarshnarayanhegde",
@@ -3695,7 +4067,8 @@
     },
     "stances": {
       "Support": 4
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ThierryThevenet",
@@ -3725,7 +4098,8 @@
       "Off-topic": 1,
       "Oppose": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "wushubang",
@@ -3752,7 +4126,8 @@
     "stances": {
       "Support": 2,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "coyotwill",
@@ -3777,7 +4152,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jnapper7",
@@ -3802,7 +4178,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mdii",
@@ -3828,7 +4205,8 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "pstephengoogle",
@@ -3836,7 +4214,7 @@
     "forum_handle": "",
     "display_name": "pstephengoogle",
     "institution_final": "Google",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Google",
     "bio": "",
     "company_raw": "",
@@ -3871,7 +4249,11 @@
       "Support": 25,
       "Oppose": 2,
       "N/A": 1
-    }
+    },
+    "institution_manual": "Google",
+    "institution_evidence": "Username contains \"google\"; A2A project core contributor (96 records); no public bio to verify",
+    "institution_evidence_url": null,
+    "institution_confidence": "Probable"
   },
   {
     "canonical_handle": "Phil-Hills",
@@ -3899,7 +4281,8 @@
       "Support": 4,
       "Neutral": 2,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "madankumarpichamuthu",
@@ -3907,7 +4290,7 @@
     "forum_handle": "",
     "display_name": "madankumarpichamuthu",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -3943,7 +4326,11 @@
       "Support": 16,
       "Neutral": 8,
       "Modify": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "abiramit5",
@@ -3951,7 +4338,7 @@
     "forum_handle": "",
     "display_name": "abiramit5",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -3986,7 +4373,11 @@
       "Support": 6,
       "Off-topic": 6,
       "Modify": 5
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "anuj10121997",
@@ -4011,7 +4402,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "felix-schultz",
@@ -4036,7 +4428,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Joapfel",
@@ -4061,7 +4454,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "powmax-commits",
@@ -4088,7 +4482,8 @@
     "stances": {
       "Neutral": 3,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jamesarmenta",
@@ -4113,7 +4508,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ronaldpetty",
@@ -4138,7 +4534,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sepo-eng",
@@ -4163,7 +4560,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "holtskinner",
@@ -4171,7 +4569,7 @@
     "forum_handle": "",
     "display_name": "Holt Skinner",
     "institution_final": "Google",
-    "institution_source": "github_company_field",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "Developer Advocate, Google Cloud AI",
     "company_raw": "google",
@@ -4254,7 +4652,11 @@
       "Off-topic": 21,
       "Oppose": 17,
       "N/A": 1
-    }
+    },
+    "institution_manual": "Google",
+    "institution_evidence": "GitHub company field \"google\"; bio \"Developer Advocate, Google Cloud AI\". https://github.com/holtskinner",
+    "institution_evidence_url": "https://github.com/holtskinner",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "rokonec",
@@ -4282,7 +4684,8 @@
     "stances": {
       "Neutral": 2,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "GeunCheolOh",
@@ -4307,7 +4710,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "aglicacha",
@@ -4336,15 +4740,16 @@
       "Support": 3,
       "Neutral": 2,
       "Modify": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "maeste",
     "github_handle": "maeste",
     "forum_handle": "",
     "display_name": "Stefano Maestri",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Red Hat",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "Red Hat",
@@ -4373,7 +4778,11 @@
       "Neutral": 9,
       "Oppose": 2,
       "Off-topic": 1
-    }
+    },
+    "institution_manual": "Red Hat",
+    "institution_evidence": "GitHub company field \"Red Hat\"; listed in A2A MAINTAINERS.md as a2a-java maintainer alongside Red Hat colleagues. https://github.com/maeste",
+    "institution_evidence_url": "https://github.com/maeste",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "lukehinds",
@@ -4403,7 +4812,8 @@
       "Neutral": 4,
       "Support": 3,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "richardanaya",
@@ -4429,7 +4839,8 @@
     "stances": {
       "Support": 2,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "joshhalley",
@@ -4456,7 +4867,8 @@
     "stances": {
       "Neutral": 3,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kthota-g",
@@ -4464,7 +4876,7 @@
     "forum_handle": "",
     "display_name": "kthota-g",
     "institution_final": "Google",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Google",
     "bio": "",
     "company_raw": "",
@@ -4512,7 +4924,11 @@
       "Modify": 20,
       "Off-topic": 7,
       "Oppose": 2
-    }
+    },
+    "institution_manual": "Google",
+    "institution_evidence": "LM inference; A2A project high-frequency contributor (127 records); username suffix \"-g\" may indicate Google",
+    "institution_evidence_url": null,
+    "institution_confidence": "Probable"
   },
   {
     "canonical_handle": "shamblett",
@@ -4539,7 +4955,8 @@
     "stances": {
       "Neutral": 2,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "hoonji",
@@ -4547,7 +4964,7 @@
     "forum_handle": "",
     "display_name": "hoonji",
     "institution_final": "Google",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Google",
     "bio": "",
     "company_raw": "",
@@ -4567,7 +4984,11 @@
       "Modify": 1,
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Google",
+    "institution_evidence": "GitHub company field \"Google\". https://github.com/hoonji",
+    "institution_evidence_url": "https://github.com/hoonji",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "pwwpche",
@@ -4596,7 +5017,8 @@
     "stances": {
       "Modify": 3,
       "Support": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "adsri",
@@ -4621,7 +5043,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mjunaidca",
@@ -4646,7 +5069,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "spricet",
@@ -4680,7 +5104,8 @@
       "Support": 2,
       "Modify": 2,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "abimaeluribe1-wq",
@@ -4706,7 +5131,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "JanPokorny",
@@ -4731,7 +5157,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "alextibbles",
@@ -4758,7 +5185,8 @@
     "stances": {
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sunyuhan1998",
@@ -4784,7 +5212,8 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jmracek",
@@ -4809,7 +5238,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ReubenBond",
@@ -4834,7 +5264,8 @@
     },
     "stances": {
       "Modify": 4
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "izzymsft",
@@ -4842,7 +5273,7 @@
     "forum_handle": "",
     "display_name": "Israel Ekpo",
     "institution_final": "Microsoft",
-    "institution_source": "github_company_field",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "Partner Solutions Architect with Microsoft Global Partner Solutions.",
     "company_raw": "Microsoft Corporation",
@@ -4873,7 +5304,11 @@
       "Modify": 6,
       "Neutral": 6,
       "Off-topic": 1
-    }
+    },
+    "institution_manual": "Microsoft",
+    "institution_evidence": "GitHub company field \"Microsoft Corporation\"; bio \"Partner Solutions Architect with Microsoft Global Partner Solutions\". https://github.com/izzymsft",
+    "institution_evidence_url": "https://github.com/izzymsft",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "nbadf1981-tech",
@@ -4899,7 +5334,8 @@
     },
     "stances": {
       "Off-topic": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "johnson7788",
@@ -4928,7 +5364,8 @@
     "stances": {
       "Neutral": 3,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "gpanakkal",
@@ -4954,7 +5391,8 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "wsandy1",
@@ -4979,7 +5417,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "JayBhadiyadraInstanceIT",
@@ -5007,7 +5446,8 @@
     "stances": {
       "Neutral": 3,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Yoojkim",
@@ -5032,7 +5472,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "MrChengmo",
@@ -5057,7 +5498,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "YottaDev07",
@@ -5082,7 +5524,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "RubberGoose246",
@@ -5109,7 +5552,8 @@
     "stances": {
       "Support": 1,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "JeromeOvO",
@@ -5136,7 +5580,8 @@
       "Neutral": 2,
       "Support": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "taosher",
@@ -5161,7 +5606,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "nandrews729",
@@ -5186,7 +5632,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "cj2a7t",
@@ -5211,7 +5658,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "justfalter",
@@ -5242,7 +5690,8 @@
       "Modify": 2,
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "scidomino",
@@ -5270,7 +5719,8 @@
     "stances": {
       "Neutral": 2,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "koyeliaghosh",
@@ -5295,7 +5745,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "liar666",
@@ -5321,7 +5772,8 @@
     "stances": {
       "Modify": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "oopslink",
@@ -5347,7 +5799,8 @@
     "stances": {
       "Neutral": 2,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ghostdoglzd",
@@ -5374,7 +5827,8 @@
     "stances": {
       "Modify": 1,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Kludex",
@@ -5399,7 +5853,8 @@
     },
     "stances": {
       "Neutral": 4
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "suvedo",
@@ -5424,7 +5879,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "y-tabata",
@@ -5449,7 +5905,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mahghappy",
@@ -5474,7 +5931,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "acensia",
@@ -5500,7 +5958,8 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "inesmcm26",
@@ -5531,7 +5990,8 @@
       "Support": 5,
       "Neutral": 2,
       "Modify": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Paulchen5",
@@ -5560,7 +6020,8 @@
     "stances": {
       "Modify": 2,
       "N/A": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kuldeepjain-bitcot",
@@ -5585,7 +6046,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "LuckyLaochou",
@@ -5611,7 +6073,8 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Gioxxy",
@@ -5636,7 +6099,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "prokolyvakis",
@@ -5661,7 +6125,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "paparth",
@@ -5686,7 +6151,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "volodya-lombrozo",
@@ -5711,7 +6177,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "yangyang-yyy",
@@ -5738,7 +6205,8 @@
     "stances": {
       "Neutral": 3,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kshitizz36",
@@ -5766,7 +6234,8 @@
     },
     "stances": {
       "Support": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "darkhaniop",
@@ -5774,7 +6243,7 @@
     "forum_handle": "",
     "display_name": "darkhaniop",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -5810,7 +6279,11 @@
       "Modify": 21,
       "Support": 17,
       "Oppose": 2
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available; high-frequency contributor",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "Tech-AML",
@@ -5836,7 +6309,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "nithin-nk",
@@ -5863,7 +6337,8 @@
     "stances": {
       "Neutral": 1,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "akshaykokane",
@@ -5890,7 +6365,8 @@
     "stances": {
       "Modify": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "gabayben",
@@ -5917,7 +6393,8 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mikumifa",
@@ -5946,7 +6423,8 @@
     "stances": {
       "Support": 2,
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "arislan-lilo",
@@ -5974,7 +6452,8 @@
       "Neutral": 2,
       "Modify": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "FailedNamed",
@@ -5999,7 +6478,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "postbird",
@@ -6025,7 +6505,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "meguminnnnnnnnn",
@@ -6052,7 +6533,8 @@
     "stances": {
       "Neutral": 2,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "yichenj",
@@ -6077,7 +6559,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "MengJiapeng",
@@ -6102,7 +6585,8 @@
     },
     "stances": {
       "Neutral": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "graemefoster",
@@ -6129,7 +6613,8 @@
     "stances": {
       "Neutral": 3,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Yukinekoko",
@@ -6154,7 +6639,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "vincent-pli",
@@ -6179,15 +6665,16 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jland-redhat",
     "github_handle": "jland-redhat",
     "forum_handle": "",
     "display_name": "jland-redhat",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Red Hat",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -6210,7 +6697,11 @@
       "Neutral": 3,
       "Off-topic": 1,
       "Support": 1
-    }
+    },
+    "institution_manual": "Red Hat",
+    "institution_evidence": "GitHub company field \"Red Hat\". https://github.com/jland-redhat",
+    "institution_evidence_url": "https://github.com/jland-redhat",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "Emilmeister",
@@ -6235,7 +6726,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "decode-mayank",
@@ -6260,7 +6752,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "rclayton-godaddy",
@@ -6285,7 +6778,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "TP9-dev",
@@ -6311,7 +6805,8 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "aamonten",
@@ -6338,7 +6833,8 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "CZH-THU",
@@ -6369,7 +6865,8 @@
       "Support": 3,
       "Neutral": 2,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "salqadri",
@@ -6397,7 +6894,8 @@
       "Support": 1,
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "codefromthecrypt",
@@ -6429,7 +6927,8 @@
       "Modify": 1,
       "Off-topic": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Frankdog",
@@ -6458,7 +6957,8 @@
     "stances": {
       "Neutral": 2,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kubni",
@@ -6483,7 +6983,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ysxu666",
@@ -6508,7 +7009,8 @@
     },
     "stances": {
       "Neutral": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "NavtejMAQ",
@@ -6534,7 +7036,8 @@
     },
     "stances": {
       "Neutral": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "xtrasmal",
@@ -6561,7 +7064,8 @@
     "stances": {
       "Modify": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "AdarPeleg",
@@ -6588,7 +7092,8 @@
     "stances": {
       "Support": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "palladius",
@@ -6617,7 +7122,8 @@
     "stances": {
       "Support": 5,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jamesfebin",
@@ -6642,7 +7148,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "chicogong",
@@ -6667,7 +7174,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "matsk-sinch",
@@ -6692,7 +7200,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "daavoo",
@@ -6723,7 +7232,8 @@
       "Modify": 2,
       "Support": 2,
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "laurentsimon",
@@ -6753,7 +7263,8 @@
       "Support": 4,
       "Neutral": 3,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "reskin89",
@@ -6778,7 +7289,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "wilsonsilva",
@@ -6803,7 +7315,8 @@
     },
     "stances": {
       "Neutral": 4
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "buddha314",
@@ -6830,7 +7343,8 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "tot-ra",
@@ -6856,7 +7370,8 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Eggrolling-hu",
@@ -6881,7 +7396,8 @@
     },
     "stances": {
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jebinj22",
@@ -6910,7 +7426,8 @@
     "stances": {
       "Neutral": 4,
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "yasonk",
@@ -6938,7 +7455,8 @@
       "Neutral": 2,
       "Support": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "swarf00",
@@ -6963,7 +7481,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "CakeCrusher",
@@ -6993,7 +7512,8 @@
     "stances": {
       "Support": 4,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "rodrigallardo",
@@ -7020,15 +7540,16 @@
     "stances": {
       "Support": 1,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "koverholt",
     "github_handle": "koverholt",
     "forum_handle": "",
     "display_name": "koverholt",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Google",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -7059,7 +7580,11 @@
       "Support": 2,
       "Off-topic": 1,
       "Modify": 1
-    }
+    },
+    "institution_manual": "Google",
+    "institution_evidence": "GitHub company field \"Google\"; bio \"Developer Relations Engineer at Google\". https://github.com/koverholt",
+    "institution_evidence_url": "https://github.com/koverholt",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "richgo",
@@ -7088,7 +7613,8 @@
     "stances": {
       "Modify": 2,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "manojsharmadcx",
@@ -7113,7 +7639,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "everettVT",
@@ -7139,7 +7666,8 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "JeremyFan",
@@ -7164,7 +7692,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "tanemaki",
@@ -7192,7 +7721,8 @@
     "stances": {
       "Support": 2,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "tangpingqingwa",
@@ -7217,7 +7747,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sondotpin",
@@ -7242,7 +7773,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jmandel",
@@ -7274,7 +7806,8 @@
       "Modify": 5,
       "Support": 2,
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "buithehai1994",
@@ -7299,7 +7832,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "liuzengh",
@@ -7326,7 +7860,8 @@
     "stances": {
       "Neutral": 2,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "olileger",
@@ -7352,7 +7887,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "robert-at-pretension-io",
@@ -7360,7 +7896,7 @@
     "forum_handle": "",
     "display_name": "Robert Elliot Pahel-Short",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -7385,7 +7921,11 @@
       "Modify": 5,
       "Support": 2,
       "Off-topic": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "located in Chapel Hill; no company information",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "sjanaX01",
@@ -7410,7 +7950,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kay-schmitteckert",
@@ -7435,7 +7976,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "wadrzl55333",
@@ -7460,7 +8002,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "logan272",
@@ -7493,7 +8036,8 @@
       "Support": 6,
       "Neutral": 4,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "howientc",
@@ -7518,7 +8062,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "smileyboy2019",
@@ -7543,7 +8088,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "niguowei44",
@@ -7570,7 +8116,8 @@
     "stances": {
       "Neutral": 3,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "zzxwill",
@@ -7602,7 +8149,8 @@
     "stances": {
       "Neutral": 6,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "adcentury",
@@ -7627,7 +8175,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "scvthorsten",
@@ -7654,7 +8203,8 @@
     "stances": {
       "Neutral": 1,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "aickin",
@@ -7685,7 +8235,8 @@
       "Modify": 4,
       "Neutral": 2,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ZhiLiGod",
@@ -7711,7 +8262,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "abdibrokhim",
@@ -7736,7 +8288,8 @@
     },
     "stances": {
       "Neutral": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "daltonnyx",
@@ -7764,7 +8317,8 @@
       "Support": 2,
       "Neutral": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "patwlan",
@@ -7792,7 +8346,8 @@
     "stances": {
       "Neutral": 4,
       "Off-topic": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "shaikmoeed",
@@ -7818,7 +8373,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "rajib76",
@@ -7844,7 +8400,8 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "whysage",
@@ -7852,7 +8409,7 @@
     "forum_handle": "",
     "display_name": "whysage",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -7876,7 +8433,11 @@
       "Modify": 6,
       "Off-topic": 1,
       "Oppose": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "needcoder",
@@ -7901,7 +8462,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "neoUltra-66",
@@ -7926,7 +8488,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "yaronf",
@@ -7951,7 +8514,8 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "dhdanie",
@@ -7977,7 +8541,8 @@
     "stances": {
       "Neutral": 3,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "cdavernas",
@@ -8006,7 +8571,8 @@
       "Neutral": 5,
       "Support": 2,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "cled",
@@ -8031,7 +8597,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "rogpeppe",
@@ -8056,7 +8623,8 @@
     },
     "stances": {
       "Modify": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "hieuminh65",
@@ -8081,7 +8649,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "gyliu513",
@@ -8106,7 +8675,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "gustavo-cycling",
@@ -8131,7 +8701,8 @@
     },
     "stances": {
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "SecretiveShell",
@@ -8156,7 +8727,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kdenhartog",
@@ -8182,7 +8754,8 @@
     "stances": {
       "Modify": 2,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sallespro",
@@ -8207,7 +8780,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "djsamseng",
@@ -8215,7 +8789,7 @@
     "forum_handle": "",
     "display_name": "djsamseng",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -8239,7 +8813,11 @@
       "Support": 8,
       "Off-topic": 1,
       "Oppose": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "maxbrokman",
@@ -8264,7 +8842,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "leavez",
@@ -8289,7 +8868,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sxhxliang",
@@ -8316,7 +8896,8 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mting806",
@@ -8341,7 +8922,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "grll",
@@ -8367,7 +8949,8 @@
     "stances": {
       "Neutral": 2,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "iamrajiv",
@@ -8394,7 +8977,8 @@
     "stances": {
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "pausanchez",
@@ -8419,7 +9003,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "hotdogarea",
@@ -8444,7 +9029,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "patwhite",
@@ -8472,7 +9058,8 @@
     "stances": {
       "Modify": 4,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "1137043480",
@@ -8497,7 +9084,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "abhinav24jha",
@@ -8522,7 +9110,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "shubham151",
@@ -8547,7 +9136,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kedoska",
@@ -8572,7 +9162,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Mocuto",
@@ -8600,7 +9191,8 @@
       "Modify": 1,
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "wenwenc9",
@@ -8626,7 +9218,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "AlokRanjanSwain",
@@ -8651,15 +9244,16 @@
     },
     "stances": {
       "Neutral": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "princejha95",
     "github_handle": "princejha95",
     "forum_handle": "",
     "display_name": "princejha95",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Weave",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -8678,7 +9272,11 @@
     "stances": {
       "Modify": 10,
       "Neutral": 3
-    }
+    },
+    "institution_manual": "Weave",
+    "institution_evidence": "GitHub company field \"Weave\". https://github.com/princejha95",
+    "institution_evidence_url": "https://github.com/princejha95",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "icetech233",
@@ -8703,7 +9301,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "xiongwenxin123",
@@ -8729,7 +9328,8 @@
     "stances": {
       "Neutral": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "freedeaths",
@@ -8754,7 +9354,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ujnak",
@@ -8779,7 +9380,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "promptrotator",
@@ -8810,7 +9412,8 @@
       "Support": 2,
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "whitlockjc",
@@ -8818,7 +9421,7 @@
     "forum_handle": "",
     "display_name": "Jeremy Whitlock",
     "institution_final": "Google",
-    "institution_source": "github_company_field",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "Google",
@@ -8846,7 +9449,11 @@
       "Support": 7,
       "Modify": 5,
       "Off-topic": 1
-    }
+    },
+    "institution_manual": "Google",
+    "institution_evidence": "GitHub company field \"Google\". https://github.com/whitlockjc",
+    "institution_evidence_url": "https://github.com/whitlockjc",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "sreanik",
@@ -8871,7 +9478,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "robomotic",
@@ -8897,7 +9505,8 @@
     "stances": {
       "Modify": 2,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "fwklucznik",
@@ -8922,7 +9531,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "puchengy",
@@ -8947,7 +9557,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mkschreder",
@@ -8972,7 +9583,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Kevin1466",
@@ -8999,7 +9611,8 @@
     "stances": {
       "Neutral": 2,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "no7dw",
@@ -9024,7 +9637,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kkgupta-github",
@@ -9049,7 +9663,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "AliMuhammadOfficial",
@@ -9076,7 +9691,8 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "DiTo97",
@@ -9101,7 +9717,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "yadav",
@@ -9129,7 +9746,8 @@
     "stances": {
       "Support": 1,
       "N/A": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "danbri",
@@ -9154,7 +9772,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "yu-iskw",
@@ -9179,7 +9798,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "resouer",
@@ -9204,7 +9824,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jkfnc",
@@ -9229,7 +9850,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ToddSegal",
@@ -9237,7 +9859,7 @@
     "forum_handle": "",
     "display_name": "ToddSegal",
     "institution_final": "Google",
-    "institution_source": "github_company_field",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "Google",
@@ -9261,7 +9883,11 @@
       "Support": 3,
       "Off-topic": 1,
       "Oppose": 1
-    }
+    },
+    "institution_manual": "Google",
+    "institution_evidence": "GitHub company field \"Google\"; Kirkland, WA. https://github.com/ToddSegal",
+    "institution_evidence_url": "https://github.com/ToddSegal",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "rajeshvelicheti",
@@ -9269,7 +9895,7 @@
     "forum_handle": "",
     "display_name": "Rajesh Velicheti",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -9295,7 +9921,11 @@
       "Modify": 7,
       "Off-topic": 1,
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "syllogismos",
@@ -9327,7 +9957,8 @@
     "stances": {
       "Neutral": 4,
       "Modify": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "LeoCheng23",
@@ -9350,7 +9981,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "swapydapy",
@@ -9358,7 +9990,7 @@
     "forum_handle": "",
     "display_name": "swapydapy",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -9382,7 +10014,11 @@
       "Modify": 18,
       "Support": 8,
       "Oppose": 3
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available; high-frequency contributor",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "Colinmyers1",
@@ -9405,7 +10041,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "DJ-os",
@@ -9446,7 +10083,8 @@
       "Support": 4,
       "Off-topic": 3,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "HeetVekariya",
@@ -9473,7 +10111,8 @@
     "stances": {
       "Neutral": 5,
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "one-kash",
@@ -9496,7 +10135,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jesuino",
@@ -9523,7 +10163,8 @@
     "stances": {
       "Neutral": 1,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "hmk",
@@ -9546,7 +10187,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "DGuhr",
@@ -9570,7 +10212,8 @@
     "stances": {
       "Neutral": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "alexbainbridge",
@@ -9593,7 +10236,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "JasonHonKL",
@@ -9616,7 +10260,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "joshua-mo-143",
@@ -9639,7 +10284,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "meetrais",
@@ -9664,7 +10310,8 @@
     "stances": {
       "Neutral": 3,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mycosavant",
@@ -9687,7 +10334,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "tanveer-builds",
@@ -9712,7 +10360,8 @@
     "stances": {
       "Neutral": 2,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "austinmyc",
@@ -9735,7 +10384,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jwson-automation",
@@ -9762,7 +10412,8 @@
     "stances": {
       "Off-topic": 2,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "n1lanjan",
@@ -9788,7 +10439,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "LingJingMaster",
@@ -9817,7 +10469,8 @@
       "Oppose": 1,
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "zhenjunMa",
@@ -9847,7 +10500,8 @@
       "Neutral": 3,
       "Modify": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "uttej-vsk",
@@ -9870,7 +10524,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "HomeroRR",
@@ -9895,7 +10550,8 @@
     },
     "stances": {
       "Support": 4
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "vladislavdonchev",
@@ -9922,7 +10578,8 @@
       "Neutral": 2,
       "Modify": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "tomasdev",
@@ -9945,7 +10602,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "moonbox3",
@@ -9953,7 +10611,7 @@
     "forum_handle": "",
     "display_name": "Evan Mattson",
     "institution_final": "Microsoft",
-    "institution_source": "github_company_field",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "Principal Software Engineer @ Microsoft. Microsoft Agent Framework Python. Multi agent workflows, production orchestration, and OSS patterns.",
     "company_raw": "microsoft",
@@ -9975,7 +10633,11 @@
       "Neutral": 13,
       "Support": 6,
       "Modify": 5
-    }
+    },
+    "institution_manual": "Microsoft",
+    "institution_evidence": "GitHub company field \"microsoft\"; bio \"Principal Software Engineer @ Microsoft. Microsoft Agent Framework Python\". https://github.com/moonbox3",
+    "institution_evidence_url": "https://github.com/moonbox3",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "Realsid",
@@ -10000,7 +10662,8 @@
     "stances": {
       "Modify": 2,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "annicode01",
@@ -10025,7 +10688,8 @@
     "stances": {
       "Neutral": 3,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ethlaude",
@@ -10048,7 +10712,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "logan-markewich",
@@ -10075,7 +10740,8 @@
     "stances": {
       "Neutral": 5,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "dukeren",
@@ -10098,7 +10764,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "1GZW1",
@@ -10121,7 +10788,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kukuyuhai",
@@ -10144,7 +10812,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "egor-baranov",
@@ -10175,7 +10844,8 @@
       "Support": 2,
       "Neutral": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "tunnckoCore",
@@ -10198,7 +10868,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "LoganDavidTalbot",
@@ -10221,7 +10892,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "binbandit",
@@ -10254,7 +10926,8 @@
       "Support": 5,
       "Neutral": 4,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "vongosling",
@@ -10282,15 +10955,16 @@
       "Neutral": 4,
       "Modify": 3,
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "didier-durand",
     "github_handle": "didier-durand",
     "forum_handle": "",
     "display_name": "Didier Durand",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "AWS",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "ex-AWS engineering: GenAI/LLM/ML. cloud+linux, mainframe migrations, k8s/containers, DevOps+CI/CD. Engineer by training, IT geek by passion.",
     "company_raw": "AWS",
@@ -10331,7 +11005,11 @@
       "Neutral": 10,
       "Modify": 4,
       "Off-topic": 2
-    }
+    },
+    "institution_manual": "AWS",
+    "institution_evidence": "GitHub bio \"ex-AWS engineering: GenAI/LLM/ML\"; currently an independent consultant, previously AWS engineer",
+    "institution_evidence_url": null,
+    "institution_confidence": "Probable"
   },
   {
     "canonical_handle": "weiye-Lee",
@@ -10354,7 +11032,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Camusama",
@@ -10377,7 +11056,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "unizhu",
@@ -10400,7 +11080,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "zzstoatzz",
@@ -10427,7 +11108,8 @@
     },
     "stances": {
       "Neutral": 4
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ashwin63",
@@ -10450,7 +11132,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "andorsk",
@@ -10477,7 +11160,8 @@
     "stances": {
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "tonycai",
@@ -10506,7 +11190,8 @@
       "Off-topic": 1,
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "CSZHK",
@@ -10529,7 +11214,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "AndrewPanB",
@@ -10552,7 +11238,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "brunogrbavac",
@@ -10578,7 +11265,8 @@
     "stances": {
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "FoolishDreamer",
@@ -10601,7 +11289,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "nickossdev",
@@ -10626,7 +11315,8 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mcglabs",
@@ -10652,7 +11342,8 @@
       "Modify": 1,
       "Support": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "AlexsJones",
@@ -10681,7 +11372,8 @@
       "Neutral": 4,
       "Support": 2,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jerlyjelly",
@@ -10704,7 +11396,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "pointhalo",
@@ -10727,7 +11420,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "heiko-hotz",
@@ -10750,7 +11444,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mbleigh",
@@ -10773,7 +11468,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "automateyournetwork",
@@ -10800,7 +11496,8 @@
     "stances": {
       "Support": 2,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "dmandar",
@@ -10808,7 +11505,7 @@
     "forum_handle": "",
     "display_name": "dmandar",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -10839,7 +11536,11 @@
       "Neutral": 12,
       "Modify": 7,
       "Support": 6
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "jtanningbed",
@@ -10866,7 +11567,8 @@
     "stances": {
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "qingyun-wu",
@@ -10891,7 +11593,8 @@
     "stances": {
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "rsgrewal-aws",
@@ -10914,7 +11617,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "rwrz",
@@ -10937,7 +11641,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "umariyoob",
@@ -10960,7 +11665,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "chl1123",
@@ -10983,7 +11689,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "barnendu",
@@ -11012,7 +11719,8 @@
     "stances": {
       "Off-topic": 2,
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "SoloJiang",
@@ -11035,7 +11743,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Do-tech-ai",
@@ -11058,7 +11767,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ykvidie",
@@ -11081,7 +11791,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "devsodhirao",
@@ -11104,7 +11815,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "dfdumaresq",
@@ -11135,7 +11847,8 @@
       "Support": 4,
       "Neutral": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Miku-Kogane",
@@ -11158,7 +11871,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "fhinkel",
@@ -11181,7 +11895,8 @@
     },
     "stances": {
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sms03",
@@ -11211,7 +11926,8 @@
       "Neutral": 5,
       "Off-topic": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "robinmanuelthiel",
@@ -11238,7 +11954,8 @@
     "stances": {
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ducknificient",
@@ -11267,7 +11984,8 @@
     "stances": {
       "Neutral": 3,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "pszjmb1",
@@ -11290,7 +12008,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Vidit-Ostwal",
@@ -11313,7 +12032,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ghost",
@@ -11336,7 +12056,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "EditUndo",
@@ -11359,7 +12080,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mprynce",
@@ -11386,7 +12108,8 @@
     "stances": {
       "Off-topic": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jonigl",
@@ -11413,7 +12136,8 @@
     "stances": {
       "Neutral": 5,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "oliverlabs",
@@ -11445,7 +12169,8 @@
       "Modify": 1,
       "Oppose": 1,
       "N/A": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "gvdongen",
@@ -11470,7 +12195,8 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "giovanni-velais",
@@ -11493,7 +12219,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "c-mysec",
@@ -11523,7 +12250,8 @@
       "Support": 4,
       "Neutral": 3,
       "Modify": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "siacomuzzi",
@@ -11553,7 +12281,8 @@
       "Neutral": 5,
       "Support": 3,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "haxudev",
@@ -11580,7 +12309,8 @@
     "stances": {
       "Support": 1,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "gagb",
@@ -11605,7 +12335,8 @@
       "Neutral": 2,
       "Oppose": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Linux2010",
@@ -11649,7 +12380,8 @@
       "Neutral": 6,
       "Modify": 1,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "koteswaran2186",
@@ -11672,7 +12404,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "syaproj",
@@ -11699,7 +12432,8 @@
     "stances": {
       "Support": 2,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mempirate",
@@ -11722,7 +12456,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sanjeevkumar761",
@@ -11745,7 +12480,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "vuminhoang",
@@ -11768,7 +12504,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "flystar32",
@@ -11791,7 +12528,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "r3motecontrol",
@@ -11814,7 +12552,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "JerryDaHeLian",
@@ -11837,7 +12576,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "omkar-12bits",
@@ -11861,7 +12601,8 @@
     "stances": {
       "Neutral": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jowpurcinelli",
@@ -11884,7 +12625,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "KunjShah01",
@@ -11907,7 +12649,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "peterwang2013",
@@ -11934,7 +12677,8 @@
     "stances": {
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "TangHui-Best",
@@ -11957,7 +12701,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "bkowal",
@@ -11982,7 +12727,8 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "e1327906",
@@ -12007,7 +12753,8 @@
     "stances": {
       "Neutral": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ajoslin103",
@@ -12031,7 +12778,8 @@
     "stances": {
       "Neutral": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ekzhu",
@@ -12054,7 +12802,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "star-gazer111",
@@ -12077,7 +12826,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "zhangjh",
@@ -12100,7 +12850,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kirmorozov",
@@ -12123,7 +12874,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ydennisy",
@@ -12146,7 +12898,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mr-spaghetti-code",
@@ -12169,7 +12922,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "xtrycatchx",
@@ -12192,7 +12946,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ZapzCsgo",
@@ -12217,7 +12972,8 @@
     },
     "stances": {
       "Support": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jsahil",
@@ -12240,7 +12996,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "uestcbraid",
@@ -12263,7 +13020,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "austin-tral",
@@ -12286,7 +13044,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sandyskies",
@@ -12312,7 +13071,8 @@
     "stances": {
       "Neutral": 3,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "hammadtq",
@@ -12335,7 +13095,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "RobinQu",
@@ -12358,7 +13119,8 @@
     },
     "stances": {
       "Modify": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "pcuci",
@@ -12381,7 +13143,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Meir017",
@@ -12407,7 +13170,8 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "yedidel",
@@ -12438,7 +13202,8 @@
       "Neutral": 2,
       "Oppose": 1,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "zhanghongyong123456",
@@ -12461,7 +13226,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "azyobuzin",
@@ -12484,7 +13250,8 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jfabend",
@@ -12507,7 +13274,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Midnight-719",
@@ -12530,7 +13298,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "JadenHuang2023",
@@ -12554,7 +13323,8 @@
     },
     "stances": {
       "Neutral": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mihaimaruseac",
@@ -12577,7 +13347,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jankrynauw",
@@ -12600,7 +13371,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "nerunja",
@@ -12623,7 +13395,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sfitts",
@@ -12646,7 +13419,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ryan-szns",
@@ -12669,7 +13443,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "brycewcole",
@@ -12692,7 +13467,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "lindsaydsgdnolan-eng",
@@ -12715,7 +13491,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "pilartomas",
@@ -12738,7 +13515,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "satendrakumar",
@@ -12763,7 +13541,8 @@
     "stances": {
       "Neutral": 3,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mikeromano38",
@@ -12786,7 +13565,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "amin-nikanjam",
@@ -12809,7 +13589,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "yangchi",
@@ -12832,15 +13613,16 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "amye",
     "github_handle": "amye",
     "forum_handle": "",
     "display_name": "Amye Scavarda Perrin",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "CNCF / Linux Foundation",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "amye.org",
@@ -12881,7 +13663,11 @@
       "Oppose": 3,
       "Off-topic": 2,
       "N/A": 1
-    }
+    },
+    "institution_manual": "CNCF / Linux Foundation",
+    "institution_evidence": "CNCF author page (2,499 CNCF blog posts); manages GOVERNANCE.md, SECURITY.md and other LF infrastructure files in the A2A project. https://www.cncf.io/author/amye/",
+    "institution_evidence_url": "https://www.cncf.io/author/amye/",
+    "institution_confidence": "Strong"
   },
   {
     "canonical_handle": "ahoblitz",
@@ -12904,7 +13690,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sangpire",
@@ -12931,7 +13718,8 @@
     "stances": {
       "Neutral": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "perfectspr",
@@ -12954,7 +13742,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "SimplyKnownAsG",
@@ -12977,7 +13766,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "nidhi-pathak",
@@ -13001,7 +13791,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "lerhaupt",
@@ -13024,7 +13815,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "beonde",
@@ -13047,7 +13839,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ieb",
@@ -13070,7 +13863,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "msardara",
@@ -13097,7 +13891,8 @@
       "Modify": 2,
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Lancetnik",
@@ -13125,7 +13920,8 @@
       "Support": 2,
       "Modify": 2,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "birdayz",
@@ -13148,7 +13944,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Yotaro111",
@@ -13175,7 +13972,8 @@
     "stances": {
       "Neutral": 2,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Copilot",
@@ -13207,7 +14005,8 @@
     "stances": {
       "Support": 5,
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "He-Pin",
@@ -13232,7 +14031,8 @@
     "stances": {
       "Oppose": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "akdong91",
@@ -13255,7 +14055,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "HungYangChang",
@@ -13283,7 +14084,8 @@
       "Support": 2,
       "Neutral": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mescaja",
@@ -13306,7 +14108,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "geneknit",
@@ -13331,7 +14134,8 @@
     "stances": {
       "Neutral": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "bparees",
@@ -13355,7 +14159,8 @@
     "stances": {
       "Modify": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "tomkis",
@@ -13379,7 +14184,8 @@
     },
     "stances": {
       "Modify": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "DL1231",
@@ -13402,7 +14208,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jenish2917",
@@ -13425,7 +14232,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "anowardear062-svg",
@@ -13448,7 +14256,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "wenxichen",
@@ -13471,7 +14280,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "lumeche",
@@ -13494,7 +14304,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "vvasylkovskyi",
@@ -13517,7 +14328,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "spetschulatSFDC",
@@ -13540,7 +14352,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "aviaviavi",
@@ -13563,7 +14376,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "maxzyma",
@@ -13588,7 +14402,8 @@
     "stances": {
       "Neutral": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "lorenzocipriani-huawei",
@@ -13612,7 +14427,8 @@
     "stances": {
       "Support": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "AndyStan112",
@@ -13635,7 +14451,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "dinesh707",
@@ -13660,7 +14477,8 @@
     "stances": {
       "Neutral": 3,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "bittr-oss",
@@ -13685,7 +14503,8 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "borisalekseev",
@@ -13708,7 +14527,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mikeedjones",
@@ -13731,7 +14551,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "nahapetyan-serob",
@@ -13754,7 +14575,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "spetschu",
@@ -13777,7 +14599,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "raravena80",
@@ -13800,7 +14623,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "tiswanso",
@@ -13823,15 +14647,16 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "chorghemaruti64-creator",
     "github_handle": "chorghemaruti64-creator",
     "forum_handle": "",
     "display_name": "Nima | AGENIUM",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "AGENIUM",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "Marketing & Growth at AGENIUM — DNS for the Agent Web. Building agent naming, discovery & trust.",
     "company_raw": "",
@@ -13849,7 +14674,11 @@
       "Modify": 27,
       "Support": 15,
       "Neutral": 6
-    }
+    },
+    "institution_manual": "AGENIUM",
+    "institution_evidence": "GitHub bio \"Marketing & Growth at AGENIUM — DNS for the Agent Web\"。https://github.com/chorghemaruti64-creator",
+    "institution_evidence_url": "https://github.com/chorghemaruti64-creator",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "The-Nexus-Guard",
@@ -13876,7 +14705,8 @@
       "Support": 14,
       "Modify": 3,
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "hkmo99",
@@ -13900,7 +14730,8 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "douglasborthwick-crypto",
@@ -13925,7 +14756,8 @@
       "Support": 7,
       "Modify": 2,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "widrss",
@@ -13948,7 +14780,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ibrahimokuyucu",
@@ -13974,7 +14807,8 @@
     "stances": {
       "Support": 2,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "knuckles-stack",
@@ -14000,7 +14834,8 @@
     "stances": {
       "Modify": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "manja316",
@@ -14023,7 +14858,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "gstudiogdesigns-max",
@@ -14046,7 +14882,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jaredrsommer",
@@ -14071,7 +14908,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "agenttrust",
@@ -14096,7 +14934,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "hugo-romero-mm",
@@ -14121,7 +14960,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Starborn",
@@ -14146,7 +14986,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "openaitx-system",
@@ -14171,7 +15012,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "williamwa",
@@ -14196,7 +15038,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "chitra-venkatesh",
@@ -14224,7 +15067,8 @@
     },
     "stances": {
       "Neutral": 3
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "harrigan",
@@ -14249,7 +15093,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "loganaden",
@@ -14276,7 +15121,8 @@
     "stances": {
       "Neutral": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kadirpekel",
@@ -14301,7 +15147,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ipapapa",
@@ -14326,7 +15173,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mvakoc",
@@ -14358,7 +15206,8 @@
     "stances": {
       "Neutral": 5,
       "Modify": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ronantakizawa",
@@ -14383,7 +15232,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "richard-rance",
@@ -14409,7 +15259,8 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "thisisnotapril",
@@ -14441,7 +15292,8 @@
       "Off-topic": 2,
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "SergeyMenshykh",
@@ -14467,7 +15319,8 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "nitin737",
@@ -14492,7 +15345,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "glushenkovIG",
@@ -14517,7 +15371,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sambhav",
@@ -14542,7 +15397,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "JetsettingJames",
@@ -14567,7 +15423,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "davidlivekoo2012",
@@ -14595,7 +15452,8 @@
       "Support": 5,
       "Neutral": 2,
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "MaryamZi",
@@ -14620,7 +15478,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "DracoBlue",
@@ -14645,7 +15504,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kibitzing",
@@ -14670,7 +15530,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "bufdev",
@@ -14695,7 +15556,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "tomsun28",
@@ -14723,7 +15585,8 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "reatang",
@@ -14748,7 +15611,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "PoolDad-Legal",
@@ -14773,7 +15637,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "DinoChiesa",
@@ -14798,7 +15663,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "cardioailive1",
@@ -14823,7 +15689,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jackwotherspoon",
@@ -14849,7 +15716,8 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "aCanalez",
@@ -14874,7 +15742,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "zchee",
@@ -14900,7 +15769,8 @@
     "stances": {
       "Support": 1,
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "muthub-ai",
@@ -14928,7 +15798,8 @@
     "stances": {
       "Neutral": 2,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "stojangb",
@@ -14953,7 +15824,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "vicradon",
@@ -14978,7 +15850,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "RIKTESH89",
@@ -15003,7 +15876,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "phillipgibson",
@@ -15028,7 +15902,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "AshuJoshi",
@@ -15053,7 +15928,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "sd0ric4",
@@ -15078,7 +15954,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "superjvjkdf",
@@ -15103,7 +15980,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "batprem",
@@ -15128,7 +16006,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jeanibarz",
@@ -15156,7 +16035,8 @@
     "stances": {
       "Neutral": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "andy1213aa",
@@ -15181,7 +16061,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mskadu",
@@ -15206,7 +16087,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "XiHeee",
@@ -15233,7 +16115,8 @@
     "stances": {
       "Off-topic": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "martimfasantos",
@@ -15258,7 +16141,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "pauldotknopf",
@@ -15283,7 +16167,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kumar-dhanagopal",
@@ -15308,7 +16193,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "pavelgj",
@@ -15333,7 +16219,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "vorburger",
@@ -15358,7 +16245,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "ctorrao",
@@ -15383,7 +16271,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "qiansuo1",
@@ -15408,7 +16297,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "marksal87",
@@ -15433,7 +16323,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "jeff-nasseri",
@@ -15458,7 +16349,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "kimsr96",
@@ -15483,7 +16375,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "danieldai",
@@ -15508,7 +16401,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "PierreVannier",
@@ -15533,7 +16427,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "JinyongShin",
@@ -15560,7 +16455,8 @@
     "stances": {
       "Support": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "torrmal",
@@ -15585,7 +16481,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "takassh",
@@ -15610,7 +16507,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "bustosjuan",
@@ -15635,7 +16533,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "cndoit18",
@@ -15660,7 +16559,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "adv-11",
@@ -15685,7 +16585,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "dongyunpeng-sjtu",
@@ -15710,7 +16611,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "suensky",
@@ -15735,7 +16637,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "htondro",
@@ -15760,7 +16663,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "manojk0303",
@@ -15785,7 +16689,8 @@
     },
     "stances": {
       "Support": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "victordibia",
@@ -15810,7 +16715,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "gate4ai-alex",
@@ -15835,7 +16741,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "HaohanTsao",
@@ -15862,7 +16769,8 @@
     "stances": {
       "Support": 2,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "SellJamHere",
@@ -15887,7 +16795,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "beauduffy",
@@ -15912,7 +16821,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "dchrty",
@@ -15937,7 +16847,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "steren",
@@ -15962,7 +16873,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Guidosalimbeni",
@@ -15987,7 +16899,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "elevenarms",
@@ -16012,7 +16925,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "z2z23n0",
@@ -16039,7 +16953,8 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "imfing",
@@ -16064,7 +16979,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mandle420",
@@ -16089,7 +17005,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Jai0401",
@@ -16114,7 +17031,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "joevidev",
@@ -16139,7 +17057,8 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "idagelic",
@@ -16164,7 +17083,8 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "tucnak",
@@ -16189,7 +17109,8 @@
     "stances": {
       "Modify": 2,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "markgoho",
@@ -16213,7 +17134,8 @@
     "stances": {
       "Modify": 1,
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "bobtista",
@@ -16239,7 +17161,8 @@
       "Neutral": 6,
       "Modify": 1,
       "Oppose": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "AlbumenJ",
@@ -16263,7 +17186,8 @@
     "stances": {
       "Modify": 1,
       "Support": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "connyay",
@@ -16286,7 +17210,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "Fannon",
@@ -16312,7 +17237,8 @@
       "Neutral": 4,
       "Support": 3,
       "Modify": 2
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "mikekistler",
@@ -16335,7 +17261,8 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "gukoff",
@@ -16358,7 +17285,8 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "salah8584",
@@ -16381,7 +17309,8 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_confidence": "LM_inferred"
   },
   {
     "canonical_handle": "lightclient",
@@ -16389,7 +17318,7 @@
     "forum_handle": "",
     "display_name": "lightclient",
     "institution_final": "Ethereum Foundation",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Ethereum Foundation",
     "bio": "",
     "company_raw": "",
@@ -16407,15 +17336,19 @@
     },
     "stances": {
       "Modify": 2
-    }
+    },
+    "institution_manual": "Ethereum Foundation",
+    "institution_evidence": "GitHub member of @ethereum organization (publicly visible); go-ethereum core maintainer and EIP editor. https://github.com/lightclient",
+    "institution_evidence_url": "https://github.com/lightclient",
+    "institution_confidence": "Strong"
   },
   {
     "canonical_handle": "abcoathup",
     "github_handle": "abcoathup",
     "forum_handle": "",
     "display_name": "Andrew B Coathup",
-    "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_final": "Ethereal.news",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "Editor of @Ethereal-news ",
     "company_raw": "ethereal-news",
@@ -16432,15 +17365,19 @@
     },
     "stances": {
       "Neutral": 2
-    }
+    },
+    "institution_manual": "Ethereal.news",
+    "institution_evidence": "GitHub company field @ethereal-news; bio \"Editor of @Ethereal-news\". https://github.com/abcoathup",
+    "institution_evidence_url": "https://github.com/abcoathup",
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "joao1963",
     "github_handle": "joao1963",
     "forum_handle": "",
     "display_name": "joao1963",
-    "institution_final": "Unknown",
-    "institution_source": "lm_inferred",
+    "institution_final": "Independent",
+    "institution_source": "manual_R07",
     "institution_lm": "Unknown",
     "bio": "",
     "company_raw": "",
@@ -16457,7 +17394,11 @@
     },
     "stances": {
       "Off-topic": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "OoXooOx",
@@ -16465,7 +17406,7 @@
     "forum_handle": "",
     "display_name": "OoXooOx",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "https://safecryptodeal.com/  ______ Guarantor Service, OTC platform  for Remote Deals",
     "company_raw": "",
@@ -16482,7 +17423,11 @@
     },
     "stances": {
       "Neutral": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "GitHub bio mentions safecryptodeal.com OTC platform",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "McOso",
@@ -16490,7 +17435,7 @@
     "forum_handle": "",
     "display_name": "Ryan",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -16507,7 +17452,11 @@
     },
     "stances": {
       "Modify": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "GitHub no company field; single comment on ERC-8004",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   },
   {
     "canonical_handle": "lisenokdonbassenok",
@@ -16515,7 +17464,7 @@
     "forum_handle": "",
     "display_name": "lisenokdonbassenok",
     "institution_final": "Independent",
-    "institution_source": "lm_inferred",
+    "institution_source": "manual_R07",
     "institution_lm": "Independent",
     "bio": "",
     "company_raw": "",
@@ -16532,6 +17481,10 @@
     },
     "stances": {
       "Support": 1
-    }
+    },
+    "institution_manual": "Independent",
+    "institution_evidence": "No public information available",
+    "institution_evidence_url": null,
+    "institution_confidence": "Confirmed"
   }
 ]

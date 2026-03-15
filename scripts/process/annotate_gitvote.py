@@ -14,7 +14,7 @@ from pathlib import Path
 
 import urllib.request
 
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).parent.parent.parent
 DATA_RAW = ROOT / "data" / "raw"
 ANNOTATED_DIR = ROOT / "data" / "annotated"
 ANALYSIS = ROOT / "analysis"

@@ -16,7 +16,7 @@ import time
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).parent.parent.parent
 DATA_RAW = ROOT / "data" / "raw"
 OUT_JSON = DATA_RAW / "a2a_discussions.json"
 MANIFEST = DATA_RAW / "a2a_manifest.json"
