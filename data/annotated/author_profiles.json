@@ -17486,5 +17486,53 @@
     "institution_evidence": "No public information available",
     "institution_evidence_url": null,
     "institution_confidence": "Confirmed"
+  },
+  {
+    "canonical_handle": "jordanellis",
+    "github_handle": "jordanellis",
+    "forum_handle": null,
+    "display_name": "Jordan Ellis",
+    "institution_final": "Google",
+    "institution_source": "eip_header_email",
+    "institution_lm": "Unknown",
+    "bio": "",
+    "company_raw": "",
+    "location": "",
+    "cases": [
+      "ERC-8004"
+    ],
+    "total_records": 0,
+    "threads_touched": [],
+    "argument_types": {},
+    "stances": {},
+    "institution_manual": "Google",
+    "institution_evidence": "EIP header email: jordanellis@google.com",
+    "institution_evidence_url": "https://eips.ethereum.org/EIPS/eip-8004",
+    "institution_confidence": "Confirmed",
+    "note": "EIP-8004 co-author; no public discussion records in scraped data"
+  },
+  {
+    "canonical_handle": "erikreppel",
+    "github_handle": "erikreppel",
+    "forum_handle": null,
+    "display_name": "Erik Reppel",
+    "institution_final": "Coinbase",
+    "institution_source": "eip_header_email",
+    "institution_lm": "Unknown",
+    "bio": "",
+    "company_raw": "",
+    "location": "",
+    "cases": [
+      "ERC-8004"
+    ],
+    "total_records": 0,
+    "threads_touched": [],
+    "argument_types": {},
+    "stances": {},
+    "institution_manual": "Coinbase",
+    "institution_evidence": "EIP header email: erik.reppel@coinbase.com",
+    "institution_evidence_url": "https://eips.ethereum.org/EIPS/eip-8004",
+    "institution_confidence": "Confirmed",
+    "note": "EIP-8004 co-author; no public discussion records in scraped data"
   }
 ]

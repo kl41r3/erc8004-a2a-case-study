@@ -6,7 +6,7 @@
 
 ## The Puzzle
 
-Transaction cost economics predicts that high asset specificity and behavioral uncertainty favor hierarchy. ERC-8004 (a trustless AI agent protocol) was developed under exactly these conditions — yet 71 contributors from competing organizations reached binding consensus in **169 days** through a permissionless DAO process, without contracts or authority.
+Transaction cost economics predicts that high asset specificity and behavioral uncertainty favor hierarchy. ERC-8004 (a trustless AI agent protocol) was developed under exactly these conditions — yet contributors from competing organizations reached binding consensus in **169 days** through a permissionless DAO process, without contracts or authority.
 
 Google A2A addressed the same problem via a corporate-led Technical Steering Committee. After one year of open development, it remains in ongoing iteration with no binding consensus date.
 
@@ -29,9 +29,10 @@ Google A2A addressed the same problem via a corporate-led Technical Steering Com
 ## Participation Structure
 
 **ERC-8004** — distributed, multi-institutional:
-- 69 unique contributors; no single actor exceeds 13% of records
+- 69 active discussion contributors; no single actor exceeds 13% of records
 - Named institutions confirmed (R07): MetaMask (12.6%), Ethereum Foundation (10.4%), The Graph (5.9%), Hats Protocol (3.7%), Nethermind (3.0%)
-- Core EIP co-authors: MetaMask, Ethereum Foundation, Google, Coinbase (per EIP header)
+- Formal EIP co-authors (per EIP header): MetaMask, Ethereum Foundation, **Google** (`jordanellis@google.com`), **Coinbase** (`erik.reppel@coinbase.com`)
+- **Critical finding:** Google and Coinbase are institutional co-authors but have **zero public discussion records** — they endorsed the standard without dominating its deliberation
 - Most active critic: `pcarranzav` (The Graph, 16 records) — highest Modify+Oppose rate, no organizational power within the EIP process
 
 **Google A2A** — hierarchically concentrated:
@@ -64,7 +65,8 @@ These jointly substitute for hierarchical authority, resolving the Williamson pu
 
 ## Data Quality
 
-- 5,421 total annotated records (5,421 via LLM; ERC-8004 annotation quality verified against manual sample)
-- Institution attribution: 109 of 626 authors enriched via R07 manual investigation (GitHub company fields, EIP header email, LinkedIn); 517 remain LLM-inferred
+- 5,421 total annotated records (ERC-8004 annotation quality verified against manual sample)
+- Institution attribution: 109 of 628 discussion authors enriched via R07 manual investigation; 517 remain LLM-inferred
+- ERC-8004 formal co-authors: 4 (MetaMask, EF, Google, Coinbase) — all confirmed via EIP header email; Google and Coinbase have 0 public discussion records
 - ERC-8004 GitHub data: 7 of 9 core PRs have human participants; #1470 and #1488 contain only bot activity
 - Cross-case overlap: 1 confirmed human (voidcenter / Sparsity.ai) appears in both cases

@@ -44,9 +44,9 @@
   \IEEEauthorblockN{[Author Name]}
   \IEEEauthorblockA{
     \textit{[Department]} \\
-    \textit{[Institution]} \\
-    [City, Country] \\
-    [email]
+    \textit{[Institution]} \\{}
+    {[City, Country]} \\{}
+    {[email]}
   }
 }
 
@@ -226,14 +226,21 @@ generalize prevalence.
 
 \subsection{Case Descriptions}
 
-\textit{ERC-8004 (Trustless Agents)} was proposed on August 13, 2025 by
-\texttt{davidecrapis.eth} (Ethereum Foundation). The standard defines a
-registry for trustless AI agents on the Ethereum Virtual Machine (EVM),
-enabling accountability and credentialing without centralized authority.
-It was processed through the standard Ethereum Improvement Proposal (EIP)
+\textit{ERC-8004 (Trustless Agents)} was proposed on August 13, 2025, with
+four institutional co-authors listed in the EIP header: Davide Crapis
+(\texttt{davide@ethereum.org}, Ethereum Foundation), Marco De Rossi
+(\texttt{@MarcoMetaMask}, MetaMask), Jordan Ellis
+(\texttt{jordanellis@google.com}, Google), and Erik Reppel
+(\texttt{erik.reppel@coinbase.com}, Coinbase). The standard defines a
+registry for trustless AI agents on the Ethereum Virtual Machine (EVM).
+It was processed through the Ethereum Improvement Proposal (EIP)
 pipeline---public deliberation on Ethereum Magicians forum and GitHub---and
 merged to mainnet on January 29, 2026. The process required no membership,
 no fee, and no organizational affiliation to participate.
+
+Notably, Google and Coinbase appear as formal co-authors yet have zero
+public discussion records in the scraped data. Their institutional commitment
+was expressed through co-authorship, not through discussion-floor participation.
 
 \textit{Google A2A (Agent-to-Agent)} was first committed on March 25, 2025
 and publicly announced on April 9, 2025. The protocol defines an open
@@ -447,17 +454,23 @@ Other named          & 13.4 & 2.6 \\
 
 The independent contributor share is nearly identical across cases (44.4\%
 vs.\ 44.1\%), suggesting that participation breadth is not the differentiating
-dimension. What differs is the \textit{distribution of named institutional
-influence}. Google's 25.0\% record share---the highest single institution in
-either case---reveals disproportionate contribution intensity, particularly from
-\texttt{holtskinner} (Google, $\approx$560 records, $\approx$10\% of all A2A records).
-This is how corporate governance reproduces hierarchy within an ostensibly open
-project: not by excluding others, but by having employees who contribute at
-orders-of-magnitude higher rates than external participants.
+dimension.
 
-ERC-8004's top institution (MetaMask, 12.6\% of records) is less than half of
-Google's A2A share, and MetaMask's contribution intensity was episodic---its
-dominance reversed when The Graph's \texttt{pcarranzav} and Hats Protocol's
+The starkest institutional contrast is the role of Google. In A2A, Google
+accounts for 25.0\% of all discussion records, with \texttt{holtskinner}
+alone contributing $\approx$560 records ($\approx$10\% of all A2A records).
+In ERC-8004, Google is listed as a formal co-author (\texttt{jordanellis@google.com}
+in the EIP header) yet has \textit{zero} public discussion records. The same
+pattern holds for Coinbase (\texttt{erik.reppel@coinbase.com}, formal co-author,
+zero discussion records). Both institutions expressed institutional commitment
+through co-authorship, then stepped back from the public deliberative process.
+This is the governance complement of the permissionless mechanism: even major
+players who endorsed the standard did not leverage their institutional weight
+to dominate the specification-writing discourse.
+
+ERC-8004's top institution by discussion volume (MetaMask, 12.6\%) is less
+than half of Google's A2A share, and MetaMask's contribution intensity was
+episodic---reversed when The Graph's \texttt{pcarranzav} and Hats Protocol's
 \texttt{spengrah} raised substantive objections that forced specification
 revisions. No equivalent independent-driven reversal appears in the A2A record.
 
@@ -555,13 +568,17 @@ were perceived as captured by MetaMask, independent developers could fork
 the EIP and propose a competing standard. The mere possibility disciplines
 institutional participants.
 
-The evidence: MetaMask's 12.6\% record share with only one highly active
-contributor shows high institutional intensity but not monopoly, and
-institutional dominance did not suppress the Oppose voices from The Graph
-and Hats Protocol that forced specification revisions. Google A2A's TSC gate is the structural opposite:
-binding authority is limited to a pre-registered committee, new entrants
-cannot credibly threaten to fork with equivalent legitimacy, and
-institutional actors maintain persistent directional control.
+The evidence is twofold. First, MetaMask's 12.6\% record share shows high
+institutional intensity but not monopoly, and institutional dominance did not
+suppress the Oppose voices from The Graph and Hats Protocol that forced
+specification revisions. Second---and more revealing---Google and Coinbase
+co-authored the EIP (confirmed via EIP header email addresses) yet contributed
+zero public discussion records. The permissionless entry threat worked in
+reverse: even formal institutional co-authors did not exploit their status
+to claim editorial authority over the specification. Google A2A's TSC gate
+is the structural opposite: binding authority is limited to a pre-registered
+committee, and institutional actors maintain persistent directional control
+through contribution volume.
 
 \subsection{Theoretical Implications}
 

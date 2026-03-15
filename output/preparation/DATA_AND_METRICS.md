@@ -3,7 +3,9 @@
 **Audience:** Researcher (for personal verification)
 **Generated:** 2026-03-15
 **Status:** Annotation complete. 5,421 total records (ERC-8004: 149; Google A2A: 5,272).
-Institution data finalized with R07 manual investigation (109 confirmed authors).
+Institution data finalized with R07 manual investigation (109 confirmed discussion authors).
+Two additional EIP co-author profiles added (Jordan Ellis/Google, Erik Reppel/Coinbase)
+with 0 discussion records; author_profiles.json now contains 628 entries.
 
 ---
 
@@ -212,7 +214,15 @@ to `annotated_records.json`. Same MiniMax-M2.5 backend.
 - `davidecrapis.eth` / `dcrapis` → Ethereum Foundation (EIP header email; was Olas/Valory)
 
 **Output:** `data/annotated/author_profiles.json` — one entry per unique author
-(626 total: 71 ERC-8004 + 560+ A2A human authors; 3 major bots excluded from A2A count)
+(628 total: 69 active ERC-8004 + 2 silent EIP co-authors + 557 A2A human authors)
+
+**ERC-8004 co-author profiles (0 discussion records):**
+- `jordanellis` — Jordan Ellis, Google (`jordanellis@google.com`, EIP header)
+- `erikreppel` — Erik Reppel, Coinbase (`erik.reppel@coinbase.com`, EIP header)
+
+These two individuals are listed as formal EIP co-authors but left no public discussion
+records. Their profiles are included for completeness and to enable co-authorship-level
+institutional analysis, but they do not appear in any record-level statistics.
 
 ---
 
@@ -428,6 +438,12 @@ Foundation (EIP header email), not Olas/Valory. Openness index recalculated from
 ### 3.6 Core Contributor Metrics
 
 **Source:** `analysis/core_contributors.csv`
+
+**ERC-8004 formal co-authors (per EIP header):**
+- `dcrapis` / `davidecrapis.eth` (Ethereum Foundation) — 9 records (proposer, active)
+- `MarcoMetaMask` (MetaMask) — 17 records (most active contributor)
+- `jordanellis` (Google) — **0 records** (co-author, silent)
+- `erikreppel` (Coinbase) — **0 records** (co-author, silent)
 
 **ERC-8004 top contributors (by record count, post-R07):**
 - `MarcoMetaMask` (MetaMask): 17 records — 12.6% by institution; highest individual

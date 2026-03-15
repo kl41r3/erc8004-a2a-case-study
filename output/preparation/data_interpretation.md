@@ -33,9 +33,18 @@ Comprehensive analysis of all collected metrics, with theoretical implications f
 ### 2.2 Participation Structure
 
 **ERC-8004 (post-R07 institution data):**
-- 69 unique non-bot authors across forum (113 posts) and GitHub (36 records)
+
+*Formal co-authors (EIP header):* MetaMask (`MarcoMetaMask`), Ethereum Foundation (`dcrapis`,
+`davide@ethereum.org`), Google (`jordanellis@google.com`), Coinbase (`erik.reppel@coinbase.com`)
+
+**Critical finding:** Google and Coinbase are institutional co-authors but contributed
+**zero public discussion records**. This is the sharpest institutional contrast with A2A,
+where Google accounts for 25% of all discussion records. Google's role in ERC-8004 is
+that of an endorser, not a deliberator.
+
+- 69 active discussion contributors across forum (113 posts) and GitHub (36 records)
 - Top contributor: `MarcoMetaMask` (17 records, MetaMask) — single most active voice, 11.4% of records
-- Most active critic: `pcarranzav` (16 records, The Graph / Edge and Node) — highest Modify+Oppose rate; has no organizational power within the EIP process
+- Most active critic: `pcarranzav` (16 records, The Graph / Edge and Node) — highest Modify+Oppose rate; no procedural authority in the EIP process
 - `spengrah` (5–10 records, Hats Protocol) — Modify-heavy, focused on governance module design
 - `davidecrapis.eth` / `dcrapis` (9 records combined, Ethereum Foundation) — EIP proposer; R07 confirmed via EIP header email domain
 - `lightclient` (Ethereum Foundation, ERC editor) appeared in 2 PRs with technical reviews — the "authority" role is minimal, consistent with permissionless norms
@@ -190,7 +199,7 @@ ERC-8004 contributors operate under semi-persistent pseudonyms (Ethereum address
 
 The EIP process allows any individual to submit a standard proposal, comment on any PR, and vote (via signal) on any EIP. There is no credentialing requirement, no membership dues, no TSC membership application. This creates an *unlimited threat of competitive entry*: if the ERC-8004 standard were perceived as captured by MetaMask, independent developers could fork the EIP and propose an alternative. The mere possibility of competitive entry disciplines the behavior of institutional participants.
 
-**Data support:** MetaMask's 12.6% record share vs. ~1.5% author share shows high institutional intensity but not monopoly. The presence of substantive critical voices from non-EF contributors (`pcarranzav`, The Graph, highest Modify+Oppose rate) who were not dismissed or silenced demonstrates that the permissionless property is operationally real, not merely formal.
+**Data support:** Two independent lines of evidence. First, MetaMask's 12.6% record share shows high institutional intensity but not monopoly — The Graph's `pcarranzav` (highest Modify+Oppose rate, no procedural authority) drove substantive specification revisions. Second, and more telling: Google and Coinbase are formal co-authors of ERC-8004 (EIP header email) yet contributed zero public discussion records. The permissionless threat worked in reverse — even institutional endorsers chose not to leverage co-author status to dominate deliberation. This is structurally impossible in A2A, where Google's TSC membership and discussion volume are inseparable.
 
 **Contrast with A2A:** A2A's TSC gate (binding votes only by pre-registered TSC members) is the opposite of permissionless. The `/vote` mechanism, while appearing democratic, limits binding authority to a defined group. New entrants cannot credibly threaten to fork the standard — the protocol's legitimacy derives from Google's brand and developer ecosystem, not from the standard's content alone.
 
