@@ -17,7 +17,6 @@ Input:
 
 Output:
   analysis/structural_metrics.csv         (no annotation needed)
-  analysis/governance_metrics.csv         (requires annotation)
   output/findings_summary.md
 """
 
@@ -41,10 +40,10 @@ def _parse_date(s: str | None):
     except Exception:
         return pd.NaT
 
-RAW_DIR = Path(__file__).parent.parent / "data" / "raw"
-ANNOTATED_DIR = Path(__file__).parent.parent / "data" / "annotated"
-ANALYSIS_DIR = Path(__file__).parent.parent / "analysis"
-OUTPUT_DIR = Path(__file__).parent.parent / "output"
+RAW_DIR = Path(__file__).parent.parent.parent / "data" / "raw"
+ANNOTATED_DIR = Path(__file__).parent.parent.parent / "data" / "annotated"
+ANALYSIS_DIR = Path(__file__).parent.parent.parent / "analysis"
+OUTPUT_DIR = Path(__file__).parent.parent.parent / "output"
 ANALYSIS_DIR.mkdir(parents=True, exist_ok=True)
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -117,51 +116,91 @@ def compute_erc8004_structural() -> dict:
 
 def compute_a2a_structural() -> dict:
     """Compute structural metrics for Google A2A from raw scraped data."""
-    commits = json.loads((RAW_DIR / "a2a_commits.json").read_text()) if (RAW_DIR / "a2a_commits.json").exists() else []
-    issues = json.loads((RAW_DIR / "a2a_issues.json").read_text()) if (RAW_DIR / "a2a_issues.json").exists() else []
-    prs = json.loads((RAW_DIR / "a2a_prs.json").read_text()) if (RAW_DIR / "a2a_prs.json").exists() else []
+    import re
 
-    # Discussion records = issues + issue_comments + PRs (with body) + PR review comments
-    discussion = issues + [r for r in prs if r.get("raw_text", "").strip()]
-    df = pd.DataFrame(discussion)
-    df["date"] = pd.to_datetime(df["date"], utc=True, errors="coerce")
-    df = df[df["date"].notna() & (df["date"].apply(lambda x: (x.replace(tzinfo=timezone.utc) if x.tzinfo is None else x) >= A2A_FIRST_COMMIT if pd.notna(x) else False))]
+    commits   = json.loads((RAW_DIR / "a2a_commits.json").read_text())    if (RAW_DIR / "a2a_commits.json").exists()    else []
+    issues    = json.loads((RAW_DIR / "a2a_issues.json").read_text())     if (RAW_DIR / "a2a_issues.json").exists()     else []
+    prs       = json.loads((RAW_DIR / "a2a_prs.json").read_text())        if (RAW_DIR / "a2a_prs.json").exists()        else []
+    discs     = json.loads((RAW_DIR / "a2a_discussions.json").read_text()) if (RAW_DIR / "a2a_discussions.json").exists() else []
 
-    unique_authors = df["author"].nunique() if len(df) > 0 else 0
+    # ── Discussion record counts by source type ───────────────────────────
+    n_issues         = sum(1 for r in issues if r.get("source") == "issue")
+    n_issue_comments = sum(1 for r in issues if r.get("source") == "issue_comment")
+    n_prs            = sum(1 for r in prs    if r.get("source") == "pr")
+    n_pr_reviews     = sum(1 for r in prs    if r.get("source") == "pr_review_comment")
+    n_discussions    = sum(1 for r in discs  if r.get("source") == "discussion")
+    n_disc_comments  = sum(1 for r in discs  if r.get("source") in ("discussion_comment", "discussion_reply"))
+    total_discussion = n_issues + n_issue_comments + n_prs + n_pr_reviews + n_discussions + n_disc_comments
 
-    # Commit contributors
+    # ── Unique discussion contributors ────────────────────────────────────
+    all_discussion = issues + prs + discs
+    unique_authors = len({r["author"] for r in all_discussion if r.get("author")})
+
+    # ── Gitvote events ────────────────────────────────────────────────────
+    # Commands are issued as issue comments; parse the associated issue number
+    # from issue_url (e.g. https://api.github.com/repos/…/issues/831)
+    def _issue_num(r: dict) -> str | None:
+        for field in ("issue_url", "url"):
+            m = re.search(r"/issues/(\d+)", r.get(field, "") or "")
+            if m:
+                return m.group(1)
+        return None
+
+    vote_records    = [r for r in issues if "/vote"        in r.get("raw_text", "")]
+    cancel_records  = [r for r in issues if "/cancel-vote" in r.get("raw_text", "")]
+    voted_issues    = sorted({_issue_num(r) for r in vote_records    if _issue_num(r)}, key=int)
+    cancelled_issues= sorted({_issue_num(r) for r in cancel_records  if _issue_num(r)}, key=int)
+    n_vote_commands   = len(vote_records)
+    n_cancel_commands = len(cancel_records)
+    n_voted_threads   = len(voted_issues)   # unique issues/PRs that received a /vote
+
+    # ── PR stats ──────────────────────────────────────────────────────────
+    actual_prs  = [r for r in prs if r.get("source") == "pr"]
+    merged      = sum(1 for p in actual_prs if p.get("merged"))
+    merge_rate  = merged / len(actual_prs) if actual_prs else 0
+
+    # ── Commit stats ──────────────────────────────────────────────────────
     commit_authors = len({c["author"] for c in commits if c.get("author")})
+    commit_dates   = sorted(c["date"] for c in commits if c.get("date"))
+    first_commit   = commit_dates[0][:10]  if commit_dates else "unknown"
+    last_commit    = commit_dates[-1][:10] if commit_dates else "unknown"
 
-    # Timeline
-    commit_dates = sorted([c["date"] for c in commits if c.get("date")])
-    first_commit = commit_dates[0][:10] if commit_dates else "unknown"
-    last_commit = commit_dates[-1][:10] if commit_dates else "unknown"
-
-    # PR merge rate
-    actual_prs = [r for r in prs if r.get("source") == "pr"]
-    merged = len([p for p in actual_prs if p.get("merged")])
-    merge_rate = merged / len(actual_prs) if actual_prs else 0
-
-    # Review comment authors (external participation)
-    review_comment_authors = len({r["author"] for r in prs if r.get("source") == "pr_review_comment" and r.get("author")})
+    # ── Review comment authors ────────────────────────────────────────────
+    review_comment_authors = len({r["author"] for r in prs
+                                  if r.get("source") == "pr_review_comment" and r.get("author")})
 
     return {
-        "case": "Google A2A",
-        "governance_type": "Corporate Hierarchy",
-        "proposal_date": A2A_PUBLIC_ANNOUNCE.strftime("%Y-%m-%d"),
-        "consensus_date": "N/A (ongoing)",
-        "days_to_consensus": "N/A",
-        "first_commit": first_commit,
-        "last_commit": last_commit,
-        "total_commits": len(commits),
-        "commit_authors": commit_authors,
-        "total_prs": len(actual_prs),
-        "merged_prs": merged,
-        "pr_merge_rate": round(merge_rate, 3),
-        "total_discussion_records": len(df),
+        "case":                        "Google A2A",
+        "governance_type":             "Corporate Hierarchy",
+        "proposal_date":               A2A_PUBLIC_ANNOUNCE.strftime("%Y-%m-%d"),
+        "first_commit":                first_commit,
+        "last_commit":                 last_commit,
+        "consensus_date":              "N/A (ongoing)",
+        "days_to_consensus":           "N/A",
+        # ── Commits ──
+        "total_commits":               len(commits),
+        "commit_authors":              commit_authors,
+        # ── PRs ──
+        "total_prs":                   len(actual_prs),
+        "merged_prs":                  merged,
+        "pr_merge_rate":               round(merge_rate, 3),
+        "review_comment_authors":      review_comment_authors,
+        # ── Discussion breakdown ──
+        "disc_issues":                 n_issues,
+        "disc_issue_comments":         n_issue_comments,
+        "disc_prs":                    n_prs,
+        "disc_pr_review_comments":     n_pr_reviews,
+        "disc_github_discussions":     n_discussions,
+        "disc_discussion_comments":    n_disc_comments,
+        "total_discussion_records":    total_discussion,
         "unique_contributors_discussion": unique_authors,
-        "review_comment_authors": review_comment_authors,
-        "openness_note": "refined by LLM annotation",
+        # ── Formal governance (gitvote) ──
+        "gitvote_vote_commands":       n_vote_commands,
+        "gitvote_cancel_commands":     n_cancel_commands,
+        "gitvote_voted_threads":       n_voted_threads,
+        "gitvote_voted_issue_nums":    ", ".join(f"#{n}" for n in voted_issues),
+        "gitvote_cancelled_issue_nums": ", ".join(f"#{n}" for n in cancelled_issues),
+        "openness_note":               "refined by LLM annotation",
     }
 
 
@@ -252,6 +291,22 @@ def write_findings_summary(erc: dict, a2a: dict, erc_ann: dict | None, a2a_ann: 
         for inst, n in sorted(a2a_ann["institution_breakdown"].items(), key=lambda x: -x[1])[:6]:
             a2a_inst_table += f"  - {inst}: {n} ({round(n/total*100,1)}%)\n"
 
+    # A2A discussion breakdown string
+    a2a_disc_breakdown = (
+        f"{fmt(a2a.get('disc_issues'))} issues + "
+        f"{fmt(a2a.get('disc_issue_comments'))} issue comments + "
+        f"{fmt(a2a.get('disc_prs'))} PR bodies + "
+        f"{fmt(a2a.get('disc_pr_review_comments'))} PR review comments + "
+        f"{fmt(a2a.get('disc_github_discussions'))} discussions + "
+        f"{fmt(a2a.get('disc_discussion_comments'))} discussion comments"
+    )
+    a2a_gitvote_str = (
+        f"{fmt(a2a.get('gitvote_vote_commands'))} /vote commands, "
+        f"{fmt(a2a.get('gitvote_cancel_commands'))} /cancel-vote commands "
+        f"across {fmt(a2a.get('gitvote_voted_threads'))} threads "
+        f"({a2a.get('gitvote_voted_issue_nums', 'unknown')})"
+    )
+
     summary = f"""# RQ1 Governance Metrics — Findings Summary
 Generated: {datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
 
@@ -262,19 +317,39 @@ Generated: {datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
 | Metric | ERC-8004 (DAO) | Google A2A (Corporate) |
 |--------|---------------|------------------------|
 | Governance type | Permissionless DAO | Corporate Hierarchy |
-| Proposal / first public date | {erc.get('proposal_date', '?')} | {a2a.get('proposal_date', '?')} |
-| Consensus / launch | {erc.get('consensus_date', '?')} | {a2a.get('consensus_date', '?')} |
-| Days to consensus | **{fmt(erc.get('days_to_consensus'))}** | {fmt(a2a.get('days_to_consensus'))} |
-| Total discussion records | {fmt(erc.get('total_discussion_records'))} | {fmt(a2a.get('total_discussion_records'))} |
-| Unique discussion contributors | {fmt(erc_unique)} | {fmt(a2a_unique)} (+{fmt(a2a_review_authors)} review comment authors) |
-| Unique institutions | {fmt(erc_inst)} | {fmt(a2a_inst)} |
+| First public date | {erc.get('proposal_date', '?')} | {a2a.get('proposal_date', '?')} (first commit: {a2a.get('first_commit', '?')}) |
+| Consensus / status | {erc.get('consensus_date', '?')} (mainnet) | {a2a.get('consensus_date', '?')} (last commit: {a2a.get('last_commit', '?')}) |
+| **Days to consensus** | **{fmt(erc.get('days_to_consensus'))}** | {fmt(a2a.get('days_to_consensus'))} |
+| **Total discussion records** | **{fmt(erc.get('total_discussion_records'))}** | **{fmt(a2a.get('total_discussion_records'))}** |
+| _— Forum posts_ | {fmt(erc.get('forum_posts'))} | N/A |
+| _— GitHub comments_ | {fmt(erc.get('github_records'))} | {fmt(a2a.get('disc_issue_comments'))} issue comments + {fmt(a2a.get('disc_pr_review_comments'))} PR review comments |
+| _— Issue/PR bodies_ | N/A | {fmt(a2a.get('disc_issues'))} issues + {fmt(a2a.get('disc_prs'))} PR bodies |
+| _— GitHub Discussions_ | N/A | {fmt(a2a.get('disc_github_discussions'))} discussions + {fmt(a2a.get('disc_discussion_comments'))} replies |
+| **Unique discussion contributors** | **{fmt(erc_unique)}** | **{fmt(a2a_unique)}** |
+| _— Commit authors_ | N/A | {fmt(a2a.get('commit_authors'))} |
+| _— PR review comment authors_ | N/A | {fmt(a2a.get('review_comment_authors'))} |
+| **Unique institutions** | {fmt(erc_inst)} | {fmt(a2a_inst)} |
 | Openness index | {fmt(erc_open)} | {fmt(a2a_open)} |
 | Total commits | N/A | {fmt(a2a.get('total_commits'))} |
-| Commit authors | N/A | {fmt(a2a.get('commit_authors'))} |
+| Total PRs (merged / total) | N/A | {fmt(a2a.get('merged_prs'))} / {fmt(a2a.get('total_prs'))} ({round(float(a2a.get('pr_merge_rate', 0))*100, 1)}%) |
 | Forum reply rate | {fmt(erc.get('reply_rate_forum'))} | N/A |
+| **Formal governance votes** | None (EIP stage structure) | {a2a_gitvote_str} |
 
-> Openness index = unique contributors from outside initiating org / total unique contributors.
-> Values 0–1; closer to 1.0 = more open.
+> **Openness index** = unique contributors from outside initiating org / total unique contributors (0–1; higher = more open).
+> **ERC-8004 initiating org**: Ethereum Foundation. **A2A initiating org**: Google.
+
+---
+
+## A2A Discussion Record Breakdown
+
+Total {fmt(a2a.get('total_discussion_records'))} records = {a2a_disc_breakdown}
+
+## A2A Gitvote Details
+
+- `/vote` commands issued: {fmt(a2a.get('gitvote_vote_commands'))}
+- `/cancel-vote` commands issued: {fmt(a2a.get('gitvote_cancel_commands'))}
+- Unique threads with a vote: {fmt(a2a.get('gitvote_voted_threads'))} ({a2a.get('gitvote_voted_issue_nums', '')})
+- Threads where vote was cancelled: {a2a.get('gitvote_cancelled_issue_nums', 'none')}
 
 ---
 
@@ -290,11 +365,14 @@ Generated: {datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
 
 ## Data Sources
 
-| Case | Source | Link | Records |
-|------|--------|------|---------|
-| ERC-8004 | Ethereum Magicians forum | https://ethereum-magicians.org/t/erc-8004-trustless-agents/25098 | {fmt(erc.get('forum_posts'))} posts |
-| ERC-8004 | GitHub ethereum/ERCs (core PRs only) | https://github.com/ethereum/ERCs/pulls?q=erc-8004 | {fmt(erc.get('github_records'))} comments |
-| Google A2A | GitHub google/A2A | https://github.com/google/A2A | {fmt(a2a.get('total_commits'))} commits, {fmt(a2a.get('total_discussion_records'))} discussion records |
+| Case | Source | Records | Link |
+|------|--------|---------|------|
+| ERC-8004 | Ethereum Magicians forum | {fmt(erc.get('forum_posts'))} posts | https://ethereum-magicians.org/t/erc-8004-trustless-agents/25098 |
+| ERC-8004 | GitHub ethereum/ERCs (9 core PRs) | {fmt(erc.get('github_records'))} records | https://github.com/ethereum/ERCs/pulls |
+| Google A2A | Issues + issue comments | {fmt(a2a.get('disc_issues'))} + {fmt(a2a.get('disc_issue_comments'))} | https://github.com/a2aproject/A2A/issues |
+| Google A2A | PRs + PR review comments | {fmt(a2a.get('disc_prs'))} + {fmt(a2a.get('disc_pr_review_comments'))} | https://github.com/a2aproject/A2A/pulls |
+| Google A2A | GitHub Discussions + replies | {fmt(a2a.get('disc_github_discussions'))} + {fmt(a2a.get('disc_discussion_comments'))} | https://github.com/a2aproject/A2A/discussions |
+| Google A2A | Commits | {fmt(a2a.get('total_commits'))} | https://github.com/a2aproject/A2A/commits |
 
 ---
 
