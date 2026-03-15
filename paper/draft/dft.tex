@@ -20,6 +20,7 @@
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
+\graphicspath{{figures/}}   % [AUTHOR] put exported PNGs in paper/draft/figures/
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{booktabs}
@@ -350,6 +351,29 @@ announcement (2025-04-09) implies significant internal pre-work before
 external participation was enabled---a structural asymmetry absent from
 the EIP process.
 
+Figure~\ref{fig:timeline} illustrates the temporal arc of ERC-8004 participation,
+grouping contributors by institution. The density of activity in the first and
+final 30 days (initial specification debate and Last Call review) reflects the
+EIP stage structure's role in creating focused deliberation windows.
+
+\begin{figure}[htbp]
+  \centering
+  % ---------------------------------------------------------------
+  % [AUTHOR] Export from: output/timeline_erc8004.html
+  % Suggested export: open in browser, screenshot at 1400×700px,
+  % crop to the chart area (exclude the legend bottom), save as
+  % figures/timeline_erc8004.png
+  % ---------------------------------------------------------------
+  \fbox{\begin{minipage}{0.95\columnwidth}\centering\vspace{2.2cm}
+    \textit{[Figure: ERC-8004 participation timeline.}\\
+    \textit{Export from \texttt{output/timeline\_erc8004.html}]}
+    \vspace{2.2cm}\end{minipage}}
+  \caption{Temporal participation timeline for ERC-8004 (2025-08-13 to 2026-01-29).
+  Each dot represents one discussion record; rows are individual contributors grouped
+  by institution; dot color encodes stance (Support / Modify / Oppose / Neutral).}
+  \label{fig:timeline}
+\end{figure}
+
 \subsection{Argument Type Distribution}
 
 Table~\ref{tab:arguments} compares argument type distributions across
@@ -373,6 +397,32 @@ Total ($N$)        & 149 & 5,272 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+Figure~\ref{fig:bipartite} shows the institution--argument-type bipartite
+network for ERC-8004, with edge width proportional to record count.
+MetaMask and Ethereum Foundation are both heavily weighted toward
+Technical arguments; The Graph's \texttt{pcarranzav} is the primary
+source of Governance-Principle arguments (incident registry design,
+cross-chain scope).
+
+\begin{figure*}[htbp]
+  \centering
+  % ---------------------------------------------------------------
+  % [AUTHOR] Export from: output/bipartite_erc8004.html
+  % Suggested: open in browser → disable physics (already off) →
+  % screenshot at 1800×800px → save as figures/bipartite_erc8004.png
+  % Optionally use network_compare.html for a two-panel version;
+  % in that case retitle this figure and use label{fig:bipartite_compare}
+  % ---------------------------------------------------------------
+  \fbox{\begin{minipage}{0.95\textwidth}\centering\vspace{2.5cm}
+    \textit{[Figure: ERC-8004 institution × argument-type bipartite network.}\\
+    \textit{Export from \texttt{output/bipartite\_erc8004.html}]}
+    \vspace{2.5cm}\end{minipage}}
+  \caption{Institution--argument-type bipartite graph for ERC-8004. Left nodes:
+  institutions (sized by total records). Right nodes: argument types. Edge width:
+  $\log_2(\text{record count}+1)$. Reveals each institution's deliberative focus.}
+  \label{fig:bipartite}
+\end{figure*}
 
 ERC-8004 deliberation is dominated by Technical arguments (74.3\%),
 significantly higher than A2A's 62.7\% ($\chi^2$ test, $p<0.01$ [AUTHOR:
@@ -473,6 +523,32 @@ than half of Google's A2A share, and MetaMask's contribution intensity was
 episodic---reversed when The Graph's \texttt{pcarranzav} and Hats Protocol's
 \texttt{spengrah} raised substantive objections that forced specification
 revisions. No equivalent independent-driven reversal appears in the A2A record.
+
+Figure~\ref{fig:network_compare} presents the stakeholder interaction networks
+for both cases side by side. Node size encodes record count; edge direction
+encodes reply chains (ERC-8004 forum) or co-participation (both cases, GitHub).
+Gold diamond nodes are ERC-8004 PR supernodes.
+
+\begin{figure*}[htbp]
+  \centering
+  % ---------------------------------------------------------------
+  % [AUTHOR] Export from: output/network_compare.html
+  % Suggested: open in browser → wait for physics to settle (~5s) →
+  % screenshot at 2000×900px → save as figures/network_compare.png
+  % Tip: click "Freeze layout" button in the HTML before screenshotting
+  % to get a stable layout; both panels use identical physics params.
+  % ---------------------------------------------------------------
+  \fbox{\begin{minipage}{0.95\textwidth}\centering\vspace{3cm}
+    \textit{[Figure: Side-by-side stakeholder networks — ERC-8004 (left) vs.\ Google A2A (right).}\\
+    \textit{Export from \texttt{output/network\_compare.html}]}
+    \vspace{3cm}\end{minipage}}
+  \caption{Stakeholder interaction networks. \textit{Left:} ERC-8004 (74 nodes,
+  65 edges). Gold diamonds are PR supernodes; directed edges colored by stance.
+  \textit{Right:} Google A2A top-50 contributors (50 nodes, 217 edges).
+  Identical physics parameters enable structural comparison. ERC-8004 shows
+  a distributed star topology; A2A shows a dense core dominated by Google nodes.}
+  \label{fig:network_compare}
+\end{figure*}
 
 \subsection{Governance Escalation Events}
 
