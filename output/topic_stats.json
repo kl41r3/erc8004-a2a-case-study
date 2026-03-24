@@ -1,0 +1,96 @@
+{
+  "erc8004": {
+    "total": 144,
+    "argument_type": {
+      "Technical": {
+        "count": 107,
+        "pct": 74.3
+      },
+      "Process": {
+        "count": 20,
+        "pct": 13.9
+      },
+      "Governance-Principle": {
+        "count": 7,
+        "pct": 4.9
+      },
+      "Economic": {
+        "count": 4,
+        "pct": 2.8
+      },
+      "Off-topic": {
+        "count": 6,
+        "pct": 4.2
+      }
+    },
+    "stance": {
+      "Support": {
+        "count": 44,
+        "pct": 30.6
+      },
+      "Modify": {
+        "count": 42,
+        "pct": 29.2
+      },
+      "Neutral": {
+        "count": 46,
+        "pct": 31.9
+      },
+      "Oppose": {
+        "count": 10,
+        "pct": 6.9
+      },
+      "Off-topic": {
+        "count": 2,
+        "pct": 1.4
+      }
+    }
+  },
+  "a2a": {
+    "total": 5272,
+    "argument_type": {
+      "Technical": {
+        "count": 3410,
+        "pct": 64.7
+      },
+      "Process": {
+        "count": 1339,
+        "pct": 25.4
+      },
+      "Governance-Principle": {
+        "count": 102,
+        "pct": 1.9
+      },
+      "Economic": {
+        "count": 9,
+        "pct": 0.2
+      },
+      "Off-topic": {
+        "count": 403,
+        "pct": 7.6
+      }
+    },
+    "stance": {
+      "Support": {
+        "count": 1278,
+        "pct": 24.2
+      },
+      "Modify": {
+        "count": 1144,
+        "pct": 21.7
+      },
+      "Neutral": {
+        "count": 2440,
+        "pct": 46.3
+      },
+      "Oppose": {
+        "count": 151,
+        "pct": 2.9
+      },
+      "Off-topic": {
+        "count": 247,
+        "pct": 4.7
+      }
+    }
+  }
+}
