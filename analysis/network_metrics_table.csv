@@ -1,0 +1,12 @@
+Metric,ERC-8004,Google A2A (top-50)
+Nodes,67,50
+Edges,65,217
+Density,0.0294,0.1771
+Mean degree,1.582,8.68
+Std degree,3.377,7.923
+Max degree,19,37
+Top-3 degree share,0.3231,0.2097
+Gini(degree),0.8037,0.4805
+# Components,43,7
+Giant component ratio,0.3284,0.88
+Modularity (institution),-0.0586,-0.0388

@@ -1,6 +1,6 @@
 # Round B — Network Analysis
 
-**Status:** TODO
+**Status:** DONE
 **References:** literature/6 (SoK Blockchain Interoperability), literature/7 (Aave SNA — core-periphery, modularity)
 
 ## Goal
@@ -24,6 +24,27 @@ Already built:
 
 Node attributes available: author, institution, record count
 Edge attributes: interaction count (weight)
+
+## Results
+
+- `output/network_sna_comparison.png` — Figure 2: side-by-side network (spring layout, white background)
+- `output/network_degree_dist.png` — degree distribution by rank
+- `output/network_metrics.json` — all computed metrics
+- `analysis/network_metrics_table.csv` — metrics table for paper
+- `human-notes/draft/dft.tex` — new Table (SNA metrics) + Figure (static network) + 4-finding narrative
+
+Key metrics:
+
+| Metric | ERC-8004 | Google A2A (top-50) |
+|--------|----------|---------------------|
+| Density | 0.029 | 0.177 |
+| Gini(degree) | 0.804 | 0.481 |
+| Giant component ratio | 0.328 | 0.880 |
+| # Components | 43 | 7 |
+| Modularity (institution) | −0.059 | −0.039 |
+| Top-3 degree share | 32.3% (3 institutions) | 21.0% (2/3 Google) |
+
+Key finding: ERC-8004 has higher degree inequality (Gini) but lower network density — consistent with many peripheral single-post contributors. A2A has denser core dominated by Google/Microsoft.
 
 ## Open questions
 

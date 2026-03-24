@@ -1,0 +1,86 @@
+{
+  "erc8004": {
+    "case": "ERC-8004",
+    "n_nodes": 67,
+    "n_edges": 65,
+    "density": 0.0294,
+    "mean_degree": 1.582,
+    "std_degree": 3.377,
+    "max_degree": 19,
+    "top3_degree_share": 0.3231,
+    "top3_nodes": [
+      [
+        "MarcoMetaMask",
+        19
+      ],
+      [
+        "spengrah",
+        13
+      ],
+      [
+        "pcarranzav",
+        10
+      ]
+    ],
+    "n_components": 43,
+    "giant_component_ratio": 0.3284,
+    "gini_degree": 0.8037,
+    "modularity_institution": -0.0586,
+    "top_institutions": [
+      [
+        "Independent",
+        44
+      ],
+      [
+        "Ethereum Foundation",
+        2
+      ],
+      [
+        "MetaMask",
+        1
+      ]
+    ]
+  },
+  "a2a": {
+    "case": "Google-A2A",
+    "n_nodes": 50,
+    "n_edges": 217,
+    "density": 0.1771,
+    "mean_degree": 8.68,
+    "std_degree": 7.923,
+    "max_degree": 37,
+    "top3_degree_share": 0.2097,
+    "top3_nodes": [
+      [
+        "holtskinner",
+        37
+      ],
+      [
+        "darrelmiller",
+        29
+      ],
+      [
+        "kthota-g",
+        25
+      ]
+    ],
+    "n_components": 7,
+    "giant_component_ratio": 0.88,
+    "gini_degree": 0.4805,
+    "modularity_institution": -0.0388,
+    "top_institutions": [
+      [
+        "Independent",
+        22
+      ],
+      [
+        "Google",
+        10
+      ],
+      [
+        "Unknown",
+        5
+      ]
+    ]
+  }
+}
