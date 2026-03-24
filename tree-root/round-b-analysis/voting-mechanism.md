@@ -1,6 +1,6 @@
 # Round B — Voting Mechanism
 
-**Status:** TODO
+**Status:** DONE
 **References:** literature/1 (SoK Blockchain Governance), literature/2 (Consensus Mechanisms Review)
 **Visualization refs:** literature/3 (Event Knowledge Graphs), literature/4 (3D History Timelines)
 
@@ -27,7 +27,18 @@ Produce a side-by-side comparison of the two governance decision mechanisms:
 
 The asymmetry is a finding: ERC-8004 has no formal vote — the "decision" is EIP editor merge judgment after public deliberation. A2A has a formal TSC vote mechanism that is invoked only when ordinary review consensus fails (governance escalation). PR #1206 illustrates off-platform migration: vote → TSC call → Discord → /cancel-vote.
 
+## Results
+
+- `output/voting_mechanism_comparison.png` — two-panel process diagram (white background, 180 dpi)
+- `output/voting_stats.json` — key statistics
+- `human-notes/draft/dft.tex` — new §Results subsection "Decision Mechanism Architecture" with Figure~\ref{fig:voting} and Algorithms 1 & 2
+
+Key stats:
+- ERC-8004: 2 human approvals (`lightclient`), 3 bot auto-merges, no formal vote mechanism
+- A2A: 4 /vote commands, 1 /cancel-vote command, 66 bot messages across 2 TSC-voted PRs (13 + 6 human participants respectively)
+
 ## Limitations
 
-- ERC-8004 vote evidence is sparse (8 review records); the process relies heavily on informal norms not captured in data
-- A2A GitVote only triggered on 2 of 755 PRs — the mechanism exists but is rarely invoked
+- ERC-8004 vote evidence is sparse (8 review records, 2 human approvals); process relies heavily on informal norms not captured in data
+- A2A GitVote only triggered on 2 of 755 PRs — mechanism exists but is rarely invoked
+- LaTeX `algorithm`/`algpseudocode` packages added to dft.tex; verify compilation before submission

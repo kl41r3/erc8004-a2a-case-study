@@ -1,0 +1,26 @@
+{
+  "erc8004": {
+    "human_approvals": 2,
+    "approvers": [
+      "lightclient"
+    ],
+    "bot_auto_merges": 3,
+    "formal_vote_mechanism": false,
+    "decision_venue": "GitHub PR + Ethereum Magicians forum",
+    "open_to_all": true
+  },
+  "a2a": {
+    "gitvote_prs_total": 2,
+    "pr_831_outcome": "PASSED (merged)",
+    "pr_1206_outcome": "CLOSED (superseded by #1358)",
+    "vote_commands_issued": 4,
+    "cancel_vote_commands": 1,
+    "bot_messages": 66,
+    "pr_831_participants": 13,
+    "pr_1206_participants": 6,
+    "formal_vote_mechanism": true,
+    "tsc_binding": true,
+    "decision_venue": "GitHub PR + TSC git-vote (+ Discord/TSC call for contested cases)",
+    "open_to_all": false
+  }
+}
