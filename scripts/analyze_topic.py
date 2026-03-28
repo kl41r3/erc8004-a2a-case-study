@@ -2,10 +2,11 @@
 analyze_topic.py
 
 Produces:
-  output/topic_argtype_comparison.png   — Figure 1: argument type distribution by case
-  output/topic_stance_heatmap.png       — argument_type × stance cross-tabulation
-  output/topic_temporal_erc8004.png     — argument type over ERC-8004 lifecycle
-  output/topic_stats.json              — raw counts and percentages for paper
+  output/figures/topic_argtype_comparison.png    — argument type distribution by case
+  output/figures/topic_stance_heatmap.png        — argument_type × stance cross-tabulation
+  output/figures/topic_temporal_erc8004.png      — argument type over ERC-8004 lifecycle (legacy)
+  output/figures/topic_temporal_comparison.png   — ERC-8004 vs A2A temporal evolution (two-panel)
+  output/stats/topic_stats.json                  — raw counts, percentages, chi-square results
 
 Data: data/annotated/annotated_records.json
 Method: structured LLM classification (argument_type, stance, date, _case)
@@ -23,17 +24,19 @@ from dateutil import parser as dateparser
 
 ROOT = Path(__file__).parent.parent
 DATA = ROOT / "data" / "annotated" / "annotated_records.json"
-OUTPUT = ROOT / "output"
+OUTPUT   = ROOT / "output"
+FIGURES  = ROOT / "output" / "figures"
+STATS    = ROOT / "output" / "stats"
 
 # ── palette ──────────────────────────────────────────────────────────────────
 COLORS = {
-    "Technical":           "#2980B9",
-    "Process":             "#27AE60",
-    "Governance-Principle":"#E67E22",
-    "Economic":            "#8E44AD",
-    "Off-topic":           "#BDC3C7",
-    "Neutral":             "#95A5A6",
-    "Unknown":             "#ECF0F1",
+    "Technical":           "#7B9BAD",  # muted steel blue
+    "Process":             "#91A882",  # sage green
+    "Governance-Principle":"#C4956A",  # dusty terracotta
+    "Economic":            "#9B8FAF",  # muted mauve
+    "Off-topic":           "#C2C2C2",  # light grey
+    "Neutral":             "#AEAEAE",
+    "Unknown":             "#E8E8E8",
 }
 
 ARG_ORDER = ["Technical", "Process", "Governance-Principle", "Economic", "Off-topic"]
@@ -124,7 +127,7 @@ def fig_argtype_comparison(records):
 
     ax.grid(axis="y", linestyle="--", alpha=0.4)
     plt.tight_layout()
-    out = OUTPUT / "topic_argtype_comparison.png"
+    out = FIGURES / "topic_argtype_comparison.png"
     plt.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")
     plt.close()
     print(f"Saved → {out}")
@@ -176,7 +179,7 @@ def fig_stance_heatmap(records):
         plt.colorbar(im, ax=ax, shrink=0.8, label="% within stance row")
 
     plt.tight_layout()
-    out = OUTPUT / "topic_stance_heatmap.png"
+    out = FIGURES / "topic_stance_heatmap.png"
     plt.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")
     plt.close()
     print(f"Saved → {out}")
@@ -250,14 +253,243 @@ def fig_temporal_erc8004(records):
     ax.set_ylabel("Records per 2-week bin", fontsize=9)
     ax.set_title("ERC-8004: Argument Type Over Lifecycle (2-week bins)",
                  fontsize=10, fontweight="bold")
-    ax.legend(loc="upper left", fontsize=8, framealpha=0.7)
+    ax.legend(loc="upper right", fontsize=8, framealpha=0.7)
     ax.spines[["top", "right"]].set_visible(False)
 
     plt.tight_layout()
-    out = OUTPUT / "topic_temporal_erc8004.png"
+    out = FIGURES / "topic_temporal_erc8004.png"
     plt.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")
     plt.close()
     print(f"Saved → {out}")
+
+
+# ── Figure 4: two-panel temporal comparison ──────────────────────────────────
+
+def _parse_dated_records(records, case_name):
+    """Return list of (datetime, argument_type) for a given case, sorted by date."""
+    dated = []
+    for r in records:
+        if r.get("_case") != case_name:
+            continue
+        raw = r.get("date") or r.get("created_at") or ""
+        try:
+            dt = dateparser.parse(raw)
+            if dt is None:
+                continue
+            atype = get_field(r, "argument_type")
+            dated.append((dt, atype if atype in ARG_ORDER else "Off-topic"))
+        except Exception:
+            pass
+    dated.sort(key=lambda x: x[0])
+    return dated
+
+
+def _bin_to_pct_matrix(dated, bin_days):
+    """
+    Group (datetime, argtype) pairs into time bins of `bin_days` days.
+    Returns (bin_start_dates, matrix) where matrix[i] = {argtype: pct}.
+    Bins with zero records are skipped.
+    """
+    if not dated:
+        return [], {}
+    from datetime import timedelta
+    min_dt = dated[0][0]
+    bins = defaultdict(Counter)
+    for dt, atype in dated:
+        idx = (dt - min_dt).days // bin_days
+        bins[idx][atype] += 1
+
+    indices = sorted(bins.keys())
+    bin_dates = [min_dt + timedelta(days=i * bin_days) for i in indices]
+    matrix = []
+    for i in indices:
+        total = sum(bins[i].values())
+        row = {t: 100.0 * bins[i].get(t, 0) / total for t in ARG_ORDER}
+        matrix.append(row)
+    return bin_dates, matrix
+
+
+def fig_temporal_comparison(records):
+    """
+    Two-panel stacked 100% bar chart.
+    Top: ERC-8004 (2-week bins, lifecycle stage markers)
+    Bottom: Google A2A (monthly bins)
+    """
+    from datetime import timedelta
+
+    erc_dated = _parse_dated_records(records, "ERC-8004")
+    a2a_dated = _parse_dated_records(records, "Google-A2A")
+
+    erc_dates, erc_matrix = _bin_to_pct_matrix(erc_dated, bin_days=14)
+    a2a_dates, a2a_matrix = _bin_to_pct_matrix(a2a_dated, bin_days=30)
+
+    fig, axes = plt.subplots(2, 1, figsize=(10, 7), gridspec_kw={"hspace": 0.45})
+    fig.patch.set_facecolor("white")
+
+    def draw_panel(ax, bin_dates, matrix, title, stage_markers=None):
+        ax.set_facecolor("white")
+        n = len(bin_dates)
+        if n == 0:
+            ax.set_title(title, fontsize=9, fontweight="bold")
+            return
+
+        x = np.arange(n)
+        bottoms = np.zeros(n)
+        for atype in ARG_ORDER:
+            heights = [row.get(atype, 0) for row in matrix]
+            ax.bar(x, heights, bottom=bottoms,
+                   color=COLORS.get(atype, "#ccc"), label=atype,
+                   edgecolor="white", linewidth=0.4, width=0.85)
+            bottoms += np.array(heights)
+
+        # Lifecycle stage markers (ERC-8004 only)
+        if stage_markers:
+            min_dt = bin_dates[0]
+            bin_days = (bin_dates[1] - bin_dates[0]).days if len(bin_dates) > 1 else 14
+            for stage_date_str, stage_name in stage_markers:
+                try:
+                    stage_dt = dateparser.parse(stage_date_str)
+                    x_pos = (stage_dt - min_dt).days / bin_days
+                    ax.axvline(x=x_pos, color="#555", linestyle="--",
+                               linewidth=0.9, alpha=0.75)
+                    ax.text(x_pos + 0.15, 97, stage_name, fontsize=7,
+                            color="#333", rotation=90, va="top")
+                except Exception:
+                    pass
+
+        # x-axis labels
+        step = max(1, n // 10)
+        tick_pos = list(range(0, n, step))
+        ax.set_xticks(tick_pos)
+        ax.set_xticklabels(
+            [bin_dates[i].strftime("%b '%y") for i in tick_pos],
+            rotation=40, ha="right", fontsize=7.5
+        )
+        ax.set_ylabel("Share (%)", fontsize=8.5)
+        ax.set_ylim(0, 105)
+        ax.yaxis.set_major_formatter(mtick.PercentFormatter(decimals=0))
+        ax.set_title(title, fontsize=9.5, fontweight="bold", pad=6)
+        ax.spines[["top", "right"]].set_visible(False)
+
+    draw_panel(
+        axes[0], erc_dates, erc_matrix,
+        f"ERC-8004: Argument Type over Lifecycle  (2-week bins, N={len(erc_dated)})",
+        stage_markers=EIP_STAGES[1:]
+    )
+    draw_panel(
+        axes[1], a2a_dates, a2a_matrix,
+        f"Google A2A: Argument Type over Time  (monthly bins, N={len(a2a_dated)})"
+    )
+
+    # Shared legend at bottom
+    handles = [plt.Rectangle((0, 0), 1, 1, color=COLORS.get(t, "#ccc"), label=t)
+               for t in ARG_ORDER]
+    fig.legend(handles=handles, loc="lower center", ncol=5,
+               fontsize=8.5, bbox_to_anchor=(0.5, -0.02), framealpha=0.0)
+
+    plt.tight_layout(rect=[0, 0.06, 1, 1])
+    out = FIGURES / "topic_temporal_comparison.png"
+    plt.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")
+    plt.close()
+    print(f"Saved → {out}")
+
+
+# ── Chi-square tests ───────────────────────────────────────────────────────────
+
+def compute_chisquare(records):
+    """
+    Two chi-square tests:
+    1. Cross-case: ERC-8004 vs A2A argument type distributions
+    2. Within ERC-8004: argument type by lifecycle phase
+    Returns dict with test results.
+    """
+    from scipy.stats import chi2_contingency
+    import math
+
+    results = {}
+
+    # --- Test 1: cross-case ---
+    erc = [r for r in records if r.get("_case") == "ERC-8004"]
+    a2a = [r for r in records if r.get("_case") == "Google-A2A"]
+    types = [t for t in ARG_ORDER if t != "Off-topic"]
+
+    erc_counts = Counter(get_field(r, "argument_type") for r in erc)
+    a2a_counts = Counter(get_field(r, "argument_type") for r in a2a)
+    contingency = np.array([
+        [erc_counts.get(t, 0) for t in types],
+        [a2a_counts.get(t, 0) for t in types],
+    ])
+    chi2, p, dof, expected = chi2_contingency(contingency)
+    n_total = contingency.sum()
+    cramers_v = math.sqrt(chi2 / (n_total * (min(contingency.shape) - 1)))
+    results["cross_case"] = {
+        "test": "chi2_contingency",
+        "categories": types,
+        "observed_erc8004": [int(erc_counts.get(t, 0)) for t in types],
+        "observed_a2a": [int(a2a_counts.get(t, 0)) for t in types],
+        "chi2": round(chi2, 3),
+        "p_value": round(p, 6),
+        "dof": int(dof),
+        "cramers_v": round(cramers_v, 4),
+        "interpretation": (
+            "significant" if p < 0.05 else "not significant"
+        ),
+    }
+
+    # --- Test 2: ERC-8004 lifecycle phases (2-month bins) ---
+    # ERC-8004 span: 2025-08-13 (proposed) → 2026-01-29 (Final) ≈ 5.5 months → 3 bins
+    phase_labels = ["Aug–Oct 2025", "Oct–Dec 2025", "Dec 2025–Feb 2026"]
+    phase_bounds = [
+        ("2025-08-13", "2025-10-13"),
+        ("2025-10-13", "2025-12-13"),
+        ("2025-12-13", "2026-02-13"),
+    ]
+    phase_counts = {ph: Counter() for ph in phase_labels}
+    for r in erc:
+        raw = r.get("date") or r.get("created_at") or ""
+        try:
+            dt = dateparser.parse(raw)
+            if dt is None:
+                continue
+            dt_naive = dt.replace(tzinfo=None) if dt.tzinfo else dt
+            for label, (start_str, end_str) in zip(phase_labels, phase_bounds):
+                start = dateparser.parse(start_str).replace(tzinfo=None)
+                end   = dateparser.parse(end_str).replace(tzinfo=None)
+                if start <= dt_naive < end:
+                    atype = get_field(r, "argument_type")
+                    phase_counts[label][atype if atype in types else "Off-topic"] += 1
+                    break
+        except Exception:
+            pass
+
+    phase_matrix = np.array([
+        [phase_counts[ph].get(t, 0) for t in types]
+        for ph in phase_labels
+    ])
+    # Drop phases with all-zero rows
+    nonzero_phases = [i for i, row in enumerate(phase_matrix) if row.sum() > 0]
+    if len(nonzero_phases) >= 2:
+        sub = phase_matrix[nonzero_phases]
+        chi2_p, p_p, dof_p, _ = chi2_contingency(sub)
+        n_p = sub.sum()
+        v_p = math.sqrt(chi2_p / (n_p * (min(sub.shape) - 1)))
+        results["erc8004_lifecycle"] = {
+            "test": "chi2_contingency",
+            "phases": [phase_labels[i] for i in nonzero_phases],
+            "categories": types,
+            "observed": sub.tolist(),
+            "chi2": round(chi2_p, 3),
+            "p_value": round(p_p, 6),
+            "dof": int(dof_p),
+            "cramers_v": round(v_p, 4),
+            "interpretation": (
+                "significant" if p_p < 0.05 else "not significant"
+            ),
+        }
+    else:
+        results["erc8004_lifecycle"] = {"note": "insufficient phases with data"}
+
+    return results
 
 
 # ── statistics ────────────────────────────────────────────────────────────────
@@ -294,7 +526,12 @@ def main():
 
     print("\nComputing stats...")
     stats = compute_stats(records)
-    stats_path = OUTPUT / "topic_stats.json"
+
+    print("\nRunning chi-square tests...")
+    chi2_results = compute_chisquare(records)
+    stats["chi2_tests"] = chi2_results
+
+    stats_path = STATS / "topic_stats.json"
     with open(stats_path, "w") as f:
         json.dump(stats, f, indent=2)
     print(f"  Saved → {stats_path}")
@@ -307,14 +544,25 @@ def main():
     for t, v in stats["a2a"]["argument_type"].items():
         print(f"  {t:25s}: {v['count']:5d}  ({v['pct']:.1f}%)")
 
-    print("\n── ERC-8004 Stance ──")
-    for s, v in stats["erc8004"]["stance"].items():
-        print(f"  {s:15s}: {v['count']:4d}  ({v['pct']:.1f}%)")
+    print("\n── Chi-square: cross-case ──")
+    cc = chi2_results.get("cross_case", {})
+    print(f"  χ²={cc.get('chi2')}, p={cc.get('p_value')}, "
+          f"df={cc.get('dof')}, Cramér's V={cc.get('cramers_v')}  [{cc.get('interpretation')}]")
+
+    print("\n── Chi-square: ERC-8004 lifecycle ──")
+    lc = chi2_results.get("erc8004_lifecycle", {})
+    if "chi2" in lc:
+        print(f"  χ²={lc.get('chi2')}, p={lc.get('p_value')}, "
+              f"df={lc.get('dof')}, Cramér's V={lc.get('cramers_v')}  [{lc.get('interpretation')}]")
+        print(f"  Phases: {lc.get('phases')}")
+    else:
+        print(f"  {lc.get('note', 'no result')}")
 
     print("\nGenerating figures...")
     fig_argtype_comparison(records)
     fig_stance_heatmap(records)
     fig_temporal_erc8004(records)
+    fig_temporal_comparison(records)
     print("\nDone.")
 
 

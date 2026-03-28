@@ -92,5 +92,72 @@
         "pct": 4.7
       }
     }
+  },
+  "chi2_tests": {
+    "cross_case": {
+      "test": "chi2_contingency",
+      "categories": [
+        "Technical",
+        "Process",
+        "Governance-Principle",
+        "Economic"
+      ],
+      "observed_erc8004": [
+        107,
+        20,
+        7,
+        4
+      ],
+      "observed_a2a": [
+        3410,
+        1339,
+        102,
+        9
+      ],
+      "chi2": 52.876,
+      "p_value": 0.0,
+      "dof": 3,
+      "cramers_v": 0.1029,
+      "interpretation": "significant"
+    },
+    "erc8004_lifecycle": {
+      "test": "chi2_contingency",
+      "phases": [
+        "Aug\u2013Oct 2025",
+        "Oct\u2013Dec 2025",
+        "Dec 2025\u2013Feb 2026"
+      ],
+      "categories": [
+        "Technical",
+        "Process",
+        "Governance-Principle",
+        "Economic"
+      ],
+      "observed": [
+        [
+          81,
+          10,
+          5,
+          4
+        ],
+        [
+          11,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          9,
+          1,
+          0
+        ]
+      ],
+      "chi2": 25.322,
+      "p_value": 0.000298,
+      "dof": 6,
+      "cramers_v": 0.3145,
+      "interpretation": "significant"
+    }
   }
 }
