@@ -10,6 +10,9 @@ Scraped all public governance records for both cases:
 - **ERC-8004:** 113 Ethereum Magicians forum posts (topic 25098, Discourse JSON API) + GitHub records from the `ethereum/EIPs` repo
 - **Google A2A:** issues, PRs, PR review comments, GitHub Discussions via GitHub REST + GraphQL APIs; GitVote PRs (#831, #1206) scraped separately via `a2a_gitvote_prs.json`
 
+Total records before filtering: 6,030. After removing records with fewer than 20 characters of text (bot messages, CI notifications) and bot authors: 4,323 (ERC-8004: 142; Google A2A: 4,181).
+
+
 ## Results
 
 | File | Records |
