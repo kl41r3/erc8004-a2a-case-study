@@ -1,0 +1,98 @@
+{
+  "erc8004": {
+    "case": "ERC-8004",
+    "n_nodes": 67,
+    "n_edges": 65,
+    "density": 0.0294,
+    "mean_degree": 1.582,
+    "dc_std": 0.0512,
+    "max_degree": 19,
+    "top3_degree_share": 0.3231,
+    "top3_nodes": [
+      [
+        "MarcoMetaMask",
+        19
+      ],
+      [
+        "spengrah",
+        13
+      ],
+      [
+        "pcarranzav",
+        10
+      ]
+    ],
+    "n_components": 43,
+    "giant_component_ratio": 0.3284,
+    "gini_degree": 0.8037,
+    "modularity_institution": -0.0586,
+    "modularity_louvain": 0.4245,
+    "n_louvain_communities": 46,
+    "cp_pvalue": 0.095,
+    "cp_significant": false,
+    "core_cnt": 3,
+    "avg_core_degree": 8.0,
+    "top_institutions": [
+      [
+        "Independent",
+        44
+      ],
+      [
+        "Ethereum Foundation",
+        2
+      ],
+      [
+        "MetaMask",
+        1
+      ]
+    ]
+  },
+  "a2a": {
+    "case": "Google-A2A",
+    "n_nodes": 771,
+    "n_edges": 1230,
+    "density": 0.0041,
+    "mean_degree": 3.191,
+    "dc_std": 0.0126,
+    "max_degree": 170,
+    "top3_degree_share": 0.1492,
+    "top3_nodes": [
+      [
+        "holtskinner",
+        170
+      ],
+      [
+        "darrelmiller",
+        110
+      ],
+      [
+        "pstephengoogle",
+        87
+      ]
+    ],
+    "n_components": 346,
+    "giant_component_ratio": 0.5344,
+    "gini_degree": 0.7786,
+    "modularity_institution": -0.0343,
+    "modularity_louvain": 0.4727,
+    "n_louvain_communities": 358,
+    "cp_pvalue": 1.0,
+    "cp_significant": false,
+    "core_cnt": 769,
+    "avg_core_degree": 3.196,
+    "top_institutions": [
+      [
+        "Independent",
+        463
+      ],
+      [
+        "Unknown",
+        248
+      ],
+      [
+        "Google",
+        42
+      ]
+    ]
+  }
+}

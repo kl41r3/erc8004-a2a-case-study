@@ -20,6 +20,7 @@ Data:
 import csv
 import json
 import math
+import warnings
 from pathlib import Path
 from collections import Counter, defaultdict
 import matplotlib
@@ -27,6 +28,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
+import networkx as nx
+import cpnet
 
 ROOT = Path(__file__).parent.parent
 ANALYSIS = ROOT / "analysis"
@@ -145,6 +148,79 @@ def gini_coefficient(values):
     return round(cumsum / (n * sum(arr)), 4)
 
 
+def build_nx_graph(nodes, edges):
+    """Build an undirected weighted NetworkX graph."""
+    G = nx.Graph()
+    G.add_nodes_from(nodes.keys())
+    for e in edges:
+        s, t = e["source"], e["target"]
+        if s in nodes and t in nodes:
+            w = float(e.get("weight", 1))
+            if G.has_edge(s, t):
+                G[s][t]["weight"] += w
+            else:
+                G.add_edge(s, t, weight=w)
+    return G
+
+
+def compute_louvain_modularity(G):
+    """
+    Graph-structural modularity using Louvain community detection.
+    Returns (Q, n_communities) where Q is NetworkX modularity score.
+    """
+    if G.number_of_edges() == 0:
+        return 0.0, 0
+    communities = nx.community.louvain_communities(G, seed=42)
+    Q = nx.community.modularity(G, communities)
+    return round(Q, 4), len(communities)
+
+
+def compute_cp_metrics(G, num_rand=100):
+    """
+    Core-periphery detection via Borgatti-Everett algorithm (cpnet).
+    Returns dict with p-value, significance flag, core count, avg core degree.
+    """
+    if G.number_of_edges() == 0:
+        return {"cp_pvalue": None, "cp_significant": None,
+                "core_cnt": None, "avg_core_degree": None}
+    try:
+        be = cpnet.BE()
+        be.detect(G)
+        pair_id  = be.get_pair_id()
+        coreness = be.get_coreness()
+
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            # qstest returns (sig_pair_id, sig_coreness, significance, p_values)
+            _, _, significance, p_values = cpnet.qstest(
+                pair_id, coreness, G, be,
+                significance_level=0.05,
+                num_of_rand_net=num_rand,
+                sfunc=cpnet.sz_n,
+            )
+
+        # significance and p_values are lists, one entry per CP pair (BE → 1 pair)
+        p_val  = float(p_values[0]) if p_values else None
+        is_sig = bool(significance[0]) if significance else None
+
+        # Core nodes: coreness[node] == 1 means core
+        core_nodes = [n for n, c in coreness.items() if c == 1]
+        core_cnt = len(core_nodes)
+        avg_core_deg = (round(sum(dict(G.degree())[n] for n in core_nodes) / core_cnt, 3)
+                        if core_cnt > 0 else 0.0)
+
+        return {
+            "cp_pvalue":        round(p_val, 4) if p_val is not None else None,
+            "cp_significant":   is_sig,
+            "core_cnt":         core_cnt,
+            "avg_core_degree":  avg_core_deg,
+        }
+    except Exception as exc:
+        print(f"    [cpnet error] {exc}")
+        return {"cp_pvalue": None, "cp_significant": None,
+                "core_cnt": None, "avg_core_degree": None}
+
+
 def compute_metrics(case, nodes, edges, adj, degree):
     """Compute all SNA metrics for one case."""
     n = len(nodes)
@@ -156,11 +232,9 @@ def compute_metrics(case, nodes, edges, adj, degree):
     deg_vals = [degree.get(nid, 0) for nid in nodes]
     max_deg = max(deg_vals) if deg_vals else 0
     mean_deg = round(sum(deg_vals) / n, 3)
-    std_deg  = round((sum((d - mean_deg)**2 for d in deg_vals) / n) ** 0.5, 3)
-
-    # Normalised degree centrality (max possible = n-1)
-    max_norm_dc = max(d / (n - 1) for d in deg_vals) if n > 1 else 0
-    mean_norm_dc = round(sum(d / (n - 1) for d in deg_vals) / n, 4) if n > 1 else 0
+    raw_std  = (sum((d - mean_deg)**2 for d in deg_vals) / n) ** 0.5
+    # Normalized degree centrality std: divide raw std by (n-1)
+    dc_std   = round(raw_std / (n - 1), 4) if n > 1 else 0.0
 
     # Top-3 contributors by degree
     top3 = sorted(nodes.keys(), key=lambda x: degree.get(x, 0), reverse=True)[:3]
@@ -179,28 +253,44 @@ def compute_metrics(case, nodes, edges, adj, degree):
     # Gini of degree (concentration)
     gini = gini_coefficient(deg_vals)
 
-    # Modularity (institution-based communities)
-    modularity = compute_modularity(nodes, edges)
+    # Modularity — institution-based (design choice: does institution predict interaction?)
+    mod_institution = compute_modularity(nodes, edges)
+
+    # Modularity — graph-structural (Louvain community detection)
+    G = build_nx_graph(nodes, edges)
+    mod_louvain, n_communities = compute_louvain_modularity(G)
+
+    # Core-periphery (Borgatti-Everett + qstest)
+    # Use fewer random networks for large graphs to keep runtime reasonable
+    num_rand = 20 if n > 200 else 100
+    print(f"  Running cpnet for {case} (n={n}, rand={num_rand})...")
+    cp = compute_cp_metrics(G, num_rand=num_rand)
 
     # Institution breakdown (by node count)
     inst_counter = Counter(data.get("institution", "Unknown") for data in nodes.values())
     top_inst = inst_counter.most_common(3)
 
     return {
-        "case": case,
-        "n_nodes": n,
-        "n_edges": m,
-        "density": density,
-        "mean_degree": mean_deg,
-        "std_degree": std_deg,
-        "max_degree": max_deg,
-        "top3_degree_share": top3_share,
-        "top3_nodes": [(nid, degree.get(nid, 0)) for nid in top3],
-        "n_components": n_components,
-        "giant_component_ratio": giant_ratio,
-        "gini_degree": gini,
-        "modularity_institution": modularity,
-        "top_institutions": top_inst,
+        "case":                   case,
+        "n_nodes":                n,
+        "n_edges":                m,
+        "density":                density,
+        "mean_degree":            mean_deg,
+        "dc_std":                 dc_std,
+        "max_degree":             max_deg,
+        "top3_degree_share":      top3_share,
+        "top3_nodes":             [(nid, degree.get(nid, 0)) for nid in top3],
+        "n_components":           n_components,
+        "giant_component_ratio":  giant_ratio,
+        "gini_degree":            gini,
+        "modularity_institution": mod_institution,
+        "modularity_louvain":     mod_louvain,
+        "n_louvain_communities":  n_communities,
+        "cp_pvalue":              cp["cp_pvalue"],
+        "cp_significant":         cp["cp_significant"],
+        "core_cnt":               cp["core_cnt"],
+        "avg_core_degree":        cp["avg_core_degree"],
+        "top_institutions":       top_inst,
     }
 
 
@@ -307,7 +397,7 @@ def draw_network(ax, nodes, edges, pos, degree, title, metrics):
     # Metrics inset
     txt = (f"N={metrics['n_nodes']} nodes, {metrics['n_edges']} edges\n"
            f"Density={metrics['density']:.3f}  "
-           f"Modularity={metrics['modularity_institution']:.3f}\n"
+           f"Modularity(Louvain)={metrics['modularity_louvain']:.3f}\n"
            f"Gini(degree)={metrics['gini_degree']:.3f}  "
            f"Giant={metrics['giant_component_ratio']:.2f}")
     ax.text(0.02, 0.02, txt, transform=ax.transAxes,
@@ -395,17 +485,23 @@ def fig_degree_distribution(nodes_erc, edges_erc, nodes_a2a, edges_a2a):
 
 def save_metrics_table(metrics_erc, metrics_a2a):
     rows = [
-        ("Nodes", metrics_erc["n_nodes"], metrics_a2a["n_nodes"]),
-        ("Edges", metrics_erc["n_edges"], metrics_a2a["n_edges"]),
-        ("Density", metrics_erc["density"], metrics_a2a["density"]),
-        ("Mean degree", metrics_erc["mean_degree"], metrics_a2a["mean_degree"]),
-        ("Std degree", metrics_erc["std_degree"], metrics_a2a["std_degree"]),
-        ("Max degree", metrics_erc["max_degree"], metrics_a2a["max_degree"]),
-        ("Top-3 degree share", metrics_erc["top3_degree_share"], metrics_a2a["top3_degree_share"]),
-        ("Gini(degree)", metrics_erc["gini_degree"], metrics_a2a["gini_degree"]),
-        ("# Components", metrics_erc["n_components"], metrics_a2a["n_components"]),
-        ("Giant component ratio", metrics_erc["giant_component_ratio"], metrics_a2a["giant_component_ratio"]),
-        ("Modularity (institution)", metrics_erc["modularity_institution"], metrics_a2a["modularity_institution"]),
+        ("Nodes",                      metrics_erc["n_nodes"],                metrics_a2a["n_nodes"]),
+        ("Edges",                      metrics_erc["n_edges"],                metrics_a2a["n_edges"]),
+        ("Density",                    metrics_erc["density"],                metrics_a2a["density"]),
+        ("Mean degree",                metrics_erc["mean_degree"],            metrics_a2a["mean_degree"]),
+        ("DCstd (normalized)",         metrics_erc["dc_std"],                 metrics_a2a["dc_std"]),
+        ("Max degree",                 metrics_erc["max_degree"],             metrics_a2a["max_degree"]),
+        ("Top-3 degree share",         metrics_erc["top3_degree_share"],      metrics_a2a["top3_degree_share"]),
+        ("Gini(degree)",               metrics_erc["gini_degree"],            metrics_a2a["gini_degree"]),
+        ("# Components",               metrics_erc["n_components"],           metrics_a2a["n_components"]),
+        ("Giant component ratio",      metrics_erc["giant_component_ratio"],  metrics_a2a["giant_component_ratio"]),
+        ("Modularity (institution)",   metrics_erc["modularity_institution"], metrics_a2a["modularity_institution"]),
+        ("Modularity (Louvain)",       metrics_erc["modularity_louvain"],     metrics_a2a["modularity_louvain"]),
+        ("# Louvain communities",      metrics_erc["n_louvain_communities"],  metrics_a2a["n_louvain_communities"]),
+        ("CP p-value",                 metrics_erc["cp_pvalue"],              metrics_a2a["cp_pvalue"]),
+        ("CP significant (p<.05)",     metrics_erc["cp_significant"],         metrics_a2a["cp_significant"]),
+        ("Core node count",            metrics_erc["core_cnt"],               metrics_a2a["core_cnt"]),
+        ("Avg core degree",            metrics_erc["avg_core_degree"],        metrics_a2a["avg_core_degree"]),
     ]
 
     out = ANALYSIS / "network_metrics_table.csv"

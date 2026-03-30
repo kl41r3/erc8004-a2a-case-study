@@ -5,23 +5,39 @@
 <title>ERC-8004 Participation Timeline</title>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <style>
-  body { margin:0; background:#0f172a; color:#e2e8f0; font-family:sans-serif; }
-  #header { padding:10px 20px; background:#1e293b; display:flex;
+  :root[data-theme="dark"] {
+    --bg: #0f172a; --header-bg: #1e293b;
+    --text: #e2e8f0; --subtext: #94a3b8;
+    --tooltip-bg: rgba(15,23,42,0.95); --tooltip-border: #334155;
+  }
+  :root[data-theme="light"] {
+    --bg: #f5f5f5; --header-bg: #ffffff;
+    --text: #1a1a2e; --subtext: #4a5568;
+    --tooltip-bg: rgba(245,245,245,0.97); --tooltip-border: #cbd5e1;
+  }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:sans-serif; }
+  #header { padding:10px 20px; background:var(--header-bg); display:flex;
              align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
   #header h2 { margin:0; font-size:15px; }
   #legend { display:flex; gap:12px; font-size:11px; }
   .leg-item { display:flex; align-items:center; gap:4px; }
   .leg-dot { width:9px; height:9px; border-radius:50%; }
   #tooltip {
-    position:fixed; background:rgba(15,23,42,0.95); border:1px solid #334155;
+    position:fixed; background:var(--tooltip-bg); border:1px solid var(--tooltip-border);
     padding:8px 10px; font-size:11px; border-radius:6px; pointer-events:none;
-    display:none; max-width:300px; line-height:1.6; z-index:999;
+    display:none; max-width:300px; line-height:1.6; z-index:999; color:var(--text);
   }
   #chart-container { overflow-y:auto; overflow-x:hidden; }
   svg { display:block; }
+  #theme-toggle {
+    padding:4px 10px; border-radius:4px; border:1px solid #555;
+    background:transparent; color:var(--text); font-size:11px; cursor:pointer;
+    white-space:nowrap; flex-shrink:0;
+  }
 </style>
 </head>
 <body>
+<script>document.documentElement.setAttribute('data-theme','dark');</script>
 <div id="header">
   <h2>ERC-8004 — Temporal Participation Timeline</h2>
   <div id="legend">
@@ -31,6 +47,7 @@
     <span class="leg-item"><span class="leg-dot" style="background:#94a3b8"></span>Neutral</span>
     <span class="leg-item"><span class="leg-dot" style="background:#64748b"></span>Off-topic</span>
   </div>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; Light</button>
 </div>
 <div id="tooltip"></div>
 <div id="chart-container"></div>
@@ -163,6 +180,28 @@ svg.selectAll(".dot")
     `;
   })
   .on("mouseleave", () => { tooltip.style.display = "none"; });
+</script>
+<script>
+function toggleTheme() {
+  var root = document.documentElement;
+  var btn = document.getElementById('theme-toggle');
+  var isDark = root.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    root.setAttribute('data-theme', 'light');
+    btn.textContent = '🌙 Dark';
+    document.querySelectorAll('svg text').forEach(function(t) {
+      var f = t.getAttribute('fill') || t.style.fill;
+      if (!f || f === '#94a3b8' || f === 'rgb(148, 163, 184)') t.style.fill = '#4a5568';
+    });
+  } else {
+    root.setAttribute('data-theme', 'dark');
+    btn.textContent = '☀ Light';
+    document.querySelectorAll('svg text').forEach(function(t) {
+      var f = t.getAttribute('fill') || t.style.fill;
+      if (!f || f === '#4a5568' || f === 'rgb(74, 85, 104)') t.style.fill = '#94a3b8';
+    });
+  }
+}
 </script>
 </body>
 </html>

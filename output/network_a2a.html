@@ -5,35 +5,23 @@
 <title>Google A2A Stakeholder Network (Top 50)</title>
 <script src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
 <style>
-  :root[data-theme="dark"] {
-    --bg: #1a1a2e; --header-bg: #16213e; --info-bg: #0f3460;
-    --text: #eee; --subtext: #bbb;
-  }
-  :root[data-theme="light"] {
-    --bg: #f5f5f5; --header-bg: #ffffff; --info-bg: #e8edf5;
-    --text: #1a1a2e; --subtext: #4a5568;
-  }
-  body { margin:0; font-family:sans-serif; background:var(--bg); color:var(--text); }
-  #header { padding:10px 16px; background:var(--header-bg); display:flex; align-items:center;
+
+  body { margin:0; font-family:sans-serif; background:#1a1a2e; color:#eee; }
+  #header { padding:10px 16px; background:#16213e; display:flex; align-items:center;
             gap:16px; flex-wrap:wrap; }
   #header h2 { margin:0; font-size:15px; white-space:nowrap; }
   #legend { display:flex; flex-wrap:wrap; gap:6px; }
   .legend-item { display:flex; align-items:center; gap:4px; font-size:11px; }
   .dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
-  #info { padding:5px 16px; background:var(--info-bg); font-size:11px; color:var(--subtext);
+  #info { padding:5px 16px; background:#0f3460; font-size:11px; color:#bbb;
           display:flex; gap:20px; flex-wrap:wrap; align-items:center; }
   .edge-legend { display:flex; align-items:center; gap:5px; }
   .eline { display:inline-block; width:24px; height:2px; }
+
   #network { width:100%; height:calc(100vh - 118px); }
-  #theme-toggle {
-    margin-left:auto; padding:4px 10px; border-radius:4px; border:1px solid #555;
-    background:transparent; color:var(--text); font-size:11px; cursor:pointer;
-    white-space:nowrap; flex-shrink:0;
-  }
 </style>
 </head>
 <body>
-<script>document.documentElement.setAttribute('data-theme','dark');</script>
 <div id="header">
   <h2>Google A2A Stakeholder Network (Top 50)</h2>
   <div id="legend"><span class="legend-item"><span class="dot" style="background:#2ECC71"></span>AGENIUM</span>
@@ -48,7 +36,6 @@
     <span class="legend-item"><span class="dot" style="background:#EE0000"></span>Red Hat</span>
     <span class="legend-item"><span class="dot" style="background:#CCCCCC"></span>Unknown</span>
     <span class="legend-item"><span class="dot" style="background:#9B59B6"></span>Weave</span></div>
-  <button id="theme-toggle" onclick="toggleTheme()">&#9728; Light</button>
 </div>
 <div id="info">
   <span>Node size = record count &bull; Drag/scroll to navigate &bull; Hover for details</span>
@@ -91,23 +78,7 @@ var opts = {
   },
   interaction:{hover:true, tooltipDelay:80}
 };
-var _network = new vis.Network(document.getElementById("network"), {nodes:nodes,edges:edges}, opts);
-</script>
-<script>
-function toggleTheme() {
-  var root = document.documentElement;
-  var btn = document.getElementById('theme-toggle');
-  var isDark = root.getAttribute('data-theme') === 'dark';
-  if (isDark) {
-    root.setAttribute('data-theme', 'light');
-    btn.textContent = '\u{1F319} Dark';
-    _network.setOptions({nodes:{font:{color:'#333'}}, background:'#f5f5f5'});
-  } else {
-    root.setAttribute('data-theme', 'dark');
-    btn.textContent = '\u2600 Light';
-    _network.setOptions({nodes:{font:{color:'#ffffff'}}, background:'#1a1a2e'});
-  }
-}
+new vis.Network(document.getElementById("network"), {nodes:nodes,edges:edges}, opts);
 </script>
 </body>
 </html>

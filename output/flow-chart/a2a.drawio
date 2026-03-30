@@ -1,10 +1,10 @@
 <mxfile host="65bd71144e">
     <diagram id="a2a-gov-v3" name="Page-1">
-        <mxGraphModel dx="1710" dy="2081" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="900" background="#FFFFFF" math="0" shadow="0">
+        <mxGraphModel dx="1437" dy="1727" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="900" background="#FFFFFF" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="10" value="google/A2A" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#C9D3DA;strokeColor=#7A8F9C;strokeWidth=2;fontColor=#1E2D38;fontSize=15;fontStyle=1;" parent="1" vertex="1">
+                <mxCell id="10" value="Google/A2A" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#C9D3DA;strokeColor=#7A8F9C;strokeWidth=2;fontColor=#1E2D38;fontSize=15;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="60" y="60" width="150" height="64" as="geometry"/>
                 </mxCell>
                 <mxCell id="11" value="Apr 2025" style="text;html=1;align=center;fontColor=#7A8F9C;fontSize=12;" parent="1" vertex="1">
@@ -30,7 +30,7 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="16" value="Technical Steering Committee (TSC)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#F0EBF8;strokeColor=#7A6E9A;strokeWidth=2.5;fontColor=#3A2860;fontSize=14;fontStyle=1;startSize=30;" parent="1" vertex="1">
+                <mxCell id="16" value="Technical Steering Committee (TSC)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#EEEAF4;strokeColor=#7A6E9A;strokeWidth=2.5;fontColor=#3A2860;fontSize=14;fontStyle=1;startSize=30;" parent="1" vertex="1">
                     <mxGeometry x="601" y="-24" width="469" height="190" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" value="Google" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#C9D3DA;strokeColor=#7A8F9C;strokeWidth=1.5;fontColor=#1E2D38;fontSize=13;fontStyle=1;" parent="16" vertex="1">
@@ -60,19 +60,19 @@
                 <mxCell id="25" value="★  1 seat per company · company-appointed (startup phase, 18 months)&lt;div&gt;&lt;span style=&quot;color: rgb(122, 110, 154); background-color: transparent;&quot;&gt;independeng contributors cannot join TSC during this period&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;fontColor=#7A6E9A;fontSize=11;fontStyle=2;" parent="16" vertex="1">
                     <mxGeometry x="-161" y="154" width="756" height="46" as="geometry"/>
                 </mxCell>
-                <mxCell id="30" value="Any Developer" style="ellipse;whiteSpace=wrap;html=1;fillColor=#C4C0BC;strokeColor=#828080;strokeWidth=2;fontColor=#1A1818;fontSize=15;fontStyle=1;" parent="1" vertex="1">
+                <mxCell id="30" value="Any Developer" style="ellipse;whiteSpace=wrap;html=1;fillColor=#C3BFBB;strokeColor=#828080;strokeWidth=2;fontColor=#1A1818;fontSize=15;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="60" y="215" width="160" height="70" as="geometry"/>
                 </mxCell>
-                <mxCell id="31" style="strokeColor=#828080;strokeWidth=1.5;endArrow=block;endFill=1;fillColor=#828080;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" edge="1" target="32" source="30">
+                <mxCell id="31" style="strokeColor=#828080;strokeWidth=1.5;endArrow=block;endFill=1;fillColor=#828080;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="30" target="32" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="220" y="250" as="sourcePoint"/>
                         <mxPoint x="310" y="250" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="32" value="GitHub PR / Issue" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#DDD5C0;strokeColor=#9A8A68;strokeWidth=2;fontColor=#3A2C14;fontSize=15;fontStyle=1;" parent="1" vertex="1">
+                <mxCell id="32" value="GitHub PR / Issue" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#D5C9A2;strokeColor=#9A8A52;strokeWidth=2;fontColor=#3A2C0C;fontSize=15;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="270" y="220" width="190" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" style="strokeColor=#9A8A68;strokeWidth=1.5;endArrow=block;endFill=1;fillColor=#9A8A68;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" edge="1" target="34" source="32">
+                <mxCell id="33" style="strokeColor=#9A8A52;strokeWidth=1.5;endArrow=block;endFill=1;fillColor=#9A8A52;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="32" target="34" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="500" y="255" as="sourcePoint"/>
                         <mxPoint x="580" y="255" as="targetPoint"/>
@@ -84,7 +84,7 @@
                 <mxCell id="35" value="NO" style="text;html=1;align=left;fontColor=#5E8468;fontSize=12;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="711.5" y="245" width="35" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="36" style="strokeColor=#6A8A6A;strokeWidth=1.5;endArrow=block;endFill=1;fillColor=#6A8A6A;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" edge="1" target="38" source="34">
+                <mxCell id="36" style="strokeColor=#6A8A6A;strokeWidth=1.5;endArrow=block;endFill=1;fillColor=#6A8A6A;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="34" target="38" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="670" y="249.60000000000002" as="sourcePoint"/>
                         <mxPoint x="790" y="249.60000000000002" as="targetPoint"/>
@@ -97,9 +97,9 @@
                     <mxGeometry x="790" y="224" width="130" height="52" as="geometry"/>
                 </mxCell>
                 <mxCell id="39" value="YES" style="text;html=1;align=center;fontColor=#C05030;fontSize=12;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="540" y="305" width="35" height="20" as="geometry"/>
+                    <mxGeometry x="550" y="303" width="35" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="40" style="strokeColor=#7A6E9A;strokeWidth=1.5;endArrow=block;endFill=1;fillColor=#7A6E9A;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="34" edge="1" target="41">
+                <mxCell id="40" style="strokeColor=#7A6E9A;strokeWidth=1.5;endArrow=block;endFill=1;fillColor=#7A6E9A;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="34" target="41" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="660" y="385" as="targetPoint"/>
                     </mxGeometry>
