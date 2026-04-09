@@ -12,7 +12,7 @@ Giant component ratio,0.3284,0.5344
 Modularity (institution),-0.0586,-0.0343
 Modularity (Louvain),0.4245,0.4727
 # Louvain communities,46,358
-CP p-value,0.095,1.0
+CP p-value,0.0769,1.0
 CP significant (p<.05),False,False
 Core node count,3,769
 Avg core degree,8.0,3.196

@@ -35,19 +35,19 @@ ROOT = Path(__file__).parent.parent
 ANALYSIS = ROOT / "analysis"
 OUTPUT = ROOT / "output"
 
-# institution → color
+# institution → color  (Morandi palette — muted, distinct hues)
 INST_COLORS = {
-    "Google":                               "#EA4335",
-    "Microsoft":                            "#00A4EF",
-    "MetaMask":                             "#E2761B",
-    "Ethereum Foundation":                  "#627EEA",
-    "Edge and Node / The Graph Protocol":   "#6747ED",
-    "Cisco Systems":                        "#00BCEB",
-    "Coinbase":                             "#0052FF",
-    "Independent":                          "#27AE60",
-    "Unknown":                              "#BDC3C7",
+    "Google":                               "#C17F6E",  # terracotta
+    "Microsoft":                            "#7B9EA6",  # slate teal
+    "MetaMask":                             "#D4A96A",  # warm amber
+    "Ethereum Foundation":                  "#8E9DBB",  # periwinkle
+    "Edge and Node / The Graph Protocol":   "#9B8DB5",  # dusty violet
+    "Cisco Systems":                        "#6FAE8C",  # sage green
+    "Coinbase":                             "#A3C4BC",  # mint grey
+    "Independent":                          "#8FAF7E",  # muted green
+    "Unknown":                              "#C4C4B8",  # warm grey
 }
-DEFAULT_COLOR = "#95A5A6"
+DEFAULT_COLOR = "#B8B0A4"  # neutral grey — all other institutions
 
 
 # ── graph utilities ───────────────────────────────────────────────────────────
@@ -352,7 +352,7 @@ def spring_layout(nodes, edges, iterations=150, k=None):
     return pos
 
 
-def draw_network(ax, nodes, edges, pos, degree, title, metrics):
+def draw_network(ax, nodes, edges, pos, degree, title, metrics, vis_note=None):
     ax.set_facecolor("white")
     ax.axis("off")
     ax.set_aspect("equal")
@@ -395,7 +395,8 @@ def draw_network(ax, nodes, edges, pos, degree, title, metrics):
     ax.set_title(title, fontsize=9, fontweight="bold", pad=6)
 
     # Metrics inset
-    txt = (f"N={metrics['n_nodes']} nodes, {metrics['n_edges']} edges\n"
+    note_line = f" (visualising top-{vis_note} by degree)" if vis_note else ""
+    txt = (f"N={metrics['n_nodes']} nodes{note_line}, {metrics['n_edges']} edges\n"
            f"Density={metrics['density']:.3f}  "
            f"Modularity(Louvain)={metrics['modularity_louvain']:.3f}\n"
            f"Gini(degree)={metrics['gini_degree']:.3f}  "
@@ -408,11 +409,17 @@ def draw_network(ax, nodes, edges, pos, degree, title, metrics):
 
 def fig_sna_comparison(nodes_erc, edges_erc, nodes_a2a, edges_a2a,
                         metrics_erc, metrics_a2a):
+    # For the figure, use top-50 A2A nodes/edges to avoid over-crowding
+    with open(ANALYSIS / "network_nodes_a2a_top50.csv") as f:
+        nodes_a2a_vis = {r["id"]: r for r in csv.DictReader(f)}
+    with open(ANALYSIS / "network_edges_a2a_top50.csv") as f:
+        edges_a2a_vis = list(csv.DictReader(f))
+
     print("  Computing layouts (this may take ~10s)...")
     _, deg_erc = build_adj(nodes_erc, edges_erc)
-    _, deg_a2a = build_adj(nodes_a2a, edges_a2a)
+    _, deg_a2a = build_adj(nodes_a2a_vis, edges_a2a_vis)
     pos_erc = spring_layout(nodes_erc, edges_erc, iterations=200, k=0.35)
-    pos_a2a = spring_layout(nodes_a2a, edges_a2a, iterations=200, k=0.25)
+    pos_a2a = spring_layout(nodes_a2a_vis, edges_a2a_vis, iterations=300, k=0.45)
 
     fig, (ax_erc, ax_a2a) = plt.subplots(1, 2, figsize=(12, 6))
     fig.patch.set_facecolor("white")
@@ -420,25 +427,27 @@ def fig_sna_comparison(nodes_erc, edges_erc, nodes_a2a, edges_a2a,
     draw_network(ax_erc, nodes_erc, edges_erc, pos_erc, deg_erc,
                  "ERC-8004 Governance Network\n(Permissionless DAO)",
                  metrics_erc)
-    draw_network(ax_a2a, nodes_a2a, edges_a2a, pos_a2a, deg_a2a,
+    draw_network(ax_a2a, nodes_a2a_vis, edges_a2a_vis, pos_a2a, deg_a2a,
                  "Google A2A Governance Network (top-50)\n(Corporate Hierarchy)",
-                 metrics_a2a)
+                 metrics_a2a, vis_note=50)
 
-    # Shared institution legend
+    # Shared institution legend — only show institutions with explicit color assignments
     seen_insts = set(d.get("institution", "Unknown")
-                     for nodes in [nodes_erc, nodes_a2a]
+                     for nodes in [nodes_erc, nodes_a2a_vis]
                      for d in nodes.values())
+    # Filter to only institutions that have an explicit color (i.e., are in INST_COLORS)
+    colored_insts = [i for i in sorted(seen_insts) if i in INST_COLORS and i != "Unknown"]
     legend_handles = [
-        mpatches.Patch(color=INST_COLORS.get(i, DEFAULT_COLOR), label=i)
-        for i in sorted(seen_insts) if i != "Unknown"
+        mpatches.Patch(color=INST_COLORS[i], label=i)
+        for i in colored_insts
     ] + [mpatches.Patch(color=INST_COLORS["Unknown"], label="Unknown")]
 
     fig.legend(handles=legend_handles, loc="lower center",
                ncol=min(len(legend_handles), 5),
-               fontsize=7.5, framealpha=0.9,
-               bbox_to_anchor=(0.5, -0.02))
+               fontsize=8, framealpha=0.9,
+               bbox_to_anchor=(0.5, -0.01))
 
-    plt.tight_layout(rect=[0, 0.06, 1, 1])
+    plt.tight_layout(rect=[0, 0.08, 1, 1])
     out = OUTPUT / "network_sna_comparison.png"
     plt.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")
     plt.close()

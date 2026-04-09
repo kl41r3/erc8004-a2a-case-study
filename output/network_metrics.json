@@ -28,7 +28,7 @@
     "modularity_institution": -0.0586,
     "modularity_louvain": 0.4245,
     "n_louvain_communities": 46,
-    "cp_pvalue": 0.095,
+    "cp_pvalue": 0.0769,
     "cp_significant": false,
     "core_cnt": 3,
     "avg_core_degree": 8.0,
