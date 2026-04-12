@@ -1,0 +1,20 @@
+topic_id,label,keywords,erc8004_n,a2a_n,erc8004_pct,a2a_pct,abs_diff,js_contribution,pkKL_erc,pkKL_a2a
+0,0_agent_the_to_and,"agent, the, to, and, for, of, is, agents",96,896,67.61,21.18,46.42,0.080503,0.374293,-0.213288
+1,1_task_the_to_message,"task, the, to, message, is, that, artifact, be",0,346,0.0,8.18,8.18,0.041188,-0.0,0.082376
+3,3_json_the_to_in,"json, the, to, in, a2a, of, message, proto",0,324,0.0,7.66,7.66,0.03857,-0.0,0.077139
+4,4_pull_contributing_https_format,"pull, contributing, https, format, github, com, a2a, make",0,306,0.0,7.23,7.23,0.036405,-0.0,0.072809
+5,5_python_samples_the_a2a,"python, samples, the, a2a, uv, github, sdk, to",0,251,0.0,5.93,5.93,0.029859,-0.0,0.059718
+2,2_this_you_pr_thanks,"this, you, pr, thanks, to, it, in, for",1,327,0.7,7.73,7.03,0.025484,-0.017705,0.068672
+8,8_00_favor_vote_2025,"00, favor, vote, 2025, 2026, binding, 01, in",0,52,0.0,1.23,1.23,0.006193,-0.0,0.012387
+10,10_pushnotificationconfig_notification_push_token,"pushnotificationconfig, notification, push, token, the, taskpushnotificationconfig, scheme, field",0,36,0.0,0.85,0.85,0.00428,-0.0,0.00856
+11,11_conduct_code_describe_response_,"conduct, code, describe, response_, _no, agree, of, project",0,30,0.0,0.71,0.71,0.003575,-0.0,0.00715
+9,9_suggestion_sap_linkedin_poppulo,"suggestion, sap, linkedin, poppulo, www, https, com, this",4,38,2.82,0.9,1.92,0.003275,0.015431,-0.008881
+12,12_partners_link_discord_partner,"partners, link, discord, partner, to, invalid, adding, someone",0,25,0.0,0.59,0.59,0.002971,-0.0,0.005942
+13,13_gemini_review_assist_code,"gemini, review, assist, code, suggested, rounds, addressed, you",0,23,0.0,0.54,0.54,0.002719,-0.0,0.005438
+14,14_lint_buf_super_yaml,"lint, buf, super, yaml, linter, ci, rules, no",0,20,0.0,0.47,0.47,0.002367,-0.0,0.004733
+15,15_ui_polling_disable_windows,"ui, polling, disable, windows, pages, demo, refresh, happening",0,18,0.0,0.43,0.43,0.002165,-0.0,0.00433
+16,16_mkdocs_docs_label_stage,"mkdocs, docs, label, stage, filename, mkdocstring, sdk, ia",0,18,0.0,0.43,0.43,0.002165,-0.0,0.00433
+17,17_openai_azure_to_openai_endpoint,"openai, azure, to, openai_endpoint, the, env, variables, if",0,16,0.0,0.38,0.38,0.001913,-0.0,0.003827
+6,6_version_to_the_versions,"version, to, the, versions, we, changes, be, that",2,116,1.41,2.74,1.33,0.001827,-0.008236,0.011889
+18,18_null_none_value_undefined,"null, none, value, undefined, not, type, pr, to",0,15,0.0,0.35,0.35,0.001762,-0.0,0.003525
+7,7_image_assets_attachments_user,"image, assets, attachments, user, dark, theme, https, none",1,55,0.7,1.3,0.6,0.000779,-0.003799,0.005358

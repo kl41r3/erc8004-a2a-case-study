@@ -1,0 +1,41 @@
+{
+  "global_js_divergence": 0.287999,
+  "n_topics": 19,
+  "top_divergent_topics": [
+    {
+      "topic_id": 0,
+      "label": "0_agent_the_to_and",
+      "erc8004_pct": 67.61,
+      "a2a_pct": 21.18,
+      "abs_diff": 46.42
+    },
+    {
+      "topic_id": 1,
+      "label": "1_task_the_to_message",
+      "erc8004_pct": 0.0,
+      "a2a_pct": 8.18,
+      "abs_diff": 8.18
+    },
+    {
+      "topic_id": 3,
+      "label": "3_json_the_to_in",
+      "erc8004_pct": 0.0,
+      "a2a_pct": 7.66,
+      "abs_diff": 7.66
+    },
+    {
+      "topic_id": 4,
+      "label": "4_pull_contributing_https_format",
+      "erc8004_pct": 0.0,
+      "a2a_pct": 7.23,
+      "abs_diff": 7.23
+    },
+    {
+      "topic_id": 2,
+      "label": "2_this_you_pr_thanks",
+      "erc8004_pct": 0.7,
+      "a2a_pct": 7.73,
+      "abs_diff": 7.03
+    }
+  ]
+}

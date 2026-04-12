@@ -1,0 +1,381 @@
+[
+  {
+    "theme_id": "T01",
+    "label": "Protocol Specification & Versioning",
+    "description": "Covers protocol version releases, breaking changes, compatibility between versions, and specification revision processes.",
+    "codes": [
+      "1.0 release readiness",
+      "Release v1.0.0 breaking changes",
+      "Vote for 1.0 cleanup",
+      "Spec revision pending",
+      "Addressing review comments",
+      "Patch versions editorial only",
+      "Types unchanged by this change",
+      "Protocol evaluation priority",
+      "Major version compatibility question",
+      "Multi-version protocol support",
+      "JSON Schema proto alignment",
+      "Update spec JSON for types",
+      "Update spec documentation format",
+      "Combine spec pages with tabs",
+      "Base branch updated"
+    ]
+  },
+  {
+    "theme_id": "T02",
+    "label": "Authentication & Authorization",
+    "description": "Addresses OAuth adoption, auth flows, authorization schemes, token handling, and credential verification mechanisms.",
+    "codes": [
+      "Adopt OAuth 2.1 authorization",
+      "Adopt RFC 9457 error standard",
+      "Auth discovery at capability声明时间",
+      "Auth flow complexity discussion",
+      "Simplify authentication scheme",
+      "Zero Trust authorization questions",
+      "User-level authentication concern",
+      "In-band authorization token concerns",
+      "Per-skill authorization unclear",
+      "Update expired authentication URL",
+      "Note spec has not addressed auth flows",
+      "CIBA auth rejection handling",
+      "INPUT/AUTH_REQUESTED v2 design",
+      "Input-required covers consent scenarios"
+    ]
+  },
+  {
+    "theme_id": "T03",
+    "label": "Agent Discovery & Registry",
+    "description": "Covers mechanisms for discovering agents, registry implementations, well-known URLs, and distributed registry models.",
+    "codes": [
+      "Agent discovery spec clarification",
+      "Agreement on well-known URL for discovery",
+      "Discovery mechanism value discussion",
+      "Explain distributed registry model",
+      "Local agent registry implementation",
+      "Multiple registry implementation approaches",
+      "Registry service proposal",
+      "Registry thread acknowledgment",
+      "Registry-level data filtering",
+      "Ephemeral vs durable discovery",
+      "Multi-agent discovery via API Catalog",
+      "Discuss ORD vs API catalog",
+      "Discovery abstraction layer",
+      "Community static registry build",
+      "Cross-platform agent addressing",
+      "Context ID interoperability goals",
+      "Stable address adoption challenge",
+      "xRegistry demonstration site available",
+      "Introduce xRegistry standard"
+    ]
+  },
+  {
+    "theme_id": "T04",
+    "label": "Task & Message Management",
+    "description": "Addresses task handoff mechanisms, message handling, task state transitions, and streaming message workflows.",
+    "codes": [
+      "Ask about thread handoff mechanism",
+      "Ask about handoff protocol object",
+      "Clarify cross-context task references",
+      "Clarify contextId and Tasks relationship",
+      "ListTasks enables failure recovery",
+      "MessageId consistency",
+      "MessageId idempotent task creation",
+      "Message timestamps for task history",
+      "Add source field to messages",
+      "Multi-part message clarity",
+      "Task state explanation",
+      "Task state handling tutorial",
+      "Use terminal state for closure",
+      "TaskStatusUpdateEvents purpose clarification",
+      "BiDi streaming task context usage",
+      "REST streaming error handling",
+      "Stream closure efficiency"
+    ]
+  },
+  {
+    "theme_id": "T05",
+    "label": "SDK Development & Libraries",
+    "description": "Covers SDK implementation in various languages, code generation from protos, and library maintenance.",
+    "codes": [
+      "C language SDK request",
+      "Community C# SDK exists",
+      "Kotlin SDK Contribution Proposal",
+      "Python class autogeneration from protos",
+      "Message signing JWS proposal",
+      "SDK AttributeError bug",
+      "Python library breaking change prevention",
+      "Update Python version requirement",
+      "Update documentation will be",
+      "Relocate SDK samples directory",
+      "Move sample to samples directory",
+      "Suggestion placeholder",
+      "Code font for types",
+      "Rename completed and spec updated"
+    ]
+  },
+  {
+    "theme_id": "T06",
+    "label": "Documentation & Examples",
+    "description": "Addresses documentation improvements, tutorials, agent card examples, and documentation formatting.",
+    "codes": [
+      "Agent card documentation mapping",
+      "Improve agent documentation with diagrams",
+      "Docs rework stage 2 of 3",
+      "Documentation URL field",
+      "Demo video link addition",
+      "Preview tutorial link",
+      "Quickstart tutorial share",
+      "Real-world agent card examples",
+      "Tutorial section formatting",
+      "Tutorial CLI setup alignment issue",
+      "Tutorial will be updated",
+      "End-to-end SARL example",
+      "Python example with push notifications",
+      "Multi-language README support",
+      "Verify documentation field refs"
+    ]
+  },
+  {
+    "theme_id": "T07",
+    "label": "Community Collaboration & Contributions",
+    "description": "Covers partner ecosystem management, pull request workflows, reviews, and contribution guidelines.",
+    "codes": [
+      "Add A2A Net partner",
+      "Add MasOrange to partners list",
+      "Add Red Hat partner",
+      "Add Telekom provider",
+      "Suggest community or partners",
+      "PR CLA closure",
+      "PR opened for issue",
+      "PR reviewer requirement",
+      "Agreeing to review PR",
+      "Confirm waiting for vote after LGTM",
+      "Cancel vote clean move",
+      "Standard PR template checklist",
+      "Empty PR template",
+      "Template PR description",
+      "Request specific reviewers feedback",
+      "Request re-review after conflicts",
+      "Move PR to SDK repository",
+      "Approve correct implementation",
+      "Contribution superseded by official SDK",
+      "Share registry whitepaper",
+      "Add robots.txt for crawler control"
+    ]
+  },
+  {
+    "theme_id": "T08",
+    "label": "Trust & Security Mechanisms",
+    "description": "Addresses trust scoring, reputation systems, credential verification, and security policies.",
+    "codes": [
+      "Agent trust scores solution",
+      "Agent trust scoring signals",
+      "Trust mechanisms discussion",
+      "Avoid single aggregate reputation score",
+      "Verifiable trust signals via agentcred",
+      "Add on-chain event reading for trust",
+      "On-chain ID reference insufficient verification",
+      "Use feedbackURI instead of on-chain storage",
+      "decentralized trust limitations OAuth",
+      "Vouch chains vs star ratings",
+      "adding trust system to list",
+      "agent trust layer proposal",
+      "Credential verification signal schema",
+      "HATEOAS agent cards question",
+      "HTTPS verification requirement",
+      "CVE disclosure policy question"
+    ]
+  },
+  {
+    "theme_id": "T09",
+    "label": "Transport & Protocol Mechanisms",
+    "description": "Covers transport layer choices, protocol comparisons, RPC mechanisms, and artifact handling.",
+    "codes": [
+      "A2A MCP design differences",
+      "MCP transport mechanism explanation",
+      "Avoid gRPC JSON-RPC discrepancies",
+      "Make interface bidirectional streaming",
+      "No-TCP transport exploration",
+      "Broker RPC emulation limitation",
+      "Split Transport enum to issue 909",
+      "Relative URL protocol support",
+      "Artifact naming uniqueness",
+      "Artifact integrity fields"
+    ]
+  },
+  {
+    "theme_id": "T10",
+    "label": "AgentCard & Metadata Structures",
+    "description": "Addresses AgentCard field definitions, extensions, agent identification, and metadata schema.",
+    "codes": [
+      "AgentCard feature declaration requirement",
+      "Add iconUrl to agentcard",
+      "Add tags field to AgentCard",
+      "Agent schema discovery scenarios",
+      "Agent identifier continuity",
+      "Server version list requirement",
+      "Multiple agents per server",
+      "Extending AgentCard via extensions",
+      "extensions field deprecation question",
+      "GetExtendedCard naming questions",
+      "Custom extensions for agent identity",
+      "HATEOAS agent cards question",
+      "Suggest multi-card support in agent.json"
+    ]
+  },
+  {
+    "theme_id": "T11",
+    "label": "Data Types & Schema Definition",
+    "description": "Covers JSON schema generation, type definitions, field nullability, and enum specifications.",
+    "codes": [
+      "Generate JSON schema from proto",
+      "Define media type format",
+      "JSON payload specification ambiguity",
+      "Jsonrpc optional field fix",
+      "ID nullability and type file issue",
+      "Question null ID in success response",
+      "Null result in JSON-RPC responses",
+      "Enum convenience for validation",
+      "Parameter renaming for clarity",
+      "Extension methods clarification",
+      "Custom server methods",
+      "Server-generated ID requirement",
+      "id as unique constant value"
+    ]
+  },
+  {
+    "theme_id": "T12",
+    "label": "Testing & Validation Tools",
+    "description": "Addresses validation tooling, automated checkers, schema generation workflows, and type generation.",
+    "codes": [
+      "Automated checker reduces future issues",
+      "Testing validation compatibility",
+      "Sampling validation compatibility",
+      "Session history query method missing",
+      "Server testing tools request",
+      "Code: A2A agent validator tool",
+      "Schema generation workflow improvement",
+      "Type generation blocks spec updates",
+      "Buf gen version correction",
+      "Regex update and annotations"
+    ]
+  },
+  {
+    "theme_id": "T13",
+    "label": "Integrations & External Systems",
+    "description": "Covers MCP protocol integration, payment systems like x402, external tool connections, and hosting options.",
+    "codes": [
+      "A2A implementation with OpenWebUI",
+      "Add MCP protocol reference",
+      "MCP as base protocol",
+      "Add LlamaIndex integration sample",
+      "MCP SQL agent implementation",
+      "x402 payment integration approach",
+      "External payment schema reference",
+      "Using A2A without Google ADK",
+      "Docker vs hosted agent options",
+      "Multi-agent server hosting",
+      "Push notification config support",
+      "Push notification implementation bug"
+    ]
+  },
+  {
+    "theme_id": "T14",
+    "label": "Project Governance & Process",
+    "description": "Addresses TSC review processes, project synchronization, workflow management, and administrative responses.",
+    "codes": [
+      "TSC review process for changes",
+      "TSC review process transition",
+      "Brief acknowledgment",
+      "Fix acknowledgment",
+      "Apology for wrong credential",
+      "Response to AI allegations",
+      "Tenants name accepted",
+      "Sync fork with main",
+      "Workflow fork protection",
+      "Anticipating project updates",
+      "Nice-to-have suggestions"
+    ]
+  },
+  {
+    "theme_id": "T15",
+    "label": "Tooling Fixes & Automation",
+    "description": "Covers CLI fixes, environment configuration corrections, and minor code adjustments.",
+    "codes": [
+      "Fix CLI directory path",
+      "Fix env variable loading",
+      "Fix security scheme example",
+      "Fix double l spelling",
+      "Fix broken partner link",
+      "Fix message ID mismatch",
+      "Fix sample issue",
+      "Fix issue #1240 with better implementation",
+      "Make timer configurable",
+      "Code suggestion placeholder",
+      "Fix acknowledgment",
+      "Spelling correction Semantic"
+    ]
+  },
+  {
+    "theme_id": "T16",
+    "label": "Streaming & Real-time Communication",
+    "description": "Addresses streaming message and artifact delivery, bidirectional communication, and real-time updates.",
+    "codes": [
+      "artifact streaming examples",
+      "Share bidirectional agents example",
+      "Streaming discriminator field update",
+      "Message streaming real-time updates"
+    ]
+  },
+  {
+    "theme_id": "T17",
+    "label": "Multi-Agent Systems Architecture",
+    "description": "Covers multi-agent coordination patterns, domain separation, routing strategies, and enterprise authorization.",
+    "codes": [
+      "Multi-agent architecture example",
+      "Multi-agent discovery via API Catalog",
+      "agent routing LLM selection",
+      "Domain separation for distinct agents",
+      "Enterprise fine-grained authorization",
+      "Secure collaboration on long tasks",
+      "Multi-agent architecture patterns"
+    ]
+  },
+  {
+    "theme_id": "T18",
+    "label": "Spec Clarifications & Information Requests",
+    "description": "Addresses requests for clarification on specifications, diagrams, and working implementations.",
+    "codes": [
+      "Clarify A2A MCP diagram",
+      "Clarify hybrid mode needed",
+      "Request for information",
+      "Request for spec clarification",
+      "Requesting working server link",
+      "Question about removed lines",
+      "Questioning AIP guidance necessity",
+      "Clarification request for suggestion",
+      "PoC limitations explanation",
+      "Capability discovery via ANS"
+    ]
+  },
+  {
+    "theme_id": "T19",
+    "label": "Bug Fixes & Implementation Improvements",
+    "description": "Covers specific bug resolutions, code refactoring, and addressing multiple concerns in PRs.",
+    "codes": [
+      "Fix security scheme example",
+      "Fix acknowledge",
+      "Issue fixed via PR",
+      "Issue resolved by PR",
+      "Commits address multiple concerns",
+      "Close resolved issue",
+      "Status fixed to failed",
+      "Clean up diff create tracking issues",
+      "Error handling rebase plan",
+      "Auth rewrite plans new PR",
+      "Replace PR with refactored version",
+      "Split proto into gRPC and types",
+      "Import from source to prevent duplication"
+    ]
+  }
+]
