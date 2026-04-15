@@ -1,0 +1,115 @@
+{
+  "ERC-8004": {
+    "n_actors": 66,
+    "n_themes_active": 16,
+    "n_records": 126,
+    "congruence": {
+      "edges": 318,
+      "density": 0.1483,
+      "modularity": 0.2886,
+      "polarization_index": 0.1384,
+      "top_betweenness": [
+        {
+          "actor": "bransdotcom",
+          "bc": 0.0607
+        },
+        {
+          "actor": "voidcenter",
+          "bc": 0.0606
+        },
+        {
+          "actor": "azanux",
+          "bc": 0.0592
+        },
+        {
+          "actor": "Marco-MetaMask",
+          "bc": 0.059
+        },
+        {
+          "actor": "SumeetChougule",
+          "bc": 0.0571
+        }
+      ]
+    },
+    "conflict": {
+      "edges": 74
+    },
+    "theme_participation": {
+      "T08": 48,
+      "T01": 19,
+      "T18": 12,
+      "T07": 8,
+      "T03": 7,
+      "T13": 6,
+      "T10": 6,
+      "T12": 5,
+      "T19": 4,
+      "T11": 3,
+      "T06": 3,
+      "T04": 1,
+      "T17": 1,
+      "T05": 1,
+      "T02": 1,
+      "T15": 1
+    },
+    "mean_actor_theme_diversity": 1.47
+  },
+  "Google-A2A": {
+    "n_actors": 710,
+    "n_themes_active": 19,
+    "n_records": 3759,
+    "congruence": {
+      "edges": 20638,
+      "density": 0.082,
+      "modularity": 0.2453,
+      "polarization_index": 0.2525,
+      "top_betweenness": [
+        {
+          "actor": "darrelmiller",
+          "bc": 0.0175
+        },
+        {
+          "actor": "holtskinner",
+          "bc": 0.0135
+        },
+        {
+          "actor": "pstephengoogle",
+          "bc": 0.0115
+        },
+        {
+          "actor": "ognis1205",
+          "bc": 0.0091
+        },
+        {
+          "actor": "Tehsmash",
+          "bc": 0.0087
+        }
+      ]
+    },
+    "conflict": {
+      "edges": 2531
+    },
+    "theme_participation": {
+      "T06": 429,
+      "T18": 421,
+      "T07": 363,
+      "T01": 332,
+      "T03": 257,
+      "T19": 206,
+      "T15": 180,
+      "T05": 175,
+      "T11": 174,
+      "T08": 169,
+      "T14": 167,
+      "T10": 159,
+      "T04": 157,
+      "T09": 135,
+      "T02": 109,
+      "T17": 103,
+      "T13": 87,
+      "T16": 86,
+      "T12": 50
+    },
+    "mean_actor_theme_diversity": 2.211
+  }
+}

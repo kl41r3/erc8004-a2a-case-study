@@ -1,0 +1,84 @@
+{
+  "ERC-8004": {
+    "n_actors": 66,
+    "n_themes": 16,
+    "n_edges_actor_proj": 645,
+    "actor_entropy": {
+      "mean": 0.348,
+      "median": 0.0,
+      "gini": 0.773,
+      "max": 2.664
+    },
+    "actor_modularity": 0.1901,
+    "theme_concentration": {
+      "mean_gini": 0.085,
+      "most_concentrated": "T08"
+    },
+    "gatekeepers": [
+      {
+        "actor": "Nithin-Varma",
+        "bc": 0.1335
+      },
+      {
+        "actor": "Cyberpaisa",
+        "bc": 0.1109
+      },
+      {
+        "actor": "SumeetChougule",
+        "bc": 0.0997
+      },
+      {
+        "actor": "abcoathup",
+        "bc": 0.0883
+      },
+      {
+        "actor": "Moshiii",
+        "bc": 0.0877
+      }
+    ]
+  },
+  "Google-A2A": {
+    "n_actors": 710,
+    "n_themes": 19,
+    "n_edges_actor_proj": 59007,
+    "actor_entropy": {
+      "mean": 0.617,
+      "median": 0.0,
+      "gini": 0.707,
+      "max": 3.834
+    },
+    "actor_modularity": 0.1814,
+    "theme_concentration": {
+      "mean_gini": 0.453,
+      "most_concentrated": "T06"
+    },
+    "gatekeepers": [
+      {
+        "actor": "vinoo999",
+        "bc": 0.0275
+      },
+      {
+        "actor": "vongosling",
+        "bc": 0.0241
+      },
+      {
+        "actor": "ToddSegal",
+        "bc": 0.02
+      },
+      {
+        "actor": "princejha95",
+        "bc": 0.0189
+      },
+      {
+        "actor": "edenreich",
+        "bc": 0.0171
+      }
+    ]
+  },
+  "cross_case": {
+    "overlap_coefficient": 1.0,
+    "n_shared_themes": 16,
+    "n_erc_only": 0,
+    "n_a2a_only": 3
+  }
+}
