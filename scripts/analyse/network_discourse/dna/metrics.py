@@ -40,6 +40,18 @@ def _polarization_index(G: nx.Graph, sub: pd.DataFrame) -> float:
     return cross / total if total > 0 else float("nan")
 
 
+def _gini(vals: list[float]) -> float:
+    if not vals:
+        return 0.0
+    arr = sorted(vals)
+    n = len(arr)
+    total = sum(arr)
+    if total == 0:
+        return 0.0
+    gini_num = sum((2 * (i + 1) - n - 1) * v for i, v in enumerate(arr))
+    return round(gini_num / (n * total), 4)
+
+
 def compute(case_data: dict, sub: pd.DataFrame) -> dict:
     """
     case_data: {"congruence": G, "conflict": G, "mat": DataFrame}
@@ -64,9 +76,16 @@ def compute(case_data: dict, sub: pd.DataFrame) -> dict:
     # Betweenness (congruence network)
     if cong_edges > 0:
         bc = nx.betweenness_centrality(G_cong, weight="weight", normalized=True)
+        bc_vals = list(bc.values())
         top_bc = sorted(bc.items(), key=lambda x: -x[1])[:5]
+        bc_sum = sum(bc_vals)
+        top3_bc_share = (
+            sum(v for _, v in top_bc[:3]) / bc_sum if bc_sum > 0 else 0.0
+        )
+        bc_gini = _gini(bc_vals)
     else:
-        top_bc = []
+        bc_vals, top_bc = [], []
+        top3_bc_share, bc_gini = 0.0, 0.0
 
     # Theme distribution per case
     theme_counts = sub["theme_id"].value_counts().to_dict()
@@ -85,6 +104,8 @@ def compute(case_data: dict, sub: pd.DataFrame) -> dict:
             "modularity": round(cong_mod, 4),
             "polarization_index": round(cong_polar, 4) if not np.isnan(cong_polar) else None,
             "top_betweenness": [{"actor": a, "bc": round(v, 4)} for a, v in top_bc],
+            "betweenness_gini": bc_gini,
+            "top3_betweenness_share": round(top3_bc_share, 4),
         },
         "conflict": {
             "edges": conf_edges,

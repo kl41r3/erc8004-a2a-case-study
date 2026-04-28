@@ -29,7 +29,9 @@
           "actor": "SumeetChougule",
           "bc": 0.0571
         }
-      ]
+      ],
+      "betweenness_gini": 0.8586,
+      "top3_betweenness_share": 0.3451
     },
     "conflict": {
       "edges": 74
@@ -84,7 +86,9 @@
           "actor": "Tehsmash",
           "bc": 0.0087
         }
-      ]
+      ],
+      "betweenness_gini": 0.8891,
+      "top3_betweenness_share": 0.1223
     },
     "conflict": {
       "edges": 2531

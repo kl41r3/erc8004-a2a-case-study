@@ -221,6 +221,68 @@ def compute_cp_metrics(G, num_rand=100):
                 "core_cnt": None, "avg_core_degree": None}
 
 
+def compute_centrality_metrics(G, nodes):
+    """
+    Betweenness, harmonic, and eigenvector centrality.
+
+    Choice rationale:
+    - Betweenness: identifies governance brokers — nodes that sit on shortest paths
+      between otherwise disconnected groups. Key metric for comparing whether
+      brokerage power is concentrated (corporate) vs. distributed (DAO).
+      Works on fragmented graphs: isolates and peripheral nodes get 0 naturally.
+    - Harmonic centrality: sum of reciprocal distances (0 for unreachable pairs),
+      safe substitute for closeness on disconnected networks. Captures how
+      "accessible" each actor is to the rest of the governance community.
+    - Eigenvector (giant component only): prestige — being connected to high-degree
+      nodes. Computed only on the giant component because nx raises
+      PowerIterationFailedConvergence on disconnected graphs.
+    """
+    n = G.number_of_nodes()
+    inst_map = {nid: data.get("institution", "Unknown") for nid, data in nodes.items()}
+
+    # ── Betweenness centrality (full network, normalized) ─────────────────────
+    bc = nx.betweenness_centrality(G, normalized=True, weight=None)
+    bc_vals = list(bc.values())
+    top5_bc = sorted(bc.items(), key=lambda x: x[1], reverse=True)[:5]
+    bc_sum = sum(bc_vals)
+    top3_bc_share = (
+        sum(v for _, v in top5_bc[:3]) / bc_sum if bc_sum > 0 else 0.0
+    )
+
+    # ── Harmonic centrality (full network, normalized by n-1) ─────────────────
+    hc_raw = nx.harmonic_centrality(G)
+    hc_norm = {k: v / (n - 1) for k, v in hc_raw.items()} if n > 1 else hc_raw
+    hc_vals = list(hc_norm.values())
+
+    # ── Eigenvector centrality (giant component only) ─────────────────────────
+    giant_nodes = max(nx.connected_components(G), key=len)
+    G_giant = G.subgraph(giant_nodes).copy()
+    try:
+        ev = nx.eigenvector_centrality(G_giant, max_iter=1000, tol=1e-6, weight=None)
+        ev_vals = list(ev.values())
+        top5_ev = sorted(ev.items(), key=lambda x: x[1], reverse=True)[:5]
+    except nx.PowerIterationFailedConvergence:
+        ev, ev_vals, top5_ev = {}, [], []
+
+    return {
+        "betweenness_mean":       round(np.mean(bc_vals), 6),
+        "betweenness_max":        round(max(bc_vals), 5),
+        "betweenness_gini":       gini_coefficient(bc_vals),
+        "top3_betweenness_share": round(top3_bc_share, 4),
+        "top5_betweenness":       [(nid, round(v, 5), inst_map.get(nid, "?"))
+                                   for nid, v in top5_bc],
+        "harmonic_mean":          round(np.mean(hc_vals), 5),
+        "harmonic_max":           round(max(hc_vals), 5),
+        "network_efficiency":     round(np.mean(hc_vals), 5),
+        "eigenvec_giant_n":       len(giant_nodes),
+        "eigenvec_mean_giant":    round(np.mean(ev_vals), 5) if ev_vals else None,
+        "eigenvec_max_giant":     round(max(ev_vals), 5) if ev_vals else None,
+        "eigenvec_gini_giant":    gini_coefficient(ev_vals) if ev_vals else None,
+        "top5_eigenvec_giant":    [(nid, round(v, 5), inst_map.get(nid, "?"))
+                                   for nid, v in top5_ev],
+    }
+
+
 def compute_metrics(case, nodes, edges, adj, degree):
     """Compute all SNA metrics for one case."""
     n = len(nodes)
@@ -266,6 +328,10 @@ def compute_metrics(case, nodes, edges, adj, degree):
     print(f"  Running cpnet for {case} (n={n}, rand={num_rand})...")
     cp = compute_cp_metrics(G, num_rand=num_rand)
 
+    # Centrality metrics
+    print(f"  Computing centrality metrics for {case}...")
+    cent = compute_centrality_metrics(G, nodes)
+
     # Institution breakdown (by node count)
     inst_counter = Counter(data.get("institution", "Unknown") for data in nodes.values())
     top_inst = inst_counter.most_common(3)
@@ -290,6 +356,7 @@ def compute_metrics(case, nodes, edges, adj, degree):
         "cp_significant":         cp["cp_significant"],
         "core_cnt":               cp["core_cnt"],
         "avg_core_degree":        cp["avg_core_degree"],
+        **cent,
         "top_institutions":       top_inst,
     }
 
@@ -494,29 +561,38 @@ def fig_degree_distribution(nodes_erc, edges_erc, nodes_a2a, edges_a2a):
 
 def save_metrics_table(metrics_erc, metrics_a2a):
     rows = [
-        ("Nodes",                      metrics_erc["n_nodes"],                metrics_a2a["n_nodes"]),
-        ("Edges",                      metrics_erc["n_edges"],                metrics_a2a["n_edges"]),
-        ("Density",                    metrics_erc["density"],                metrics_a2a["density"]),
-        ("Mean degree",                metrics_erc["mean_degree"],            metrics_a2a["mean_degree"]),
-        ("DCstd (normalized)",         metrics_erc["dc_std"],                 metrics_a2a["dc_std"]),
-        ("Max degree",                 metrics_erc["max_degree"],             metrics_a2a["max_degree"]),
-        ("Top-3 degree share",         metrics_erc["top3_degree_share"],      metrics_a2a["top3_degree_share"]),
-        ("Gini(degree)",               metrics_erc["gini_degree"],            metrics_a2a["gini_degree"]),
-        ("# Components",               metrics_erc["n_components"],           metrics_a2a["n_components"]),
-        ("Giant component ratio",      metrics_erc["giant_component_ratio"],  metrics_a2a["giant_component_ratio"]),
-        ("Modularity (institution)",   metrics_erc["modularity_institution"], metrics_a2a["modularity_institution"]),
-        ("Modularity (Louvain)",       metrics_erc["modularity_louvain"],     metrics_a2a["modularity_louvain"]),
-        ("# Louvain communities",      metrics_erc["n_louvain_communities"],  metrics_a2a["n_louvain_communities"]),
-        ("CP p-value",                 metrics_erc["cp_pvalue"],              metrics_a2a["cp_pvalue"]),
-        ("CP significant (p<.05)",     metrics_erc["cp_significant"],         metrics_a2a["cp_significant"]),
-        ("Core node count",            metrics_erc["core_cnt"],               metrics_a2a["core_cnt"]),
-        ("Avg core degree",            metrics_erc["avg_core_degree"],        metrics_a2a["avg_core_degree"]),
+        ("Nodes",                           metrics_erc["n_nodes"],                metrics_a2a["n_nodes"]),
+        ("Edges",                           metrics_erc["n_edges"],                metrics_a2a["n_edges"]),
+        ("Density",                         metrics_erc["density"],                metrics_a2a["density"]),
+        ("Mean degree",                     metrics_erc["mean_degree"],            metrics_a2a["mean_degree"]),
+        ("DCstd (normalized)",              metrics_erc["dc_std"],                 metrics_a2a["dc_std"]),
+        ("Max degree",                      metrics_erc["max_degree"],             metrics_a2a["max_degree"]),
+        ("Top-3 degree share",              metrics_erc["top3_degree_share"],      metrics_a2a["top3_degree_share"]),
+        ("Gini(degree)",                    metrics_erc["gini_degree"],            metrics_a2a["gini_degree"]),
+        ("# Components",                    metrics_erc["n_components"],           metrics_a2a["n_components"]),
+        ("Giant component ratio",           metrics_erc["giant_component_ratio"],  metrics_a2a["giant_component_ratio"]),
+        ("Modularity (institution)",        metrics_erc["modularity_institution"], metrics_a2a["modularity_institution"]),
+        ("Modularity (Louvain)",            metrics_erc["modularity_louvain"],     metrics_a2a["modularity_louvain"]),
+        ("# Louvain communities",           metrics_erc["n_louvain_communities"],  metrics_a2a["n_louvain_communities"]),
+        ("CP p-value",                      metrics_erc["cp_pvalue"],              metrics_a2a["cp_pvalue"]),
+        ("CP significant (p<.05)",          metrics_erc["cp_significant"],         metrics_a2a["cp_significant"]),
+        ("Core node count",                 metrics_erc["core_cnt"],               metrics_a2a["core_cnt"]),
+        ("Avg core degree",                 metrics_erc["avg_core_degree"],        metrics_a2a["avg_core_degree"]),
+        # Centrality metrics
+        ("Betweenness mean",                metrics_erc["betweenness_mean"],       metrics_a2a["betweenness_mean"]),
+        ("Betweenness max",                 metrics_erc["betweenness_max"],        metrics_a2a["betweenness_max"]),
+        ("Betweenness Gini",                metrics_erc["betweenness_gini"],       metrics_a2a["betweenness_gini"]),
+        ("Top-3 betweenness share",         metrics_erc["top3_betweenness_share"], metrics_a2a["top3_betweenness_share"]),
+        ("Network efficiency (harmonic)",   metrics_erc["network_efficiency"],     metrics_a2a["network_efficiency"]),
+        ("Harmonic centrality max",         metrics_erc["harmonic_max"],           metrics_a2a["harmonic_max"]),
+        ("Eigenvec Gini (giant comp.)",     metrics_erc["eigenvec_gini_giant"],    metrics_a2a["eigenvec_gini_giant"]),
+        ("Eigenvec max (giant comp.)",      metrics_erc["eigenvec_max_giant"],     metrics_a2a["eigenvec_max_giant"]),
     ]
 
     out = ANALYSIS / "network_metrics_table.csv"
     with open(out, "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["Metric", "ERC-8004", "Google A2A (top-50)"])
+        writer.writerow(["Metric", "ERC-8004", "Google A2A (full)"])
         for row in rows:
             writer.writerow(row)
     print(f"  Saved → {out}")

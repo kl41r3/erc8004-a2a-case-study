@@ -1,0 +1,88 @@
+{
+  "n_records": 142,
+  "n_topics": 5,
+  "noise_count": 9,
+  "noise_rate_pct": 6.3,
+  "topics": [
+    {
+      "id": 0,
+      "keywords": [
+        "agents",
+        "agent",
+        "onchain",
+        "like",
+        "erc8004",
+        "reputation",
+        "registry",
+        "use"
+      ],
+      "count": 76,
+      "pct": 53.5,
+      "label": "0_agents_agent_onchain_like"
+    },
+    {
+      "id": 2,
+      "keywords": [
+        "agent",
+        "trust",
+        "feedback",
+        "domain",
+        "reputation",
+        "optional",
+        "card",
+        "agent card"
+      ],
+      "count": 28,
+      "pct": 19.7,
+      "label": "2_agent_trust_feedback_domain"
+    },
+    {
+      "id": 4,
+      "keywords": [
+        "merge",
+        "uint256",
+        "github",
+        "pr",
+        "section",
+        "request",
+        "automatic",
+        "reviewers approved"
+      ],
+      "count": 13,
+      "pct": 9.2,
+      "label": "4_merge_uint256_github_pr"
+    },
+    {
+      "id": 3,
+      "keywords": [
+        "file",
+        "requires",
+        "reviewers",
+        "marcometamask",
+        "abcoathup",
+        "discussions",
+        "discussion",
+        "looks"
+      ],
+      "count": 9,
+      "pct": 6.3,
+      "label": "3_file_requires_reviewers_marcometamask"
+    },
+    {
+      "id": 1,
+      "keywords": [
+        "implementation",
+        "allows",
+        "erc8004",
+        "discover",
+        "agents",
+        "add",
+        "protocol",
+        "lightweight"
+      ],
+      "count": 7,
+      "pct": 4.9,
+      "label": "1_implementation_allows_erc8004_discover"
+    }
+  ]
+}

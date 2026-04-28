@@ -363,16 +363,9 @@ that fall outside our corpus.
 ## References (IEEE format)
 
 ```latex
-\bibitem{leifeld2013}
-P. Leifeld, ``Reconceptualizing major policy change in the advocacy coalition
-framework: A discourse network analysis of German pension politics,''
-\textit{Policy Studies Journal}, vol.~41, no.~1, pp.~169--198, 2013.
-DOI: 10.1177/0190292813477083
 
-\bibitem{roth2010}
-C. Roth and J.-P. Cointet, ``Social and semantic coevolution in knowledge
-networks,'' \textit{Social Networks}, vol.~32, no.~1, pp.~16--29, 2010.
-DOI: 10.1016/j.socnet.2009.04.005
+
+
 
 \bibitem{leifeld2017}
 P. Leifeld, ``Discourse network analysis: Policy debates as dynamic networks,''
@@ -388,12 +381,7 @@ V.~D. Blondel, J.-L. Guillaume, R. Lambiotte, and E. Lefebvre,
 vol.~2008, no.~10, p.~P10008, 2008.
 DOI: 10.1088/1742-5468/2008/10/P10008
 
-\bibitem{mockus2002}
-A. Mockus, R.~T. Fielding, and J.~D. Herbsleb,
-``Two case studies of open source software development: Apache and Mozilla,''
-\textit{ACM Transactions on Software Engineering and Methodology},
-vol.~11, no.~3, pp.~309--346, 2002.
-DOI: 10.1145/567793.567795
+
 
 \bibitem{nielsen2006}
 J. Nielsen, ``Participation inequality: Encouraging more users to contribute,''
