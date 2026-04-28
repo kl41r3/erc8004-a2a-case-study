@@ -1,4 +1,4 @@
-# Python-generated files
+# Python
 __pycache__/
 *.py[oc]
 build/
@@ -7,7 +7,7 @@ wheels/
 *.egg-info
 
 # Virtual environments
-.venv
+.venv/
 
 # Secrets — NEVER commit
 .env
@@ -23,12 +23,29 @@ wheels/
 *.log
 *.synctex.gz
 
-# Private / local only
-human-notes/
-paper/
-reports/
+# Local-only directories
 .claude/
-verification/
+human-notes/
 literature/
+verification/
+reports/
+paper/
+paper-acm/
+tree-root/
+analysis/
 
+# Local-only files
 CLAUDE.md
+main.py
+cmd.md
+aaa.md
+
+# output/ — keep only network_discourse and topic_discovery subdirectories
+output/*
+!output/network_discourse/
+!output/network_discourse/**
+!output/topic_discovery/
+!output/topic_discovery/**
+
+# Misplaced artifacts
+scripts/topic-stance-heatmap.png
