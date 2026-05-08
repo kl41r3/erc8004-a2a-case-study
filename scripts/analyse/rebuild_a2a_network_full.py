@@ -14,7 +14,7 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).parents[2]
 ANNOTATED = ROOT / "data" / "annotated"
 ANALYSIS = ROOT / "analysis"
 

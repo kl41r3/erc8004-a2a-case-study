@@ -22,7 +22,7 @@ import matplotlib.ticker as mtick
 import numpy as np
 from dateutil import parser as dateparser
 
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).parents[2]
 DATA = ROOT / "data" / "annotated" / "annotated_records.json"
 OUTPUT   = ROOT / "output"
 FIGURES  = ROOT / "output" / "figures"

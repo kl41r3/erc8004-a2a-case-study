@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyArrowPatch
 
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).parents[2]
 DATA_RAW = ROOT / "data" / "raw"
 OUTPUT = ROOT / "output"
 

@@ -31,7 +31,7 @@ import numpy as np
 import networkx as nx
 import cpnet
 
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).parents[2]
 ANALYSIS = ROOT / "analysis"
 OUTPUT = ROOT / "output"
 
