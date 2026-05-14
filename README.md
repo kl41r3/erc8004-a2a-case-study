@@ -22,7 +22,7 @@ workspace/
 ├── output/
 │   ├── network_discourse/   # DNA + socio-semantic results
 │   └── topic_discovery/     # Thematic-LM + comparative-discourse results
-└── paper.pdf         # Latest compiled manuscript
+
 ```
 
 ---
