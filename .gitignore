@@ -12,6 +12,7 @@ wheels/
 # Secrets — NEVER commit
 .env
 *.env
+!.env.example
 
 # macOS
 .DS_Store
@@ -39,6 +40,7 @@ CLAUDE.md
 main.py
 cmd.md
 aaa.md
+[Action Required] Submitting our paper to ACM KDD'26 Workshop Draft Update Deadline May 17.rtf
 
 # output/ — keep only network_discourse and topic_discovery subdirectories
 output/*
