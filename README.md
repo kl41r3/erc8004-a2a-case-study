@@ -1,4 +1,4 @@
-# Decentralized Paradox: DAO Governance vs. Corporate Governance in AI Protocol Standardization
+# Agentic Analysis for Agentic Infrastructure: An LLM-Powered Pipeline for Comparative Governance of DAO and Corporate AI Protocols
 
 Comparative case study of two AI agent protocol governance processes:
 
@@ -29,11 +29,7 @@ cp .env.example .env   # then edit .env with your keys
 The `.env` file needs:
 ```
 GITHUB_PERSONAL_ACCESS_TOKEN=ghp_...
-MINIMAX_API_KEY=...
-# Optional:
-ANTHROPIC_API_KEY=...
-OPENAI_API_KEY=...
-OPENAI_BASE_URL=...
+MINIMAX_API_KEY=...      # Or any API keys for annotation
 ```
 
 ### 2. Data Collection (Scraping)
@@ -149,98 +145,17 @@ uv run python scripts/compute_kappa.py              # compute Cohen's κ
 
 ---
 
-## Repository Structure
-
-```
-workspace/
-├── scripts/
-│   ├── scrape_erc8004_forum.py         # Discourse forum scraper
-│   ├── scrape_erc8004_prs.py           # GitHub PRs for ERC-8004
-│   ├── scrape_a2a.py                   # GitHub REST + GraphQL (issues + PRs)
-│   ├── scrape_a2a_discussions.py       # GitHub Discussions (GraphQL)
-│   ├── scrape_gitvote_prs.py           # TSC GitVote PRs (#831, #1206)
-│   ├── patch_a2a_missing_pages.py     # Recover timed-out pages
-│   ├── filter_github.py               # Whitelist 9 core lifecycle PRs
-│   ├── annotate_llm.py                # LLM annotation (MiniMax/Anthropic/OpenAI)
-│   ├── annotate_gitvote.py            # Manual GitVote PR annotation
-│   ├── enrich_profiles.py             # Discourse + GitHub profile fetcher
-│   ├── enrich_institutions.py         # Profile → institution merge
-│   ├── extract_manual_institutions.py # R07 manual institution labels
-│   ├── merge_manual_institutions.py   # Merge manual + LLM institutions
-│   ├── compute_metrics.py             # Governance structural metrics
-│   ├── compute_chi2.py                # Chi-square / Cramér's V tests
-│   ├── compute_kappa.py               # Inter-coder reliability (Cohen's κ)
-│   ├── analyze_network.py             # Full SNA (13 metrics + figures)
-│   ├── analyze_topic.py               # Argument type + temporal + χ²
-│   ├── analyze_voting_mechanism.py    # Decision mechanism comparison
-│   ├── identify_core_contributors.py  # Core contributor analysis
-│   ├── rebuild_a2a_network_full.py    # Rebuild A2A network without top-N cutoff
-│   ├── build_network.py               # Interactive vis.js HTML networks
-│   ├── sample_for_verification.py     # Stratified N=50 sample for IRR
-│   ├── verify_annotation_coverage.py  # Annotation completeness check
-│   └── analyse/
-│       ├── topic_discovery/
-│       │   ├── thematic_lm/           # Method 1: multi-agent LLM analysis
-│       │   ├── comparative_discourse/ # Method 2: BERTopic + JS divergence
-│       │   └── crypto_bert/           # Method 2b: CryptoBERT validation
-│       └── network_discourse/
-│           ├── dna/                   # Method 1: Discourse Network Analysis
-│           └── sociosemantic/         # Method 2: Socio-semantic bipartite
-├── data/
-│   ├── raw/                           # Original scraped data (do not edit manually)
-│   │   ├── forum_posts.json           # 113 ERC-8004 forum posts
-│   │   ├── github_comments_filtered.json # 36 filtered ERC-8004 GitHub records
-│   │   ├── a2a_issues.json            # ~500 A2A issues + comments
-│   │   ├── a2a_prs.json               # 1,955 A2A PRs + reviews
-│   │   ├── a2a_discussions.json       # 234 A2A discussions
-│   │   ├── a2a_gitvote_prs.json       # 2 TSC-voted PRs
-│   │   ├── a2a_manifest.json          # A2A data collection manifest
-│   │   ├── erc-8004_manifest.json     # ERC-8004 manifest
-│   │   └── CHECKSUMS.json             # SHA-256 integrity hashes
-│   └── annotated/
-│       ├── annotated_records.json      # 5,416 LLM-annotated records
-│       └── author_profiles.json        # Per-author institution labels
-├── analysis/                           # Derived metrics + CSV exports
-│   ├── structural_metrics.csv
-│   ├── network_metrics_table.csv
-│   ├── network_nodes_*.csv / network_edges_*.csv
-│   ├── core_contributors.csv
-│   └── cross_case_overlap.csv
-├── output/
-│   ├── figures/                        # Paper-ready figures (PNG + PDF)
-│   ├── stats/                          # JSON stat bundles
-│   ├── interactive/                    # vis.js HTML visualizations
-│   ├── topic_discovery/                # Thematic-LM + BERTopic outputs
-│   ├── network_discourse/              # DNA + socio-semantic outputs
-│   └── voting_mechanism_comparison.png
-├── paper/                              # LaTeX manuscript + figures
-├── tree-root/                          # Project journal (tree-docs)
-│   ├── data-collection/                # scraping, filtering, annotation records
-│   ├── preliminary-analysis/           # structural metrics records
-│   ├── round-b-analysis/               # network, topic, voting mechanism records
-│   ├── topic-discovery/                # thematic-LM + BERTopic records
-│   ├── network-discourse/              # DNA + socio-semantic records
-│   └── paper/                          # draft status + literature table
-├── verification/                       # Inter-coder reliability materials
-├── human-notes/                        # Manual annotations + draft fragments
-├── literature/                         # Reference papers (6 dimensions × 19 papers)
-├── pyproject.toml                      # uv project config (Python ≥ 3.14)
-└── CLAUDE.md                           # Detailed internal docs for AI assistants
-```
-
----
-
 ## Key Findings
 
-1. **Opposite architectures, same structural outcome.** ERC-8004 uses rough consensus with no formal vote; A2A vests binding authority in an 8-seat corporate TSC. Both produce oligarchic participation (Gini 0.804 vs 0.779).
+1. **Opposite decision architectures.** ERC-8004 advances by rough consensus with permissionless deployment; A2A vests binding authority in an 8-seat corporate TSC (transitioned to Linux Foundation governance in June 2025). Both produce comparable participation inequality (degree Gini 0.804 vs 0.779) and structurally fragmented co-participation networks with no statistically significant core-periphery structure.
 
-2. **Process overhead asymmetry.** A2A devotes ~2× the share of records to Process arguments (25.4% vs 13.9%, χ²(3)=52.88, p<.001). ERC-8004 shifts to process only when participation collapses mid-lifecycle.
+2. **Governance form shapes discourse composition.** A2A devotes nearly twice the share to Process arguments (25.4% vs 13.9%, χ²(3)=52.88, p<.001, Cramér's V=.103), reflecting heavier coordination overhead in corporate governance. Within ERC-8004, Process discussion surges to 53% in Phase 3 as deliberation shifts from design to editorial ratification. Topic divergence is moderate but meaningful: JSD=0.288 (BERTopic) and JSD=0.216 (Thematic-LM).
 
-3. **Comparable participation inequality, different elite composition.** Permissionless entry shifts the *identity* of the governing elite (reputation-holders: MetaMask, Hats Protocol, The Graph vs corporate delegates: Google, Microsoft) but not the *magnitude* of concentration.
+3. **DAO concentrates on trust; corporate governance spreads across engineering execution.** ERC-8004 is dominated by T08 Trust & Security Mechanisms (34.5% of records; 34.5% actor participation rate vs A2A's 4.0%). A2A spreads deliberation across Documentation (T06), Community Contributions (T07), and Protocol Specification (T01), plus three engineering-execution themes (Transport, Streaming, Project Governance) entirely absent from the EIP forum.
 
-4. **Discourse specialization.** Both cases show extreme discourse labor division (median actor entropy = 0). ERC-8004 discourse is dominated by Trust & Security (45.5% actor participation rate vs A2A's 10.0%).
+4. **Denser discourse congruence in the permissionless setting.** Congruence density is 0.148 (ERC-8004) vs 0.082 (A2A). Within the tighter EIP community, participants more often share positions on contested topics, consistent with groupthink in a small reputation-based elite.
 
-5. **Corporate capture of brokerage in A2A.** Betweenness Gini 0.979 (A2A) — 4/5 top brokers are Google employees. ERC-8004's top-5 brokers span 5 different institutions.
+5. **Both elites are small; their composition differs.** Median actor Shannon entropy H=0 in both cases — the majority of contributors engage a single theme. ERC-8004's top-3 degree holders span MetaMask, Hats Protocol, and The Graph; A2A's top-3 include two Google employees and one from Microsoft. Betweenness Gini is 0.931 (ERC-8004) and 0.979 (A2A) in the co-participation network.
 
 Full results: see `output/network_metrics.json`, `output/stats/topic_stats.json`, `analysis/network_metrics_table.csv`.
 
@@ -260,20 +175,3 @@ m = {f.name: {'sha256': hashlib.sha256(f.read_bytes()).hexdigest()} for f in sor
 "
 ```
 
----
-
-## Environment Variables
-
-| Variable | Required For |
-|----------|-------------|
-| `GITHUB_PERSONAL_ACCESS_TOKEN` | A2A scraping (issues, PRs, discussions, GitVote) |
-| `MINIMAX_API_KEY` | LLM annotation + Thematic-LM method 1 |
-| `ANTHROPIC_API_KEY` | Alternative: LLM annotation with Anthropic backend |
-| `OPENAI_API_KEY` | Alternative: LLM annotation with OpenAI-compat backend |
-| `OPENAI_BASE_URL` | Custom endpoint for OpenAI-compat backend |
-
----
-
-## Citation
-
-This repository accompanies the manuscript *"Decentralized Paradox: DAO Governance vs. Corporate Governance in AI Protocol Standardization"* (in preparation). If you use the data or methods, please cite the paper and this repository.

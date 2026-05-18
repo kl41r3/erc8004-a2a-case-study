@@ -43,6 +43,21 @@ ERC_COLOR = P6
 A2A_COLOR = P1
 SEED = 42
 
+# ── Dark-theme palette (for two-col cinematic figure) ─────────────────────────
+DARK_BG    = "#0D1117"
+DARK_PANEL = "#161B22"
+INST_PALETTE_DARK = {
+    "Google":               "#FF5252",
+    "MetaMask":             "#FF9F43",
+    "Ethereum Foundation":  "#748EFF",
+    "Coinbase":             "#26D9C7",
+    "Microsoft":            "#FFD93D",
+    "AWS":                  "#82EDB2",
+    "Others":               "#6B7280",
+}
+ERC_HUB_DARK = "#FFD700"   # gold
+A2A_HUB_DARK = "#DA70D6"   # orchid
+
 INST_PALETTE = {
     "Google":               P1,
     "MetaMask":             P2,
@@ -52,6 +67,37 @@ INST_PALETTE = {
     "AWS":                  P4,
     "Others":               "#c0bdb8",  # Independent + Unknown merged
 }
+
+# Human-readable semantic labels for BERTopic and CryptoBERT topics
+_BERT_SEMANTIC: dict[int, str] = {
+    0:  "Agent Discourse",
+    1:  "Task / Message Protocol",
+    2:  "PR Review Chatter",
+    3:  "JSON / Proto Spec",
+    4:  "Contributing / PR Flow",
+    5:  "Python SDK Samples",
+    6:  "Versioning",
+    7:  "UI Assets",
+    8:  "Voting / Governance",
+    9:  "Corporate Actors (SAP, LinkedIn)",
+    10: "Push Notifications",
+    11: "Code of Conduct",
+    12: "Partner / Discord Links",
+    13: "Gemini AI Review",
+    14: "Lint / CI Config",
+    15: "UI Polling / Demo",
+    16: "Docs / MkDocs",
+    17: "OpenAI / Azure",
+    18: "Null / None Types",
+}
+_CRYPTO_SEMANTIC: dict[int, str] = {
+    0: "Onchain Agent Registry",
+    1: "Implementation Scope",
+    2: "Trust & Reputation",
+    3: "Reviewer / Admin",
+    4: "GitHub PR Process",
+}
+
 
 def _inst_color(institution: str) -> str:
     """Normalize Independent/Unknown → Others, then look up palette."""
@@ -152,10 +198,148 @@ def fig_cryptobert_frequency() -> None:
     plt.close(fig)
 
 
-# ── Figure: combined thematic heatmap + butterfly (landscape) ─────────────────
+# ── Figure: BERTopic + CryptoBERT integrated dashboard ───────────────────────
+
+def fig_bertopic_cryptobert_integrated() -> None:
+    """Unified divergence dashboard combining BERTopic (left) and CryptoBERT (right).
+
+    OPTION A design: signed divergence bars (ERC right, A2A left) share the
+    left panel; CryptoBERT ERC-only lollipop occupies the right panel.
+    ~45 % height reduction vs. two separate figures.
+    """
+    # ── data ──────────────────────────────────────────────────────────────────
+    bert_df = pd.read_csv(TD / "comparative_discourse" / "divergence_table.csv")
+    bert_df = bert_df.sort_values("abs_diff", ascending=False).reset_index(drop=True)
+    bert_df["signed"] = bert_df["erc8004_pct"] - bert_df["a2a_pct"]
+
+    crypto_data = json.loads((TD / "crypto_bert" / "topics.json").read_text())
+    crypto_topics = sorted(crypto_data["topics"], key=lambda t: t["pct"], reverse=True)
+    n_bert = len(bert_df)
+    n_crypto = len(crypto_topics)
+
+    # ── semantic labels ────────────────────────────────────────────────────────
+    def _blabel(row) -> str:
+        sem = _BERT_SEMANTIC.get(int(row["topic_id"]))
+        if sem:
+            return f"T{int(row['topic_id'])}  {sem}"
+        kws = [k.strip() for k in str(row["keywords"]).split(",")[:2]]
+        return f"T{int(row['topic_id'])}  {' · '.join(kws)}"
+
+    bert_df["label"] = bert_df.apply(_blabel, axis=1)
+    crypto_labels = [
+        f"T{t['id']}  {_CRYPTO_SEMANTIC.get(t['id'], ' · '.join(t['keywords'][:2]))}"
+        for t in crypto_topics
+    ]
+    crypto_pcts = [t["pct"] for t in crypto_topics]
+
+    # ── layout ────────────────────────────────────────────────────────────────
+    fig = plt.figure(figsize=(8.5, 5.0), facecolor="white")
+    gs = fig.add_gridspec(
+        1, 2, width_ratios=[1.65, 1.0], wspace=0.46,
+        left=0.02, right=0.97, top=0.86, bottom=0.11,
+    )
+    ax_bert   = fig.add_subplot(gs[0])
+    ax_crypto = fig.add_subplot(gs[1])
+
+    # ── panel A: BERTopic signed divergence ───────────────────────────────────
+    y_b    = np.arange(n_bert)
+    signed = bert_df["signed"].values
+    max_div = float(np.max(np.abs(signed)))
+
+    bar_colors = [ERC_COLOR if v > 0 else A2A_COLOR for v in signed]
+    alphas     = [0.40 + 0.60 * abs(float(v)) / max_div for v in signed]
+    for i, (val, col, alpha) in enumerate(zip(signed, bar_colors, alphas)):
+        ax_bert.barh(i, float(val), color=col, alpha=alpha, edgecolor="none", height=0.70)
+
+    # value annotations (|diff| >= 3 pp); T0 gets cross-panel marker
+    for i, val in enumerate(signed):
+        if abs(val) < 3.0:
+            continue
+        if i == 0:
+            ax_bert.text(
+                float(val) + 0.8, 0, f"+{val:.1f}pp  · see B",
+                va="center", ha="left", fontsize=5.5,
+                color=ERC_COLOR, family="monospace", alpha=0.85,
+            )
+        else:
+            x_tip = float(val) + (0.8 if val > 0 else -0.8)
+            ax_bert.text(
+                x_tip, i, f"+{val:.1f}" if val > 0 else f"{val:.1f}",
+                va="center", ha="left" if val > 0 else "right",
+                fontsize=5.5, color="#444", family="monospace",
+            )
+
+    ax_bert.axvline(0, color="#333", lw=0.7, zorder=5)
+    xlim_max = max_div * 1.28
+    ax_bert.set_xlim(-xlim_max, xlim_max)
+    ax_bert.text( xlim_max * 0.52, n_bert - 0.3,
+                  "ERC-8004 →", fontsize=6.0, color=ERC_COLOR, ha="center", alpha=0.78)
+    ax_bert.text(-xlim_max * 0.52, n_bert - 0.3,
+                  "← A2A",     fontsize=6.0, color=A2A_COLOR, ha="center", alpha=0.78)
+    ax_bert.set_yticks(y_b)
+    ax_bert.set_yticklabels(bert_df["label"].values, fontsize=6.4)
+    ax_bert.invert_yaxis()  # index 0 (T0, most divergent) → visual top
+    ax_bert.set_xlabel("Share difference  (ERC − A2A, pp)", fontsize=7, labelpad=2)
+    ax_bert.set_title("A   BERTopic cross-case divergence  (JSD = 0.288)",
+                       fontsize=8.5, fontweight="bold", pad=5, loc="left")
+    ax_bert.tick_params(left=False, pad=1)
+    ax_bert.xaxis.grid(True, alpha=0.15, lw=0.3)
+    for spine in ax_bert.spines.values():
+        spine.set_visible(False)
+
+    # ── panel B: CryptoBERT ERC-only lollipop ─────────────────────────────────
+    y_c = np.arange(n_crypto)
+    cmap_seq = mcolors.LinearSegmentedColormap.from_list("cb_seq", ["#c6d9f0", P6], N=256)
+    lolly_colors = [mcolors.to_hex(cmap_seq(v))
+                    for v in np.linspace(0.92, 0.25, n_crypto)]
+
+    ax_crypto.hlines(y_c, 0, crypto_pcts, colors=lolly_colors, linewidth=2.0, alpha=0.72)
+    ax_crypto.scatter(crypto_pcts, y_c, color=lolly_colors, s=46,
+                      zorder=4, edgecolors="white", linewidth=0.5)
+    for i, pct in enumerate(crypto_pcts):
+        ax_crypto.text(pct + 1.5, i, f"{pct:.1f}%", va="center", fontsize=7, color="#444")
+
+    t0t2_sum = sum(t["pct"] for t in crypto_topics if t["id"] in (0, 2))
+    ax_crypto.text(
+        0.97, 0.02, f"T0 + T2 = {t0t2_sum:.1f}%\ngovernance core",
+        transform=ax_crypto.transAxes, fontsize=6.5, color=ERC_COLOR,
+        ha="right", va="bottom",
+        bbox=dict(boxstyle="round,pad=0.3", fc="#eef2fb", ec="none"),
+    )
+
+    ax_crypto.set_yticks(y_c)
+    ax_crypto.set_yticklabels(crypto_labels, fontsize=6.5)
+    ax_crypto.invert_yaxis()  # index 0 (T0, most frequent) → visual top
+    ax_crypto.set_xlim(0, max(crypto_pcts) * 1.38)
+    ax_crypto.set_xlabel("ERC-8004 record share (%)", fontsize=7, labelpad=2)
+    ax_crypto.set_title(
+        f"B   CryptoBERT — ERC-8004 only\n"
+        f"    N={crypto_data['n_records']},  noise {crypto_data['noise_rate_pct']:.1f}% excl.",
+        fontsize=8.5, fontweight="bold", pad=5, loc="left",
+    )
+    ax_crypto.tick_params(left=False, pad=1)
+    ax_crypto.xaxis.grid(True, alpha=0.15, lw=0.3)
+    for spine in ("top", "left", "right"):
+        ax_crypto.spines[spine].set_visible(False)
+
+    # ── suptitle ──────────────────────────────────────────────────────────────
+    fig.suptitle(
+        "Discourse topic structure: ERC-8004 concentrates on a governance core; "
+        "A2A disperses into implementation tooling",
+        fontsize=8.5, fontweight="bold", y=0.97, x=0.50,
+    )
+
+    _save(fig, "fig-bertopic-integrated")
+    plt.close(fig)
+
+
+# ── Figure: combined thematic heatmap + butterfly (overlaid, one-column) ────────
 
 def fig_combined_heatmap_butterfly() -> None:
-    # ---- build heatmap data ----
+    """Overlaid diverging bar + line chart: bars = record share, lines = actor
+    participation rate.  Single-axis design for one-column figure."""
+
+    # ---- build record-share (former heatmap) data ----
     coded = json.loads((TD / "thematic_lm" / "coded_records.json").read_text())
     rec_df = pd.DataFrame(coded)
 
@@ -180,80 +364,100 @@ def fig_combined_heatmap_butterfly() -> None:
     pct_heat["delta"] = pct_heat[erc_col] - pct_heat[a2a_col]
     pct_heat = pct_heat.sort_values("delta", ascending=False)
     theme_order = pct_heat.index.tolist()
-
-    short_labels = [
-        f"{tid}: {label_map.get(tid, tid)}" for tid in theme_order
-    ]
     n_themes = len(theme_order)
 
-    # ---- butterfly data (aligned to same theme order) ----
+    # Exact codebook labels; wrap long ones at '&' or the first space past mid
+    def _wrap_label(tid: str) -> str:
+        base = f"{tid}: {label_map.get(tid, tid)}"
+        if len(base) <= 38:
+            return base
+        # try splitting on ' & '
+        if " & " in base:
+            return base.replace(" & ", " &\n")
+        # otherwise split at a space near the midpoint of the label part
+        parts = base.split(": ", 1)
+        if len(parts) == 2 and len(parts[1]) > 32:
+            mid = len(parts[1]) // 2
+            for off in range(12):
+                for direction in (1, -1):
+                    idx = mid + off * direction
+                    if 0 < idx < len(parts[1]) and parts[1][idx] == " ":
+                        parts[1] = parts[1][:idx] + "\n" + parts[1][idx + 1:]
+                        return ": ".join(parts)
+        return base
+
+    theme_labels = [_wrap_label(tid) for tid in theme_order]
+
+    # ---- actor-participation (former butterfly) data ----
     df_but = pd.read_csv(ND / "sociosemantic" / "theme_actor_comparison.csv")
     df_but = df_but.set_index("theme_id")
-    erc_pct_but = [
-        float(df_but.loc[tid, "erc8004_pct"]) if tid in df_but.index else 0.0
-        for tid in theme_order
-    ]
-    a2a_pct_but = [
-        float(df_but.loc[tid, "a2a_pct"]) if tid in df_but.index else 0.0
-        for tid in theme_order
-    ]
+    erc_but = [float(df_but.loc[tid, "erc8004_pct"]) if tid in df_but.index else 0.0
+               for tid in theme_order]
+    a2a_but = [float(df_but.loc[tid, "a2a_pct"]) if tid in df_but.index else 0.0
+               for tid in theme_order]
 
-    # ---- layout ----
-    fig, (ax_heat, ax_but) = plt.subplots(
-        1, 2,
-        figsize=(15, max(7, n_themes * 0.55)),
-        gridspec_kw={"width_ratios": [1, 2]},
-    )
+    # ---- record-share values ----
+    erc_share = [float(pct_heat.loc[tid, erc_col]) for tid in theme_order]
+    a2a_share = [float(pct_heat.loc[tid, a2a_col]) for tid in theme_order]
 
-    # -- heatmap --
-    mat = pct_heat[[erc_col, a2a_col]].values
-    cmap_heat = mcolors.LinearSegmentedColormap.from_list(
-        "heat_pal", ["#ffffff", P5, P6], N=256
-    )
-    im = ax_heat.imshow(mat, cmap=cmap_heat, vmin=0, vmax=35, aspect="auto")
-    ax_heat.set_xticks([0, 1])
-    ax_heat.set_xticklabels(["ERC-8004", "Google A2A"])
-    ax_heat.set_yticks(range(n_themes))
-    ax_heat.set_yticklabels(short_labels)
-    for i in range(mat.shape[0]):
-        for j in range(mat.shape[1]):
-            val = mat[i, j]
-            txt_color = "white" if val > 20 else "black"
-            ax_heat.text(j, i, f"{val:.1f}", ha="center", va="center",
-                         color=txt_color, fontsize=9)
-    ax_heat.set_title("Record share (%)  ·  JSD = 0.216", pad=8)
-    cbar = fig.colorbar(im, ax=ax_heat, shrink=0.55, pad=0.03)
-    cbar.set_label("Share (%)", fontsize=10)
-
-    # -- butterfly --
+    # ---- single-axis diverging bar + line overlay ----
+    fig, ax = plt.subplots(figsize=(7.2, max(4.2, n_themes * 0.38)))
     y = np.arange(n_themes)
-    ax_but.barh(y, [-v for v in erc_pct_but], color=ERC_COLOR,
-                edgecolor="white", linewidth=0.4, label="ERC-8004")
-    ax_but.barh(y, a2a_pct_but, color=A2A_COLOR,
-                edgecolor="white", linewidth=0.4, label="Google A2A")
-    for i, (e, a) in enumerate(zip(erc_pct_but, a2a_pct_but)):
-        if e > 0:
-            ax_but.text(-e - 0.8, i, f"{e:.1f}%", va="center", ha="right",
-                        fontsize=9)
-        if a > 0:
-            ax_but.text(a + 0.8, i, f"{a:.1f}%", va="center", ha="left",
-                        fontsize=9)
-    ax_but.axvline(0, color="black", lw=0.7)
-    ax_but.invert_yaxis()  # theme 0 at top, matching heatmap row order
-    max_ext = max(max(erc_pct_but, default=10), max(a2a_pct_but, default=10)) * 1.35
-    ax_but.set_xlim(-max_ext, max_ext)
-    ticks = np.arange(-60, 61, 20)
-    ax_but.set_xticks(ticks)
-    ax_but.set_xticklabels([f"{abs(t)}" for t in ticks])
-    ax_but.set_xlabel("Actor participation rate (%)")
-    ax_but.set_title("Actor participation rate (butterfly)  ←ERC  |  A2A→", pad=8)
-    ax_but.legend(frameon=False, loc="lower right")
-    ax_but.set_yticks(y)
-    ax_but.set_yticklabels([])
-    for spine in ("top", "right"):
-        ax_but.spines[spine].set_visible(False)
 
-    fig.tight_layout(w_pad=3)
+    # Bars — record share (diverging)
+    bh = 0.50
+    ax.barh(y, erc_share, bh, color=ERC_COLOR, alpha=0.55, lw=0.3,
+            label="ERC-8004 record share")
+    ax.barh(y, [-v for v in a2a_share], bh, color=A2A_COLOR, alpha=0.55, lw=0.3,
+            label="A2A record share")
+
+    # Lines — actor participation (thick, bold, white-filled markers)
+    ax.plot(erc_but, y, color=ERC_COLOR, lw=2.8, marker='D', ms=5.0,
+            markerfacecolor='white', markeredgecolor=ERC_COLOR,
+            markeredgewidth=1.4, label="ERC-8004 actor participation")
+    ax.plot([-v for v in a2a_but], y, color=A2A_COLOR, lw=2.8, marker='s', ms=5.0,
+            markerfacecolor='white', markeredgecolor=A2A_COLOR,
+            markeredgewidth=1.4, label="A2A actor participation")
+
+    # Inline annotations for prominent participation rates
+    for i in range(n_themes):
+        if erc_but[i] > 5:
+            ax.text(erc_but[i] + 1.2, i, f"{erc_but[i]:.0f}%",
+                    va="center", fontsize=6.0, color=ERC_COLOR, fontweight='bold')
+        if a2a_but[i] > 5:
+            ax.text(-a2a_but[i] - 1.2, i, f"{a2a_but[i]:.0f}%",
+                    va="center", ha="right", fontsize=6.0, color=A2A_COLOR,
+                    fontweight='bold')
+
+    # Zero line, labels, and cosmetics
+    ax.axvline(0, color="#333", lw=0.6)
+    ax.set_yticks(y)
+    ax.set_yticklabels(theme_labels, fontsize=6.6, linespacing=0.92)
+    ax.invert_yaxis()
+
+    max_val = max(max(erc_share + erc_but), max(a2a_share + a2a_but))
+    x_max = max(max_val * 1.45, 40)
+    ax.set_xlim(-40, x_max)
+
+    # Absolute-value tick labels for the diverging axis
+    tick_step = 20
+    ticks = sorted(set(list(range(-40, int(x_max) + tick_step, tick_step)) + [0]))
+    ax.set_xticks(ticks)
+    ax.set_xticklabels([f"{abs(t):.0f}" for t in ticks])
+    ax.set_xlabel("Record share / Actor participation rate (%)", fontsize=7)
+    ax.set_title("Thematic-LM: record share (bar) & actor participation (line)",
+                 fontsize=8, fontweight='bold', loc='left')
+    ax.legend(frameon=False, fontsize=6.2, loc="lower right", ncol=1)
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.xaxis.grid(True, alpha=0.12, lw=0.3)
+    ax.tick_params(left=False, pad=1)
+
+    # JSD annotation (top-right corner, inside the plot)
+    ax.text(0.97, 0.97, "JSD = 0.216", transform=ax.transAxes,
+            fontsize=7, ha="right", va="top",
+            bbox=dict(boxstyle="round,pad=0.25", fc="#F8F9FA", ec="#CCCCCC", lw=0.5))
+
+    fig.tight_layout()
     _save(fig, "fig-combined-themes")
     plt.close(fig)
 
@@ -537,6 +741,167 @@ def fig_topic_erc() -> None:
     plt.close(fig)
 
 
+# ── Figure: combined pie + lifecycle (topic-pie-erc) ─────────────────────────
+
+def _draw_pie_with_leaders(ax, pcts, colors, title, n_total, threshold=4.0):
+    """Draw a pie chart; labels inside for large slices, outside with leader line for small."""
+    wedges, _ = ax.pie(
+        pcts,
+        colors=colors,
+        startangle=90,
+        wedgeprops=dict(linewidth=0.6, edgecolor="white"),
+    )
+    ax.set_title(title, fontsize=9, pad=4)
+
+    for wedge, val in zip(wedges, pcts):
+        if val < 0.5:
+            continue
+        angle = (wedge.theta1 + wedge.theta2) / 2
+        rad = np.radians(angle)
+        cos_a, sin_a = np.cos(rad), np.sin(rad)
+        label = f"{val:.0f}%"
+
+        if val >= threshold:
+            # Large slice: label inside, white text
+            ax.text(
+                0.65 * cos_a, 0.65 * sin_a, label,
+                ha="center", va="center", fontsize=8,
+                color="white" if val > 15 else "#222",
+                fontweight="bold",
+            )
+        else:
+            # Small slice: leader line pointing outward
+            x_tip = 0.88 * cos_a
+            y_tip = 0.88 * sin_a
+            x_out = 1.30 * cos_a
+            y_out = 1.30 * sin_a
+            ax.annotate(
+                label,
+                xy=(x_tip, y_tip),
+                xytext=(x_out, y_out),
+                fontsize=7.5,
+                ha="left" if cos_a >= 0 else "right",
+                va="center",
+                arrowprops=dict(
+                    arrowstyle="-",
+                    color="#666",
+                    lw=0.7,
+                    shrinkA=0,
+                    shrinkB=2,
+                ),
+            )
+    return wedges
+
+
+def fig_topic_pie_erc() -> None:
+    """Left: two pie charts (ERC-8004 / A2A) stacked vertically.
+    Right: ERC-8004 argument-type lifecycle (identical to fig_topic_erc)."""
+    records = _load_annotated()
+    erc_all = [r for r in records if r.get("_case") == "ERC-8004"]
+    a2a_all = [r for r in records if r.get("_case") == "Google-A2A"]
+
+    def pct_counts(recs):
+        total = len(recs) or 1
+        counts = Counter(_get_field(r, "argument_type") for r in recs)
+        return [100.0 * counts.get(t, 0) / total for t in ARG_ORDER]
+
+    erc_pct = pct_counts(erc_all)
+    a2a_pct = pct_counts(a2a_all)
+    pie_colors = [ARG_COLORS.get(t, "#aaa") for t in ARG_ORDER]
+
+    # ── lifecycle data ────────────────────────────────────────────────────────
+    dated = []
+    for r in erc_all:
+        raw = r.get("date") or r.get("created_at") or ""
+        try:
+            dt = dateparser.parse(raw)
+            if dt:
+                atype = _get_field(r, "argument_type")
+                dated.append((dt, atype if atype in ARG_ORDER else "Off-topic"))
+        except Exception:
+            pass
+    dated.sort(key=lambda x: x[0])
+
+    from datetime import timedelta
+    bin_days = 14
+    bins: dict = defaultdict(Counter)
+    min_dt = None
+    if dated:
+        min_dt = dated[0][0]
+        for dt, atype in dated:
+            idx = (dt - min_dt).days // bin_days
+            bins[idx][atype] += 1
+
+    indices = sorted(bins.keys())
+    bin_dates = [min_dt + timedelta(days=i * bin_days) for i in indices] if min_dt else []
+
+    # ── layout ───────────────────────────────────────────────────────────────
+    import matplotlib.gridspec as gridspec
+    fig = plt.figure(figsize=(12, 5))
+    gs = gridspec.GridSpec(2, 2, width_ratios=[1, 2.2], hspace=0.5, wspace=0.08)
+
+    # top-left pie: ERC-8004
+    ax_pie_erc = fig.add_subplot(gs[0, 0])
+    _draw_pie_with_leaders(
+        ax_pie_erc, erc_pct, pie_colors,
+        "ERC-8004", len(erc_all),
+    )
+
+    # bottom-left pie: A2A
+    ax_pie_a2a = fig.add_subplot(gs[1, 0])
+    _draw_pie_with_leaders(
+        ax_pie_a2a, a2a_pct, pie_colors,
+        "Google A2A", len(a2a_all),
+    )
+
+    # legend will be added to ax_bar after it is built (avoids title overlap)
+
+    # right panel: lifecycle (spans both rows)
+    ax_bar = fig.add_subplot(gs[:, 1])
+    if indices:
+        bottoms = np.zeros(len(indices))
+        for atype in ARG_ORDER:
+            heights = [bins[i].get(atype, 0) for i in indices]
+            ax_bar.bar(
+                range(len(indices)), heights, bottom=bottoms,
+                color=ARG_COLORS.get(atype, "#ccc"), label=atype,
+                edgecolor="white", linewidth=0.5,
+            )
+            bottoms += np.array(heights, dtype=float)
+
+        for stage_date_str, stage_name in EIP_STAGES[1:]:
+            try:
+                stage_dt = dateparser.parse(stage_date_str)
+                x_pos = (stage_dt - min_dt).days / bin_days
+                ax_bar.axvline(x=x_pos, color="#555", linestyle="--", lw=0.9, alpha=0.75)
+                ax_bar.text(x_pos + 0.15, bottoms.max() * 0.97, stage_name,
+                            fontsize=8, color="#333", rotation=90, va="top")
+            except Exception:
+                pass
+
+        # x-axis: one label per calendar month (no duplicates)
+        tick_pos, tick_lbl = [], []
+        last_month = None
+        for i, bd in enumerate(bin_dates):
+            if bd.month != last_month:
+                tick_pos.append(i)
+                tick_lbl.append(bd.strftime("%b '%y"))
+                last_month = bd.month
+        ax_bar.set_xticks(tick_pos)
+        ax_bar.set_xticklabels(tick_lbl, rotation=40, ha="right")
+
+        ax_bar.set_ylabel("Records per 2-week bin")
+        ax_bar.set_title(
+            "ERC-8004: Argument Type over Lifecycle  (2-week bins)",
+            fontsize=10,
+        )
+        ax_bar.spines[["top", "right"]].set_visible(False)
+        ax_bar.legend(loc="upper right", frameon=False, ncol=2, fontsize=8)
+
+    _save(fig, "topic-pie-erc")
+    plt.close(fig)
+
+
 # ── Figure: SNA network comparison (network-sna) ─────────────────────────────
 
 def _load_csv_graph(nodes_csv: Path, edges_csv: Path):
@@ -562,104 +927,166 @@ def _sna_adj(nodes: dict, edges: list):
     return adj, degree
 
 
-def _sna_spring_layout(nodes: dict, edges: list,
-                        iterations: int = 150, k: float | None = None) -> dict:
-    """Fruchterman-Reingold spring layout (faithful port from analyze_network.py)."""
-    import random
-    random.seed(42)
-    pos = {nid: [random.uniform(-1, 1), random.uniform(-1, 1)] for nid in nodes}
-    n = len(nodes)
-    if n == 0:
-        return pos
-    k_val = k or math.sqrt(1.0 / n)
-    t = 0.1
-    node_list = list(nodes.keys())
+def _build_nx_graph_from_csv(nodes: dict, edges: list) -> nx.Graph:
+    G = nx.Graph()
+    for nid in nodes:
+        G.add_node(nid)
+    for e in edges:
+        s, t = e["source"], e["target"]
+        if s in nodes and t in nodes:
+            G.add_edge(s, t, weight=float(e.get("weight", 1)))
+    return G
 
-    for _ in range(iterations):
-        delta = {nid: [0.0, 0.0] for nid in node_list}
-        for i, u in enumerate(node_list):
-            for v in node_list[i + 1:]:
-                dx = pos[u][0] - pos[v][0]
-                dy = pos[u][1] - pos[v][1]
-                dist = max(math.sqrt(dx * dx + dy * dy), 0.001)
-                f = k_val * k_val / dist
-                delta[u][0] += f * dx / dist
-                delta[u][1] += f * dy / dist
-                delta[v][0] -= f * dx / dist
-                delta[v][1] -= f * dy / dist
-        for e in edges:
-            u, v = e["source"], e["target"]
-            if u not in pos or v not in pos:
-                continue
-            dx = pos[u][0] - pos[v][0]
-            dy = pos[u][1] - pos[v][1]
-            dist = max(math.sqrt(dx * dx + dy * dy), 0.001)
-            f = dist * dist / k_val
-            delta[u][0] -= f * dx / dist
-            delta[u][1] -= f * dy / dist
-            delta[v][0] += f * dx / dist
-            delta[v][1] += f * dy / dist
-        for nid in node_list:
-            d = math.sqrt(delta[nid][0] ** 2 + delta[nid][1] ** 2)
-            if d > 0:
-                scale = min(d, t) / d
-                pos[nid][0] += delta[nid][0] * scale
-                pos[nid][1] += delta[nid][1] * scale
-        t = max(t * 0.92, 0.001)
+
+def _compress_pos(pos: dict, factor: float = 0.72) -> dict:
+    """Pull positions toward the centroid to eliminate peripheral whitespace."""
+    if not pos:
+        return pos
+    vals = list(pos.values())
+    cx = float(np.mean([v[0] for v in vals]))
+    cy = float(np.mean([v[1] for v in vals]))
+    return {n: ((p[0] - cx) * factor + cx, (p[1] - cy) * factor + cy)
+            for n, p in pos.items()}
+
+
+def _radial_sparse_layout(G: nx.Graph) -> dict:
+    """ERC-8004: kamada-kawai on the connected subgraph only; isolates are excluded."""
+    isolates = set(nx.isolates(G))
+    connected = [n for n in G.nodes() if n not in isolates]
+    pos: dict = {}
+
+    if connected:
+        sub = G.subgraph(connected)
+        pos_sub = nx.spring_layout(sub, k=0.18, seed=SEED, iterations=400,
+                                    weight="weight")
+        vals = list(pos_sub.values())
+        xs = [v[0] for v in vals]
+        ys = [v[1] for v in vals]
+        span = max(max(xs) - min(xs), max(ys) - min(ys)) or 1
+        # Use centroid (mean), not bounding-box midpoint, for centering
+        xc = float(np.mean(xs))
+        yc = float(np.mean(ys))
+        for n, (x, y) in pos_sub.items():
+            pos[n] = ((x - xc) / span * 0.55, (y - yc) / span * 0.55)
 
     return pos
 
 
-def _sna_draw_panel(ax, nodes: dict, edges: list, pos: dict,
-                     degree: Counter, title: str, metrics: dict,
-                     vis_note=None) -> None:
-    """Draw one SNA panel — identical logic to analyze_network.py, new palette."""
-    ax.set_facecolor("white")
+def _compact_dense_layout(G: nx.Graph) -> dict:
+    """A2A layout: kamada-kawai → normalize to [-0.85,0.85] for dense, compact look."""
+    if len(G.nodes()) == 0:
+        return {}
+    try:
+        pos_raw = nx.kamada_kawai_layout(G, weight="weight")
+    except Exception:
+        pos_raw = nx.spring_layout(G, k=0.15, seed=SEED, iterations=300, weight="weight")
+    # Clip extreme outliers at 95th percentile distance from centroid
+    vals = list(pos_raw.values())
+    cx = float(np.mean([v[0] for v in vals]))
+    cy = float(np.mean([v[1] for v in vals]))
+    dists = [math.hypot(v[0] - cx, v[1] - cy) for v in vals]
+    r95 = float(np.percentile(dists, 95)) or 1.0
+    clipped = {}
+    for n, (x, y) in pos_raw.items():
+        d = math.hypot(x - cx, y - cy)
+        if d > r95:
+            scale = r95 / d
+            clipped[n] = (cx + (x - cx) * scale, cy + (y - cy) * scale)
+        else:
+            clipped[n] = (x, y)
+    return _compress_pos(clipped, factor=0.42)
+
+
+def _draw_sna_panel_refined(
+    ax, nodes: dict, edges: list, pos: dict,
+    degree: Counter, title: str, metrics: dict,
+    hub_color: str, vis_note=None,
+) -> None:
+    """Publication-quality SNA panel. canvas limits are computed from the data."""
+    ax.set_facecolor("#F8F8F8")
     ax.axis("off")
     ax.set_aspect("equal")
 
+    # Derive canvas limits from 88th-percentile node distance (clips outlier components)
+    pos_vals = list(pos.values())
+    if pos_vals:
+        dists = [math.hypot(p[0], p[1]) for p in pos_vals]
+        canvas_r = float(np.percentile(dists, 60)) * 1.20
+    else:
+        canvas_r = 1.10
+    ax.set_xlim(-canvas_r, canvas_r)
+    ax.set_ylim(-canvas_r, canvas_r)
+
+    # Only consider non-isolated nodes
+    active = {n for n, d in degree.items() if d > 0}
+    top3 = {n for n, _ in sorted(
+        ((n, d) for n, d in degree.items() if n in active),
+        key=lambda x: x[1], reverse=True)[:3]}
+
+    # Edges: very low opacity, thin, neutral gray
     for e in edges:
         s, t = e["source"], e["target"]
         if s not in pos or t not in pos:
             continue
         w = float(e.get("weight", 1))
-        lw = min(0.3 + 0.15 * w, 2.0)
-        ax.plot([pos[s][0], pos[t][0]], [pos[s][1], pos[t][1]],
-                color="#CCCCCC", linewidth=lw, zorder=1, alpha=0.6)
+        ax.plot(
+            [pos[s][0], pos[t][0]], [pos[s][1], pos[t][1]],
+            color="#AAAAAA",
+            linewidth=min(0.25 + 0.10 * w, 1.1),
+            alpha=min(0.09 + 0.06 * w, 0.38),
+            zorder=1, solid_capstyle="round",
+        )
 
-    max_raw = max(
-        (float(d.get("size", 10)) for d in nodes.values()), default=10
-    )
-    for nid, data in nodes.items():
+    # Nodes: skip isolates; sub-linear size scaling, alpha by structural role
+    active_nodes = {nid: d for nid, d in nodes.items() if degree.get(nid, 0) > 0}
+    max_raw = max((float(d.get("size", 1)) for d in active_nodes.values()), default=1)
+    min_raw = min((float(d.get("size", 1)) for d in active_nodes.values()), default=1)
+    size_span = max_raw - min_raw or 1
+
+    for nid, data in active_nodes.items():
         if nid not in pos:
             continue
         x, y = pos[nid]
         inst = data.get("institution", "Others")
-        color = _inst_color(inst)
-        raw_size = float(data.get("size", 10))
-        node_size = 30 + 270 * (raw_size / max_raw)
-        ax.scatter(x, y, s=node_size, c=color, zorder=3,
-                   edgecolors="#555555", linewidths=0.4, alpha=0.9)
+        raw_size = float(data.get("size", 1))
+        t_norm = ((raw_size - min_raw) / size_span) ** 0.55
+        node_s = 12 + 210 * t_norm
 
-    top5 = sorted(nodes.keys(), key=lambda x: degree.get(x, 0), reverse=True)[:5]
-    for nid in top5:
+        is_hub = nid in top3
+        color = hub_color if is_hub else _inst_color(inst)
+        alpha = 0.95 if is_hub else 0.72
+        ec = "#222" if is_hub else "#888"
+        lw = 1.0 if is_hub else 0.25
+
+        ax.scatter(x, y, s=node_s, c=color,
+                   zorder=5 if is_hub else 3,
+                   edgecolors=ec, linewidths=lw, alpha=alpha)
+
+    # Labels: top-3 hubs only
+    label_offset = canvas_r * 0.10
+    for nid, _ in sorted(degree.items(), key=lambda x: x[1], reverse=True)[:3]:
         if nid not in pos:
             continue
         x, y = pos[nid]
-        ax.text(x, y + 0.07, nid[:12], ha="center", va="bottom",
-                fontsize=6.5, color="#111", zorder=5,
-                bbox=dict(boxstyle="round,pad=0.1", fc="white", ec="none", alpha=0.7))
+        ax.text(x, y + label_offset, nid[:11], ha="center", va="bottom",
+                fontsize=5.8, fontweight="bold", color="#111", zorder=7,
+                bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85))
 
-    ax.set_title(title, fontsize=9, fontweight="bold", pad=6)
-    note_line = f" (visualising top-{vis_note} by degree)" if vis_note else ""
-    txt = (f"N={metrics['n_nodes']} nodes{note_line}, {metrics['n_edges']} edges\n"
-           f"Density={metrics['density']:.3f}  "
-           f"Modularity(Louvain)={metrics['modularity_louvain']:.3f}\n"
-           f"Gini(degree)={metrics['gini_degree']:.3f}  "
-           f"Giant={metrics['giant_component_ratio']:.2f}")
-    ax.text(0.02, 0.02, txt, transform=ax.transAxes,
-            fontsize=7, va="bottom", ha="left",
-            bbox=dict(boxstyle="round,pad=0.3", fc="#F8F9FA", ec="#CCCCCC", lw=0.8))
+    ax.set_title(title, fontsize=8.5, fontweight="bold", pad=4, color="#111")
+
+    # Compact metric strip — monospaced, bottom-center
+    note = f"top-{vis_note} shown · " if vis_note else ""
+    txt = (
+        f"{note}N={metrics.get('n_nodes', '?')}  E={metrics.get('n_edges', '?')}  "
+        f"ρ={metrics.get('density', 0):.3f}\n"
+        f"Gini={metrics.get('gini_degree', 0):.3f}  "
+        f"Giant={metrics.get('giant_component_ratio', 0):.2f}  "
+        f"Q={metrics.get('modularity_louvain', 0):.3f}"
+    )
+    ax.text(0.50, 0.01, txt, transform=ax.transAxes,
+            fontsize=5.8, va="bottom", ha="center", color="#555",
+            family="monospace",
+            bbox=dict(boxstyle="round,pad=0.22", fc="white", ec="#CCC", lw=0.4))
 
 
 def fig_network_sna() -> None:
@@ -675,30 +1102,332 @@ def fig_network_sna() -> None:
     m_erc = metrics_raw.get("erc8004", {})
     m_a2a = metrics_raw.get("a2a", {})
 
+    G_erc_full = _build_nx_graph_from_csv(nodes_erc, edges_erc)
+    G_a2a = _build_nx_graph_from_csv(nodes_a2a, edges_a2a)
+
+    # ERC: keep only the giant component
+    gcc_erc = max(nx.connected_components(G_erc_full), key=len)
+    G_erc = G_erc_full.subgraph(gcc_erc).copy()
+    nodes_erc = {nid: d for nid, d in nodes_erc.items() if nid in gcc_erc}
+    edges_erc = [e for e in edges_erc
+                 if e["source"] in gcc_erc and e["target"] in gcc_erc]
+
     _, deg_erc = _sna_adj(nodes_erc, edges_erc)
     _, deg_a2a = _sna_adj(nodes_a2a, edges_a2a)
 
-    print("  Computing layouts (this may take ~10 s)…")
-    pos_erc = _sna_spring_layout(nodes_erc, edges_erc, iterations=200, k=0.35)
-    pos_a2a = _sna_spring_layout(nodes_a2a, edges_a2a, iterations=300, k=0.45)
+    print("  Computing layouts…")
+    # ERC giant component: direct spring layout, no extra normalization
+    pos_erc = nx.spring_layout(G_erc, k=0.20, seed=SEED, iterations=500,
+                               weight="weight")
+    pos_a2a = _compact_dense_layout(G_a2a)
 
-    fig, (ax_erc, ax_a2a) = plt.subplots(1, 2, figsize=(12, 6))
-    fig.patch.set_facecolor("white")
+    # Vertical diptych — portrait orientation for single-column placement
+    fig = plt.figure(figsize=(5.5, 9.0), facecolor="white")
+    ax_erc = fig.add_axes([0.05, 0.51, 0.90, 0.44])
+    ax_a2a = fig.add_axes([0.05, 0.04, 0.90, 0.44])
 
-    _sna_draw_panel(ax_erc, nodes_erc, edges_erc, pos_erc, deg_erc,
-                    "ERC-8004 Governance Network\n(Permissionless DAO)", m_erc)
-    _sna_draw_panel(ax_a2a, nodes_a2a, edges_a2a, pos_a2a, deg_a2a,
-                    "Google A2A Governance Network (top-50)\n(Corporate Hierarchy)",
-                    m_a2a, vis_note=50)
+    _draw_sna_panel_refined(
+        ax_erc, nodes_erc, edges_erc, pos_erc, deg_erc,
+        "ERC-8004  ·  Permissionless DAO",
+        m_erc, hub_color="#8B4513",
+    )
+    _draw_sna_panel_refined(
+        ax_a2a, nodes_a2a, edges_a2a, pos_a2a, deg_a2a,
+        "Google A2A  ·  Corporate Hierarchy",
+        m_a2a, hub_color="#5B2C8D",
+        vis_note=50,
+    )
 
-    from matplotlib.patches import Patch
-    legend_handles = [Patch(color=c, label=lbl) for lbl, c in INST_PALETTE.items()]
-    fig.legend(handles=legend_handles, loc="lower center",
-               ncol=len(legend_handles),
-               fontsize=8, framealpha=0.9, bbox_to_anchor=(0.5, -0.01))
-    plt.tight_layout(rect=[0, 0.08, 1, 1])
+    # Thin horizontal divider between panels
+    fig.add_artist(
+        plt.Line2D([0.05, 0.95], [0.500, 0.500],
+                   transform=fig.transFigure,
+                   color="#DDDDDD", linewidth=0.8, zorder=10)
+    )
+
+    fig.text(0.50, 0.993, "Co-participation Governance Networks",
+             ha="center", va="top", fontsize=9.5, fontweight="bold", color="#111")
 
     _save(fig, "network-sna")
+    plt.close(fig)
+
+
+# ── Figure: SNA — two-column cinematic dark-theme variant ────────────────────
+
+def _draw_sna_dark(
+    ax, nodes: dict, edges: list, pos: dict,
+    degree: Counter, title: str, metrics: dict,
+    hub_color: str, vis_note=None,
+) -> None:
+    """Cinematic dark-theme SNA panel with node glow and white label outlines."""
+    import matplotlib.patheffects as pe
+
+    ax.set_facecolor(DARK_PANEL)
+    ax.axis("off")
+    ax.set_aspect("equal")
+
+    pos_vals = list(pos.values())
+    if not pos_vals:
+        return
+    dists = [math.hypot(p[0], p[1]) for p in pos_vals]
+    canvas_r = float(np.percentile(dists, 60)) * 1.22
+    ax.set_xlim(-canvas_r, canvas_r)
+    ax.set_ylim(-canvas_r, canvas_r)
+
+    active = {n for n, d in degree.items() if d > 0}
+    top3 = {n for n, _ in sorted(
+        ((n, d) for n, d in degree.items() if n in active),
+        key=lambda x: x[1], reverse=True)[:3]}
+
+    # Edges — hub edges brighter, others ghosted
+    for e in edges:
+        s, t = e["source"], e["target"]
+        if s not in pos or t not in pos:
+            continue
+        w = float(e.get("weight", 1))
+        is_hub_edge = s in top3 or t in top3
+        col = "#FFFFFF" if is_hub_edge else "#8899BB"
+        alpha = min(0.18 + 0.12 * w, 0.55) if is_hub_edge else min(0.05 + 0.03 * w, 0.18)
+        lw = min(0.5 + 0.18 * w, 1.8) if is_hub_edge else min(0.2 + 0.07 * w, 0.7)
+        ax.plot([pos[s][0], pos[t][0]], [pos[s][1], pos[t][1]],
+                color=col, linewidth=lw, alpha=alpha, zorder=1,
+                solid_capstyle="round")
+
+    # Nodes — multi-layer glow for hubs, soft halo for regular nodes
+    active_nodes = {nid: d for nid, d in nodes.items() if degree.get(nid, 0) > 0}
+    max_raw = max((float(d.get("size", 1)) for d in active_nodes.values()), default=1)
+    min_raw = min((float(d.get("size", 1)) for d in active_nodes.values()), default=1)
+    size_span = max_raw - min_raw or 1
+
+    # Draw regular nodes first (lower z-order)
+    for nid, data in active_nodes.items():
+        if nid not in pos or nid in top3:
+            continue
+        x, y = pos[nid]
+        inst = data.get("institution", "Others")
+        raw_size = float(data.get("size", 1))
+        t_norm = ((raw_size - min_raw) / size_span) ** 0.5
+        node_s = 14 + 240 * t_norm
+        color = INST_PALETTE_DARK.get(inst if inst in INST_PALETTE_DARK else "Others",
+                                      "#6B7280")
+        ax.scatter(x, y, s=node_s * 2.2, c=color, alpha=0.07, zorder=2, linewidths=0)
+        ax.scatter(x, y, s=node_s, c=color, alpha=0.80, zorder=3,
+                   edgecolors="#1E2535", linewidths=0.35)
+
+    # Draw hub nodes last (highest z-order) with layered glow
+    for nid, data in active_nodes.items():
+        if nid not in pos or nid not in top3:
+            continue
+        x, y = pos[nid]
+        raw_size = float(data.get("size", 1))
+        t_norm = ((raw_size - min_raw) / size_span) ** 0.5
+        node_s = 14 + 240 * t_norm
+        col = hub_color
+        ax.scatter(x, y, s=node_s * 7.0, c=col, alpha=0.04, zorder=4, linewidths=0)
+        ax.scatter(x, y, s=node_s * 3.5, c=col, alpha=0.10, zorder=4, linewidths=0)
+        ax.scatter(x, y, s=node_s * 1.8, c=col, alpha=0.22, zorder=4, linewidths=0)
+        ax.scatter(x, y, s=node_s, c=col, alpha=0.96, zorder=5,
+                   edgecolors="white", linewidths=0.8)
+
+    # Labels — white bold with dark stroke outline
+    label_offset = canvas_r * 0.10
+    for nid, _ in sorted(degree.items(), key=lambda x: x[1], reverse=True)[:3]:
+        if nid not in pos:
+            continue
+        x, y = pos[nid]
+        t = ax.text(x, y + label_offset, nid[:13],
+                    ha="center", va="bottom",
+                    fontsize=7.0, fontweight="bold", color="white", zorder=8)
+        t.set_path_effects([
+            pe.withStroke(linewidth=2.8, foreground=DARK_BG)
+        ])
+
+    # Panel title (white)
+    ax.set_title(title, fontsize=9.5, fontweight="bold", pad=5,
+                 color="white", loc="center")
+
+    # Compact metric annotation
+    note = f"top-{vis_note} · " if vis_note else ""
+    txt = (f"{note}N={metrics.get('n_nodes','?')}  "
+           f"ρ={metrics.get('density', 0):.3f}  "
+           f"Gini={metrics.get('gini_degree', 0):.3f}  "
+           f"Giant={metrics.get('giant_component_ratio', 0):.2f}")
+    ax.text(0.50, 0.01, txt, transform=ax.transAxes,
+            fontsize=5.5, va="bottom", ha="center", color="#8899BB",
+            family="monospace",
+            bbox=dict(boxstyle="round,pad=0.22", fc="#1E2535", ec="#2E3D55", lw=0.5))
+
+
+def _draw_sna_twocol_panel(
+    ax, nodes: dict, edges: list, pos: dict,
+    degree: Counter, isolates: set,
+    title: str, metrics: dict, hub_color: str, vis_note=None,
+) -> None:
+    """Two-col panel: isolates as faint background ring + full connected foreground."""
+    ax.set_facecolor("#F8F8F8")
+    ax.axis("off")
+    ax.set_aspect("equal")
+
+    if not pos:
+        return
+    # Canvas: sized by all nodes (connected + isolate ring) at 92nd percentile
+    all_dists = [math.hypot(p[0], p[1]) for p in pos.values()]
+    canvas_r = float(np.percentile(all_dists, 92)) * 1.18
+    ax.set_xlim(-canvas_r, canvas_r)
+    ax.set_ylim(-canvas_r, canvas_r)
+
+    top3 = {n for n, _ in sorted(
+        ((n, d) for n, d in degree.items() if d > 0),
+        key=lambda x: x[1], reverse=True)[:3]}
+
+    # Draw isolate dots first (background layer, very faint)
+    for nid in isolates:
+        if nid not in pos:
+            continue
+        x, y = pos[nid]
+        ax.scatter(x, y, s=7, c="#BBBBCC", alpha=0.22, zorder=1, linewidths=0)
+
+    # Draw edges
+    for e in edges:
+        s, t = e["source"], e["target"]
+        if s not in pos or t not in pos:
+            continue
+        w = float(e.get("weight", 1))
+        ax.plot([pos[s][0], pos[t][0]], [pos[s][1], pos[t][1]],
+                color="#AAAAAA",
+                linewidth=min(0.25 + 0.10 * w, 1.1),
+                alpha=min(0.09 + 0.06 * w, 0.38),
+                zorder=2, solid_capstyle="round")
+
+    # Draw connected nodes
+    active_nodes = {nid: d for nid, d in nodes.items()
+                    if degree.get(nid, 0) > 0}
+    max_raw = max((float(d.get("size", 1)) for d in active_nodes.values()), default=1)
+    min_raw = min((float(d.get("size", 1)) for d in active_nodes.values()), default=1)
+    size_span = max_raw - min_raw or 1
+
+    for nid, data in active_nodes.items():
+        if nid not in pos:
+            continue
+        x, y = pos[nid]
+        inst = data.get("institution", "Others")
+        raw_size = float(data.get("size", 1))
+        t_norm = ((raw_size - min_raw) / size_span) ** 0.55
+        node_s = 12 + 210 * t_norm
+        is_hub = nid in top3
+        color = hub_color if is_hub else _inst_color(inst)
+        alpha = 0.95 if is_hub else 0.72
+        ec = "#222" if is_hub else "#888"
+        lw = 1.0 if is_hub else 0.25
+        ax.scatter(x, y, s=node_s, c=color,
+                   zorder=5 if is_hub else 3,
+                   edgecolors=ec, linewidths=lw, alpha=alpha)
+
+    # Labels: top-3 only
+    label_offset = canvas_r * 0.09
+    for nid, _ in sorted(degree.items(), key=lambda x: x[1], reverse=True)[:3]:
+        if nid not in pos:
+            continue
+        x, y = pos[nid]
+        ax.text(x, y + label_offset, nid[:12], ha="center", va="bottom",
+                fontsize=6.2, fontweight="bold", color="#111", zorder=7,
+                bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85))
+
+    ax.set_title(title, fontsize=9, fontweight="bold", pad=4, color="#111")
+
+    note = f"top-{vis_note} · " if vis_note else ""
+    txt = (f"{note}N={metrics.get('n_nodes','?')}  E={metrics.get('n_edges','?')}  "
+           f"ρ={metrics.get('density',0):.3f}\n"
+           f"Gini={metrics.get('gini_degree',0):.3f}  "
+           f"Giant={metrics.get('giant_component_ratio',0):.2f}  "
+           f"Q={metrics.get('modularity_louvain',0):.3f}")
+    ax.text(0.50, 0.01, txt, transform=ax.transAxes,
+            fontsize=5.8, va="bottom", ha="center", color="#555",
+            family="monospace",
+            bbox=dict(boxstyle="round,pad=0.22", fc="white", ec="#CCC", lw=0.4))
+
+
+def fig_network_sna_twocol() -> None:
+    """Horizontal diptych for two-column placement — full ERC (all 67 nodes)."""
+    nodes_erc, edges_erc = _load_csv_graph(
+        ANALYSIS / "network_nodes_erc8004.csv",
+        ANALYSIS / "network_edges_erc8004.csv",
+    )
+    nodes_a2a, edges_a2a = _load_csv_graph(
+        ANALYSIS / "network_nodes_a2a_top50.csv",
+        ANALYSIS / "network_edges_a2a_top50.csv",
+    )
+    metrics_raw = json.loads((ROOT / "output" / "network_metrics.json").read_text())
+    m_erc = metrics_raw.get("erc8004", {})
+    m_a2a = metrics_raw.get("a2a", {})
+
+    G_erc = _build_nx_graph_from_csv(nodes_erc, edges_erc)
+    G_a2a = _build_nx_graph_from_csv(nodes_a2a, edges_a2a)
+
+    isolates_erc = set(nx.isolates(G_erc))
+
+    _, deg_erc = _sna_adj(nodes_erc, edges_erc)
+    _, deg_a2a = _sna_adj(nodes_a2a, edges_a2a)
+
+    print("  Computing two-col layouts…")
+    # ERC: spring layout on giant component only; everything else → outer ring
+    gcc_erc = max(nx.connected_components(G_erc), key=len)
+    peripheral_erc = {n for n in G_erc.nodes() if n not in gcc_erc}  # isolates + small components
+    sub_gcc = G_erc.subgraph(gcc_erc)
+    pos_sub = nx.spring_layout(sub_gcc, k=0.40, seed=SEED, iterations=400,
+                               weight="weight")
+    # Normalize: 80th-percentile distance → 0.60
+    vals = list(pos_sub.values())
+    xs, ys = [v[0] for v in vals], [v[1] for v in vals]
+    cx, cy = float(np.mean(xs)), float(np.mean(ys))
+    raw = {n: (p[0] - cx, p[1] - cy) for n, p in pos_sub.items()}
+    p80 = float(np.percentile([math.hypot(p[0], p[1]) for p in raw.values()], 80)) or 1.0
+    scale = 0.60 / p80
+    pos_erc = {n: (p[0] * scale, p[1] * scale) for n, p in raw.items()}
+    # All peripheral nodes (isolates + small components) in outer ring r=0.88–1.08
+    n_peri = len(peripheral_erc)
+    if n_peri > 0:
+        rng = np.random.default_rng(SEED)
+        for i, nid in enumerate(sorted(peripheral_erc)):
+            theta = 2 * math.pi * i / n_peri + rng.uniform(-0.10, 0.10)
+            r = 0.88 + rng.uniform(0.0, 0.20)
+            pos_erc[nid] = (r * math.cos(theta), r * math.sin(theta))
+    isolates_erc = peripheral_erc  # treat all peripheral as "isolates" for drawing
+
+    pos_a2a = _compact_dense_layout(G_a2a)
+
+    # Horizontal diptych
+    fig = plt.figure(figsize=(11.0, 5.0), facecolor="white")
+    ax_erc = fig.add_axes([0.02, 0.10, 0.45, 0.84])
+    ax_a2a = fig.add_axes([0.53, 0.10, 0.45, 0.84])
+
+    _draw_sna_twocol_panel(
+        ax_erc, nodes_erc, edges_erc, pos_erc, deg_erc, isolates_erc,
+        "ERC-8004  ·  Permissionless DAO",
+        m_erc, hub_color="#8B4513",
+    )
+    _draw_sna_panel_refined(
+        ax_a2a, nodes_a2a, edges_a2a, pos_a2a, deg_a2a,
+        "Google A2A  ·  Corporate Hierarchy",
+        m_a2a, hub_color="#5B2C8D", vis_note=50,
+    )
+
+    # Thin vertical divider
+    fig.add_artist(
+        plt.Line2D([0.498, 0.498], [0.08, 0.97],
+                   transform=fig.transFigure,
+                   color="#DDDDDD", linewidth=0.8, zorder=10)
+    )
+
+    from matplotlib.patches import Patch
+    handles = [Patch(color=c, label=lbl) for lbl, c in INST_PALETTE.items()]
+    fig.legend(handles=handles, loc="lower center", ncol=len(handles),
+               fontsize=7, frameon=False, bbox_to_anchor=(0.5, 0.005))
+
+    fig.text(0.50, 0.990, "Co-participation Governance Networks",
+             ha="center", va="top", fontsize=10, fontweight="bold", color="#111")
+
+    _save(fig, "network-sna-2col")
     plt.close(fig)
 
 
@@ -706,10 +1435,8 @@ def fig_network_sna() -> None:
 
 if __name__ == "__main__":
     OUTPUT_FIGS.mkdir(parents=True, exist_ok=True)
-    print("• BERTopic divergence (enlarged font)…")
-    fig_bertopic_divergence()
-    print("• CryptoBERT frequency chart…")
-    fig_cryptobert_frequency()
+    print("• BERTopic + CryptoBERT integrated dashboard…")
+    fig_bertopic_cryptobert_integrated()
     print("• Combined thematic heatmap + butterfly…")
     fig_combined_heatmap_butterfly()
     print("• DNA congruence networks…")
@@ -722,6 +1449,10 @@ if __name__ == "__main__":
     fig_topic_compare()
     print("• ERC-8004 lifecycle temporal (topic-erc)…")
     fig_topic_erc()
-    print("• SNA network comparison (network-sna)…")
+    print("• Combined pie + lifecycle (topic-pie-erc)…")
+    fig_topic_pie_erc()
+    print("• SNA network comparison — single-col (network-sna)…")
     fig_network_sna()
+    print("• SNA network comparison — two-col (network-sna-2col)…")
+    fig_network_sna_twocol()
     print(f"\nDone — output/figures/  +  paper-acm/")
