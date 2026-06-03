@@ -1,4 +1,25 @@
+---
+license: cc-by-nc-4.0
+language:
+- en
+pretty_name: ERC-8004 vs Google A2A Governance Dataset
+tags:
+- governance
+- dao
+- blockchain
+- ethereum
+- standardization
+- ai-agents
+- corporate-governance
+size_categories:
+- 1K<n<10K
+---
+
 # data/
+
+Dataset for **RQ1: DAO governance vs. corporate governance in technology standardization** — comparing **ERC-8004** (Trustless Agents, EIP/DAO process) against **Google A2A** (Agent-to-Agent protocol, corporate hierarchy). Two layouts: `raw/` (original scraped records) and `annotated/` (LLM-annotated + manually enriched). SHA-256 checksums for every file live in each subfolder's `CHECKSUMS.json`.
+
+Licensed **CC BY-NC 4.0** (attribution, non-commercial).
 
 ## raw/ — Original scraped data (do not edit manually)
 

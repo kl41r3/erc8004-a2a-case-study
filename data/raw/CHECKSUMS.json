@@ -32,12 +32,16 @@
     "size_bytes": 1144
   },
   "forum_posts.json": {
-    "sha256": "4b3711e5a45b7e4a835fb32a4fca87cd9a2015a4347f2b963cd7e8fb27da6eb6",
-    "size_bytes": 152165
+    "sha256": "b414e8b7153df6d89a2885a702f72ed5ead1cfa21cdb6b455ae86677cad3e66d",
+    "size_bytes": 274724
   },
   "github_comments_filtered.json": {
     "sha256": "41a65aa867db3e6441024854604ba951e3987e0776c32b02a84027ef2a28c8ba",
     "size_bytes": 19394
+  },
+  "manual_institutions.json": {
+    "sha256": "76769c1cbd733b2557f7364a15e192bc3dcda366bbc51b426c1ada875e74440c",
+    "size_bytes": 49090
   },
   "profiles_forum.json": {
     "sha256": "1a21fbc4d0c63c3039a24fe7bc00846fa9520d76658d4981178e8d305094eef5",
