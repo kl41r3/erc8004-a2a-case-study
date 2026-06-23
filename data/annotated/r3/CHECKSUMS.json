@@ -1,20 +1,128 @@
 {
-  "a2a/deepseek-chat/consensus.json": {
-    "sha256": "6d3a0dbe60a3dda398e813e3768a069d44d1a007b3b2e115464910efe2bad724"
+  "a2a/deepseek-v4-flash/annotations.json": {
+    "sha256": "1e924040ed91a799a6c605424a75c5364c513781131fcda6117527e602b8a1d2"
   },
   "a2a/deepseek-v4-flash/consensus.json": {
     "sha256": "754affc268c5d1430d9ca2e25c51deadb49367d86b2f1cbfb40698338d1bbcfc"
   },
+  "a2a/deepseek-v4-flash/manifest.json": {
+    "sha256": "f0ab8f11f66697f185fbdd96cd2b4721cb74ee6802128e269dcf76568e9f76cd"
+  },
+  "a2a/deepseek-v4-flash/round_1/annotations.json": {
+    "sha256": "32171bea719174a2dc41b56005bb23215f6644ec54cf18df2027bb78ed9757e3"
+  },
+  "a2a/deepseek-v4-flash/round_2/annotations.json": {
+    "sha256": "29275b1a9bc21db634fb1be176a2612b9fa9b39a68b1c24c47be0d5b7d6f1f9e"
+  },
+  "a2a/deepseek-v4-flash/round_3/annotations.json": {
+    "sha256": "c08933dc7ca9133ebeb644f7f5ed2df1295ed1a5512b959429584e3f83ef387f"
+  },
+  "a2a/glm-4-plus/annotations.json": {
+    "sha256": "5500e4d38445b37a94fe5722fffe231f51fdfeedfa8613078090b2307e6f6c57"
+  },
   "a2a/glm-4-plus/consensus.json": {
     "sha256": "53ad3ed039e2d847d0b71b3168f960e1d3d0946f8dfe80064d1e229123293254"
   },
-  "erc/deepseek-chat/consensus.json": {
-    "sha256": "a6db14288399a0bdb572746e311a1c0d30871da53aa4ee77b30026c82e05696c"
+  "a2a/glm-4-plus/manifest.json": {
+    "sha256": "a182807e5e81b27a775d5a79a16cdc691a4bd0c3eba1e1393c5fe702c2757bc4"
+  },
+  "a2a/glm-4-plus/round_1/annotations.json": {
+    "sha256": "a0ce7e09b8f9afbf20bd783101944c73ed631ef21e989c8c9880be6b897333ac"
+  },
+  "a2a/glm-4-plus/round_2/annotations.json": {
+    "sha256": "c62483befa6ce8a6df5f84f718b4151615d2d03c314a2d1978c8b4f929fb3556"
+  },
+  "a2a/glm-4-plus/round_3/annotations.json": {
+    "sha256": "5b860af27ceef5476783dd86d0b71b7a0483cc91b1655b988787984c480bba57"
+  },
+  "a2a/moonshot-v1-auto/shard_0.json": {
+    "sha256": "c13ce5f20d6a824bc0b951e471aac44fd7a478a887880b1ecedb91f3e85882df"
+  },
+  "a2a/moonshot-v1-auto/shard_0_out.json": {
+    "sha256": "18d4176a553e80f9a2d197ca7bf1046774186d11e8bc4915bf009dbc484e8fb8"
+  },
+  "a2a/moonshot-v1-auto/shard_1.json": {
+    "sha256": "0b6104acc82113063962af658585ab14c96044a55ee8e36c8d4ed93592adfdab"
+  },
+  "a2a/moonshot-v1-auto/shard_1_out.json": {
+    "sha256": "1d41c725b5df3904939768c66c6ac9da1446313df9a715929dd1bc547ebe3918"
+  },
+  "a2a/moonshot-v1-auto/shard_2.json": {
+    "sha256": "0591b05dd11785d1a038d7701e70718ccea06ad32b0904044289644f2768f16d"
+  },
+  "a2a/moonshot-v1-auto/shard_2_out.json": {
+    "sha256": "b8cb0c20eb910b826281499225cca192197a6a9903e3b15259d654d2ec9a12dd"
+  },
+  "a2a/moonshot-v1-auto/shard_3.json": {
+    "sha256": "58d8f85ceb231eda816e58b0bf25769584ca774c7505d03bd103fc774be6d4f1"
+  },
+  "a2a/moonshot-v1-auto/shard_3_out.json": {
+    "sha256": "11010b213bbf06fecac550a09a5471cae36d126409c7988a73d2d4271ad60334"
+  },
+  "a2a_cross_consensus.json": {
+    "sha256": "e9ec984ad9aa493489946dec04f53a0a6d08e7899cc1c5506903a55c6f8b467c"
+  },
+  "erc/deepseek-v4-flash/annotations.json": {
+    "sha256": "d083473f234d356aefce8582ee3c068a745f22a7a19435faaf1000ffe5d9ac14"
   },
   "erc/deepseek-v4-flash/consensus.json": {
     "sha256": "8b9f0da128faa149bdf6f770d4f9f5b8ac1832b67f3134bb5e557223cd7f811a"
   },
+  "erc/deepseek-v4-flash/manifest.json": {
+    "sha256": "90becae7c46b5765697c2cec19d2eef35b4637f8da7385f419bb2bc6d9b5825d"
+  },
+  "erc/deepseek-v4-flash/round_1/annotations.json": {
+    "sha256": "d083473f234d356aefce8582ee3c068a745f22a7a19435faaf1000ffe5d9ac14"
+  },
+  "erc/deepseek-v4-flash/round_2/annotations.json": {
+    "sha256": "66ac7d9b98a27b3f150fc419669b60149d5e97f5a4f701af7b523f2e4567c5f4"
+  },
+  "erc/deepseek-v4-flash/round_3/annotations.json": {
+    "sha256": "c4d09f544d0a12fc89f986425bd6fda073c6213714fb62c870ce93ae63712649"
+  },
+  "erc/glm-4-plus/annotations.json": {
+    "sha256": "012c2bc60d9268589db18ae81045f2d58d3c216ce8b112f569a37d47c30bcbc4"
+  },
   "erc/glm-4-plus/consensus.json": {
     "sha256": "62e4d63534dc0c5a1b5e7eda552037f1f1015d5dae3b55640c712cd15a7d50b0"
+  },
+  "erc/glm-4-plus/round_1/annotations.json": {
+    "sha256": "012c2bc60d9268589db18ae81045f2d58d3c216ce8b112f569a37d47c30bcbc4"
+  },
+  "erc/glm-4-plus/round_2/annotations.json": {
+    "sha256": "d231f973d546163506dd9e9540bc3c7f3fc84b47134640ccad53afb92152ecbb"
+  },
+  "erc/glm-4-plus/round_3/annotations.json": {
+    "sha256": "e5f48241b87e764e7b58d187fd2ce399f271889859a2a27c0e568cd356c41a7e"
+  },
+  "erc/moonshot-v1-auto/annotations.json": {
+    "sha256": "4cc03f61ed6323ff1c940c7ac121b6516229a62e80dfe22ebedffc4131f91026"
+  },
+  "erc/moonshot-v1-auto/shard_0.json": {
+    "sha256": "df1204f6adc04b06cb596757cd0edc6e68c8c37d4012d2ef9a97a7b2f45b0a44"
+  },
+  "erc/moonshot-v1-auto/shard_0_out.json": {
+    "sha256": "e235dbeeb44ab234ea96887c29df2391d51df32cbb76d609d30ebfd0b0e9b159"
+  },
+  "erc/moonshot-v1-auto/shard_1.json": {
+    "sha256": "1eaf35993755b268d130c37194968ba6d49e3b5eb9fa9920010cc5182f855bb7"
+  },
+  "erc/moonshot-v1-auto/shard_1_out.json": {
+    "sha256": "1fcd966162783fa13744c37bd85274a9f571f750a3ba0e549804a46c00be62e3"
+  },
+  "erc/moonshot-v1-auto/shard_2.json": {
+    "sha256": "9e6eee95fda0836664c62ce5dc942ad9a8691a9938fd31c9056c483f4a7e0e53"
+  },
+  "erc/moonshot-v1-auto/shard_2_out.json": {
+    "sha256": "8e22bfe77c892e200ef2ab485b889d48831daade62e33e4236000c3192682dca"
+  },
+  "erc/moonshot-v1-auto/shard_3.json": {
+    "sha256": "19123cad7d1832d7a42cce606c00406afcb9f3e58d21602afafcf233b8230782"
+  },
+  "erc/moonshot-v1-auto/shard_3_out.json": {
+    "sha256": "b53f2c9f7dd08e8c3f3291c9318f86fc90041abf9d307e4e6ebfe8ef870c8c60"
+  },
+  "erc_cross_consensus.json": {
+    "sha256": "1dab000eb5e3a1d695ad6b34e9400427a1a995bac52234fe02366465484001cd"
   }
 }

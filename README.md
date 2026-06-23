@@ -16,7 +16,7 @@ Comparative case study of two AI agent protocol governance processes:
 - **Python ≥ 3.14** + **uv** (package manager)
 - **curl** (system, for API scraping)
 - **GitHub Personal Access Token** (only for A2A data collection; ERC-8004 data is public)
-- **MiniMax API key** (for LLM annotation; optional if using `--backend anthropic` or `--backend openai`)
+- **LLM API key** (for LLM annotation)
 
 ### 1. Clone & Install
 
@@ -147,19 +147,15 @@ uv run python scripts/compute_kappa.py              # compute Cohen's κ
 
 ## Key Findings
 
-1. **Opposite decision architectures.** ERC-8004 advances by rough consensus with permissionless deployment; A2A vests binding authority in an 8-seat corporate TSC (transitioned to Linux Foundation governance in June 2025). Both produce comparable participation inequality (degree Gini 0.804 vs 0.779) and structurally fragmented co-participation networks with no statistically significant core-periphery structure.
+1. **Participation is oligarchic across both governance forms, despite opposite decision architectures.** ERC-8004 advances by rough consensus with permissionless deployment; A2A vests binding authority in an 8-seat corporate TSC (transitioned to Linux Foundation governance in June 2025). Yet both produce comparable participation inequality (degree Gini 0.804 vs 0.779; betweenness Gini 0.931 vs 0.979), and the majority of contributors in both cases engage only a single theme (median actor Shannon entropy H=0). ERC-8004's top-3 degree holders span MetaMask, Hats Protocol, and The Graph; A2A's top-3 include two Google employees and one from Microsoft.
 
-2. **Governance form shapes discourse composition.** A2A devotes nearly twice the share to Process arguments (25.4% vs 13.9%, χ²(3)=52.88, p<.001, Cramér's V=.103), reflecting heavier coordination overhead in corporate governance. Within ERC-8004, Process discussion surges to 53% in Phase 3 as deliberation shifts from design to editorial ratification. Topic divergence is moderate but meaningful: JSD=0.288 (BERTopic) and JSD=0.216 (Thematic-LM).
+2. **Discourse is technically dominated in both cases, but governance form shapes composition.** A2A devotes nearly twice the share to Process arguments (25.4% vs 13.9%, χ²(3)=52.88, p<.001, Cramér's V=.103), reflecting heavier coordination overhead in corporate governance. Within ERC-8004, Process discussion surges to 53% in Phase 3 as deliberation shifts from design to editorial ratification. Topic divergence is moderate but meaningful: JSD=0.288 (BERTopic) and JSD=0.216 (Thematic-LM).
 
 3. **DAO concentrates on trust; corporate governance spreads across engineering execution.** ERC-8004 is dominated by T08 Trust & Security Mechanisms (34.5% of records; 34.5% actor participation rate vs A2A's 4.0%). A2A spreads deliberation across Documentation (T06), Community Contributions (T07), and Protocol Specification (T01), plus three engineering-execution themes (Transport, Streaming, Project Governance) entirely absent from the EIP forum.
 
-4. **Denser discourse congruence in the permissionless setting.** Congruence density is 0.148 (ERC-8004) vs 0.082 (A2A). Within the tighter EIP community, participants more often share positions on contested topics, consistent with groupthink in a small reputation-based elite.
-
-5. **Both elites are small; their composition differs.** Median actor Shannon entropy H=0 in both cases — the majority of contributors engage a single theme. ERC-8004's top-3 degree holders span MetaMask, Hats Protocol, and The Graph; A2A's top-3 include two Google employees and one from Microsoft. Betweenness Gini is 0.931 (ERC-8004) and 0.979 (A2A) in the co-participation network.
+4. **Network connectivity reverses with scope.** At single-case level, the DAO attains denser discourse congruence (0.148 vs 0.082, congruence density), consistent with groupthink in a small reputation-based elite. However, expanding to a 34-ERC agent cluster overturns this finding: the DAO network coalesces at ecosystem scale (GCR 0.328 → 0.917), while the re-annotated A2A network remains fragmented (GCR 0.534 → 0.285). The permissionless DAO is the *more* connected and observable regime at ecosystem scale — coordination in the corporate case moves off the public record. See paper Appendix "Multi-Model and Multi-Round Robustness Check."
 
 Full results: see `output/network_metrics.json`, `output/stats/topic_stats.json`, `analysis/network_metrics_table.csv`.
-
-**Important qualification (see paper Appendix "Multi-Model and Multi-Round Robustness Check"):** Finding 4 (network connectivity) is overturned at ecosystem scope. Expanding from a single ERC to a 34-ERC agent cluster, the DAO network coalesces (GCR 0.328 → 0.917), while the re-annotated A2A network remains fragmented (GCR 0.534 → 0.285). The DAO is the *more* connected and observable case at ecosystem scale — a reversal that strengthens rather than weakens the paper's argument.
 
 ---
 
