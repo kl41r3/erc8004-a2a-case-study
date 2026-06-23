@@ -1,0 +1,20 @@
+{
+  "a2a/deepseek-chat/consensus.json": {
+    "sha256": "6d3a0dbe60a3dda398e813e3768a069d44d1a007b3b2e115464910efe2bad724"
+  },
+  "a2a/deepseek-v4-flash/consensus.json": {
+    "sha256": "754affc268c5d1430d9ca2e25c51deadb49367d86b2f1cbfb40698338d1bbcfc"
+  },
+  "a2a/glm-4-plus/consensus.json": {
+    "sha256": "53ad3ed039e2d847d0b71b3168f960e1d3d0946f8dfe80064d1e229123293254"
+  },
+  "erc/deepseek-chat/consensus.json": {
+    "sha256": "a6db14288399a0bdb572746e311a1c0d30871da53aa4ee77b30026c82e05696c"
+  },
+  "erc/deepseek-v4-flash/consensus.json": {
+    "sha256": "8b9f0da128faa149bdf6f770d4f9f5b8ac1832b67f3134bb5e557223cd7f811a"
+  },
+  "erc/glm-4-plus/consensus.json": {
+    "sha256": "62e4d63534dc0c5a1b5e7eda552037f1f1015d5dae3b55640c712cd15a7d50b0"
+  }
+}

@@ -93,19 +93,35 @@ def graph_to_edgelist(G: nx.Graph) -> pd.DataFrame:
     )
 
 
-def build(min_shared: int = 1) -> dict:
+def build(min_shared: int = 1, load_fn=None) -> dict:
     """
     Returns dict with keys: df, matrices, networks (per case).
+
+    load_fn: optional callable returning a DataFrame; defaults to load_joined().
+             Pass loader_r2.load_joined_r2 for the R2 analysis pipeline.
     """
-    df = load_joined()
+    df = (load_fn or load_joined)()
     result: dict = {"df": df, "by_case": {}}
 
-    for case in ("ERC-8004", "Google-A2A"):
-        sub = df[df["case"] == case]
+    # Determine which case labels exist in this dataset
+    cases = df["case"].unique().tolist() if "case" in df.columns else []
+    # Map to canonical case keys used elsewhere
+    erc_cases = [c for c in cases if "ERC" in c or "erc" in c.lower()]
+    a2a_cases = [c for c in cases if "A2A" in c or "a2a" in c.lower() or "Google" in c]
+    canonical = {
+        "ERC-8004": erc_cases,
+        "Google-A2A": a2a_cases,
+    }
+
+    for canon_key, matching_cases in canonical.items():
+        if not matching_cases:
+            continue
+        sub = df[df["case"].isin(matching_cases)].copy()
+        sub = sub.assign(case=canon_key)  # normalize label
         mat = affiliation_matrix(sub)
         cong = congruence_network(mat, min_shared=min_shared)
         conf = conflict_network(mat, min_shared=min_shared)
-        result["by_case"][case] = {
+        result["by_case"][canon_key] = {
             "sub": sub,
             "mat": mat,
             "congruence": cong,

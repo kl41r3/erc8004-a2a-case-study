@@ -1,0 +1,9 @@
+{
+  "backend": "DeepSeek-V4-Flash",
+  "model": "deepseek-v4-flash",
+  "annotated_at": "2026-06-15T02:36:56.046617+00:00",
+  "total_records": 1034,
+  "with_themes": 828,
+  "total_themes_extracted": 2921,
+  "runtime_s": 2987
+}

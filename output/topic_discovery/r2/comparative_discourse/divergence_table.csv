@@ -1,0 +1,20 @@
+topic_id,label,keywords,erc8004_n,a2a_n,erc8004_pct,a2a_pct,abs_diff,pkKL_erc,pkKL_a2a,js_contribution
+1,1_https_contributing_pull_a2a,"https, contributing, pull, a2a, github, format, com, make",1,393,0.07,10.36,10.29,-0.004598,0.110241,0.052822
+3,3_json_the_to_grpc,"json, the, to, grpc, message, in, of, a2a",2,260,0.13,6.85,6.72,-0.006527,0.071638,0.032555
+0,0_the_agent_to_and,"the, agent, to, and, is, for, on, that",719,879,48.13,23.17,24.95,0.213746,-0.149407,0.03217
+2,2_task_the_to_message,"task, the, to, message, is, be, that, artifact",7,301,0.47,7.94,7.47,-0.015763,0.078374,0.031305
+5,5_python_samples_a2a_uv,"python, samples, a2a, uv, sdk, google, github, the",0,182,0.0,4.8,4.8,-0.0,0.051567,0.025784
+6,6_eip_assigning_associates_rip,"eip, assigning, associates, rip, sequential, numbers, filename, number",70,12,4.69,0.32,4.37,0.044491,-0.010103,0.017194
+9,9_completed_many_thanks_detail,"completed, many, thanks, detail, thank, same, one, you",47,0,3.15,0.0,3.15,0.033102,-0.0,0.016551
+7,7_version_to_versions_the,"version, to, versions, the, we, be, protocol, that",0,71,0.0,1.87,1.87,-0.0,0.02009,0.010045
+8,8_suggestion_rfc_section_should,"suggestion, rfc, section, should, requirements, shall, must, uppercase",37,17,2.48,0.45,2.03,0.019663,-0.008102,0.00578
+16,16_magicians_eth_topic_create,"magicians, eth, topic, create, discussions, please, link, pr",14,0,0.94,0.0,0.94,0.009878,-0.0,0.004939
+11,11_conduct_code_describe_response_,"conduct, code, describe, response_, _no, agree, project, of",0,28,0.0,0.74,0.74,-0.0,0.00795,0.003975
+10,10_00_favor_vote_2025,"00, favor, vote, 2025, 2026, 01, in, 12",1,36,0.07,0.95,0.88,-0.002129,0.009181,0.003526
+18,18_motivation_rationale_proposal_belongs,"motivation, rationale, proposal, belongs, section, competing, it, whole",10,0,0.67,0.0,0.67,0.007041,-0.0,0.00352
+13,13_lint_buf_yaml_linter,"lint, buf, yaml, linter, super, ci, rules, sh",0,19,0.0,0.5,0.5,-0.0,0.005372,0.002686
+12,12_image_attachments_assets_license,"image, attachments, assets, license, img, user, https, com",1,25,0.07,0.66,0.59,-0.001774,0.006081,0.002153
+14,14_azure_openai_openai_endpoint_to,"azure, openai, openai_endpoint, to, env, if, the, variables",0,15,0.0,0.4,0.4,-0.0,0.004297,0.002149
+15,15_ui_polling_windows_disable,"ui, polling, windows, disable, demo, pages, refresh, happening",0,14,0.0,0.37,0.37,-0.0,0.003975,0.001987
+17,17_null_none_type_as,"null, none, type, as, fields, undefined, to, pr",1,11,0.07,0.29,0.22,-0.001021,0.002163,0.000571
+4,4_this_you_review_to,"this, you, review, to, the, pr, it, for",75,184,5.02,4.85,0.17,0.00047,-0.000467,1e-06

@@ -1,0 +1,26 @@
+{
+  "tier1/erc8004_forum.json": {
+    "sha256": "434c79afd82418185b1f09cc2e22e8ed46f3ea08f83ac5bb0e29db7f42aba626"
+  },
+  "tier1/erc8004_github.json": {
+    "sha256": "a64406b0f9ddc198e453dc2cf39ef75c860e733962d78e7292d545195111f09b"
+  },
+  "tier1/tier1_forum_manifest.json": {
+    "sha256": "81f30dd467bb2c437e8a53407e59b013f61309b49dda913ced208a4924993149"
+  },
+  "tier1/tier1_github_manifest.json": {
+    "sha256": "cb7f27f031dabf2a5d57a876f630af97bddd7b9429be3ee172038037022f85ad"
+  },
+  "tier2/cluster_forum.json": {
+    "sha256": "fec74d15db5932d058a23be9e9444200959352487e1f5934e27d633c2d8d9639"
+  },
+  "tier2/cluster_github.json": {
+    "sha256": "c8b9dd19352dc3c595f1d6c6c09b7030ada95476106a6ef3879f2cb4fb66f390"
+  },
+  "tier2/tier2_forum_manifest.json": {
+    "sha256": "856a1a3f328472d554aa6b7cbe27e572fb3b9c8a9b3fa91df901f223e78c75aa"
+  },
+  "tier2/tier2_github_manifest.json": {
+    "sha256": "a0263eb3a2994621550e4e9c316539e97cfb7bde5a4408d8b278ab7dfa481408"
+  }
+}

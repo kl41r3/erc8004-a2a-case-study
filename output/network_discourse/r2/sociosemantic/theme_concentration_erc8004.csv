@@ -1,0 +1,6 @@
+theme_id,n_comments,n_actors,gini_actors,hhi
+T01_Technical,1138,190,0.6979280362593654,0.0325
+T02_Process,336,50,0.703095238095238,0.1294
+T03_Governance,14,12,0.11904761904761907,0.0918
+T04_Economic,6,6,0.0,0.1667
+T05_Off_topic,2,2,0.0,0.5

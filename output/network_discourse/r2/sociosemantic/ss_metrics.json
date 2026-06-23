@@ -1,0 +1,84 @@
+{
+  "ERC-8004": {
+    "n_actors": 200,
+    "n_themes": 5,
+    "n_edges_actor_proj": 18179,
+    "actor_entropy": {
+      "mean": 0.2,
+      "median": 0.0,
+      "gini": 0.785,
+      "max": 1.392
+    },
+    "actor_modularity": 0.0437,
+    "theme_concentration": {
+      "mean_gini": 0.304,
+      "most_concentrated": "T01_Technical"
+    },
+    "gatekeepers": [
+      {
+        "actor": "blackalbino01",
+        "bc": 0.1141
+      },
+      {
+        "actor": "noemiplatform",
+        "bc": 0.1141
+      },
+      {
+        "actor": "CypherVae",
+        "bc": 0.0583
+      },
+      {
+        "actor": "fulldecent",
+        "bc": 0.0583
+      },
+      {
+        "actor": "kimomon",
+        "bc": 0.0583
+      }
+    ]
+  },
+  "Google-A2A": {
+    "n_actors": 732,
+    "n_themes": 5,
+    "n_edges_actor_proj": 231971,
+    "actor_entropy": {
+      "mean": 0.208,
+      "median": 0.0,
+      "gini": 0.8,
+      "max": 1.792
+    },
+    "actor_modularity": 0.0265,
+    "theme_concentration": {
+      "mean_gini": 0.367,
+      "most_concentrated": "T01_Technical"
+    },
+    "gatekeepers": [
+      {
+        "actor": "Kludex",
+        "bc": 0.0245
+      },
+      {
+        "actor": "Paulchen5",
+        "bc": 0.0135
+      },
+      {
+        "actor": "lifieai",
+        "bc": 0.0135
+      },
+      {
+        "actor": "rokonec",
+        "bc": 0.0135
+      },
+      {
+        "actor": "ajaynagotha",
+        "bc": 0.013
+      }
+    ]
+  },
+  "cross_case": {
+    "overlap_coefficient": 1.0,
+    "n_shared_themes": 5,
+    "n_erc_only": 0,
+    "n_a2a_only": 0
+  }
+}

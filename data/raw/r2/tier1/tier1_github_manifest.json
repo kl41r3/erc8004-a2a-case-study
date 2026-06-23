@@ -1,0 +1,23 @@
+{
+  "scraped_at": "2026-06-14T07:52:59.570966+00:00",
+  "tier": "tier1",
+  "repo": "ethereum/ERCs",
+  "prs": [
+    1170,
+    1244,
+    1248,
+    1458,
+    1462,
+    1470,
+    1472,
+    1477,
+    1488
+  ],
+  "total_records": 37,
+  "by_source": {
+    "github_pr_body": 7,
+    "github_issue_comment": 14,
+    "github_review_comment": 8,
+    "github_review": 8
+  }
+}

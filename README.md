@@ -96,7 +96,7 @@ uv run python scripts/build_network.py             # interactive vis.js HTML net
 **Expected outputs:**
 - `analysis/structural_metrics.csv` — governance metrics table
 - `analysis/network_metrics_table.csv` — SNA comparison table
-- `output/network_sna_comparison.png` — Figure 3: side-by-side network visualization
+- `output/network_sna_comparison.png` — Side-by-side network visualization
 - `output/network_degree_dist.png` — degree distribution by rank
 - `output/figures/topic_argtype_comparison.png` — argument type bar chart
 - `output/figures/topic_stance_heatmap.png` — stance × argument heatmap
@@ -159,11 +159,33 @@ uv run python scripts/compute_kappa.py              # compute Cohen's κ
 
 Full results: see `output/network_metrics.json`, `output/stats/topic_stats.json`, `analysis/network_metrics_table.csv`.
 
+**Important qualification (see paper Appendix "Multi-Model and Multi-Round Robustness Check"):** Finding 4 (network connectivity) is overturned at ecosystem scope. Expanding from a single ERC to a 34-ERC agent cluster, the DAO network coalesces (GCR 0.328 → 0.917), while the re-annotated A2A network remains fragmented (GCR 0.534 → 0.285). The DAO is the *more* connected and observable case at ecosystem scale — a reversal that strengthens rather than weakens the paper's argument.
+
+---
+
+## Robustness (Multi-Model × Multi-Round)
+
+To verify that findings survive annotator choice and case scope, both cases were re-annotated with 3 independent models (DeepSeek-V4-Flash, GLM-4-Plus, Moonshot-v1-auto) and compared against the original MiniMax-M2.5 as a 4th reference. A separate 3-model × 3-round repetition measured self-consistency.
+
+| Experiment | Models | Rounds | Records | Key result |
+|---|---|---|---|---|
+| Cross-model (R2) | 3 vendors | 1 | ERC 1,664 / A2A 4,045 | argument\_type Fleiss κ = 0.683 (ERC Substantial) / 0.619 (A2A Substantial) |
+| Cross-round (R3) | 3 models | 3 | ERC 1,664 / A2A 3,844 | GLM-4-Plus κ = 0.86–0.93 (most stable); DeepSeek-V4-Flash κ = 0.49–0.63 |
+| 4-model (R1+R3) | +MiniMax-M2.5 | 1 | ERC 144 / A2A 3,844 | 4-way Fleiss κ ≈ 0.46–0.51 (Moderate); model choice dominates stochastic noise |
+
+**What replicates (3/4 findings):** (i) discourse remains technically dominated; (ii) participation stays oligarchic (Gini ≈ 0.8); (iii) DAO attains denser within-community consensus.
+
+**What reverses (1/4):** network connectivity ranking inverts — the permissionless DAO is the more connected, observable regime at ecosystem scope, while the corporate visible network stays fragmented because coordination moves off the public record.
+
+Data: `data/annotated/r2/`, `data/annotated/r3/`. Reports: `tree-docs/r2-multimodel/`, `tree-docs/r3-robustness/`.
+
+---
+
 ---
 
 ## Data Integrity
 
-`data/raw/CHECKSUMS.json` stores SHA-256 for every raw file. Regenerate after any data update:
+SHA-256 checksums cover all data tiers: `data/raw/CHECKSUMS.json`, `data/raw/r2/CHECKSUMS.json`, `data/annotated/CHECKSUMS.json`, `data/annotated/r2/CHECKSUMS.json`, `data/annotated/r3/CHECKSUMS.json`. Regenerate after any data update:
 
 ```bash
 python3 -c "

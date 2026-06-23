@@ -1,0 +1,24 @@
+{
+  "ERC-8004": {
+    "n_actors": 205,
+    "n_themes_active": 5,
+    "congruence": {
+      "edges": 11850,
+      "density": 0.567
+    },
+    "conflict": {
+      "edges": 704
+    }
+  },
+  "Google-A2A": {
+    "n_actors": 742,
+    "n_themes_active": 5,
+    "congruence": {
+      "edges": 94948,
+      "density": 0.345
+    },
+    "conflict": {
+      "edges": 7057
+    }
+  }
+}

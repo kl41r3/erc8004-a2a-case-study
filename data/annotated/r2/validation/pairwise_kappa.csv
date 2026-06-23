@@ -1,0 +1,13 @@
+field,pair,kappa,pct_agree,interpretation
+stakeholder_institution,deepseek↔glm,0.1874,85.8,Poor
+stakeholder_institution,deepseek↔kimi,0.2234,73.2,Fair
+stakeholder_institution,glm↔kimi,0.1391,75.7,Poor
+argument_type,deepseek↔glm,0.6914,84.9,Substantial
+argument_type,deepseek↔kimi,0.6337,83.5,Substantial
+argument_type,glm↔kimi,0.7297,88.2,Substantial
+stance,deepseek↔glm,0.4513,61.0,Moderate
+stance,deepseek↔kimi,0.2499,46.5,Fair
+stance,glm↔kimi,0.4604,63.7,Moderate
+consensus_signal,deepseek↔glm,0.3209,63.5,Fair
+consensus_signal,deepseek↔kimi,0.2817,57.9,Fair
+consensus_signal,glm↔kimi,0.3288,60.8,Fair

@@ -1,0 +1,25 @@
+{
+  "ERC-8004": {
+    "n_actors": 205,
+    "n_themes": 5,
+    "n_edges_actor_proj": 11850,
+    "actor_entropy": {
+      "mean": 0.22,
+      "median": 0,
+      "gini": 0.78
+    }
+  },
+  "Google-A2A": {
+    "n_actors": 742,
+    "n_themes": 5,
+    "n_edges_actor_proj": 94948,
+    "actor_entropy": {
+      "mean": 0.21,
+      "median": 0,
+      "gini": 0.8
+    }
+  },
+  "cross_case": {
+    "overlap_coefficient": 1.0
+  }
+}

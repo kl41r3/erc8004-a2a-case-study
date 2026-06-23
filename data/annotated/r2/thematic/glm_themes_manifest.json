@@ -1,0 +1,9 @@
+{
+  "backend": "GLM-4-Plus",
+  "model": "glm-4-plus",
+  "annotated_at": "2026-06-14T16:00:37.725104+00:00",
+  "total_records": 1034,
+  "with_themes": 875,
+  "total_themes_extracted": 3240,
+  "runtime_s": 3548
+}
