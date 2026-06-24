@@ -1,0 +1,307 @@
+[
+  {
+    "theme_id": "T01",
+    "label": "Access Control & Identity",
+    "description": "Mechanisms for verifying identity and preventing unauthorized access in governance systems.",
+    "codes": [
+      "access control",
+      "identity verification",
+      "sybil resistance"
+    ]
+  },
+  {
+    "theme_id": "T02",
+    "label": "Accountability & Transparency",
+    "description": "Processes and mechanisms ensuring responsibility and openness in governance operations.",
+    "codes": [
+      "accountability",
+      "accountability mechanisms",
+      "transparency",
+      "transparency and verifiability",
+      "transparency concerns",
+      "transparency in process",
+      "verification transparency"
+    ]
+  },
+  {
+    "theme_id": "T03",
+    "label": "Collaboration & Participation",
+    "description": "Community engagement and collective approaches to governance activities and decision-making.",
+    "codes": [
+      "collaboration",
+      "collaborative decision making",
+      "collaborative development",
+      "collaborative governance",
+      "collaborative improvement",
+      "collaborative problem solving",
+      "collaborative review",
+      "community collaboration",
+      "community contribution",
+      "community engagement",
+      "community feedback",
+      "community involvement",
+      "community participation",
+      "openness to feedback",
+      "participation"
+    ]
+  },
+  {
+    "theme_id": "T04",
+    "label": "Decision Making & Voting",
+    "description": "Processes and mechanisms for making collective decisions and determining voting outcomes.",
+    "codes": [
+      "decision making",
+      "decision threshold",
+      "decision-making authority",
+      "decision-making process",
+      "binding vote authority",
+      "voting process",
+      "voting threshold"
+    ]
+  },
+  {
+    "theme_id": "T05",
+    "label": "Documentation & Communication",
+    "description": "Creation, maintenance, and clarity of documentation to support governance processes.",
+    "codes": [
+      "clarification needed",
+      "clarity in documentation",
+      "clarity in specification",
+      "documentation accessibility",
+      "documentation accuracy",
+      "documentation clarity",
+      "documentation consistency",
+      "documentation governance",
+      "documentation improvement",
+      "documentation maintenance",
+      "documentation quality",
+      "documentation standards",
+      "documentation transparency",
+      "documentation update",
+      "documentation updates",
+      "specification clarity",
+      "specification precision",
+      "terminology clarity",
+      "semantic clarity"
+    ]
+  },
+  {
+    "theme_id": "T06",
+    "label": "Implementation & Design",
+    "description": "Technical approaches and design considerations for implementing governance systems.",
+    "codes": [
+      "implementation alignment",
+      "implementation ambiguity",
+      "implementation approach",
+      "implementation autonomy",
+      "implementation burden",
+      "implementation clarity",
+      "implementation consistency",
+      "implementation efficiency",
+      "implementation flexibility",
+      "implementation guidance",
+      "implementation transparency",
+      "implementation validation",
+      "technical implementation",
+      "practical implementation",
+      "interface design",
+      "interface standardization",
+      "modular design",
+      "layered architecture",
+      "separation of concerns",
+      "design consistency",
+      "design flexibility",
+      "flexibility in implementation"
+    ]
+  },
+  {
+    "theme_id": "T07",
+    "label": "Process & Standards",
+    "description": "Established procedures and technical standards governing development and contribution.",
+    "codes": [
+      "change management",
+      "code of conduct",
+      "commit message standard",
+      "commit message standards",
+      "contribution guidelines",
+      "dependency management",
+      "process adherence",
+      "process clarity",
+      "process compliance",
+      "process coordination",
+      "process documentation",
+      "process efficiency",
+      "process improvement",
+      "process standardization",
+      "process transparency",
+      "protocol design",
+      "protocol design governance",
+      "technical design governance",
+      "technical governance",
+      "technical specification",
+      "technical specification clarity",
+      "standardization",
+      "standardization alignment",
+      "standardization approach",
+      "standardization clarity",
+      "standardization consistency",
+      "standardization gap",
+      "standardization need",
+      "standardization process",
+      "standards alignment",
+      "standards compliance",
+      "complementary standards",
+      "naming consistency",
+      "naming conventions",
+      "testing and linting",
+      "testing and validation"
+    ]
+  },
+  {
+    "theme_id": "T08",
+    "label": "Quality & Assurance",
+    "description": "Methods and practices ensuring the quality and correctness of governance implementations.",
+    "codes": [
+      "code quality assurance",
+      "quality assurance",
+      "specification accuracy",
+      "specification adherence",
+      "specification alignment",
+      "specification completeness",
+      "specification compliance",
+      "specification consistency",
+      "specification flexibility",
+      "specification scope",
+      "specification updates",
+      "reference implementation",
+      "independent verification"
+    ]
+  },
+  {
+    "theme_id": "T09",
+    "label": "Compatibility & Versioning",
+    "description": "Strategies for maintaining compatibility across different versions and implementations.",
+    "codes": [
+      "backward compatibility",
+      "backwards compatibility",
+      "breaking changes",
+      "compatibility",
+      "interoperability",
+      "interoperability concerns",
+      "interoperability standards",
+      "protocol compatibility",
+      "protocol version compatibility",
+      "version compatibility",
+      "version control",
+      "versioning strategy",
+      "protocol versioning"
+    ]
+  },
+  {
+    "theme_id": "T10",
+    "label": "Protocol & Specification",
+    "description": "Design, evolution, and standardization of governance protocols and specifications.",
+    "codes": [
+      "protocol adoption",
+      "protocol alignment",
+      "protocol ambiguity",
+      "protocol clarity",
+      "protocol compliance",
+      "protocol consistency",
+      "protocol design flexibility",
+      "protocol efficiency",
+      "protocol evolution",
+      "protocol extensibility",
+      "protocol extension",
+      "protocol flexibility",
+      "protocol implementation",
+      "protocol integration",
+      "protocol limitations",
+      "protocol scope definition",
+      "protocol simplification",
+      "protocol specification",
+      "protocol specification clarity",
+      "protocol standardization"
+    ]
+  },
+  {
+    "theme_id": "T11",
+    "label": "Security & Trust",
+    "description": "Security measures and trust mechanisms to ensure safe and reliable governance operations.",
+    "codes": [
+      "security concerns",
+      "security enhancement",
+      "trust and verification",
+      "trust mechanisms",
+      "trust minimization",
+      "trust model design",
+      "trustless verification",
+      "dispute resolution",
+      "conflict resolution",
+      "issue resolution"
+    ]
+  },
+  {
+    "theme_id": "T12",
+    "label": "Performance & Scalability",
+    "description": "Efficiency considerations and scalability of governance systems and protocols.",
+    "codes": [
+      "efficiency concerns",
+      "implementation efficiency",
+      "protocol efficiency",
+      "scalability",
+      "scalability concerns",
+      "resource allocation"
+    ]
+  },
+  {
+    "theme_id": "T13",
+    "label": "Compliance & Regulation",
+    "description": "Adherence to external guidelines, regulations, and compliance requirements.",
+    "codes": [
+      "compliance with guidelines",
+      "regulatory compliance"
+    ]
+  },
+  {
+    "theme_id": "T14",
+    "label": "Scope & Management",
+    "description": "Definition and management of governance scope, structure, and organizational aspects.",
+    "codes": [
+      "scope definition",
+      "scope management",
+      "state management",
+      "task state management",
+      "repository management",
+      "repository organization",
+      "governance structure",
+      "layered governance",
+      "decentralized governance",
+      "agent autonomy",
+      "implementation autonomy"
+    ]
+  },
+  {
+    "theme_id": "T15",
+    "label": "Risk & Uncertainty",
+    "description": "Identification and management of risks, ambiguities, and uncertainties in governance.",
+    "codes": [
+      "risk management",
+      "implementation complexity",
+      "protocol ambiguity",
+      "specification ambiguity",
+      "implementation ambiguity",
+      "protocol limitations",
+      "governance delay"
+    ]
+  },
+  {
+    "theme_id": "T16",
+    "label": "User Experience",
+    "description": "Considerations for the experience of developers and users interacting with governance systems.",
+    "codes": [
+      "developer experience",
+      "user experience"
+    ]
+  }
+]

@@ -1,0 +1,250 @@
+[
+  {
+    "theme_id": "T01",
+    "label": "Governance and Decision Making",
+    "description": "Themes related to the structure and processes of governance and decision-making within an organization.",
+    "codes": [
+      "accountability",
+      "accountability mechanisms",
+      "binding vote authority",
+      "collaborative decision making",
+      "collaborative governance",
+      "decision making",
+      "decision threshold",
+      "governance delay",
+      "governance structure",
+      "layered governance",
+      "participation",
+      "voting process",
+      "voting threshold"
+    ]
+  },
+  {
+    "theme_id": "T02",
+    "label": "Documentation and Communication",
+    "description": "Themes concerning the clarity, accuracy, and accessibility of documentation and communication within a project.",
+    "codes": [
+      "clarification needed",
+      "clarity in documentation",
+      "clarity in specification",
+      "code of conduct",
+      "commit message standard",
+      "documentation accessibility",
+      "documentation accuracy",
+      "documentation clarity",
+      "documentation consistency",
+      "documentation governance",
+      "documentation improvement",
+      "documentation maintenance",
+      "documentation quality",
+      "documentation standards",
+      "documentation transparency",
+      "documentation update",
+      "documentation updates",
+      "interface design",
+      "naming conventions",
+      "protocol specification",
+      "protocol specification clarity",
+      "semantic clarity",
+      "specification clarity",
+      "specification completeness",
+      "specification compliance",
+      "specification consistency",
+      "specification updates",
+      "terminology clarity"
+    ]
+  },
+  {
+    "theme_id": "T03",
+    "label": "Collaboration and Community",
+    "description": "Themes focusing on collaboration, community engagement, and contribution within a project.",
+    "codes": [
+      "collaboration",
+      "collaborative development",
+      "collaborative improvement",
+      "collaborative problem solving",
+      "collaborative review",
+      "community collaboration",
+      "community contribution",
+      "community engagement",
+      "community feedback",
+      "community involvement",
+      "community participation",
+      "open source contribution",
+      "openness to feedback"
+    ]
+  },
+  {
+    "theme_id": "T04",
+    "label": "Compliance and Standards",
+    "description": "Themes related to compliance with standards, regulations, and protocols.",
+    "codes": [
+      "compliance with guidelines",
+      "composability",
+      "compatibility",
+      "complementary standards",
+      "dependency management",
+      "interoperability",
+      "interoperability concerns",
+      "interoperability standards",
+      "protocol alignment",
+      "protocol compliance",
+      "protocol consistency",
+      "protocol design governance",
+      "protocol standardization",
+      "regulatory compliance",
+      "standard adoption",
+      "standard alignment",
+      "standard compliance",
+      "standardization",
+      "standardization alignment",
+      "standardization consistency",
+      "standards alignment",
+      "standards compliance"
+    ]
+  },
+  {
+    "theme_id": "T05",
+    "label": "Quality Assurance and Testing",
+    "description": "Themes concerning the processes and practices of quality assurance and testing.",
+    "codes": [
+      "code quality assurance",
+      "testing and linting",
+      "testing and validation",
+      "quality assurance",
+      "verification process",
+      "verification transparency"
+    ]
+  },
+  {
+    "theme_id": "T06",
+    "label": "Design and Architecture",
+    "description": "Themes related to the design and architectural considerations of a system.",
+    "codes": [
+      "api design governance",
+      "backward compatibility",
+      "breaking changes",
+      "change management",
+      "design consistency",
+      "design flexibility",
+      "interface standardization",
+      "layered architecture",
+      "modular design",
+      "protocol design",
+      "protocol design flexibility",
+      "protocol evolution",
+      "protocol extensibility",
+      "protocol extension",
+      "protocol flexibility",
+      "protocol implementation",
+      "protocol integration",
+      "protocol limitations",
+      "protocol scope definition",
+      "protocol simplification",
+      "reference implementation",
+      "repository management",
+      "repository organization",
+      "state management",
+      "technical design governance",
+      "technical specification"
+    ]
+  },
+  {
+    "theme_id": "T07",
+    "label": "Process and Efficiency",
+    "description": "Themes focusing on process management, efficiency, and resource allocation.",
+    "codes": [
+      "change management",
+      "efficiency concerns",
+      "implementation efficiency",
+      "process adherence",
+      "process clarity",
+      "process compliance",
+      "process coordination",
+      "process documentation",
+      "process efficiency",
+      "process improvement",
+      "process standardization",
+      "process transparency",
+      "protocol efficiency",
+      "resource allocation",
+      "scalability",
+      "scalability concerns"
+    ]
+  },
+  {
+    "theme_id": "T08",
+    "label": "Security and Trust",
+    "description": "Themes related to security measures, trust mechanisms, and error handling.",
+    "codes": [
+      "data integrity",
+      "decentralization",
+      "error handling",
+      "flexibility in implementation",
+      "implementation alignment",
+      "implementation ambiguity",
+      "implementation approach",
+      "implementation autonomy",
+      "implementation burden",
+      "implementation complexity",
+      "implementation guidance",
+      "implementation transparency",
+      "independent verification",
+      "security concerns",
+      "security enhancement",
+      "sybil resistance",
+      "trust and verification",
+      "trust mechanisms",
+      "trust minimization",
+      "trust model design",
+      "trustless verification",
+      "decentralized governance"
+    ]
+  },
+  {
+    "theme_id": "T09",
+    "label": "Versioning and Compatibility",
+    "description": "Themes concerning version control, compatibility, and versioning strategies.",
+    "codes": [
+      "version compatibility",
+      "version control",
+      "versioning strategy",
+      "protocol version compatibility",
+      "protocol versioning"
+    ]
+  },
+  {
+    "theme_id": "T10",
+    "label": "Conflict Resolution and Dispute",
+    "description": "Themes related to conflict resolution, dispute resolution, and issue management.",
+    "codes": [
+      "conflict resolution",
+      "dispute resolution",
+      "issue resolution",
+      "pr management",
+      "review process",
+      "risk management"
+    ]
+  },
+  {
+    "theme_id": "T11",
+    "label": "User and Developer Experience",
+    "description": "Themes focusing on the experience of users and developers within a system.",
+    "codes": [
+      "developer experience",
+      "discovery mechanism",
+      "user experience"
+    ]
+  },
+  {
+    "theme_id": "T12",
+    "label": "Transparency and Verification",
+    "description": "Themes related to transparency and the verification of processes and outcomes.",
+    "codes": [
+      "transparency",
+      "transparency and verifiability",
+      "transparency concerns",
+      "verification transparency"
+    ]
+  }
+]

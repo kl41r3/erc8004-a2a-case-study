@@ -2,9 +2,9 @@
 
 Models:
   1. MiniMax-M2.5 (R1, from annotated_records.json)
-  2. deepseek-v4-flash (R3, round 1)
-  3. glm-4-plus (R3, round 1)
-  4. deepseek-chat (R3, round 1)
+  2. deepseek-v4-flash (R3, per-model consensus)
+  3. glm-4-plus (R3, per-model consensus)
+  4. moonshot-v1-auto (R3, per-model consensus)
 
 Outputs:
   - Pairwise Cohen's Kappa for each field (argument_type, stance, consensus_signal)
@@ -26,7 +26,7 @@ R1_PATH = ROOT / "data" / "annotated" / "annotated_records.json"
 OUT_PATH = ROOT / "analysis" / "r3_cross_model_4models_kappa.json"
 
 FIELDS = ["argument_type", "stance", "consensus_signal"]
-MODELS = ["MiniMax-M2.5", "deepseek-v4-flash", "glm-4-plus", "deepseek-chat"]
+MODELS = ["MiniMax-M2.5", "deepseek-v4-flash", "glm-4-plus", "moonshot-v1-auto"]
 
 
 def load_r1_annotations():
@@ -50,13 +50,22 @@ def load_r1_annotations():
 
 
 def load_r3_annotations(model, case):
-    """Load R3 round 1 annotations for a given model and case."""
-    path = R3_DIR / case / model / "round_1" / "annotations.json"
-    if not path.exists():
-        print(f"  WARNING: {path} not found")
-        return {}
-    with open(path) as f:
-        data = json.load(f)
+    """Load R3 per-model consensus annotations for a given model and case.
+    Falls back to round_1/annotations.json if consensus.json not yet built."""
+    # Prefer consensus file (majority vote across rounds)
+    consensus_path = R3_DIR / case / model / "consensus.json"
+    if consensus_path.exists():
+        with open(consensus_path) as f:
+            data = json.load(f)
+        print(f"    Using consensus.json ({len(data)} records)")
+    else:
+        path = R3_DIR / case / model / "round_1" / "annotations.json"
+        if not path.exists():
+            print(f"  WARNING: {path} not found")
+            return {}
+        with open(path) as f:
+            data = json.load(f)
+        print(f"    Using round_1/annotations.json ({len(data)} records)")
 
     result = {}
     for r in data:
@@ -261,7 +270,7 @@ def main():
     print(f"  ERC: {len(r1_erc)} records, A2A: {len(r1_a2a)} records")
 
     # 2. Load R3 models
-    r3_models = ["deepseek-v4-flash", "glm-4-plus", "deepseek-chat"]
+    r3_models = ["deepseek-v4-flash", "glm-4-plus", "moonshot-v1-auto"]
     all_erc = {"MiniMax-M2.5": r1_erc}
     all_a2a = {"MiniMax-M2.5": r1_a2a}
 

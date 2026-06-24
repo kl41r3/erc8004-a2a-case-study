@@ -51,3 +51,6 @@ output/*
 
 # Misplaced artifacts
 scripts/topic-stance-heatmap.png
+
+# R3 annotation intermediate shards (only round annotations + consensus are tracked)
+data/annotated/r3/**/shard_*.json

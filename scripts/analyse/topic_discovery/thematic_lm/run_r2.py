@@ -1,17 +1,20 @@
 """
-Thematic-LM R2 — entry point for paper-acm.
+Thematic-LM R2 — fixed pipeline for paper-acm.
 
 Re-runs Stages 2–4 using pre-computed Stage 1 open codes from:
   data/annotated/r2/thematic/{deepseek,glm,kimi}_themes.json   (ERC)
   data/annotated/r2/thematic/a2a/{deepseek,glm,kimi}_themes.json  (A2A)
 
-Stage 1 is skipped (already done via annotate_thematic.py / annotate_thematic_a2a.py).
-Outputs to: output/topic_discovery/r2/thematic_lm/
+CRITICAL FIX: Stage 1 now extracts INDIVIDUAL theme labels (normalized case),
+not semicolon-joined compound strings. Stage 2 uses frequency-based top-200
+sampling instead of random sampling of long compound strings.
 
-Backend for Stages 2–4: DeepSeek-V4-Flash (same as R2 annotation backbone).
+Run once per backend model; all 3 produce independent codebooks that are
+then merged via merge_codebooks.py.
 
 Usage:
-  uv run python scripts/analyse/topic_discovery/thematic_lm/run_r2.py
+  uv run python scripts/analyse/topic_discovery/thematic_lm/run_r2.py --backend deepseek
+  uv run python scripts/analyse/topic_discovery/thematic_lm/run_r2.py --backend glm
   uv run python scripts/analyse/topic_discovery/thematic_lm/run_r2.py --backend kimi
 """
 from __future__ import annotations
@@ -21,6 +24,7 @@ import json
 import os
 import sys
 import time
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).parents[4]
@@ -29,17 +33,12 @@ sys.path.insert(0, str(ROOT))
 from dotenv import load_dotenv
 load_dotenv(ROOT / ".env")
 
-from scripts.analyse.topic_discovery.thematic_lm.pipeline import (
-    run_pipeline, _save
-)
 from scripts.analyse.topic_discovery.thematic_lm.agents import (
     run_aggregator, run_reviewer, run_theme_coder_batch,
 )
 
 THEMATIC_DIR = ROOT / "data" / "annotated" / "r2" / "thematic"
 OUT_DIR = ROOT / "output" / "topic_discovery" / "r2" / "thematic_lm"
-OUT_DIR.mkdir(parents=True, exist_ok=True)
-
 CONSENSUS_DIR = ROOT / "data" / "annotated" / "r2" / "consensus"
 
 BACKENDS = {
@@ -60,9 +59,13 @@ BACKENDS = {
     },
 }
 
+THEMATIC_MODELS = ["deepseek", "glm", "kimi"]
 BOT_AUTHORS = {"github-actions[bot]", "eip-review-bot", "dependabot[bot]"}
 
-THEMATIC_MODELS = ["deepseek", "glm", "kimi"]
+
+def _save(path: Path, data) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
 
 
 def _record_id_erc(r: dict) -> str:
@@ -74,49 +77,49 @@ def _record_id_erc(r: dict) -> str:
 def _record_id_a2a(r: dict) -> str:
     url = r.get("url", "")
     if url:
-        return url  # use bare URL for A2A (matches pipeline convention)
+        return url
     cid = r.get("issue_number") or r.get("pr_number") or ""
     return f"a2a__{r.get('source')}_{cid}_{r.get('date')}"
 
 
-def load_stage1_from_thematic(thematic_base: Path, id_fn) -> dict[str, str]:
+def load_stage1_individual(thematic_base: Path, id_fn) -> dict[str, set[str]]:
     """
-    Convert annotate_thematic output to Stage 1 format:
-      {record_id: "theme1; theme2; ..."}  (union of all models' first themes)
+    Extract INDIVIDUAL theme labels from all models' thematic outputs.
+    Returns {record_id: set of lowercased individual labels}.
+
+    CRITICAL FIX: Previously joined labels with "; " creating compound strings
+    that the aggregator couldn't process. Now we keep individual labels and
+    normalize case for dedup.
     """
-    per_record: dict[str, list[str]] = {}
+    per_record: dict[str, set[str]] = {}
 
     for model in THEMATIC_MODELS:
         path = thematic_base / f"{model}_themes.json"
         if not path.exists():
+            print(f"  ⚠ {path.name} NOT FOUND — skipping")
             continue
         records = json.loads(path.read_text())
+        n_added = 0
         for r in records:
             if (r.get("author", "") or "").endswith("[bot]"):
                 continue
             rid = id_fn(r)
             themes = r.get("themes") or []
-            labels = [t.get("theme", "").strip() for t in themes if t.get("theme", "").strip()]
-            per_record.setdefault(rid, []).extend(labels)
+            labels = []
+            for t in themes:
+                label = t.get("theme", "").strip()
+                if label:
+                    labels.append(label.lower())  # normalize case
+            if labels:
+                per_record.setdefault(rid, set()).update(labels)
+                n_added += 1
+        print(f"  {path.name}: {n_added} labeled records → {len(per_record)} cumulative")
 
-    # Build stage1 codes: deduplicated theme labels per record, semicolon-joined
-    stage1 = {}
-    for rid, labels in per_record.items():
-        seen = []
-        for label in labels:
-            if label not in seen:
-                seen.append(label)
-        if seen:
-            stage1[rid] = "; ".join(seen[:5])  # cap at 5 unique labels
-
-    return stage1
+    return per_record
 
 
 def load_all_records_for_coding() -> list[dict]:
-    """
-    Load all R2 records that have consensus annotations, for Stage 4 theme coding.
-    Returns records with _record_id field set.
-    """
+    """Load all R2 consensus records for Stage 4 theme coding."""
     records = []
     erc_path = CONSENSUS_DIR / "erc_annotations.json"
     if erc_path.exists():
@@ -126,8 +129,7 @@ def load_all_records_for_coding() -> list[dict]:
             text = (r.get("raw_text") or "").strip()
             if len(text) < 20:
                 continue
-            rid = _record_id_erc(r)
-            records.append({**r, "_record_id": rid})
+            records.append({**r, "_record_id": _record_id_erc(r)})
 
     a2a_path = CONSENSUS_DIR / "a2a_annotations.json"
     if a2a_path.exists():
@@ -137,16 +139,56 @@ def load_all_records_for_coding() -> list[dict]:
             text = (r.get("raw_text") or "").strip()
             if len(text) < 20:
                 continue
-            rid = _record_id_a2a(r)
-            records.append({**r, "_record_id": rid})
+            records.append({**r, "_record_id": _record_id_a2a(r)})
 
     return records
 
 
+def aggregate_in_batches(client, model: str, labels: list[str],
+                          batch_size: int = 100) -> dict[str, list[str]]:
+    """
+    Aggregate labels into themes, potentially in multiple batches + merge round.
+    If single call returns empty, try batch-wise + merge.
+    """
+    # First try: all at once
+    raw = run_aggregator(client, model, labels)
+    if raw and len(raw) >= 3:
+        print(f"    aggregated {len(labels)} labels → {len(raw)} themes (single pass)")
+        return raw
+
+    # Fallback: split into batches of batch_size
+    print(f"    single pass returned {len(raw)} themes — trying batched ({batch_size}/batch)…")
+    batches = [labels[i:i + batch_size] for i in range(0, len(labels), batch_size)]
+    all_clusters: dict[str, list[str]] = {}
+    for bi, batch in enumerate(batches):
+        result = run_aggregator(client, model, batch)
+        if result:
+            all_clusters.update(result)
+        print(f"    batch {bi+1}/{len(batches)}: {len(batch)} labels → {len(result)} themes")
+        time.sleep(0.5)
+
+    if len(all_clusters) >= 3:
+        return all_clusters
+
+    # Last resort: merge the batched results via another LLM call
+    print(f"    batched returned {len(all_clusters)} themes — merging…")
+    merge_labels = list(all_clusters.keys())
+    merged = run_aggregator(client, model, merge_labels)
+    if merged and len(merged) >= 3:
+        return merged
+
+    # Absolute fallback: return whatever we have
+    return all_clusters if all_clusters else {}
+
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description="R2 Thematic-LM pipeline (Stages 2-4)")
-    parser.add_argument("--backend", default="deepseek", choices=list(BACKENDS))
+    parser = argparse.ArgumentParser(description="R2 Thematic-LM pipeline (Stages 2-4, fixed)")
+    parser.add_argument("--backend", required=True, choices=list(BACKENDS))
     parser.add_argument("--batch-size", type=int, default=15)
+    parser.add_argument("--aggregation-labels", type=int, default=200,
+                        help="Number of top-frequency labels to send to aggregator")
+    parser.add_argument("--force", action="store_true",
+                        help="Ignore cached stages and re-run everything")
     args = parser.parse_args()
 
     cfg = BACKENDS[args.backend]
@@ -158,63 +200,106 @@ def main() -> None:
     client = OpenAI(api_key=api_key, base_url=cfg["base_url"])
     model = cfg["model"]
 
-    stage1_path = OUT_DIR / "stage1_codes.json"
-    stage2_path = OUT_DIR / "stage2_clusters.json"
-    stage3_path = OUT_DIR / "stage3_codebook.json"
-    final_coded = OUT_DIR / "coded_records.json"
-    final_themes = OUT_DIR / "themes.json"
+    # Per-model output
+    model_out = OUT_DIR / args.backend
+    model_out.mkdir(parents=True, exist_ok=True)
 
-    print(f"=== R2 Thematic-LM (Stages 2–4) ===")
+    stage1_path = model_out / "stage1_codes.json"
+    stage2_path = model_out / "stage2_clusters.json"
+    stage3_path = model_out / "stage3_codebook.json"
+    final_coded = model_out / "coded_records.json"
+    final_themes = model_out / "themes.json"
+
+    print(f"=== R2 Thematic-LM (Stages 2–4, FIXED) ===")
     print(f"Backend: {args.backend} / {model}")
-    print(f"Output:  {OUT_DIR}\n")
+    print(f"Output:  {model_out}\n")
 
-    # ── Stage 1: Load from pre-computed thematic annotations ────────────────
-    print("[Stage 1] Loading from pre-computed thematic annotations…")
-    erc_codes = load_stage1_from_thematic(THEMATIC_DIR, _record_id_erc)
-    a2a_codes = load_stage1_from_thematic(THEMATIC_DIR / "a2a", _record_id_a2a)
-    all_codes = {**erc_codes, **a2a_codes}
-    print(f"  ERC open codes: {len(erc_codes)}")
-    print(f"  A2A open codes: {len(a2a_codes)}")
-    print(f"  Total: {len(all_codes)}")
-    _save(stage1_path, all_codes)
-    print(f"  Saved stage1_codes.json")
+    # ── Stage 1: Extract INDIVIDUAL labels from thematic annotations ──────
+    if stage1_path.exists() and not args.force:
+        per_record = {k: set(v) for k, v in json.loads(stage1_path.read_text()).items()}
+        print(f"[Stage 1] Loaded cached: {len(per_record)} records with individual labels")
+    else:
+        print("[Stage 1] Extracting individual theme labels from all models…")
+        erc_labels_sets = load_stage1_individual(THEMATIC_DIR, _record_id_erc)
+        a2a_labels_sets = load_stage1_individual(THEMATIC_DIR / "a2a", _record_id_a2a)
+        per_record = {**erc_labels_sets, **a2a_labels_sets}
+        # Save as JSON-serializable {rid: list of labels}
+        serializable = {rid: sorted(list(labels)) for rid, labels in per_record.items()}
+        _save(stage1_path, serializable)
+        print(f"  ERC records: {len(erc_labels_sets)}")
+        print(f"  A2A records: {len(a2a_labels_sets)}")
+        print(f"  Total: {len(per_record)} records with individual labels")
 
-    # ── Stage 2: Aggregator ──────────────────────────────────────────────────
-    if stage2_path.exists():
+    # ── Stage 2: Aggregator (frequency-sorted, not random) ────────────────
+    if stage2_path.exists() and not args.force:
         clusters = json.loads(stage2_path.read_text())
         print(f"\n[Stage 2] Loaded cached clusters ({len(clusters)} themes)")
     else:
-        import random
-        unique_codes = list(set(all_codes.values()))
-        if len(unique_codes) > 300:
-            random.seed(42)
-            sampled = random.sample(unique_codes, 300)
-            print(f"\n[Stage 2] Aggregating sample of 300 / {len(unique_codes)} unique codes…")
-        else:
-            sampled = unique_codes
-            print(f"\n[Stage 2] Aggregating {len(sampled)} unique codes…")
-        clusters = run_aggregator(client, model, sampled)
+        # Collect ALL individual labels with frequency
+        label_freq: Counter = Counter()
+        for labels in per_record.values():
+            label_freq.update(labels)
+
+        # Use top-K by frequency instead of random sample
+        top_labels = [lbl for lbl, _ in label_freq.most_common(args.aggregation_labels)]
+        print(f"\n[Stage 2] Aggregating top {len(top_labels)} labels "
+              f"(from {len(label_freq)} unique) by frequency…")
+        print(f"  Top-5: {top_labels[:5]} (freq: {[label_freq[l] for l in top_labels[:5]]})")
+
+        clusters = aggregate_in_batches(client, model, top_labels, batch_size=100)
         _save(stage2_path, clusters)
         print(f"  Done — {len(clusters)} raw theme clusters")
+        if len(clusters) < 3:
+            print(f"  ⚠ WARNING: Only {len(clusters)} clusters — may need manual fix")
+            for k, v in list(clusters.items())[:5]:
+                print(f"    {k}: {v[:3]}...")
 
-    # ── Stage 3: Reviewer ────────────────────────────────────────────────────
-    if stage3_path.exists():
+    # ── Stage 3: Reviewer ─────────────────────────────────────────────────
+    if stage3_path.exists() and not args.force:
         codebook = json.loads(stage3_path.read_text())
         print(f"\n[Stage 3] Loaded cached codebook ({len(codebook)} themes)")
     else:
-        print("\n[Stage 3] Reviewing and refining codebook…")
-        codebook = run_reviewer(client, model, clusters)
-        _save(stage3_path, codebook)
-        print(f"  Done — {len(codebook)} themes")
+        if not clusters or len(clusters) < 2:
+            print(f"\n[Stage 3] ⚠ Insufficient clusters ({len(clusters)}) — "
+                  f"building fallback codebook from top labels")
+            # Fallback: use top-15 labels as themes
+            label_freq = Counter()
+            for labels in per_record.values():
+                label_freq.update(labels)
+            top = label_freq.most_common(15)
+            codebook = []
+            for i, (label, cnt) in enumerate(top):
+                codebook.append({
+                    "theme_id": f"T{i+1:02d}",
+                    "label": label.title(),
+                    "description": f"Theme covering {label} and related concepts ({cnt} occurrences).",
+                    "codes": [label],
+                })
+            _save(stage3_path, codebook)
+            print(f"  Fallback codebook: {len(codebook)} themes from top labels")
+        else:
+            print("\n[Stage 3] Reviewing and refining codebook…")
+            codebook = run_reviewer(client, model, clusters)
+            _save(stage3_path, codebook)
+            print(f"  Done — {len(codebook)} themes in final codebook")
         for entry in codebook:
-            print(f"  {entry['theme_id']}: {entry['label']}")
+            print(f"  {entry.get('theme_id','?')}: {entry.get('label','?')}")
 
-    # ── Stage 4: Theme coder ─────────────────────────────────────────────────
-    if final_coded.exists():
+    # ── Stage 4: Theme coder ──────────────────────────────────────────────
+    if final_coded.exists() and not args.force:
         coded_existing: dict = {
             c["record_id"]: c for c in json.loads(final_coded.read_text())
         }
-        print(f"\n[Stage 4] Resuming — {len(coded_existing)} already coded")
+        # Remove records where theme_id is "Unclassified" and confidence is "low"
+        pending = {rid: c for rid, c in coded_existing.items()
+                   if c["theme_id"] == "Unclassified" and c.get("confidence") == "low"}
+        if pending:
+            print(f"\n[Stage 4] Resuming — {len(coded_existing)} coded "
+                  f"({len(pending)} low-confidence pending retry)")
+            for rid in pending:
+                del coded_existing[rid]
+        else:
+            print(f"\n[Stage 4] Resuming — {len(coded_existing)} already coded")
     else:
         coded_existing = {}
 
@@ -226,9 +311,15 @@ def main() -> None:
     batches = [todo[i:i + args.batch_size] for i in range(0, len(todo), args.batch_size)]
     print(f"  Coding {len(todo)} records in {len(batches)} batches…")
 
+    errs = 0
     for batch_idx, batch in enumerate(batches):
-        results = run_theme_coder_batch(client, model, batch, codebook)
+        results = run_theme_coder_batch(client, model, codebook, batch)
+        n_classified = 0
         for item in results:
+            if item["theme_id"] == "Unclassified":
+                errs += 1
+            else:
+                n_classified += 1
             coded_existing[item["record_id"]] = {
                 "record_id": item["record_id"],
                 "theme_id": item["theme_id"],
@@ -236,20 +327,20 @@ def main() -> None:
             }
         if (batch_idx + 1) % 10 == 0 or batch_idx == len(batches) - 1:
             _save(final_coded, list(coded_existing.values()))
-            print(f"  … batch {batch_idx+1}/{len(batches)} saved "
-                  f"({len(coded_existing)} total)", flush=True)
+            elapsed = batch_idx + 1
+            print(f"  … batch {elapsed}/{len(batches)} saved "
+                  f"({len(coded_existing)} total, {errs} unclassified)", flush=True)
         time.sleep(0.3)
 
     _save(final_coded, list(coded_existing.values()))
     _save(final_themes, codebook)
 
-    # Summary
     total = len(coded_existing)
     classified = sum(1 for v in coded_existing.values() if v["theme_id"] != "Unclassified")
     print(f"\n[Stage 4] Done — {classified}/{total} records classified "
           f"({classified/total*100:.1f}% coverage)")
 
-    print(f"\nR2 Thematic-LM complete. Outputs: {OUT_DIR}")
+    print(f"\nR2 Thematic-LM ({args.backend}) complete. Outputs: {model_out}")
 
 
 if __name__ == "__main__":

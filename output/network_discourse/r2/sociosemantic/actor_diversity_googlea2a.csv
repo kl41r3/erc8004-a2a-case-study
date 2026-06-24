@@ -1,733 +1,714 @@
 author,n_comments,n_themes,entropy,gini,top_theme,stakeholder_institution
-holtskinner,357,4,1.1449602907029945,0.6016806722689076,T01_Technical,Google
-darrelmiller,281,3,0.9607339134708754,0.6804270462633453,T01_Technical,Google A2A
-ognis1205,151,4,1.170890949756336,0.6357615894039736,T01_Technical,ACP
-kthota-g,124,2,0.9235785996175947,0.6645161290322581,T01_Technical,Google
-Tehsmash,103,3,0.7761657190257949,0.7184466019417477,T01_Technical,Independent
-pstephengoogle,93,3,0.7912211865649786,0.713978494623656,T01_Technical,Google
-mikeas1,79,2,0.4318049942752078,0.7645569620253165,T01_Technical,Google
-darkhaniop,68,3,0.9771064011533365,0.6705882352941177,T01_Technical,Independent
-yarolegovich,61,2,0.34918437350730797,0.7737704918032788,T01_Technical,Independent
-swapydapy,49,3,0.7149757169489891,0.726530612244898,T01_Technical,Google
-chorghemaruti64-creator,48,2,0.1460942501201363,0.7916666666666667,T01_Technical,Independent
-zeroasterisk,43,3,1.136094248732146,0.586046511627907,T01_Technical,OpenClaw
-amye,42,3,0.530980922468767,0.7523809523809524,T02_Process,Google
-muscariello,41,3,1.0767129416796726,0.6439024390243904,T01_Technical,Google A2A
-rajeshvelicheti,37,2,0.9867867202680318,0.6270270270270271,T01_Technical,rajeshvelicheti
-vishalmysore,37,1,0.0,0.8,T01_Technical,Google A2A governance
-izzymsft,33,2,0.7990485210442682,0.7030303030303031,T01_Technical,Google A2A
-lukehinds,32,4,1.3548425676587292,0.6000000000000001,T01_Technical,GitHub
-edenreich,31,2,0.869137580612638,0.6838709677419355,T01_Technical,Independent
-maeste,31,3,0.7538275145266042,0.7225806451612904,T01_Technical,Independent
-vinoo999,30,3,0.9851717468169149,0.6799999999999999,T01_Technical,GitHub A2A
-whitlockjc,30,2,0.5665095065529053,0.7466666666666668,T01_Technical,Google A2A
-imran-siddique,27,3,0.908653933541588,0.6962962962962964,T01_Technical,Independent
-herczyn,27,2,0.5032583347756457,0.7555555555555555,T01_Technical,Google
-didier-durand,26,2,0.7793498372920851,0.7076923076923078,T01_Technical,Unknown
-git-vote,25,2,0.5293608652873644,0.752,T02_Process,GitHub A2A
-dmandar,24,2,0.8112781244591328,0.7,T01_Technical,Independent
-abiramit5,23,3,1.1625633078480364,0.6260869565217391,T02_Process,Independent
-madankumarpichamuthu,22,2,0.43949698692151334,0.7636363636363637,T01_Technical,Independent
-robert-at-pretension-io,22,3,0.699857857026928,0.7272727272727273,T01_Technical,GitHub user
-moonbox3,21,2,0.9852281360342515,0.6285714285714286,T01_Technical,Google A2A
-EditUndo,20,3,0.747584679824574,0.72,T01_Technical,artinet-project
-Linux2010,20,2,0.9340680553754911,0.6600000000000001,T01_Technical,Community Contributor
-whysage,20,2,0.8112781244591328,0.7,T01_Technical,Independent
-djsamseng,19,2,0.7424875695421236,0.7157894736842105,T01_Technical,Independent
-The-Nexus-Guard,19,1,0.0,0.8,T01_Technical,Independent
-ToddSegal,18,2,0.964078764808229,0.6444444444444446,T01_Technical,Google A2A
-ishymko,16,2,0.5435644431995964,0.75,T01_Technical,Google
-matoushavlena,15,2,0.9182958340544894,0.6666666666666667,T01_Technical,Google A2A
-alexec,15,2,0.3533593350214213,0.7733333333333334,T01_Technical,GitHub A2A
-c-mysec,15,1,0.0,0.8,T01_Technical,Google A2A
-gijswalraven,15,2,0.5665095065529053,0.7466666666666668,T01_Technical,Independent
-SecureAgentTools,15,3,0.9055872616982602,0.6933333333333334,T01_Technical,Independent
-benclarkeio,14,3,1.0949143184120973,0.6571428571428573,T01_Technical,benclarkeio
-ai-boost,13,3,1.2957378005380122,0.5846153846153848,T02_Process,ai-boost
-koverholt,13,2,0.3912435636292556,0.7692307692307694,T02_Process,Google
-DJ-os,13,2,0.6193821946787638,0.7384615384615385,T02_Process,Google
-princejha95,12,2,0.6500224216483541,0.7333333333333334,T01_Technical,Independent
-CHARLIE1210-A,12,2,0.9798687566511527,0.6333333333333333,T01_Technical,Google A2A
-oliverlabs,12,2,0.9798687566511527,0.6333333333333333,T01_Technical,Google
-cdavernas,11,3,1.4353713907745334,0.5454545454545454,T01_Technical,Google A2A
-Lancetnik,11,2,0.43949698692151334,0.7636363636363637,T01_Technical,Google A2A
-logan272,11,2,0.43949698692151334,0.7636363636363637,T01_Technical,Independent
-dgenio,11,1,0.0,0.8,T01_Technical,Google
-HeetVekariya,11,2,0.8453509366224364,0.6909090909090909,T01_Technical,Independent
-lkawka,10,2,0.8812908992306927,0.6799999999999999,T01_Technical,Google
-patwhite,10,1,0.0,0.8,T01_Technical,Scaled MCP
-douglasborthwick-crypto,10,2,0.46899559358928117,0.76,T01_Technical,Independent
-ydennisy,9,2,0.9182958340544894,0.6666666666666667,T01_Technical,Google A2A governance
-dinesh707,9,2,0.5032583347756457,0.7555555555555555,T01_Technical,Google A2A
-JKHeadley,9,1,0.0,0.8,T01_Technical,MoltBridge
-DracoBlue,9,2,0.5032583347756457,0.7555555555555555,T01_Technical,Developer Community
-beonde,9,2,0.7642045065086203,0.7111111111111112,T01_Technical,Google A2A
-Fannon,9,2,0.5032583347756457,0.7555555555555555,T01_Technical,Google A2A
-vongosling,9,2,0.5032583347756457,0.7555555555555555,T01_Technical,Independent
-jmandel,9,2,0.5032583347756457,0.7555555555555555,T01_Technical,Google
-jland-redhat,9,2,0.7642045065086203,0.7111111111111112,T01_Technical,Independent
-egor-baranov,8,1,0.0,0.8,T01_Technical,Google A2A
-laurentsimon,8,1,0.0,0.8,T01_Technical,Google
-guglielmo-san,8,1,0.0,0.8,T01_Technical,Independent
-inesmcm26,8,2,0.5435644431995964,0.75,T01_Technical,Independent
-KomachiSion,8,1,0.0,0.8,T01_Technical,Independent
-bobtista,8,1,0.0,0.8,T01_Technical,Google A2A
-davidlivekoo2012,8,2,0.5435644431995964,0.75,T01_Technical,Google
-siacomuzzi,8,2,0.5435644431995964,0.75,T01_Technical,Google
-aglicacha,7,2,0.5916727785823274,0.7428571428571429,T01_Technical,Independent
-OyaAIProd,7,3,1.3787834934861756,0.5714285714285714,T01_Technical,Independent
-vizmut-labs,7,1,0.0,0.8,T01_Technical,vizmut-labs
-justfalter,7,2,0.5916727785823274,0.7428571428571429,T01_Technical,Independent
-aickin,7,2,0.5916727785823274,0.7428571428571429,T01_Technical,Google
-robomotic,7,1,0.0,0.8,T01_Technical,GitHub community member
-zzxwill,7,1,0.0,0.8,T01_Technical,Independent
-syllogismos,7,2,0.8631205685666311,0.6857142857142857,T01_Technical,Google A2A
-spricet,7,1,0.0,0.8,T01_Technical,Independent
-codefromthecrypt,7,2,0.8631205685666311,0.6857142857142857,T01_Technical,GitHub community member
-Copilot,7,2,0.5916727785823274,0.7428571428571429,T01_Technical,Google
-xtrasmal,7,2,0.5916727785823274,0.7428571428571429,T01_Technical,GitHub A2A
-jmesnil,6,1,0.0,0.8,T01_Technical,Google
-logan-markewich,6,2,0.9182958340544894,0.6666666666666667,T01_Technical,Google A2A
-dfdumaresq,6,1,0.0,0.8,T01_Technical,Google A2A
-yedidel,6,2,0.9182958340544894,0.6666666666666667,T01_Technical,Independent
-palladius,6,2,0.9182958340544894,0.6666666666666667,T01_Technical,Google
-sms03,6,2,1.0,0.6000000000000001,T01_Technical,Google A2A
-jebinj22,6,2,0.6500224216483541,0.7333333333333334,T01_Technical,Independent
-jonigl,6,2,0.9182958340544894,0.6666666666666667,T01_Technical,Independent
-ajaynagotha,6,4,1.7924812503605783,0.40000000000000013,T02_Process,Google A2A
-sfitts,6,1,0.0,0.8,T01_Technical,Google
-kabir,6,1,0.0,0.8,T01_Technical,Independent
-pwwpche,6,3,1.2516291673878228,0.6000000000000001,T01_Technical,Google
-daavoo,6,2,0.9182958340544894,0.6666666666666667,T01_Technical,Independent
-MG1-4,6,2,0.6500224216483541,0.7333333333333334,T01_Technical,GitHub A2A
-LingJingMaster,6,1,0.0,0.8,T01_Technical,Google A2A governance
-binbandit,6,2,0.6500224216483541,0.7333333333333334,T01_Technical,Google A2A
-iliesicatrinel,6,1,0.0,0.8,T01_Technical,Google
-Phil-Hills,6,2,0.6500224216483541,0.7333333333333334,T01_Technical,Independent
-ThierryThevenet,5,1,0.0,0.8,T01_Technical,Independent
-mcglabs,5,1,0.0,0.8,T01_Technical,Independent
-joshhalley,5,3,1.370950594454669,0.56,T02_Process,Independent
-CZH-THU,5,1,0.0,0.8,T01_Technical,Independent
-sing1ee,5,2,0.9709505944546688,0.6400000000000001,T01_Technical,Developer
-mindpower,5,2,0.9709505944546688,0.6400000000000001,T01_Technical,Google
-Kevin1466,5,1,0.0,0.8,T01_Technical,Independent
-ehsavoie,5,1,0.0,0.8,T01_Technical,Independent
-suvedo,5,1,0.0,0.8,T01_Technical,client
-mihaimaruseac,5,2,0.7219280948873623,0.72,T01_Technical,Google
-blkt,5,1,0.0,0.8,T01_Technical,Independent
-grll,5,1,0.0,0.8,T01_Technical,Independent
-everettVT,5,2,0.7219280948873623,0.72,T01_Technical,Independent
-KrshnKush,5,2,0.9709505944546688,0.6400000000000001,T01_Technical,Independent
-daltonnyx,5,1,0.0,0.8,T01_Technical,Developer
-gNtino,5,1,0.0,0.8,T01_Technical,Google A2A
-CakeCrusher,5,2,0.7219280948873623,0.72,T01_Technical,Independent
-gagb,4,1,0.0,0.8,T01_Technical,Google A2A
-satendrakumar,4,2,0.8112781244591328,0.7,T01_Technical,Independent
-fernando-torres-blip-ai,4,1,0.0,0.8,T01_Technical,Google A2A
-rajhanshdhami,4,2,1.0,0.6000000000000001,T01_Technical,GitHub A2A
-barnendu,4,1,0.0,0.8,T01_Technical,GitHub A2A
-thebenignhacker,4,1,0.0,0.8,T01_Technical,Independent
-graemefoster,4,1,0.0,0.8,T01_Technical,Independent
-tomsun28,4,2,0.8112781244591328,0.7,T01_Technical,Independent
-dhdanie,4,1,0.0,0.8,T01_Technical,Independent
-ibrahimokuyucu,4,2,0.8112781244591328,0.7,T01_Technical,Google A2A
-brycewcole,4,2,1.0,0.6000000000000001,T01_Technical,Google
-andreibesleaga,4,1,0.0,0.8,T01_Technical,Enterprise systems
-architectureofthings,4,1,0.0,0.8,T01_Technical,Independent
-sandyskies,4,2,1.0,0.6000000000000001,T01_Technical,Independent
-sandangel,4,1,0.0,0.8,T01_Technical,Independent
-thisisnotapril,4,1,0.0,0.8,T02_Process,Google
-arislan-lilo,4,2,1.0,0.6000000000000001,T01_Technical,Independent
-ritsuki1227,4,2,1.0,0.6000000000000001,T01_Technical,Independent
-adarshnarayanhegde,4,2,0.8112781244591328,0.7,T01_Technical,Independent
-fjuma,4,1,0.0,0.8,T01_Technical,Google
-mikumifa,4,3,1.5,0.5,T01_Technical,Independent
-msardara,4,1,0.0,0.8,T01_Technical,Google
-meetrais,4,2,0.8112781244591328,0.7,T01_Technical,Independent
-patwlan,4,1,0.0,0.8,T01_Technical,Independent
-IhateCreatingUserNames2,4,2,0.8112781244591328,0.7,T01_Technical,Google A2A
-HungYangChang,4,2,0.8112781244591328,0.7,T01_Technical,Independent
-HomeroRR,4,1,0.0,0.8,T01_Technical,Google A2A governance
-JeromeOvO,4,1,0.0,0.8,T01_Technical,Independent
-widrss,4,3,1.5,0.5,T01_Technical,Google A2A
-ReubenBond,4,1,0.0,0.8,T01_Technical,Independent
-michelschep,4,1,0.0,0.8,T01_Technical,GitHub community member
-yangyang-yyy,4,1,0.0,0.8,T01_Technical,Independent
-powmax-commits,4,1,0.0,0.8,T01_Technical,Google
-yasonk,4,2,0.8112781244591328,0.7,T01_Technical,Independent
-yzhao244,4,2,0.8112781244591328,0.7,T01_Technical,Google
-xui-will,4,2,0.8112781244591328,0.7,T01_Technical,Google
-AlexsJones,4,2,0.8112781244591328,0.7,T01_Technical,Google A2A
-AlbumenJ,4,2,0.8112781244591328,0.7,T01_Technical,Google A2A
-niguowei44,4,1,0.0,0.8,T01_Technical,Independent
-mvakoc,4,2,0.8112781244591328,0.7,T02_Process,Google
-vladislavdonchev,4,1,0.0,0.8,T01_Technical,Independent-AI-Labs
-Realsid,4,2,1.0,0.6000000000000001,T01_Technical,Google A2A
-zhenjunMa,4,2,0.8112781244591328,0.7,T01_Technical,Independent
-wilsonsilva,4,2,0.8112781244591328,0.7,T01_Technical,Independent
-lorenzocipriani-huawei,4,2,0.8112781244591328,0.7,T01_Technical,huawei
-tatanka1212,3,1,0.0,0.8,T01_Technical,Google A2A
-hoonji,3,1,0.0,0.8,T01_Technical,Google
-Mocuto,3,2,0.9182958340544894,0.6666666666666667,T01_Technical,Independent
-rokonec,3,3,1.584962500721156,0.40000000000000013,T01_Technical,Independent
-irshadnilam,3,1,0.0,0.8,T01_Technical,GitHub A2A (discussion)
-maxekman,3,1,0.0,0.8,T01_Technical,Developer Community
-MengJiapeng,3,1,0.0,0.8,T01_Technical,Independent
-wushubang,3,1,0.0,0.8,T01_Technical,Independent
-acensia,3,1,0.0,0.8,T01_Technical,GitHub A2A
-JayBhadiyadraInstanceIT,3,1,0.0,0.8,T01_Technical,Independent
-kdenhartog,3,1,0.0,0.8,T01_Technical,Independent
-pascal910107,3,1,0.0,0.8,T01_Technical,Independent
-salqadri,3,2,0.9182958340544894,0.6666666666666667,T01_Technical,Independent
-HaohanTsao,3,1,0.0,0.8,T01_Technical,Google A2A
-dayuyang1999,3,1,0.0,0.8,T01_Technical,Google A2A
-deepakskhetwal,3,2,0.9182958340544894,0.6666666666666667,T02_Process,Unknown
-Frankdog,3,1,0.0,0.8,T01_Technical,Independent
-gregboero,3,1,0.0,0.8,T01_Technical,GitHub community member
-ysxu666,3,1,0.0,0.8,T01_Technical,Independent
-ducknificient,3,1,0.0,0.8,T01_Technical,Independent
-oopslink,3,1,0.0,0.8,T01_Technical,Independent
-muthub-ai,3,2,0.9182958340544894,0.6666666666666667,T01_Technical,Independent
-AlokRanjanSwain,3,1,0.0,0.8,T01_Technical,Independent
-eli-osherovich,3,1,0.0,0.8,T01_Technical,Google
-shamblett,3,2,0.9182958340544894,0.6666666666666667,T01_Technical,Independent
-zoujie-ee,3,1,0.0,0.8,T01_Technical,Google
-zzstoatzz,3,2,0.9182958340544894,0.6666666666666667,T02_Process,Google A2A
-rohit2k21,3,2,0.9182958340544894,0.6666666666666667,T02_Process,Unknown
-tanemaki,3,2,0.9182958340544894,0.6666666666666667,T01_Technical,Independent
-abdibrokhim,3,1,0.0,0.8,T01_Technical,Independent
-rajib76,3,2,0.9182958340544894,0.6666666666666667,T01_Technical,GitHub A2A
-liuzengh,3,2,0.9182958340544894,0.6666666666666667,T02_Process,Google
-richgo,3,1,0.0,0.8,T01_Technical,Google
-RobinQu,3,1,0.0,0.8,T01_Technical,Independent
-richardanaya,3,1,0.0,0.8,T01_Technical,Independent
-promptrotator,3,2,0.9182958340544894,0.6666666666666667,T01_Technical,Independent
-johnson7788,3,1,0.0,0.8,T01_Technical,Independent
-ZapzCsgo,3,1,0.0,0.8,T01_Technical,Google
-lifieai,3,3,1.584962500721156,0.40000000000000013,T01_Technical,Lifie AI
-kshitizz36,3,2,0.9182958340544894,0.6666666666666667,T01_Technical,Google
-automateyournetwork,3,2,0.9182958340544894,0.6666666666666667,T01_Technical,Google A2A
-annicode01,3,1,0.0,0.8,T01_Technical,Independent
-tiswanso,3,1,0.0,0.8,T01_Technical,Google A2A
-scidomino,3,1,0.0,0.8,T01_Technical,Independent
-aeoess,3,1,0.0,0.8,T01_Technical,Independent
-NavtejMAQ,3,1,0.0,0.8,T01_Technical,Independent
-ptiper,3,1,0.0,0.8,T01_Technical,Independent
-101scholar,3,1,0.0,0.8,T01_Technical,service_provider
-jocelynh-microsoft,3,1,0.0,0.8,T01_Technical,Microsoft
-alan-silverstreams,3,1,0.0,0.8,T01_Technical,SilverstreamsAI
-alanyst,3,1,0.0,0.8,T01_Technical,Independent
-Paulchen5,3,3,1.584962500721156,0.40000000000000013,T01_Technical,Independent
-priyankjecrc,2,1,0.0,0.8,T01_Technical,Google A2A
-mprynce,2,1,0.0,0.8,T01_Technical,Google A2A
-jokemanfire,2,1,0.0,0.8,T01_Technical,Independent
-mjunaidca,2,1,0.0,0.8,T01_Technical,Google A2A
-mikesir87,2,2,1.0,0.6000000000000001,T01_Technical,GitHub
-mrorigo,2,2,1.0,0.6000000000000001,T01_Technical,Google A2A
-joevidev,2,2,1.0,0.6000000000000001,T01_Technical,Google A2A
-kurt-r2c,2,2,1.0,0.6000000000000001,T01_Technical,Google A2A
-kyleacmooney,2,1,0.0,0.8,T01_Technical,Google A2A
-jsahil,2,1,0.0,0.8,T01_Technical,Google A2A
-gpanakkal,2,1,0.0,0.8,T01_Technical,Google
-gspencergoog,2,2,1.0,0.6000000000000001,T01_Technical,Google
-mukteshkrmishra,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-gilamsalem,2,1,0.0,0.8,T01_Technical,Developer
-jtanningbed,2,2,1.0,0.6000000000000001,T01_Technical,Google A2A
-omkar-12bits,2,1,0.0,0.8,T01_Technical,Independent
-jwson-automation,2,1,0.0,0.8,T02_Process,Google A2A governance
-ghostdoglzd,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-geneknit,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-nithin-nk,2,1,0.0,0.8,T01_Technical,Independent
-gabayben,2,2,1.0,0.6000000000000001,T01_Technical,Google
-knuckles-stack,2,1,0.0,0.8,T01_Technical,Google
-qingyun-wu,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-lalrow,2,1,0.0,0.8,T01_Technical,Independent
-rodrigallardo,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-rebeccacamejo,2,1,0.0,0.8,T01_Technical,Independent
-pcingola,2,1,0.0,0.8,T01_Technical,Developer Community
-markgoho,2,1,0.0,0.8,T01_Technical,Independent
-marianogonzalez,2,1,0.0,0.8,T01_Technical,Independent
-marelab,2,2,1.0,0.6000000000000001,T01_Technical,Enterprise Developer
-manojsharmadcx,2,1,0.0,0.8,T01_Technical,Independent
-jeletor,2,1,0.0,0.8,T01_Technical,Google A2A
-manojk0303,2,1,0.0,0.8,T01_Technical,Google A2A
-peterwang2013,2,2,1.0,0.6000000000000001,T01_Technical,Google A2A
-robinmanuelthiel,2,2,1.0,0.6000000000000001,T01_Technical,Google
-jackwotherspoon,2,1,0.0,0.8,T01_Technical,Google A2A
-lrosenthol,2,1,0.0,0.8,T01_Technical,GitHub community
-pinchwork,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-jeanibarz,2,1,0.0,0.8,T01_Technical,Google
-postbird,2,1,0.0,0.8,T01_Technical,Independent
-rogpeppe,2,1,0.0,0.8,T01_Technical,Independent
-lukaszkostrzewa,2,1,0.0,0.8,T01_Technical,Google A2A
-jenish2917,2,1,0.0,0.8,T01_Technical,Independent
-iamrajiv,2,1,0.0,0.8,T01_Technical,Independent
-sangpire,2,2,1.0,0.6000000000000001,T01_Technical,Google
-rsoika,2,1,0.0,0.8,T01_Technical,Enterprise
-gulercan,2,1,0.0,0.8,T01_Technical,Google
-lambochen,2,1,0.0,0.8,T01_Technical,GitHub A2A
-gvdongen,2,1,0.0,0.8,T01_Technical,Google A2A
-jlfolland,2,1,0.0,0.8,T01_Technical,Independent
-liar666,2,1,0.0,0.8,T01_Technical,Independent
-lindsaydsgdnolan-eng,2,1,0.0,0.8,T01_Technical,Google
-richard-rance,2,1,0.0,0.8,T01_Technical,Google
-haxudev,2,1,0.0,0.8,T01_Technical,Google
-meguminnnnnnnnn,2,1,0.0,0.8,T01_Technical,Independent
-mdii,2,1,0.0,0.8,T01_Technical,Independent
-hieuminh65,2,1,0.0,0.8,T02_Process,Independent
-hkmo99,2,1,0.0,0.8,T01_Technical,Google
-hotdogarea,2,1,0.0,0.8,T01_Technical,Independent
-maxzyma,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-loganaden,2,1,0.0,0.8,T01_Technical,Independent
-lexi-k,2,1,0.0,0.8,T01_Technical,Independent
-nickossdev,2,1,0.0,0.8,T01_Technical,Google A2A
-bgauryy,2,1,0.0,0.8,T01_Technical,Independent
-tomkis,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-alampolee,2,2,1.0,0.6000000000000001,T01_Technical,Agent Builders
-alantriesagain,2,1,0.0,0.8,T02_Process,GitHub community member
-alextibbles,2,1,0.0,0.8,T01_Technical,Independent
-LI-Jinyang,2,1,0.0,0.8,T01_Technical,Independent
-Kludex,2,2,1.0,0.6000000000000001,T02_Process,Independent
-tucnak,2,1,0.0,0.8,T01_Technical,Google A2A
-tot-ra,2,1,0.0,0.8,T01_Technical,Google
-andrewdavidmackenzie,2,2,1.0,0.6000000000000001,T01_Technical,Red Hat
-anjanas,2,1,0.0,0.8,T01_Technical,Google
-tonycai,2,2,1.0,0.6000000000000001,T01_Technical,Google A2A
-xiongwenxin123,2,1,0.0,0.8,T01_Technical,Independent
-JadenHuang2023,2,1,0.0,0.8,T01_Technical,Independent
-awickham10,2,1,0.0,0.8,T01_Technical,Independent
-azyobuzin,2,1,0.0,0.8,T01_Technical,Independent
-TP9-dev,2,1,0.0,0.8,T01_Technical,Google
-xray918,2,1,0.0,0.8,T02_Process,A2Astore.co
-bittr-oss,2,1,0.0,0.8,T01_Technical,Independent
-bkowal,2,1,0.0,0.8,T01_Technical,Google
-JeremyFan,2,1,0.0,0.8,T01_Technical,Independent
-bparees,2,1,0.0,0.8,T01_Technical,Independent
-tanveer-builds,2,1,0.0,0.8,T01_Technical,Independent
-brunogrbavac,2,1,0.0,0.8,T01_Technical,Google A2A governance
-LucaButBoring,2,1,0.0,0.8,T01_Technical,Google A2A
-akshaykokane,2,2,1.0,0.6000000000000001,T01_Technical,Google
-akintunca,2,2,1.0,0.6000000000000001,T01_Technical,Developer
-LuckyLaochou,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-Tech-AML,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-StevenJohnson998,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-WaqasIshaque1,2,2,1.0,0.6000000000000001,T01_Technical,GitHub community member
-XiHeee,2,1,0.0,0.8,T02_Process,Google
-vineethsai,2,1,0.0,0.8,T01_Technical,Independent
-Zephyr-Blessed,2,1,0.0,0.8,T01_Technical,AgentRolodex
-ZhiLiGod,2,1,0.0,0.8,T01_Technical,Independent
-SergeyMenshykh,2,2,1.0,0.6000000000000001,T01_Technical,Google
-a2a-bot,2,2,1.0,0.6000000000000001,T01_Technical,Unknown
-aamonten,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-RubberGoose246,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-wenwenc9,2,1,0.0,0.8,T01_Technical,Independent
-Renator13,2,1,0.0,0.8,T01_Technical,Independent
-QuantumDaveLdn,2,2,1.0,0.6000000000000001,T01_Technical,GitHub A2A
-adsri,2,1,0.0,0.8,T01_Technical,Google
-MoonRendering,2,1,0.0,0.8,T01_Technical,Independent
-ahoblitz,2,1,0.0,0.8,T01_Technical,Independent
-Midnight-719,2,1,0.0,0.8,T01_Technical,Independent
-aimable100,2,1,0.0,0.8,T01_Technical,Tenuo
-ajoslin103,2,1,0.0,0.8,T01_Technical,Independent
-Meir017,2,1,0.0,0.8,T02_Process,Independent
-buddha314,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-volodya-lombrozo,2,1,0.0,0.8,T01_Technical,Independent
-syumpx,2,2,1.0,0.6000000000000001,T01_Technical,Google
-danbri,2,1,0.0,0.8,T01_Technical,Independent
-z2z23n0,2,1,0.0,0.8,T01_Technical,Google A2A
-danja,2,1,0.0,0.8,T01_Technical,Google A2A
-zamorofthat,2,1,0.0,0.8,T01_Technical,telecom
-CAG-nolan,2,2,1.0,0.6000000000000001,T01_Technical,Google
-zchee,2,1,0.0,0.8,T01_Technical,Google A2A
-Bill-XU,2,1,0.0,0.8,T01_Technical,GitHub community
-decode-mayank,2,1,0.0,0.8,T01_Technical,Independent
-Areo-Joe,2,1,0.0,0.8,T01_Technical,Google A2A
-zhengleibin,2,1,0.0,0.8,T01_Technical,Google
-AlexanderShenshin,2,1,0.0,0.8,T01_Technical,Independent
-AdarPeleg,2,1,0.0,0.8,T01_Technical,Independent
-eilon-shai,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-elCaptnCode,2,1,0.0,0.8,T02_Process,Community
-shaikmoeed,2,2,1.0,0.6000000000000001,T01_Technical,Independent
-flex-myeonghyeon,2,1,0.0,0.8,T01_Technical,Independent
-DGuhr,2,1,0.0,0.8,T01_Technical,Independent
-dchrty,2,2,1.0,0.6000000000000001,T01_Technical,Google R&D Engineer
-sxhxliang,2,1,0.0,0.8,T02_Process,Independent
-HadjievK,2,1,0.0,0.8,T01_Technical,GitHub community member
-syaproj,2,1,0.0,0.8,T01_Technical,Google
-yaronf,2,2,1.0,0.6000000000000001,T01_Technical,Google
-sunyuhan1998,2,1,0.0,0.8,T01_Technical,Independent
-yu-iskw,1,1,0.0,0.8,T01_Technical,Google
-prashubk,1,1,0.0,0.8,T02_Process,GitHub user
-wenxichen,1,1,0.0,0.8,T02_Process,Independent
-olileger,1,1,0.0,0.8,T01_Technical,Independent
-weiye-Lee,1,1,0.0,0.8,T01_Technical,Independent
-oabdelkarim,1,1,0.0,0.8,T01_Technical,Independent
-yadav,1,1,0.0,0.8,T01_Technical,Google
-waitasecant,1,1,0.0,0.8,T01_Technical,GitHub Community
-ppattanayak,1,1,0.0,0.8,T01_Technical,GitHub community
-wadrzl55333,1,1,0.0,0.8,T01_Technical,Independent
-y-tabata,1,1,0.0,0.8,T01_Technical,Google
-pausanchez,1,1,0.0,0.8,T01_Technical,Independent
-nvcnvn,1,1,0.0,0.8,T01_Technical,Google A2A
-vvasylkovskyi,1,1,0.0,0.8,T01_Technical,Independent
-no7dw,1,1,0.0,0.8,T01_Technical,Independent
-nitin737,1,1,0.0,0.8,T01_Technical,Independent
-zmstone,1,1,0.0,0.8,T02_Process,emqx
-vuminhoang,1,1,0.0,0.8,T01_Technical,Independent
-vorburger,1,1,0.0,0.8,T01_Technical,Google
-prassanna-ravishankar,1,1,0.0,0.8,T01_Technical,Independent
-xtrycatchx,1,1,0.0,0.8,T01_Technical,Independent
-nikhilmaddirala,1,1,0.0,0.8,T01_Technical,GitHub
-pauldotknopf,1,1,0.0,0.8,T01_Technical,Google
-zomux,1,1,0.0,0.8,T05_Off_topic,Independent
-whitestone0712,1,1,0.0,0.8,T01_Technical,engineers
-williamwa,1,1,0.0,0.8,T02_Process,Independent
-one-kash,1,1,0.0,0.8,T01_Technical,Independent
-ymmt2005,1,1,0.0,0.8,T01_Technical,Google A2A
-yukuanj,1,1,0.0,0.8,T01_Technical,Google
-x0cipher,1,1,0.0,0.8,T01_Technical,openhive
-yuluo-yx,1,1,0.0,0.8,T05_Off_topic,Google A2A
-yuqingzcn,1,1,0.0,0.8,T01_Technical,Unknown
-pcuci,1,1,0.0,0.8,T01_Technical,Independent
-wsandy1,1,1,0.0,0.8,T01_Technical,Independent
-ossfellow,1,1,0.0,0.8,T01_Technical,Independent
-perfectspr,1,1,0.0,0.8,T01_Technical,Independent
-z-a-f,1,1,0.0,0.8,T01_Technical,GitHub community member
-pavelgj,1,1,0.0,0.8,T02_Process,Google
-workkrinal-02,1,1,0.0,0.8,T01_Technical,Google A2A
-paparth,1,1,0.0,0.8,T01_Technical,Google
-pab1it0,1,1,0.0,0.8,T03_Governance,Google A2A
-pavankumarleo,1,1,0.0,0.8,T01_Technical,Independent
-openaitx-system,1,1,0.0,0.8,T02_Process,Unknown
-yichenj,1,1,0.0,0.8,T01_Technical,Independent
-y-d-y,1,1,0.0,0.8,T01_Technical,Independent
-phillipgibson,1,1,0.0,0.8,T01_Technical,Google
-pilartomas,1,1,0.0,0.8,T01_Technical,Google
-wjcwjc77,1,1,0.0,0.8,T01_Technical,Google A2A governance
-yangchi,1,1,0.0,0.8,T01_Technical,Google
-yairyairyair,1,1,0.0,0.8,T01_Technical,Unknown
-pointhalo,1,1,0.0,0.8,T01_Technical,Independent
-zhangjh,1,1,0.0,0.8,T01_Technical,Independent
-secprog,1,1,0.0,0.8,T01_Technical,Independent
-r3motecontrol,1,1,0.0,0.8,T01_Technical,Independent
-voidcenter,1,1,0.0,0.8,T01_Technical,Independent
-samuelemarro,1,1,0.0,0.8,T02_Process,GitHub user
-stkang90,1,1,0.0,0.8,T01_Technical,Google ADK
-sallespro,1,1,0.0,0.8,T01_Technical,Independent
-stojangb,1,1,0.0,0.8,T02_Process,Google
-suensky,1,1,0.0,0.8,T01_Technical,Google A2A
-suforme,1,1,0.0,0.8,T01_Technical,Google A2A
-sahilcreator07,1,1,0.0,0.8,T01_Technical,GitHub community member
-sunilp,1,1,0.0,0.8,T02_Process,Independent
-superjvjkdf,1,1,0.0,0.8,T02_Process,Unknown
-ryan-szns,1,1,0.0,0.8,T01_Technical,Google
-rwrz,1,1,0.0,0.8,T01_Technical,Independent
-ruanspies,1,1,0.0,0.8,T02_Process,GitHub A2A (discussion)
-ruFFaa,1,1,0.0,0.8,T01_Technical,Independent
-swarf00,1,1,0.0,0.8,T01_Technical,Independent
-rsgrewal-aws,1,1,0.0,0.8,T01_Technical,Unknown
-rrrodzilla,1,1,0.0,0.8,T01_Technical,Google A2A
-rootwarp,1,1,0.0,0.8,T01_Technical,Google
-ronantakizawa,1,1,0.0,0.8,T01_Technical,Google
-sambhav,1,1,0.0,0.8,T02_Process,Independent
-steren,1,1,0.0,0.8,T01_Technical,GitHub A2A (pr)
-prokolyvakis,1,1,0.0,0.8,T01_Technical,Independent
-staverm,1,1,0.0,0.8,T01_Technical,GitHub
-scvthorsten,1,1,0.0,0.8,T01_Technical,Independent
-sepo-eng,1,1,0.0,0.8,T01_Technical,Google
-shubham151,1,1,0.0,0.8,T01_Technical,Unknown
-satishkamavaram,1,1,0.0,0.8,T01_Technical,Independent
-shyam-habarakada,1,1,0.0,0.8,T03_Governance,GitHub A2A
-silverheartshafiq,1,1,0.0,0.8,T01_Technical,Google A2A
-simarsher220,1,1,0.0,0.8,T01_Technical,Google A2A
-sarvarimamov,1,1,0.0,0.8,T05_Off_topic,GitHub user
-sjanaX01,1,1,0.0,0.8,T01_Technical,Independent
-sarahjaz,1,1,0.0,0.8,T01_Technical,Red Hat
-skyfire-ammar,1,1,0.0,0.8,T01_Technical,Google A2A
-smileyboy2019,1,1,0.0,0.8,T01_Technical,Independent
-sondotpin,1,1,0.0,0.8,T01_Technical,Independent
-nidhi-pathak,1,1,0.0,0.8,T01_Technical,Independent
-sanjeevkumar761,1,1,0.0,0.8,T01_Technical,Independent
-sreejit-a,1,1,0.0,0.8,T01_Technical,Independent
-star-gazer111,1,1,0.0,0.8,T01_Technical,Independent
-takassh,1,1,0.0,0.8,T02_Process,Google A2A
-tangpingqingwa,1,1,0.0,0.8,T01_Technical,Independent
-ronaldpetty,1,1,0.0,0.8,T02_Process,Independent
-romairi,1,1,0.0,0.8,T01_Technical,Google A2A
-unizhu,1,1,0.0,0.8,T01_Technical,Independent
-uttej-vsk,1,1,0.0,0.8,T01_Technical,Independent
-vibnimit,1,1,0.0,0.8,T01_Technical,Software Engineer
-vicradon,1,1,0.0,0.8,T01_Technical,Google
-ragaoua,1,1,0.0,0.8,T01_Technical,Independent
-sd0ric4,1,1,0.0,0.8,T01_Technical,Google
-questflow-kyle,1,1,0.0,0.8,T01_Technical,Google A2A
-victordibia,1,1,0.0,0.8,T01_Technical,Google A2A governance
-qiansuo1,1,1,0.0,0.8,T01_Technical,Google A2A
-pvlasov,1,1,0.0,0.8,T01_Technical,Independent
-punkyoon,1,1,0.0,0.8,T01_Technical,Google
-victorinect,1,1,0.0,0.8,T01_Technical,Developer
-puchengy,1,1,0.0,0.8,T02_Process,Independent
-vincent-pli,1,1,0.0,0.8,T01_Technical,Independent
-pszjmb1,1,1,0.0,0.8,T01_Technical,Independent
-prosa21,1,1,0.0,0.8,T01_Technical,GitHub community member
-vladkol,1,1,0.0,0.8,T01_Technical,Independent
-raravena80,1,1,0.0,0.8,T02_Process,Google
-umariyoob,1,1,0.0,0.8,T02_Process,Independent
-raveenb,1,1,0.0,0.8,T01_Technical,Luminary Lane
-trssantos,1,1,0.0,0.8,T01_Technical,Conduit
-taosher,1,1,0.0,0.8,T01_Technical,Independent
-theosp,1,1,0.0,0.8,T02_Process,JustDo
-thestupd,1,1,0.0,0.8,T01_Technical,Developer Community
-tobiasopdenbrouw,1,1,0.0,0.8,T01_Technical,Independent
-tomasdev,1,1,0.0,0.8,T03_Governance,Independent
-torrmal,1,1,0.0,0.8,T01_Technical,Google A2A
-resouer,1,1,0.0,0.8,T01_Technical,Independent
-tunnckoCore,1,1,0.0,0.8,T01_Technical,Independent
-ravneetgrewal,1,1,0.0,0.8,T01_Technical,Google A2A
-reskin89,1,1,0.0,0.8,T01_Technical,Independent
-rescrv,1,1,0.0,0.8,T01_Technical,Developer
-tymorton,1,1,0.0,0.8,T01_Technical,Independent
-uestcbraid,1,1,0.0,0.8,T01_Technical,Independent
-ujnak,1,1,0.0,0.8,T01_Technical,Independent
-reatang,1,1,0.0,0.8,T01_Technical,Google
-rclayton-godaddy,1,1,0.0,0.8,T01_Technical,Independent
-sreanik,1,1,0.0,0.8,T01_Technical,Independent
-0xTomDaniel,1,1,0.0,0.8,T01_Technical,Independent
-nicholasbreckwoldt,1,1,0.0,0.8,T01_Technical,Independent
-alain-sv,1,1,0.0,0.8,T01_Technical,GitHub community member
-aviaviavi,1,1,0.0,0.8,T02_Process,Independent
-austinmyc,1,1,0.0,0.8,T01_Technical,Independent
-austin-tral,1,1,0.0,0.8,T01_Technical,Google
-ashwin63,1,1,0.0,0.8,T01_Technical,Google
-ashubham,1,1,0.0,0.8,T01_Technical,Google
-arunim1,1,1,0.0,0.8,T02_Process,GitHub community member
-andy1213aa,1,1,0.0,0.8,T01_Technical,Google
-andorsk,1,1,0.0,0.8,T02_Process,Google A2A governance
-amin-nikanjam,1,1,0.0,0.8,T01_Technical,Independent
-alinaqi,1,1,0.0,0.8,T01_Technical,Google A2A
-ali-0407,1,1,0.0,0.8,T01_Technical,Independent
-alexbainbridge,1,1,0.0,0.8,T01_Technical,Independent
-akdong91,1,1,0.0,0.8,T01_Technical,Independent
-beauduffy,1,1,0.0,0.8,T01_Technical,Google A2A
-aiagentexpert,1,1,0.0,0.8,T01_Technical,Independent
-agenttrust,1,1,0.0,0.8,T02_Process,Independent
-adv-11,1,1,0.0,0.8,T01_Technical,GitHub A2A
-adcentury,1,1,0.0,0.8,T01_Technical,Independent
-abhinav24jha,1,1,0.0,0.8,T01_Technical,Independent
-aazizisoufiane,1,1,0.0,0.8,T01_Technical,Developer
-aCanalez,1,1,0.0,0.8,T01_Technical,Google
-Zinni98,1,1,0.0,0.8,T01_Technical,Independent
-YuqingZhao,1,1,0.0,0.8,T01_Technical,Community Developer
-Yukinekoko,1,1,0.0,0.8,T02_Process,Independent
-YottaDev07,1,1,0.0,0.8,T01_Technical,Independent
-Yotaro111,1,1,0.0,0.8,T02_Process,Unknown
-batprem,1,1,0.0,0.8,T01_Technical,Independent
-bigmac7,1,1,0.0,0.8,T01_Technical,Google A2A
-XiaoTianCan,1,1,0.0,0.8,T01_Technical,Independent
-chris-j-handel,1,1,0.0,0.8,T01_Technical,MCP and A2A protocol trustees
-devsodhirao,1,1,0.0,0.8,T04_Economic,Independent
-developer-dexwox,1,1,0.0,0.8,T01_Technical,developer-dexwox
-debug313,1,1,0.0,0.8,T02_Process,Community Member
-dbkalaria,1,1,0.0,0.8,T01_Technical,Google A2A developer
-davrous,1,1,0.0,0.8,T01_Technical,GitHub community member
-dasiths,1,1,0.0,0.8,T01_Technical,Independent
-danieldai,1,1,0.0,0.8,T01_Technical,Google A2A
-ctorrao,1,1,0.0,0.8,T01_Technical,Google A2A
-coyotwill,1,1,0.0,0.8,T02_Process,Independent
-clintwar,1,1,0.0,0.8,T01_Technical,client
-cled,1,1,0.0,0.8,T01_Technical,Google
-cj2a7t,1,1,0.0,0.8,T01_Technical,Independent
-chl1123,1,1,0.0,0.8,T01_Technical,Independent
-birdayz,1,1,0.0,0.8,T01_Technical,Independent
-chicogong,1,1,0.0,0.8,T01_Technical,Independent
-chenglin130,1,1,0.0,0.8,T01_Technical,Google A2A
-chendatony31,1,1,0.0,0.8,T01_Technical,Independent
-cciwami,1,1,0.0,0.8,T01_Technical,Independent
-carlesarnal,1,1,0.0,0.8,T01_Technical,Apicurio Registry
-cardioailive1,1,1,0.0,0.8,T02_Process,Google
-bustosjuan,1,1,0.0,0.8,T01_Technical,Google A2A
-buithehai1994,1,1,0.0,0.8,T01_Technical,Independent
-bufdev,1,1,0.0,0.8,T01_Technical,Independent
-brasseld,1,1,0.0,0.8,T01_Technical,Independent
-borisalekseev,1,1,0.0,0.8,T01_Technical,Independent
-blakebrannon,1,1,0.0,0.8,T03_Governance,Google A2A
-Yoojkim,1,1,0.0,0.8,T01_Technical,Independent
-Vidit-Ostwal,1,1,0.0,0.8,T01_Technical,Independent
-nextpulse,1,1,0.0,0.8,T02_Process,Google
-DiTo97,1,1,0.0,0.8,T01_Technical,Independent
-Guidosalimbeni,1,1,0.0,0.8,T01_Technical,Google A2A governance
-Gioxxy,1,1,0.0,0.8,T01_Technical,Google
-GeunCheolOh,1,1,0.0,0.8,T01_Technical,Independent
-Francosimon53,1,1,0.0,0.8,T01_Technical,Google A2A
-FoolishDreamer,1,1,0.0,0.8,T01_Technical,Independent
-FailedNamed,1,1,0.0,0.8,T01_Technical,Independent
-Emilmeister,1,1,0.0,0.8,T01_Technical,Independent
-EliasLumer,1,1,0.0,0.8,T01_Technical,Independent
-Einsfier,1,1,0.0,0.8,T01_Technical,Independent
-Eggrolling-hu,1,1,0.0,0.8,T01_Technical,Google
-Do-tech-ai,1,1,0.0,0.8,T01_Technical,Independent
-DinoChiesa,1,1,0.0,0.8,T01_Technical,Google
-DavidMaister,1,1,0.0,0.8,T01_Technical,Unknown
-Hekafin,1,1,0.0,0.8,T01_Technical,GitHub A2A
-DL1231,1,1,0.0,0.8,T02_Process,Independent
-Crokily,1,1,0.0,0.8,T05_Off_topic,Independent
-Camusama,1,1,0.0,0.8,T01_Technical,Independent
-Boburmirzo,1,1,0.0,0.8,T01_Technical,GitHub community member
-AshuJoshi,1,1,0.0,0.8,T01_Technical,Google
-AndyStan112,1,1,0.0,0.8,T02_Process,Unknown
-AndrewPanB,1,1,0.0,0.8,T01_Technical,Independent
-AliMuhammadOfficial,1,1,0.0,0.8,T01_Technical,Unknown
-AIXerum,1,1,0.0,0.8,T01_Technical,AIXerum
-3nsai,1,1,0.0,0.8,T02_Process,OpenWebUI
-1GZW1,1,1,0.0,0.8,T01_Technical,Independent
-11Warrior,1,1,0.0,0.8,T02_Process,Community Member
-HV9903,1,1,0.0,0.8,T01_Technical,HV9903
-Ivanye2509,1,1,0.0,0.8,T01_Technical,Independent
-TangHui-Best,1,1,0.0,0.8,T02_Process,Unknown
-MrChengmo,1,1,0.0,0.8,T01_Technical,Independent
-SteveJamesDev,1,1,0.0,0.8,T01_Technical,Google A2A
-Starborn,1,1,0.0,0.8,T01_Technical,Independent
-SimplyKnownAsG,1,1,0.0,0.8,T01_Technical,Independent
-ShayakSarkar,1,1,0.0,0.8,T01_Technical,Independent
-SellJamHere,1,1,0.0,0.8,T01_Technical,Google A2A
-SecretiveShell,1,1,0.0,0.8,T01_Technical,Independent
-Roye-Wy,1,1,0.0,0.8,T01_Technical,Independent
-RoyAmitabh,1,1,0.0,0.8,T01_Technical,Google A2A governance
-RIKTESH89,1,1,0.0,0.8,T01_Technical,Google
-Pray4Love1,1,1,0.0,0.8,T01_Technical,Developer
-PoolDad-Legal,1,1,0.0,0.8,T01_Technical,Google
-PierreVannier,1,1,0.0,0.8,T01_Technical,Google A2A
-Miku-Kogane,1,1,0.0,0.8,T01_Technical,Independent
-JMLX42,1,1,0.0,0.8,T01_Technical,LX Industries
-MaryamZi,1,1,0.0,0.8,T01_Technical,Independent
-MaoJianwei,1,1,0.0,0.8,T01_Technical,Independent
-LordOfBug,1,1,0.0,0.8,T01_Technical,GitHub community member
-KiteSoar,1,1,0.0,0.8,T01_Technical,Google
-KanchiShimono,1,1,0.0,0.8,T01_Technical,Google A2A
-Joapfel,1,1,0.0,0.8,T01_Technical,Independent
-JinyongShin,1,1,0.0,0.8,T01_Technical,Google A2A
-JetsettingJames,1,1,0.0,0.8,T01_Technical,Independent
-JerryDaHeLian,1,1,0.0,0.8,T01_Technical,Independent
-JanPokorny,1,1,0.0,0.8,T01_Technical,Independent
-Jaland,1,1,0.0,0.8,T02_Process,Google A2A
-Jai0401,1,1,0.0,0.8,T01_Technical,GitHub A2A (pr)
-dhaan-ish,1,1,0.0,0.8,T01_Technical,Google A2A
-dibenedetto,1,1,0.0,0.8,T01_Technical,Google A2A
-dongyunpeng-sjtu,1,1,0.0,0.8,T01_Technical,Google A2A
-kpavlov,1,1,0.0,0.8,T01_Technical,JetBrains
-lumeche,1,1,0.0,0.8,T02_Process,Independent
-lucamontin,1,1,0.0,0.8,T01_Technical,Google A2A
-loganwolfe-ims,1,1,0.0,0.8,T01_Technical,Independent
-lj-raidiam,1,1,0.0,0.8,T01_Technical,Independent
-liuming-dev,1,1,0.0,0.8,T01_Technical,Enterprise Developer
-lerhaupt,1,1,0.0,0.8,T02_Process,Google
-leavez,1,1,0.0,0.8,T01_Technical,Google
-lahlfors,1,1,0.0,0.8,T03_Governance,Acme Corp
-kuldeepjain-bitcot,1,1,0.0,0.8,T01_Technical,Independent
-kukuyuhai,1,1,0.0,0.8,T01_Technical,Independent
-kubni,1,1,0.0,0.8,T01_Technical,Independent
-krebznet,1,1,0.0,0.8,T01_Technical,Independent Developer
-koyeliaghosh,1,1,0.0,0.8,T01_Technical,Independent
-mahghappy,1,1,0.0,0.8,T01_Technical,Independent
-koteswaran2186,1,1,0.0,0.8,T01_Technical,Independent
-kkgupta-github,1,1,0.0,0.8,T02_Process,Independent
-kirmorozov,1,1,0.0,0.8,T01_Technical,Independent
-kimsr96,1,1,0.0,0.8,T01_Technical,Google A2A
-kimehdgns,1,1,0.0,0.8,T01_Technical,Google
-kibitzing,1,1,0.0,0.8,T01_Technical,Independent
-kenhuangus,1,1,0.0,0.8,T01_Technical,Independent
-keenranger,1,1,0.0,0.8,T01_Technical,Google A2A
-kedoska,1,1,0.0,0.8,T01_Technical,Google
-kay-schmitteckert,1,1,0.0,0.8,T01_Technical,Google
-kadirpekel,1,1,0.0,0.8,T01_Technical,Independent
-k-jarzyna,1,1,0.0,0.8,T01_Technical,Google
-luyiourwong,1,1,0.0,0.8,T01_Technical,Google A2A
-mandle420,1,1,0.0,0.8,T01_Technical,Google A2A
-duglin,1,1,0.0,0.8,T01_Technical,Google
-mkschreder,1,1,0.0,0.8,T01_Technical,Google
-nerunja,1,1,0.0,0.8,T01_Technical,Independent
-neoUltra-66,1,1,0.0,0.8,T01_Technical,Independent
-nembal,1,1,0.0,0.8,T01_Technical,Google A2A governance
-needcoder,1,1,0.0,0.8,T03_Governance,Independent
-nbadf1981-tech,1,1,0.0,0.8,T01_Technical,Independent
-nandrews729,1,1,0.0,0.8,T01_Technical,Independent
-nandana,1,1,0.0,0.8,T02_Process,GitHub A2A
-nahapetyan-serob,1,1,0.0,0.8,T01_Technical,Google
-n1lanjan,1,1,0.0,0.8,T01_Technical,Independent
-mycosavant,1,1,0.0,0.8,T01_Technical,Independent
-mting806,1,1,0.0,0.8,T01_Technical,Google
-mskadu,1,1,0.0,0.8,T01_Technical,Independent
-mikestaub,1,1,0.0,0.8,T01_Technical,Independent
-manja316,1,1,0.0,0.8,T01_Technical,Independent
-mikeromano38,1,1,0.0,0.8,T01_Technical,Independent
-mikeedjones,1,1,0.0,0.8,T01_Technical,Independent
-mescaja,1,1,0.0,0.8,T01_Technical,Independent
-mempirate,1,1,0.0,0.8,T01_Technical,Independent
-melvinjlobos,1,1,0.0,0.8,T01_Technical,Developer
-mclenhard,1,1,0.0,0.8,T02_Process,Community
-mbleigh,1,1,0.0,0.8,T01_Technical,Google
-maxbrokman,1,1,0.0,0.8,T01_Technical,Google
-matsk-sinch,1,1,0.0,0.8,T01_Technical,Google
-martimfasantos,1,1,0.0,0.8,T01_Technical,Google
-marksal87,1,1,0.0,0.8,T01_Technical,Google A2A
-marketmaker4enterprise,1,1,0.0,0.8,T01_Technical,marketmaker4enterprise
-justin-octo,1,1,0.0,0.8,T03_Governance,Google A2A
-jrcks67,1,1,0.0,0.8,T01_Technical,Developer
-jpandrade30,1,1,0.0,0.8,T01_Technical,Google A2A
-fryfry33,1,1,0.0,0.8,T01_Technical,GitHub community member
-harris2012,1,1,0.0,0.8,T01_Technical,Google
-harrigan,1,1,0.0,0.8,T01_Technical,Independent
-hammadtq,1,1,0.0,0.8,T01_Technical,Independent
-hamidra,1,1,0.0,0.8,T01_Technical,Google A2A
-gyliu513,1,1,0.0,0.8,T01_Technical,Independent
-gukoff,1,1,0.0,0.8,T01_Technical,Google A2A
-gstudiogdesigns-max,1,1,0.0,0.8,T01_Technical,Independent
-glushenkovIG,1,1,0.0,0.8,T01_Technical,Google
-giovanni-velais,1,1,0.0,0.8,T01_Technical,Independent
-gianpaj,1,1,0.0,0.8,T01_Technical,GitHub community
-gate4ai-alex,1,1,0.0,0.8,T01_Technical,Google A2A
-fwklucznik,1,1,0.0,0.8,T01_Technical,Independent
-freedeaths,1,1,0.0,0.8,T01_Technical,Independent
-jowpurcinelli,1,1,0.0,0.8,T01_Technical,Google
-flystar32,1,1,0.0,0.8,T01_Technical,Independent
-fhinkel,1,1,0.0,0.8,T02_Process,Google
-felix-schultz,1,1,0.0,0.8,T01_Technical,Independent
-fapont,1,1,0.0,0.8,T01_Technical,Google A2A
-f,1,1,0.0,0.8,T01_Technical,GitHub A2A
-ethlaude,1,1,0.0,0.8,T01_Technical,Independent
-ericksonc,1,1,0.0,0.8,T01_Technical,Google A2A
-elevenarms,1,1,0.0,0.8,T01_Technical,Google A2A
-electrocucaracha,1,1,0.0,0.8,T01_Technical,GitHub community member
-e1327906,1,1,0.0,0.8,T01_Technical,Google
-dylang,1,1,0.0,0.8,T01_Technical,Google A2A
-dukeren,1,1,0.0,0.8,T01_Technical,Independent
-heiko-hotz,1,1,0.0,0.8,T01_Technical,Independent
-hmk,1,1,0.0,0.8,T01_Technical,Independent
-howientc,1,1,0.0,0.8,T01_Technical,Independent
-htondro,1,1,0.0,0.8,T01_Technical,Google A2A
-joshua-mo-143,1,1,0.0,0.8,T01_Technical,Google
-joaovilker,1,1,0.0,0.8,T01_Technical,TypeBot user
-jnapper7,1,1,0.0,0.8,T01_Technical,Google
-jmracek,1,1,0.0,0.8,T01_Technical,Independent
-jlestebanbenu,1,1,0.0,0.8,T01_Technical,Google A2A
-jkfnc,1,1,0.0,0.8,T01_Technical,Independent
-jfabend,1,1,0.0,0.8,T01_Technical,Independent
-jesuino,1,1,0.0,0.8,T01_Technical,Google
-jeromemassot,1,1,0.0,0.8,T01_Technical,GitHub community member
-jerlyjelly,1,1,0.0,0.8,T01_Technical,Independent
-jeff-nasseri,1,1,0.0,0.8,T01_Technical,Google A2A
-jasonmadigan,1,1,0.0,0.8,T01_Technical,GitHub community
-jaredrsommer,1,1,0.0,0.8,T01_Technical,Google
-jankrynauw,1,1,0.0,0.8,T01_Technical,Google
-jamesfebin,1,1,0.0,0.8,T01_Technical,Google
-jamesev15,1,1,0.0,0.8,T01_Technical,Independent
-jamesarmenta,1,1,0.0,0.8,T01_Technical,Independent
-ipapapa,1,1,0.0,0.8,T01_Technical,Google
-imfing,1,1,0.0,0.8,T01_Technical,Google A2A
-ieb,1,1,0.0,0.8,T01_Technical,Independent
-idagelic,1,1,0.0,0.8,T01_Technical,Google A2A governance
-iFurySt,1,1,0.0,0.8,T01_Technical,Independent
-humuhimi,1,1,0.0,0.8,T01_Technical,Google A2A
-hujiulong,1,1,0.0,0.8,T01_Technical,Google A2A
-hugo-romero-mm,1,1,0.0,0.8,T02_Process,Independent
-joepvgenuchten,1,1,0.0,0.8,T01_Technical,Independent
+holtskinner,336,12,2.6702409918900507,0.591765873015873,T02,Google
+darrelmiller,278,11,2.62491621236272,0.605515587529976,T02,Google A2A
+ognis1205,145,7,2.317312813216946,0.6764367816091954,T03,ACP
+kthota-g,122,11,2.797914080495333,0.5327868852459017,T02,Google
+Tehsmash,102,9,2.763946527810606,0.5408496732026145,T02,Independent
+pstephengoogle,91,11,2.974937176498219,0.4917582417582418,T02,Google
+mikeas1,79,10,2.772262232420824,0.5580168776371308,T02,Google
+darkhaniop,68,10,2.6430597650907206,0.5833333333333335,T02,Independent
+yarolegovich,59,8,1.9108881188491709,0.75,T02,Independent
+swapydapy,49,8,2.622157979853678,0.5935374149659864,T02,Google
+chorghemaruti64-creator,48,7,2.595859879730069,0.5902777777777779,T08,Independent
+zeroasterisk,42,10,2.7866549039629414,0.5555555555555556,T02,OpenClaw
+muscariello,41,7,2.2303343398752467,0.7012195121951221,T02,Google A2A
+amye,40,7,2.3991128603062806,0.6541666666666668,T01,Google
+vishalmysore,36,5,1.4348990925265237,0.8194444444444444,T03,Google A2A governance
+rajeshvelicheti,36,11,3.0630230172210817,0.4537037037037037,T02,rajeshvelicheti
+lukehinds,32,8,2.44919834670499,0.640625,T03,GitHub
+izzymsft,32,9,2.609265829249441,0.6041666666666667,T02,Google A2A
+maeste,31,7,2.152002070366934,0.7123655913978495,T02,Independent
+edenreich,31,9,2.845032504410935,0.5241935483870968,T02,Independent
+vinoo999,30,6,2.174223285049805,0.7055555555555557,T02,GitHub A2A
+whitlockjc,30,6,2.216552779596357,0.6833333333333333,T02,Google A2A
+herczyn,26,6,2.562600913315173,0.5448717948717949,T04,Google
+didier-durand,26,7,1.9021748142117278,0.7371794871794872,T02,Unknown
+git-vote,25,5,1.2554312795576,0.8300000000000001,T01,GitHub A2A
+imran-siddique,25,4,1.5651407133456023,0.8033333333333335,T08,Independent
+dmandar,24,7,2.381051959488611,0.6597222222222223,T08,Independent
+madankumarpichamuthu,22,7,2.335383620764545,0.6590909090909092,T02,Independent
+abiramit5,22,3,0.8658566174572236,0.8712121212121213,T02,Independent
+moonbox3,21,7,2.486793021302403,0.6309523809523809,T06,Google A2A
+robert-at-pretension-io,21,8,2.8152023999804867,0.51984126984127,T08,GitHub A2A (discussion_comment)
+whysage,20,6,1.9192407046368487,0.75,T01,Independent
+Linux2010,20,5,1.8804820237218405,0.7583333333333333,T02,Community Contributor
+EditUndo,20,5,1.842737648613667,0.7666666666666668,T03,artinet-project
+The-Nexus-Guard,19,6,2.273728829005326,0.6710526315789473,T08,Independent
+djsamseng,18,5,1.768853837616,0.7777777777777779,T02,Independent
+ToddSegal,18,6,2.210973616506755,0.6944444444444444,T02,Google A2A
+ishymko,16,3,0.6685644431995965,0.8854166666666667,T02,Google
+matoushavlena,15,6,2.332914563979398,0.6611111111111112,T02,Google A2A
+SecureAgentTools,15,5,1.5589385323502771,0.7944444444444445,T06,Independent
+gijswalraven,15,1,0.0,0.9166666666666667,T02,Independent
+alexec,15,6,2.3655962303576024,0.6500000000000001,T03,GitHub A2A
+benclarkeio,14,5,2.0741647430225756,0.7142857142857144,T03,benclarkeio
+c-mysec,14,5,2.074164743022575,0.7142857142857144,T02,Google A2A
+koverholt,13,1,0.0,0.9166666666666667,T02,Google
+ai-boost,13,4,1.1451104143815827,0.8397435897435899,T03,ai-boost
+princejha95,12,7,2.2924812503605785,0.625,T06,Independent
+DJ-os,12,2,0.9798687566511527,0.8472222222222223,T03,Google
+CHARLIE1210-A,12,4,1.8879185026711327,0.7361111111111112,T03,Google A2A
+logan272,11,5,2.0048861640918427,0.7196969696969697,T03,Independent
+Lancetnik,11,4,1.2776134368191157,0.8257575757575759,T06,Google A2A
+oliverlabs,11,4,1.8230679822736613,0.75,T01,Google
+dgenio,11,6,2.3685225277282065,0.643939393939394,T02,Google
+cdavernas,11,4,1.6767370300521327,0.7803030303030303,T02,Google A2A
+lkawka,10,5,2.1709505944546685,0.6833333333333333,T06,Google
+HeetVekariya,10,3,1.570950594454669,0.7666666666666668,T03,Independent
+douglasborthwick-crypto,10,3,1.3609640474436813,0.8166666666666667,T12,Independent
+patwhite,10,6,2.4464393446710155,0.6166666666666667,T01,Scaled MCP
+jland-redhat,9,4,1.8910611120726528,0.7314814814814816,T02,Independent
+JKHeadley,9,3,1.3516441151533922,0.8240740740740742,T08,MoltBridge
+dinesh707,9,3,1.4355205042826666,0.8055555555555556,T06,Google A2A
+Fannon,9,3,0.9864267287308426,0.8611111111111112,T02,Google A2A
+vongosling,9,3,1.5304930567574826,0.7870370370370372,T06,Independent
+jmandel,9,4,1.8910611120726528,0.7314814814814816,T02,Google
+beonde,9,5,2.113283334294875,0.6944444444444444,T03,Google A2A
+davidlivekoo2012,8,4,1.9056390622295665,0.7291666666666667,T07,Google
+laurentsimon,8,4,1.9056390622295662,0.7291666666666667,T08,Google
+inesmcm26,8,3,1.4056390622295665,0.8125,T02,Independent
+DracoBlue,8,5,2.1556390622295662,0.6875,T08,Developer Community
+siacomuzzi,8,7,2.75,0.47916666666666674,T08,Google
+guglielmo-san,8,5,2.1556390622295662,0.6875,T09,Independent
+KomachiSion,8,3,1.2987949406953987,0.8333333333333335,T02,Independent
+egor-baranov,8,3,1.2987949406953987,0.8333333333333335,T06,Google A2A
+OyaAIProd,7,1,0.0,0.9166666666666667,T03,Independent
+zzxwill,7,3,1.3787834934861756,0.8214285714285714,T09,Independent
+justfalter,7,4,1.8423709931771088,0.75,T01,Independent
+aickin,7,3,1.4488156357251847,0.7976190476190477,T02,Google
+robomotic,7,3,1.4488156357251847,0.7976190476190477,T03,GitHub community member
+aglicacha,7,4,1.6644977792004614,0.773809523809524,T06,Independent
+ydennisy,7,4,1.8423709931771086,0.75,T03,Google A2A governance
+vizmut-labs,7,5,2.235926350629033,0.6547619047619049,T06,vizmut-labs
+Copilot,7,3,1.3787834934861756,0.8214285714285714,T02,Google
+syllogismos,7,4,1.8423709931771088,0.75,T02,Google A2A
+bobtista,7,3,1.3787834934861756,0.8214285714285714,T03,Google A2A
+binbandit,6,3,1.459147917027245,0.8055555555555556,T05,Google A2A
+sms03,6,2,0.9182958340544894,0.8611111111111112,T02,Google A2A
+Phil-Hills,6,4,1.7924812503605783,0.75,T02,Independent
+jebinj22,6,3,1.2516291673878228,0.8333333333333335,T07,Independent
+iliesicatrinel,6,3,1.2516291673878228,0.8333333333333335,T02,Google
+dfdumaresq,6,1,0.0,0.9166666666666667,T08,Google A2A
+pwwpche,6,4,1.9182958340544896,0.7222222222222223,T01,Google
+jonigl,6,4,1.9182958340544896,0.7222222222222223,T03,Independent
+MG1-4,6,4,1.9182958340544896,0.7222222222222223,T01,GitHub A2A
+codefromthecrypt,6,4,1.9182958340544896,0.7222222222222223,T02,GitHub community member
+LingJingMaster,6,2,0.6500224216483541,0.8888888888888891,T07,Google A2A governance
+sfitts,6,3,1.459147917027245,0.8055555555555556,T03,Google
+kabir,6,2,0.9182958340544894,0.8611111111111112,T02,Independent
+spricet,6,2,0.6500224216483541,0.8888888888888891,T02,Independent
+logan-markewich,6,5,2.251629167387823,0.6388888888888891,T02,Google A2A
+yedidel,6,3,1.459147917027245,0.8055555555555556,T08,Independent
+jmesnil,6,4,1.9182958340544896,0.7222222222222223,T02,Google
+palladius,5,3,1.370950594454669,0.8166666666666667,T02,Google
+ehsavoie,5,2,0.7219280948873623,0.8833333333333333,T02,Independent
+ajaynagotha,5,3,1.370950594454669,0.8166666666666667,T01,Google A2A
+CakeCrusher,5,3,1.5219280948873626,0.7833333333333334,T02,Independent
+CZH-THU,5,3,1.370950594454669,0.8166666666666667,T08,Independent
+mihaimaruseac,5,3,1.370950594454669,0.8166666666666667,T08,Google
+mindpower,5,4,1.9219280948873625,0.7166666666666668,T06,Google
+ThierryThevenet,5,2,0.9709505944546688,0.8500000000000001,T04,Independent
+mcglabs,5,3,1.370950594454669,0.8166666666666667,T01,Independent
+daavoo,5,4,1.9219280948873625,0.7166666666666668,T04,Independent
+suvedo,5,2,0.7219280948873623,0.8833333333333333,T03,client
+daltonnyx,5,3,1.5219280948873626,0.7833333333333334,T02,Developer
+everettVT,5,4,1.9219280948873625,0.7166666666666668,T02,Independent
+xtrasmal,5,2,0.7219280948873623,0.8833333333333333,T06,GitHub A2A
+gNtino,5,3,1.370950594454669,0.8166666666666667,T03,Google A2A
+sing1ee,5,2,0.7219280948873623,0.8833333333333333,T03,Developer
+Kevin1466,5,3,1.5219280948873626,0.7833333333333334,T03,Independent
+KrshnKush,5,3,1.370950594454669,0.8166666666666667,T01,Independent
+joshhalley,5,2,0.7219280948873623,0.8833333333333333,T01,Independent
+grll,5,2,0.7219280948873623,0.8833333333333333,T02,Independent
+fernando-torres-blip-ai,4,2,0.8112781244591328,0.875,T03,Google A2A
+dhdanie,4,3,1.5,0.7916666666666667,T02,Independent
+adarshnarayanhegde,4,2,0.8112781244591328,0.875,T04,Independent
+andreibesleaga,4,2,0.8112781244591328,0.875,T06,Enterprise systems
+architectureofthings,4,2,0.8112781244591328,0.875,T06,Independent
+arislan-lilo,4,1,0.0,0.9166666666666667,T02,Independent
+tomsun28,4,3,1.5,0.7916666666666667,T03,Independent
+brycewcole,4,2,0.8112781244591328,0.875,T02,Google
+blkt,4,2,0.8112781244591328,0.875,T02,Independent
+barnendu,4,1,0.0,0.9166666666666667,T04,GitHub A2A
+thisisnotapril,4,2,0.8112781244591328,0.875,T02,Google
+fjuma,4,1,0.0,0.9166666666666667,T02,Google
+thebenignhacker,4,2,0.8112781244591328,0.875,T08,Independent
+satendrakumar,4,2,1.0,0.8333333333333335,T02,Independent
+ReubenBond,4,4,2.0,0.6666666666666667,T02,Independent
+HungYangChang,4,3,1.5,0.7916666666666667,T01,Independent
+IhateCreatingUserNames2,4,2,1.0,0.8333333333333335,T03,Google A2A
+yangyang-yyy,4,3,1.5,0.7916666666666667,T03,Independent
+powmax-commits,4,2,0.8112781244591328,0.875,T02,Google
+xui-will,4,3,1.5,0.7916666666666667,T06,Google
+lorenzocipriani-huawei,4,3,1.5,0.7916666666666667,T01,huawei
+JeromeOvO,4,3,1.5,0.7916666666666667,T09,Independent
+yzhao244,4,1,0.0,0.9166666666666667,T02,Google
+rajhanshdhami,4,4,2.0,0.6666666666666667,T01,GitHub A2A
+wilsonsilva,4,1,0.0,0.9166666666666667,T02,Independent
+meetrais,4,1,0.0,0.9166666666666667,T11,Independent
+michelschep,4,3,1.5,0.7916666666666667,T03,GitHub community member
+mikumifa,4,2,0.8112781244591328,0.875,T03,Independent
+ritsuki1227,4,2,1.0,0.8333333333333335,T01,Independent
+widrss,4,4,2.0,0.6666666666666667,T01,Google A2A
+zhenjunMa,4,4,2.0,0.6666666666666667,T02,Independent
+mvakoc,4,2,1.0,0.8333333333333335,T02,Google
+gagb,4,3,1.5,0.7916666666666667,T02,Google A2A
+sandyskies,4,2,0.8112781244591328,0.875,T03,Independent
+sandangel,4,2,1.0,0.8333333333333335,T02,Independent
+vladislavdonchev,4,4,2.0,0.6666666666666667,T02,Independent-AI-Labs
+graemefoster,4,3,1.5,0.7916666666666667,T03,Independent
+niguowei44,4,2,0.8112781244591328,0.875,T11,Independent
+HomeroRR,4,1,0.0,0.9166666666666667,T06,Google A2A governance
+AlbumenJ,4,2,0.8112781244591328,0.875,T09,Google A2A
+ibrahimokuyucu,4,2,0.8112781244591328,0.875,T12,Google A2A
+msardara,4,3,1.5,0.7916666666666667,T04,Google
+AlexsJones,4,2,0.8112781244591328,0.875,T03,Google A2A
+tatanka1212,3,3,1.584962500721156,0.75,T01,Google A2A
+tanemaki,3,1,0.0,0.9166666666666667,T02,Independent
+muthub-ai,3,3,1.584962500721156,0.75,T03,Independent
+maxekman,3,1,0.0,0.9166666666666667,T06,Developer Community
+patwlan,3,3,1.584962500721156,0.75,T02,Independent
+oopslink,3,2,0.9182958340544894,0.8611111111111112,T02,Independent
+liuzengh,3,2,0.9182958340544894,0.8611111111111112,T02,Google
+pascal910107,3,3,1.584962500721156,0.75,T05,Independent
+promptrotator,3,3,1.584962500721156,0.75,T02,Independent
+lifieai,3,1,0.0,0.9166666666666667,T03,Lifie AI
+dayuyang1999,3,3,1.584962500721156,0.75,T02,Google A2A
+gregboero,3,3,1.584962500721156,0.75,T06,GitHub community member
+shamblett,3,2,0.9182958340544894,0.8611111111111112,T03,Independent
+eli-osherovich,3,1,0.0,0.9166666666666667,T04,Google
+salqadri,3,3,1.584962500721156,0.75,T01,Independent
+hoonji,3,2,0.9182958340544894,0.8611111111111112,T09,Google
+rokonec,3,3,1.584962500721156,0.75,T01,Independent
+rohit2k21,3,2,0.9182958340544894,0.8611111111111112,T02,Unknown
+irshadnilam,3,2,0.9182958340544894,0.8611111111111112,T09,GitHub A2A (discussion)
+richardanaya,3,1,0.0,0.9166666666666667,T11,Independent
+ducknificient,3,2,0.9182958340544894,0.8611111111111112,T02,Independent
+101scholar,3,2,0.9182958340544894,0.8611111111111112,T03,service_provider
+jocelynh-microsoft,3,2,0.9182958340544894,0.8611111111111112,T02,Microsoft
+johnson7788,3,3,1.584962500721156,0.75,T01,Independent
+kdenhartog,3,3,1.584962500721156,0.75,T04,Independent
+ptiper,3,1,0.0,0.9166666666666667,T02,Independent
+scidomino,3,1,0.0,0.9166666666666667,T02,Independent
+kshitizz36,3,2,0.9182958340544894,0.8611111111111112,T06,Google
+richgo,3,1,0.0,0.9166666666666667,T02,Google
+deepakskhetwal,3,2,0.9182958340544894,0.8611111111111112,T03,Unknown
+alan-silverstreams,3,2,0.9182958340544894,0.8611111111111112,T03,SilverstreamsAI
+Frankdog,3,2,0.9182958340544894,0.8611111111111112,T02,Independent
+aeoess,3,1,0.0,0.9166666666666667,T08,Independent
+MengJiapeng,3,1,0.0,0.9166666666666667,T02,Independent
+HaohanTsao,3,3,1.584962500721156,0.75,T02,Google A2A
+zoujie-ee,3,2,0.9182958340544894,0.8611111111111112,T09,Google
+annicode01,3,1,0.0,0.9166666666666667,T11,Independent
+acensia,3,1,0.0,0.9166666666666667,T02,GitHub A2A
+abdibrokhim,3,2,0.9182958340544894,0.8611111111111112,T02,Independent
+AlokRanjanSwain,3,2,0.9182958340544894,0.8611111111111112,T02,Independent
+Mocuto,3,2,0.9182958340544894,0.8611111111111112,T02,Independent
+Paulchen5,3,2,0.9182958340544894,0.8611111111111112,T02,Independent
+NavtejMAQ,3,1,0.0,0.9166666666666667,T11,Independent
+yasonk,3,2,0.9182958340544894,0.8611111111111112,T03,Independent
+tiswanso,3,2,0.9182958340544894,0.8611111111111112,T06,Google A2A
+ZapzCsgo,3,3,1.584962500721156,0.75,T02,Google
+RobinQu,3,1,0.0,0.9166666666666667,T06,Independent
+wushubang,3,2,0.9182958340544894,0.8611111111111112,T03,Independent
+Realsid,3,3,1.584962500721156,0.75,T03,Google A2A
+alanyst,3,1,0.0,0.9166666666666667,T02,Independent
+ysxu666,3,2,0.9182958340544894,0.8611111111111112,T05,Independent
+zzstoatzz,3,2,0.9182958340544894,0.8611111111111112,T03,Google A2A
+JayBhadiyadraInstanceIT,3,2,0.9182958340544894,0.8611111111111112,T08,Independent
+yaronf,2,1,0.0,0.9166666666666667,T04,Google
+peterwang2013,2,2,1.0,0.8333333333333335,T03,Google A2A
+RubberGoose246,2,2,1.0,0.8333333333333335,T07,Independent
+iamrajiv,2,2,1.0,0.8333333333333335,T02,Independent
+lrosenthol,2,1,0.0,0.9166666666666667,T03,GitHub community
+rogpeppe,2,2,1.0,0.8333333333333335,T02,Independent
+SergeyMenshykh,2,2,1.0,0.8333333333333335,T03,Google
+loganaden,2,1,0.0,0.9166666666666667,T04,Independent
+lukaszkostrzewa,2,1,0.0,0.9166666666666667,T03,Google A2A
+nickossdev,2,2,1.0,0.8333333333333335,T03,Google A2A
+rsoika,2,1,0.0,0.9166666666666667,T08,Enterprise
+gvdongen,2,2,1.0,0.8333333333333335,T02,Google A2A
+gpanakkal,2,2,1.0,0.8333333333333335,T04,Google
+markgoho,2,2,1.0,0.8333333333333335,T06,Independent
+XiHeee,2,1,0.0,0.9166666666666667,T04,Google
+WaqasIshaque1,2,1,0.0,0.9166666666666667,T03,GitHub community member
+gspencergoog,2,2,1.0,0.8333333333333335,T02,Google
+Tech-AML,2,1,0.0,0.9166666666666667,T03,Independent
+marianogonzalez,2,2,1.0,0.8333333333333335,T02,Independent
+gulercan,2,2,1.0,0.8333333333333335,T08,Google
+TP9-dev,2,1,0.0,0.9166666666666667,T01,Google
+hotdogarea,2,1,0.0,0.9166666666666667,T03,Independent
+manojsharmadcx,2,1,0.0,0.9166666666666667,T01,Independent
+manojk0303,2,2,1.0,0.8333333333333335,T03,Google A2A
+haxudev,2,2,1.0,0.8333333333333335,T03,Google
+pcingola,2,1,0.0,0.9166666666666667,T06,Developer Community
+StevenJohnson998,2,1,0.0,0.9166666666666667,T04,Independent
+Renator13,2,1,0.0,0.9166666666666667,T03,Independent
+hkmo99,2,2,1.0,0.8333333333333335,T01,Google
+volodya-lombrozo,2,2,1.0,0.8333333333333335,T02,Independent
+hieuminh65,2,2,1.0,0.8333333333333335,T01,Independent
+QuantumDaveLdn,2,1,0.0,0.9166666666666667,T03,GitHub A2A
+jackwotherspoon,2,2,1.0,0.8333333333333335,T02,Google A2A
+lalrow,2,2,1.0,0.8333333333333335,T02,Independent
+LucaButBoring,2,2,1.0,0.8333333333333335,T03,Google A2A
+JadenHuang2023,2,1,0.0,0.9166666666666667,T04,Independent
+jsahil,2,2,1.0,0.8333333333333335,T06,Google A2A
+jtanningbed,2,2,1.0,0.8333333333333335,T03,Google A2A
+LI-Jinyang,2,1,0.0,0.9166666666666667,T06,Independent
+lambochen,2,2,1.0,0.8333333333333335,T02,GitHub A2A
+jwson-automation,2,2,1.0,0.8333333333333335,T02,Google A2A governance
+Kludex,2,2,1.0,0.8333333333333335,T02,Independent
+LuckyLaochou,2,1,0.0,0.9166666666666667,T02,Independent
+qingyun-wu,2,2,1.0,0.8333333333333335,T03,Independent
+kyleacmooney,2,1,0.0,0.9166666666666667,T02,Google A2A
+kurt-r2c,2,2,1.0,0.8333333333333335,T04,Google A2A
+xiongwenxin123,2,2,1.0,0.8333333333333335,T03,Independent
+knuckles-stack,2,1,0.0,0.9166666666666667,T04,Google
+priyankjecrc,2,1,0.0,0.9166666666666667,T06,Google A2A
+xray918,2,1,0.0,0.9166666666666667,T03,A2Astore.co
+rajib76,2,1,0.0,0.9166666666666667,T03,Independent
+Meir017,2,2,1.0,0.8333333333333335,T02,Independent
+rodrigallardo,2,1,0.0,0.9166666666666667,T02,Independent
+HadjievK,2,1,0.0,0.9166666666666667,T03,GitHub community member
+bgauryy,2,1,0.0,0.9166666666666667,T08,Independent
+wenwenc9,2,2,1.0,0.8333333333333335,T03,Independent
+gilamsalem,2,1,0.0,0.9166666666666667,T03,Developer
+jeanibarz,2,2,1.0,0.8333333333333335,T02,Google
+jeletor,2,1,0.0,0.9166666666666667,T03,Google A2A
+jenish2917,2,1,0.0,0.9166666666666667,T03,Independent
+richard-rance,2,1,0.0,0.9166666666666667,T02,Google
+pinchwork,2,2,1.0,0.8333333333333335,T03,Independent
+joevidev,2,1,0.0,0.9166666666666667,T02,Google A2A
+rebeccacamejo,2,2,1.0,0.8333333333333335,T02,Independent
+MoonRendering,2,2,1.0,0.8333333333333335,T02,Independent
+jlfolland,2,2,1.0,0.8333333333333335,T03,Independent
+lindsaydsgdnolan-eng,2,1,0.0,0.9166666666666667,T02,Google
+Midnight-719,2,1,0.0,0.9166666666666667,T08,Independent
+liar666,2,2,1.0,0.8333333333333335,T03,Independent
+lexi-k,2,2,1.0,0.8333333333333335,T01,Independent
+Zephyr-Blessed,2,1,0.0,0.9166666666666667,T03,AgentRolodex
+vineethsai,2,2,1.0,0.8333333333333335,T03,Independent
+ZhiLiGod,2,2,1.0,0.8333333333333335,T02,Independent
+akintunca,2,1,0.0,0.9166666666666667,T03,Developer
+danbri,2,2,1.0,0.8333333333333335,T04,Independent
+danja,2,2,1.0,0.8333333333333335,T03,Google A2A
+AdarPeleg,2,1,0.0,0.9166666666666667,T02,Independent
+tucnak,2,1,0.0,0.9166666666666667,T06,Google A2A
+AlexanderShenshin,2,2,1.0,0.8333333333333335,T03,Independent
+mrorigo,2,2,1.0,0.8333333333333335,T01,Google A2A
+mprynce,2,2,1.0,0.8333333333333335,T03,Google A2A
+alextibbles,2,2,1.0,0.8333333333333335,T04,Independent
+dchrty,2,2,1.0,0.8333333333333335,T03,Google R&D Engineer
+decode-mayank,2,1,0.0,0.9166666666666667,T03,Independent
+mjunaidca,2,2,1.0,0.8333333333333335,T04,Google A2A
+sangpire,2,1,0.0,0.9166666666666667,T02,Google
+zhengleibin,2,1,0.0,0.9166666666666667,T03,Google
+Areo-Joe,2,2,1.0,0.8333333333333335,T02,Google A2A
+omkar-12bits,2,1,0.0,0.9166666666666667,T03,Independent
+alantriesagain,2,2,1.0,0.8333333333333335,T02,GitHub community member
+alampolee,2,2,1.0,0.8333333333333335,T03,Agent Builders
+tot-ra,2,1,0.0,0.9166666666666667,T03,Google
+andrewdavidmackenzie,2,1,0.0,0.9166666666666667,T03,Red Hat
+mukteshkrmishra,2,1,0.0,0.9166666666666667,T01,Independent
+buddha314,2,2,1.0,0.8333333333333335,T02,Independent
+bittr-oss,2,2,1.0,0.8333333333333335,T02,Independent
+bkowal,2,1,0.0,0.9166666666666667,T02,Google
+azyobuzin,2,1,0.0,0.9166666666666667,T02,Independent
+awickham10,2,2,1.0,0.8333333333333335,T02,Independent
+bparees,2,2,1.0,0.8333333333333335,T02,Independent
+tanveer-builds,2,1,0.0,0.9166666666666667,T11,Independent
+brunogrbavac,2,1,0.0,0.9166666666666667,T03,Google A2A governance
+automateyournetwork,2,1,0.0,0.9166666666666667,T04,Google A2A
+sunyuhan1998,2,1,0.0,0.9166666666666667,T02,Independent
+nithin-nk,2,1,0.0,0.9166666666666667,T03,Independent
+syumpx,2,2,1.0,0.8333333333333335,T02,Google
+syaproj,2,1,0.0,0.9166666666666667,T03,Google
+tomkis,2,2,1.0,0.8333333333333335,T02,Independent
+sxhxliang,2,1,0.0,0.9166666666666667,T03,Independent
+tonycai,2,1,0.0,0.9166666666666667,T03,Google A2A
+anjanas,2,2,1.0,0.8333333333333335,T02,Google
+akshaykokane,2,1,0.0,0.9166666666666667,T02,Google
+JeremyFan,2,2,1.0,0.8333333333333335,T03,Independent
+Bill-XU,2,1,0.0,0.9166666666666667,T03,GitHub community
+z2z23n0,2,1,0.0,0.9166666666666667,T02,Google A2A
+mdii,2,1,0.0,0.9166666666666667,T02,Independent
+a2a-bot,2,1,0.0,0.9166666666666667,T09,Unknown
+shaikmoeed,2,1,0.0,0.9166666666666667,T05,Independent
+meguminnnnnnnnn,2,1,0.0,0.9166666666666667,T06,Independent
+aamonten,2,1,0.0,0.9166666666666667,T02,Independent
+elCaptnCode,2,2,1.0,0.8333333333333335,T01,Community
+eilon-shai,2,1,0.0,0.9166666666666667,T03,Independent
+DGuhr,2,2,1.0,0.8333333333333335,T06,Independent
+ahoblitz,2,2,1.0,0.8333333333333335,T03,Independent
+geneknit,2,2,1.0,0.8333333333333335,T01,Independent
+zamorofthat,2,2,1.0,0.8333333333333335,T03,telecom
+aimable100,2,2,1.0,0.8333333333333335,T04,Tenuo
+ajoslin103,2,1,0.0,0.9166666666666667,T03,Independent
+flex-myeonghyeon,2,1,0.0,0.9166666666666667,T09,Independent
+ghostdoglzd,2,1,0.0,0.9166666666666667,T02,Independent
+zchee,2,2,1.0,0.8333333333333335,T02,Google A2A
+adsri,2,2,1.0,0.8333333333333335,T01,Google
+yukuanj,1,1,0.0,0.9166666666666667,T02,Google
+ppattanayak,1,1,0.0,0.9166666666666667,T04,GitHub community
+nitin737,1,1,0.0,0.9166666666666667,T02,Independent
+no7dw,1,1,0.0,0.9166666666666667,T08,Independent
+yu-iskw,1,1,0.0,0.9166666666666667,T08,Google
+nikhilmaddirala,1,1,0.0,0.9166666666666667,T06,GitHub
+prashubk,1,1,0.0,0.9166666666666667,T02,GitHub user
+pavankumarleo,1,1,0.0,0.9166666666666667,T03,Independent
+ymmt2005,1,1,0.0,0.9166666666666667,T06,Google A2A
+pauldotknopf,1,1,0.0,0.9166666666666667,T04,Google
+pavelgj,1,1,0.0,0.9166666666666667,T02,Google
+prassanna-ravishankar,1,1,0.0,0.9166666666666667,T03,Independent
+y-d-y,1,1,0.0,0.9166666666666667,T03,Independent
+xtrycatchx,1,1,0.0,0.9166666666666667,T08,Independent
+pausanchez,1,1,0.0,0.9166666666666667,T03,Independent
+nidhi-pathak,1,1,0.0,0.9166666666666667,T09,Independent
+prokolyvakis,1,1,0.0,0.9166666666666667,T02,Independent
+yuluo-yx,1,1,0.0,0.9166666666666667,T03,Google A2A
+zomux,1,1,0.0,0.9166666666666667,T03,Independent
+nvcnvn,1,1,0.0,0.9166666666666667,T04,Google A2A
+perfectspr,1,1,0.0,0.9166666666666667,T06,Independent
+one-kash,1,1,0.0,0.9166666666666667,T08,Independent
+pilartomas,1,1,0.0,0.9166666666666667,T02,Google
+zhangjh,1,1,0.0,0.9166666666666667,T11,Independent
+phillipgibson,1,1,0.0,0.9166666666666667,T02,Google
+openaitx-system,1,1,0.0,0.9166666666666667,T02,Unknown
+olileger,1,1,0.0,0.9166666666666667,T03,Independent
+ossfellow,1,1,0.0,0.9166666666666667,T03,Independent
+yichenj,1,1,0.0,0.9166666666666667,T03,Independent
+pab1it0,1,1,0.0,0.9166666666666667,T03,Google A2A
+pcuci,1,1,0.0,0.9166666666666667,T04,Independent
+y-tabata,1,1,0.0,0.9166666666666667,T04,Google
+pointhalo,1,1,0.0,0.9166666666666667,T02,Independent
+oabdelkarim,1,1,0.0,0.9166666666666667,T04,Independent
+z-a-f,1,1,0.0,0.9166666666666667,T07,GitHub community member
+yadav,1,1,0.0,0.9166666666666667,T02,Google
+zmstone,1,1,0.0,0.9166666666666667,T06,emqx
+yangchi,1,1,0.0,0.9166666666666667,T02,Google
+yuqingzcn,1,1,0.0,0.9166666666666667,T07,Unknown
+postbird,1,1,0.0,0.9166666666666667,T02,Independent
+paparth,1,1,0.0,0.9166666666666667,T01,Google
+yairyairyair,1,1,0.0,0.9166666666666667,T02,Unknown
+theosp,1,1,0.0,0.9166666666666667,T03,JustDo
+prosa21,1,1,0.0,0.9166666666666667,T02,GitHub community member
+pszjmb1,1,1,0.0,0.9166666666666667,T08,Independent
+sreanik,1,1,0.0,0.9166666666666667,T08,Independent
+uestcbraid,1,1,0.0,0.9166666666666667,T02,Independent
+sondotpin,1,1,0.0,0.9166666666666667,T01,Independent
+ujnak,1,1,0.0,0.9166666666666667,T02,Independent
+skyfire-ammar,1,1,0.0,0.9166666666666667,T03,Google A2A
+umariyoob,1,1,0.0,0.9166666666666667,T02,Independent
+simarsher220,1,1,0.0,0.9166666666666667,T09,Google A2A
+unizhu,1,1,0.0,0.9166666666666667,T02,Independent
+silverheartshafiq,1,1,0.0,0.9166666666666667,T08,Google A2A
+uttej-vsk,1,1,0.0,0.9166666666666667,T03,Independent
+shyam-habarakada,1,1,0.0,0.9166666666666667,T04,GitHub A2A
+vibnimit,1,1,0.0,0.9166666666666667,T03,Software Engineer
+vicradon,1,1,0.0,0.9166666666666667,T02,Google
+sepo-eng,1,1,0.0,0.9166666666666667,T01,Google
+secprog,1,1,0.0,0.9166666666666667,T03,Independent
+victordibia,1,1,0.0,0.9166666666666667,T06,Google A2A governance
+sd0ric4,1,1,0.0,0.9166666666666667,T04,Google
+scvthorsten,1,1,0.0,0.9166666666666667,T08,Independent
+satishkamavaram,1,1,0.0,0.9166666666666667,T02,Independent
+tymorton,1,1,0.0,0.9166666666666667,T08,Independent
+sreejit-a,1,1,0.0,0.9166666666666667,T02,Independent
+star-gazer111,1,1,0.0,0.9166666666666667,T03,Independent
+torrmal,1,1,0.0,0.9166666666666667,T03,Google A2A
+thestupd,1,1,0.0,0.9166666666666667,T03,Developer Community
+taosher,1,1,0.0,0.9166666666666667,T04,Independent
+tangpingqingwa,1,1,0.0,0.9166666666666667,T05,Independent
+takassh,1,1,0.0,0.9166666666666667,T02,Google A2A
+tobiasopdenbrouw,1,1,0.0,0.9166666666666667,T04,Independent
+tomasdev,1,1,0.0,0.9166666666666667,T08,Independent
+swarf00,1,1,0.0,0.9166666666666667,T08,Independent
+superjvjkdf,1,1,0.0,0.9166666666666667,T04,Unknown
+sunilp,1,1,0.0,0.9166666666666667,T03,Independent
+nicholasbreckwoldt,1,1,0.0,0.9166666666666667,T03,Independent
+suforme,1,1,0.0,0.9166666666666667,T08,Google A2A
+suensky,1,1,0.0,0.9166666666666667,T06,Google A2A
+trssantos,1,1,0.0,0.9166666666666667,T02,Conduit
+stojangb,1,1,0.0,0.9166666666666667,T02,Google
+tunnckoCore,1,1,0.0,0.9166666666666667,T04,Independent
+stkang90,1,1,0.0,0.9166666666666667,T02,Google ADK
+steren,1,1,0.0,0.9166666666666667,T11,GitHub A2A (pr)
+staverm,1,1,0.0,0.9166666666666667,T02,GitHub
+victorinect,1,1,0.0,0.9166666666666667,T02,Developer
+vincent-pli,1,1,0.0,0.9166666666666667,T02,Independent
+sanjeevkumar761,1,1,0.0,0.9166666666666667,T04,Independent
+workkrinal-02,1,1,0.0,0.9166666666666667,T08,Google A2A
+rescrv,1,1,0.0,0.9166666666666667,T03,Developer
+reatang,1,1,0.0,0.9166666666666667,T02,Google
+williamwa,1,1,0.0,0.9166666666666667,T03,Independent
+rclayton-godaddy,1,1,0.0,0.9166666666666667,T02,Independent
+ravneetgrewal,1,1,0.0,0.9166666666666667,T08,Google A2A
+raveenb,1,1,0.0,0.9166666666666667,T03,Luminary Lane
+wjcwjc77,1,1,0.0,0.9166666666666667,T06,Google A2A governance
+raravena80,1,1,0.0,0.9166666666666667,T01,Google
+ragaoua,1,1,0.0,0.9166666666666667,T08,Independent
+resouer,1,1,0.0,0.9166666666666667,T04,Independent
+r3motecontrol,1,1,0.0,0.9166666666666667,T06,Independent
+questflow-kyle,1,1,0.0,0.9166666666666667,T02,Google A2A
+wsandy1,1,1,0.0,0.9166666666666667,T02,Independent
+qiansuo1,1,1,0.0,0.9166666666666667,T02,Google A2A
+pvlasov,1,1,0.0,0.9166666666666667,T02,Independent
+punkyoon,1,1,0.0,0.9166666666666667,T04,Google
+puchengy,1,1,0.0,0.9166666666666667,T03,Independent
+x0cipher,1,1,0.0,0.9166666666666667,T04,openhive
+reskin89,1,1,0.0,0.9166666666666667,T02,Independent
+wenxichen,1,1,0.0,0.9166666666666667,T02,Independent
+vladkol,1,1,0.0,0.9166666666666667,T02,Independent
+rsgrewal-aws,1,1,0.0,0.9166666666666667,T03,Unknown
+samuelemarro,1,1,0.0,0.9166666666666667,T02,GitHub user
+sambhav,1,1,0.0,0.9166666666666667,T02,Independent
+sahilcreator07,1,1,0.0,0.9166666666666667,T03,GitHub community member
+ryan-szns,1,1,0.0,0.9166666666666667,T08,Google
+rwrz,1,1,0.0,0.9166666666666667,T03,Independent
+ruanspies,1,1,0.0,0.9166666666666667,T09,GitHub A2A (discussion)
+ruFFaa,1,1,0.0,0.9166666666666667,T01,Independent
+voidcenter,1,1,0.0,0.9166666666666667,T02,Independent
+rrrodzilla,1,1,0.0,0.9166666666666667,T06,Google A2A
+weiye-Lee,1,1,0.0,0.9166666666666667,T07,Independent
+rootwarp,1,1,0.0,0.9166666666666667,T03,Google
+ronantakizawa,1,1,0.0,0.9166666666666667,T02,Google
+ronaldpetty,1,1,0.0,0.9166666666666667,T02,Independent
+vorburger,1,1,0.0,0.9166666666666667,T02,Google
+romairi,1,1,0.0,0.9166666666666667,T03,Google A2A
+vvasylkovskyi,1,1,0.0,0.9166666666666667,T03,Independent
+wadrzl55333,1,1,0.0,0.9166666666666667,T02,Independent
+waitasecant,1,1,0.0,0.9166666666666667,T02,GitHub Community
+robinmanuelthiel,1,1,0.0,0.9166666666666667,T02,Google
+0xTomDaniel,1,1,0.0,0.9166666666666667,T04,Independent
+nextpulse,1,1,0.0,0.9166666666666667,T02,Google
+alain-sv,1,1,0.0,0.9166666666666667,T02,GitHub community member
+aviaviavi,1,1,0.0,0.9166666666666667,T07,Independent
+austinmyc,1,1,0.0,0.9166666666666667,T02,Independent
+austin-tral,1,1,0.0,0.9166666666666667,T03,Google
+ashwin63,1,1,0.0,0.9166666666666667,T03,Google
+ashubham,1,1,0.0,0.9166666666666667,T02,Google
+arunim1,1,1,0.0,0.9166666666666667,T12,GitHub community member
+andy1213aa,1,1,0.0,0.9166666666666667,T05,Google
+andorsk,1,1,0.0,0.9166666666666667,T04,Google A2A governance
+amin-nikanjam,1,1,0.0,0.9166666666666667,T03,Independent
+alinaqi,1,1,0.0,0.9166666666666667,T03,Google A2A
+ali-0407,1,1,0.0,0.9166666666666667,T02,Independent
+alexbainbridge,1,1,0.0,0.9166666666666667,T04,Independent
+akdong91,1,1,0.0,0.9166666666666667,T04,Independent
+nerunja,1,1,0.0,0.9166666666666667,T08,Independent
+aiagentexpert,1,1,0.0,0.9166666666666667,T03,Independent
+agenttrust,1,1,0.0,0.9166666666666667,T03,Independent
+adv-11,1,1,0.0,0.9166666666666667,T04,GitHub A2A
+adcentury,1,1,0.0,0.9166666666666667,T05,Independent
+abhinav24jha,1,1,0.0,0.9166666666666667,T03,Independent
+aazizisoufiane,1,1,0.0,0.9166666666666667,T03,Developer
+aCanalez,1,1,0.0,0.9166666666666667,T02,Google
+Zinni98,1,1,0.0,0.9166666666666667,T02,Independent
+YuqingZhao,1,1,0.0,0.9166666666666667,T03,Community Developer
+Yukinekoko,1,1,0.0,0.9166666666666667,T02,Independent
+YottaDev07,1,1,0.0,0.9166666666666667,T01,Independent
+Yotaro111,1,1,0.0,0.9166666666666667,T03,Unknown
+batprem,1,1,0.0,0.9166666666666667,T03,Independent
+beauduffy,1,1,0.0,0.9166666666666667,T02,Google A2A
+bigmac7,1,1,0.0,0.9166666666666667,T03,Google A2A
+birdayz,1,1,0.0,0.9166666666666667,T02,Independent
+dhaan-ish,1,1,0.0,0.9166666666666667,T01,Google A2A
+devsodhirao,1,1,0.0,0.9166666666666667,T08,Independent
+developer-dexwox,1,1,0.0,0.9166666666666667,T03,developer-dexwox
+debug313,1,1,0.0,0.9166666666666667,T03,Community Member
+dbkalaria,1,1,0.0,0.9166666666666667,T03,Google A2A developer
+davrous,1,1,0.0,0.9166666666666667,T05,GitHub community member
+dasiths,1,1,0.0,0.9166666666666667,T08,Independent
+danieldai,1,1,0.0,0.9166666666666667,T02,Google A2A
+ctorrao,1,1,0.0,0.9166666666666667,T06,Google A2A
+coyotwill,1,1,0.0,0.9166666666666667,T09,Independent
+clintwar,1,1,0.0,0.9166666666666667,T08,client
+cled,1,1,0.0,0.9166666666666667,T04,Google
+cj2a7t,1,1,0.0,0.9166666666666667,T02,Independent
+chl1123,1,1,0.0,0.9166666666666667,T02,Independent
+chicogong,1,1,0.0,0.9166666666666667,T03,Independent
+chendatony31,1,1,0.0,0.9166666666666667,T03,Independent
+cciwami,1,1,0.0,0.9166666666666667,T03,Independent
+carlesarnal,1,1,0.0,0.9166666666666667,T03,Apicurio Registry
+cardioailive1,1,1,0.0,0.9166666666666667,T02,Google
+bustosjuan,1,1,0.0,0.9166666666666667,T06,Google A2A
+buithehai1994,1,1,0.0,0.9166666666666667,T11,Independent
+bufdev,1,1,0.0,0.9166666666666667,T09,Independent
+brasseld,1,1,0.0,0.9166666666666667,T01,Independent
+borisalekseev,1,1,0.0,0.9166666666666667,T06,Independent
+blakebrannon,1,1,0.0,0.9166666666666667,T03,Google A2A
+Yoojkim,1,1,0.0,0.9166666666666667,T03,Independent
+XiaoTianCan,1,1,0.0,0.9166666666666667,T02,Independent
+SteveJamesDev,1,1,0.0,0.9166666666666667,T01,Google A2A
+Guidosalimbeni,1,1,0.0,0.9166666666666667,T03,Google A2A governance
+GeunCheolOh,1,1,0.0,0.9166666666666667,T05,Independent
+Francosimon53,1,1,0.0,0.9166666666666667,T03,Google A2A
+FoolishDreamer,1,1,0.0,0.9166666666666667,T11,Independent
+FailedNamed,1,1,0.0,0.9166666666666667,T02,Independent
+Emilmeister,1,1,0.0,0.9166666666666667,T03,Independent
+EliasLumer,1,1,0.0,0.9166666666666667,T06,Independent
+Einsfier,1,1,0.0,0.9166666666666667,T07,Independent
+Eggrolling-hu,1,1,0.0,0.9166666666666667,T08,Google
+Do-tech-ai,1,1,0.0,0.9166666666666667,T11,Independent
+DinoChiesa,1,1,0.0,0.9166666666666667,T02,Google
+DiTo97,1,1,0.0,0.9166666666666667,T03,Independent
+DavidMaister,1,1,0.0,0.9166666666666667,T03,Unknown
+DL1231,1,1,0.0,0.9166666666666667,T03,Independent
+Crokily,1,1,0.0,0.9166666666666667,T03,Independent
+Camusama,1,1,0.0,0.9166666666666667,T11,Independent
+CAG-nolan,1,1,0.0,0.9166666666666667,T02,Google
+Boburmirzo,1,1,0.0,0.9166666666666667,T01,GitHub community member
+AshuJoshi,1,1,0.0,0.9166666666666667,T07,Google
+AndyStan112,1,1,0.0,0.9166666666666667,T03,Unknown
+AndrewPanB,1,1,0.0,0.9166666666666667,T04,Independent
+AliMuhammadOfficial,1,1,0.0,0.9166666666666667,T08,Unknown
+AIXerum,1,1,0.0,0.9166666666666667,T03,AIXerum
+3nsai,1,1,0.0,0.9166666666666667,T04,OpenWebUI
+1GZW1,1,1,0.0,0.9166666666666667,T11,Independent
+11Warrior,1,1,0.0,0.9166666666666667,T03,Community Member
+Gioxxy,1,1,0.0,0.9166666666666667,T02,Google
+HV9903,1,1,0.0,0.9166666666666667,T03,HV9903
+Starborn,1,1,0.0,0.9166666666666667,T03,Independent
+Ivanye2509,1,1,0.0,0.9166666666666667,T02,Independent
+SimplyKnownAsG,1,1,0.0,0.9166666666666667,T03,Independent
+ShayakSarkar,1,1,0.0,0.9166666666666667,T02,Independent
+SellJamHere,1,1,0.0,0.9166666666666667,T02,Google A2A
+SecretiveShell,1,1,0.0,0.9166666666666667,T08,Independent
+Roye-Wy,1,1,0.0,0.9166666666666667,T04,Independent
+RoyAmitabh,1,1,0.0,0.9166666666666667,T03,Google A2A governance
+RIKTESH89,1,1,0.0,0.9166666666666667,T02,Google
+Pray4Love1,1,1,0.0,0.9166666666666667,T08,Developer
+PoolDad-Legal,1,1,0.0,0.9166666666666667,T06,Google
+PierreVannier,1,1,0.0,0.9166666666666667,T03,Google A2A
+MrChengmo,1,1,0.0,0.9166666666666667,T02,Independent
+Miku-Kogane,1,1,0.0,0.9166666666666667,T05,Independent
+MaryamZi,1,1,0.0,0.9166666666666667,T02,Independent
+MaoJianwei,1,1,0.0,0.9166666666666667,T06,Independent
+LordOfBug,1,1,0.0,0.9166666666666667,T03,GitHub community member
+KiteSoar,1,1,0.0,0.9166666666666667,T01,Google
+KanchiShimono,1,1,0.0,0.9166666666666667,T02,Google A2A
+Joapfel,1,1,0.0,0.9166666666666667,T02,Independent
+JinyongShin,1,1,0.0,0.9166666666666667,T03,Google A2A
+JetsettingJames,1,1,0.0,0.9166666666666667,T03,Independent
+JerryDaHeLian,1,1,0.0,0.9166666666666667,T03,Independent
+JanPokorny,1,1,0.0,0.9166666666666667,T02,Independent
+Jaland,1,1,0.0,0.9166666666666667,T03,Google A2A
+Jai0401,1,1,0.0,0.9166666666666667,T02,GitHub A2A (pr)
+JMLX42,1,1,0.0,0.9166666666666667,T09,LX Industries
+dibenedetto,1,1,0.0,0.9166666666666667,T03,Google A2A
+dongyunpeng-sjtu,1,1,0.0,0.9166666666666667,T02,Google A2A
+duglin,1,1,0.0,0.9166666666666667,T03,Google
+mahghappy,1,1,0.0,0.9166666666666667,T04,Independent
+lucamontin,1,1,0.0,0.9166666666666667,T07,Google A2A
+loganwolfe-ims,1,1,0.0,0.9166666666666667,T08,Independent
+lj-raidiam,1,1,0.0,0.9166666666666667,T04,Independent
+liuming-dev,1,1,0.0,0.9166666666666667,T03,Enterprise Developer
+lerhaupt,1,1,0.0,0.9166666666666667,T03,Google
+leavez,1,1,0.0,0.9166666666666667,T06,Google
+lahlfors,1,1,0.0,0.9166666666666667,T01,Acme Corp
+kuldeepjain-bitcot,1,1,0.0,0.9166666666666667,T06,Independent
+kukuyuhai,1,1,0.0,0.9166666666666667,T11,Independent
+kubni,1,1,0.0,0.9166666666666667,T02,Independent
+krebznet,1,1,0.0,0.9166666666666667,T03,Independent Developer
+kpavlov,1,1,0.0,0.9166666666666667,T03,JetBrains
+koyeliaghosh,1,1,0.0,0.9166666666666667,T08,Independent
+koteswaran2186,1,1,0.0,0.9166666666666667,T08,Independent
+kkgupta-github,1,1,0.0,0.9166666666666667,T02,Independent
+kirmorozov,1,1,0.0,0.9166666666666667,T08,Independent
+kimsr96,1,1,0.0,0.9166666666666667,T05,Google A2A
+kimehdgns,1,1,0.0,0.9166666666666667,T01,Google
+kibitzing,1,1,0.0,0.9166666666666667,T02,Independent
+kenhuangus,1,1,0.0,0.9166666666666667,T03,Independent
+keenranger,1,1,0.0,0.9166666666666667,T02,Google A2A
+kedoska,1,1,0.0,0.9166666666666667,T06,Google
+kay-schmitteckert,1,1,0.0,0.9166666666666667,T02,Google
+kadirpekel,1,1,0.0,0.9166666666666667,T04,Independent
+k-jarzyna,1,1,0.0,0.9166666666666667,T03,Google
+luyiourwong,1,1,0.0,0.9166666666666667,T03,Google A2A
+mandle420,1,1,0.0,0.9166666666666667,T02,Google A2A
+jrcks67,1,1,0.0,0.9166666666666667,T02,Developer
+manja316,1,1,0.0,0.9166666666666667,T08,Independent
+nembal,1,1,0.0,0.9166666666666667,T08,Google A2A governance
+needcoder,1,1,0.0,0.9166666666666667,T04,Independent
+nandrews729,1,1,0.0,0.9166666666666667,T02,Independent
+nahapetyan-serob,1,1,0.0,0.9166666666666667,T02,Google
+n1lanjan,1,1,0.0,0.9166666666666667,T02,Independent
+mycosavant,1,1,0.0,0.9166666666666667,T03,Independent
+mting806,1,1,0.0,0.9166666666666667,T07,Google
+mskadu,1,1,0.0,0.9166666666666667,T02,Independent
+mkschreder,1,1,0.0,0.9166666666666667,T02,Google
+mikestaub,1,1,0.0,0.9166666666666667,T10,Independent
+mikesir87,1,1,0.0,0.9166666666666667,T02,GitHub community member
+mikeromano38,1,1,0.0,0.9166666666666667,T01,Independent
+mikeedjones,1,1,0.0,0.9166666666666667,T02,Independent
+mescaja,1,1,0.0,0.9166666666666667,T02,Independent
+mempirate,1,1,0.0,0.9166666666666667,T04,Independent
+melvinjlobos,1,1,0.0,0.9166666666666667,T03,Developer
+mclenhard,1,1,0.0,0.9166666666666667,T03,Community
+mbleigh,1,1,0.0,0.9166666666666667,T02,Google
+maxzyma,1,1,0.0,0.9166666666666667,T02,Independent
+maxbrokman,1,1,0.0,0.9166666666666667,T04,Google
+matsk-sinch,1,1,0.0,0.9166666666666667,T02,Google
+martimfasantos,1,1,0.0,0.9166666666666667,T02,Google
+marksal87,1,1,0.0,0.9166666666666667,T09,Google A2A
+marketmaker4enterprise,1,1,0.0,0.9166666666666667,T03,marketmaker4enterprise
+marelab,1,1,0.0,0.9166666666666667,T04,Telecom
+justin-octo,1,1,0.0,0.9166666666666667,T08,Google A2A
+jpandrade30,1,1,0.0,0.9166666666666667,T01,Google A2A
+dukeren,1,1,0.0,0.9166666666666667,T11,Independent
+hmk,1,1,0.0,0.9166666666666667,T08,Independent
+harris2012,1,1,0.0,0.9166666666666667,T04,Google
+harrigan,1,1,0.0,0.9166666666666667,T02,Independent
+hammadtq,1,1,0.0,0.9166666666666667,T08,Independent
+hamidra,1,1,0.0,0.9166666666666667,T02,Google A2A
+gukoff,1,1,0.0,0.9166666666666667,T09,Google A2A
+gstudiogdesigns-max,1,1,0.0,0.9166666666666667,T08,Independent
+glushenkovIG,1,1,0.0,0.9166666666666667,T02,Google
+giovanni-velais,1,1,0.0,0.9166666666666667,T01,Independent
+gianpaj,1,1,0.0,0.9166666666666667,T02,GitHub community
+gate4ai-alex,1,1,0.0,0.9166666666666667,T05,Google A2A
+gabayben,1,1,0.0,0.9166666666666667,T02,Google
+fwklucznik,1,1,0.0,0.9166666666666667,T03,Independent
+fryfry33,1,1,0.0,0.9166666666666667,T01,GitHub community member
+freedeaths,1,1,0.0,0.9166666666666667,T06,Independent
+flystar32,1,1,0.0,0.9166666666666667,T02,Independent
+fhinkel,1,1,0.0,0.9166666666666667,T10,Google
+felix-schultz,1,1,0.0,0.9166666666666667,T02,Independent
+fapont,1,1,0.0,0.9166666666666667,T03,Google A2A
+f,1,1,0.0,0.9166666666666667,T03,GitHub A2A
+ethlaude,1,1,0.0,0.9166666666666667,T02,Independent
+ericksonc,1,1,0.0,0.9166666666666667,T08,Google A2A
+elevenarms,1,1,0.0,0.9166666666666667,T02,Google A2A
+electrocucaracha,1,1,0.0,0.9166666666666667,T03,GitHub community member
+e1327906,1,1,0.0,0.9166666666666667,T02,Google
+dylang,1,1,0.0,0.9166666666666667,T02,Google A2A
+heiko-hotz,1,1,0.0,0.9166666666666667,T03,Independent
+howientc,1,1,0.0,0.9166666666666667,T06,Independent
+jowpurcinelli,1,1,0.0,0.9166666666666667,T02,Google
+htondro,1,1,0.0,0.9166666666666667,T02,Google A2A
+joshua-mo-143,1,1,0.0,0.9166666666666667,T02,Google
+joepvgenuchten,1,1,0.0,0.9166666666666667,T04,Independent
+joaovilker,1,1,0.0,0.9166666666666667,T02,TypeBot user
+jnapper7,1,1,0.0,0.9166666666666667,T02,Google
+jlestebanbenu,1,1,0.0,0.9166666666666667,T01,Google A2A
+jkfnc,1,1,0.0,0.9166666666666667,T02,Independent
+jfabend,1,1,0.0,0.9166666666666667,T06,Independent
+jesuino,1,1,0.0,0.9166666666666667,T06,Google
+jeromemassot,1,1,0.0,0.9166666666666667,T02,GitHub community member
+jerlyjelly,1,1,0.0,0.9166666666666667,T07,Independent
+jeff-nasseri,1,1,0.0,0.9166666666666667,T03,Google A2A
+jasonmadigan,1,1,0.0,0.9166666666666667,T04,GitHub community
+jaredrsommer,1,1,0.0,0.9166666666666667,T01,Google
+jankrynauw,1,1,0.0,0.9166666666666667,T06,Google
+jamesfebin,1,1,0.0,0.9166666666666667,T06,Google
+jamesev15,1,1,0.0,0.9166666666666667,T03,Independent
+jamesarmenta,1,1,0.0,0.9166666666666667,T06,Independent
+ipapapa,1,1,0.0,0.9166666666666667,T09,Google
+imfing,1,1,0.0,0.9166666666666667,T02,Google A2A
+ieb,1,1,0.0,0.9166666666666667,T01,Independent
+idagelic,1,1,0.0,0.9166666666666667,T08,Google A2A governance
+iFurySt,1,1,0.0,0.9166666666666667,T03,Independent
+humuhimi,1,1,0.0,0.9166666666666667,T03,Google A2A
+hujiulong,1,1,0.0,0.9166666666666667,T03,Google A2A
+hugo-romero-mm,1,1,0.0,0.9166666666666667,T03,Independent
+jmracek,1,1,0.0,0.9166666666666667,T01,Independent

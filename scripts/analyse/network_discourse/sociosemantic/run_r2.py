@@ -25,7 +25,7 @@ from sociosemantic.compare import (
 from loader_r2 import load_joined_r2
 
 OUT_DIR = ROOT / "output/network_discourse/r2/sociosemantic"
-THEMATIC_LM_DIR = ROOT / "output/topic_discovery/r2/thematic_lm"
+THEMATIC_LM_DIR = ROOT / "output/topic_discovery/r2/thematic_lm/kimi"
 
 
 def main() -> None:

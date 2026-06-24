@@ -525,8 +525,8 @@ def fig_network_sna() -> None:
         edges_df = pd.read_csv(edges_p)
         G = nx.Graph()
         for _, row in nodes_df.iterrows():
-            G.add_node(row["author"], institution=row.get("stakeholder_institution", "Unknown"),
-                       n_records=row.get("n_records", 1))
+            G.add_node(row["id"], institution=row.get("stakeholder_institution", "Unknown"),
+                       n_records=row.get("weight", 1))
         for _, row in edges_df.iterrows():
             G.add_edge(row["source"], row["target"], weight=row.get("weight", 1))
         if top_n and len(G.nodes) > top_n:

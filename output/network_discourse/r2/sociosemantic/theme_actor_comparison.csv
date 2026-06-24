@@ -1,6 +1,13 @@
 theme_id,label,erc8004_actors,a2a_actors,erc8004_pct,a2a_pct,abs_diff
-T01_Technical,,190,667,95.0,91.1,3.9000000000000057
-T02_Process,,50,206,25.0,28.1,3.1000000000000014
-T04_Economic,,6,5,3.0,0.7,2.3
-T05_Off_topic,,2,13,1.0,1.8,0.8
-T03_Governance,,12,47,6.0,6.4,0.40000000000000036
+T04,Compliance and Standards,105,135,54.1,18.9,35.2
+T02,Documentation and Communication,54,305,27.8,42.8,14.999999999999996
+T08,Security and Trust,54,119,27.8,16.7,11.100000000000001
+T12,Transparency and Verification,25,15,12.9,2.1,10.8
+T01,Governance and Decision Making,45,97,23.2,13.6,9.6
+T03,Collaboration and Community,63,279,32.5,39.1,6.600000000000001
+T11,User and Developer Experience,3,48,1.5,6.7,5.2
+T09,Versioning and Compatibility,28,67,14.4,9.4,5.0
+T05,Quality Assurance and Testing,22,46,11.3,6.5,4.800000000000001
+T06,Design and Architecture,45,134,23.2,18.8,4.399999999999999
+T07,Process and Efficiency,23,69,11.9,9.7,2.200000000000001
+T10,Conflict Resolution and Dispute,3,23,1.5,3.2,1.7000000000000002

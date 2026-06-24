@@ -20,7 +20,7 @@ BOT_AUTHORS = {"github-actions[bot]", "eip-review-bot", "dependabot[bot]"}
 STANCE_SCORE = {"Support": 1.0, "Modify": 0.5, "Neutral": 0.0, "Oppose": -1.0}
 
 CONSENSUS_DIR = ROOT / "data" / "annotated" / "r2" / "consensus"
-THEMATIC_LM_DIR = ROOT / "output" / "topic_discovery" / "r2" / "thematic_lm"
+THEMATIC_LM_DIR = ROOT / "output" / "topic_discovery" / "r2" / "thematic_lm" / "kimi"
 
 
 def _record_id_erc(r: dict) -> str:
@@ -31,10 +31,10 @@ def _record_id_erc(r: dict) -> str:
 
 
 def _record_id_a2a(r: dict) -> str:
-    """Match the ID scheme used by annotate_a2a_r2.py."""
+    """Match the ID scheme used by Thematic-LM run_r2.py (bare URL, no prefix)."""
     url = r.get("url", "")
     if url:
-        return f"a2a__{url}"
+        return url
     cid = r.get("issue_number") or r.get("pr_number") or ""
     return f"a2a__{r.get('source')}_{cid}_{r.get('date')}"
 
