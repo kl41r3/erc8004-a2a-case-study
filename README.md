@@ -1,7 +1,5 @@
 # Agentic Analysis for Agentic Infrastructure: An LLM-Powered Pipeline for Comparative Governance of DAO and Corporate AI Protocols
 
-> **Status:** Submitted to AOM/SMS Conference (TIM Track), 2026.
->
 > **Dataset:** [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — to be hosted on Hugging Face.
 >
 > **Reproduction package:** This repository contains the complete computational pipeline, from raw data collection through LLM annotation to final analysis and figures. SHA-256 checksums guarantee data provenance.
@@ -18,10 +16,10 @@
 
 The paper reports results at two scopes:
 
-| Pipeline | Scope | Records | Annotators | Paper section |
-|---|---|---|---|---|
-| **Main-text (R1)** | Single ERC-8004 vs. A2A | ERC 142 / A2A 4,181 | MiniMax-M2.5 | Sections 3–5 |
-| **Appendix (R2)** | 34-ERC cluster + cross-model + cross-round consensus | ERC 1,664 / A2A 4,058 | 3 models × 3 rounds | Appendix "Multi-Model Robustness Check" |
+| Pipeline | Scope | Records | Annotators | 
+|---|---|---|---|
+| **Main-text (R1)** | Single ERC-8004 vs. A2A | ERC 142 / A2A 4,181 | MiniMax-M2.5 | 
+| **Appendix (R2)** | 34-ERC cluster + cross-model + cross-round consensus | ERC 1,664 / A2A 4,058 | 3 models × 3 rounds |
 
 ---
 
@@ -48,10 +46,7 @@ workspace/
 │   ├── visualise/                  ← Figure generation, interactive HTML
 │   ├── pipeline/                   ← Full-pipeline orchestrators
 │   └── lib/                        ← Shared utilities (paths, models, I/O)
-├── analysis/                       ← Analysis outputs (metrics, CSVs, reports)
-├── output/                         ← Visual outputs (figures, interactive HTML)
-├── paper-acm/                      ← LaTeX source for the ACM paper
-└── tree-docs/                      ← Project progress records (decision-tree format)
+└──analysis/                       ← Analysis outputs (metrics, CSVs, reports)
 ```
 
 **Key distinction:**
@@ -575,19 +570,3 @@ Full results: `analysis/metrics/r1/network_metrics_table.csv`, `analysis/topic_d
 
 **Data:** [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — attribution required, non-commercial use only. To be hosted on Hugging Face.
 
----
-
-## Citation
-
-If you use this dataset or pipeline in your research, please cite:
-
-```bibtex
-@inproceedings{erc8004-a2a-governance-2026,
-  title     = {Agentic Analysis for Agentic Infrastructure: An {LLM}-Powered
-               Pipeline for Comparative Governance of {DAO} and Corporate {AI} Protocols},
-  author    = {Michelangelo and others},
-  booktitle = {Proceedings of the AOM/SMS Conference},
-  year      = {2026},
-  note      = {TIM Track}
-}
-```
