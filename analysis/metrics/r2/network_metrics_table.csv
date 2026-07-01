@@ -1,0 +1,3 @@
+case,n_actors,n_edges,density,degree_gini,top3_degree_share_pct,n_components,giant_component_ratio,network_efficiency,louvain_modularity,n_louvain_communities,top3_betweenness_actors,top3_betweenness_share_pct
+ERC Agent Cluster (Tier 1+2),204,4955,0.2393,0.481,3.8,13,0.917,0.5959,0.211,15,abcoathup; TMerlini; Nicopat,42.6
+Google A2A,629,1657,0.0084,0.868,6.9,435,0.285,0.4614,0.438,441,ognis1205; vishalmysore; darrelmiller,44.9

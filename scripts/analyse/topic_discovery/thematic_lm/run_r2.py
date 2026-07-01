@@ -2,8 +2,8 @@
 Thematic-LM R2 — fixed pipeline for paper-acm.
 
 Re-runs Stages 2–4 using pre-computed Stage 1 open codes from:
-  data/annotated/r2/thematic/{deepseek,glm,kimi}_themes.json   (ERC)
-  data/annotated/r2/thematic/a2a/{deepseek,glm,kimi}_themes.json  (A2A)
+  data/annotated/r2/cross-model/thematic/{deepseek,glm,kimi}_themes.json   (ERC)
+  data/annotated/r2/cross-model/thematic/a2a/{glm,kimi}_themes.json  (A2A)
 
 CRITICAL FIX: Stage 1 now extracts INDIVIDUAL theme labels (normalized case),
 not semicolon-joined compound strings. Stage 2 uses frequency-based top-200
@@ -29,6 +29,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[4]
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
+from lib.paths import DATA_ANNOTATED_R2_THEMATIC, DATA_ANNOTATED_R2_CONSENSUS, ANALYSIS_TD_R2_CROSS_MODEL_THEMATIC
+from lib.models import BACKENDS_THEMATIC, CANONICAL_MODELS, LEGACY_KEYS, is_bot
 
 from dotenv import load_dotenv
 load_dotenv(ROOT / ".env")
@@ -37,30 +41,13 @@ from scripts.analyse.topic_discovery.thematic_lm.agents import (
     run_aggregator, run_reviewer, run_theme_coder_batch,
 )
 
-THEMATIC_DIR = ROOT / "data" / "annotated" / "r2" / "thematic"
-OUT_DIR = ROOT / "output" / "topic_discovery" / "r2" / "thematic_lm"
-CONSENSUS_DIR = ROOT / "data" / "annotated" / "r2" / "consensus"
+THEMATIC_DIR = DATA_ANNOTATED_R2_THEMATIC
+OUT_DIR = ANALYSIS_TD_R2_CROSS_MODEL_THEMATIC
+CONSENSUS_DIR = DATA_ANNOTATED_R2_CONSENSUS
 
-BACKENDS = {
-    "deepseek": {
-        "base_url": "https://api.deepseek.com/v1",
-        "model": "deepseek-v4-flash",
-        "api_key_env": "DEEPSEEK_API_KEY",
-    },
-    "glm": {
-        "base_url": "https://open.bigmodel.cn/api/paas/v4",
-        "model": "glm-4-plus",
-        "api_key_env": "GLM_API_KEY",
-    },
-    "kimi": {
-        "base_url": "https://api.moonshot.cn/v1",
-        "model": "moonshot-v1-auto",
-        "api_key_env": "KIMI_API_KEY",
-    },
-}
+BACKENDS = BACKENDS_THEMATIC
 
-THEMATIC_MODELS = ["deepseek", "glm", "kimi"]
-BOT_AUTHORS = {"github-actions[bot]", "eip-review-bot", "dependabot[bot]"}
+THEMATIC_MODELS = CANONICAL_MODELS
 
 
 def _save(path: Path, data) -> None:
@@ -101,7 +88,7 @@ def load_stage1_individual(thematic_base: Path, id_fn) -> dict[str, set[str]]:
         records = json.loads(path.read_text())
         n_added = 0
         for r in records:
-            if (r.get("author", "") or "").endswith("[bot]"):
+            if is_bot(r.get("author", "")):
                 continue
             rid = id_fn(r)
             themes = r.get("themes") or []
@@ -124,7 +111,7 @@ def load_all_records_for_coding() -> list[dict]:
     erc_path = CONSENSUS_DIR / "erc_annotations.json"
     if erc_path.exists():
         for r in json.loads(erc_path.read_text()):
-            if (r.get("author", "") or "").endswith("[bot]"):
+            if is_bot(r.get("author", "")):
                 continue
             text = (r.get("raw_text") or "").strip()
             if len(text) < 20:
@@ -134,7 +121,7 @@ def load_all_records_for_coding() -> list[dict]:
     a2a_path = CONSENSUS_DIR / "a2a_annotations.json"
     if a2a_path.exists():
         for r in json.loads(a2a_path.read_text()):
-            if (r.get("author", "") or "").endswith("[bot]"):
+            if is_bot(r.get("author", "")):
                 continue
             text = (r.get("raw_text") or "").strip()
             if len(text) < 20:
@@ -183,7 +170,8 @@ def aggregate_in_batches(client, model: str, labels: list[str],
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="R2 Thematic-LM pipeline (Stages 2-4, fixed)")
-    parser.add_argument("--backend", required=True, choices=list(BACKENDS))
+    parser.add_argument("--backend", required=True,
+                        choices=sorted(set(list(LEGACY_KEYS.keys()) + list(BACKENDS_THEMATIC.keys()))))
     parser.add_argument("--batch-size", type=int, default=15)
     parser.add_argument("--aggregation-labels", type=int, default=200,
                         help="Number of top-frequency labels to send to aggregator")
@@ -191,7 +179,8 @@ def main() -> None:
                         help="Ignore cached stages and re-run everything")
     args = parser.parse_args()
 
-    cfg = BACKENDS[args.backend]
+    backend = LEGACY_KEYS.get(args.backend, args.backend)
+    cfg = BACKENDS_THEMATIC[backend]
     api_key = os.environ.get(cfg["api_key_env"], "")
     if not api_key:
         sys.exit(f"Error: {cfg['api_key_env']} not set in .env")
@@ -201,7 +190,7 @@ def main() -> None:
     model = cfg["model"]
 
     # Per-model output
-    model_out = OUT_DIR / args.backend
+    model_out = OUT_DIR / backend
     model_out.mkdir(parents=True, exist_ok=True)
 
     stage1_path = model_out / "stage1_codes.json"

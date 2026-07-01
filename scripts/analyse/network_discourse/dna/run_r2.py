@@ -21,12 +21,15 @@ import networkx as nx
 
 ROOT = Path(__file__).parents[4]
 sys.path.insert(0, str(ROOT / "scripts/analyse/network_discourse"))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent.parent))
+
+from lib.paths import ANALYSIS_ND_R2_DNA
 
 from dna.build import build, graph_to_edgelist
 from dna.metrics import compute
 from loader_r2 import load_joined_r2
 
-OUT_DIR = ROOT / "output/network_discourse/r2/dna"
+OUT_DIR = ANALYSIS_ND_R2_DNA
 
 CASE_COLORS = {"ERC-8004": "#E87722", "Google-A2A": "#4285F4"}
 INST_PALETTE = {

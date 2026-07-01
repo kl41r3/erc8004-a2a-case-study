@@ -18,26 +18,18 @@ import csv
 import json
 import math
 import re
+import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-CONSENSUS_DIR = ROOT / "data" / "annotated" / "r2" / "consensus"
-ANALYSIS = ROOT / "analysis"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, CONSENSUS_ERC, CONSENSUS_A2A, ANALYSIS_METRICS_R2, OUTPUT_DIR, METRICS_R2_NETWORK_NODES_ERC, METRICS_R2_NETWORK_EDGES_ERC, METRICS_R2_NETWORK_NODES_A2A, METRICS_R2_NETWORK_EDGES_A2A, METRICS_R2_NETWORK_NODES_A2A_TOP50, METRICS_R2_NETWORK_EDGES_A2A_TOP50
+from lib.models import BOTS, is_bot
+
+CONSENSUS_DIR = CONSENSUS_ERC.parent
+ANALYSIS = ANALYSIS_METRICS_R2.parent
 ANALYSIS.mkdir(parents=True, exist_ok=True)
-
-BOTS = {
-    "github-actions[bot]", "eip-review-bot", "dependabot[bot]",
-    "gemini-code-assist[bot]", "git-vote[bot]", "google-cla[bot]",
-    "actions-user", "github-actions", "dependabot",
-}
-
-
-def is_bot(author: str) -> bool:
-    if not author:
-        return True
-    return author in BOTS or author.endswith("[bot]") or author.endswith("-bot")
 
 
 def _thread_key_erc(r: dict) -> str | None:
@@ -108,6 +100,8 @@ def build_coparticipation(records: list[dict], thread_key_fn) -> tuple[dict, lis
 
 
 def gini(values: list[float]) -> float:
+    """Standard Gini coefficient: (2 * sum(i*y_i)) / (n * sum(y_i)) - (n+1)/n
+    where y_i are sorted ascending and i is 1-indexed rank."""
     if len(values) < 2:
         return 0.0
     arr = sorted(values)
@@ -115,12 +109,9 @@ def gini(values: list[float]) -> float:
     total = sum(arr)
     if total == 0:
         return 0.0
-    cumsum = 0.0
-    gini_num = 0.0
-    for i, v in enumerate(arr):
-        cumsum += v
-        gini_num += (2 * cumsum - v - total) / total
-    return gini_num / n
+    rank_sum = sum((i + 1) * v for i, v in enumerate(arr))
+    g = (2 * rank_sum) / (n * total) - (n + 1) / n
+    return max(0.0, g)  # clamp floating-point negatives near zero
 
 
 def degree_stats(nodes: dict, edges: list) -> dict[str, int]:
@@ -222,9 +213,8 @@ def compute_sna_metrics(nodes: dict, edges: list) -> dict:
     }
 
 
-def save_network_csv(nodes: dict, edges: list, prefix: str):
-    nodes_path = ANALYSIS / f"{prefix}_nodes.csv"
-    edges_path = ANALYSIS / f"{prefix}_edges.csv"
+def save_network_csv(nodes: dict, edges: list, nodes_path: Path, edges_path: Path):
+    nodes_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(nodes_path, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["id", "weight", "thread_count"])
@@ -236,7 +226,7 @@ def save_network_csv(nodes: dict, edges: list, prefix: str):
         w.writeheader()
         w.writerows(edges)
 
-    print(f"  {prefix}: {len(nodes)} nodes, {len(edges)} edges")
+    print(f"  {nodes_path.stem}: {len(nodes)} nodes, {len(edges)} edges")
     return nodes_path, edges_path
 
 
@@ -257,7 +247,7 @@ def main():
 
     # ── ERC cluster ─────────────────────────────────────────────────────────
     print("Loading ERC consensus annotations…")
-    erc_path = CONSENSUS_DIR / "erc_annotations.json"
+    erc_path = CONSENSUS_ERC
     if not erc_path.exists():
         print(f"  ERROR: {erc_path} not found. Run build_consensus.py first.")
         return
@@ -265,7 +255,7 @@ def main():
     print(f"  {len(erc_records)} ERC records")
 
     erc_nodes, erc_edges = build_coparticipation(erc_records, _thread_key_erc)
-    save_network_csv(erc_nodes, erc_edges, "r2_network_erc")
+    save_network_csv(erc_nodes, erc_edges, METRICS_R2_NETWORK_NODES_ERC, METRICS_R2_NETWORK_EDGES_ERC)
     erc_metrics = compute_sna_metrics(erc_nodes, erc_edges)
     print(f"  ERC metrics: density={erc_metrics['density']} "
           f"Gini={erc_metrics['degree_gini']} "
@@ -273,7 +263,7 @@ def main():
 
     # ── Google A2A ───────────────────────────────────────────────────────────
     print("\nLoading A2A consensus annotations…")
-    a2a_path = CONSENSUS_DIR / "a2a_annotations.json"
+    a2a_path = CONSENSUS_A2A
     if not a2a_path.exists():
         print(f"  ERROR: {a2a_path} not found. Run build_consensus.py first.")
         return
@@ -281,7 +271,7 @@ def main():
     print(f"  {len(a2a_records)} A2A records")
 
     a2a_nodes, a2a_edges = build_coparticipation(a2a_records, _thread_key_a2a)
-    save_network_csv(a2a_nodes, a2a_edges, "r2_network_a2a")
+    save_network_csv(a2a_nodes, a2a_edges, METRICS_R2_NETWORK_NODES_A2A, METRICS_R2_NETWORK_EDGES_A2A)
     a2a_metrics = compute_sna_metrics(a2a_nodes, a2a_edges)
     print(f"  A2A metrics: density={a2a_metrics['density']} "
           f"Gini={a2a_metrics['degree_gini']} "
@@ -289,7 +279,7 @@ def main():
 
     # Top-50 subgraph for visualization
     a2a_top50_nodes, a2a_top50_edges = top_n_subgraph(a2a_nodes, a2a_edges, n=50)
-    save_network_csv(a2a_top50_nodes, a2a_top50_edges, "r2_network_a2a_top50")
+    save_network_csv(a2a_top50_nodes, a2a_top50_edges, METRICS_R2_NETWORK_NODES_A2A_TOP50, METRICS_R2_NETWORK_EDGES_A2A_TOP50)
 
     # ── Metrics table ────────────────────────────────────────────────────────
     print("\nSaving metrics table…")
@@ -302,7 +292,7 @@ def main():
         metrics_rows.append(row)
 
     fields = list(metrics_rows[0].keys()) if metrics_rows else []
-    table_path = ANALYSIS / "r2_network_metrics_table.csv"
+    table_path = ANALYSIS_METRICS_R2 / "r2_network_metrics_table.csv"
     with open(table_path, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=fields)
         w.writeheader()
@@ -310,7 +300,7 @@ def main():
     print(f"  → {table_path}")
 
     # Save JSON for paper
-    json_out = ROOT / "output" / "stats" / "r2_network_metrics.json"
+    json_out = OUTPUT_DIR / "figures" / "r2_network_metrics.json"
     json_out.parent.mkdir(parents=True, exist_ok=True)
     json_out.write_text(json.dumps({
         "generated_at": datetime.now(timezone.utc).isoformat(),

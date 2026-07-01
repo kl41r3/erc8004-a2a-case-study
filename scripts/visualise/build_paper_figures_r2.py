@@ -1,15 +1,15 @@
 """Generate all R2 paper figures for paper-acm/.
 
 Reads from:
-  data/annotated/r2/consensus/{erc,a2a}_annotations.json
-  data/annotated/r2/validation/validation_report.json
-  output/topic_discovery/r2/
-  output/network_discourse/r2/
-  analysis/r2_*.csv
+  data/annotated/r2/cross-model/consensus/{erc,a2a}_annotations.json
+  data/annotated/r2/cross-model/validation/validation_report.json
+  analysis/topic_discovery/r2/
+  analysis/network_discourse/r2/
+  analysis/metrics/r2/
 
 Output dirs:
-  output/figures/r2/      (primary)
-  paper-acm/            (copy for LaTeX)
+  output/figures/          (primary)
+  paper-acm/fig/           (copy for LaTeX)
 
 Run:
     uv run python scripts/visualise/build_paper_figures_r2.py
@@ -17,7 +17,7 @@ Run:
 from __future__ import annotations
 
 import json
-import shutil
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -30,14 +30,25 @@ import pandas as pd
 from dateutil import parser as dateparser
 from scipy.stats import gaussian_kde
 
-ROOT = Path(__file__).resolve().parents[2]
-PAPER_DIR = ROOT / "paper-acm"
-OUTPUT_FIGS = ROOT / "output" / "figures" / "r2"
-TD = ROOT / "output" / "topic_discovery" / "r2"
-ND = ROOT / "output" / "network_discourse" / "r2"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import (ROOT, DATA_ANNOTATED_R2_CONSENSUS, DATA_ANNOTATED_R2_VALIDATION,
+    DATA_ANNOTATED_R2_A2A,
+    ANALYSIS_TD_R2, ANALYSIS_TD_R2_CROSS_MODEL, ANALYSIS_TD_R2_CROSS_MODEL_THEMATIC,
+    ANALYSIS_TD_R2_CROSS_MODEL_COMPARATIVE,
+    ANALYSIS_ND_R2, ANALYSIS_ND_R2_DNA, ANALYSIS_ND_R2_SS,
+    METRICS_R2_NETWORK_NODES_ERC, METRICS_R2_NETWORK_EDGES_ERC,
+    METRICS_R2_NETWORK_NODES_A2A, METRICS_R2_NETWORK_EDGES_A2A,
+    OUTPUT_FIGURES, PAPER_ACM, PAPER_ACM_FIG)
+from lib.colors import BERT_SEMANTIC as _LIB_BERT, CRYPTO_SEMANTIC as _LIB_CRYPTO
+from lib.figure_utils import save_figure
+
+PAPER_DIR = PAPER_ACM
+OUTPUT_FIGS = OUTPUT_FIGURES
+TD = ANALYSIS_TD_R2
+ND = ANALYSIS_ND_R2
 ANALYSIS = ROOT / "analysis"
-CONSENSUS = ROOT / "data" / "annotated" / "r2" / "consensus"
-VALIDATION = ROOT / "data" / "annotated" / "r2" / "validation"
+CONSENSUS = DATA_ANNOTATED_R2_CONSENSUS
+VALIDATION = DATA_ANNOTATED_R2_VALIDATION
 
 # ── Colour palette ────────────────────────────────────────────────────────────
 P1 = "#a30543"
@@ -63,15 +74,7 @@ EIP_STAGES = [
 
 
 def _save(fig, stem: str) -> None:
-    OUTPUT_FIGS.mkdir(parents=True, exist_ok=True)
-    for ext in ("pdf", "png"):
-        path = OUTPUT_FIGS / f"{stem}.{ext}"
-        fig.savefig(path, dpi=180, bbox_inches="tight")
-    # copy to paper dir
-    for ext in ("pdf", "png"):
-        src = OUTPUT_FIGS / f"{stem}.{ext}"
-        dst = PAPER_DIR / f"{stem}.{ext}"
-        shutil.copy2(src, dst)
+    save_figure(fig, stem, paper=True, dpi=180)
     print(f"  Saved: {stem}")
 
 
@@ -107,7 +110,7 @@ def fig_icr_heatmap() -> None:
 
     erc_report = json.loads(report_path.read_text())
 
-    a2a_report_path = ROOT / "data" / "annotated" / "r2" / "a2a" / "validation" / "validation_report.json"
+    a2a_report_path = DATA_ANNOTATED_R2_A2A / "validation" / "validation_report.json"
     a2a_report = json.loads(a2a_report_path.read_text()) if a2a_report_path.exists() else None
 
     fields = ["argument_type", "stance", "consensus_signal", "stakeholder_institution"]
@@ -329,7 +332,7 @@ def fig_stance_heatmap() -> None:
 # ── Figure: BERTopic divergence ───────────────────────────────────────────────
 
 def fig_bertopic_divergence() -> None:
-    p = TD / "comparative_discourse" / "divergence_table.csv"
+    p = ANALYSIS_TD_R2_CROSS_MODEL_COMPARATIVE / "divergence_table.csv"
     if not p.exists():
         print("  BERTopic divergence_table.csv not found — skipping")
         return
@@ -343,7 +346,7 @@ def fig_bertopic_divergence() -> None:
     )
 
     # Load JSD from summary
-    summary_p = TD / "comparative_discourse" / "comparison_summary.json"
+    summary_p = ANALYSIS_TD_R2_CROSS_MODEL_COMPARATIVE / "comparison_summary.json"
     jsd_val = "?"
     if summary_p.exists():
         summary = json.loads(summary_p.read_text())
@@ -370,9 +373,9 @@ def fig_bertopic_divergence() -> None:
 # ── Figure: Thematic-LM combined butterfly chart ─────────────────────────────
 
 def fig_combined_themes() -> None:
-    coded_p = TD / "thematic_lm" / "coded_records.json"
-    themes_p = TD / "thematic_lm" / "themes.json"
-    compare_p = ND / "sociosemantic" / "theme_actor_comparison.csv"
+    coded_p = ANALYSIS_TD_R2_CROSS_MODEL_THEMATIC / "glm-4-plus" / "coded_records.json"
+    themes_p = ANALYSIS_TD_R2_CROSS_MODEL_THEMATIC / "glm-4-plus" / "themes.json"
+    compare_p = ANALYSIS_ND_R2_SS / "theme_actor_comparison.csv"
 
     if not coded_p.exists() or not themes_p.exists():
         print("  Thematic-LM output not found — skipping")
@@ -479,10 +482,10 @@ def fig_combined_themes() -> None:
     ax.xaxis.grid(True, alpha=0.12, lw=0.3)
 
     # JSD from summary
-    ss_p = ND / "sociosemantic" / "ss_metrics.json"
+    ss_p = ANALYSIS_ND_R2_SS / "ss_metrics.json"
     if ss_p.exists():
         pass  # JSD comes from thematic, not sociosemantic
-    stage1_p = TD / "thematic_lm" / "stage2_clusters.json"
+    stage1_p = ANALYSIS_TD_R2_CROSS_MODEL_THEMATIC / "glm-4-plus" / "stage2_clusters.json"
     # Try to compute JSD from coded records
     try:
         ec = Counter(rec_df[rec_df["case"] == erc_col]["theme_id"])
@@ -511,10 +514,10 @@ def fig_combined_themes() -> None:
 # ── Figure: SNA two-column network ───────────────────────────────────────────
 
 def fig_network_sna() -> None:
-    erc_nodes_p = ANALYSIS / "r2_network_erc_nodes.csv"
-    erc_edges_p = ANALYSIS / "r2_network_erc_edges.csv"
-    a2a_nodes_p = ANALYSIS / "r2_network_a2a_nodes.csv"
-    a2a_edges_p = ANALYSIS / "r2_network_a2a_edges.csv"
+    erc_nodes_p = METRICS_R2_NETWORK_NODES_ERC
+    erc_edges_p = METRICS_R2_NETWORK_EDGES_ERC
+    a2a_nodes_p = METRICS_R2_NETWORK_NODES_A2A
+    a2a_edges_p = METRICS_R2_NETWORK_EDGES_A2A
 
     if not erc_nodes_p.exists():
         print("  SNA CSV files not found — skipping")
@@ -580,8 +583,8 @@ def fig_network_sna() -> None:
 # ── Figure: per-actor Shannon entropy ────────────────────────────────────────
 
 def fig_ss_entropy() -> None:
-    erc_p = ND / "sociosemantic" / "actor_diversity_erc8004.csv"
-    a2a_p = ND / "sociosemantic" / "actor_diversity_googlea2a.csv"
+    erc_p = ANALYSIS_ND_R2_SS / "actor_diversity_erc8004.csv"
+    a2a_p = ANALYSIS_ND_R2_SS / "actor_diversity_googlea2a.csv"
 
     if not erc_p.exists():
         print("  Socio-semantic actor diversity CSVs not found — skipping")

@@ -5,7 +5,7 @@ Mirrors annotate_thematic.py but loads from annotated_records.json (A2A case).
 Only processes deliberative records (text ≥ 50 chars). Filters out bot/auto
 sources and extreme-brevity records.
 
-Output: data/annotated/r2/thematic/a2a/{model}_themes.json
+Output: data/annotated/r2/cross-model/thematic/a2a/{model}_themes.json
 
 Usage:
   uv run python scripts/process/annotate_thematic_a2a.py --model deepseek
@@ -18,6 +18,7 @@ import argparse
 import json
 import os
 import re
+import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -25,40 +26,17 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
 
-ROOT = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_ANNOTATED_R1_RECORDS, DATA_ANNOTATED_R2_THEMATIC
+from lib.models import BACKENDS_THEMATIC, LEGACY_KEYS, BOTS, is_bot
+
 load_dotenv(ROOT / ".env")
 
-SRC_FILE = ROOT / "data" / "annotated" / "annotated_records.json"
-OUT_DIR = ROOT / "data" / "annotated" / "r2" / "thematic" / "a2a"
+SRC_FILE = DATA_ANNOTATED_R1_RECORDS
+OUT_DIR = DATA_ANNOTATED_R2_THEMATIC / "a2a"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 MIN_TEXT = 50
-# Exclude pure bot/automated records
-BOT_AUTHORS = {"github-actions[bot]", "dependabot[bot]", "codecov[bot]"}
-
-BACKENDS = {
-    "deepseek": {
-        "name": "DeepSeek-V4-Flash",
-        "base_url": "https://api.deepseek.com/v1",
-        "model": "deepseek-v4-flash",
-        "api_key_env": "DEEPSEEK_API_KEY",
-        "sleep": 0.15,
-    },
-    "glm": {
-        "name": "GLM-4-Plus",
-        "base_url": "https://open.bigmodel.cn/api/paas/v4",
-        "model": "glm-4-plus",
-        "api_key_env": "GLM_API_KEY",
-        "sleep": 0.2,
-    },
-    "kimi": {
-        "name": "Moonshot-v1-Auto",
-        "base_url": "https://api.moonshot.cn/v1",
-        "model": "moonshot-v1-auto",
-        "api_key_env": "KIMI_API_KEY",
-        "sleep": 0.15,
-    },
-}
 
 THEMATIC_PROMPT = """\
 You are a qualitative researcher performing open-ended thematic coding on
@@ -98,7 +76,7 @@ def load_a2a_deliberative() -> list[dict]:
         if len(text) < MIN_TEXT:
             continue
         author = r.get("author", "")
-        if author in BOT_AUTHORS:
+        if is_bot(author):
             continue
         records.append({
             "author": author,
@@ -193,18 +171,20 @@ def annotate(client: OpenAI, model: str, record: dict) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description="A2A thematic analysis for paper-acm")
-    parser.add_argument("--model", required=True, choices=list(BACKENDS))
+    parser.add_argument("--model", required=True,
+                        choices=sorted(set(list(LEGACY_KEYS.keys()) + list(BACKENDS_THEMATIC.keys()))))
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--batch-size", type=int, default=10)
     args = parser.parse_args()
 
-    backend = BACKENDS[args.model]
+    canonical_id = LEGACY_KEYS.get(args.model, args.model)
+    backend = BACKENDS_THEMATIC[canonical_id]
     key = os.environ.get(backend["api_key_env"], "")
     if not key:
         raise SystemExit(f"{backend['api_key_env']} not set in .env")
     client = OpenAI(api_key=key, base_url=backend["base_url"])
 
-    out_json = OUT_DIR / f"{args.model}_themes.json"
+    out_json = OUT_DIR / f"{canonical_id}_themes.json"
 
     records = load_a2a_deliberative()
     print(f"Loaded {len(records)} A2A deliberative records (text ≥ {MIN_TEXT} chars)")

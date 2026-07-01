@@ -1,21 +1,25 @@
 """
 build_r3_consensus.py — Build per-model consensus (3-round majority vote) and
-cross-model consensus (3-model majority vote) for R3 annotations.
+cross-model consensus (3-model majority vote) for cross-round test-retest annotations
+(R2 robustness appendix).
 
 Usage:
   uv run python scripts/process/build_r3_consensus.py --case erc
   uv run python scripts/process/build_r3_consensus.py --case a2a
   uv run python scripts/process/build_r3_consensus.py --case both
 """
-import argparse, json
+import argparse, json, sys
 from collections import Counter
 from pathlib import Path
 from datetime import datetime, timezone
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-R3_DIR = ROOT / "data" / "annotated" / "r3"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_ANNOTATED_R2_CROSS_ROUND, CROSS_ROUND_ERC, CROSS_ROUND_A2A
+from lib.models import CANONICAL_MODELS
+
+CROSS_ROUND_DIR = DATA_ANNOTATED_R2_CROSS_ROUND
 FIELDS = ["argument_type", "stance", "consensus_signal"]
-MODELS = ["deepseek-v4-flash", "glm-4-plus", "moonshot-v1-auto"]
+MODELS = CANONICAL_MODELS
 ROUNDS = [1, 2, 3]
 
 
@@ -34,7 +38,7 @@ def _rid_a2a(r: dict) -> str:
 
 def build_model_consensus(case: str, model: str, id_fn) -> dict | None:
     """Majority vote across 3 rounds for a single model. Returns consensus list."""
-    model_dir = R3_DIR / case / model
+    model_dir = CROSS_ROUND_DIR / case / model
     round_recs = {}
     for rnd in ROUNDS:
         path = model_dir / f"round_{rnd}" / "annotations.json"
@@ -92,7 +96,7 @@ def build_cross_consensus(case: str, id_fn) -> list[dict] | None:
     """Majority vote across models, using each model's per-model consensus."""
     model_recs = {}
     for model in MODELS:
-        path = R3_DIR / case / model / "consensus.json"
+        path = CROSS_ROUND_DIR / case / model / "consensus.json"
         if not path.exists():
             print(f"  WARNING: {model} consensus not found, skipping")
             continue
@@ -141,7 +145,7 @@ def build_cross_consensus(case: str, id_fn) -> list[dict] | None:
         results.append(base)
 
     # Save
-    out_path = R3_DIR / f"{case}_cross_consensus.json"
+    out_path = CROSS_ROUND_ERC if case == "erc" else CROSS_ROUND_A2A
     out_path.write_text(json.dumps(results, indent=2, ensure_ascii=False))
     print(f"  → Wrote {len(results)} cross-consensus records to {out_path}")
 

@@ -22,13 +22,16 @@ Random seed is fixed for reproducibility.
 import json
 import random
 import csv
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_ANNOTATED_R1_RECORDS
 
 SEED = 42
 ERC_FORUM_URL = "https://ethereum-magicians.org/t/erc-8004-trustless-agents/25098"
 
-ROOT = Path(__file__).parent.parent.parent
-ANNOTATED = ROOT / "data" / "annotated" / "annotated_records.json"
+ANNOTATED = DATA_ANNOTATED_R1_RECORDS
 OUT_CSV  = ROOT / "verification" / "sample_50.csv"
 OUT_JSON = ROOT / "verification" / "sample_50.json"
 

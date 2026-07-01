@@ -20,11 +20,14 @@ Each entry schema:
 
 import json
 import re
+import sys
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent.parent
-R07_PATH = ROOT / "reports" / "R07_2026-03-14_机构归属人工调查.md"
-OUTPUT_PATH = ROOT / "data" / "raw" / "manual_institutions.json"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, RAW_MANUAL_INSTITUTIONS
+
+R07_PATH = ROOT / "tree-docs" / "R07_2026-03-14_机构归属人工调查.md"
+OUTPUT_PATH = RAW_MANUAL_INSTITUTIONS
 
 # ---------------------------------------------------------------------------
 # Text helpers

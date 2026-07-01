@@ -19,7 +19,7 @@ Input:
   data/raw/a2a_issues.json                 (Google A2A)
   data/raw/a2a_prs.json                    (Google A2A)
 
-Output: data/annotated/annotated_records.json
+Output: data/annotated/r1/annotated_records.json
 """
 
 import json
@@ -29,10 +29,14 @@ import time
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv(Path(__file__).parent.parent / ".env")
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_RAW, DATA_ANNOTATED_R1, DATA_ANNOTATED_R1_RECORDS
+from lib.models import BOTS, is_bot
 
-RAW_DIR = Path(__file__).parent.parent / "data" / "raw"
-ANNOTATED_DIR = Path(__file__).parent.parent / "data" / "annotated"
+load_dotenv(ROOT / ".env")
+
+RAW_DIR = DATA_RAW
+ANNOTATED_DIR = DATA_ANNOTATED_R1
 ANNOTATED_DIR.mkdir(parents=True, exist_ok=True)
 
 # ---------------------------------------------------------------------------
@@ -55,15 +59,6 @@ BACKENDS = {
         "model": os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5-20251001"),
         "api_key_env": "ANTHROPIC_API_KEY",
     },
-}
-
-BOT_AUTHORS = {
-    "gemini-code-assist[bot]",
-    "google-cla[bot]",
-    "github-actions[bot]",
-    "codecov[bot]",
-    "dependabot[bot]",
-    "git-vote[bot]",
 }
 
 ANNOTATION_PROMPT = """\
@@ -205,7 +200,7 @@ def load_records() -> list[dict]:
             # Only annotate records with non-trivial text, skip known bots
             for r in data:
                 author = r.get("author", "")
-                if author in BOT_AUTHORS or author.endswith("[bot]"):
+                if is_bot(author):
                     continue
                 if len((r.get("raw_text") or "").strip()) >= 20:
                     records.append({**r, "_case": "Google-A2A"})
@@ -253,7 +248,7 @@ def main():
         print(f"Limited to first {args.limit} records")
 
     # Resume support
-    out_path = ANNOTATED_DIR / "annotated_records.json"
+    out_path = DATA_ANNOTATED_R1_RECORDS
     done_ids: set[str] = set()
     annotated: list[dict] = []
 

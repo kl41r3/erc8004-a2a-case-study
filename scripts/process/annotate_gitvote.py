@@ -9,22 +9,19 @@ Also writes a focused gitvote governance summary to analysis/gitvote_analysis.md
 import json
 import os
 import re
+import sys
 import time
 from pathlib import Path
 
 import urllib.request
 
-ROOT = Path(__file__).parent.parent.parent
-DATA_RAW = ROOT / "data" / "raw"
-ANNOTATED_DIR = ROOT / "data" / "annotated"
-ANALYSIS = ROOT / "analysis"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, RAW_A2A_GITVOTE_PRS, DATA_ANNOTATED_R1_RECORDS
+from lib.models import BOTS, is_bot
 
-GITVOTE_JSON = DATA_RAW / "a2a_gitvote_prs.json"
-ANNOTATED_FILE = ANNOTATED_DIR / "annotated_records.json"
-ANALYSIS_MD = ANALYSIS / "gitvote_analysis.md"
-
-
-BOTS = {"git-vote[bot]", "gemini-code-assist[bot]", "google-cla[bot]", "github-actions[bot]"}
+GITVOTE_JSON = RAW_A2A_GITVOTE_PRS
+ANNOTATED_FILE = DATA_ANNOTATED_R1_RECORDS
+ANALYSIS_MD = ROOT / "analysis" / "gitvote_analysis.md"
 
 
 def load_minimax_key() -> str:
@@ -110,7 +107,7 @@ def main():
     for r in raw_records:
         author = r.get("author", "")
         text = r.get("text", "")
-        if author in BOTS or author.endswith("[bot]"):
+        if is_bot(author):
             continue
         if not text or len(text.strip()) < 30:
             continue
@@ -241,7 +238,7 @@ def write_enriched_analysis(raw_records: list, annotated: list) -> None:
 
         # Human participants
         human_authors = [r.get("author", "") for r in raw
-                         if r.get("author") not in BOTS and not r.get("author", "").endswith("[bot]")]
+                         if not is_bot(r.get("author", ""))]
         author_counts = Counter(human_authors)
 
         # Annotation summary

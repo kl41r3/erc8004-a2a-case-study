@@ -1,0 +1,61 @@
+tier,include,deliberative,erc,topic_id,posts,created,title,reason
+tier1,Y,Y,8004,25098,207,2025-08-14,ERC-8004: Trustless Agents,ERC-8004 proper (main/calls/launch/extension/production)
+tier1,Y,Y,8004,28562,8,2026-05-19,"ERC-8004 in production: per-collection factory vs chain singleton, which should be the reference architecture?",ERC-8004 proper (main/calls/launch/extension/production)
+tier1,Y,Y,8004,25487,3,2025-09-16,"Trustless Agents (ERC-8004) Call #1, September 23, 2025",ERC-8004 proper (main/calls/launch/extension/production)
+tier1,Y,Y,8004,28000,3,2026-03-16,"ERC-8004 Launch Day, #1, March 15, 2026",ERC-8004 proper (main/calls/launch/extension/production)
+tier1,Y,Y,8004,26029,3,2025-10-30,"Trustless Agents (ERC-8004) Call #3, November 12, 2025",ERC-8004 proper (main/calls/launch/extension/production)
+tier1,Y,N,8004,28555,1,2026-05-18,Trustless Agents Plus (TAP) : Home for fragmented ERC8004 Agents,ERC-8004 proper (main/calls/launch/extension/production)
+tier1,Y,N,8004,25434,1,2025-09-13,ERC-8004 Extension: Verifiable AI System Transparency for Trustless Agents,ERC-8004 proper (main/calls/launch/extension/production)
+tier1,Y,N,8004,25789,1,2025-10-14,"Trustless Agents (ERC-8004) Call #2, October 22, 2025",ERC-8004 proper (main/calls/launch/extension/production)
+tier2,Y,Y,8183,27902,305,2026-03-04,ERC-8183: Agentic Commerce,contemporaneous agent-standardization ERC
+tier2,Y,Y,8274,28083,115,2026-03-26,ERC-8274: AI Inference Proof Verification,contemporaneous agent-standardization ERC
+tier2,Y,Y,8210,28097,44,2026-03-28,ERC-8210: Agent Assurance,contemporaneous agent-standardization ERC
+tier2,Y,Y,8240,28322,40,2026-04-22,ERC-8240: Trust Infrastructure for Agents and Assets,contemporaneous agent-standardization ERC
+tier2,Y,Y,8126,27445,39,2026-01-15,ERC-8126: AI Agent Verification,contemporaneous agent-standardization ERC
+tier2,Y,Y,8217,28339,25,2026-04-24,Add ERC 8217: Agent NFT Identity Bindings,contemporaneous agent-standardization ERC
+tier2,Y,Y,8203,28041,20,2026-03-22,ERC-8203: Agent Off-Chain Conditional Settlement Extension Interface,contemporaneous agent-standardization ERC
+tier2,Y,Y,8263,28577,20,2026-05-20,ERC-8263: Onchain Proof Layer for AI Agents,contemporaneous agent-standardization ERC
+tier2,Y,Y,8239,28335,18,2026-04-23,ERC-8239: Agent Skill Registry,contemporaneous agent-standardization ERC
+tier2,Y,Y,8257,28457,15,2026-05-06,ERC-8257: Agent Tool Registry,contemporaneous agent-standardization ERC
+tier2,Y,Y,8294,28669,14,2026-05-31,ERC-8294: Validation Network Interface for ERC-8004,ERC-8004 extension/dependent (boundary: T1 vs T2)
+tier2,Y,Y,8275,28622,13,2026-05-26,ERC-8275: Agent Service Discovery and Escrow Payments,contemporaneous agent-standardization ERC
+tier2,Y,Y,8259,28521,13,2026-05-13,"ERC-8259: AI Agent Identity, Reputation & Threat Registry (Draft v2 – Request for Feedback)",contemporaneous agent-standardization ERC
+tier2,Y,Y,8273,28617,12,2026-05-26,ERC-8273: Attestation-Gated Agentic Actions,contemporaneous agent-standardization ERC
+tier2,Y,Y,8118,27402,12,2026-01-09,ERC-8118: Agent Authorization,contemporaneous agent-standardization ERC
+tier2,Y,Y,8196,27987,10,2026-03-14,ERC-8196: AI Agent Authenticated Wallet,contemporaneous agent-standardization ERC
+tier2,Y,Y,8226,28208,8,2026-04-12,ERC-8226: Regulated Agent Mandate,contemporaneous agent-standardization ERC
+tier2,Y,Y,8150,27665,8,2026-02-06,ERC-8150: Zero-Knowledge Agent Payment Verification,contemporaneous agent-standardization ERC
+tier2,N,Y,7857,22391,8,2025-01-02,ERC-7857: An NFT Standard for AI Agents with Private Metadata,pre-ERC-8004 era (2025-01-02); AI-NFT generation
+tier2,Y,Y,8220,28162,7,2026-04-07,ERC-8220: Onchain AI Governance,contemporaneous agent-standardization ERC
+tier2,Y,Y,,28785,6,2026-06-13,Draft ERC: AI Agent Execution,contemporaneous agent-standardization ERC
+tier2,Y,Y,8033,25638,6,2025-09-30,ERC-8033: Agent Council Oracles,contemporaneous agent-standardization ERC
+tier2,N,Y,,28103,5,2026-03-29,ReceiptOS — verifiable execution receipts for agent,not a formal ERC/EIP proposal thread
+tier2,Y,Y,,28670,5,2026-06-01,"Draft ERC: Permission Registry — function-scoped delegation for agents, without custody",contemporaneous agent-standardization ERC
+tier2,Y,Y,8171,27967,4,2026-03-12,ERC-8171: Token Bound Account (Agent Registry),contemporaneous agent-standardization ERC
+tier2,N,Y,7662,19371,4,2024-03-26,ERC-7662: AI Agent NFTs,pre-ERC-8004 era (2024-03-26); AI-NFT generation
+tier2,Y,Y,8184,28012,4,2026-03-17,ERC-8184 (draft): Payment Channels with Signed Vouchers — streaming micropayments for AI agents,contemporaneous agent-standardization ERC
+tier2,N,Y,7860,22502,4,2025-01-12,ERC-7860 AgentNFT Extension for ERC-721,pre-ERC-8004 era (2025-01-12); AI-NFT generation
+tier2,N,Y,,26808,4,2025-12-01,"OSRB:A Safe, Open, Ethereum-Aligned AGI Benchmark Based on Autonomous Client Re-Implementation",not a formal ERC/EIP proposal thread
+tier2,Y,Y,8041,25656,3,2025-10-03,ERC-8041: Fixed-Supply Agent NFT Collections,contemporaneous agent-standardization ERC
+tier2,Y,Y,8162,27751,3,2026-02-16,ERC-8162: Agent Subscription Protocol,contemporaneous agent-standardization ERC
+tier2,Y,Y,,27949,3,2026-03-11,[Pre ERC] Agent Off-Chain Conditional Settlement Interface,contemporaneous agent-standardization ERC
+tier2,Y,Y,8181,27512,3,2026-01-19,ERC-8181: Self-Sovereign Agent NFTs,contemporaneous agent-standardization ERC
+tier2,N,N,,28628,2,2026-05-27,Panini Standard v1.0: A Definition of Intelligent Life for Agents,not a formal ERC/EIP proposal thread
+tier2,Y,N,8001,24989,2,2025-08-02,ERC-8001: Secure Intents: A Cryptographic Framework for Autonomous Agent Coordination,contemporaneous agent-standardization ERC
+tier2,Y,N,,28010,2,2026-03-17,ERC Discussion: Agent Alias Metadata Extension (Draft),contemporaneous agent-standardization ERC
+tier2,Y,N,8183,27970,2,2026-03-12,Accidentally built ERC-8183: lessons from running an AI agent job market in production,contemporaneous agent-standardization ERC
+tier2,Y,N,8122,27405,1,2026-01-09,ERC-8122: Minimal Agent Registry,contemporaneous agent-standardization ERC
+tier2,N,N,,28737,1,2026-06-06,"Execution receipts for AI agents: off-chain evidence, on-chain roots, and verifiable session proofs",not a formal ERC/EIP proposal thread
+tier2,Y,N,8160,27727,1,2026-02-12,ERC-8160: Primary Agent Registry: Address-to-Agent Resolution,contemporaneous agent-standardization ERC
+tier2,Y,N,8259,28473,1,2026-05-08,ERC-8259: AI Agent Identity & Threat Registry,contemporaneous agent-standardization ERC
+tier2,Y,N,,28404,1,2026-04-30,[Draft] Autonomous State Gateway (ASG): Collateralized Execution Routing for Off-Chain Agent Solvers,contemporaneous agent-standardization ERC
+tier2,Y,N,,28152,1,2026-04-06,ERC: Formal Governance Proof Registry for Autonomous Agents,contemporaneous agent-standardization ERC
+tier2,N,N,,25088,1,2025-08-13,Liquid Agent Standard (LAS),not a formal ERC/EIP proposal thread
+tier2,Y,N,8165,27773,1,2026-02-19,ERC-8165: Agentic On-Chain Operation Interface,contemporaneous agent-standardization ERC
+tier2,Y,N,8166,27772,1,2026-02-19,ERC-8166: Shared Sequencer Interface for Agent L2s,contemporaneous agent-standardization ERC
+tier2,Y,N,8264,28584,1,2026-05-21,ERC-8264: AI Agent Memory Access Rights,contemporaneous agent-standardization ERC
+tier2,Y,N,8242,28394,1,2026-04-28,ERC-8242: H3 Spatial Identity Extension for On-Chain Agents,contemporaneous agent-standardization ERC
+tier2,N,N,,26822,1,2025-12-01,AI Agent Identity Verification via Blockchain Fingerprints,not a formal ERC/EIP proposal thread
+tier2,Y,N,8107,27200,1,2025-12-17,ERC-8107: ENS Trust Registry for Agent Coordination,contemporaneous agent-standardization ERC
+tier2,N,N,,18197,1,2024-01-18,Add ERC: On-chain Autonomous AI Agent Non-fungible Token #210,pre-ERC-8004 era (2024-01-18); AI-NFT generation
+tier2,Y,N,,28070,1,2026-03-25,Pre-ERC: Agent Service Sessions -- Metered Payments for Ongoing Agent Work,contemporaneous agent-standardization ERC

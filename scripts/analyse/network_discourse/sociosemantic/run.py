@@ -12,6 +12,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[4]
 sys.path.insert(0, str(ROOT / "scripts/analyse/network_discourse"))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent.parent))
+
+from lib.paths import ANALYSIS_ND_R1_SS, ANALYSIS_TD_R1_THEMATIC
 
 from sociosemantic.build import build
 from sociosemantic.compare import (
@@ -21,7 +24,7 @@ from sociosemantic.compare import (
     plot_theme_actor_comparison,
 )
 
-OUT_DIR = ROOT / "output/network_discourse/sociosemantic"
+OUT_DIR = ANALYSIS_ND_R1_SS
 
 
 def main() -> None:
@@ -29,7 +32,7 @@ def main() -> None:
 
     # Load themes label map
     themes_raw = json.loads(
-        (ROOT / "output/topic_discovery/thematic_lm/themes.json").read_text()
+        (ANALYSIS_TD_R1_THEMATIC / "themes.json").read_text()
     )
     themes_meta = {t["theme_id"]: t["label"] for t in themes_raw}
 

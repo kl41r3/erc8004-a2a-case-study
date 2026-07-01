@@ -22,14 +22,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[4]
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
-DATA_PATH = ROOT / "data" / "annotated" / "annotated_records.json"
-OUT_DIR = ROOT / "output" / "topic_discovery" / "crypto_bert"
+from lib.paths import DATA_ANNOTATED_R1_RECORDS, ANALYSIS_TD_R1_CRYPTOBERT
+from lib.models import is_bot
 
-BOT_AUTHORS = {
-    "gemini-code-assist[bot]", "google-cla[bot]", "github-actions[bot]",
-    "codecov[bot]", "dependabot[bot]", "git-vote[bot]",
-}
+DATA_PATH = DATA_ANNOTATED_R1_RECORDS
+OUT_DIR = ANALYSIS_TD_R1_CRYPTOBERT
 
 # Method 2 (all-MiniLM-L6-v2) ERC-8004 slice results for comparison
 METHOD2_ERC_RESULTS = {
@@ -46,7 +45,7 @@ def load_erc8004_corpus() -> tuple[list[str], list[str]]:
         if r.get("_case") != "ERC-8004":
             continue
         author = r.get("author", "")
-        if author in BOT_AUTHORS or author.endswith("[bot]"):
+        if is_bot(author):
             continue
         text = (r.get("raw_text") or "").strip()
         if len(text) < 20:

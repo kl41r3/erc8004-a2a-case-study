@@ -24,12 +24,15 @@ import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import DATA_RAW_R2_TIER1, DATA_RAW_R2_TIER2, METRICS_R2_AGENT_ERC_UNIVERSE
+
 from bs4 import BeautifulSoup
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-UNIVERSE_CSV = ROOT / "analysis" / "r2_agent_erc_universe.csv"
-OUT_TIER1 = ROOT / "data" / "raw" / "r2" / "tier1"
-OUT_TIER2 = ROOT / "data" / "raw" / "r2" / "tier2"
+UNIVERSE_CSV = METRICS_R2_AGENT_ERC_UNIVERSE
+OUT_TIER1 = DATA_RAW_R2_TIER1
+OUT_TIER2 = DATA_RAW_R2_TIER2
 FORUM_BASE = "https://ethereum-magicians.org"
 
 _CURL_BASE = ["curl", "-s", "--max-time", "30", "-H", "Accept: application/json",

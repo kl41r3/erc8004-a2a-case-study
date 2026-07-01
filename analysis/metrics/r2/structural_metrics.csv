@@ -1,0 +1,3 @@
+case,governance_type,proposal_date,mainnet_date,days_to_consensus,n_consensus_records,n_unique_ercs,n_unique_contributors,n_forum_records,n_github_records,date_start,date_end,arg_technical_pct,arg_process_pct,arg_governance_pct,stance_support_pct,stance_oppose_pct,stance_modify_pct,stance_neutral_pct
+ERC Agent Cluster (Tier 1+2),Permissionless DAO,2025-08-13,2026-01-29,169,1664,34,208,1019,694,2025-08-02,2026-06-13,70.9,26.5,0.8,46.9,1.6,25.3,25.0
+Google A2A,Corporate Hierarchy,2025-04-09,N/A (ongoing),N/A,4058,N/A,748,0,5059,2025-04-08,2026-03-12,70.6,25.8,2.2,43.0,3.0,28.2,24.8

@@ -1,9 +1,9 @@
 """
 validate_multimodel.py — Multi-model inter-coder reliability + triangulation.
 
-Input:   data/annotated/r2/{deepseek,glm,kimi}/annotations.json       (--dataset erc)
-         data/annotated/r2/a2a/{deepseek,glm,kimi}/annotations.json   (--dataset a2a)
-Output:  data/annotated/r2/validation/   or   data/annotated/r2/a2a/validation/
+Input:   data/annotated/r2/cross-model/erc/{model}/annotations.json       (--dataset erc)
+         data/annotated/r2/cross-model/a2a/{model}/annotations.json   (--dataset a2a)
+Output:  data/annotated/r2/cross-model/validation/   or   data/annotated/r2/cross-model/a2a/validation/
 
 Computes:
   1. Pairwise Cohen's κ per field (3 models → 3 pairs)
@@ -28,14 +28,17 @@ import csv
 import json
 import random
 import math
+import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-ANNOTATED_R2 = ROOT / "data" / "annotated" / "r2"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_ANNOTATED_R2_ERC, DATA_ANNOTATED_R2_A2A, DATA_ANNOTATED_R2_CROSS_MODEL, DATA_ANNOTATED_R2_VALIDATION
+from lib.models import CANONICAL_MODELS
 
-MODELS = ["deepseek", "glm", "kimi"]  # primary models; auto-detects available subset
+ANNOTATED_R2 = DATA_ANNOTATED_R2_CROSS_MODEL
+MODELS = CANONICAL_MODELS  # canonical model IDs
 FIELDS = ["stakeholder_institution", "argument_type", "stance", "consensus_signal"]
 SEED = 42
 
@@ -265,11 +268,11 @@ def main():
     args = parser.parse_args()
 
     if args.dataset == "a2a":
-        annot_dir = ANNOTATED_R2 / "a2a"
+        annot_dir = DATA_ANNOTATED_R2_A2A
         validation_dir = annot_dir / "validation"
     else:
-        annot_dir = ANNOTATED_R2
-        validation_dir = ANNOTATED_R2 / "validation"
+        annot_dir = DATA_ANNOTATED_R2_ERC
+        validation_dir = DATA_ANNOTATED_R2_VALIDATION
     validation_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"=== Multi-Model Validation [{args.dataset.upper()}] ===\n")

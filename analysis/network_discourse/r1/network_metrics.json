@@ -1,0 +1,228 @@
+{
+  "erc8004": {
+    "case": "ERC-8004",
+    "n_nodes": 67,
+    "n_edges": 65,
+    "density": 0.0294,
+    "mean_degree": 1.582,
+    "dc_std": 0.0512,
+    "max_degree": 19,
+    "top3_degree_share": 0.3231,
+    "top3_nodes": [
+      [
+        "MarcoMetaMask",
+        19
+      ],
+      [
+        "spengrah",
+        13
+      ],
+      [
+        "pcarranzav",
+        10
+      ]
+    ],
+    "n_components": 43,
+    "giant_component_ratio": 0.3284,
+    "gini_degree": 0.8037,
+    "modularity_institution": -0.0586,
+    "modularity_louvain": 0.4245,
+    "n_louvain_communities": 46,
+    "cp_pvalue": 0.139,
+    "cp_significant": false,
+    "core_cnt": 3,
+    "avg_core_degree": 8.0,
+    "betweenness_mean": 0.002477,
+    "betweenness_max": 0.06868,
+    "betweenness_gini": 0.9309,
+    "top3_betweenness_share": 0.7076,
+    "top5_betweenness": [
+      [
+        "MarcoMetaMask",
+        0.06868,
+        "MetaMask"
+      ],
+      [
+        "dcrapis",
+        0.02717,
+        "Ethereum Foundation"
+      ],
+      [
+        "spengrah",
+        0.02159,
+        "Hats Protocol"
+      ],
+      [
+        "felixnorden",
+        0.0119,
+        "Mure"
+      ],
+      [
+        "pcarranzav",
+        0.01134,
+        "Edge and Node / The Graph Protocol"
+      ]
+    ],
+    "harmonic_mean": 0.05048,
+    "harmonic_max": 0.24242,
+    "network_efficiency": 0.05048,
+    "eigenvec_giant_n": 22,
+    "eigenvec_mean_giant": 0.17336,
+    "eigenvec_max_giant": 0.54573,
+    "eigenvec_gini_giant": 0.3767,
+    "top5_eigenvec_giant": [
+      [
+        "MarcoMetaMask",
+        0.54573,
+        "MetaMask"
+      ],
+      [
+        "spengrah",
+        0.36421,
+        "Hats Protocol"
+      ],
+      [
+        "pcarranzav",
+        0.33481,
+        "Edge and Node / The Graph Protocol"
+      ],
+      [
+        "mlegls",
+        0.27974,
+        "Independent"
+      ],
+      [
+        "SumeetChougule",
+        0.25465,
+        "Nethermind"
+      ]
+    ],
+    "top_institutions": [
+      [
+        "Independent",
+        44
+      ],
+      [
+        "Ethereum Foundation",
+        2
+      ],
+      [
+        "MetaMask",
+        1
+      ]
+    ]
+  },
+  "a2a": {
+    "case": "Google-A2A",
+    "n_nodes": 771,
+    "n_edges": 1230,
+    "density": 0.0041,
+    "mean_degree": 3.191,
+    "dc_std": 0.0126,
+    "max_degree": 170,
+    "top3_degree_share": 0.1492,
+    "top3_nodes": [
+      [
+        "holtskinner",
+        170
+      ],
+      [
+        "darrelmiller",
+        110
+      ],
+      [
+        "pstephengoogle",
+        87
+      ]
+    ],
+    "n_components": 346,
+    "giant_component_ratio": 0.5344,
+    "gini_degree": 0.7786,
+    "modularity_institution": -0.0343,
+    "modularity_louvain": 0.4727,
+    "n_louvain_communities": 358,
+    "cp_pvalue": 1.0,
+    "cp_significant": false,
+    "core_cnt": 769,
+    "avg_core_degree": 3.196,
+    "betweenness_mean": 0.000675,
+    "betweenness_max": 0.13594,
+    "betweenness_gini": 0.979,
+    "top3_betweenness_share": 0.4849,
+    "top5_betweenness": [
+      [
+        "holtskinner",
+        0.13594,
+        "Google"
+      ],
+      [
+        "darrelmiller",
+        0.06736,
+        "Microsoft"
+      ],
+      [
+        "pstephengoogle",
+        0.04885,
+        "Google"
+      ],
+      [
+        "kthota-g",
+        0.04003,
+        "Google"
+      ],
+      [
+        "mikeas1",
+        0.0212,
+        "Google"
+      ]
+    ],
+    "harmonic_mean": 0.10954,
+    "harmonic_max": 0.37351,
+    "network_efficiency": 0.10954,
+    "eigenvec_giant_n": 412,
+    "eigenvec_mean_giant": 0.03044,
+    "eigenvec_max_giant": 0.35736,
+    "eigenvec_gini_giant": 0.5071,
+    "top5_eigenvec_giant": [
+      [
+        "holtskinner",
+        0.35736,
+        "Google"
+      ],
+      [
+        "pstephengoogle",
+        0.28909,
+        "Google"
+      ],
+      [
+        "darrelmiller",
+        0.2813,
+        "Microsoft"
+      ],
+      [
+        "kthota-g",
+        0.20157,
+        "Google"
+      ],
+      [
+        "mikeas1",
+        0.18374,
+        "Google"
+      ]
+    ],
+    "top_institutions": [
+      [
+        "Independent",
+        463
+      ],
+      [
+        "Unknown",
+        248
+      ],
+      [
+        "Google",
+        42
+      ]
+    ]
+  }
+}

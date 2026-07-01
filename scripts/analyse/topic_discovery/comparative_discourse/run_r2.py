@@ -20,6 +20,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[4]
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
+from lib.paths import DATA_ANNOTATED_R2_CONSENSUS, ANALYSIS_TD_R2_CROSS_MODEL_COMPARATIVE
+from lib.models import is_bot
 
 from scripts.analyse.topic_discovery.comparative_discourse.model import fit_bertopic
 from scripts.analyse.topic_discovery.comparative_discourse.compare import (
@@ -28,10 +32,8 @@ from scripts.analyse.topic_discovery.comparative_discourse.compare import (
     save_results,
 )
 
-CONSENSUS_DIR = ROOT / "data" / "annotated" / "r2" / "consensus"
-OUT_DIR = ROOT / "output" / "topic_discovery" / "r2" / "comparative_discourse"
-
-BOT_AUTHORS = {"github-actions[bot]", "eip-review-bot", "dependabot[bot]"}
+CONSENSUS_DIR = DATA_ANNOTATED_R2_CONSENSUS
+OUT_DIR = ANALYSIS_TD_R2_CROSS_MODEL_COMPARATIVE
 
 # Map R2 case labels to the canonical keys BERTopic compare expects
 CASE_MAP = {
@@ -51,7 +53,7 @@ def load_r2_corpus() -> tuple[list[str], list[str], list[str]]:
         records = json.loads(erc_path.read_text())
         for r in records:
             author = r.get("author", "")
-            if author in BOT_AUTHORS or author.endswith("[bot]"):
+            if is_bot(author):
                 continue
             text = (r.get("raw_text") or "").strip()
             if len(text) < 20:
@@ -73,7 +75,7 @@ def load_r2_corpus() -> tuple[list[str], list[str], list[str]]:
         records = json.loads(a2a_path.read_text())
         for r in records:
             author = r.get("author", "")
-            if author in BOT_AUTHORS or author.endswith("[bot]"):
+            if is_bot(author):
                 continue
             text = (r.get("raw_text") or "").strip()
             if len(text) < 20:

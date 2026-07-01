@@ -9,18 +9,21 @@ Used by DNA and socio-semantic network scripts when running in --r2 mode.
 Record-ID scheme matches the Thematic-LM pipeline output format.
 """
 
+import sys
 from pathlib import Path
 import json
 import pandas as pd
 
 ROOT = Path(__file__).parents[3]
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
-BOT_AUTHORS = {"github-actions[bot]", "eip-review-bot", "dependabot[bot]"}
+from lib.paths import DATA_ANNOTATED_R2_CONSENSUS, ANALYSIS_TD_R2_CROSS_MODEL_THEMATIC
+from lib.models import is_bot
 
 STANCE_SCORE = {"Support": 1.0, "Modify": 0.5, "Neutral": 0.0, "Oppose": -1.0}
 
-CONSENSUS_DIR = ROOT / "data" / "annotated" / "r2" / "consensus"
-THEMATIC_LM_DIR = ROOT / "output" / "topic_discovery" / "r2" / "thematic_lm" / "kimi"
+CONSENSUS_DIR = DATA_ANNOTATED_R2_CONSENSUS
+THEMATIC_LM_DIR = ANALYSIS_TD_R2_CROSS_MODEL_THEMATIC / "moonshot-v1-auto"
 
 
 def _record_id_erc(r: dict) -> str:
@@ -63,14 +66,14 @@ def load_joined_r2() -> pd.DataFrame:
     erc_path = CONSENSUS_DIR / "erc_annotations.json"
     if erc_path.exists():
         for r in json.loads(erc_path.read_text()):
-            if (r.get("author") or "").endswith("[bot]") or r.get("author") in BOT_AUTHORS:
+            if is_bot(r.get("author", "")):
                 continue
             erc_lookup[_record_id_erc(r)] = r
 
     a2a_path = CONSENSUS_DIR / "a2a_annotations.json"
     if a2a_path.exists():
         for r in json.loads(a2a_path.read_text()):
-            if (r.get("author") or "").endswith("[bot]") or r.get("author") in BOT_AUTHORS:
+            if is_bot(r.get("author", "")):
                 continue
             a2a_lookup[_record_id_a2a(r)] = r
 

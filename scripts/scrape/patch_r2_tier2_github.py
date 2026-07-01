@@ -19,10 +19,13 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import DATA_RAW_R2_TIER2
+
 from scrape_r2_github import fetch_pr, load_token  # noqa: E402
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-OUT = ROOT / "data" / "raw" / "r2" / "tier2"
+OUT = DATA_RAW_R2_TIER2
 JSON_PATH = OUT / "cluster_github.json"
 MAN_PATH = OUT / "tier2_github_manifest.json"
 

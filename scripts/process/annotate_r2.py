@@ -33,44 +33,15 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
 
-ROOT = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_RAW_R2, DATA_ANNOTATED_R2_CROSS_MODEL
+from lib.models import BACKENDS_ANNOTATION, LEGACY_KEYS
+
 load_dotenv(ROOT / ".env")
 
-R2_DIR = ROOT / "data" / "raw" / "r2"
-OUT_DIR = ROOT / "data" / "annotated" / "r2"
+R2_DIR = DATA_RAW_R2
+OUT_DIR = DATA_ANNOTATED_R2_CROSS_MODEL
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-
-# ── Backend registry ───────────────────────────────────────────────────────────
-
-BACKENDS = {
-    "deepseek": {
-        "name": "DeepSeek-V4-Flash",
-        "base_url": "https://api.deepseek.com/v1",
-        "model": "deepseek-v4-flash",
-        "api_key_env": "DEEPSEEK_API_KEY",
-        "max_tokens": 1024,
-        "temperature": 0.0,
-        "sleep": 0.1,
-    },
-    "kimi": {
-        "name": "Moonshot-v1-Auto",
-        "base_url": "https://api.moonshot.cn/v1",
-        "model": "moonshot-v1-auto",
-        "api_key_env": "KIMI_API_KEY",
-        "max_tokens": 1024,
-        "temperature": 0.0,
-        "sleep": 0.15,
-    },
-    "glm": {
-        "name": "GLM-4-Plus",
-        "base_url": "https://open.bigmodel.cn/api/paas/v4",
-        "model": "glm-4-plus",
-        "api_key_env": "GLM_API_KEY",
-        "max_tokens": 1024,
-        "temperature": 0.0,
-        "sleep": 0.2,
-    },
-}
 
 ANNOTATION_PROMPT = """\
 You are a governance researcher annotating discussion records from a technology standardization process.
@@ -206,7 +177,8 @@ def annotate(client: OpenAI, model: str, max_tokens: int, temperature: float, re
 
 def main():
     parser = argparse.ArgumentParser(description="R2 Multi-model governance annotation")
-    parser.add_argument("--model", required=True, choices=list(BACKENDS),
+    parser.add_argument("--model", required=True,
+                        choices=sorted(set(list(LEGACY_KEYS.keys()) + list(BACKENDS_ANNOTATION.keys()))),
                         help="LLM backend to use")
     parser.add_argument("--limit", type=int, default=0,
                         help="Annotate first N records (0=all)")
@@ -214,7 +186,8 @@ def main():
                         help="Save every N records (default: 20)")
     args = parser.parse_args()
 
-    backend = BACKENDS[args.model]
+    canonical_id = LEGACY_KEYS.get(args.model, args.model)
+    backend = BACKENDS_ANNOTATION[canonical_id]
     key = os.environ.get(backend["api_key_env"], "")
     if not key:
         raise SystemExit(f"{backend['api_key_env']} not set in .env")
@@ -226,7 +199,7 @@ def main():
     sleep_s = backend.get("sleep", 0.15)
 
     # Output paths
-    model_out_dir = OUT_DIR / args.model
+    model_out_dir = OUT_DIR / canonical_id
     model_out_dir.mkdir(parents=True, exist_ok=True)
     out_json = model_out_dir / "annotations.json"
     out_manifest = model_out_dir / "manifest.json"

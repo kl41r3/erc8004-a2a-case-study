@@ -17,8 +17,14 @@ Checkpoint files (in output/topic_discovery/thematic_lm/):
 from __future__ import annotations
 
 import json
+import sys
 import time
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
+from lib.paths import ANALYSIS_TD_R1_THEMATIC
+from lib.models import is_bot
 
 from .agents import (
     run_aggregator,
@@ -27,12 +33,7 @@ from .agents import (
     run_theme_coder_batch,
 )
 
-BOT_AUTHORS = {
-    "gemini-code-assist[bot]", "google-cla[bot]", "github-actions[bot]",
-    "codecov[bot]", "dependabot[bot]", "git-vote[bot]",
-}
-
-OUT_DIR = Path(__file__).parents[4] / "output" / "topic_discovery" / "thematic_lm"
+OUT_DIR = ANALYSIS_TD_R1_THEMATIC
 
 
 def _load_records(data_path: Path, limit: int = 0) -> list[dict]:
@@ -40,7 +41,7 @@ def _load_records(data_path: Path, limit: int = 0) -> list[dict]:
     records = []
     for r in raw:
         author = r.get("author", "")
-        if author in BOT_AUTHORS or author.endswith("[bot]"):
+        if is_bot(author):
             continue
         text = (r.get("raw_text") or "").strip()
         if len(text) < 20:

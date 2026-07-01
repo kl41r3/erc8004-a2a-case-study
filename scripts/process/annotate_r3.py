@@ -1,4 +1,7 @@
-"""R3 Annotation — 3 models, 3 fields (argument_type, stance, consensus_signal).
+"""Cross-Round Annotation (R2 robustness) — 3 models × 3 rounds, 3 fields (argument_type, stance, consensus_signal).
+
+Measures test-retest self-consistency. Each model annotates the same records independently
+across 3 rounds. Output saved to data/annotated/r2/cross-round/{model}/round_{1,2,3}/.
 
 Usage:
   uv run python scripts/process/annotate_r3.py --model deepseek-v4-flash --case erc
@@ -11,6 +14,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import DATA_ANNOTATED_R2_CROSS_ROUND, DATA_ANNOTATED_R2_CROSS_MODEL, DATA_ANNOTATED_R2_CONSENSUS, DATA_ANNOTATED_R1_RECORDS, CONSENSUS_ERC
+from lib.models import BACKENDS_CROSS_ROUND, LEGACY_KEYS, CANONICAL_MODELS
 from dotenv import load_dotenv; load_dotenv(ROOT / ".env")
 from openai import OpenAI
 
@@ -38,25 +44,7 @@ PROMPT = """You are an expert governance analyst. For this record, assign THREE 
 
 OUTPUT: Only the JSON object: {"argument_type":"...","stance":"...","consensus_signal":"..."}"""
 
-BACKENDS = {
-    "deepseek-v4-flash": {
-        "api_key_env": "DEEPSEEK_API_KEY", "base_url": "https://api.deepseek.com/v1",
-        "model": "deepseek-v4-flash", "max_tokens": 512, "temperature": 0.0,
-        "sleep": 0.05, "core": True,
-    },
-    "glm-4-plus": {
-        "api_key_env": "GLM_API_KEY", "base_url": "https://open.bigmodel.cn/api/paas/v4",
-        "model": "glm-4-plus", "max_tokens": 256, "temperature": 0.0,
-        "sleep": 0.05, "core": True,
-    },
-    "moonshot-v1-auto": {
-        "api_key_env": "KIMI_API_KEY", "base_url": "https://api.moonshot.cn/v1",
-        "model": "moonshot-v1-auto", "max_tokens": 256, "temperature": 0.0,
-        "sleep": 0.0, "core": True,
-    },
-}
-
-OUT_DIR = ROOT / "data" / "annotated" / "r3"
+OUT_DIR = DATA_ANNOTATED_R2_CROSS_ROUND
 FIELDS = ["argument_type", "stance", "consensus_signal"]
 
 
@@ -98,7 +86,8 @@ def annotate_one(client, model, max_tokens, temperature, record, case_label):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model", required=True, choices=list(BACKENDS))
+    ap.add_argument("--model", required=True,
+                    choices=sorted(set(list(LEGACY_KEYS.keys()) + list(BACKENDS_CROSS_ROUND.keys()))))
     ap.add_argument("--case", required=True, choices=["erc","a2a"])
     ap.add_argument("--round", type=int, default=1)
     ap.add_argument("--limit", type=int, default=0)
@@ -107,12 +96,13 @@ def main():
                     help="Concurrent API workers (default: 1)")
     args = ap.parse_args()
 
-    cfg = BACKENDS[args.model]
+    canonical_id = LEGACY_KEYS.get(args.model, args.model)
+    cfg = BACKENDS_CROSS_ROUND[canonical_id]
     key = os.environ.get(cfg["api_key_env"], "")
     if not key: sys.exit(f"ERROR: {cfg['api_key_env']} not set")
 
     client = OpenAI(api_key=key, base_url=cfg["base_url"])
-    model_dir = OUT_DIR / args.case / args.model / f"round_{args.round}"
+    model_dir = OUT_DIR / args.case / canonical_id / f"round_{args.round}"
     model_dir.mkdir(parents=True, exist_ok=True)
     out_path = model_dir / "annotations.json"
     manifest_path = model_dir / "manifest.json"
@@ -120,18 +110,18 @@ def main():
     # Load data
     if args.case == "erc":
         recs = []
-        erc_dir = ROOT / "data" / "annotated" / "r2"
-        for m in ["deepseek", "glm", "kimi"]:
+        erc_dir = DATA_ANNOTATED_R2_CROSS_MODEL
+        for m in CANONICAL_MODELS:
             p = erc_dir / m / "annotations.json"
             if p.exists():
                 recs = json.loads(p.read_text())
                 break
         if not recs:
-            cp = ROOT / "data/annotated/r2/consensus/erc_annotations.json"
+            cp = CONSENSUS_ERC
             if cp.exists():
                 recs = [{**r, "_case": "ERC-cluster"} for r in json.loads(cp.read_text())]
     else:
-        src = ROOT / "data" / "annotated" / "annotated_records.json"
+        src = DATA_ANNOTATED_R1_RECORDS
         all_recs = json.loads(src.read_text())
         recs = [r for r in all_recs if r.get("_case") == "Google-A2A"
                 and len((r.get("raw_text") or "").strip()) >= 50

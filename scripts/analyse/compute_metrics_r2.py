@@ -2,8 +2,8 @@
 compute_metrics_r2.py — Governance metrics from R2 consensus annotations.
 
 Uses majority-vote consensus annotations for both cases:
-  Case A (DAO/ERC cluster): data/annotated/r2/consensus/erc_annotations.json
-  Case B (Google A2A):      data/annotated/r2/consensus/a2a_annotations.json
+  Case A (DAO/ERC cluster): data/annotated/r2/cross-model/consensus/erc_annotations.json
+  Case B (Google A2A):      data/annotated/r2/cross-model/consensus/a2a_annotations.json
 
 Also pulls structural counts from raw data (R2 ERC) and original A2A raw data.
 
@@ -17,6 +17,7 @@ Usage:
 """
 
 import json
+import sys
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -24,12 +25,14 @@ from pathlib import Path
 from dateutil import parser as dateutil_parser
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-CONSENSUS_DIR = ROOT / "data" / "annotated" / "r2" / "consensus"
-R2_RAW_DIR = ROOT / "data" / "raw" / "r2"
-RAW_DIR = ROOT / "data" / "raw"
-ANALYSIS_DIR = ROOT / "analysis"
-STATS_DIR = ROOT / "output" / "stats"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, CONSENSUS_ERC, CONSENSUS_A2A, DATA_RAW_R2, DATA_RAW, METRICS_R2_STRUCTURAL, OUTPUT_FIGURES, ANALYSIS_METRICS_R2, RAW_A2A_ISSUES, RAW_A2A_PRS, RAW_A2A_COMMITS, RAW_A2A_DISCUSSIONS
+
+CONSENSUS_DIR = CONSENSUS_ERC.parent
+R2_RAW_DIR = DATA_RAW_R2
+RAW_DIR = DATA_RAW
+ANALYSIS_DIR = METRICS_R2_STRUCTURAL.parent
+STATS_DIR = OUTPUT_FIGURES
 ANALYSIS_DIR.mkdir(parents=True, exist_ok=True)
 STATS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -55,8 +58,9 @@ def _parse_date(s):
 
 
 def load_consensus(dataset: str) -> list[dict]:
-    path = CONSENSUS_DIR / f"{dataset}_annotations.json"
-    if not path.exists():
+    _consensus_paths = {"erc": CONSENSUS_ERC, "a2a": CONSENSUS_A2A}
+    path = _consensus_paths.get(dataset)
+    if not path or not path.exists():
         print(f"  WARNING: Consensus file not found: {path}  (skipping {dataset})")
         return []
     return json.loads(path.read_text())
@@ -156,10 +160,10 @@ def erc_raw_stats() -> dict:
 def a2a_raw_stats() -> dict:
     """Structural counts from original A2A raw data."""
     raw_files = {
-        "issues": RAW_DIR / "a2a_issues.json",
-        "prs": RAW_DIR / "a2a_prs.json",
-        "commits": RAW_DIR / "a2a_commits.json",
-        "discussions": RAW_DIR / "a2a_discussions.json",
+        "issues": RAW_A2A_ISSUES,
+        "prs": RAW_A2A_PRS,
+        "commits": RAW_A2A_COMMITS,
+        "discussions": RAW_A2A_DISCUSSIONS,
     }
     counts = {}
     for name, path in raw_files.items():
@@ -213,7 +217,6 @@ def main():
         print(f"\n  {field}:")
         erc_items = [f'{k}={v["pct"]}%' for k, v in list(erc_dist[field].items())[:5]]
         a2a_items = [f'{k}={v["pct"]}%' for k, v in list(a2a_dist[field].items())[:5]]
-        print(f"    ERC: {' | '.join(erc_items)}")
         print(f"    ERC: {' | '.join(erc_items)}")
         if a2a_records:
             print(f"    A2A: {' | '.join(a2a_items)}")
@@ -294,7 +297,8 @@ def main():
     }
 
     df = pd.DataFrame([erc_row, a2a_row])
-    out_csv = ANALYSIS_DIR / "r2_structural_metrics.csv"
+    out_csv = METRICS_R2_STRUCTURAL
+    out_csv.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(out_csv, index=False)
     print(f"\n  → {out_csv}")
 

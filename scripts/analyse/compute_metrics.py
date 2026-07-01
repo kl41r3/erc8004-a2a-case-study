@@ -21,11 +21,16 @@ Output:
 """
 
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from dateutil import parser as dateutil_parser
 
 import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_RAW, RAW_FORUM_POSTS, RAW_GITHUB_COMMENTS_FILTERED, RAW_A2A_COMMITS, RAW_A2A_ISSUES, RAW_A2A_PRS, RAW_A2A_DISCUSSIONS, DATA_ANNOTATED_R1_RECORDS, METRICS_R1_STRUCTURAL, OUTPUT_DIR
+from lib.io import load_json, save_json, ensure_dir
 
 
 def _parse_date(s: str | None):
@@ -40,11 +45,10 @@ def _parse_date(s: str | None):
     except Exception:
         return pd.NaT
 
-RAW_DIR = Path(__file__).parent.parent.parent / "data" / "raw"
-ANNOTATED_DIR = Path(__file__).parent.parent.parent / "data" / "annotated"
-ANALYSIS_DIR = Path(__file__).parent.parent.parent / "analysis"
-OUTPUT_DIR = Path(__file__).parent.parent.parent / "output"
-ANALYSIS_DIR.mkdir(parents=True, exist_ok=True)
+RAW_DIR = DATA_RAW
+ANNOTATED_DIR = DATA_ANNOTATED_R1_RECORDS.parent
+ANALYSIS_DIR = METRICS_R1_STRUCTURAL.parent
+METRICS_R1_STRUCTURAL.parent.mkdir(parents=True, exist_ok=True)
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Key dates (from public record)
@@ -65,13 +69,11 @@ def compute_erc8004_structural() -> dict:
     """Compute structural metrics for ERC-8004 from raw scraped data."""
     records: list[dict] = []
 
-    forum_path = RAW_DIR / "forum_posts.json"
-    if forum_path.exists():
-        records.extend(json.loads(forum_path.read_text()))
+    if RAW_FORUM_POSTS.exists():
+        records.extend(load_json(RAW_FORUM_POSTS))
 
-    gh_path = RAW_DIR / "github_comments_filtered.json"
-    if gh_path.exists():
-        records.extend(json.loads(gh_path.read_text()))
+    if RAW_GITHUB_COMMENTS_FILTERED.exists():
+        records.extend(load_json(RAW_GITHUB_COMMENTS_FILTERED))
 
     df = pd.DataFrame(records)
     df["date"] = df["date"].apply(_parse_date)
@@ -105,7 +107,7 @@ def compute_erc8004_structural() -> dict:
         "discussion_days_active": days_active,
         "total_discussion_records": len(df),
         "forum_posts": len(df[df["source"] == "forum"]) if "source" in df.columns else len(df),
-        "github_records": len(df[df["platform"] == "github"]) if "platform" in df.columns else 0,
+        "github_records": len(df[df["source"] != "forum"]) if "source" in df.columns else 0,
         "unique_contributors": unique_authors,
         "reply_rate_forum": round(float(reply_rate), 3),
         "peak_week_posts": peak_week_posts,
@@ -118,10 +120,10 @@ def compute_a2a_structural() -> dict:
     """Compute structural metrics for Google A2A from raw scraped data."""
     import re
 
-    commits   = json.loads((RAW_DIR / "a2a_commits.json").read_text())    if (RAW_DIR / "a2a_commits.json").exists()    else []
-    issues    = json.loads((RAW_DIR / "a2a_issues.json").read_text())     if (RAW_DIR / "a2a_issues.json").exists()     else []
-    prs       = json.loads((RAW_DIR / "a2a_prs.json").read_text())        if (RAW_DIR / "a2a_prs.json").exists()        else []
-    discs     = json.loads((RAW_DIR / "a2a_discussions.json").read_text()) if (RAW_DIR / "a2a_discussions.json").exists() else []
+    commits   = load_json(RAW_A2A_COMMITS) or []
+    issues    = load_json(RAW_A2A_ISSUES) or []
+    prs       = load_json(RAW_A2A_PRS) or []
+    discs     = load_json(RAW_A2A_DISCUSSIONS) or []
 
     # ── Discussion record counts by source type ───────────────────────────
     n_issues         = sum(1 for r in issues if r.get("source") == "issue")
@@ -209,11 +211,10 @@ def compute_a2a_structural() -> dict:
 # ---------------------------------------------------------------------------
 
 def compute_annotated_metrics(case_filter: str) -> dict | None:
-    ann_path = ANNOTATED_DIR / "annotated_records.json"
-    if not ann_path.exists():
+    if not DATA_ANNOTATED_R1_RECORDS.exists():
         return None
 
-    records = json.loads(ann_path.read_text())
+    records = load_json(DATA_ANNOTATED_R1_RECORDS)
     rows = []
     for r in records:
         if r.get("_case") != case_filter:
@@ -260,7 +261,8 @@ def write_structural_csv(erc: dict, a2a: dict):
     erc_row = {k: erc.get(k, "N/A") for k in erc}
     a2a_row = {k: a2a.get(k, "N/A") for k in a2a}
     df = pd.DataFrame([erc_row, a2a_row])
-    path = ANALYSIS_DIR / "structural_metrics.csv"
+    path = METRICS_R1_STRUCTURAL
+    path.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(path, index=False)
     print(f"Structural metrics → {path}")
     return df

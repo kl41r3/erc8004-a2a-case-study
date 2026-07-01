@@ -13,6 +13,7 @@ Method: structured LLM classification (argument_type, stance, date, _case)
 """
 
 import json
+import sys
 from pathlib import Path
 from collections import Counter, defaultdict
 import matplotlib
@@ -22,11 +23,12 @@ import matplotlib.ticker as mtick
 import numpy as np
 from dateutil import parser as dateparser
 
-ROOT = Path(__file__).parents[2]
-DATA = ROOT / "data" / "annotated" / "annotated_records.json"
-OUTPUT   = ROOT / "output"
-FIGURES  = ROOT / "output" / "figures"
-STATS    = ROOT / "output" / "stats"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_ANNOTATED_R1_RECORDS, OUTPUT_FIGURES, ANALYSIS_DIR
+
+DATA = DATA_ANNOTATED_R1_RECORDS
+FIGURES  = OUTPUT_FIGURES
+STATS    = ANALYSIS_DIR
 
 # ── palette ──────────────────────────────────────────────────────────────────
 COLORS = {
@@ -532,6 +534,7 @@ def main():
     stats["chi2_tests"] = chi2_results
 
     stats_path = STATS / "topic_stats.json"
+    stats_path.parent.mkdir(parents=True, exist_ok=True)
     with open(stats_path, "w") as f:
         json.dump(stats, f, indent=2)
     print(f"  Saved → {stats_path}")

@@ -6,7 +6,7 @@ Background:
   - DeepSeek only has 3,845 (was rate-limited during R2).
   - The gap = (G ∩ K) − D = exactly 214 records.
   - This script annotates only those 214, then appends them to
-    data/annotated/r2/a2a/deepseek/annotations.json → total 4,059.
+    data/annotated/r2/cross-model/a2a/deepseek-v4-flash/annotations.json → total 4,059.
 
 Config: identical to annotate_a2a_r2.py (same prompt, model, params).
 Usage:
@@ -25,9 +25,11 @@ from pathlib import Path
 # Re-use all logic from the original annotator (prompt/model/params byte-identical)
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import DATA_ANNOTATED_R2_A2A
+from lib.models import BACKENDS_ANNOTATION
 
 from annotate_a2a_r2 import (
-    BACKENDS,
     ANNOTATION_PROMPT,  # noqa: F401 – imported for documentation / identity
     annotate,
     parse_json_response,  # noqa: F401
@@ -39,10 +41,10 @@ from openai import OpenAI
 
 load_dotenv(ROOT / ".env")
 
-A2A_DIR = ROOT / "data" / "annotated" / "r2" / "a2a"
-DS_FILE  = A2A_DIR / "deepseek" / "annotations.json"
-GLM_FILE = A2A_DIR / "glm"      / "annotations.json"
-KIMI_FILE= A2A_DIR / "kimi"     / "annotations.json"
+A2A_DIR = DATA_ANNOTATED_R2_A2A
+DS_FILE  = A2A_DIR / "deepseek-v4-flash"  / "annotations.json"
+GLM_FILE = A2A_DIR / "glm-4-plus"         / "annotations.json"
+KIMI_FILE= A2A_DIR / "moonshot-v1-auto"   / "annotations.json"
 
 
 def rid(r: dict) -> str:
@@ -94,7 +96,7 @@ def main():
     print("Building gap set…")
     gap_records, _, _, _ = build_gap_set()
 
-    backend = BACKENDS["deepseek"]
+    backend = BACKENDS_ANNOTATION["deepseek-v4-flash"]
     api_key = os.environ.get(backend["api_key_env"], "")
     if not api_key:
         raise SystemExit(f"ERROR: {backend['api_key_env']} not set in .env — cannot proceed.")

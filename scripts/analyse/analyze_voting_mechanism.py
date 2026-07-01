@@ -20,16 +20,9 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyArrowPatch
 
-ROOT = Path(__file__).parents[2]
-DATA_RAW = ROOT / "data" / "raw"
-OUTPUT = ROOT / "output"
-
-
-# ── helpers ──────────────────────────────────────────────────────────────────
-
-def load_json(path):
-    with open(path) as f:
-        return json.load(f)
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_RAW, RAW_GITHUB_COMMENTS_FILTERED, RAW_A2A_GITVOTE_PRS, OUTPUT_FIGURES
+from lib.io import load_json, save_json, ensure_dir
 
 
 def build_eip_lifecycle(gh_records):
@@ -264,7 +257,8 @@ def make_figure():
             style="italic")
 
     plt.tight_layout(pad=2.0)
-    out_path = OUTPUT / "voting_mechanism_comparison.png"
+    out_path = OUTPUT_FIGURES / "voting_mechanism_comparison.png"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(out_path, dpi=180, bbox_inches="tight", facecolor="white")
     plt.close()
     print(f"Figure saved → {out_path}")
@@ -330,15 +324,15 @@ def compute_voting_stats(gh_records, gitvote_records):
 
 def main():
     print("Loading data...")
-    gh_records = load_json(DATA_RAW / "github_comments_filtered.json")
-    gitvote_records = load_json(DATA_RAW / "a2a_gitvote_prs.json")
+    gh_records = load_json(RAW_GITHUB_COMMENTS_FILTERED)
+    gitvote_records = load_json(RAW_A2A_GITVOTE_PRS)
 
     print("Computing statistics...")
     stats = compute_voting_stats(gh_records, gitvote_records)
 
-    stats_path = OUTPUT / "voting_stats.json"
-    with open(stats_path, "w") as f:
-        json.dump(stats, f, indent=2)
+    stats_path = ROOT / "analysis" / "voting_stats.json"
+    ensure_dir(stats_path)
+    save_json(stats_path, stats)
     print(f"Stats saved → {stats_path}")
 
     print("\n── ERC-8004 Voting Stats ──")

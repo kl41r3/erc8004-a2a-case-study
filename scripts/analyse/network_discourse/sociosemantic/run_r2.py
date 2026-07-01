@@ -14,6 +14,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[4]
 sys.path.insert(0, str(ROOT / "scripts/analyse/network_discourse"))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent.parent))
+
+from lib.paths import ANALYSIS_ND_R2_SS, ANALYSIS_TD_R2_CROSS_MODEL_THEMATIC
 
 from sociosemantic.build import build
 from sociosemantic.compare import (
@@ -24,8 +27,8 @@ from sociosemantic.compare import (
 )
 from loader_r2 import load_joined_r2
 
-OUT_DIR = ROOT / "output/network_discourse/r2/sociosemantic"
-THEMATIC_LM_DIR = ROOT / "output/topic_discovery/r2/thematic_lm/kimi"
+OUT_DIR = ANALYSIS_ND_R2_SS
+THEMATIC_LM_DIR = ANALYSIS_TD_R2_CROSS_MODEL_THEMATIC / "moonshot-v1-auto"
 
 
 def main() -> None:

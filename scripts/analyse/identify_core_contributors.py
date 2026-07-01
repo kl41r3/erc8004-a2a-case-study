@@ -12,40 +12,24 @@ Outputs:
 
 import csv
 import json
+import sys
 from collections import Counter
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_ANNOTATED_R1_PROFILES, DATA_ANNOTATED_R1_RECORDS, ANALYSIS_METRICS_R1
+from lib.models import BOTS, is_bot
 
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-ROOT = Path(__file__).parent.parent.parent
-ANNOTATED = ROOT / "data" / "annotated"
-ANALYSIS = ROOT / "analysis"
 
-AUTHOR_PROFILES_FILE = ANNOTATED / "author_profiles.json"
-ANNOTATED_RECORDS_FILE = ANNOTATED / "annotated_records.json"
-CORE_CONTRIBUTORS_OUT = ANALYSIS / "core_contributors.csv"
-CROSS_CASE_OUT = ANALYSIS / "cross_case_overlap.csv"
+AUTHOR_PROFILES_FILE = DATA_ANNOTATED_R1_PROFILES
+ANNOTATED_RECORDS_FILE = DATA_ANNOTATED_R1_RECORDS
+CORE_CONTRIBUTORS_OUT = ANALYSIS_METRICS_R1 / "core_contributors.csv"
+CROSS_CASE_OUT = ANALYSIS_METRICS_R1 / "cross_case_overlap.csv"
 
-ANALYSIS.mkdir(exist_ok=True)
-
-# ---------------------------------------------------------------------------
-# Known bots
-# ---------------------------------------------------------------------------
-BOTS = {
-    "eip-review-bot",
-    "gemini-code-assist[bot]",
-    "git-vote[bot]",
-    "google-cla[bot]",
-    "actions-user",
-    "github-actions",
-    "dependabot",
-    "dependabot[bot]",
-}
-
-
-def is_bot(username: str) -> bool:
-    return username in BOTS or username.endswith("[bot]") or username.endswith("-bot")
+ANALYSIS_METRICS_R1.mkdir(parents=True, exist_ok=True)
 
 
 # ---------------------------------------------------------------------------

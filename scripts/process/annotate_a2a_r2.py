@@ -5,8 +5,8 @@ Re-annotates the 5,272 A2A records from data/annotated/annotated_records.json
 using the same 3-model pipeline as R2 ERC data, enabling cross-model ICR
 validation and majority-vote consensus for the new comparative paper.
 
-Backends: deepseek, glm, kimi (same as annotate_r2.py)
-Output:   data/annotated/r2/a2a/{model}/annotations.json
+Backends: deepseek-v4-flash, glm-4-plus, moonshot-v1-auto (same as annotate_r2.py)
+Output:   data/annotated/r2/cross-model/a2a/{model}/annotations.json
 
 Usage:
   uv run python scripts/process/annotate_a2a_r2.py --model deepseek
@@ -19,6 +19,7 @@ import argparse
 import json
 import os
 import re
+import sys
 import time
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -28,44 +29,17 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
 
-ROOT = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_ANNOTATED_R1_RECORDS, DATA_ANNOTATED_R2_A2A
+from lib.models import BACKENDS_ANNOTATION, LEGACY_KEYS
+
 load_dotenv(ROOT / ".env")
 
-SRC_FILE = ROOT / "data" / "annotated" / "annotated_records.json"
-OUT_DIR = ROOT / "data" / "annotated" / "r2" / "a2a"
+SRC_FILE = DATA_ANNOTATED_R1_RECORDS
+OUT_DIR = DATA_ANNOTATED_R2_A2A
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 MIN_TEXT_LEN = 50
-
-BACKENDS = {
-    "deepseek": {
-        "name": "DeepSeek-V4-Flash",
-        "base_url": "https://api.deepseek.com/v1",
-        "model": "deepseek-v4-flash",
-        "api_key_env": "DEEPSEEK_API_KEY",
-        "max_tokens": 1024,
-        "temperature": 0.0,
-        "sleep": 0.1,
-    },
-    "glm": {
-        "name": "GLM-4-Plus",
-        "base_url": "https://open.bigmodel.cn/api/paas/v4",
-        "model": "glm-4-plus",
-        "api_key_env": "GLM_API_KEY",
-        "max_tokens": 1024,
-        "temperature": 0.0,
-        "sleep": 0.2,
-    },
-    "kimi": {
-        "name": "Moonshot-v1-Auto",
-        "base_url": "https://api.moonshot.cn/v1",
-        "model": "moonshot-v1-auto",
-        "api_key_env": "KIMI_API_KEY",
-        "max_tokens": 1024,
-        "temperature": 0.0,
-        "sleep": 0.15,
-    },
-}
 
 ANNOTATION_PROMPT = """\
 You are a governance researcher annotating discussion records from a technology standardization process.
@@ -188,14 +162,16 @@ def annotate(client: OpenAI, model: str, max_tokens: int, temperature: float, re
 
 def main():
     parser = argparse.ArgumentParser(description="A2A multi-model annotation for paper-acm")
-    parser.add_argument("--model", required=True, choices=list(BACKENDS))
+    parser.add_argument("--model", required=True,
+                        choices=sorted(set(list(LEGACY_KEYS.keys()) + list(BACKENDS_ANNOTATION.keys()))))
     parser.add_argument("--limit", type=int, default=0, help="Test: annotate first N records")
     parser.add_argument("--batch-size", type=int, default=20)
     parser.add_argument("--workers", type=int, default=10,
                         help="Concurrent API workers (default 10, 0=sequential)")
     args = parser.parse_args()
 
-    backend = BACKENDS[args.model]
+    canonical_id = LEGACY_KEYS.get(args.model, args.model)
+    backend = BACKENDS_ANNOTATION[canonical_id]
     key = os.environ.get(backend["api_key_env"], "")
     if not key:
         raise SystemExit(f"{backend['api_key_env']} not set in .env")
@@ -203,7 +179,7 @@ def main():
     client = OpenAI(api_key=key, base_url=backend["base_url"])
     model_name = backend["model"]
 
-    model_out_dir = OUT_DIR / args.model
+    model_out_dir = OUT_DIR / canonical_id
     model_out_dir.mkdir(parents=True, exist_ok=True)
     out_json = model_out_dir / "annotations.json"
     out_manifest = model_out_dir / "manifest.json"

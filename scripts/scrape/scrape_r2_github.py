@@ -32,24 +32,16 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-UNIVERSE_CSV = ROOT / "analysis" / "r2_agent_erc_universe.csv"
-OUT_TIER1 = ROOT / "data" / "raw" / "r2" / "tier1"
-OUT_TIER2 = ROOT / "data" / "raw" / "r2" / "tier2"
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_RAW_R2_TIER1, DATA_RAW_R2_TIER2, METRICS_R2_AGENT_ERC_UNIVERSE
+from lib.models import ERC8004_CORE_PRS
+
+UNIVERSE_CSV = METRICS_R2_AGENT_ERC_UNIVERSE
+OUT_TIER1 = DATA_RAW_R2_TIER1
+OUT_TIER2 = DATA_RAW_R2_TIER2
 REPO = "ethereum/ERCs"
 BASE_API = "https://api.github.com"
-
-ERC8004_CORE_PRS = {
-    1170: "Add ERC: Trustless Agents (initial submission)",
-    1244: "Update ERC-8004: Move to Review",
-    1248: "Update ERC-8004: Add Requires field",
-    1458: "Update ERC-8004: Update erc-8004.md",
-    1462: "Update ERC-8004: Update erc-8004.md (typos)",
-    1470: "Update ERC-8004: Move to Draft",
-    1472: "Update ERC-8004: align metadataValue to bytes",
-    1477: "Update ERC-8004: add co-author (Onchain Metadata; see PR #1237)",
-    1488: "Update ERC-8004: Updates from community feedback",
-}
 
 
 def load_token() -> str | None:

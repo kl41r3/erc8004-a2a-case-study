@@ -11,71 +11,18 @@ Outputs:
 
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 
-# ---------------------------------------------------------------------------
-# Paths
-# ---------------------------------------------------------------------------
-ROOT = Path(__file__).parent.parent.parent
-DATA_RAW = ROOT / "data" / "raw"
-ANNOTATED = ROOT / "data" / "annotated"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_RAW, DATA_ANNOTATED_R1, DATA_ANNOTATED_R1_RECORDS, DATA_ANNOTATED_R1_PROFILES, RAW_PROFILES_FORUM, RAW_PROFILES_GITHUB
+from lib.models import BOTS, is_bot, INSTITUTION_PATTERNS
 
-ANNOTATED_RECORDS = ANNOTATED / "annotated_records.json"
-FORUM_PROFILES_FILE = DATA_RAW / "profiles_forum.json"
-GITHUB_PROFILES_FILE = DATA_RAW / "profiles_github.json"
-AUTHOR_PROFILES_OUT = ANNOTATED / "author_profiles.json"
-
-# ---------------------------------------------------------------------------
-# Known bots
-# ---------------------------------------------------------------------------
-BOTS = {
-    "eip-review-bot",
-    "gemini-code-assist[bot]",
-    "git-vote[bot]",
-    "google-cla[bot]",
-    "actions-user",
-    "github-actions",
-    "dependabot",
-    "dependabot[bot]",
-}
-
-
-def is_bot(username: str) -> bool:
-    return username in BOTS or username.endswith("[bot]") or username.endswith("-bot")
-
-
-# ---------------------------------------------------------------------------
-# Institution detection rules
-# ---------------------------------------------------------------------------
-# Order matters — more specific patterns first.
-# Each entry: (regex_pattern, canonical_institution_name)
-INSTITUTION_PATTERNS: list[tuple[str, str]] = [
-    (r"\bmetamask\b",              "MetaMask"),
-    (r"\bconsenSys\b|\bconsensys\b", "ConsenSys"),
-    (r"\bethereumfoundation\b|\bethereum foundation\b|\bef\b|\befdn\b", "Ethereum Foundation"),
-    (r"\bgoogle\b",                "Google"),
-    (r"\bmicrosoft\b",             "Microsoft"),
-    (r"\bcoinbase\b",              "Coinbase"),
-    (r"\bopenai\b",                "OpenAI"),
-    (r"\banthropicl\b|\banthropic\b", "Anthropic"),
-    (r"\bprotocol labs\b",         "Protocol Labs"),
-    (r"\boasis\b",                 "Oasis"),
-    (r"\bgnosisguild\b|\bgnosis guild\b|\bgnosis\b", "Gnosis"),
-    (r"\bsafe\b",                  "Safe"),
-    (r"\barkham\b",                "Arkham"),
-    (r"\bzk ?sync\b|\bmatter labs\b", "Matter Labs"),
-    (r"\bstarkware\b",             "StarkWare"),
-    (r"\boptimism\b",              "Optimism"),
-    (r"\barbitrum\b|\boffchain labs\b", "Offchain Labs"),
-    (r"\bpolygon\b",               "Polygon"),
-    (r"\bchainlink\b",             "Chainlink"),
-    (r"\bender labs\b|\bender\b",  "Ender Labs"),
-    (r"\balchemy\b",               "Alchemy"),
-    (r"\binfura\b",                "Infura"),
-    (r"\buniversity\b|\buniv\b|\bcollege\b|\bacademia\b|\bphd\b", "Academia"),
-    (r"\bindependent\b|\bfreelance\b|\bself.?employed\b", "Independent"),
-]
+ANNOTATED_RECORDS = DATA_ANNOTATED_R1_RECORDS
+FORUM_PROFILES_FILE = RAW_PROFILES_FORUM
+GITHUB_PROFILES_FILE = RAW_PROFILES_GITHUB
+AUTHOR_PROFILES_OUT = DATA_ANNOTATED_R1_PROFILES
 
 _compiled_patterns = [
     (re.compile(pat, re.IGNORECASE), label)

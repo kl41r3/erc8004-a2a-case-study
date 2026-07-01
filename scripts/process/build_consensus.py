@@ -10,9 +10,9 @@ with the highest field-level Fleiss κ:
   stakeholder_institution → glm (κ=0.187)
 
 Output:
-  data/annotated/r2/consensus/erc_annotations.json
-  data/annotated/r2/consensus/a2a_annotations.json
-  data/annotated/r2/consensus/consensus_stats.json
+  data/annotated/r2/cross-model/consensus/erc_annotations.json
+  data/annotated/r2/cross-model/consensus/a2a_annotations.json
+  data/annotated/r2/cross-model/consensus/consensus_stats.json
 
 Usage:
   uv run python scripts/process/build_consensus.py
@@ -22,24 +22,27 @@ Usage:
 
 import argparse
 import json
+import sys
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-R2_DIR = ROOT / "data" / "annotated" / "r2"
-OUT_DIR = ROOT / "data" / "annotated" / "r2" / "consensus"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_ANNOTATED_R2_CROSS_MODEL, DATA_ANNOTATED_R2_CONSENSUS, DATA_ANNOTATED_R2_A2A, CONSENSUS_ERC, CONSENSUS_A2A, CONSENSUS_STATS
+from lib.models import CANONICAL_MODELS, LEGACY_KEYS
+
+OUT_DIR = DATA_ANNOTATED_R2_CONSENSUS
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-MODELS = ["deepseek", "glm", "kimi"]
+MODELS = CANONICAL_MODELS
 FIELDS = ["stakeholder_institution", "argument_type", "stance", "consensus_signal"]
 
 # Tiebreaker model per field (highest Fleiss κ in ERC validation run)
 TIEBREAKER = {
-    "argument_type": "kimi",
-    "stance": "kimi",
-    "consensus_signal": "deepseek",
-    "stakeholder_institution": "glm",
+    "argument_type": "moonshot-v1-auto",
+    "stance": "moonshot-v1-auto",
+    "consensus_signal": "deepseek-v4-flash",
+    "stakeholder_institution": "glm-4-plus",
 }
 
 
@@ -142,13 +145,13 @@ def majority_vote(model_data: dict[str, dict], record_ids: list[str], id_fn) -> 
 
 def run(dataset: str):
     if dataset == "erc":
-        base_dir = R2_DIR
+        base_dir = DATA_ANNOTATED_R2_CROSS_MODEL
         id_fn = _record_id_erc
-        out_file = OUT_DIR / "erc_annotations.json"
+        out_file = CONSENSUS_ERC
     else:
-        base_dir = R2_DIR / "a2a"
+        base_dir = DATA_ANNOTATED_R2_A2A
         id_fn = _record_id_a2a
-        out_file = OUT_DIR / "a2a_annotations.json"
+        out_file = CONSENSUS_A2A
 
     print(f"\n=== Building consensus: {dataset.upper()} ===")
     print(f"Input: {base_dir}")
@@ -197,7 +200,7 @@ def main():
         if result:
             stats[ds] = result
 
-    stats_path = OUT_DIR / "consensus_stats.json"
+    stats_path = CONSENSUS_STATS
     stats["generated_at"] = datetime.now(timezone.utc).isoformat()
     stats_path.write_text(json.dumps(stats, indent=2, ensure_ascii=False))
     print(f"\n  Stats → {stats_path}")

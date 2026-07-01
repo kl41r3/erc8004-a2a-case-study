@@ -17,25 +17,34 @@ Usage:
 
 import csv
 import json
-import math
+import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-THEMATIC_DIR = ROOT / "data" / "annotated" / "r2" / "thematic"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_ANNOTATED_R2_THEMATIC
+from lib.models import CANONICAL_MODELS
+
+THEMATIC_DIR = DATA_ANNOTATED_R2_THEMATIC
 OUT_DIR = THEMATIC_DIR / "validation"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-MODELS = ["deepseek", "glm", "kimi"]
-MODEL_NAMES = {"deepseek": "DeepSeek-V4-Flash", "glm": "GLM-4-Plus", "kimi": "Moonshot-v1-Auto"}
+MODELS = CANONICAL_MODELS
+MODEL_NAMES = {"deepseek-v4-flash": "DeepSeek-V4-Flash", "glm-4-plus": "GLM-4-Plus", "moonshot-v1-auto": "Moonshot-v1-Auto"}
 
 
 def load_thematic() -> dict[str, dict]:
     """Load per-model thematic data, keyed by _record_id."""
+    _theme_file_map = {
+        "deepseek-v4-flash": "deepseek_themes.json",
+        "glm-4-plus": "glm_themes.json",
+        "moonshot-v1-auto": "kimi_themes.json",
+    }
     model_data = {}
     for model in MODELS:
-        path = THEMATIC_DIR / f"{model}_themes.json"
+        fname = _theme_file_map.get(model, f"{model}_themes.json")
+        path = THEMATIC_DIR / fname
         if not path.exists():
             print(f"  MISSING: {path}")
             continue
@@ -180,12 +189,6 @@ def write_cross_model_table(aligned: list[dict]):
 
 
 def main():
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--semantic", action="store_true",
-                        help="Use LLM for semantic theme similarity (slower, richer)")
-    args = parser.parse_args()
-
     print("=== Thematic Convergence Validation ===\n")
     print("Loading thematic data…")
     model_data = load_thematic()

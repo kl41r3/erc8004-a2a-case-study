@@ -1,10 +1,10 @@
-"""Compute cross-model Kappa across 4 models (MiniMax-M2.5 + 3 R3 models).
+"""Compute cross-model Kappa across 4 models (MiniMax-M2.5 + 3 cross-round models).
 
 Models:
-  1. MiniMax-M2.5 (R1, from annotated_records.json)
-  2. deepseek-v4-flash (R3, per-model consensus)
-  3. glm-4-plus (R3, per-model consensus)
-  4. moonshot-v1-auto (R3, per-model consensus)
+  1. MiniMax-M2.5 (R1 baseline, from annotated_records.json)
+  2. deepseek-v4-flash (cross-round, per-model consensus)
+  3. glm-4-plus (cross-round, per-model consensus)
+  4. moonshot-v1-auto (cross-round, per-model consensus)
 
 Outputs:
   - Pairwise Cohen's Kappa for each field (argument_type, stance, consensus_signal)
@@ -19,14 +19,15 @@ from pathlib import Path
 
 import numpy as np
 
-ROOT = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_ANNOTATED_R1_RECORDS, DATA_ANNOTATED_R2_CROSS_ROUND, ANALYSIS_DIR
+from lib.models import CANONICAL_MODELS
 
-R3_DIR = ROOT / "data" / "annotated" / "r3"
-R1_PATH = ROOT / "data" / "annotated" / "annotated_records.json"
-OUT_PATH = ROOT / "analysis" / "r3_cross_model_4models_kappa.json"
+R1_PATH = DATA_ANNOTATED_R1_RECORDS
+OUT_PATH = ANALYSIS_DIR / "cross_model_4models_kappa.json"
 
 FIELDS = ["argument_type", "stance", "consensus_signal"]
-MODELS = ["MiniMax-M2.5", "deepseek-v4-flash", "glm-4-plus", "moonshot-v1-auto"]
+MODELS = ["MiniMax-M2.5"] + CANONICAL_MODELS
 
 
 def load_r1_annotations():
@@ -49,17 +50,18 @@ def load_r1_annotations():
     return erc, a2a
 
 
-def load_r3_annotations(model, case):
-    """Load R3 per-model consensus annotations for a given model and case.
+def load_cross_round_annotations(model, case):
+    """Load cross-round per-model consensus annotations for a given model and case.
     Falls back to round_1/annotations.json if consensus.json not yet built."""
+    cross_round_dir = DATA_ANNOTATED_R2_CROSS_ROUND / case
     # Prefer consensus file (majority vote across rounds)
-    consensus_path = R3_DIR / case / model / "consensus.json"
+    consensus_path = cross_round_dir / model / "consensus.json"
     if consensus_path.exists():
         with open(consensus_path) as f:
             data = json.load(f)
         print(f"    Using consensus.json ({len(data)} records)")
     else:
-        path = R3_DIR / case / model / "round_1" / "annotations.json"
+        path = cross_round_dir / model / "round_1" / "annotations.json"
         if not path.exists():
             print(f"  WARNING: {path} not found")
             return {}
@@ -261,7 +263,7 @@ def compute_all(erc_annotations, a2a_annotations, case_label):
 
 def main():
     print("=" * 70)
-    print("Cross-Model Kappa: 4 Models (MiniMax-M2.5 + 3 R3 models)")
+    print("Cross-Model Kappa: 4 Models (MiniMax-M2.5 + 3 cross-round models)")
     print("=" * 70)
 
     # 1. Load MiniMax-M2.5 (R1)
@@ -269,15 +271,15 @@ def main():
     r1_erc, r1_a2a = load_r1_annotations()
     print(f"  ERC: {len(r1_erc)} records, A2A: {len(r1_a2a)} records")
 
-    # 2. Load R3 models
-    r3_models = ["deepseek-v4-flash", "glm-4-plus", "moonshot-v1-auto"]
+    # 2. Load cross-round models
+    cross_round_models = CANONICAL_MODELS
     all_erc = {"MiniMax-M2.5": r1_erc}
     all_a2a = {"MiniMax-M2.5": r1_a2a}
 
-    for i, model in enumerate(r3_models, 2):
-        print(f"\n[{i}/4] Loading {model} (R3 round_1)…")
-        erc_ann = load_r3_annotations(model, "erc")
-        a2a_ann = load_r3_annotations(model, "a2a")
+    for i, model in enumerate(cross_round_models, 2):
+        print(f"\n[{i}/4] Loading {model} (cross-round consensus)…")
+        erc_ann = load_cross_round_annotations(model, "erc")
+        a2a_ann = load_cross_round_annotations(model, "a2a")
         print(f"  ERC: {len(erc_ann)} records, A2A: {len(a2a_ann)} records")
         all_erc[model] = erc_ann
         all_a2a[model] = a2a_ann

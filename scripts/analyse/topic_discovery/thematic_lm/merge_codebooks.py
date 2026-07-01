@@ -17,19 +17,22 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[4]
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
+from lib.paths import ANALYSIS_TD_R2_CROSS_MODEL_THEMATIC
+from lib.models import BACKENDS_THEMATIC, CANONICAL_MODELS, LEGACY_KEYS
 
 from dotenv import load_dotenv
 load_dotenv(ROOT / ".env")
 
 from scripts.analyse.topic_discovery.thematic_lm.agents import run_theme_coder_batch
 from scripts.analyse.topic_discovery.thematic_lm.run_r2 import (
-    load_all_records_for_coding, _save, BACKENDS,
+    load_all_records_for_coding, _save,
 )
 
-THEMATIC_LM_DIR = ROOT / "output" / "topic_discovery" / "r2" / "thematic_lm"
-CONSENSUS_DIR = ROOT / "data" / "annotated" / "r2" / "consensus"
+THEMATIC_LM_DIR = ANALYSIS_TD_R2_CROSS_MODEL_THEMATIC
 MERGED_DIR = THEMATIC_LM_DIR / "merged"
-MODELS = ["deepseek", "glm", "kimi"]
+MODELS = CANONICAL_MODELS
 
 
 def load_codebooks() -> dict[str, list[dict]]:
@@ -108,13 +111,15 @@ def merge_codebooks(all_cbs: dict[str, list[dict]]) -> list[dict]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Merge Thematic-LM codebooks and run Stage 4")
-    parser.add_argument("--backend", default="deepseek", choices=list(BACKENDS),
+    parser.add_argument("--backend", default="deepseek-v4-flash",
+                        choices=sorted(set(list(LEGACY_KEYS.keys()) + list(BACKENDS_THEMATIC.keys()))),
                         help="LLM backend for Stage 4 theme coding")
     parser.add_argument("--batch-size", type=int, default=15)
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
 
-    cfg = BACKENDS[args.backend]
+    backend = LEGACY_KEYS.get(args.backend, args.backend)
+    cfg = BACKENDS_THEMATIC[backend]
     api_key = os.environ.get(cfg["api_key_env"], "")
     if not api_key:
         sys.exit(f"Error: {cfg['api_key_env']} not set in .env")
