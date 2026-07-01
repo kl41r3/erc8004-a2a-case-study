@@ -1,0 +1,14 @@
+{
+  "model": "glm-4-plus",
+  "case": "a2a",
+  "fields": [
+    "argument_type",
+    "stance",
+    "consensus_signal"
+  ],
+  "total": 4193,
+  "annotated": 4193,
+  "errors": 0,
+  "runtime_s": 91,
+  "annotated_at": "2026-07-01T02:04:48.482266+00:00"
+}

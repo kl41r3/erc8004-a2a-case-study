@@ -7,8 +7,8 @@
     "consensus_signal"
   ],
   "total": 1664,
-  "annotated": 1649,
-  "errors": 15,
+  "annotated": 1664,
+  "errors": 0,
   "runtime_s": 1138,
-  "annotated_at": "2026-06-23T11:26:18.123706+00:00"
+  "annotated_at": "2026-07-01T12:16:50.041663+00:00"
 }

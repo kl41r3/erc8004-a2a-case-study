@@ -1,0 +1,13 @@
+field,pair,kappa,pct_agree,interpretation
+stakeholder_institution,deepseek-v4-flash↔glm-4-plus,0.1981,37.8,Poor
+stakeholder_institution,deepseek-v4-flash↔moonshot-v1-auto,0.1202,34.7,Poor
+stakeholder_institution,glm-4-plus↔moonshot-v1-auto,0.218,40.6,Fair
+argument_type,deepseek-v4-flash↔glm-4-plus,0.5857,79.4,Moderate
+argument_type,deepseek-v4-flash↔moonshot-v1-auto,0.6072,81.7,Substantial
+argument_type,glm-4-plus↔moonshot-v1-auto,0.6711,84.9,Substantial
+stance,deepseek-v4-flash↔glm-4-plus,0.4921,63.8,Moderate
+stance,deepseek-v4-flash↔moonshot-v1-auto,0.4275,60.0,Moderate
+stance,glm-4-plus↔moonshot-v1-auto,0.55,69.1,Moderate
+consensus_signal,deepseek-v4-flash↔glm-4-plus,0.4396,71.9,Moderate
+consensus_signal,deepseek-v4-flash↔moonshot-v1-auto,0.4192,68.5,Moderate
+consensus_signal,glm-4-plus↔moonshot-v1-auto,0.5383,74.8,Moderate
