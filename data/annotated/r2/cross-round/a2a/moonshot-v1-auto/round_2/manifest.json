@@ -6,9 +6,9 @@
     "stance",
     "consensus_signal"
   ],
-  "total": 3854,
-  "annotated": 3854,
+  "total": 4200,
+  "annotated": 4200,
   "errors": 0,
-  "runtime_s": 1227,
-  "annotated_at": "2026-06-23T12:46:02.979762+00:00"
+  "runtime_s": 356,
+  "annotated_at": "2026-07-01T12:16:50.154334+00:00"
 }

@@ -1,65 +1,65 @@
 {
-  "generated_at": "2026-06-23T08:51:39.074161+00:00",
+  "generated_at": "2026-07-01T03:56:53.236910+00:00",
   "n_records": 4045,
   "models": [
-    "deepseek",
-    "glm",
-    "kimi"
+    "deepseek-v4-flash",
+    "glm-4-plus",
+    "moonshot-v1-auto"
   ],
   "n_models_loaded": 3,
   "pairwise_kappa": {
     "stakeholder_institution": {
-      "deepseek↔glm": {
+      "deepseek-v4-flash↔glm-4-plus": {
         "κ": 0.1981,
         "%_agree": 37.8
       },
-      "deepseek↔kimi": {
+      "deepseek-v4-flash↔moonshot-v1-auto": {
         "κ": 0.1202,
         "%_agree": 34.7
       },
-      "glm↔kimi": {
+      "glm-4-plus↔moonshot-v1-auto": {
         "κ": 0.218,
         "%_agree": 40.6
       }
     },
     "argument_type": {
-      "deepseek↔glm": {
+      "deepseek-v4-flash↔glm-4-plus": {
         "κ": 0.5857,
         "%_agree": 79.4
       },
-      "deepseek↔kimi": {
+      "deepseek-v4-flash↔moonshot-v1-auto": {
         "κ": 0.6072,
         "%_agree": 81.7
       },
-      "glm↔kimi": {
+      "glm-4-plus↔moonshot-v1-auto": {
         "κ": 0.6711,
         "%_agree": 84.9
       }
     },
     "stance": {
-      "deepseek↔glm": {
+      "deepseek-v4-flash↔glm-4-plus": {
         "κ": 0.4921,
         "%_agree": 63.8
       },
-      "deepseek↔kimi": {
+      "deepseek-v4-flash↔moonshot-v1-auto": {
         "κ": 0.4275,
         "%_agree": 60.0
       },
-      "glm↔kimi": {
+      "glm-4-plus↔moonshot-v1-auto": {
         "κ": 0.55,
         "%_agree": 69.1
       }
     },
     "consensus_signal": {
-      "deepseek↔glm": {
+      "deepseek-v4-flash↔glm-4-plus": {
         "κ": 0.4396,
         "%_agree": 71.9
       },
-      "deepseek↔kimi": {
+      "deepseek-v4-flash↔moonshot-v1-auto": {
         "κ": 0.4192,
         "%_agree": 68.5
       },
-      "glm↔kimi": {
+      "glm-4-plus↔moonshot-v1-auto": {
         "κ": 0.5383,
         "%_agree": 74.8
       }
@@ -94,6 +94,6 @@
     }
   },
   "verification_sample_n": 50,
-  "verification_sample_path": "/Users/michelangelo/academic/erca2a/RQ1/workspace/data/annotated/r2/a2a/validation/verification_sample.csv",
+  "verification_sample_path": "/Users/michelangelo/academic/erca2a/RQ1/workspace/data/annotated/r2/cross-model/a2a/validation/verification_sample.csv",
   "dataset": "a2a"
 }

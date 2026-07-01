@@ -1,0 +1,14 @@
+{
+  "model": "deepseek-v4-flash",
+  "case": "a2a",
+  "fields": [
+    "argument_type",
+    "stance",
+    "consensus_signal"
+  ],
+  "total": 4192,
+  "annotated": 4192,
+  "errors": 0,
+  "runtime_s": 157,
+  "annotated_at": "2026-07-01T12:16:50.098492+00:00"
+}

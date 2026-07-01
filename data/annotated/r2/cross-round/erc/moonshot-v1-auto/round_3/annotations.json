@@ -28869,8 +28869,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1771#issuecomment-4697977920",
     "pr_title": "Add ERC: AI Inference Proof Verification Interfaces",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Modify",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -29594,8 +29598,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1475#discussion_r2696246024",
     "pr_title": "Add ERC: AI Agent Registration and Verification",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -31133,8 +31141,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1608#discussion_r2996502025",
     "pr_title": "Update ERC-8126: Move to Review",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Support",
+      "consensus_signal": "Adopted"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -31879,8 +31891,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1769",
     "pr_title": "Update ERC-8126: Move to Final",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -32626,8 +32642,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1748#discussion_r3256334455",
     "pr_title": "Add ERC: Onchain Proof Layer for AI Agents",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Support",
+      "consensus_signal": "Adopted"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -34081,8 +34101,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1770",
     "pr_title": "Add ERC: Attestation-Gated Agentic Actions",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Support",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -34871,8 +34895,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1606#discussion_r2982895663",
     "pr_title": "Add ERC: AI Agent Authenticated Wallet",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Governance-Principle",
+      "stance": "Oppose",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -37580,8 +37608,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1559#issuecomment-3994935673",
     "pr_title": "Add ERC: Token Bound Account (Agent Registry)",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Support",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -38328,8 +38360,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1579#discussion_r2870353975",
     "pr_title": "Add ERC: Self-Sovereign Agent NFTs",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Modify",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -39051,8 +39087,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1149#discussion_r2301516432",
     "pr_title": "Add ERC: Agent Coordination Framework",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Governance-Principle",
+      "stance": "Support",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -39069,8 +39109,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1149#discussion_r2301521161",
     "pr_title": "Add ERC: Agent Coordination Framework",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Modify",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -39840,8 +39884,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1463#discussion_r2687248044",
     "pr_title": "Add ERC: Minimal Agent Registry",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Governance-Principle",
+      "stance": "Neutral",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -40609,8 +40657,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1550#issuecomment-3930657921",
     "pr_title": "Add ERC: Shared Sequencer Interface for Agent L2s",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Support",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -40627,8 +40679,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1550#issuecomment-3930951463",
     "pr_title": "Add ERC: Shared Sequencer Interface for Agent L2s",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Modify",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",
@@ -41396,8 +41452,12 @@
     "url": "https://github.com/ethereum/ERCs/pull/1634#discussion_r3145151851",
     "pr_title": "Add ERC: H3 Spatial Identity Extension for On-Chain Agents",
     "_case": "ERC-cluster",
-    "annotation": null,
-    "annotation_error": "retries_exhausted"
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null
   },
   {
     "tier": "tier2",

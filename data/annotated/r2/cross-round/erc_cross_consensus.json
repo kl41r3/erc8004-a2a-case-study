@@ -48540,6 +48540,46 @@
   },
   {
     "tier": "tier2",
+    "erc": "8166",
+    "platform": "github",
+    "pr_number": 1550,
+    "pr_description": "ERC-8166",
+    "source": "github_issue_comment",
+    "comment_id": 3930657921,
+    "date": "2026-02-19T23:09:59Z",
+    "author": "abcoathup",
+    "raw_text": "@michaelwinczuk please update the proposed ERC to match the format required by EIP-1.\r\n\r\nOnce it is in the required format we can then review if it is ready to be issued a number.",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1550#issuecomment-3930657921",
+    "pr_title": "Add ERC: Shared Sequencer Interface for Agent L2s",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.7778,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Process",
+        "glm-4-plus": "Process",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Neutral",
+        "glm-4-plus": "Modify",
+        "moonshot-v1-auto": "Support"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Pending",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "Pending"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
     "erc": "8165",
     "platform": "github",
     "pr_number": 1549,
@@ -48573,6 +48613,46 @@
       },
       "consensus_signal": {
         "deepseek-v4-flash": "N/A",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "N/A"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8166",
+    "platform": "github",
+    "pr_number": 1550,
+    "pr_description": "ERC-8166",
+    "source": "github_issue_comment",
+    "comment_id": 3930951463,
+    "date": "2026-02-20T00:45:00Z",
+    "author": "github-actions[bot]",
+    "raw_text": "The commit e8dc278910037078ee3832583642004f3d9e60db (as a parent of cd5ceede62b822d8dcc2f45cfa51e915daac6549) contains errors.\nPlease inspect the [Run Summary](https://github.com/ethereum/ercs/1550/files) for details.\n<!-- Sticky Pull Request Comment -->",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1550#issuecomment-3930951463",
+    "pr_title": "Add ERC: Shared Sequencer Interface for Agent L2s",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.6667,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Process",
+        "glm-4-plus": "Process",
+        "moonshot-v1-auto": "Technical"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Neutral",
+        "glm-4-plus": "Neutral",
+        "moonshot-v1-auto": "Modify"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Pending",
         "glm-4-plus": "Pending",
         "moonshot-v1-auto": "N/A"
       }
@@ -48695,6 +48775,46 @@
         "deepseek-v4-flash": "N/A",
         "glm-4-plus": "Pending",
         "moonshot-v1-auto": "N/A"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8171",
+    "platform": "github",
+    "pr_number": 1559,
+    "pr_description": "ERC-8171",
+    "source": "github_issue_comment",
+    "comment_id": 3994935673,
+    "date": "2026-03-04T03:02:03Z",
+    "author": "nftprof",
+    "raw_text": "Update: The full AI-Native NFT standard has been assigned as **ERC-8170** (PR #1558).\n\nERC-6551A remains as a companion proposal focused specifically on the registry pattern for binding agents to **existing** ERC-721 collections — no contract modifications required.\n\nHow they relate:\n- **ERC-8170** = Full AINFT standard (mint, clone, transfer, memory sync, lineage)\n- **ERC-6551A** = Lightweight registry that extends any deployed ERC-721 with agent identity\n\nERC-8170 can use ERC-6551A for backward compatibility with existing NFTs, or use native AINFT minting for new collections. They compose together.\n\nArchitecture and source: https://github.com/blockchainsuperheroes/ai-core/tree/main/EIPs\n\nWe also just posted a detailed response on the ERC-6551 thread about how these standards complement each other: https://ethereum-magicians.org/t/erc-6551-non-fungible-token-bound-accounts/13030/233",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1559#issuecomment-3994935673",
+    "pr_title": "Add ERC: Token Bound Account (Agent Registry)",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Support",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.7778,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Technical",
+        "glm-4-plus": "Technical",
+        "moonshot-v1-auto": "Technical"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Neutral",
+        "glm-4-plus": "Support",
+        "moonshot-v1-auto": "Support"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "N/A",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "Pending"
       }
     }
   },
@@ -52422,6 +52542,46 @@
   },
   {
     "tier": "tier2",
+    "erc": "8273",
+    "platform": "github",
+    "pr_number": 1770,
+    "pr_description": "ERC-8273",
+    "source": "github_issue_comment",
+    "comment_id": 4540491277,
+    "date": "2026-05-26T05:28:25Z",
+    "author": "eip-review-bot",
+    "raw_text": "### File `ERCS/erc-8273.md`\n\nRequires 1 more review from **Editors**: `@g11tech`, `@jochem-brouwer`, `@samwilsn`, `@xinbenlv`",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1770#issuecomment-4540491277",
+    "pr_title": "Add ERC: Attestation-Gated Agentic Actions",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 1.0,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Process",
+        "glm-4-plus": "Process",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Neutral",
+        "glm-4-plus": "Neutral",
+        "moonshot-v1-auto": "Neutral"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Pending",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "Pending"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
     "erc": "8240",
     "platform": "github",
     "pr_number": 1705,
@@ -52817,6 +52977,46 @@
         "deepseek-v4-flash": "Pending",
         "glm-4-plus": "Pending",
         "moonshot-v1-auto": "Adopted"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8274",
+    "platform": "github",
+    "pr_number": 1771,
+    "pr_description": "ERC-8274",
+    "source": "github_issue_comment",
+    "comment_id": 4575016265,
+    "date": "2026-05-29T12:32:26Z",
+    "author": "JimmyShi22",
+    "raw_text": "@abcoathup Hi editor, the ERC draft is fully prepared and ready for the official review and merging process. Thank you for your assistance with the next steps—your support is much appreciated!",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1771#issuecomment-4575016265",
+    "pr_title": "Add ERC: AI Inference Proof Verification Interfaces",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Support",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 1.0,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Process",
+        "glm-4-plus": "Process",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Support",
+        "glm-4-plus": "Support",
+        "moonshot-v1-auto": "Support"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Pending",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "Pending"
       }
     }
   },
@@ -53297,6 +53497,46 @@
         "deepseek-v4-flash": "Pending",
         "glm-4-plus": "Pending",
         "moonshot-v1-auto": "Pending"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8274",
+    "platform": "github",
+    "pr_number": 1771,
+    "pr_description": "ERC-8274",
+    "source": "github_issue_comment",
+    "comment_id": 4697977920,
+    "date": "2026-06-13T08:19:13Z",
+    "author": "github-actions[bot]",
+    "raw_text": "The commit cbe3812ca87030f7d83be49ff87d21cdc3a5a1d0 (as a parent of 73d3358f9a43cf61bfe698acc0b3798dd62a0815) contains errors.\nPlease inspect the [Run Summary](https://github.com/ethereum/ercs/1771/files) for details.\n<!-- Sticky Pull Request Comment -->",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1771#issuecomment-4697977920",
+    "pr_title": "Add ERC: AI Inference Proof Verification Interfaces",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.7778,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Process",
+        "glm-4-plus": "Process",
+        "moonshot-v1-auto": "Technical"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Neutral",
+        "glm-4-plus": "Neutral",
+        "moonshot-v1-auto": "Neutral"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "N/A",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "N/A"
       }
     }
   },
@@ -55020,6 +55260,88 @@
         "deepseek-v4-flash": "Pending",
         "glm-4-plus": "Pending",
         "moonshot-v1-auto": "Pending"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8126",
+    "platform": "github",
+    "pr_number": 1769,
+    "pr_description": "ERC-8126",
+    "source": "github_pr_body",
+    "comment_id": "pr_1769_body",
+    "date": "2026-05-25T03:34:04Z",
+    "author": "Cybercentry",
+    "raw_text": "- Changed status to `Final`",
+    "state": "closed",
+    "merged": true,
+    "url": "https://github.com/ethereum/ERCs/pull/1769",
+    "pr_title": "Update ERC-8126: Move to Final",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "Adopted"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.8889,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Process",
+        "glm-4-plus": "Process",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Neutral",
+        "glm-4-plus": "Neutral",
+        "moonshot-v1-auto": "Neutral"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Adopted",
+        "glm-4-plus": "Adopted",
+        "moonshot-v1-auto": "N/A"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8273",
+    "platform": "github",
+    "pr_number": 1770,
+    "pr_description": "ERC-8273",
+    "source": "github_pr_body",
+    "comment_id": "pr_1770_body",
+    "date": "2026-05-26T05:28:03Z",
+    "author": "xrqin",
+    "raw_text": "## Summary\r\n- Introduces ERC-8273: a standard interface for an on-chain Agent Attestation Registry\r\n- Attestations are transaction-scoped using EIP-1153 transient storage — active authorization is automatically cleared at transaction end\r\n- Supports two execution profiles: Direct Wallet (ERC-7702 / AA) and ERC-4337 UserOperation\r\n- Composable with ERC-8004 agent identity and other identity systems via generic `SubjectRef`\r\n\r\n## Authors\r\nYunan Li, Qingzhi Zha, Xianrui Qin, Vitto Rivabella",
+    "state": "closed",
+    "merged": true,
+    "url": "https://github.com/ethereum/ERCs/pull/1770",
+    "pr_title": "Add ERC: Attestation-Gated Agentic Actions",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Neutral",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.7778,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Technical",
+        "glm-4-plus": "Technical",
+        "moonshot-v1-auto": "Technical"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Neutral",
+        "glm-4-plus": "Support",
+        "moonshot-v1-auto": "Neutral"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Pending",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "N/A"
       }
     }
   },
@@ -57430,6 +57752,46 @@
   },
   {
     "tier": "tier2",
+    "erc": "8126",
+    "platform": "github",
+    "pr_number": 1734,
+    "pr_description": "ERC-8126",
+    "source": "github_review",
+    "comment_id": 4274226903,
+    "date": "2026-05-12T16:20:44Z",
+    "author": "eip-review-bot",
+    "raw_text": "All Reviewers Have Approved; Performing Automatic Merge...",
+    "state": "APPROVED",
+    "url": "https://github.com/ethereum/ERCs/pull/1734#pullrequestreview-4274226903",
+    "pr_title": "Update ERC-8126: Move to Last Call",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "Adopted"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 1.0,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Process",
+        "glm-4-plus": "Process",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Neutral",
+        "glm-4-plus": "Neutral",
+        "moonshot-v1-auto": "Neutral"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Adopted",
+        "glm-4-plus": "Adopted",
+        "moonshot-v1-auto": "Adopted"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
     "erc": "8226",
     "platform": "github",
     "pr_number": 1679,
@@ -58465,6 +58827,126 @@
         "deepseek-v4-flash": "Pending",
         "glm-4-plus": "Pending",
         "moonshot-v1-auto": "Pending"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8001",
+    "platform": "github",
+    "pr_number": 1149,
+    "pr_description": "ERC-8001",
+    "source": "github_review_comment",
+    "comment_id": 2301516432,
+    "date": "2025-08-26T16:22:22Z",
+    "author": "SamWilsn",
+    "raw_text": "```suggestion\r\nImplementations **SHOULD** expose the domain via [ERC-5267].\r\n```",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1149#discussion_r2301516432",
+    "pr_title": "Add ERC: Agent Coordination Framework",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Support",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 1.0,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Technical",
+        "glm-4-plus": "Technical",
+        "moonshot-v1-auto": "Technical"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Support",
+        "glm-4-plus": "Support",
+        "moonshot-v1-auto": "Support"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Pending",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "Pending"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8001",
+    "platform": "github",
+    "pr_number": 1149,
+    "pr_description": "ERC-8001",
+    "source": "github_review_comment",
+    "comment_id": 2301521161,
+    "date": "2025-08-26T16:24:33Z",
+    "author": "SamWilsn",
+    "raw_text": "This file isn't in your assets directory. Perhaps:\r\n\r\n```suggestion\r\nA permissive reference implementation is provided in [`contracts/AgentCoordination.sol`](../assets/eip-8001/contracts/AgentCoordination.sol). It uses a minimal ECDSA helper and supports ERC-1271 signers. It enforces participant canonicalisation, intent nonces, acceptance freshness, and all-participants policy.\r\n```",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1149#discussion_r2301521161",
+    "pr_title": "Add ERC: Agent Coordination Framework",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Modify",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.8889,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Technical",
+        "glm-4-plus": "Technical",
+        "moonshot-v1-auto": "Technical"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Modify",
+        "glm-4-plus": "Support",
+        "moonshot-v1-auto": "Modify"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Pending",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "Pending"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8001",
+    "platform": "github",
+    "pr_number": 1149,
+    "pr_description": "ERC-8001",
+    "source": "github_review_comment",
+    "comment_id": 2301522133,
+    "date": "2025-08-26T16:25:01Z",
+    "author": "SamWilsn",
+    "raw_text": "```suggestion\r\nCopyright and related rights waived via [CC0](../LICENSE.md).\r\n```",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1149#discussion_r2301522133",
+    "pr_title": "Add ERC: Agent Coordination Framework",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.7778,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Process",
+        "glm-4-plus": "Process",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Support",
+        "glm-4-plus": "Neutral",
+        "moonshot-v1-auto": "Neutral"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Pending",
+        "glm-4-plus": "N/A",
+        "moonshot-v1-auto": "N/A"
       }
     }
   },
@@ -60835,6 +61317,86 @@
     "pr_number": 1463,
     "pr_description": "ERC-8122",
     "source": "github_review_comment",
+    "comment_id": 2687248044,
+    "date": "2026-01-13T16:49:23Z",
+    "author": "xinbenlv",
+    "raw_text": "This means an Agent's ownership is determined by the chain of which the registry is deployed on, right?",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1463#discussion_r2687248044",
+    "pr_title": "Add ERC: Minimal Agent Registry",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Neutral",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.8889,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Technical",
+        "glm-4-plus": "Technical",
+        "moonshot-v1-auto": "Governance-Principle"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Neutral",
+        "glm-4-plus": "Neutral",
+        "moonshot-v1-auto": "Neutral"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "N/A",
+        "glm-4-plus": "N/A",
+        "moonshot-v1-auto": "N/A"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8122",
+    "platform": "github",
+    "pr_number": 1463,
+    "pr_description": "ERC-8122",
+    "source": "github_review_comment",
+    "comment_id": 2687250128,
+    "date": "2026-01-13T16:49:55Z",
+    "author": "xinbenlv",
+    "raw_text": "Are we using ERC-1155?",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1463#discussion_r2687250128",
+    "pr_title": "Add ERC: Minimal Agent Registry",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Neutral",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.8889,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Technical",
+        "glm-4-plus": "Technical",
+        "moonshot-v1-auto": "Technical"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Neutral",
+        "glm-4-plus": "Neutral",
+        "moonshot-v1-auto": "Neutral"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "N/A",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "N/A"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8122",
+    "platform": "github",
+    "pr_number": 1463,
+    "pr_description": "ERC-8122",
+    "source": "github_review_comment",
     "comment_id": 2687252673,
     "date": "2026-01-13T16:50:36Z",
     "author": "xinbenlv",
@@ -61253,6 +61815,46 @@
     "consensus_votes": {
       "argument_type": {
         "deepseek-v4-flash": "Technical",
+        "glm-4-plus": "Process",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Support",
+        "glm-4-plus": "Neutral",
+        "moonshot-v1-auto": "Neutral"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Pending",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "N/A"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8126",
+    "platform": "github",
+    "pr_number": 1475,
+    "pr_description": "ERC-8126",
+    "source": "github_review_comment",
+    "comment_id": 2696246024,
+    "date": "2026-01-15T22:54:58Z",
+    "author": "abcoathup",
+    "raw_text": "```suggestion\r\nstatus: Draft\r\n```",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1475#discussion_r2696246024",
+    "pr_title": "Add ERC: AI Agent Registration and Verification",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.7778,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Process",
         "glm-4-plus": "Process",
         "moonshot-v1-auto": "Process"
       },
@@ -62579,6 +63181,46 @@
       "stance": {
         "deepseek-v4-flash": "Modify",
         "glm-4-plus": "Modify",
+        "moonshot-v1-auto": "Modify"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Pending",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "Pending"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8181",
+    "platform": "github",
+    "pr_number": 1579,
+    "pr_description": "ERC-8181",
+    "source": "github_review_comment",
+    "comment_id": 2870353975,
+    "date": "2026-03-02T03:38:18Z",
+    "author": "chatgpt-codex-connector[bot]",
+    "raw_text": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Accept variable-length liveness attestations**\n\n`submitLivenessProof` constrains `attestation` to `bytes32`, but the spec text says this value is a TEE attestation or signature; real SGX/Nitro attestation payloads and standard signatures are larger than 32 bytes. This forces implementations to truncate or hash proofs, which makes on-chain/off-chain verification behavior ambiguous and conflicts with the liveness-proof requirements described later in the spec.\n\nUseful? React with 👍 / 👎.",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1579#discussion_r2870353975",
+    "pr_title": "Add ERC: Self-Sovereign Agent NFTs",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Technical",
+      "stance": "Modify",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.8889,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Technical",
+        "glm-4-plus": "Technical",
+        "moonshot-v1-auto": "Technical"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Modify",
+        "glm-4-plus": "Support",
         "moonshot-v1-auto": "Modify"
       },
       "consensus_signal": {
@@ -64959,6 +65601,86 @@
     "pr_number": 1606,
     "pr_description": "ERC-8196",
     "source": "github_review_comment",
+    "comment_id": 2982893269,
+    "date": "2026-03-24T16:37:01Z",
+    "author": "SamWilsn",
+    "raw_text": "This is likely too vague to include.",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1606#discussion_r2982893269",
+    "pr_title": "Add ERC: AI Agent Authenticated Wallet",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Governance-Principle",
+      "stance": "Oppose",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.7778,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Governance-Principle",
+        "glm-4-plus": "Off-topic",
+        "moonshot-v1-auto": "Governance-Principle"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Oppose",
+        "glm-4-plus": "Off-topic",
+        "moonshot-v1-auto": "Oppose"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "N/A",
+        "glm-4-plus": "N/A",
+        "moonshot-v1-auto": "N/A"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8196",
+    "platform": "github",
+    "pr_number": 1606,
+    "pr_description": "ERC-8196",
+    "source": "github_review_comment",
+    "comment_id": 2982895663,
+    "date": "2026-03-24T16:37:25Z",
+    "author": "SamWilsn",
+    "raw_text": "This is Motivation content, not rationale.",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1606#discussion_r2982895663",
+    "pr_title": "Add ERC: AI Agent Authenticated Wallet",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.7778,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Off-topic",
+        "glm-4-plus": "Process",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Neutral",
+        "glm-4-plus": "Neutral",
+        "moonshot-v1-auto": "Modify"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "N/A",
+        "glm-4-plus": "N/A",
+        "moonshot-v1-auto": "N/A"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8196",
+    "platform": "github",
+    "pr_number": 1606,
+    "pr_description": "ERC-8196",
+    "source": "github_review_comment",
     "comment_id": 2982897617,
     "date": "2026-03-24T16:37:45Z",
     "author": "SamWilsn",
@@ -65765,6 +66487,86 @@
     "raw_text": "Completed. Many thanks.",
     "state": null,
     "url": "https://github.com/ethereum/ERCs/pull/1608#discussion_r2983887961",
+    "pr_title": "Update ERC-8126: Move to Review",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Off-topic",
+      "stance": "Off-topic",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.7778,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Off-topic",
+        "glm-4-plus": "Off-topic",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Off-topic",
+        "glm-4-plus": "Off-topic",
+        "moonshot-v1-auto": "Neutral"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "N/A",
+        "glm-4-plus": "N/A",
+        "moonshot-v1-auto": "N/A"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8126",
+    "platform": "github",
+    "pr_number": 1608,
+    "pr_description": "ERC-8126",
+    "source": "github_review_comment",
+    "comment_id": 2983984673,
+    "date": "2026-03-24T20:03:34Z",
+    "author": "Cybercentry",
+    "raw_text": "Completed. Many thanks.",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1608#discussion_r2983984673",
+    "pr_title": "Update ERC-8126: Move to Review",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Off-topic",
+      "stance": "Off-topic",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.6667,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Off-topic",
+        "glm-4-plus": "Off-topic",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Off-topic",
+        "glm-4-plus": "Off-topic",
+        "moonshot-v1-auto": "Support"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "N/A",
+        "glm-4-plus": "N/A",
+        "moonshot-v1-auto": "Adopted"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8126",
+    "platform": "github",
+    "pr_number": 1608,
+    "pr_description": "ERC-8126",
+    "source": "github_review_comment",
+    "comment_id": 2996502025,
+    "date": "2026-03-26T17:19:16Z",
+    "author": "Cybercentry",
+    "raw_text": "Completed. Many thanks.",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1608#discussion_r2996502025",
     "pr_title": "Update ERC-8126: Move to Review",
     "_case": "ERC-cluster",
     "annotation": {
@@ -68559,6 +69361,46 @@
     "pr_number": 1634,
     "pr_description": "ERC-8242",
     "source": "github_review_comment",
+    "comment_id": 3145151851,
+    "date": "2026-04-27T06:04:27Z",
+    "author": "abcoathup",
+    "raw_text": "```suggestion\neip: 8242\n```\nAssigning next sequential EIP/ERC/RIP number.\nNumbers are assigned by editors & associates.\n\nPlease also update the filename.",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1634#discussion_r3145151851",
+    "pr_title": "Add ERC: H3 Spatial Identity Extension for On-Chain Agents",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Neutral",
+      "consensus_signal": "Pending"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.7778,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Process",
+        "glm-4-plus": "Process",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Support",
+        "glm-4-plus": "Neutral",
+        "moonshot-v1-auto": "Neutral"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "Pending",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "N/A"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8242",
+    "platform": "github",
+    "pr_number": 1634,
+    "pr_description": "ERC-8242",
+    "source": "github_review_comment",
     "comment_id": 3145158557,
     "date": "2026-04-27T06:06:26Z",
     "author": "abcoathup",
@@ -70039,6 +70881,46 @@
     "pr_number": 1748,
     "pr_description": "ERC-8263",
     "source": "github_review_comment",
+    "comment_id": 3256334455,
+    "date": "2026-05-18T04:23:00Z",
+    "author": "abcoathup",
+    "raw_text": "```suggestion\neip: 8263\n```\n@TruthAnchor-AI \n\nAssigning next sequential EIP/ERC/RIP number.\nNumbers are assigned by editors & associates.\n\nPlease also update the filename.",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1748#discussion_r3256334455",
+    "pr_title": "Add ERC: Onchain Proof Layer for AI Agents",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Support",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.6667,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Process",
+        "glm-4-plus": "Process",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Support",
+        "glm-4-plus": "Neutral",
+        "moonshot-v1-auto": "Support"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "N/A",
+        "glm-4-plus": "Pending",
+        "moonshot-v1-auto": "Adopted"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8263",
+    "platform": "github",
+    "pr_number": 1748,
+    "pr_description": "ERC-8263",
+    "source": "github_review_comment",
     "comment_id": 3256337261,
     "date": "2026-05-18T04:24:05Z",
     "author": "abcoathup",
@@ -70867,6 +71749,46 @@
       },
       "consensus_signal": {
         "deepseek-v4-flash": "Pending",
+        "glm-4-plus": "N/A",
+        "moonshot-v1-auto": "N/A"
+      }
+    }
+  },
+  {
+    "tier": "tier2",
+    "erc": "8273",
+    "platform": "github",
+    "pr_number": 1770,
+    "pr_description": "ERC-8273",
+    "source": "github_review_comment",
+    "comment_id": 3404191351,
+    "date": "2026-06-12T14:47:49Z",
+    "author": "lightclient",
+    "raw_text": "abstract is very long",
+    "state": null,
+    "url": "https://github.com/ethereum/ERCs/pull/1770#discussion_r3404191351",
+    "pr_title": "Add ERC: Attestation-Gated Agentic Actions",
+    "_case": "ERC-cluster",
+    "annotation": {
+      "argument_type": "Process",
+      "stance": "Off-topic",
+      "consensus_signal": "N/A"
+    },
+    "annotation_error": null,
+    "consensus_confidence": 0.7778,
+    "consensus_votes": {
+      "argument_type": {
+        "deepseek-v4-flash": "Process",
+        "glm-4-plus": "Off-topic",
+        "moonshot-v1-auto": "Process"
+      },
+      "stance": {
+        "deepseek-v4-flash": "Off-topic",
+        "glm-4-plus": "Off-topic",
+        "moonshot-v1-auto": "Modify"
+      },
+      "consensus_signal": {
+        "deepseek-v4-flash": "N/A",
         "glm-4-plus": "N/A",
         "moonshot-v1-auto": "N/A"
       }
