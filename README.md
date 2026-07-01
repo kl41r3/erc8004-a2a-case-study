@@ -1,6 +1,6 @@
 # Agentic Analysis for Agentic Infrastructure: An LLM-Powered Pipeline for Comparative Governance of DAO and Corporate AI Protocols
 
-> **Dataset:** [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — to be hosted on Hugging Face.
+> **📊 Data:** [See on Hugging Face](https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance) — full raw + annotated dataset, [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 >
 > **Reproduction package:** This repository contains the complete computational pipeline, from raw data collection through LLM annotation to final analysis and figures. SHA-256 checksums guarantee data provenance.
 
