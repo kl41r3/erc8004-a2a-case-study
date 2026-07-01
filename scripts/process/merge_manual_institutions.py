@@ -26,12 +26,15 @@ Special actions:
 """
 
 import json
+import sys
 from collections import defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent.parent
-MANUAL_PATH = ROOT / "data" / "raw" / "manual_institutions.json"
-PROFILES_PATH = ROOT / "data" / "annotated" / "author_profiles.json"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, RAW_MANUAL_INSTITUTIONS, DATA_ANNOTATED_R1_PROFILES
+
+MANUAL_PATH = RAW_MANUAL_INSTITUTIONS
+PROFILES_PATH = DATA_ANNOTATED_R1_PROFILES
 
 # ---------------------------------------------------------------------------
 # Priority ordering

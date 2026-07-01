@@ -1,0 +1,14 @@
+{
+  "model": "moonshot-v1-auto",
+  "case": "erc",
+  "fields": [
+    "argument_type",
+    "stance",
+    "consensus_signal"
+  ],
+  "total": 1664,
+  "annotated": 1649,
+  "errors": 15,
+  "runtime_s": 1137,
+  "annotated_at": "2026-06-23T11:26:18.442999+00:00"
+}

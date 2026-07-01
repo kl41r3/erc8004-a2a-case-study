@@ -20,6 +20,7 @@ Data:
 import csv
 import json
 import math
+import sys
 import warnings
 from pathlib import Path
 from collections import Counter, defaultdict
@@ -31,9 +32,8 @@ import numpy as np
 import networkx as nx
 import cpnet
 
-ROOT = Path(__file__).parents[2]
-ANALYSIS = ROOT / "analysis"
-OUTPUT = ROOT / "output"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, METRICS_R1_NETWORK_NODES_ERC, METRICS_R1_NETWORK_EDGES_ERC, METRICS_R1_NETWORK_NODES_A2A, METRICS_R1_NETWORK_EDGES_A2A, METRICS_R1_NETWORK_NODES_A2A_TOP50, METRICS_R1_NETWORK_EDGES_A2A_TOP50, OUTPUT_FIGURES, OUTPUT_DIR, ANALYSIS_DIR, ANALYSIS_ND_R1
 
 # institution → color  (Morandi palette — muted, distinct hues)
 INST_COLORS = {
@@ -53,9 +53,11 @@ DEFAULT_COLOR = "#B8B0A4"  # neutral grey — all other institutions
 # ── graph utilities ───────────────────────────────────────────────────────────
 
 def load_graph(case):
-    with open(ANALYSIS / f"network_nodes_{case}.csv") as f:
+    _node_paths = {"erc8004": METRICS_R1_NETWORK_NODES_ERC, "a2a": METRICS_R1_NETWORK_NODES_A2A}
+    _edge_paths = {"erc8004": METRICS_R1_NETWORK_EDGES_ERC, "a2a": METRICS_R1_NETWORK_EDGES_A2A}
+    with open(_node_paths[case]) as f:
         nodes = {r["id"]: r for r in csv.DictReader(f)}
-    with open(ANALYSIS / f"network_edges_{case}.csv") as f:
+    with open(_edge_paths[case]) as f:
         edges = list(csv.DictReader(f))
     return nodes, edges
 
@@ -477,9 +479,9 @@ def draw_network(ax, nodes, edges, pos, degree, title, metrics, vis_note=None):
 def fig_sna_comparison(nodes_erc, edges_erc, nodes_a2a, edges_a2a,
                         metrics_erc, metrics_a2a):
     # For the figure, use top-50 A2A nodes/edges to avoid over-crowding
-    with open(ANALYSIS / "network_nodes_a2a_top50.csv") as f:
+    with open(METRICS_R1_NETWORK_NODES_A2A_TOP50) as f:
         nodes_a2a_vis = {r["id"]: r for r in csv.DictReader(f)}
-    with open(ANALYSIS / "network_edges_a2a_top50.csv") as f:
+    with open(METRICS_R1_NETWORK_EDGES_A2A_TOP50) as f:
         edges_a2a_vis = list(csv.DictReader(f))
 
     print("  Computing layouts (this may take ~10s)...")
@@ -515,7 +517,8 @@ def fig_sna_comparison(nodes_erc, edges_erc, nodes_a2a, edges_a2a,
                bbox_to_anchor=(0.5, -0.01))
 
     plt.tight_layout(rect=[0, 0.08, 1, 1])
-    out = OUTPUT / "network_sna_comparison.png"
+    out = OUTPUT_FIGURES / "network_sna_comparison.png"
+    out.parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")
     plt.close()
     print(f"  Saved → {out}")
@@ -546,12 +549,10 @@ def fig_degree_distribution(nodes_erc, edges_erc, nodes_a2a, edges_a2a):
         ax.spines[["top", "right"]].set_visible(False)
         # Annotate top 3
         for i, v in enumerate(vals[:3]):
-            nid = sorted(ax1.patches if ax == ax1 else [],
-                         key=lambda p: p.get_height(), reverse=True)
             ax.text(i, v + 0.3, str(v), ha="center", va="bottom", fontsize=7.5)
 
     plt.tight_layout()
-    out = OUTPUT / "network_degree_dist.png"
+    out = OUTPUT_FIGURES / "network_degree_dist.png"
     plt.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")
     plt.close()
     print(f"  Saved → {out}")
@@ -589,7 +590,7 @@ def save_metrics_table(metrics_erc, metrics_a2a):
         ("Eigenvec max (giant comp.)",      metrics_erc["eigenvec_max_giant"],     metrics_a2a["eigenvec_max_giant"]),
     ]
 
-    out = ANALYSIS / "network_metrics_table.csv"
+    out = ANALYSIS_DIR / "network_metrics_table.csv"
     with open(out, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["Metric", "ERC-8004", "Google A2A (full)"])
@@ -615,7 +616,8 @@ def main():
 
     # Save JSON
     all_metrics = {"erc8004": metrics_erc, "a2a": metrics_a2a}
-    json_path = OUTPUT / "network_metrics.json"
+    json_path = ANALYSIS_ND_R1 / "network_metrics.json"
+    json_path.parent.mkdir(parents=True, exist_ok=True)
     with open(json_path, "w") as f:
         json.dump(all_metrics, f, indent=2, default=str)
     print(f"  Saved → {json_path}")

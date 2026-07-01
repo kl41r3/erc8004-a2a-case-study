@@ -1,0 +1,14 @@
+{
+  "model": "moonshot-v1-auto",
+  "case": "a2a",
+  "fields": [
+    "argument_type",
+    "stance",
+    "consensus_signal"
+  ],
+  "total": 3848,
+  "annotated": 3848,
+  "errors": 0,
+  "runtime_s": 1227,
+  "annotated_at": "2026-06-23T12:46:02.457372+00:00"
+}

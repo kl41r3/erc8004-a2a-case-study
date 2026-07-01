@@ -1,0 +1,99 @@
+{
+  "generated_at": "2026-06-23T08:06:17.139377+00:00",
+  "n_records": 1664,
+  "models": [
+    "deepseek",
+    "glm",
+    "kimi"
+  ],
+  "n_models_loaded": 3,
+  "pairwise_kappa": {
+    "stakeholder_institution": {
+      "deepseek↔glm": {
+        "κ": 0.1874,
+        "%_agree": 85.8
+      },
+      "deepseek↔kimi": {
+        "κ": 0.2234,
+        "%_agree": 73.2
+      },
+      "glm↔kimi": {
+        "κ": 0.1391,
+        "%_agree": 75.7
+      }
+    },
+    "argument_type": {
+      "deepseek↔glm": {
+        "κ": 0.6914,
+        "%_agree": 84.9
+      },
+      "deepseek↔kimi": {
+        "κ": 0.6337,
+        "%_agree": 83.5
+      },
+      "glm↔kimi": {
+        "κ": 0.7297,
+        "%_agree": 88.2
+      }
+    },
+    "stance": {
+      "deepseek↔glm": {
+        "κ": 0.4513,
+        "%_agree": 61.0
+      },
+      "deepseek↔kimi": {
+        "κ": 0.2499,
+        "%_agree": 46.5
+      },
+      "glm↔kimi": {
+        "κ": 0.4604,
+        "%_agree": 63.7
+      }
+    },
+    "consensus_signal": {
+      "deepseek↔glm": {
+        "κ": 0.3209,
+        "%_agree": 63.5
+      },
+      "deepseek↔kimi": {
+        "κ": 0.2817,
+        "%_agree": 57.9
+      },
+      "glm↔kimi": {
+        "κ": 0.3288,
+        "%_agree": 60.8
+      }
+    }
+  },
+  "fleiss_kappa": {
+    "stakeholder_institution": 0.1612,
+    "argument_type": 0.6831,
+    "stance": 0.3685,
+    "consensus_signal": 0.2985
+  },
+  "agreement_tiers": {
+    "stakeholder_institution": {
+      "3": 68.3,
+      "2": 29.6,
+      "1": 2.0
+    },
+    "argument_type": {
+      "3": 79.1,
+      "2": 19.4,
+      "1": 1.5
+    },
+    "stance": {
+      "3": 40.1,
+      "2": 51.0,
+      "1": 9.0
+    },
+    "consensus_signal": {
+      "3": 41.3,
+      "2": 58.1,
+      "1": 0.5
+    }
+  },
+  "verification_sample_n": 50,
+  "verification_sample_path": "/Users/michelangelo/academic/erca2a/RQ1/workspace/data/annotated/r2/validation/verification_sample.csv",
+  "dataset": "erc"
+}

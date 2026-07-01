@@ -11,7 +11,7 @@ from __future__ import annotations
 import csv
 import json
 import math
-import shutil
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -23,13 +23,25 @@ import pandas as pd
 from dateutil import parser as dateparser
 from scipy.stats import gaussian_kde
 
-ROOT = Path(__file__).resolve().parents[2]
-PAPER_DIR = ROOT / "paper-acm"
-OUTPUT_FIGS = ROOT / "output" / "figures"
-TD = ROOT / "output" / "topic_discovery"
-ND = ROOT / "output" / "network_discourse"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import (ROOT, DATA_ANNOTATED_R1_RECORDS,
+    ANALYSIS_TD_R1, ANALYSIS_TD_R1_THEMATIC, ANALYSIS_TD_R1_COMPARATIVE, ANALYSIS_TD_R1_CRYPTOBERT,
+    ANALYSIS_ND_R1, ANALYSIS_ND_R1_DNA, ANALYSIS_ND_R1_SS,
+    METRICS_R1_NETWORK_NODES_ERC, METRICS_R1_NETWORK_EDGES_ERC,
+    METRICS_R1_NETWORK_NODES_A2A_TOP50, METRICS_R1_NETWORK_EDGES_A2A_TOP50,
+    OUTPUT_FIGURES, PAPER_ACM, PAPER_ACM_FIG)
+from lib.colors import (ERC_COLORS as _LIB_ERC, A2A_COLORS as _LIB_A2A,
+    INST_PALETTE, INST_PALETTE_DARK, ERC_HUB_DARK, A2A_HUB_DARK,
+    CB_PALETTE, COLOR_CARD, BERT_SEMANTIC, CRYPTO_SEMANTIC)
+from lib.io import load_json
+from lib.figure_utils import save_figure
+
+PAPER_DIR = PAPER_ACM
+OUTPUT_FIGS = OUTPUT_FIGURES
+TD = ANALYSIS_TD_R1
+ND = ANALYSIS_ND_R1
 ANALYSIS = ROOT / "analysis"
-ANNOTATED = ROOT / "data" / "annotated" / "annotated_records.json"
+ANNOTATED = DATA_ANNOTATED_R1_RECORDS
 
 # ── Colour palette ────────────────────────────────────────────────────────────
 P1 = "#a30543"   # deep crimson  → A2A
@@ -46,63 +58,27 @@ SEED = 42
 # ── Dark-theme palette (for two-col cinematic figure) ─────────────────────────
 DARK_BG    = "#0D1117"
 DARK_PANEL = "#161B22"
-INST_PALETTE_DARK = {
-    "Google":               "#FF5252",
-    "MetaMask":             "#FF9F43",
-    "Ethereum Foundation":  "#748EFF",
-    "Coinbase":             "#26D9C7",
-    "Microsoft":            "#FFD93D",
-    "AWS":                  "#82EDB2",
-    "Others":               "#6B7280",
-}
-ERC_HUB_DARK = "#FFD700"   # gold
-A2A_HUB_DARK = "#DA70D6"   # orchid
 
-INST_PALETTE = {
+ERC_HUB_DARK = "#FFD700"   # gold (keep local as fallback)
+A2A_HUB_DARK = "#DA70D6"   # orchid (keep local as fallback)
+
+# Keep local _inst_color since INST_PALETTE from lib has different values than P1-P6
+INST_PALETTE_PAPER = {
     "Google":               P1,
     "MetaMask":             P2,
     "Ethereum Foundation":  P6,
     "Coinbase":             P5,
     "Microsoft":            P3,
     "AWS":                  P4,
-    "Others":               "#c0bdb8",  # Independent + Unknown merged
-}
-
-# Human-readable semantic labels for BERTopic and CryptoBERT topics
-_BERT_SEMANTIC: dict[int, str] = {
-    0:  "Agent Discourse",
-    1:  "Task / Message Protocol",
-    2:  "PR Review Chatter",
-    3:  "JSON / Proto Spec",
-    4:  "Contributing / PR Flow",
-    5:  "Python SDK Samples",
-    6:  "Versioning",
-    7:  "UI Assets",
-    8:  "Voting / Governance",
-    9:  "Corporate Actors (SAP, LinkedIn)",
-    10: "Push Notifications",
-    11: "Code of Conduct",
-    12: "Partner / Discord Links",
-    13: "Gemini AI Review",
-    14: "Lint / CI Config",
-    15: "UI Polling / Demo",
-    16: "Docs / MkDocs",
-    17: "OpenAI / Azure",
-    18: "Null / None Types",
-}
-_CRYPTO_SEMANTIC: dict[int, str] = {
-    0: "Onchain Agent Registry",
-    1: "Implementation Scope",
-    2: "Trust & Reputation",
-    3: "Reviewer / Admin",
-    4: "GitHub PR Process",
+    "Others":               "#c0bdb8",
 }
 
 
 def _inst_color(institution: str) -> str:
-    """Normalize Independent/Unknown → Others, then look up palette."""
-    key = institution if institution in INST_PALETTE else "Others"
-    return INST_PALETTE[key]
+    """Normalize Independent/Unknown -> Others, then look up palette."""
+    key = institution if institution in INST_PALETTE_PAPER else "Others"
+    return INST_PALETTE_PAPER[key]
+
 
 plt.rcParams.update({
     "font.family": "sans-serif",
@@ -120,18 +96,14 @@ plt.rcParams.update({
 
 
 def _save(fig, stem: str) -> None:
-    """Save PDF+PNG to output/figures/ and copy both to paper-acm/."""
-    OUTPUT_FIGS.mkdir(parents=True, exist_ok=True)
-    for ext in ("pdf", "png"):
-        out = OUTPUT_FIGS / f"{stem}.{ext}"
-        fig.savefig(out)
-        shutil.copy2(out, PAPER_DIR / f"{stem}.{ext}")
+    """Save PDF+PNG using lib helper (output/figures/ + paper-acm/fig/)."""
+    save_figure(fig, stem, paper=True, dpi=300)
 
 
 # ── Figure: BERTopic divergence (enlarged font) ───────────────────────────────
 
 def fig_bertopic_divergence() -> None:
-    df = pd.read_csv(TD / "comparative_discourse" / "divergence_table.csv")
+    df = pd.read_csv(ANALYSIS_TD_R1_COMPARATIVE / "divergence_table.csv")
     df = df.sort_values("abs_diff", ascending=True)
     df["signed"] = df["erc8004_pct"] - df["a2a_pct"]
     df["short"] = df.apply(
@@ -146,7 +118,7 @@ def fig_bertopic_divergence() -> None:
             linewidth=0.5)
     ax.axvline(0, color="black", lw=0.8)
     ax.set_xlabel("ERC-8004 share − A2A share (pp)")
-    ax.set_title("BERTopic cross-case divergence (JSD = 0.288)")
+    ax.set_title("BERTopic cross-case divergence")
     for spine in ("top", "right"):
         ax.spines[spine].set_visible(False)
 
@@ -163,7 +135,7 @@ def fig_bertopic_divergence() -> None:
 # ── Figure: CryptoBERT topic frequency ────────────────────────────────────────
 
 def fig_cryptobert_frequency() -> None:
-    data = json.loads((TD / "crypto_bert" / "topics.json").read_text())
+    data = json.loads((ANALYSIS_TD_R1_CRYPTOBERT / "topics.json").read_text())
     # exclude noise; sort ascending so longest bar is at top
     topics = sorted(data["topics"], key=lambda t: t["pct"])
 
@@ -208,18 +180,18 @@ def fig_bertopic_cryptobert_integrated() -> None:
     ~45 % height reduction vs. two separate figures.
     """
     # ── data ──────────────────────────────────────────────────────────────────
-    bert_df = pd.read_csv(TD / "comparative_discourse" / "divergence_table.csv")
+    bert_df = pd.read_csv(ANALYSIS_TD_R1_COMPARATIVE / "divergence_table.csv")
     bert_df = bert_df.sort_values("abs_diff", ascending=False).reset_index(drop=True)
     bert_df["signed"] = bert_df["erc8004_pct"] - bert_df["a2a_pct"]
 
-    crypto_data = json.loads((TD / "crypto_bert" / "topics.json").read_text())
+    crypto_data = json.loads((ANALYSIS_TD_R1_CRYPTOBERT / "topics.json").read_text())
     crypto_topics = sorted(crypto_data["topics"], key=lambda t: t["pct"], reverse=True)
     n_bert = len(bert_df)
     n_crypto = len(crypto_topics)
 
     # ── semantic labels ────────────────────────────────────────────────────────
     def _blabel(row) -> str:
-        sem = _BERT_SEMANTIC.get(int(row["topic_id"]))
+        sem = BERT_SEMANTIC.get(int(row["topic_id"]))
         if sem:
             return f"T{int(row['topic_id'])}  {sem}"
         kws = [k.strip() for k in str(row["keywords"]).split(",")[:2]]
@@ -227,7 +199,7 @@ def fig_bertopic_cryptobert_integrated() -> None:
 
     bert_df["label"] = bert_df.apply(_blabel, axis=1)
     crypto_labels = [
-        f"T{t['id']}  {_CRYPTO_SEMANTIC.get(t['id'], ' · '.join(t['keywords'][:2]))}"
+        f"T{t['id']}  {CRYPTO_SEMANTIC.get(t['id'], ' · '.join(t['keywords'][:2]))}"
         for t in crypto_topics
     ]
     crypto_pcts = [t["pct"] for t in crypto_topics]
@@ -280,7 +252,7 @@ def fig_bertopic_cryptobert_integrated() -> None:
     ax_bert.set_yticklabels(bert_df["label"].values, fontsize=6.4)
     ax_bert.invert_yaxis()  # index 0 (T0, most divergent) → visual top
     ax_bert.set_xlabel("Share difference  (ERC − A2A, pp)", fontsize=7, labelpad=2)
-    ax_bert.set_title("A   BERTopic cross-case divergence  (JSD = 0.288)",
+    ax_bert.set_title("A   BERTopic cross-case divergence",
                        fontsize=8.5, fontweight="bold", pad=5, loc="left")
     ax_bert.tick_params(left=False, pad=1)
     ax_bert.xaxis.grid(True, alpha=0.15, lw=0.3)
@@ -340,7 +312,7 @@ def fig_combined_heatmap_butterfly() -> None:
     participation rate.  Single-axis design for one-column figure."""
 
     # ---- build record-share (former heatmap) data ----
-    coded = json.loads((TD / "thematic_lm" / "coded_records.json").read_text())
+    coded = json.loads((ANALYSIS_TD_R1_THEMATIC / "coded_records.json").read_text())
     rec_df = pd.DataFrame(coded)
 
     def case_of(rid: str) -> str:
@@ -356,7 +328,7 @@ def fig_combined_heatmap_butterfly() -> None:
     counts = rec_df.groupby(["case", "theme_id"]).size().unstack(fill_value=0)
     pct_heat = (counts.divide(total, axis=0) * 100.0).T
 
-    themes = json.loads((TD / "thematic_lm" / "themes.json").read_text())
+    themes = json.loads((ANALYSIS_TD_R1_THEMATIC / "themes.json").read_text())
     label_map = {t["theme_id"]: t["label"] for t in themes}
 
     erc_col = [c for c in pct_heat.columns if "ERC" in c][0]
@@ -389,7 +361,7 @@ def fig_combined_heatmap_butterfly() -> None:
     theme_labels = [_wrap_label(tid) for tid in theme_order]
 
     # ---- actor-participation (former butterfly) data ----
-    df_but = pd.read_csv(ND / "sociosemantic" / "theme_actor_comparison.csv")
+    df_but = pd.read_csv(ANALYSIS_ND_R1_SS / "theme_actor_comparison.csv")
     df_but = df_but.set_index("theme_id")
     erc_but = [float(df_but.loc[tid, "erc8004_pct"]) if tid in df_but.index else 0.0
                for tid in theme_order]
@@ -453,7 +425,7 @@ def fig_combined_heatmap_butterfly() -> None:
     ax.tick_params(left=False, pad=1)
 
     # JSD annotation (top-right corner, inside the plot)
-    ax.text(0.97, 0.97, "JSD = 0.216", transform=ax.transAxes,
+    ax.text(0.97, 0.97, "JSD", transform=ax.transAxes,
             fontsize=7, ha="right", va="top",
             bbox=dict(boxstyle="round,pad=0.25", fc="#F8F9FA", ec="#CCCCCC", lw=0.5))
 
@@ -465,7 +437,7 @@ def fig_combined_heatmap_butterfly() -> None:
 # ── Figure: DNA congruence networks ───────────────────────────────────────────
 
 def _load_congruence(case_slug: str) -> nx.Graph:
-    edges = pd.read_csv(ND / "dna" / f"congruence_{case_slug}.csv")
+    edges = pd.read_csv(ANALYSIS_ND_R1_DNA / f"congruence_{case_slug}.csv")
     g = nx.Graph()
     for _, r in edges.iterrows():
         g.add_edge(r.actor_a, r.actor_b, weight=float(r.weight))
@@ -473,7 +445,7 @@ def _load_congruence(case_slug: str) -> nx.Graph:
 
 
 def _actor_institutions(case_slug: str) -> dict:
-    div = pd.read_csv(ND / "sociosemantic" / f"actor_diversity_{case_slug}.csv")
+    div = pd.read_csv(ANALYSIS_ND_R1_SS / f"actor_diversity_{case_slug}.csv")
     return dict(zip(div["author"], div["stakeholder_institution"]))
 
 
@@ -524,7 +496,7 @@ def fig_dna_networks() -> None:
 # ── Figure: DNA polarization bar ──────────────────────────────────────────────
 
 def fig_dna_polarization() -> None:
-    metrics = json.loads((ND / "dna" / "dna_metrics.json").read_text())
+    metrics = json.loads((ANALYSIS_ND_R1_DNA / "dna_metrics.json").read_text())
     erc = metrics["ERC-8004"]["congruence"]["polarization_index"]
     a2a = metrics["Google-A2A"]["congruence"]["polarization_index"]
 
@@ -549,8 +521,8 @@ def fig_dna_polarization() -> None:
 # ── Figure: entropy KDE mountain curves (0-1 zone highlighted) ────────────────
 
 def fig_ss_entropy() -> None:
-    erc = pd.read_csv(ND / "sociosemantic" / "actor_diversity_erc8004.csv")
-    a2a = pd.read_csv(ND / "sociosemantic" / "actor_diversity_googlea2a.csv")
+    erc = pd.read_csv(ANALYSIS_ND_R1_SS / "actor_diversity_erc8004.csv")
+    a2a = pd.read_csv(ANALYSIS_ND_R1_SS / "actor_diversity_googlea2a.csv")
 
     erc_h = erc["entropy"].dropna().values
     a2a_h = a2a["entropy"].dropna().values
@@ -1091,14 +1063,14 @@ def _draw_sna_panel_refined(
 
 def fig_network_sna() -> None:
     nodes_erc, edges_erc = _load_csv_graph(
-        ANALYSIS / "network_nodes_erc8004.csv",
-        ANALYSIS / "network_edges_erc8004.csv",
+        METRICS_R1_NETWORK_NODES_ERC,
+        METRICS_R1_NETWORK_EDGES_ERC,
     )
     nodes_a2a, edges_a2a = _load_csv_graph(
-        ANALYSIS / "network_nodes_a2a_top50.csv",
-        ANALYSIS / "network_edges_a2a_top50.csv",
+        METRICS_R1_NETWORK_NODES_A2A_TOP50,
+        METRICS_R1_NETWORK_EDGES_A2A_TOP50,
     )
-    metrics_raw = json.loads((ROOT / "output" / "network_metrics.json").read_text())
+    metrics_raw = json.loads((ANALYSIS_ND_R1 / "network_metrics.json").read_text())
     m_erc = metrics_raw.get("erc8004", {})
     m_a2a = metrics_raw.get("a2a", {})
 
@@ -1350,14 +1322,14 @@ def _draw_sna_twocol_panel(
 def fig_network_sna_twocol() -> None:
     """Horizontal diptych for two-column placement — full ERC (all 67 nodes)."""
     nodes_erc, edges_erc = _load_csv_graph(
-        ANALYSIS / "network_nodes_erc8004.csv",
-        ANALYSIS / "network_edges_erc8004.csv",
+        METRICS_R1_NETWORK_NODES_ERC,
+        METRICS_R1_NETWORK_EDGES_ERC,
     )
     nodes_a2a, edges_a2a = _load_csv_graph(
-        ANALYSIS / "network_nodes_a2a_top50.csv",
-        ANALYSIS / "network_edges_a2a_top50.csv",
+        METRICS_R1_NETWORK_NODES_A2A_TOP50,
+        METRICS_R1_NETWORK_EDGES_A2A_TOP50,
     )
-    metrics_raw = json.loads((ROOT / "output" / "network_metrics.json").read_text())
+    metrics_raw = json.loads((ANALYSIS_ND_R1 / "network_metrics.json").read_text())
     m_erc = metrics_raw.get("erc8004", {})
     m_a2a = metrics_raw.get("a2a", {})
 

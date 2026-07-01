@@ -20,8 +20,11 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-RAW_DIR = Path(__file__).parent.parent / "data" / "raw"
-RAW_DIR.mkdir(parents=True, exist_ok=True)
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import DATA_RAW, RAW_A2A_COMMITS, RAW_A2A_ISSUES, RAW_A2A_PRS, RAW_A2A_MANIFEST
+
+DATA_RAW.mkdir(parents=True, exist_ok=True)
 
 REPO = "google/A2A"
 API_BASE = "https://api.github.com"
@@ -237,7 +240,7 @@ def main():
     # Commits
     try:
         commits = fetch_commits(token)
-        (RAW_DIR / "a2a_commits.json").write_text(
+        RAW_A2A_COMMITS.write_text(
             json.dumps(commits, indent=2, ensure_ascii=False)
         )
     except Exception as e:
@@ -247,7 +250,7 @@ def main():
     # Issues + comments
     try:
         issues = fetch_issues(token)
-        (RAW_DIR / "a2a_issues.json").write_text(
+        RAW_A2A_ISSUES.write_text(
             json.dumps(issues, indent=2, ensure_ascii=False)
         )
     except Exception as e:
@@ -257,7 +260,7 @@ def main():
     # PRs + review comments
     try:
         prs = fetch_prs(token)
-        (RAW_DIR / "a2a_prs.json").write_text(
+        RAW_A2A_PRS.write_text(
             json.dumps(prs, indent=2, ensure_ascii=False)
         )
     except Exception as e:
@@ -277,7 +280,7 @@ def main():
         "pr_review_comments_count": len([r for r in prs if r["source"] == "pr_review_comment"]),
         "total_discussion_records": len(issues) + len(prs),
     }
-    (RAW_DIR / "a2a_manifest.json").write_text(json.dumps(manifest, indent=2))
+    RAW_A2A_MANIFEST.write_text(json.dumps(manifest, indent=2))
 
     print(f"\n=== A2A Scrape Summary ===")
     print(f"  Commits:              {manifest['commits_count']}")
@@ -286,7 +289,7 @@ def main():
     print(f"  PRs:                  {manifest['prs_count']}")
     print(f"  PR review comments:   {manifest['pr_review_comments_count']}")
     print(f"  Total discussion:     {manifest['total_discussion_records']}")
-    print(f"\nData → {RAW_DIR}")
+    print(f"\nData → {DATA_RAW}")
 
 
 if __name__ == "__main__":

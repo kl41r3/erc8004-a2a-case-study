@@ -13,22 +13,19 @@ Encoding:
 """
 
 import json
+import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent.parent
-ANNOTATED_RECORDS_FILE = ROOT / "data" / "annotated" / "annotated_records.json"
-AUTHOR_PROFILES_FILE = ROOT / "data" / "annotated" / "author_profiles.json"
-OUTPUT_PATH = ROOT / "output" / "timeline_erc8004.html"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import (ROOT, DATA_ANNOTATED_R1_RECORDS, DATA_ANNOTATED_R1_PROFILES,
+    OUTPUT_INTERACTIVE)
+from lib.models import BOTS, is_bot
 
-BOTS = {"eip-review-bot", "gemini-code-assist[bot]", "git-vote[bot]",
-        "google-cla[bot]", "actions-user", "github-actions",
-        "dependabot", "dependabot[bot]"}
-
-
-def is_bot(u: str) -> bool:
-    return u in BOTS or u.endswith("[bot]") or u.endswith("-bot")
+ANNOTATED_RECORDS_FILE = DATA_ANNOTATED_R1_RECORDS
+AUTHOR_PROFILES_FILE = DATA_ANNOTATED_R1_PROFILES
+OUTPUT_PATH = OUTPUT_INTERACTIVE / "timeline_erc8004.html"
 
 
 STANCE_COLORS = {

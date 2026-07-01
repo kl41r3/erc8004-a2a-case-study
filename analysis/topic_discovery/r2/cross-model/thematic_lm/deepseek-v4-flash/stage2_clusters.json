@@ -1,0 +1,72 @@
+{
+  "Governance & Process": [
+    "accountability",
+    "decision-making authority",
+    "process clarity",
+    "process compliance",
+    "process coordination",
+    "process efficiency",
+    "process transparency",
+    "transparency",
+    "separation of concerns"
+  ],
+  "Community & Collaboration": [
+    "collaboration",
+    "collaborative development",
+    "community engagement",
+    "community feedback",
+    "contribution guidelines",
+    "issue resolution"
+  ],
+  "Documentation Standards": [
+    "documentation accessibility",
+    "documentation accuracy",
+    "documentation clarity",
+    "documentation consistency",
+    "documentation update",
+    "documentation updates",
+    "commit message standards"
+  ],
+  "Implementation Practices": [
+    "implementation clarity",
+    "implementation complexity",
+    "implementation consistency",
+    "implementation flexibility"
+  ],
+  "Specification Practices": [
+    "specification clarity",
+    "specification completeness",
+    "specification compliance",
+    "specification consistency"
+  ],
+  "Protocol Standards": [
+    "protocol compliance",
+    "protocol evolution",
+    "protocol extensibility",
+    "protocol flexibility",
+    "protocol implementation",
+    "interoperability",
+    "interoperability concerns"
+  ],
+  "Quality Assurance": [
+    "code quality assurance",
+    "quality assurance",
+    "testing and linting",
+    "error handling",
+    "backward compatibility",
+    "scalability concerns",
+    "security concerns"
+  ],
+  "Standardization Efforts": [
+    "standardization",
+    "standardization approach",
+    "standardization process",
+    "standard alignment"
+  ],
+  "Dependency Management": [
+    "dependency management"
+  ],
+  "Repository Management": [
+    "repository management"
+  ]
+}

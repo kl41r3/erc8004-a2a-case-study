@@ -17,33 +17,12 @@ import time
 from collections import Counter
 from pathlib import Path
 
-# ---------------------------------------------------------------------------
-# Paths
-# ---------------------------------------------------------------------------
-ROOT = Path(__file__).parent.parent.parent
-DATA_RAW = ROOT / "data" / "raw"
-ANNOTATED = ROOT / "data" / "annotated"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_RAW, DATA_ANNOTATED_R1, DATA_ANNOTATED_R1_RECORDS, RAW_PROFILES_FORUM, RAW_PROFILES_GITHUB
+from lib.models import BOTS, is_bot
 
-FORUM_PROFILES_OUT = DATA_RAW / "profiles_forum.json"
-GITHUB_PROFILES_OUT = DATA_RAW / "profiles_github.json"
-
-# ---------------------------------------------------------------------------
-# Known bots — excluded from profile fetching
-# ---------------------------------------------------------------------------
-BOTS = {
-    "eip-review-bot",
-    "gemini-code-assist[bot]",
-    "git-vote[bot]",
-    "google-cla[bot]",
-    "actions-user",
-    "github-actions",
-    "dependabot",
-    "dependabot[bot]",
-}
-
-
-def is_bot(username: str) -> bool:
-    return username in BOTS or username.endswith("[bot]") or username.endswith("-bot")
+FORUM_PROFILES_OUT = RAW_PROFILES_FORUM
+GITHUB_PROFILES_OUT = RAW_PROFILES_GITHUB
 
 
 # ---------------------------------------------------------------------------
@@ -87,7 +66,7 @@ def fetch_json(url: str, headers: list[str] | None = None) -> dict | None:
 
 def load_authors() -> tuple[set[str], set[str]]:
     """Return (forum_handles, github_handles) for human authors."""
-    records_path = ANNOTATED / "annotated_records.json"
+    records_path = DATA_ANNOTATED_R1_RECORDS
     with open(records_path) as f:
         records = json.load(f)
 

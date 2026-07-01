@@ -16,10 +16,12 @@ import time
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent.parent
-DATA_RAW = ROOT / "data" / "raw"
-OUT_JSON = DATA_RAW / "a2a_discussions.json"
-MANIFEST = DATA_RAW / "a2a_manifest.json"
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_RAW, RAW_A2A_DISCUSSIONS, RAW_A2A_MANIFEST
+
+OUT_JSON = RAW_A2A_DISCUSSIONS
+MANIFEST = RAW_A2A_MANIFEST
 
 REPO_OWNER = "a2aproject"
 REPO_NAME = "A2A"

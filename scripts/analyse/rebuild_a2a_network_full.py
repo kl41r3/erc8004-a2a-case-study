@@ -11,25 +11,16 @@ works on the complete contributor population.
 import csv
 import json
 import re
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).parents[2]
-ANNOTATED = ROOT / "data" / "annotated"
-ANALYSIS = ROOT / "analysis"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_ANNOTATED_R1_RECORDS, DATA_ANNOTATED_R1_PROFILES, METRICS_R1_NETWORK_NODES_A2A, METRICS_R1_NETWORK_EDGES_A2A, ANALYSIS_METRICS_R1
+from lib.models import BOTS, is_bot
 
-ANNOTATED_RECORDS_FILE = ANNOTATED / "annotated_records.json"
-AUTHOR_PROFILES_FILE = ANNOTATED / "author_profiles.json"
-
-BOTS = {
-    "eip-review-bot", "gemini-code-assist[bot]", "git-vote[bot]",
-    "google-cla[bot]", "actions-user", "github-actions",
-    "dependabot", "dependabot[bot]",
-}
-
-
-def is_bot(username: str) -> bool:
-    return username in BOTS or username.endswith("[bot]") or username.endswith("-bot")
+ANNOTATED_RECORDS_FILE = DATA_ANNOTATED_R1_RECORDS
+AUTHOR_PROFILES_FILE = DATA_ANNOTATED_R1_PROFILES
 
 
 def _thread_key(r: dict) -> str | None:
@@ -117,8 +108,8 @@ def main() -> None:
     print(f"Isolate nodes (no edges): {isolate_count}")
 
     # Write network_nodes_a2a.csv
-    ANALYSIS.mkdir(exist_ok=True)
-    nodes_path = ANALYSIS / "network_nodes_a2a.csv"
+    METRICS_R1_NETWORK_NODES_A2A.parent.mkdir(parents=True, exist_ok=True)
+    nodes_path = METRICS_R1_NETWORK_NODES_A2A
     with open(nodes_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["id", "label", "institution", "size"])
         writer.writeheader()
@@ -131,7 +122,7 @@ def main() -> None:
     print(f"  Node CSV → {nodes_path}  ({len(all_authors)} nodes)")
 
     # Write network_edges_a2a.csv
-    edges_path = ANALYSIS / "network_edges_a2a.csv"
+    edges_path = METRICS_R1_NETWORK_EDGES_A2A
     with open(edges_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["source", "target", "type", "weight"])

@@ -39,6 +39,7 @@ def _call(client, model: str, system: str, user: str, max_tokens: int = 4096, th
             resp = client.chat.completions.create(
                 model=model,
                 max_tokens=max_tokens,
+                timeout=120,
                 messages=[
                     {"role": "system", "content": system},
                     {"role": "user", "content": user},
@@ -88,13 +89,44 @@ def run_aggregator(client, model: str, all_codes: list[str]) -> dict[str, list[s
     Stage 2: Group codes into themes.
     Returns {theme_label: [code1, code2, ...]}
     """
-    codes_list = "\n".join(f"- {c}" for c in sorted(set(all_codes)) if c)
-    user = AGGREGATOR_USER.format(n=len(set(all_codes)), codes_list=codes_list)
-    raw = _call(client, model, AGGREGATOR_SYSTEM, user, max_tokens=4096)
-    try:
-        return json.loads(raw)
-    except json.JSONDecodeError:
-        return {}
+    unique_codes = sorted(set(c for c in all_codes if c))
+    codes_list = "\n".join(f"- {c}" for c in unique_codes)
+    user = AGGREGATOR_USER.format(n=len(unique_codes), codes_list=codes_list)
+    for attempt in range(3):
+        raw = _call(client, model, AGGREGATOR_SYSTEM, user, max_tokens=4096)
+        if not raw:
+            time.sleep(2)
+            continue
+        # Strip any markdown fences more aggressively
+        cleaned = raw.strip()
+        if cleaned.startswith("```"):
+            lines = cleaned.split("\n")
+            if lines[0].startswith("```"):
+                lines = lines[1:]
+            if lines and lines[-1].strip() == "```":
+                lines = lines[:-1]
+            cleaned = "\n".join(lines).strip()
+        try:
+            result = json.loads(cleaned)
+            if isinstance(result, dict) and len(result) >= 1:
+                return result
+        except json.JSONDecodeError:
+            # Try to find JSON object in the response
+            import re
+            m = re.search(r'\{[^{}]*"([^"]+)"\s*:\s*\[[^\]]*\]', cleaned, re.DOTALL)
+            if m:
+                try:
+                    # Try parsing the full JSON object
+                    brace_start = cleaned.find('{')
+                    brace_end = cleaned.rfind('}')
+                    if brace_start >= 0 and brace_end > brace_start:
+                        result = json.loads(cleaned[brace_start:brace_end+1])
+                        if isinstance(result, dict):
+                            return result
+                except json.JSONDecodeError:
+                    pass
+        time.sleep(2)
+    return {}
 
 
 def run_reviewer(client, model: str, raw_clusters: dict[str, list[str]]) -> list[dict]:

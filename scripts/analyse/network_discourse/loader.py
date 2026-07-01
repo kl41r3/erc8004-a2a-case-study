@@ -6,13 +6,16 @@ Record-ID scheme (from thematic_lm/pipeline.py):
   - Records with url field → record_id = url
   - Otherwise → record_id = "{case}_{source}_{uid}"
 """
+import sys
 from pathlib import Path
 import json
 import pandas as pd
 
 ROOT = Path(__file__).parents[3]
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
-BOT_AUTHORS = {"github-actions[bot]", "eip-review-bot", "dependabot[bot]"}
+from lib.paths import DATA_ANNOTATED_R1_RECORDS, ANALYSIS_TD_R1_THEMATIC
+from lib.models import is_bot
 
 STANCE_SCORE = {"Support": 1.0, "Modify": 0.5, "Neutral": 0.0, "Oppose": -1.0}
 
@@ -25,14 +28,14 @@ def load_joined() -> pd.DataFrame:
     Off-topic and Unclassified records are excluded.
     """
     ann_records = json.loads(
-        (ROOT / "data/annotated/annotated_records.json").read_text()
+        (DATA_ANNOTATED_R1_RECORDS).read_text()
     )
 
     url_lookup: dict[str, dict] = {}
     composite_lookup: dict[str, dict] = {}
     for r in ann_records:
         author = r.get("author", "")
-        if author in BOT_AUTHORS or author.endswith("[bot]"):
+        if is_bot(author):
             continue
         text = (r.get("raw_text") or "").strip()
         if len(text) < 20:
@@ -53,7 +56,7 @@ def load_joined() -> pd.DataFrame:
             composite_lookup[key] = r
 
     coded = json.loads(
-        (ROOT / "output/topic_discovery/thematic_lm/coded_records.json").read_text()
+        (ANALYSIS_TD_R1_THEMATIC / "coded_records.json").read_text()
     )
 
     rows = []

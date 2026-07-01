@@ -17,19 +17,26 @@ Improvements over previous version:
 """
 
 import json
+import math
 import re
+import sys
 from collections import defaultdict, Counter
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent.parent
-DATA_RAW = ROOT / "data" / "raw"
-ANNOTATED = ROOT / "data" / "annotated"
-ANALYSIS = ROOT / "analysis"
-OUTPUT = ROOT / "output"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import (ROOT, DATA_ANNOTATED_R1_RECORDS, DATA_ANNOTATED_R1_PROFILES,
+    RAW_FORUM_POSTS, OUTPUT_INTERACTIVE,
+    METRICS_R1_NETWORK_NODES_ERC, METRICS_R1_NETWORK_EDGES_ERC,
+    METRICS_R1_NETWORK_NODES_A2A, METRICS_R1_NETWORK_EDGES_A2A)
+from lib.models import BOTS, is_bot
+from lib.colors import ERC_COLORS, A2A_COLORS
 
-ANNOTATED_RECORDS_FILE = ANNOTATED / "annotated_records.json"
-AUTHOR_PROFILES_FILE = ANNOTATED / "author_profiles.json"
-FORUM_POSTS_FILE = DATA_RAW / "forum_posts.json"
+ANNOTATED_RECORDS_FILE = DATA_ANNOTATED_R1_RECORDS
+AUTHOR_PROFILES_FILE = DATA_ANNOTATED_R1_PROFILES
+FORUM_POSTS_FILE = RAW_FORUM_POSTS
+
+OUTPUT = OUTPUT_INTERACTIVE
+ANALYSIS = METRICS_R1_NETWORK_EDGES_ERC.parent  # analysis/metrics/r1
 
 OUTPUT.mkdir(exist_ok=True)
 ANALYSIS.mkdir(exist_ok=True)
@@ -37,67 +44,6 @@ ANALYSIS.mkdir(exist_ok=True)
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
-
-BOTS = {
-    "eip-review-bot", "gemini-code-assist[bot]", "git-vote[bot]",
-    "google-cla[bot]", "actions-user", "github-actions",
-    "dependabot", "dependabot[bot]",
-}
-
-
-def is_bot(username: str) -> bool:
-    return username in BOTS or username.endswith("[bot]") or username.endswith("-bot")
-
-
-# Institution → color (ERC-8004 specific palette)
-ERC_COLORS: dict[str, str] = {
-    "MetaMask":                     "#F6851B",
-    "Ethereum Foundation":          "#627EEA",
-    "OpenZeppelin":                 "#4E5EE4",
-    "Hats Protocol":                "#5FE3A1",
-    "Edge and Node / The Graph Protocol": "#6F4CBA",
-    "The Graph Protocol":           "#6F4CBA",
-    "Nethermind":                   "#D01F36",
-    "Peeramid Labs":                "#00B4D8",
-    "RnDAO":                        "#FB8500",
-    "Carrefour":                    "#004494",
-    "Mure":                         "#A855F7",
-    "Prophetic":                    "#EC4899",
-    "Sparsity.ai":                  "#06B6D4",
-    "Ethereal.news":                "#FF6B35",
-    "Unruggable Labs":              "#84CC16",
-    "Ten.IO":                       "#14B8A6",
-    "Treza Labs":                   "#F59E0B",
-    "Brothers of DeFi Consortium":  "#92400E",
-    "Self-Employed":                "#9E9E9E",
-    "World Foundation":             "#F43F5E",
-    "Wivity Inc. / OMA3 DAO":      "#64748B",
-    "Basement Enterprises":         "#65A30D",
-    "Google":                       "#34A853",
-    "Coinbase":                     "#0052FF",
-    "Independent":                  "#888888",
-    "Unknown":                      "#CCCCCC",
-}
-
-# Institution → color (A2A specific palette)
-A2A_COLORS: dict[str, str] = {
-    "Google":           "#4285F4",
-    "Microsoft":        "#00A4EF",
-    "Cisco":            "#1BA0D7",
-    "Cisco Systems":    "#1BA0D7",
-    "Red Hat":          "#EE0000",
-    "IBM":              "#006699",
-    "IBM Research":     "#006699",
-    "Apoco":            "#5F6368",
-    "CNCF":             "#0086FF",
-    "Intuit":           "#365EBF",
-    "Weave":            "#9B59B6",
-    "AGENIUM":          "#2ECC71",
-    "nosportugal":      "#E74C3C",
-    "@nosportugal":     "#E74C3C",
-    "Independent":      "#888888",
-    "Unknown":          "#CCCCCC",
-}
 
 DEFAULT_COLOR = "#CCCCCC"
 
@@ -422,7 +368,6 @@ def build_a2a_network(
     # Edges
     edges: list[dict] = []
     for (src, dst), weight in co_edge_counts.items():
-        import math
         width = max(1, min(8, 1 + math.log2(weight + 1)))
         edges.append({
             "from": src, "to": dst,
@@ -675,7 +620,7 @@ def main() -> None:
     render_single_html(erc_nodes, erc_edges,
                        "ERC-8004 Stakeholder Network", ERC_COLORS,
                        OUTPUT / "network_erc8004.html")
-    export_edge_csv(erc_nodes, erc_edges, ANALYSIS / "network_edges_erc8004.csv")
+    export_edge_csv(erc_nodes, erc_edges, METRICS_R1_NETWORK_EDGES_ERC)
 
     # A2A
     print("\n[A2A] Building network with elbow cutoff...")
@@ -683,7 +628,7 @@ def main() -> None:
     render_single_html(a2a_nodes, a2a_edges,
                        f"Google A2A Stakeholder Network (Top {cutoff})", A2A_COLORS,
                        OUTPUT / "network_a2a.html")
-    export_edge_csv(a2a_nodes, a2a_edges, ANALYSIS / "network_edges_a2a.csv")
+    export_edge_csv(a2a_nodes, a2a_edges, METRICS_R1_NETWORK_EDGES_A2A)
 
     # Side-by-side comparison
     print("\n[Compare] Building side-by-side comparison...")

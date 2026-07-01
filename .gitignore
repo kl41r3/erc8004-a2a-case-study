@@ -33,13 +33,16 @@ reports/
 paper/
 paper-acm/
 tree-root/
-analysis/
+_trash/
+tree-docs/
 
 # Local-only files
 CLAUDE.md
 main.py
 cmd.md
 aaa.md
+do.md
+do2.md
 [Action Required] Submitting our paper to ACM KDD'26 Workshop Draft Update Deadline May 17.rtf
 
 # output/ — keep only network_discourse and topic_discovery subdirectories
@@ -51,3 +54,6 @@ output/*
 
 # Misplaced artifacts
 scripts/topic-stance-heatmap.png
+
+# Cross-round annotation intermediate shards (only final annotations + consensus are tracked)
+data/annotated/r2/cross-round/**/shard_*.json

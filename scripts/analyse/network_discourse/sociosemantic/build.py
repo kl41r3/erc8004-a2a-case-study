@@ -158,18 +158,27 @@ def theme_concentration(B: pd.DataFrame) -> pd.DataFrame:
 
 # ── main build ──────────────────────────────────────────────────────────────
 
-def build() -> dict:
-    df = load_joined()
+def build(load_fn=None) -> dict:
+    df = (load_fn or load_joined)()
     result: dict = {"df": df, "by_case": {}}
 
-    for case in ("ERC-8004", "Google-A2A"):
-        sub = df[df["case"] == case]
+    # Normalize case labels to canonical keys
+    cases = df["case"].unique().tolist() if "case" in df.columns else []
+    erc_cases = [c for c in cases if "ERC" in c or "erc" in c.lower()]
+    a2a_cases = [c for c in cases if "A2A" in c or "a2a" in c.lower() or "Google" in c]
+    canonical = {"ERC-8004": erc_cases, "Google-A2A": a2a_cases}
+
+    for canon_key, matching_cases in canonical.items():
+        if not matching_cases:
+            continue
+        sub = df[df["case"].isin(matching_cases)].copy()
+        sub = sub.assign(case=canon_key)
         B = actor_theme_matrix(sub)
         G_actor = actor_projection(B)
         G_theme = theme_projection(B)
         div = actor_diversity(B, sub)
         conc = theme_concentration(B)
-        result["by_case"][case] = {
+        result["by_case"][canon_key] = {
             "sub": sub,
             "B": B,
             "actor_graph": G_actor,

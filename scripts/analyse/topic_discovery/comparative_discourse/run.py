@@ -17,6 +17,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[4]
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
+from lib.paths import DATA_ANNOTATED_R1_RECORDS, ANALYSIS_TD_R1_COMPARATIVE
 
 from scripts.analyse.topic_discovery.comparative_discourse.model import (
     fit_bertopic,
@@ -28,7 +31,7 @@ from scripts.analyse.topic_discovery.comparative_discourse.compare import (
     save_results,
 )
 
-OUT_DIR = ROOT / "output" / "topic_discovery" / "comparative_discourse"
+OUT_DIR = ANALYSIS_TD_R1_COMPARATIVE
 
 
 def main() -> None:
@@ -36,7 +39,7 @@ def main() -> None:
     parser.add_argument("--n-topics", type=int, default=20, help="Target number of topics (default: 20)")
     args = parser.parse_args()
 
-    data_path = ROOT / "data" / "annotated" / "annotated_records.json"
+    data_path = DATA_ANNOTATED_R1_RECORDS
     if not data_path.exists():
         sys.exit(f"Error: {data_path} not found")
 

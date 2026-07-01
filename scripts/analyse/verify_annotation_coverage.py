@@ -9,8 +9,11 @@ import json
 import sys
 from pathlib import Path
 
-RAW_DIR = Path(__file__).parent.parent / "data" / "raw"
-ANN_PATH = Path(__file__).parent.parent / "data" / "annotated" / "annotated_records.json"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, DATA_RAW, DATA_ANNOTATED_R1_RECORDS
+
+RAW_DIR = DATA_RAW
+ANN_PATH = DATA_ANNOTATED_R1_RECORDS
 
 MIN_TEXT = 20  # same threshold as annotate_llm.py
 

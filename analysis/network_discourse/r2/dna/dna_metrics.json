@@ -1,0 +1,108 @@
+{
+  "ERC-8004": {
+    "n_actors": 194,
+    "n_themes_active": 12,
+    "n_records": 1427,
+    "congruence": {
+      "edges": 7537,
+      "density": 0.4026,
+      "modularity": 0.1618,
+      "polarization_index": 0.0559,
+      "top_betweenness": [
+        {
+          "actor": "SamWilsn",
+          "bc": 0.0277
+        },
+        {
+          "actor": "Bakugo32",
+          "bc": 0.0173
+        },
+        {
+          "actor": "pablocactus",
+          "bc": 0.0162
+        },
+        {
+          "actor": "JackyWang",
+          "bc": 0.0145
+        },
+        {
+          "actor": "Nicopat",
+          "bc": 0.0136
+        }
+      ],
+      "betweenness_gini": 0.6167,
+      "top3_betweenness_share": 0.1056
+    },
+    "conflict": {
+      "edges": 567
+    },
+    "theme_participation": {
+      "T04": 446,
+      "T02": 238,
+      "T06": 169,
+      "T03": 137,
+      "T01": 117,
+      "T08": 103,
+      "T12": 70,
+      "T09": 48,
+      "T07": 46,
+      "T05": 46,
+      "T11": 4,
+      "T10": 3
+    },
+    "mean_actor_theme_diversity": 2.423
+  },
+  "Google-A2A": {
+    "n_actors": 713,
+    "n_themes_active": 12,
+    "n_records": 3711,
+    "congruence": {
+      "edges": 63913,
+      "density": 0.2518,
+      "modularity": 0.2461,
+      "polarization_index": 0.7398,
+      "top_betweenness": [
+        {
+          "actor": "darrelmiller",
+          "bc": 0.0077
+        },
+        {
+          "actor": "patwhite",
+          "bc": 0.0074
+        },
+        {
+          "actor": "holtskinner",
+          "bc": 0.0073
+        },
+        {
+          "actor": "pstephengoogle",
+          "bc": 0.0071
+        },
+        {
+          "actor": "darkhaniop",
+          "bc": 0.0068
+        }
+      ],
+      "betweenness_gini": 0.7886,
+      "top3_betweenness_share": 0.0493
+    },
+    "conflict": {
+      "edges": 4273
+    },
+    "theme_participation": {
+      "T02": 1165,
+      "T03": 673,
+      "T06": 389,
+      "T04": 343,
+      "T01": 308,
+      "T08": 284,
+      "T09": 207,
+      "T07": 123,
+      "T05": 75,
+      "T11": 74,
+      "T12": 37,
+      "T10": 33
+    },
+    "mean_actor_theme_diversity": 1.875
+  }
+}

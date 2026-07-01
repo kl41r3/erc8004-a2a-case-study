@@ -18,10 +18,13 @@ import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import DATA_RAW, RAW_FORUM_POSTS, RAW_FORUM_MANIFEST
+
 from bs4 import BeautifulSoup
 
-RAW_DIR = Path(__file__).parent.parent / "data" / "raw"
-RAW_DIR.mkdir(parents=True, exist_ok=True)
+DATA_RAW.mkdir(parents=True, exist_ok=True)
 
 FORUM_TOPIC_URL = "https://ethereum-magicians.org/t/erc-8004-trustless-agents/25098"
 FORUM_TOPIC_ID = "25098"
@@ -140,7 +143,7 @@ def main():
     forum_posts: list[dict] = []
     try:
         forum_posts = fetch_forum_posts(FORUM_TOPIC_URL)
-        out = RAW_DIR / "forum_posts.json"
+        out = RAW_FORUM_POSTS
         out.write_text(json.dumps(forum_posts, indent=2, ensure_ascii=False))
         print(f"\nSaved {len(forum_posts)} posts → {out}")
 
@@ -161,7 +164,7 @@ def main():
         "forum_posts_count": len(forum_posts),
         "source": FORUM_TOPIC_URL,
     }
-    (RAW_DIR / "manifest.json").write_text(json.dumps(manifest, indent=2))
+    RAW_FORUM_MANIFEST.write_text(json.dumps(manifest, indent=2))
 
 
 if __name__ == "__main__":

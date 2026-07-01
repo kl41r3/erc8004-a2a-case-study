@@ -1,0 +1,41 @@
+{
+  "global_js_divergence": 0.249714,
+  "n_topics": 19,
+  "top_divergent_topics": [
+    {
+      "topic_id": 1,
+      "label": "1_https_contributing_pull_a2a",
+      "erc8004_pct": 0.07,
+      "a2a_pct": 10.36,
+      "abs_diff": 10.29
+    },
+    {
+      "topic_id": 3,
+      "label": "3_json_the_to_grpc",
+      "erc8004_pct": 0.13,
+      "a2a_pct": 6.85,
+      "abs_diff": 6.72
+    },
+    {
+      "topic_id": 0,
+      "label": "0_the_agent_to_and",
+      "erc8004_pct": 48.13,
+      "a2a_pct": 23.17,
+      "abs_diff": 24.95
+    },
+    {
+      "topic_id": 2,
+      "label": "2_task_the_to_message",
+      "erc8004_pct": 0.47,
+      "a2a_pct": 7.94,
+      "abs_diff": 7.47
+    },
+    {
+      "topic_id": 5,
+      "label": "5_python_samples_a2a_uv",
+      "erc8004_pct": 0.0,
+      "a2a_pct": 4.8,
+      "abs_diff": 4.8
+    }
+  ]
+}

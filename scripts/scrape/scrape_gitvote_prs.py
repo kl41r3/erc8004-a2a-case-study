@@ -15,13 +15,14 @@ import subprocess
 import time
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent.parent
-DATA_RAW = ROOT / "data" / "raw"
-ANALYSIS = ROOT / "analysis"
-ANALYSIS.mkdir(exist_ok=True)
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import ROOT, RAW_A2A_GITVOTE_PRS, ANALYSIS_DIR
 
-OUT_JSON = DATA_RAW / "a2a_gitvote_prs.json"
-OUT_MD = ANALYSIS / "gitvote_analysis.md"
+ANALYSIS_DIR.mkdir(exist_ok=True)
+
+OUT_JSON = RAW_A2A_GITVOTE_PRS
+OUT_MD = ANALYSIS_DIR / "gitvote_analysis.md"
 
 TOKEN_PATH = ROOT / ".env"
 PR_NUMBERS = [831, 1206]

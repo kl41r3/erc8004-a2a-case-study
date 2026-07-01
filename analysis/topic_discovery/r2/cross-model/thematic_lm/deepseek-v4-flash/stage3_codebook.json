@@ -1,0 +1,104 @@
+[
+  {
+    "theme_id": "T01",
+    "label": "Governance & Process",
+    "description": "Focuses on governance structures, accountability, transparency, decision-making, process efficiency, and standardization efforts.",
+    "codes": [
+      "accountability",
+      "decision-making authority",
+      "process clarity",
+      "process compliance",
+      "process coordination",
+      "process efficiency",
+      "transparency",
+      "separation of concerns",
+      "standardization",
+      "standardization approach",
+      "standardization process",
+      "standard alignment"
+    ]
+  },
+  {
+    "theme_id": "T02",
+    "label": "Community & Collaboration",
+    "description": "Centers on community engagement, collaboration, feedback mechanisms, and contribution practices.",
+    "codes": [
+      "collaboration",
+      "collaborative development",
+      "community engagement",
+      "community feedback",
+      "contribution guidelines",
+      "issue resolution"
+    ]
+  },
+  {
+    "theme_id": "T03",
+    "label": "Documentation Standards",
+    "description": "Ensures documentation is accessible, accurate, clear, consistent, and up-to-date, including commit message standards.",
+    "codes": [
+      "documentation accessibility",
+      "documentation accuracy",
+      "documentation clarity",
+      "documentation consistency",
+      "documentation updates",
+      "commit message standards"
+    ]
+  },
+  {
+    "theme_id": "T04",
+    "label": "Implementation Practices",
+    "description": "Addresses clarity, complexity, consistency, and flexibility in the implementation of code or systems.",
+    "codes": [
+      "implementation clarity",
+      "implementation complexity",
+      "implementation consistency",
+      "implementation flexibility"
+    ]
+  },
+  {
+    "theme_id": "T05",
+    "label": "Specification Practices",
+    "description": "Covers clarity, completeness, compliance, and consistency of technical specifications.",
+    "codes": [
+      "specification clarity",
+      "specification completeness",
+      "specification compliance",
+      "specification consistency"
+    ]
+  },
+  {
+    "theme_id": "T06",
+    "label": "Protocol Standards",
+    "description": "Deals with protocol compliance, evolution, extensibility, flexibility, implementation, and interoperability.",
+    "codes": [
+      "protocol compliance",
+      "protocol evolution",
+      "protocol extensibility",
+      "protocol flexibility",
+      "protocol implementation",
+      "interoperability"
+    ]
+  },
+  {
+    "theme_id": "T07",
+    "label": "Quality Assurance",
+    "description": "Encompasses quality assurance practices, code quality, testing, error handling, backward compatibility, scalability, and security.",
+    "codes": [
+      "quality assurance",
+      "testing and linting",
+      "error handling",
+      "backward compatibility",
+      "scalability concerns",
+      "security concerns"
+    ]
+  },
+  {
+    "theme_id": "T08",
+    "label": "Project & Repository Management",
+    "description": "Manages project dependencies and repository structure and maintenance.",
+    "codes": [
+      "dependency management",
+      "repository management"
+    ]
+  }
+]

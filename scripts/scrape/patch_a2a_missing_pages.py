@@ -18,7 +18,9 @@ import subprocess
 import time
 from pathlib import Path
 
-RAW_DIR = Path(__file__).parent.parent / "data" / "raw"
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import DATA_RAW, RAW_A2A_ISSUES, RAW_A2A_PRS
 REPO = "google/A2A"
 API_BASE = "https://api.github.com"
 
@@ -110,7 +112,7 @@ def parse_pr_review_comment(item: dict) -> dict:
 
 def update_checksums():
     manifest = {}
-    for f in sorted(RAW_DIR.glob("*.json")):
+    for f in sorted(DATA_RAW.glob("*.json")):
         if f.name == "CHECKSUMS.json":
             continue
         content = f.read_bytes()
@@ -120,7 +122,7 @@ def update_checksums():
             "records": len(data) if isinstance(data, list) else None,
             "bytes": len(content),
         }
-    (RAW_DIR / "CHECKSUMS.json").write_text(json.dumps(manifest, indent=2))
+    (DATA_RAW / "CHECKSUMS.json").write_text(json.dumps(manifest, indent=2))
 
 
 def main():
@@ -137,7 +139,7 @@ def main():
     print("1. Issue comments (missing from page 10):")
     raw_ic = fetch_from_page("issues/comments", start_page=10, token=token, timeout=60)
     added_ic, total_ic = merge_into_file(
-        RAW_DIR / "a2a_issues.json",
+        RAW_A2A_ISSUES,
         raw_ic,
         parse_fn=parse_issue_comment,
         id_key="comment_id",
@@ -149,7 +151,7 @@ def main():
     print("2. PR review comments (missing from page 11):")
     raw_pr = fetch_from_page("pulls/comments", start_page=11, token=token, timeout=90)
     added_pr, total_pr = merge_into_file(
-        RAW_DIR / "a2a_prs.json",
+        RAW_A2A_PRS,
         raw_pr,
         parse_fn=parse_pr_review_comment,
         id_key="comment_id",

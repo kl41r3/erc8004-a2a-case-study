@@ -21,6 +21,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[4]
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
+from lib.paths import DATA_ANNOTATED_R1_RECORDS
 
 from dotenv import load_dotenv
 load_dotenv(ROOT / ".env")
@@ -56,7 +59,7 @@ def main() -> None:
     from openai import OpenAI
     client = OpenAI(api_key=api_key, base_url=cfg["base_url"])
 
-    data_path = ROOT / "data" / "annotated" / "annotated_records.json"
+    data_path = DATA_ANNOTATED_R1_RECORDS
     if not data_path.exists():
         sys.exit(f"Error: {data_path} not found")
 

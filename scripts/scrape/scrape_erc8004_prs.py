@@ -24,25 +24,15 @@ import subprocess
 import time
 from pathlib import Path
 
-RAW_DIR = Path(__file__).parent.parent / "data" / "raw"
-RAW_DIR.mkdir(parents=True, exist_ok=True)
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.paths import DATA_RAW, RAW_GITHUB_COMMENTS_FILTERED
+from lib.models import ERC8004_CORE_PRS
+
+DATA_RAW.mkdir(parents=True, exist_ok=True)
 
 REPO = "ethereum/ERCs"
 BASE_API = "https://api.github.com"
-
-# The 9 PRs that directly modify ERC-8004 spec or lifecycle status.
-# Verified manually: https://github.com/ethereum/ERCs/pulls?q=erc-8004
-ERC8004_CORE_PRS: dict[int, str] = {
-    1170: "Add ERC: Trustless Agents (initial submission)",
-    1244: "Update ERC-8004: Move to Review",
-    1248: "Update ERC-8004: Add Requires field",
-    1458: "Update ERC-8004: Update erc-8004.md",
-    1462: "Update ERC-8004: Update erc-8004.md (typos)",
-    1470: "Update ERC-8004: Move to Draft",
-    1472: "Update ERC-8004: align metadataValue to bytes",
-    1477: "Update ERC-8004: add co-author (Onchain Metadata; see PR #1237)",
-    1488: "Update ERC-8004: Updates from community feedback",
-}
 
 
 def load_token() -> str | None:
@@ -236,7 +226,7 @@ def main():
         print(f"  {src}: {count}")
 
     # Write directly to github_comments_filtered.json (sole authoritative file)
-    out_path = RAW_DIR / "github_comments_filtered.json"
+    out_path = RAW_GITHUB_COMMENTS_FILTERED
     out_path.write_text(json.dumps(all_records, indent=2, ensure_ascii=False))
     print(f"\nSaved {len(all_records)} records → {out_path}")
 
