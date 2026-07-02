@@ -11,15 +11,43 @@ tags:
 - standardization
 - ai-agents
 - corporate-governance
+- llm-annotation
+- multi-model
+- inter-coder-reliability
 size_categories:
 - 1K<n<10K
 ---
 
-# data/
+# ERC-8004 vs Google A2A Governance Dataset
 
-Dataset for **RQ1: DAO governance vs. corporate governance in technology standardization**
-— comparing **ERC-8004** (Trustless Agents, EIP/DAO process) against **Google A2A**
+Full raw + annotated dataset for **RQ1: DAO governance vs. corporate governance in technology
+standardization** — comparing **ERC-8004** (Trustless Agents, EIP/DAO process) against **Google A2A**
 (Agent-to-Agent protocol, corporate hierarchy).
+
+> **GitHub repository:** [kl41r3/erc8004-a2a-case-study](https://github.com/kl41r3/erc8004-a2a-case-study) — complete computational pipeline (scraping → LLM annotation → analysis → figures).
+
+---
+
+## Research Context
+
+**Research Question:** Compared to corporations, how does the governance structure of
+permissionless DAOs shape participation patterns, discourse composition, and network
+topology in AI agent protocol standardization?
+
+**Case A — ERC-8004** ("Trustless Agents"): Ethereum Improvement Proposal for permissionless
+AI agent infrastructure. Governed via EIP rough consensus — open deliberation on the Ethereum
+Magicians forum and GitHub, with no binding authority structure.
+
+**Case B — Google A2A** (Agent-to-Agent protocol): Corporate-initiated AI agent protocol under
+Linux Foundation governance with an 8-seat Technical Steering Committee that vests binding
+decision authority.
+
+The paper reports results at two scopes:
+
+| Pipeline | Scope | Records | Annotators |
+|---|---|---|---|
+| **Main-text (R1)** | Single ERC-8004 vs. A2A | ERC 142 / A2A 4,181 | MiniMax-M2.5 |
+| **Appendix (R2)** | 34-ERC cluster + cross-model + cross-round consensus | ERC 1,664 / A2A 4,058 | 3 models × 3 rounds |
 
 Two rounds of research:
 - **R1 (baseline):** Single ERC-8004 vs A2A, single annotator model (MiniMax-M2.5).
@@ -34,7 +62,7 @@ Licensed **CC BY-NC 4.0** (attribution, non-commercial).
 
 ```
 data/
-├── README.md                    ← This file
+├── README.md                    ← This file (dataset card)
 ├── raw/                         Original scraped records (R1 + R2)
 │   ├── (R1 files at root)
 │   └── r2/                      R2 expanded scrape data (tier1 + tier2)
@@ -54,7 +82,6 @@ data/
 │           ├── a2a_cross_consensus.json    A2A cross-round final consensus ★
 │           ├── erc/{model}/round_{1,2,3}/  ERC per-round raw annotations
 │           └── a2a/{model}/round_{1,2,3}/  A2A per-round raw annotations
-└── _trash/                      Moved intermediate files (logs, shards, CSVs)
 ```
 
 ★ = final analysis-grade data used by the paper.
@@ -186,6 +213,20 @@ A2A: `a2a/{deepseek-v4-flash, glm-4-plus, moonshot-v1-auto}/round_{1,2,3}/`
 
 ---
 
+## Annotation Schema
+
+Each record is annotated with five structured fields:
+
+| Field | Values | Description |
+|---|---|---|
+| `stakeholder_institution` | Google \| Coinbase \| MetaMask \| Ethereum Foundation \| Independent \| Unknown | Inferred institutional affiliation |
+| `argument_type` | Technical \| Economic \| Governance-Principle \| Process \| Off-topic | Type of argument made in the record |
+| `stance` | Support \| Oppose \| Modify \| Neutral \| Off-topic | Stance toward the proposal's adoption as written |
+| `consensus_signal` | Adopted \| Rejected \| Pending \| N/A | Editorial decision outcome (if any) |
+| `key_point` | free text (≤20 words) | One-sentence summary of the record |
+
+---
+
 ## Models
 
 | # | Model ID | Vendor | R1 | R2 cross-model | R2 cross-round |
@@ -199,12 +240,55 @@ Failed/discarded models (data deleted): MiniMax-M3, Kimi-K2.6, deepseek-chat, gl
 
 ---
 
+## Key Findings
+
+1. **Participation is oligarchic across both governance forms, despite opposite decision architectures.** ERC-8004 advances by rough consensus with permissionless deployment; A2A vests binding authority in an 8-seat corporate TSC (transitioned to Linux Foundation governance in June 2025). Yet both produce comparable participation inequality (degree Gini 0.804 vs 0.779; betweenness Gini 0.931 vs 0.979), and the majority of contributors in both cases engage only a single theme (median actor Shannon entropy H=0). ERC-8004's top-3 degree holders span MetaMask, Hats Protocol, and The Graph; A2A's top-3 include two Google employees and one from Microsoft.
+
+2. **Discourse is technically dominated in both cases, but governance form shapes composition.** A2A devotes nearly twice the share to Process arguments (25.4% vs 13.9%, χ²(3)=52.88, p<.001, Cramér's V=.103), reflecting heavier coordination overhead in corporate governance. Within ERC-8004, Process discussion surges to 53% in Phase 3 as deliberation shifts from design to editorial ratification. Topic divergence is moderate but meaningful: JSD=0.288 (BERTopic) and JSD=0.216 (Thematic-LM).
+
+3. **DAO concentrates on trust; corporate governance spreads across engineering execution.** ERC-8004 is dominated by T08 Trust & Security Mechanisms (34.5% of records; 34.5% actor participation rate vs A2A's 4.0%). A2A spreads deliberation across Documentation (T06), Community Contributions (T07), and Protocol Specification (T01), plus three engineering-execution themes (Transport, Streaming, Project Governance) entirely absent from the EIP forum.
+
+4. **Network connectivity reverses with scope.** At single-case level, the DAO attains denser discourse congruence (0.148 vs 0.082, congruence density), consistent with groupthink in a small reputation-based elite. However, expanding to a 34-ERC agent cluster overturns this finding: the DAO network coalesces at ecosystem scale (GCR 0.328 → 0.917), while the re-annotated A2A network remains fragmented (GCR 0.534 → 0.285). The permissionless DAO is the *more* connected and observable regime at ecosystem scale — coordination in the corporate case moves off the public record.
+
+---
+
+## Robustness Results (from the Paper Appendix)
+
+| Experiment | Models | Rounds | Records | Key result |
+|---|---|---|---|---|
+| Cross-model (R2) | 3 vendors | 1 | ERC 1,664 / A2A 4,045 | argument_type Fleiss' κ = 0.683 (ERC Substantial) / 0.619 (A2A Substantial) |
+| Cross-round | 3 models | 3 | ERC 1,664 / A2A 3,844 | GLM-4-Plus κ = 0.86–0.93 (most stable); DeepSeek κ = 0.49–0.63 |
+| 4-model (R1 + cross-round) | +MiniMax-M2.5 | 1 | ERC 144 / A2A 3,844 | 4-way Fleiss' κ ≈ 0.46–0.51 (Moderate); model choice dominates stochastic noise |
+
+**What replicates** (3 of 4 findings): (i) discourse remains technically dominated across models; (ii) participation inequality persists (Gini ≈ 0.8); (iii) DAO attains denser within-community consensus.
+
+**What reverses** (1 of 4): network connectivity ranking inverts at ecosystem scale — the permissionless DAO becomes the *more* connected and observable regime (GCR 0.917 vs. A2A 0.285), because corporate coordination moves off the public record.
+
+---
+
 ## CHECKSUMS
 
 SHA-256 checksums live in `CHECKSUMS.json` at each tier:
-- `data/raw/CHECKSUMS.json`
-- `data/raw/r2/CHECKSUMS.json`
-- `data/annotated/r2/cross-model/CHECKSUMS.json`
-- `data/annotated/r2/cross-round/CHECKSUMS.json`
+- `CHECKSUMS.json` (raw, root)
+- `raw/r2/CHECKSUMS.json`
+- `annotated/r2/cross-model/CHECKSUMS.json`
+- `annotated/r2/cross-round/CHECKSUMS.json`
 
 Regenerate after any data change with the command in the project README.
+
+---
+
+## License
+
+**Data:** [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — attribution required,
+non-commercial use only.
+
+**Code (GitHub):** MIT License.
+
+---
+
+## Citation
+
+If you use this dataset, please cite the accompanying paper and link to the
+[GitHub repository](https://github.com/kl41r3/erc8004-a2a-case-study).
+
