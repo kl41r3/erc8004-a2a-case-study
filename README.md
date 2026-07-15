@@ -69,6 +69,16 @@ uvx --from mlcroissant mlcroissant validate --jsonld data/croissant/v1/croissant
 Outputs live in `data/croissant/v1/`. `release_manifest.json` records source hashes, exact
 counts, and the R1/R2 alignment policy.
 
+Verify the repository and prepare a data-only Hugging Face staging directory locally:
+
+```bash
+uv run python scripts/verify_repository.py
+uv run python scripts/publish/prepare_hf_dataset.py --output /private/tmp/rq1-hf-release
+```
+
+The staging command does not access the network. It excludes code, paper sources, private
+research notes, reviewer materials, and local Agent files.
+
 ---
 
 ## Part I — Main-Text Pipeline (R1 Baseline)

@@ -15,7 +15,7 @@
     "sha256": "19991e4930851b21c7ffc34d671483e58523344f45afea09887f8a76114001ba"
   },
   "a2a/validation/validation_report.json": {
-    "sha256": "8918de7f3548046e5f1f6c2123ca462dd044eb03530bb15a10491ad713e51c56"
+    "sha256": "a4567f8209ebe921309a9f7055a0f0d618434468c0d3530f27c8534090af275e"
   },
   "consensus/a2a_annotations.json": {
     "sha256": "431888f42ec59ea7f91fc2381f9a23744cd4130bcc7d877be1dad061438b280b"
@@ -72,6 +72,6 @@
     "sha256": "cd80405db5bd5d68619fd88072a2eb90c743876de0b5be5a7d7e7acf9f38d89b"
   },
   "validation/validation_report.json": {
-    "sha256": "305ff8bf68260f229347ec43a14c5d15ce3e4ebeed2dacd145a4868af05cc436"
+    "sha256": "f90614e440436c32a0cd3d41e1f74bc6b66e13560c60cadfd935816fdaf9558c"
   }
 }

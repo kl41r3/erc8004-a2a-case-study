@@ -22,6 +22,7 @@ scripts/
 │       ├── dna/                 Method 1 — Discourse Network Analysis
 │       └── sociosemantic/       Method 2 — Socio-semantic bipartite network
 ├── visualise/               Interactive HTML graphs and paper figures
+├── publish/                 Data-only local release staging, with no network writes
 └── pipeline/                Orchestration scripts (chain multiple phases)
 ```
 
@@ -143,6 +144,18 @@ Single source of truth for constants and utilities. Every script in the pipeline
 | Script | Description |
 |--------|-------------|
 | `run_r2.py` | R2 full pipeline orchestrator — runs 10 phases in order with resume capability |
+
+---
+
+## repository verification and publication staging
+
+```bash
+uv run python scripts/verify_repository.py
+uv run python scripts/publish/prepare_hf_dataset.py --output /private/tmp/rq1-hf-release
+```
+
+The first command is read-only. The second command creates a data-only local staging
+directory and never uploads it.
 
 ---
 
