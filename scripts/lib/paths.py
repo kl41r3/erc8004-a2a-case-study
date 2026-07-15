@@ -31,6 +31,9 @@ DATA_ANNOTATED_R2_CROSS_ROUND = ROOT / "data" / "annotated" / "r2" / "cross-roun
 DATA_ANNOTATED_R2_CROSS_ROUND_ERC = DATA_ANNOTATED_R2_CROSS_ROUND / "erc"
 DATA_ANNOTATED_R2_CROSS_ROUND_A2A = DATA_ANNOTATED_R2_CROSS_ROUND / "a2a"
 
+DATA_CROISSANT = ROOT / "data" / "croissant"
+DATA_CROISSANT_V1 = DATA_CROISSANT / "v1"
+
 # ── Analysis paths ─────────────────────────────────────────────────────────────
 
 ANALYSIS_DIR = ROOT / "analysis"

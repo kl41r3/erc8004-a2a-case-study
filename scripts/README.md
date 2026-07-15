@@ -72,6 +72,7 @@ Single source of truth for constants and utilities. Every script in the pipeline
 | `annotate_thematic_a2a.py` | Thematic open-coding (A2A, 3 models) → `data/annotated/r2/cross-model/thematic/a2a/` |
 | `build_consensus.py` | 2-of-3 majority-vote cross-model consensus → `data/annotated/r2/cross-model/consensus/` |
 | `build_r3_consensus.py` | Cross-round consensus → `data/annotated/r2/cross-round/` |
+| `build_croissant_release.py` | Versioned Croissant 1.1 metadata + Parquet RecordSets → `data/croissant/v1/` |
 | `complete_a2a_deepseek.py` | Gap-fill: adds missing DeepSeek A2A records from GLM/Moonshot sources |
 | `enrich_profiles.py` | Fetch Discourse + GitHub author profiles → `data/raw/profiles_*.json` |
 | `enrich_institutions.py` | Merge profiles into per-author institution records → `data/annotated/r1/author_profiles.json` |

@@ -1,0 +1,1715 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "sc": "https://schema.org/",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "dct": "http://purl.org/dc/terms/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "containedIn": "cr:containedIn",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "equivalentProperty": "cr:equivalentProperty",
+    "examples": "cr:examples",
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileObject": "cr:fileObject",
+    "fileProperty": "cr:fileProperty",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isArray": "cr:isArray",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "@id": "https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance",
+  "conformsTo": "http://mlcommons.org/croissant/1.1",
+  "name": "ERC-8004 vs Google A2A Governance Dataset, Croissant Release",
+  "description": "Versioned machine-readable release of the RQ1 governance dataset. It separates the R1 annotation archive, R2 cross-model consensus, and R2 cross-round consensus.",
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "url": "https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance",
+  "creator": {
+    "@type": "sc:Person",
+    "name": "kl41r3",
+    "url": "https://huggingface.co/kl41r3"
+  },
+  "datePublished": "2026-07-15",
+  "dateModified": "2026-07-15",
+  "version": "1.0.0",
+  "sdVersion": "1.0.0",
+  "citeAs": "kl41r3 (2026). ERC-8004 vs Google A2A Governance Dataset, Croissant release 1.0.0.",
+  "keywords": [
+    "technology governance",
+    "DAO governance",
+    "corporate governance",
+    "ERC-8004",
+    "Agent-to-Agent protocol",
+    "LLM annotation"
+  ],
+  "inLanguage": "en",
+  "dataCollection": "Public Ethereum Magicians and GitHub governance records, followed by LLM annotation and model-consensus construction.",
+  "dataBiases": "Public-platform traces omit private corporate coordination and may overrepresent highly active contributors. Institutional labels have lower inter-model agreement.",
+  "personalSensitiveInformation": "Contains public handles, display names, authored text, and institutional-affiliation labels.",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "r1_annotations.parquet",
+      "name": "r1_annotations.parquet",
+      "description": "Complete R1 MiniMax annotation archive.",
+      "contentUrl": "r1_annotations.parquet",
+      "contentSize": "2169781 B",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "7dcec4c2072b94b5b5aedee12cda8c4087a28c48965ec5401958c6ed7b1f143d"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "r2_cross_model_consensus.parquet",
+      "name": "r2_cross_model_consensus.parquet",
+      "description": "R2 three-model cross-model consensus records.",
+      "contentUrl": "r2_cross_model_consensus.parquet",
+      "contentSize": "3066288 B",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "9562d543bbc3ef46131f6f6476dfc30e3c06f681d723906c6157069579930884"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "r2_cross_model_votes.parquet",
+      "name": "r2_cross_model_votes.parquet",
+      "description": "Normalized votes underlying cross-model consensus.",
+      "contentUrl": "r2_cross_model_votes.parquet",
+      "contentSize": "433931 B",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "266ef7d3e38914c1b812acc01ab174fef77196ce53e63c98ed6a4e14efbe6106"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "r2_cross_round_consensus.parquet",
+      "name": "r2_cross_round_consensus.parquet",
+      "description": "R2 cross-round test-retest consensus records.",
+      "contentUrl": "r2_cross_round_consensus.parquet",
+      "contentSize": "3038013 B",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "aa9e63ef7b6482ac2053f5e035d5fe0ab705fb52c56a8b6fea1320bc4e1201d2"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "r2_cross_round_votes.parquet",
+      "name": "r2_cross_round_votes.parquet",
+      "description": "Normalized votes underlying cross-round consensus.",
+      "contentUrl": "r2_cross_round_votes.parquet",
+      "contentSize": "429665 B",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "46cf153defb06a703814f1ff102b7fe358d57f292cc57e08941ce2c5bdf2a740"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "r1_annotations",
+      "name": "R1 annotation archive",
+      "description": "Complete stored MiniMax annotation artifact. Paper-specific membership is not inferred.",
+      "key": [
+        "record_id"
+      ],
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/record_id",
+          "name": "record_id",
+          "description": "Stable SHA-256 identifier for this pipeline-layer annotation event.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "record_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/source_record_id",
+          "name": "source_record_id",
+          "description": "Stable SHA-256 identifier shared by the same public source record across layers.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "source_record_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/source_record_key",
+          "name": "source_record_key",
+          "description": "Human-readable canonical key used to generate source_record_id.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "source_record_key"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/release_layer",
+          "name": "release_layer",
+          "description": "Pipeline layer represented by this row.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "release_layer"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/case",
+          "name": "case",
+          "description": "Governance case recorded by the source artifact.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "case"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/source",
+          "name": "source",
+          "description": "Source record type.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "source"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/platform",
+          "name": "platform",
+          "description": "Source platform.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "platform"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/record_type",
+          "name": "record_type",
+          "description": "More specific record subtype when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "record_type"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/erc",
+          "name": "erc",
+          "description": "ERC number for ERC-cluster records when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "erc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/tier",
+          "name": "tier",
+          "description": "R2 ERC sampling tier when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "tier"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/native_id",
+          "name": "native_id",
+          "description": "Native platform identifier selected for this record.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "native_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/date",
+          "name": "date",
+          "description": "ISO 8601 timestamp supplied by the source.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "date"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/author",
+          "name": "author",
+          "description": "Public author handle.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "author"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/author_display",
+          "name": "author_display",
+          "description": "Public display name when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "author_display"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/title",
+          "name": "title",
+          "description": "Issue, pull request, discussion, or topic title when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "title"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/raw_text",
+          "name": "raw_text",
+          "description": "Record text used by the annotation pipeline.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "raw_text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/own_text",
+          "name": "own_text",
+          "description": "Quote-stripped forum text when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "own_text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/url",
+          "name": "url",
+          "description": "Public source URL when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "url"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/state",
+          "name": "state",
+          "description": "Repository object state when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "state"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/merged",
+          "name": "merged",
+          "description": "Whether the pull request was merged when available.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "merged"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/text_length",
+          "name": "text_length",
+          "description": "Length of stripped raw_text in Unicode code points.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "text_length"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/is_known_bot",
+          "name": "is_known_bot",
+          "description": "Whether the current shared bot registry classifies the author as a bot.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "is_known_bot"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/meets_min_text_20",
+          "name": "meets_min_text_20",
+          "description": "Whether stripped raw_text contains at least 20 characters.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "meets_min_text_20"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/annotation_error",
+          "name": "annotation_error",
+          "description": "Annotation error recorded by the source artifact.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "annotation_error"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/stakeholder_institution",
+          "name": "stakeholder_institution",
+          "description": "MiniMax institutional-affiliation label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "stakeholder_institution"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/argument_type",
+          "name": "argument_type",
+          "description": "MiniMax argument-type label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "argument_type"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/stance",
+          "name": "stance",
+          "description": "MiniMax stance label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "stance"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/consensus_signal",
+          "name": "consensus_signal",
+          "description": "MiniMax decision-signal label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "consensus_signal"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r1_annotations/key_point",
+          "name": "key_point",
+          "description": "MiniMax short summary.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r1_annotations.parquet"
+            },
+            "extract": {
+              "column": "key_point"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "r2_cross_model_consensus",
+      "name": "R2 cross-model consensus",
+      "description": "Three-model intersection and per-field majority-vote consensus.",
+      "key": [
+        "record_id"
+      ],
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/record_id",
+          "name": "record_id",
+          "description": "Stable SHA-256 identifier for this pipeline-layer annotation event.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "record_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/source_record_id",
+          "name": "source_record_id",
+          "description": "Stable SHA-256 identifier shared by the same public source record across layers.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "source_record_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/source_record_key",
+          "name": "source_record_key",
+          "description": "Human-readable canonical key used to generate source_record_id.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "source_record_key"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/release_layer",
+          "name": "release_layer",
+          "description": "Pipeline layer represented by this row.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "release_layer"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/case",
+          "name": "case",
+          "description": "Governance case recorded by the source artifact.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "case"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/source",
+          "name": "source",
+          "description": "Source record type.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "source"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/platform",
+          "name": "platform",
+          "description": "Source platform.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "platform"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/record_type",
+          "name": "record_type",
+          "description": "More specific record subtype when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "record_type"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/erc",
+          "name": "erc",
+          "description": "ERC number for ERC-cluster records when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "erc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/tier",
+          "name": "tier",
+          "description": "R2 ERC sampling tier when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "tier"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/native_id",
+          "name": "native_id",
+          "description": "Native platform identifier selected for this record.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "native_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/date",
+          "name": "date",
+          "description": "ISO 8601 timestamp supplied by the source.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "date"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/author",
+          "name": "author",
+          "description": "Public author handle.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "author"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/author_display",
+          "name": "author_display",
+          "description": "Public display name when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "author_display"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/title",
+          "name": "title",
+          "description": "Issue, pull request, discussion, or topic title when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "title"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/raw_text",
+          "name": "raw_text",
+          "description": "Record text used by the annotation pipeline.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "raw_text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/own_text",
+          "name": "own_text",
+          "description": "Quote-stripped forum text when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "own_text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/url",
+          "name": "url",
+          "description": "Public source URL when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "url"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/state",
+          "name": "state",
+          "description": "Repository object state when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "state"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/merged",
+          "name": "merged",
+          "description": "Whether the pull request was merged when available.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "merged"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/text_length",
+          "name": "text_length",
+          "description": "Length of stripped raw_text in Unicode code points.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "text_length"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/is_known_bot",
+          "name": "is_known_bot",
+          "description": "Whether the current shared bot registry classifies the author as a bot.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "is_known_bot"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/meets_min_text_20",
+          "name": "meets_min_text_20",
+          "description": "Whether stripped raw_text contains at least 20 characters.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "meets_min_text_20"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/annotation_error",
+          "name": "annotation_error",
+          "description": "Annotation error recorded by the source artifact.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "annotation_error"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/stakeholder_institution",
+          "name": "stakeholder_institution",
+          "description": "Cross-model consensus institutional-affiliation label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "stakeholder_institution"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/argument_type",
+          "name": "argument_type",
+          "description": "Cross-model consensus argument-type label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "argument_type"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/stance",
+          "name": "stance",
+          "description": "Cross-model consensus stance label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "stance"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/consensus_signal",
+          "name": "consensus_signal",
+          "description": "Cross-model consensus decision-signal label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "consensus_signal"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/stakeholder_institution_confidence",
+          "name": "stakeholder_institution_confidence",
+          "description": "Share of model votes supporting the selected label.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "stakeholder_institution_confidence"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/argument_type_confidence",
+          "name": "argument_type_confidence",
+          "description": "Share of model votes supporting the selected label.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "argument_type_confidence"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/stance_confidence",
+          "name": "stance_confidence",
+          "description": "Share of model votes supporting the selected label.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "stance_confidence"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_consensus/consensus_signal_confidence",
+          "name": "consensus_signal_confidence",
+          "description": "Share of model votes supporting the selected label.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_consensus.parquet"
+            },
+            "extract": {
+              "column": "consensus_signal_confidence"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "r2_cross_model_votes",
+      "name": "R2 cross-model votes",
+      "description": "Normalized model votes underlying cross-model consensus.",
+      "key": [
+        "record_id"
+      ],
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_votes/record_id",
+          "name": "record_id",
+          "description": "Stable identifier of the consensus annotation event.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_votes.parquet"
+            },
+            "extract": {
+              "column": "record_id"
+            }
+          },
+          "references": {
+            "field": {
+              "@id": "r2_cross_model_consensus/record_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_votes/source_record_id",
+          "name": "source_record_id",
+          "description": "Stable identifier of the underlying public source record.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_votes.parquet"
+            },
+            "extract": {
+              "column": "source_record_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_votes/release_layer",
+          "name": "release_layer",
+          "description": "Consensus layer that produced the vote.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_votes.parquet"
+            },
+            "extract": {
+              "column": "release_layer"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_votes/annotation_field",
+          "name": "annotation_field",
+          "description": "Annotation field being voted on.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_votes.parquet"
+            },
+            "extract": {
+              "column": "annotation_field"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_votes/model",
+          "name": "model",
+          "description": "Canonical annotator model identifier.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_votes.parquet"
+            },
+            "extract": {
+              "column": "model"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_model_votes/vote",
+          "name": "vote",
+          "description": "Label supplied by the model.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_model_votes.parquet"
+            },
+            "extract": {
+              "column": "vote"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "r2_cross_round_consensus",
+      "name": "R2 cross-round consensus",
+      "description": "Current test-retest cross-round consensus artifacts.",
+      "key": [
+        "record_id"
+      ],
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/record_id",
+          "name": "record_id",
+          "description": "Stable SHA-256 identifier for this pipeline-layer annotation event.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "record_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/source_record_id",
+          "name": "source_record_id",
+          "description": "Stable SHA-256 identifier shared by the same public source record across layers.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "source_record_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/source_record_key",
+          "name": "source_record_key",
+          "description": "Human-readable canonical key used to generate source_record_id.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "source_record_key"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/release_layer",
+          "name": "release_layer",
+          "description": "Pipeline layer represented by this row.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "release_layer"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/case",
+          "name": "case",
+          "description": "Governance case recorded by the source artifact.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "case"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/source",
+          "name": "source",
+          "description": "Source record type.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "source"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/platform",
+          "name": "platform",
+          "description": "Source platform.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "platform"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/record_type",
+          "name": "record_type",
+          "description": "More specific record subtype when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "record_type"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/erc",
+          "name": "erc",
+          "description": "ERC number for ERC-cluster records when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "erc"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/tier",
+          "name": "tier",
+          "description": "R2 ERC sampling tier when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "tier"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/native_id",
+          "name": "native_id",
+          "description": "Native platform identifier selected for this record.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "native_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/date",
+          "name": "date",
+          "description": "ISO 8601 timestamp supplied by the source.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "date"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/author",
+          "name": "author",
+          "description": "Public author handle.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "author"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/author_display",
+          "name": "author_display",
+          "description": "Public display name when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "author_display"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/title",
+          "name": "title",
+          "description": "Issue, pull request, discussion, or topic title when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "title"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/raw_text",
+          "name": "raw_text",
+          "description": "Record text used by the annotation pipeline.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "raw_text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/own_text",
+          "name": "own_text",
+          "description": "Quote-stripped forum text when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "own_text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/url",
+          "name": "url",
+          "description": "Public source URL when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "url"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/state",
+          "name": "state",
+          "description": "Repository object state when available.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "state"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/merged",
+          "name": "merged",
+          "description": "Whether the pull request was merged when available.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "merged"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/text_length",
+          "name": "text_length",
+          "description": "Length of stripped raw_text in Unicode code points.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "text_length"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/is_known_bot",
+          "name": "is_known_bot",
+          "description": "Whether the current shared bot registry classifies the author as a bot.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "is_known_bot"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/meets_min_text_20",
+          "name": "meets_min_text_20",
+          "description": "Whether stripped raw_text contains at least 20 characters.",
+          "dataType": "sc:Boolean",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "meets_min_text_20"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/annotation_error",
+          "name": "annotation_error",
+          "description": "Annotation error recorded by the source artifact.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "annotation_error"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/argument_type",
+          "name": "argument_type",
+          "description": "Cross-round consensus argument-type label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "argument_type"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/stance",
+          "name": "stance",
+          "description": "Cross-round consensus stance label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "stance"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/consensus_signal",
+          "name": "consensus_signal",
+          "description": "Cross-round consensus decision-signal label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "consensus_signal"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_consensus/overall_consensus_confidence",
+          "name": "overall_consensus_confidence",
+          "description": "Mean agreement confidence across the three fields.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_consensus.parquet"
+            },
+            "extract": {
+              "column": "overall_consensus_confidence"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "r2_cross_round_votes",
+      "name": "R2 cross-round votes",
+      "description": "Normalized model votes underlying cross-round consensus.",
+      "key": [
+        "record_id"
+      ],
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_votes/record_id",
+          "name": "record_id",
+          "description": "Stable identifier of the consensus annotation event.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_votes.parquet"
+            },
+            "extract": {
+              "column": "record_id"
+            }
+          },
+          "references": {
+            "field": {
+              "@id": "r2_cross_round_consensus/record_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_votes/source_record_id",
+          "name": "source_record_id",
+          "description": "Stable identifier of the underlying public source record.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_votes.parquet"
+            },
+            "extract": {
+              "column": "source_record_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_votes/release_layer",
+          "name": "release_layer",
+          "description": "Consensus layer that produced the vote.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_votes.parquet"
+            },
+            "extract": {
+              "column": "release_layer"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_votes/annotation_field",
+          "name": "annotation_field",
+          "description": "Annotation field being voted on.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_votes.parquet"
+            },
+            "extract": {
+              "column": "annotation_field"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_votes/model",
+          "name": "model",
+          "description": "Canonical annotator model identifier.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_votes.parquet"
+            },
+            "extract": {
+              "column": "model"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "r2_cross_round_votes/vote",
+          "name": "vote",
+          "description": "Label supplied by the model.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "r2_cross_round_votes.parquet"
+            },
+            "extract": {
+              "column": "vote"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

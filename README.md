@@ -18,8 +18,8 @@ The paper reports results at two scopes:
 
 | Pipeline | Scope | Records | Annotators | 
 |---|---|---|---|
-| **Main-text (R1)** | Single ERC-8004 vs. A2A | ERC 142 / A2A 4,181 | MiniMax-M2.5 | 
-| **Appendix (R2)** | 34-ERC cluster + cross-model + cross-round consensus | ERC 1,664 / A2A 4,058 | 3 models × 3 rounds |
+| **Main-text (R1)** | Single ERC-8004 vs. A2A | Paper reports ERC 142 / A2A 4,181; stored annotation archive has 5,421 rows | MiniMax-M2.5 |
+| **Appendix (R2)** | 34-ERC cluster + cross-model + cross-round consensus | Cross-model ERC 1,664 / A2A 4,058; current cross-round ERC 1,664 / A2A 4,187 | 3 models × 3 rounds |
 
 ---
 
@@ -33,6 +33,7 @@ workspace/
 ├── .env.example                    ← Environment variable template
 ├── data/
 │   ├── README.md                   ← Dataset card + directory map
+│   ├── croissant/v1/               ← Croissant 1.1 release with Parquet RecordSets
 │   ├── raw/                        ← Original scraped records (R1 + R2 tier1/tier2)
 │   │   └── CHECKSUMS.json          ← SHA-256 of all raw data files
 │   └── annotated/                  ← LLM annotations + consensus (R1 + R2 cross-model + cross-round)
@@ -53,6 +54,20 @@ workspace/
 
 - **Main-text pipeline** (R1) uses `data/raw/` files and `data/annotated/r1/`. Scripts without `_r2` suffix.
 - **Appendix pipeline** (R2) uses `data/raw/r2/` and `data/annotated/r2/`. Scripts with `_r2` suffix or in `scripts/pipeline/run_r2.py`.
+
+### Croissant 1.1 Release
+
+The versioned machine-readable release separates the R1 annotation archive, R2 cross-model
+consensus, R2 cross-round consensus, and their normalized vote tables. This prevents counts
+from different pipeline stages from being interpreted as one mutable corpus.
+
+```bash
+uv run python scripts/process/build_croissant_release.py
+uvx --from mlcroissant mlcroissant validate --jsonld data/croissant/v1/croissant.json
+```
+
+Outputs live in `data/croissant/v1/`. `release_manifest.json` records source hashes, exact
+counts, and the R1/R2 alignment policy.
 
 ---
 
@@ -478,8 +493,8 @@ The R2 pipeline has 10 phases: (1) A2A ICR validation, (2) consensus building, (
 | Experiment | Models | Rounds | Records | Key result |
 |---|---|---|---|---|
 | Cross-model (R2) | 3 vendors | 1 | ERC 1,664 / A2A 4,045 | argument_type Fleiss' κ = 0.683 (ERC Substantial) / 0.619 (A2A Substantial) |
-| Cross-round | 3 models | 3 | ERC 1,664 / A2A 3,844 | GLM-4-Plus κ = 0.86–0.93 (most stable); DeepSeek κ = 0.49–0.63 |
-| 4-model (R1 + cross-round) | +MiniMax-M2.5 | 1 | ERC 144 / A2A 3,844 | 4-way Fleiss' κ ≈ 0.46–0.51 (Moderate); model choice dominates stochastic noise |
+| Cross-round | 3 models | 3 | Paper snapshot: ERC 1,664 / A2A 3,844; current artifact: ERC 1,664 / A2A 4,187 | GLM-4-Plus κ = 0.86–0.93 (most stable); DeepSeek κ = 0.49–0.63 |
+| 4-model (R1 + cross-round) | +MiniMax-M2.5 | 1 | Paper snapshot: ERC 144 / A2A 3,844 | 4-way Fleiss' κ ≈ 0.46–0.51 (Moderate); model choice dominates stochastic noise |
 
 **What replicates** (3 of 4 findings): (i) discourse remains technically dominated across models; (ii) participation inequality persists (Gini ≈ 0.8); (iii) DAO attains denser within-community consensus.
 
@@ -569,4 +584,3 @@ Full results: `analysis/metrics/r1/network_metrics_table.csv`, `analysis/topic_d
 **Code:** MIT License.
 
 **Data:** [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — attribution required, non-commercial use only. To be hosted on Hugging Face.
-

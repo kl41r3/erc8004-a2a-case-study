@@ -14,8 +14,30 @@ tags:
 - llm-annotation
 - multi-model
 - inter-coder-reliability
+- mlcroissant
 size_categories:
-- 1K<n<10K
+- 100K<n<1M
+configs:
+- config_name: r1-annotation-archive
+  data_files:
+  - split: full
+    path: croissant/v1/r1_annotations.parquet
+- config_name: r2-cross-model-consensus
+  data_files:
+  - split: full
+    path: croissant/v1/r2_cross_model_consensus.parquet
+- config_name: r2-cross-model-votes
+  data_files:
+  - split: full
+    path: croissant/v1/r2_cross_model_votes.parquet
+- config_name: r2-cross-round-consensus
+  data_files:
+  - split: full
+    path: croissant/v1/r2_cross_round_consensus.parquet
+- config_name: r2-cross-round-votes
+  data_files:
+  - split: full
+    path: croissant/v1/r2_cross_round_votes.parquet
 ---
 
 # ERC-8004 vs Google A2A Governance Dataset
@@ -46,8 +68,8 @@ The paper reports results at two scopes:
 
 | Pipeline | Scope | Records | Annotators |
 |---|---|---|---|
-| **Main-text (R1)** | Single ERC-8004 vs. A2A | ERC 142 / A2A 4,181 | MiniMax-M2.5 |
-| **Appendix (R2)** | 34-ERC cluster + cross-model + cross-round consensus | ERC 1,664 / A2A 4,058 | 3 models × 3 rounds |
+| **Main-text (R1)** | Single ERC-8004 vs. A2A | Paper reports ERC 142 / A2A 4,181; annotation archive has ERC 149 / A2A 5,272 | MiniMax-M2.5 |
+| **Appendix (R2)** | 34-ERC cluster + cross-model + cross-round consensus | Cross-model: ERC 1,664 / A2A 4,058; current cross-round: ERC 1,664 / A2A 4,187 | 3 models × 3 rounds |
 
 Two rounds of research:
 - **R1 (baseline):** Single ERC-8004 vs A2A, single annotator model (MiniMax-M2.5).
@@ -63,6 +85,11 @@ Licensed **CC BY-NC 4.0** (attribution, non-commercial).
 ```
 data/
 ├── README.md                    ← This file (dataset card)
+├── croissant/v1/                Croissant 1.1 machine-readable release
+│   ├── croissant.json           Versioned metadata + 5 RecordSets
+│   ├── *.parquet                R1, R2 consensus, and normalized vote tables
+│   ├── release_manifest.json    Source hashes, counts, and alignment decisions
+│   └── CHECKSUMS.json           Release-file SHA-256 checksums
 ├── raw/                         Original scraped records (R1 + R2)
 │   ├── (R1 files at root)
 │   └── r2/                      R2 expanded scrape data (tier1 + tier2)
@@ -85,6 +112,33 @@ data/
 ```
 
 ★ = final analysis-grade data used by the paper.
+
+---
+
+## croissant/v1/ — Machine-readable release
+
+Croissant release v1.0.0 conforms to the MLCommons Croissant 1.1 metadata specification.
+It deliberately preserves the pipeline layers as separate RecordSets:
+
+| RecordSet | Rows | Meaning |
+|---|---:|---|
+| `r1_annotations` | 5,421 | Complete stored MiniMax R1 annotation artifact |
+| `r2_cross_model_consensus` | 5,722 | ERC 1,664 + A2A 4,058 cross-model consensus records |
+| `r2_cross_model_votes` | 68,664 | Normalized per-model votes for four fields |
+| `r2_cross_round_consensus` | 5,851 | ERC 1,664 + A2A 4,187 current cross-round consensus records |
+| `r2_cross_round_votes` | 52,659 | Normalized per-model votes for three fields |
+
+The R1 archive contains 30 pairs that refer to the same public GitVote comments but preserve
+different annotation events. `source_record_id` identifies the shared source; `record_id`
+identifies each pipeline-layer annotation event.
+
+Rebuild locally:
+
+```bash
+uv run python scripts/process/build_croissant_release.py
+```
+
+See `croissant/v1/SCHEMA.md` for the R1/R2 alignment decision and field semantics.
 
 ---
 
@@ -133,7 +187,7 @@ Single-model (MiniMax-M2.5) annotations for the original 1:1 case comparison.
 
 | File | Records | Description |
 |------|---------|-------------|
-| `annotated_records.json` | 5,421 | All R1 records with LLM labels: `stakeholder_institution`, `argument_type`, `stance`, `consensus_signal`, `key_point`. ERC: 142 records; A2A: 4,181 records. |
+| `annotated_records.json` | 5,421 | Complete stored R1 annotation artifact with LLM labels: `stakeholder_institution`, `argument_type`, `stance`, `consensus_signal`, `key_point`. Actual archive: ERC 149 / A2A 5,272. The paper-reported retained subset is ERC 142 / A2A 4,181, but no exact row-level membership manifest was preserved. |
 | `author_profiles.json` | 626 | One entry per unique canonical author. Fields: `institution_final`, `institution_source`, `institution_confidence`, `institution_lm`, `institution_evidence`. 107 authors enriched from manual R07 investigation; 2 from EIP header email. |
 
 ---
@@ -151,8 +205,8 @@ test-retest with 3 rounds per model measures self-consistency.
 
 | File | Records | Description |
 |------|---------|-------------|
-| `consensus/erc_annotations.json` | 1,664 | ERC 34-cluster majority-vote consensus (2-of-3 models agree). Fields: `argument_type`, `stance`, `consensus_signal`, `stakeholder_institution`, `key_point`. |
-| `consensus/a2a_annotations.json` | 4,058 | A2A majority-vote consensus. Same fields as ERC. |
+| `consensus/erc_annotations.json` | 1,664 | ERC 34-cluster majority-vote consensus. Fields: `argument_type`, `stance`, `consensus_signal`, `stakeholder_institution`. |
+| `consensus/a2a_annotations.json` | 4,058 | A2A majority-vote consensus. Same four fields as ERC. |
 | `consensus/consensus_stats.json` | — | Agreement statistics: 3/3 vs 2/3 agreement rates per field. |
 
 **Inter-coder reliability reports:**
@@ -200,7 +254,7 @@ Each model independently annotated the same records 3 times to measure self-cons
 | File | Records | Description |
 |------|---------|-------------|
 | `erc_cross_consensus.json` | 1,664 | ERC cross-round consensus: per-model consensus merged across 3 rounds + cross-model agreement. |
-| `a2a_cross_consensus.json` | 3,844 | A2A cross-round consensus. |
+| `a2a_cross_consensus.json` | 4,187 | Current A2A cross-round consensus after canonical ≥20-character input alignment. |
 
 **Per-model per-round raw annotations:**
 
@@ -215,7 +269,9 @@ A2A: `a2a/{deepseek-v4-flash, glm-4-plus, moonshot-v1-auto}/round_{1,2,3}/`
 
 ## Annotation Schema
 
-Each record is annotated with five structured fields:
+The schema depends on the pipeline layer. R1 uses five fields. R2 cross-model consensus
+retains the first four categorical fields and does not contain `key_point`. R2 cross-round
+consensus contains only `argument_type`, `stance`, and `consensus_signal`.
 
 | Field | Values | Description |
 |---|---|---|
@@ -232,9 +288,9 @@ Each record is annotated with five structured fields:
 | # | Model ID | Vendor | R1 | R2 cross-model | R2 cross-round |
 |---|----------|--------|-----|----------------|----------------|
 | 1 | **MiniMax-M2.5** | MiniMax | ✅ (baseline) | — | — |
-| 2 | **deepseek-v4-flash** | DeepSeek | — | ✅ ERC 1,664 · A2A 4,059 | ✅ ERC 1,664×3 · A2A 3,845×3 |
-| 3 | **glm-4-plus** | Zhipu | — | ✅ ERC 1,664 · A2A 4,059 | ✅ ERC 1,664×3 · A2A 3,845×3 |
-| 4 | **moonshot-v1-auto** | Kimi/Moonshot | — | ✅ ERC 1,664 · A2A 4,059 | ✅ ERC 1,641×3 · A2A 3,792×3 |
+| 2 | **deepseek-v4-flash** | DeepSeek | — | ✅ ERC 1,664 · A2A 4,059 | ✅ current consensus ERC 1,664 · A2A 4,187 |
+| 3 | **glm-4-plus** | Zhipu | — | ✅ ERC 1,664 · A2A 4,059 | ✅ current consensus ERC 1,664 · A2A 4,187 |
+| 4 | **moonshot-v1-auto** | Kimi/Moonshot | — | ✅ ERC 1,664 · A2A 4,059 | ✅ current consensus ERC 1,664 · A2A 4,187 |
 
 Failed/discarded models (data deleted): MiniMax-M3, Kimi-K2.6, deepseek-chat, glm-4.7, glm-5.1.
 
@@ -257,7 +313,7 @@ Failed/discarded models (data deleted): MiniMax-M3, Kimi-K2.6, deepseek-chat, gl
 | Experiment | Models | Rounds | Records | Key result |
 |---|---|---|---|---|
 | Cross-model (R2) | 3 vendors | 1 | ERC 1,664 / A2A 4,045 | argument_type Fleiss' κ = 0.683 (ERC Substantial) / 0.619 (A2A Substantial) |
-| Cross-round | 3 models | 3 | ERC 1,664 / A2A 3,844 | GLM-4-Plus κ = 0.86–0.93 (most stable); DeepSeek κ = 0.49–0.63 |
+| Cross-round | 3 models | 3 | Paper snapshot: ERC 1,664 / A2A 3,844; current artifact: ERC 1,664 / A2A 4,187 | GLM-4-Plus κ = 0.86–0.93 (most stable); DeepSeek κ = 0.49–0.63 |
 | 4-model (R1 + cross-round) | +MiniMax-M2.5 | 1 | ERC 144 / A2A 3,844 | 4-way Fleiss' κ ≈ 0.46–0.51 (Moderate); model choice dominates stochastic noise |
 
 **What replicates** (3 of 4 findings): (i) discourse remains technically dominated across models; (ii) participation inequality persists (Gini ≈ 0.8); (iii) DAO attains denser within-community consensus.
@@ -291,4 +347,3 @@ non-commercial use only.
 
 If you use this dataset, please cite the accompanying paper and link to the
 [GitHub repository](https://github.com/kl41r3/erc8004-a2a-case-study).
-

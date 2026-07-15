@@ -1,0 +1,34 @@
+{
+  "SCHEMA.md": {
+    "sha256": "f57a19e3e019575746e93fa8d63cd93c9e48219ddfe6aa6c7653d0a39c7c03b7",
+    "bytes": 2386
+  },
+  "croissant.json": {
+    "sha256": "2341d2ebe7e841d54ff2c258d10f56874800b2f0bb2d55ff737aba9466fde203",
+    "bytes": 52419
+  },
+  "r1_annotations.parquet": {
+    "sha256": "7dcec4c2072b94b5b5aedee12cda8c4087a28c48965ec5401958c6ed7b1f143d",
+    "bytes": 2169781
+  },
+  "r2_cross_model_consensus.parquet": {
+    "sha256": "9562d543bbc3ef46131f6f6476dfc30e3c06f681d723906c6157069579930884",
+    "bytes": 3066288
+  },
+  "r2_cross_model_votes.parquet": {
+    "sha256": "266ef7d3e38914c1b812acc01ab174fef77196ce53e63c98ed6a4e14efbe6106",
+    "bytes": 433931
+  },
+  "r2_cross_round_consensus.parquet": {
+    "sha256": "aa9e63ef7b6482ac2053f5e035d5fe0ab705fb52c56a8b6fea1320bc4e1201d2",
+    "bytes": 3038013
+  },
+  "r2_cross_round_votes.parquet": {
+    "sha256": "46cf153defb06a703814f1ff102b7fe358d57f292cc57e08941ce2c5bdf2a740",
+    "bytes": 429665
+  },
+  "release_manifest.json": {
+    "sha256": "58fca76e8c90a31d34a6f04ab1e8c2522095e0b62a016fe398d278809a5dd5f2",
+    "bytes": 1685
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "release_version": "1.0.0",
+  "croissant_specification": "1.1",
+  "release_date": "2026-07-15",
+  "counts": {
+    "r1": 5421,
+    "r2_cross_model": 5722,
+    "r2_cross_model_votes": 68664,
+    "r2_cross_round": 5851,
+    "r2_cross_round_votes": 52659
+  },
+  "source_artifacts": {
+    "data/annotated/r1/annotated_records.json": {
+      "records": 5421,
+      "sha256": "99ebfd47b32a967ddc04c4cc1642f2aa11d1c70301d7c53e594757d953a5f8c5"
+    },
+    "data/annotated/r2/cross-model/consensus/erc_annotations.json": {
+      "records": 1664,
+      "sha256": "bfc2f60eb84b94ae001c7ef63c1ad9407f96ca07b4cf25ff6967dc38ee91d773"
+    },
+    "data/annotated/r2/cross-model/consensus/a2a_annotations.json": {
+      "records": 4058,
+      "sha256": "431888f42ec59ea7f91fc2381f9a23744cd4130bcc7d877be1dad061438b280b"
+    },
+    "data/annotated/r2/cross-round/erc_cross_consensus.json": {
+      "records": 1664,
+      "sha256": "c3e7663a679658399c1a3b39b16797b2e994ea51232782a1cc956bc83acba83f"
+    },
+    "data/annotated/r2/cross-round/a2a_cross_consensus.json": {
+      "records": 4187,
+      "sha256": "568a63adbb5b84e4820ee739de2df0c6d2d92039fae2dff9cac597215dc4f298"
+    }
+  },
+  "alignment": {
+    "r1_paper_reported": {
+      "erc": 142,
+      "a2a": 4181,
+      "total": 4323
+    },
+    "r1_annotation_archive": {
+      "erc": 149,
+      "a2a": 5272,
+      "total": 5421
+    },
+    "r1_policy": "Publish the traceable annotation archive; do not invent row-level paper membership because no exact retained-record manifest exists.",
+    "r2_policy": "Publish cross-model and cross-round results as separate record sets because they use different intersections and annotation schemas."
+  }
+}
