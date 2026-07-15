@@ -163,7 +163,8 @@ def verify_public_boundary(errors: list[str]) -> None:
         path = ROOT / relative
         if path.is_file() and path.suffix in {".py", ".md"}:
             text = path.read_text(encoding="utf-8", errors="replace")
-            if "/Users/" in text:
+            macos_home_prefix = "/" + "Users/"
+            if macos_home_prefix in text:
                 errors.append(f"Tracked script contains a macOS user path: {relative}")
 
 

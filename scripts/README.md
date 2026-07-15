@@ -90,7 +90,8 @@ Single source of truth for constants and utilities. Every script in the pipeline
 |--------|-------------|
 | `compute_metrics.py` | `analysis/metrics/r1/structural_metrics.csv` — R1 governance indicators |
 | `compute_metrics_r2.py` | `analysis/metrics/r2/structural_metrics.csv` — R2 governance indicators |
-| `compute_cross_model_kappa_4models.py` | `analysis/metrics/r2/icr_cross_round.json` — cross-round ICR |
+| `compute_cross_round_icr.py` | `analysis/metrics/r2/icr_cross_round.csv` — per-model test-retest ICR across three rounds |
+| `compute_cross_model_kappa_4models.py` | `analysis/metrics/r2/kappa_4models.json` — four-model reliability on the shared R1/R2 subset |
 | `identify_core_contributors.py` | `analysis/metrics/r1/core_contributors.csv`, `cross_case_overlap.csv` |
 | `build_network_r2.py` | `analysis/metrics/r2/network_erc_nodes.csv`, `network_a2a_nodes.csv`, etc. |
 | `rebuild_a2a_network_full.py` | `analysis/metrics/r1/network_nodes_a2a.csv`, `network_edges_a2a.csv` |

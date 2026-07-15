@@ -40,7 +40,7 @@
     }
   },
   "a2a": {
-    "n_overlap": 3760,
+    "n_overlap": 4185,
     "models": [
       "MiniMax-M2.5",
       "deepseek-v4-flash",
@@ -49,34 +49,34 @@
     ],
     "pairwise": {
       "argument_type": {
-        "MiniMax-M2.5 vs deepseek-v4-flash": 0.5537,
-        "MiniMax-M2.5 vs glm-4-plus": 0.4475,
-        "MiniMax-M2.5 vs moonshot-v1-auto": 0.532,
-        "deepseek-v4-flash vs glm-4-plus": 0.5461,
-        "deepseek-v4-flash vs moonshot-v1-auto": 0.5713,
-        "glm-4-plus vs moonshot-v1-auto": 0.5545
+        "MiniMax-M2.5 vs deepseek-v4-flash": 0.5676,
+        "MiniMax-M2.5 vs glm-4-plus": 0.4624,
+        "MiniMax-M2.5 vs moonshot-v1-auto": 0.5389,
+        "deepseek-v4-flash vs glm-4-plus": 0.5508,
+        "deepseek-v4-flash vs moonshot-v1-auto": 0.5849,
+        "glm-4-plus vs moonshot-v1-auto": 0.566
       },
       "stance": {
-        "MiniMax-M2.5 vs deepseek-v4-flash": 0.5217,
-        "MiniMax-M2.5 vs glm-4-plus": 0.4832,
-        "MiniMax-M2.5 vs moonshot-v1-auto": 0.4991,
-        "deepseek-v4-flash vs glm-4-plus": 0.5514,
-        "deepseek-v4-flash vs moonshot-v1-auto": 0.54,
-        "glm-4-plus vs moonshot-v1-auto": 0.5962
+        "MiniMax-M2.5 vs deepseek-v4-flash": 0.5134,
+        "MiniMax-M2.5 vs glm-4-plus": 0.4806,
+        "MiniMax-M2.5 vs moonshot-v1-auto": 0.4952,
+        "deepseek-v4-flash vs glm-4-plus": 0.5414,
+        "deepseek-v4-flash vs moonshot-v1-auto": 0.548,
+        "glm-4-plus vs moonshot-v1-auto": 0.5779
       },
       "consensus_signal": {
-        "MiniMax-M2.5 vs deepseek-v4-flash": 0.512,
-        "MiniMax-M2.5 vs glm-4-plus": 0.4325,
-        "MiniMax-M2.5 vs moonshot-v1-auto": 0.4508,
-        "deepseek-v4-flash vs glm-4-plus": 0.4642,
-        "deepseek-v4-flash vs moonshot-v1-auto": 0.5365,
-        "glm-4-plus vs moonshot-v1-auto": 0.5173
+        "MiniMax-M2.5 vs deepseek-v4-flash": 0.514,
+        "MiniMax-M2.5 vs glm-4-plus": 0.4573,
+        "MiniMax-M2.5 vs moonshot-v1-auto": 0.4688,
+        "deepseek-v4-flash vs glm-4-plus": 0.46,
+        "deepseek-v4-flash vs moonshot-v1-auto": 0.5371,
+        "glm-4-plus vs moonshot-v1-auto": 0.5409
       }
     },
     "fleiss": {
-      "argument_type": 0.5293,
-      "stance": 0.5304,
-      "consensus_signal": 0.4832
+      "argument_type": 0.5409,
+      "stance": 0.5247,
+      "consensus_signal": 0.4947
     }
   }
 }

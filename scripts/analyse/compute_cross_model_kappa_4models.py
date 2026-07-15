@@ -20,11 +20,15 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from lib.paths import ROOT, DATA_ANNOTATED_R1_RECORDS, DATA_ANNOTATED_R2_CROSS_ROUND, ANALYSIS_DIR
+from lib.paths import (
+    DATA_ANNOTATED_R1_RECORDS,
+    DATA_ANNOTATED_R2_CROSS_ROUND,
+    METRICS_R2_KAPPA_4MODELS,
+)
 from lib.models import CANONICAL_MODELS
 
 R1_PATH = DATA_ANNOTATED_R1_RECORDS
-OUT_PATH = ANALYSIS_DIR / "cross_model_4models_kappa.json"
+OUT_PATH = METRICS_R2_KAPPA_4MODELS
 
 FIELDS = ["argument_type", "stance", "consensus_signal"]
 MODELS = ["MiniMax-M2.5"] + CANONICAL_MODELS
