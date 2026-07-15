@@ -1,8 +1,12 @@
 # Agentic Analysis for Agentic Infrastructure: An LLM-Powered Pipeline for Comparative Governance of DAO and Corporate AI Protocols
 
+> **🎉 Paper accepted at KDD 2026** (ACM workshop).
+>
 > **📊 Data:** [See on Hugging Face](https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance) — full raw + annotated dataset, [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 >
-> **Reproduction package:** This repository contains the complete computational pipeline, from raw data collection through LLM annotation to final analysis and figures. SHA-256 checksums guarantee data provenance.
+> **Public computational package:** This repository contains the reproducible code, released data,
+> analysis artifacts, and figures. Private person-level investigation notes and reviewer materials
+> are intentionally excluded. SHA-256 checksums protect data provenance.
 
 ---
 
@@ -280,7 +284,7 @@ uv run python scripts/analyse/topic_discovery/comparative_discourse/run.py
 uv run python scripts/analyse/topic_discovery/crypto_bert/run.py
 ```
 
-**Expected outputs:** `output/figures/fig-bertopic-divergence.pdf`, `output/figures/fig-cryptobert-frequency.pdf`, `analysis/topic_discovery/r1/comparative_discourse/divergence_table.csv`.
+**Expected outputs:** `analysis/topic_discovery/r1/comparative_discourse/{divergence_table.csv,topics_per_case.json,topic_comparison.png}` and `analysis/topic_discovery/r1/crypto_bert/{topics.json,comparison_summary.md}`. Paper-ready figures are generated later by `build_paper_figures.py`.
 
 ---
 
@@ -294,6 +298,7 @@ Co-participation networks where nodes are authors and weighted edges count share
 
 ```bash
 uv run python scripts/analyse/analyze_network.py
+uv run python scripts/visualise/build_network.py
 ```
 
 **Expected outputs:** `analysis/metrics/r1/network_metrics_table.csv`, `output/figures/network_sna_comparison.png` (side-by-side network visualization), `output/figures/network_degree_dist.png` (degree distribution by rank), `output/interactive/network_erc8004.html` and `network_a2a.html` (vis.js interactive graphs).
@@ -306,7 +311,7 @@ Congruence/conflict networks where nodes are still authors but edges are weighte
 uv run python scripts/analyse/network_discourse/dna/run.py
 ```
 
-**Expected outputs:** `analysis/network_discourse/r1/dna/congruence_edges.csv`, `conflict_edges.csv`, `dna_metrics.json`, `output/figures/fig-dna-comparison.png`.
+**Expected outputs:** `analysis/network_discourse/r1/dna/{congruence_erc8004.csv,congruence_googlea2a.csv,conflict_erc8004.csv,conflict_googlea2a.csv,dna_metrics.json,dna_comparison.png}`.
 
 #### Method 3: Socio-semantic Bipartite Network
 
@@ -316,7 +321,7 @@ Actor × Theme bipartite network where edges connect authors to the themes they 
 uv run python scripts/analyse/network_discourse/sociosemantic/run.py
 ```
 
-**Expected outputs:** `analysis/network_discourse/r1/sociosemantic/ss_metrics.json`, `output/figures/fig-ss-entropy.pdf` (specialization histograms), `output/interactive/bipartite_*.html`.
+**Expected outputs:** `analysis/network_discourse/r1/sociosemantic/{ss_metrics.json,specialization_compare.png,theme_actor_comparison.png}` plus the actor and theme CSV tables in the same directory.
 
 ---
 
@@ -343,12 +348,14 @@ The extractor requires an explicit `--input` path and never searches local note 
 ```bash
 # Generate N=50 stratified verification sample
 uv run python scripts/analyse/sample_for_verification.py
-# Then follow manual coding protocol in human-notes/verification/
-# After manual coding is complete:
+# The coding guide and completed person-level coding notes are private research materials.
+# After an authorized manual coding file has been supplied locally:
 uv run python scripts/analyse/validate_multimodel.py --dataset erc
 ```
 
-**Expected output:** Cohen's κ report (reported in paper Section 4.1).
+The public repository can regenerate the sample but does not distribute private coding notes.
+Consequently, the human-coding step is not fully reproducible from GitHub alone. The released
+multi-model validation reports remain available under `data/annotated/r2/cross-model/`.
 
 ---
 

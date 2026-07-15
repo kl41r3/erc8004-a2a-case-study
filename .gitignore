@@ -26,6 +26,7 @@ wheels/
 
 # Local-only directories
 .claude/
+local-tools/
 human-notes/
 literature/
 verification/
@@ -37,6 +38,7 @@ _trash/
 tree-docs/
 
 # Local-only files
+AGENTS.md
 CLAUDE.md
 main.py
 cmd.md
