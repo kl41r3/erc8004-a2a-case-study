@@ -2,7 +2,7 @@
 analyze_voting_mechanism.py
 
 Produces:
-  output/voting_mechanism_comparison.png  — two-panel process diagram
+  output/figures/voting_mechanism_comparison.png  — two-panel process diagram
   output/voting_stats.json                — key statistics for paper
 
 Evidence sources:

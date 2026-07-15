@@ -239,7 +239,7 @@ uv run python scripts/analyse/analyze_topic.py
 uv run python scripts/analyse/analyze_voting_mechanism.py
 ```
 
-**Expected outputs:** `analysis/metrics/r1/structural_metrics.csv`, `output/figures/topic_*.png`, `output/voting_mechanism_comparison.png`.
+**Expected outputs:** `analysis/metrics/r1/structural_metrics.csv`, `output/figures/topic_*.png`, `output/figures/voting_mechanism_comparison.png`.
 
 ---
 
@@ -316,9 +316,13 @@ Enrich author profiles with institutional affiliations from Discourse bios, GitH
 
 ```bash
 uv run python scripts/process/enrich_profiles.py          # fetch Discourse + GitHub profiles
+uv run python scripts/process/extract_manual_institutions.py --input /path/to/private-report.md
 uv run python scripts/process/enrich_institutions.py       # merge profiles → author_profiles.json
 uv run python scripts/analyse/identify_core_contributors.py  # core contributor analysis
 ```
+
+The person-level investigation report is private research material and is not distributed.
+The extractor requires an explicit `--input` path and never searches local note directories.
 
 **Expected outputs:** `data/annotated/r1/author_profiles.json`, `analysis/metrics/r1/core_contributors.csv`, `analysis/metrics/r1/cross_case_overlap.csv`, `output/interactive/network_erc8004.html` (updated with institution metadata).
 

@@ -1,7 +1,7 @@
-"""extract_manual_institutions.py — Parse R07 manual investigation report into structured JSON.
+"""Parse a private manual institution report into structured JSON.
 
-Source: reports/R07_2026-03-14_机构归属人工调查.md
-Output: data/raw/manual_institutions.json
+The report contains person-level research notes and is intentionally not distributed
+with the public repository. Pass its path explicitly with ``--input``.
 
 Each entry schema:
   primary_handle    str            Main handle (forum or GitHub)
@@ -18,16 +18,14 @@ Each entry schema:
   section           str            R07 section number ("1.1", "2.3", "3", etc.)
 """
 
+import argparse
 import json
 import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from lib.paths import ROOT, RAW_MANUAL_INSTITUTIONS
-
-R07_PATH = ROOT / "tree-docs" / "R07_2026-03-14_机构归属人工调查.md"
-OUTPUT_PATH = RAW_MANUAL_INSTITUTIONS
+from lib.paths import RAW_MANUAL_INSTITUTIONS
 
 # ---------------------------------------------------------------------------
 # Text helpers
@@ -262,15 +260,36 @@ def parse_eip_header(section_text: str) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# Main
+# CLI and main
 # ---------------------------------------------------------------------------
 
-def main() -> None:
-    print("=== extract_manual_institutions.py ===")
-    if not R07_PATH.exists():
-        raise FileNotFoundError(f"R07 not found: {R07_PATH}")
 
-    markdown = R07_PATH.read_text(encoding="utf-8")
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Convert a private institution-investigation Markdown report to JSON."
+    )
+    parser.add_argument(
+        "--input",
+        type=Path,
+        required=True,
+        help="Path to the private Markdown investigation report.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=RAW_MANUAL_INSTITUTIONS,
+        help=f"Output JSON path. Default: {RAW_MANUAL_INSTITUTIONS}",
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    print("=== extract_manual_institutions.py ===")
+    if not args.input.is_file():
+        raise FileNotFoundError(f"Private investigation report not found: {args.input}")
+
+    markdown = args.input.read_text(encoding="utf-8")
     sections = split_sections(markdown)
 
     all_entries: list[dict] = []
@@ -320,10 +339,10 @@ def main() -> None:
             print(f"  §3 EIP header co-authors:       {len(entries)} entries")
 
     # Write output
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(json.dumps(all_entries, ensure_ascii=False, indent=2))
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(all_entries, ensure_ascii=False, indent=2))
     print(f"\nTotal entries: {len(all_entries)}")
-    print(f"Saved → {OUTPUT_PATH}")
+    print(f"Saved → {args.output}")
 
     # Quick summary
     from collections import Counter

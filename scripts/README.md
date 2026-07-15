@@ -76,7 +76,7 @@ Single source of truth for constants and utilities. Every script in the pipeline
 | `complete_a2a_deepseek.py` | Gap-fill: adds missing DeepSeek A2A records from GLM/Moonshot sources |
 | `enrich_profiles.py` | Fetch Discourse + GitHub author profiles → `data/raw/profiles_*.json` |
 | `enrich_institutions.py` | Merge profiles into per-author institution records → `data/annotated/r1/author_profiles.json` |
-| `extract_manual_institutions.py` | Parse R07 manual investigation markdown → `data/raw/manual_institutions.json` |
+| `extract_manual_institutions.py` | Parse an explicitly supplied private investigation report → `data/raw/manual_institutions.json` |
 | `merge_manual_institutions.py` | Merge R07 ground-truth institutions into `author_profiles.json` |
 
 ---
@@ -161,6 +161,7 @@ uv run python scripts/process/annotate_llm.py --backend minimax
 uv run python scripts/process/annotate_gitvote.py
 uv run python scripts/process/enrich_profiles.py
 uv run python scripts/process/enrich_institutions.py
+uv run python scripts/process/extract_manual_institutions.py --input /path/to/private-report.md
 uv run python scripts/process/merge_manual_institutions.py
 
 # 3. Core metrics
