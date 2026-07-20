@@ -35,8 +35,9 @@ from lib.paths import (
 )
 
 
-RELEASE_VERSION = "1.0.0"
+RELEASE_VERSION = "1.0.1"
 RELEASE_DATE = "2026-07-15"
+RELEASE_MODIFIED_DATE = "2026-07-20"
 RELEASE_DIR = DATA_CROISSANT_V1
 DATASET_URL = "https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance"
 LICENSE_URL = "https://creativecommons.org/licenses/by-nc/4.0/"
@@ -302,7 +303,6 @@ def croissant_context() -> dict[str, Any]:
         "conformsTo": "dct:conformsTo",
         "containedIn": "cr:containedIn",
         "data": {"@id": "cr:data", "@type": "@json"},
-        "dataBiases": "cr:dataBiases",
         "dataCollection": "cr:dataCollection",
         "dataType": {"@id": "cr:dataType", "@type": "@vocab"},
         "equivalentProperty": "cr:equivalentProperty",
@@ -321,7 +321,6 @@ def croissant_context() -> dict[str, Any]:
         "md5": "cr:md5",
         "parentField": "cr:parentField",
         "path": "cr:path",
-        "personalSensitiveInformation": "cr:personalSensitiveInformation",
         "recordSet": "cr:recordSet",
         "references": "cr:references",
         "regex": "cr:regex",
@@ -523,12 +522,12 @@ def main() -> None:
         "url": DATASET_URL,
         "creator": {"@type": "sc:Person", "name": "kl41r3", "url": "https://huggingface.co/kl41r3"},
         "datePublished": RELEASE_DATE,
-        "dateModified": RELEASE_DATE,
+        "dateModified": RELEASE_MODIFIED_DATE,
         "version": RELEASE_VERSION,
         "sdVersion": RELEASE_VERSION,
         "citeAs": (
             "kl41r3 (2026). ERC-8004 vs Google A2A Governance Dataset, "
-            "Croissant release 1.0.0."
+            "Croissant release 1.0.1."
         ),
         "keywords": [
             "technology governance",
@@ -543,13 +542,42 @@ def main() -> None:
             "Public Ethereum Magicians and GitHub governance records, followed by LLM annotation "
             "and model-consensus construction."
         ),
-        "dataBiases": (
+        "rai:dataLimitations": (
+            "This dataset is restricted to public Ethereum Magicians and GitHub traces from two "
+            "AI protocol ecosystems and therefore does not represent private meetings, internal "
+            "corporate coordination, all blockchain communities, or governance outcomes in general. "
+            "It is not recommended for causal claims about governance form, profiling individuals, "
+            "or training systems that make consequential decisions about contributors."
+        ),
+        "rai:dataBiases": (
             "Public-platform traces omit private corporate coordination and may overrepresent "
-            "highly active contributors. Institutional labels have lower inter-model agreement."
+            "highly active, English-speaking, technically experienced contributors. Selection bias "
+            "arises from platform and retention filters, and institutional labels have lower "
+            "inter-model agreement than several other annotation fields."
         ),
-        "personalSensitiveInformation": (
-            "Contains public handles, display names, authored text, and institutional-affiliation labels."
+        "rai:personalSensitiveInformation": (
+            "Contains public handles, display names, authored text, timestamps, public profile "
+            "information, and inferred or documented institutional-affiliation labels. It does not "
+            "intentionally collect private contact information, health data, financial data, or "
+            "government identifiers. Public identifiers may nevertheless enable reidentification."
         ),
+        "rai:dataUseCases": (
+            "Validated uses include reproducible analysis of observable participation, discourse "
+            "composition, annotation reliability, and network structure in the ERC and A2A public "
+            "records represented here. The dataset may support methods research on computational "
+            "governance analysis. Validity has not been established for causal inference, population "
+            "estimation, individual evaluation, automated moderation, or model training for decisions "
+            "that affect contributors."
+        ),
+        "rai:dataSocialImpact": (
+            "Potential benefits include more transparent study of technology standardization, "
+            "reproducible governance research, and evidence for more accountable participation "
+            "procedures. Risks include decontextualizing public comments, amplifying noisy affiliation "
+            "labels, or using activity measures to rank individuals. Mitigations include public-source "
+            "provenance, explicit uncertainty and scope statements, checksum manifests, a non-commercial "
+            "license, and a stated prohibition on consequential person-level use."
+        ),
+        "rai:hasSyntheticData": False,
         "distribution": distributions,
         "recordSet": [
             record_set(

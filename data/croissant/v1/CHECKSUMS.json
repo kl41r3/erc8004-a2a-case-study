@@ -1,11 +1,11 @@
 {
   "SCHEMA.md": {
-    "sha256": "f57a19e3e019575746e93fa8d63cd93c9e48219ddfe6aa6c7653d0a39c7c03b7",
+    "sha256": "28bf3b951f352dcd24773bd4ee27f60b361593c0b0e35ec8d8c32445fd009846",
     "bytes": 2386
   },
   "croissant.json": {
-    "sha256": "2341d2ebe7e841d54ff2c258d10f56874800b2f0bb2d55ff737aba9466fde203",
-    "bytes": 52419
+    "sha256": "b93f3010a76d92b5c5178612cc2e860457dada9c5f284ba899b4120c10b6e8c3",
+    "bytes": 54195
   },
   "r1_annotations.parquet": {
     "sha256": "7dcec4c2072b94b5b5aedee12cda8c4087a28c48965ec5401958c6ed7b1f143d",
@@ -28,7 +28,7 @@
     "bytes": 429665
   },
   "release_manifest.json": {
-    "sha256": "278b9dbb4cc6e561f7cabcbc375f4d59cf4e09879ddedf4371f04358bb2d7c8c",
+    "sha256": "620b1b25b5026849032dc3b75e775eb19e141d916f2e0ae37ed5339087f63638",
     "bytes": 1927
   }
 }

@@ -1,4 +1,4 @@
-# Croissant Release v1.0.0
+# Croissant Release v1.0.1
 
 This directory is the machine-readable distribution of the RQ1 dataset. It keeps each
 pipeline stage as a separate record set so that archive size, model intersection size,

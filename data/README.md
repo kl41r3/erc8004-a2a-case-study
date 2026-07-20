@@ -125,8 +125,12 @@ the public-boundary verifier.
 
 ## croissant/v1/ — Machine-readable release
 
-Croissant release v1.0.0 conforms to the MLCommons Croissant 1.1 metadata specification.
+Croissant release v1.0.1 conforms to the MLCommons Croissant 1.1 metadata specification.
 It deliberately preserves the pipeline layers as separate RecordSets:
+
+The current metadata revision also includes the six minimal NeurIPS 2026 Responsible AI
+fields. Validation evidence from the official NeurIPS Croissant Validator is available at
+[`croissant/neurips-croissant-validator-pass.png`](croissant/neurips-croissant-validator-pass.png).
 
 | RecordSet | Rows | Meaning |
 |---|---:|---|

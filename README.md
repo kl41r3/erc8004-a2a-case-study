@@ -99,6 +99,26 @@ uvx --from mlcroissant mlcroissant validate --jsonld data/croissant/v1/croissant
 Outputs live in `data/croissant/v1/`. `release_manifest.json` records source hashes, exact
 counts, and the R1/R2 alignment policy.
 
+### GitHub Education assisted publication workflow
+
+The dataset publication workflow used GitHub Codespaces and GitHub Copilot through GitHub
+Education benefits. Codespaces provided a reproducible cloud development environment for
+running the repository's locked `uv` workflow, while Copilot assisted with mechanical
+refactoring and documentation. All substantive schema choices, count reconciliation, and
+interpretation boundaries were reviewed against the source artifacts and verified by the
+repository checks.
+
+The publication process reformats heterogeneous JSON artifacts into five homogeneous Parquet
+tables before staging them for Hugging Face. The release builder creates the Croissant 1.1
+metadata and checksum manifest, and the data-only staging script excludes paper sources,
+private notes, credentials, and local agent files. Hugging Face then exposes each Parquet table
+as a separate Dataset Viewer config so that incompatible R1, cross-model, and cross-round
+scopes are not silently merged.
+
+The checked metadata file is [`data/croissant/v1/croissant.json`](data/croissant/v1/croissant.json).
+The NeurIPS Croissant Validator evidence is stored at
+[`data/croissant/neurips-croissant-validator-pass.png`](data/croissant/neurips-croissant-validator-pass.png).
+
 Verify the repository and prepare a data-only Hugging Face staging directory locally:
 
 ```bash
