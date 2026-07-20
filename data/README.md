@@ -85,6 +85,9 @@ Licensed **CC BY-NC 4.0** (attribution, non-commercial).
 ```
 data/
 ├── README.md                    ← This file (dataset card)
+├── manifests/                   Frozen paper-analysis membership
+│   ├── r1_paper_v1.jsonl        Exact 4,323 retained R1 rows
+│   └── r1_paper_v1_summary.json Input hashes, policy provenance, and manifest hash
 ├── croissant/v1/                Croissant 1.1 machine-readable release
 │   ├── croissant.json           Versioned metadata + 5 RecordSets
 │   ├── *.parquet                R1, R2 consensus, and normalized vote tables
@@ -112,6 +115,11 @@ data/
 ```
 
 ★ = final analysis-grade data used by the paper.
+
+The raw archive preserves public source text for research traceability. Source text can
+contain strings that resemble credentials or configuration examples. They are not repository
+credentials and must not be reused. Repository-owned secrets are excluded by `.gitignore` and
+the public-boundary verifier.
 
 ---
 

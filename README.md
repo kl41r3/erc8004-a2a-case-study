@@ -51,13 +51,39 @@ workspace/
 │   ├── visualise/                  ← Figure generation, interactive HTML
 │   ├── pipeline/                   ← Full-pipeline orchestrators
 │   └── lib/                        ← Shared utilities (paths, models, I/O)
-└──analysis/                       ← Analysis outputs (metrics, CSVs, reports)
+└── analysis/                      ← Analysis outputs (metrics, CSVs, reports)
 ```
 
 **Key distinction:**
 
 - **Main-text pipeline** (R1) uses `data/raw/` files and `data/annotated/r1/`. Scripts without `_r2` suffix.
 - **Appendix pipeline** (R2) uses `data/raw/r2/` and `data/annotated/r2/`. Scripts with `_r2` suffix or in `scripts/pipeline/run_r2.py`.
+
+### Reproducibility Contract
+
+The repository supports two different operations that should not be conflated:
+
+1. **Exact release reproduction**, using the frozen public R1 and R2 artifacts. This path
+   requires no API keys and reconstructs the 4,323-row R1 paper manifest and the Croissant
+   release before validating every checksum, row locator, content hash, RecordSet count,
+   and public-repository boundary.
+2. **Provenance reruns**, using live source APIs and hosted LLMs. These commands document
+   how the archived artifacts were produced, but upstream content and hosted model behavior
+   can change. A later live rerun is therefore not expected to be byte-identical to the
+   frozen March 2026 release.
+
+For the exact path, start from a fresh clone and run:
+
+```bash
+git clone https://github.com/kl41r3/erc8004-a2a-case-study.git
+cd erc8004-a2a-case-study
+uv sync --frozen
+uv run python scripts/reproduce_release.py
+```
+
+No `.env` file or paid service is required for this command. A successful run ends with
+`Exact R1/R2 release reproduction passed.` The expected R1 manifest SHA-256 is
+`0445428da7b67f6c7a62b5bb83014dccdd92433fc8e66819f55d4839e5ec92cb`.
 
 ### Croissant 1.1 Release
 
@@ -126,8 +152,8 @@ Reproduce the single-case ERC-8004 vs. A2A comparison from the paper's main body
 
 ```bash
 git clone <this-repo> && cd <this-repo>
-uv sync                         # creates .venv with exact locked versions
-cp .env.example .env            # edit .env with your API keys
+uv sync --frozen                # creates .venv from the committed lockfile
+cp .env.example .env            # only needed for live scraping or LLM reruns
 ```
 
 Edit `.env`:
@@ -147,7 +173,8 @@ All scripts are run via `uv run python scripts/...`. The `uv run` prefix ensures
 
 ### Step 1 — Data Collection (Scraping)
 
-Collect raw governance discussion records from public platforms.
+The repository already contains the frozen raw records used by the release. The following
+commands are provenance reruns against live public platforms and may collect newer content.
 
 ```bash
 # === ERC-8004 (no API key needed) ===
@@ -177,13 +204,22 @@ uv run python scripts/scrape/scrape_gitvote_prs.py --github-token $GITHUB_PERSON
 uv run python scripts/scrape/patch_a2a_missing_pages.py
 ```
 
-**Expected output:** ~6,030 raw records in `data/raw/`. After filtering: 4,323 records (ERC-8004: 142; A2A: 4,181).
+The archived March 2026 release contains 6,030 raw R1 records. To reconstruct the exact
+paper membership from the committed frozen inputs, run:
+
+```bash
+uv run python scripts/process/build_r1_paper_manifest.py
+```
+
+The builder accepts only the five byte-identical March 2026 input files recorded in its
+versioned SHA-256 allowlist. It deterministically retains 4,323 records (ERC-8004: 142;
+A2A: 4,181) and writes `data/manifests/r1_paper_v1.jsonl` plus an audit summary.
 
 ---
 
 ### Step 2 — LLM Annotation
 
-Each governance record is annotated with five structured fields using MiniMax-M2.5, a reasoning model. The annotation is idempotent — safe to interrupt and restart (deduplicates by composite `record_id`).
+Each governance record was annotated with five structured fields using MiniMax-M2.5, a reasoning model. The annotation is idempotent — safe to interrupt and restart (deduplicates by composite `record_id`). Hosted LLM output is not guaranteed to remain byte-identical across service revisions, so exact reproduction uses the committed annotation artifacts and checksums.
 
 ```bash
 # Full annotation with MiniMax-M2.5 (default backend)
@@ -330,32 +366,31 @@ uv run python scripts/analyse/network_discourse/sociosemantic/run.py
 Enrich author profiles with institutional affiliations from Discourse bios, GitHub profiles, and manual investigation.
 
 ```bash
-uv run python scripts/process/enrich_profiles.py          # fetch Discourse + GitHub profiles
-uv run python scripts/process/extract_manual_institutions.py --input /path/to/private-report.md
-uv run python scripts/process/enrich_institutions.py       # merge profiles → author_profiles.json
+uv run python scripts/process/enrich_profiles.py           # live provenance rerun
+uv run python scripts/process/enrich_institutions.py       # uses committed manual_institutions.json
 uv run python scripts/analyse/identify_core_contributors.py  # core contributor analysis
 ```
 
-The person-level investigation report is private research material and is not distributed.
-The extractor requires an explicit `--input` path and never searches local note directories.
+The exact release includes the structured audit artifact `data/raw/manual_institutions.json`
+and its checksum. The longer person-level investigation notes are private research material
+and are not required to reconstruct the released outputs. For provenance work on a replacement
+audit, `scripts/process/extract_manual_institutions.py --input <report.md>` accepts an explicit
+authorized source and never searches local note directories.
 
 **Expected outputs:** `data/annotated/r1/author_profiles.json`, `analysis/metrics/r1/core_contributors.csv`, `analysis/metrics/r1/cross_case_overlap.csv`, `output/interactive/network_erc8004.html` (updated with institution metadata).
 
 ---
 
-### Step 7 — Verification (Inter-Coder Reliability)
+### Step 7 — Multi-Model Verification
 
 ```bash
-# Generate N=50 stratified verification sample
-uv run python scripts/analyse/sample_for_verification.py
-# The coding guide and completed person-level coding notes are private research materials.
-# After an authorized manual coding file has been supplied locally:
 uv run python scripts/analyse/validate_multimodel.py --dataset erc
+uv run python scripts/analyse/validate_multimodel.py --dataset a2a
 ```
 
-The public repository can regenerate the sample but does not distribute private coding notes.
-Consequently, the human-coding step is not fully reproducible from GitHub alone. The released
-multi-model validation reports remain available under `data/annotated/r2/cross-model/`.
+These commands reproduce the public cross-model agreement reports and deterministic stratified
+verification samples under `data/annotated/r2/cross-model/`. Blank human-coding columns are an
+optional extension and are not used in the released R1 or R2 findings.
 
 ---
 
@@ -369,7 +404,7 @@ multi-model validation reports remain available under `data/annotated/r2/cross-m
 | 4. Topic discovery | `analyse/topic_discovery/thematic_lm/run.py`, `comparative_discourse/run.py`, `crypto_bert/run.py` | `analysis/topic_discovery/r1/` | MiniMax (Thematic-LM only) |
 | 5. Network analysis | `analyse/analyze_network.py`, `network_discourse/dna/run.py`, `network_discourse/sociosemantic/run.py` | `analysis/metrics/r1/`, `analysis/network_discourse/r1/` | None |
 | 6. Stakeholder enrichment | `process/enrich_profiles.py`, `enrich_institutions.py`, `analyse/identify_core_contributors.py` | `data/annotated/r1/author_profiles.json` | GitHub PAT |
-| 7. Verification | `analyse/sample_for_verification.py`, `validate_multimodel.py` | κ report | None |
+| 7. Verification | `analyse/validate_multimodel.py` | κ reports and stratified samples | None |
 
 ---
 
@@ -445,10 +480,10 @@ Each model annotates the same records three times independently to measure self-
 
 ```bash
 # Run all 3 rounds for all 3 models (9 annotation jobs total)
-uv run python scripts/process/annotate_r3.py --model deepseek-v4-flash --round 1
-uv run python scripts/process/annotate_r3.py --model deepseek-v4-flash --round 2
-uv run python scripts/process/annotate_r3.py --model deepseek-v4-flash --round 3
-# ... repeat for glm-4-plus and moonshot-v1-auto
+uv run python scripts/process/annotate_r3.py --case erc --model deepseek-v4-flash --round 1
+uv run python scripts/process/annotate_r3.py --case erc --model deepseek-v4-flash --round 2
+uv run python scripts/process/annotate_r3.py --case erc --model deepseek-v4-flash --round 3
+# Repeat for --case a2a and for glm-4-plus and moonshot-v1-auto.
 ```
 
 ---
@@ -513,7 +548,7 @@ The R2 pipeline has 10 phases: (1) A2A ICR validation, (2) consensus building, (
 
 | Experiment | Models | Rounds | Records | Key result |
 |---|---|---|---|---|
-| Cross-model (R2) | 3 vendors | 1 | ERC 1,664 / A2A 4,045 | argument_type Fleiss' κ = 0.683 (ERC Substantial) / 0.619 (A2A Substantial) |
+| Cross-model (R2) | 3 vendors | 1 | Current artifact: ERC 1,664 / A2A 4,058 | argument_type Fleiss' κ = 0.683 (ERC Substantial) / 0.619 (A2A Substantial) |
 | Cross-round | 3 models | 3 | Paper snapshot: ERC 1,664 / A2A 3,844; current artifact: ERC 1,664 / A2A 4,187 | GLM-4-Plus κ = 0.86–0.93 (most stable); DeepSeek κ = 0.49–0.63 |
 | 4-model (R1 + cross-round) | +MiniMax-M2.5 | 1 | Paper snapshot: ERC 144 / A2A 3,844 | 4-way Fleiss' κ ≈ 0.46–0.51 (Moderate); model choice dominates stochastic noise |
 
@@ -533,6 +568,12 @@ All data files are protected by SHA-256 checksums. The checksum manifests are:
 | `data/annotated/CHECKSUMS.json` | All annotated data: R1 (2 files), R2 cross-model (25 files), R2 cross-round (23 files) |
 | `data/annotated/r2/cross-model/CHECKSUMS.json` | Per-directory checksums for R2 cross-model |
 | `data/annotated/r2/cross-round/CHECKSUMS.json` | Per-directory checksums for R2 cross-round |
+
+The exact R1 paper subset is separately frozen in
+`data/manifests/r1_paper_v1.jsonl`. Its summary records the five input hashes, historical
+filter policy, source-row locators, per-row content hashes, and manifest hash. Run
+`uv run python scripts/process/build_r1_paper_manifest.py` to reproduce it and
+`uv run python scripts/verify_repository.py` to validate every row locator.
 
 ### Raw Data SHA-256 (Main-Text Pipeline)
 
@@ -558,7 +599,7 @@ r2/tier2/cluster_github.json    c8b9dd19352dc3c595f1d6c6c09b7030ada95476106a6ef3
 Full manifest: `data/raw/CHECKSUMS.json`. Regenerate after any data update:
 
 ```bash
-python3 -c "
+uv run python -c "
 import json, hashlib
 from pathlib import Path
 raw = Path('data/raw')

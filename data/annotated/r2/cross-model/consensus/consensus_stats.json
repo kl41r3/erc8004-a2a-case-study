@@ -29,7 +29,7 @@
         "tie": 82
       }
     },
-    "output": "/Users/michelangelo/academic/erca2a/RQ1/workspace/data/annotated/r2/consensus/a2a_annotations.json"
+    "output": "data/annotated/r2/cross-model/consensus/a2a_annotations.json"
   },
   "generated_at": "2026-06-23T08:51:46.421692+00:00"
 }

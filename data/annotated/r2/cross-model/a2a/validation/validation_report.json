@@ -94,6 +94,6 @@
     }
   },
   "verification_sample_n": 50,
-  "verification_sample_path": "/Users/michelangelo/academic/erca2a/RQ1/workspace/data/annotated/r2/cross-model/a2a/validation/verification_sample.csv",
+  "verification_sample_path": "data/annotated/r2/cross-model/a2a/validation/verification_sample.csv",
   "dataset": "a2a"
 }

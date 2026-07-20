@@ -1,0 +1,89 @@
+{
+  "description": "Exact row-level manifest for the R1 corpus reported in the paper.",
+  "excluded_rows": 1707,
+  "exclusions": {
+    "historical_bot_policy": 1288,
+    "text_length_below_20": 419
+  },
+  "filter_policy": {
+    "exclude_author_suffix": "[bot]",
+    "minimum_stripped_raw_text_unicode_codepoints": 20,
+    "named_bot_authors": [
+      "codecov[bot]",
+      "dependabot[bot]",
+      "gemini-code-assist[bot]",
+      "git-vote[bot]",
+      "github-actions[bot]",
+      "google-cla[bot]"
+    ],
+    "rule_order": [
+      "text_length",
+      "bot_author"
+    ]
+  },
+  "manifest_path": "data/manifests/r1_paper_v1.jsonl",
+  "manifest_sha256": "0445428da7b67f6c7a62b5bb83014dccdd92433fc8e66819f55d4839e5ec92cb",
+  "policy_provenance_git_commit": "503a10edb127cec623414b964dbd703287886004",
+  "raw_rows": 6030,
+  "rebuild_command": "uv run python scripts/process/build_r1_paper_manifest.py",
+  "retained_by_case": {
+    "ERC-8004": 142,
+    "Google-A2A": 4181
+  },
+  "retained_rows": 4323,
+  "schema_version": "1.0.0",
+  "snapshot_id": "r1-paper-2026-03-14",
+  "source_files": {
+    "a2a_discussions.json": {
+      "case": "Google-A2A",
+      "excluded_rows": 20,
+      "exclusions": {
+        "text_length_below_20": 20
+      },
+      "raw_rows": 822,
+      "retained_rows": 802,
+      "sha256": "1f060770b539c79761b6d12d929db4d996536398b9da9c31124f861897730049"
+    },
+    "a2a_issues.json": {
+      "case": "Google-A2A",
+      "excluded_rows": 968,
+      "exclusions": {
+        "historical_bot_policy": 820,
+        "text_length_below_20": 148
+      },
+      "raw_rows": 3104,
+      "retained_rows": 2136,
+      "sha256": "e48ebc63933380b4a68c42ea30c98168e64710640b269849d9066eeadf79cbbb"
+    },
+    "a2a_prs.json": {
+      "case": "Google-A2A",
+      "excluded_rows": 712,
+      "exclusions": {
+        "historical_bot_policy": 466,
+        "text_length_below_20": 246
+      },
+      "raw_rows": 1955,
+      "retained_rows": 1243,
+      "sha256": "a7043491cc4ace44bc01eb0fbe681e659c284765493d046e7a22adc942a67747"
+    },
+    "forum_posts.json": {
+      "case": "ERC-8004",
+      "excluded_rows": 0,
+      "exclusions": {},
+      "raw_rows": 113,
+      "retained_rows": 113,
+      "sha256": "b414e8b7153df6d89a2885a702f72ed5ead1cfa21cdb6b455ae86677cad3e66d"
+    },
+    "github_comments_filtered.json": {
+      "case": "ERC-8004",
+      "excluded_rows": 7,
+      "exclusions": {
+        "historical_bot_policy": 2,
+        "text_length_below_20": 5
+      },
+      "raw_rows": 36,
+      "retained_rows": 29,
+      "sha256": "41a65aa867db3e6441024854604ba951e3987e0776c32b02a84027ef2a28c8ba"
+    }
+  }
+}

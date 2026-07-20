@@ -30,6 +30,8 @@ FORBIDDEN_TRACKED_PREFIXES = (
     "local-tools/",
     "_trash/",
     "output/",
+    "data/raw/r3/",
+    "analysis/metrics/r3/",
 )
 
 FORBIDDEN_TRACKED_FILES = {
@@ -38,7 +40,17 @@ FORBIDDEN_TRACKED_FILES = {
     "do.md",
     "do2.md",
     ".env",
+    "scripts/analyse/analyze_governance_evidence.py",
+    "scripts/reporting/build_revision_reports.py",
+    "scripts/scrape/collect_adoption_metrics.py",
+    "scripts/scrape/scrape_event_horizon_snapshot.py",
+    "scripts/visualise/build_submission_figures.py",
 }
+
+FORBIDDEN_LOCAL_PATH_MARKERS = (
+    "/Users/" + "michelangelo/",
+    "C:\\Users\\" + "michelangelo\\",
+)
 
 REQUIRED_PATHS = (
     ROOT / "README.md",
@@ -46,10 +58,67 @@ REQUIRED_PATHS = (
     ROOT / "data" / "croissant" / "v1" / "croissant.json",
     ROOT / "data" / "croissant" / "v1" / "release_manifest.json",
     ROOT / "scripts" / "process" / "build_croissant_release.py",
+    ROOT / "scripts" / "process" / "build_r1_paper_manifest.py",
+    ROOT / "scripts" / "reproduce_release.py",
     ROOT / "scripts" / "process" / "extract_manual_institutions.py",
+    ROOT / "data" / "manifests" / "r1_paper_v1.jsonl",
+    ROOT / "data" / "manifests" / "r1_paper_v1_summary.json",
     ROOT / "pyproject.toml",
     ROOT / "uv.lock",
 )
+
+
+def verify_r1_paper_manifest(errors: list[str]) -> None:
+    manifest_path = ROOT / "data" / "manifests" / "r1_paper_v1.jsonl"
+    summary_path = ROOT / "data" / "manifests" / "r1_paper_v1_summary.json"
+    if not manifest_path.is_file() or not summary_path.is_file():
+        return
+
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    payload = manifest_path.read_bytes()
+    if sha256(manifest_path) != summary.get("manifest_sha256"):
+        errors.append("R1 paper manifest SHA-256 does not match its summary")
+
+    rows = [json.loads(line) for line in payload.splitlines() if line.strip()]
+    if len(rows) != 4323 or summary.get("retained_rows") != 4323:
+        errors.append(f"R1 paper manifest must contain 4,323 rows, found {len(rows)}")
+    ids = [row.get("record_id") for row in rows]
+    if len(ids) != len(set(ids)):
+        errors.append("R1 paper manifest contains duplicate record_id values")
+
+    case_counts: dict[str, int] = {}
+    raw_cache: dict[str, list[dict]] = {}
+    for row in rows:
+        case = row.get("case")
+        case_counts[case] = case_counts.get(case, 0) + 1
+        relative = row.get("source_file", "")
+        if relative not in raw_cache:
+            path = ROOT / relative
+            if not path.is_file():
+                errors.append(f"R1 manifest source file is missing: {relative}")
+                continue
+            raw_cache[relative] = json.loads(path.read_text(encoding="utf-8"))
+        source_rows = raw_cache.get(relative)
+        index = row.get("source_index")
+        if source_rows is None or not isinstance(index, int) or not 0 <= index < len(source_rows):
+            errors.append(f"Invalid R1 manifest row locator: {relative}:{index}")
+            continue
+        source = source_rows[index]
+        text = str(source.get("raw_text") or "").strip()
+        text_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        if text_hash != row.get("raw_text_sha256") or len(text) != row.get("text_length"):
+            errors.append(f"R1 manifest content mismatch: {relative}:{index}")
+        author = str(source.get("author") or "")
+        historical_bots = {
+            "gemini-code-assist[bot]", "google-cla[bot]", "github-actions[bot]",
+            "codecov[bot]", "dependabot[bot]", "git-vote[bot]",
+        }
+        if len(text) < 20 or author in historical_bots or author.endswith("[bot]"):
+            errors.append(f"Ineligible row appears in R1 paper manifest: {relative}:{index}")
+
+    expected_cases = {"ERC-8004": 142, "Google-A2A": 4181}
+    if case_counts != expected_cases or summary.get("retained_by_case") != expected_cases:
+        errors.append(f"R1 paper manifest case counts do not match {expected_cases}: {case_counts}")
 
 
 def sha256(path: Path) -> str:
@@ -159,13 +228,12 @@ def verify_public_boundary(errors: list[str]) -> None:
     for path in tracked:
         if path in FORBIDDEN_TRACKED_FILES or path.startswith(FORBIDDEN_TRACKED_PREFIXES):
             errors.append(f"Private or local-only path is tracked: {path}")
-    for relative in git_files("scripts"):
+    for relative in tracked:
         path = ROOT / relative
-        if path.is_file() and path.suffix in {".py", ".md"}:
+        if path.is_file() and path.suffix in {".py", ".md", ".json", ".jsonl", ".csv", ".txt"}:
             text = path.read_text(encoding="utf-8", errors="replace")
-            macos_home_prefix = "/" + "Users/"
-            if macos_home_prefix in text:
-                errors.append(f"Tracked script contains a macOS user path: {relative}")
+            if any(marker in text for marker in FORBIDDEN_LOCAL_PATH_MARKERS):
+                errors.append(f"Tracked file contains a local researcher path: {relative}")
 
 
 def main() -> int:
@@ -176,6 +244,7 @@ def main() -> int:
     for manifest, mode in CHECKSUM_SCOPES.items():
         verify_checksum_manifest(manifest, mode, errors)
     verify_croissant(errors)
+    verify_r1_paper_manifest(errors)
     verify_dataset_card(errors)
     verify_public_boundary(errors)
 
@@ -185,7 +254,10 @@ def main() -> int:
             print(f"  {error}", file=sys.stderr)
         return 1
     print("Repository verification passed.")
-    print(f"Verified {len(CHECKSUM_SCOPES)} checksum manifests and 5 Croissant RecordSets.")
+    print(
+        f"Verified {len(CHECKSUM_SCOPES)} checksum manifests, 5 Croissant RecordSets, "
+        "and the 4,323-row R1 paper manifest."
+    )
     return 0
 
 

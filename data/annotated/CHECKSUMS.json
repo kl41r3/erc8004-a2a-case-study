@@ -21,13 +21,13 @@
     "sha256": "19991e4930851b21c7ffc34d671483e58523344f45afea09887f8a76114001ba"
   },
   "r2/cross-model/a2a/validation/validation_report.json": {
-    "sha256": "a4567f8209ebe921309a9f7055a0f0d618434468c0d3530f27c8534090af275e"
+    "sha256": "47072c6552be65b11bb81acaece221af91e00af619db1a4f01a612e53cf45d74"
   },
   "r2/cross-model/consensus/a2a_annotations.json": {
     "sha256": "431888f42ec59ea7f91fc2381f9a23744cd4130bcc7d877be1dad061438b280b"
   },
   "r2/cross-model/consensus/consensus_stats.json": {
-    "sha256": "d83a45fa1889003903360d223911af19f217f40b64866d4a0155c8f70d8a1689"
+    "sha256": "1173a2a61c5ee098d0e660588dae4da7a8751c2e58fd2979b4ed13d17a3f7849"
   },
   "r2/cross-model/consensus/erc_annotations.json": {
     "sha256": "bfc2f60eb84b94ae001c7ef63c1ad9407f96ca07b4cf25ff6967dc38ee91d773"
@@ -78,7 +78,7 @@
     "sha256": "cd80405db5bd5d68619fd88072a2eb90c743876de0b5be5a7d7e7acf9f38d89b"
   },
   "r2/cross-model/validation/validation_report.json": {
-    "sha256": "f90614e440436c32a0cd3d41e1f74bc6b66e13560c60cadfd935816fdaf9558c"
+    "sha256": "b6f768e9363c6bfbc28323e5d963195254ce057c48e5d65eb80ebe96d315c878"
   },
   "r2/cross-round/a2a/deepseek-v4-flash/annotations.json": {
     "sha256": "1e924040ed91a799a6c605424a75c5364c513781131fcda6117527e602b8a1d2"

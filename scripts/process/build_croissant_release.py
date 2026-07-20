@@ -609,9 +609,14 @@ def main() -> None:
         "alignment": {
             "r1_paper_reported": {"erc": 142, "a2a": 4181, "total": 4323},
             "r1_annotation_archive": {"erc": 149, "a2a": 5272, "total": 5421},
+            "r1_paper_membership_manifest": {
+                "path": "data/manifests/r1_paper_v1.jsonl",
+                "summary": "data/manifests/r1_paper_v1_summary.json",
+                "sha256": "0445428da7b67f6c7a62b5bb83014dccdd92433fc8e66819f55d4839e5ec92cb",
+            },
             "r1_policy": (
-                "Publish the traceable annotation archive; do not invent row-level paper membership "
-                "because no exact retained-record manifest exists."
+                "Publish the complete annotation archive and preserve the exact paper subset "
+                "separately through the frozen row-level membership manifest."
             ),
             "r2_policy": (
                 "Publish cross-model and cross-round results as separate record sets because they use "
