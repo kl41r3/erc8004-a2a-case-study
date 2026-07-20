@@ -59,3 +59,10 @@ scripts/topic-stance-heatmap.png
 
 # Cross-round annotation intermediate shards (only final annotations + consensus are tracked)
 data/annotated/r2/cross-round/**/shard_*.json
+
+# Dataset payloads are published on Hugging Face, not GitHub
+data/raw/
+data/annotated/
+data/manifests/
+data/croissant/v1/*.parquet
+data/.cache/

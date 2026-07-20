@@ -4,9 +4,9 @@
 >
 > **📊 Data:** [See on Hugging Face](https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance) — full raw + annotated dataset, [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 >
-> **Public computational package:** This repository contains the reproducible code, released data,
-> analysis artifacts, and figures. Private person-level investigation notes and reviewer materials
-> are intentionally excluded. SHA-256 checksums protect data provenance.
+> **Public computational package:** GitHub contains the reproducible code, metadata, analysis
+> artifacts, and figures. Dataset payloads are hosted only on Hugging Face and are downloaded from
+> a pinned revision. Private person-level investigation notes and reviewer materials are excluded.
 
 ---
 
@@ -36,12 +36,8 @@ workspace/
 ├── uv.lock                         ← Locked dependency versions (exact)
 ├── .env.example                    ← Environment variable template
 ├── data/
-│   ├── README.md                   ← Dataset card + directory map
-│   ├── croissant/v1/               ← Croissant 1.1 release with Parquet RecordSets
-│   ├── raw/                        ← Original scraped records (R1 + R2 tier1/tier2)
-│   │   └── CHECKSUMS.json          ← SHA-256 of all raw data files
-│   └── annotated/                  ← LLM annotations + consensus (R1 + R2 cross-model + cross-round)
-│       └── CHECKSUMS.json          ← SHA-256 of all annotated data files
+│   ├── README.md                   ← Dataset card and Hugging Face pointer
+│   └── croissant/                  ← Tracked metadata, checksums, and validator evidence
 ├── scripts/
 │   ├── scrape/                     ← Data collection (curl-based scrapers)
 │   ├── process/                    ← LLM annotation, consensus, enrichment
@@ -63,10 +59,10 @@ workspace/
 
 The repository supports two different operations that should not be conflated:
 
-1. **Exact release reproduction**, using the frozen public R1 and R2 artifacts. This path
-   requires no API keys and reconstructs the 4,323-row R1 paper manifest and the Croissant
-   release before validating every checksum, row locator, content hash, RecordSet count,
-   and public-repository boundary.
+1. **Exact release reproduction**, using R1 and R2 payloads downloaded from the immutable
+   Hugging Face revision pinned in `scripts/publish/download_hf_dataset.py`. This path requires
+   no API keys and reconstructs the 4,323-row R1 paper manifest and Croissant release before
+   validating checksums, row counts, RecordSet counts, and the GitHub distribution boundary.
 2. **Provenance reruns**, using live source APIs and hosted LLMs. These commands document
    how the archived artifacts were produced, but upstream content and hosted model behavior
    can change. A later live rerun is therefore not expected to be byte-identical to the
@@ -85,6 +81,17 @@ No `.env` file or paid service is required for this command. A successful run en
 `Exact R1/R2 release reproduction passed.` The expected R1 manifest SHA-256 is
 `0445428da7b67f6c7a62b5bb83014dccdd92433fc8e66819f55d4839e5ec92cb`.
 
+To download the data without rebuilding the release:
+
+```bash
+uv run python scripts/publish/download_hf_dataset.py
+uv run python scripts/verify_repository.py --with-data
+```
+
+The downloader is pinned to Hugging Face commit
+[`7ff732fc3c4418a480c7bf49d860b4a4a3082755`](https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance/commit/7ff732fc3c4418a480c7bf49d860b4a4a3082755).
+Downloaded payloads are ignored by Git and are never recommitted to this repository.
+
 ### Croissant 1.1 Release
 
 The versioned machine-readable release separates the R1 annotation archive, R2 cross-model
@@ -92,12 +99,14 @@ consensus, R2 cross-round consensus, and their normalized vote tables. This prev
 from different pipeline stages from being interpreted as one mutable corpus.
 
 ```bash
+uv run python scripts/publish/download_hf_dataset.py
 uv run python scripts/process/build_croissant_release.py
 uvx --from mlcroissant mlcroissant validate --jsonld data/croissant/v1/croissant.json
 ```
 
-Outputs live in `data/croissant/v1/`. `release_manifest.json` records source hashes, exact
-counts, and the R1/R2 alignment policy.
+GitHub retains `croissant.json`, `SCHEMA.md`, `release_manifest.json`, `CHECKSUMS.json`, and
+the validator screenshot. The five Parquet payloads are hosted on Hugging Face and appear
+locally only after the download command.
 
 ### GitHub Education assisted publication workflow
 
@@ -109,25 +118,22 @@ interpretation boundaries were reviewed against the source artifacts and verifie
 repository checks.
 
 The publication process reformats heterogeneous JSON artifacts into five homogeneous Parquet
-tables before staging them for Hugging Face. The release builder creates the Croissant 1.1
-metadata and checksum manifest, and the data-only staging script excludes paper sources,
-private notes, credentials, and local agent files. Hugging Face then exposes each Parquet table
-as a separate Dataset Viewer config so that incompatible R1, cross-model, and cross-round
-scopes are not silently merged.
+tables before publishing them to Hugging Face. GitHub does not track raw, annotated, manifest,
+or Parquet payloads. It retains the code, the immutable Hugging Face pointer, Croissant metadata,
+checksums, and validation evidence. Hugging Face exposes each Parquet table as a separate Dataset
+Viewer config so incompatible R1, cross-model, and cross-round scopes are not silently merged.
 
 The checked metadata file is [`data/croissant/v1/croissant.json`](data/croissant/v1/croissant.json).
 The NeurIPS Croissant Validator evidence is stored at
 [`data/croissant/neurips-croissant-validator-pass.png`](data/croissant/neurips-croissant-validator-pass.png).
 
-Verify the repository and prepare a data-only Hugging Face staging directory locally:
+Verify the code-only GitHub release, or download and verify the full data release:
 
 ```bash
 uv run python scripts/verify_repository.py
-uv run python scripts/publish/prepare_hf_dataset.py --output /private/tmp/rq1-hf-release
+uv run python scripts/publish/download_hf_dataset.py
+uv run python scripts/verify_repository.py --with-data
 ```
-
-The staging command does not access the network. It excludes code, paper sources, private
-research notes, reviewer materials, and local Agent files.
 
 ---
 
@@ -193,8 +199,8 @@ All scripts are run via `uv run python scripts/...`. The `uv run` prefix ensures
 
 ### Step 1 — Data Collection (Scraping)
 
-The repository already contains the frozen raw records used by the release. The following
-commands are provenance reruns against live public platforms and may collect newer content.
+The pinned Hugging Face download provides the frozen raw records used by the release. The
+following commands are provenance reruns against live public platforms and may collect newer content.
 
 ```bash
 # === ERC-8004 (no API key needed) ===
@@ -665,4 +671,4 @@ Full results: `analysis/metrics/r1/network_metrics_table.csv`, `analysis/topic_d
 
 **Code:** MIT License.
 
-**Data:** [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — attribution required, non-commercial use only. To be hosted on Hugging Face.
+**Data:** [Hugging Face dataset](https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance), released under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).

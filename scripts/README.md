@@ -22,7 +22,7 @@ scripts/
 │       ├── dna/                 Method 1 — Discourse Network Analysis
 │       └── sociosemantic/       Method 2 — Socio-semantic bipartite network
 ├── visualise/               Interactive HTML graphs and paper figures
-├── publish/                 Data-only local release staging, with no network writes
+├── publish/                 Pinned Hugging Face download and local release staging
 └── pipeline/                Orchestration scripts (chain multiple phases)
 ```
 
@@ -152,11 +152,14 @@ Single source of truth for constants and utilities. Every script in the pipeline
 
 ```bash
 uv run python scripts/verify_repository.py
+uv run python scripts/publish/download_hf_dataset.py
+uv run python scripts/verify_repository.py --with-data
 uv run python scripts/publish/prepare_hf_dataset.py --output /private/tmp/rq1-hf-release
 ```
 
-The first command is read-only. The second command creates a data-only local staging
-directory and never uploads it.
+The first command validates the code-only GitHub boundary. The downloader restores the frozen
+Hugging Face payloads, and the third command verifies their checksums and row counts. The final
+command creates a data-only local staging directory and never uploads it.
 
 ---
 

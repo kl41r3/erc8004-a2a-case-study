@@ -46,6 +46,15 @@ Full raw + annotated dataset for **RQ1: DAO governance vs. corporate governance 
 standardization** — comparing **ERC-8004** (Trustless Agents, EIP/DAO process) against **Google A2A**
 (Agent-to-Agent protocol, corporate hierarchy).
 
+> **Hosting boundary:** Dataset payloads are hosted on
+> [Hugging Face](https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance),
+> not in Git. This GitHub directory retains the dataset card, Croissant metadata, checksums,
+> and validation evidence. Download the frozen release with:
+>
+> ```bash
+> uv run python scripts/publish/download_hf_dataset.py
+> ```
+
 > **GitHub repository:** [kl41r3/erc8004-a2a-case-study](https://github.com/kl41r3/erc8004-a2a-case-study) — complete computational pipeline (scraping → LLM annotation → analysis → figures).
 
 ---
@@ -84,19 +93,19 @@ Licensed **CC BY-NC 4.0** (attribution, non-commercial).
 
 ```
 data/
-├── README.md                    ← This file (dataset card)
-├── manifests/                   Frozen paper-analysis membership
+├── README.md                    ← Tracked dataset card and hosting boundary
+├── manifests/                   Downloaded or deterministically rebuilt, ignored by Git
 │   ├── r1_paper_v1.jsonl        Exact 4,323 retained R1 rows
 │   └── r1_paper_v1_summary.json Input hashes, policy provenance, and manifest hash
-├── croissant/v1/                Croissant 1.1 machine-readable release
+├── croissant/v1/                Tracked metadata plus downloaded Parquet payloads
 │   ├── croissant.json           Versioned metadata + 5 RecordSets
 │   ├── *.parquet                R1, R2 consensus, and normalized vote tables
 │   ├── release_manifest.json    Source hashes, counts, and alignment decisions
 │   └── CHECKSUMS.json           Release-file SHA-256 checksums
-├── raw/                         Original scraped records (R1 + R2)
+├── raw/                         Downloaded original records, ignored by Git
 │   ├── (R1 files at root)
 │   └── r2/                      R2 expanded scrape data (tier1 + tier2)
-├── annotated/                   LLM-annotated + manually enriched
+├── annotated/                   Downloaded annotations, ignored by Git
 │   ├── r1/                      R1 baseline annotations
 │   │   ├── annotated_records.json      All R1 records with LLM labels
 │   │   └── author_profiles.json        Per-author institution profiles
@@ -116,7 +125,7 @@ data/
 
 ★ = final analysis-grade data used by the paper.
 
-The raw archive preserves public source text for research traceability. Source text can
+After download, the raw archive preserves public source text for research traceability. Source text can
 contain strings that resemble credentials or configuration examples. They are not repository
 credentials and must not be reused. Repository-owned secrets are excluded by `.gitignore` and
 the public-boundary verifier.
@@ -144,9 +153,10 @@ The R1 archive contains 30 pairs that refer to the same public GitVote comments 
 different annotation events. `source_record_id` identifies the shared source; `record_id`
 identifies each pipeline-layer annotation event.
 
-Rebuild locally:
+Download the frozen payloads and rebuild locally:
 
 ```bash
+uv run python scripts/publish/download_hf_dataset.py
 uv run python scripts/process/build_croissant_release.py
 ```
 
