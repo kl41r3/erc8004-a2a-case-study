@@ -12,6 +12,7 @@ authors:
 year: 2026
 type: software
 license: MIT
+doi: 10.5281/zenodo.21830235
 repository-code: https://github.com/kl41r3/erc8004-a2a-case-study
 repository: https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance
 keywords:

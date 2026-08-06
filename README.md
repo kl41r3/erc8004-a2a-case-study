@@ -2,6 +2,8 @@
 
 > **🎉 Paper accepted at KDD 2026** (ACM workshop).
 >
+> **📦 Archive:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830235.svg)](https://doi.org/10.5281/zenodo.21830235) (Zenodo, all versions)
+>
 > **📊 Data:** [See on Hugging Face](https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance) — full raw + annotated dataset, [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 >
 > **Public computational package:** GitHub contains the reproducible code, metadata, analysis
