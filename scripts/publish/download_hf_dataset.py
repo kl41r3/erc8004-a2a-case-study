@@ -19,7 +19,7 @@ from huggingface_hub import snapshot_download
 ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT / "data"
 HF_REPO_ID = "kl41r3/erc8004-vs-a2a-governance"
-HF_REVISION = "7ff732fc3c4418a480c7bf49d860b4a4a3082755"
+HF_REVISION = "987913bacae1a169bb39587b22dd002f74293177"
 ALLOW_PATTERNS = (
     "raw/**",
     "annotated/**",

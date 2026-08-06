@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: If you use this software or the accompanying dataset, please cite it as below.
+title: "Agentic Analysis for Agentic Infrastructure: An LLM-Powered Pipeline for Comparative Governance of DAO and Corporate AI Protocols"
+authors:
+  - family-names: Wang
+    given-names: Yutian
+    affiliation: Duke Kunshan University
+  - family-names: Zhang
+    given-names: Luyao
+    affiliation: Duke Kunshan University
+    email: lz183@duke.edu
+year: 2026
+type: software
+license: MIT
+repository-code: https://github.com/kl41r3/erc8004-a2a-case-study
+repository: https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance
+keywords:
+  - governance
+  - DAO
+  - AI agents
+  - standardization
+  - LLM annotation
+notes: Dataset released under CC BY-NC 4.0 on Hugging Face (kl41r3/erc8004-vs-a2a-governance).

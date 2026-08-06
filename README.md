@@ -89,7 +89,7 @@ uv run python scripts/verify_repository.py --with-data
 ```
 
 The downloader is pinned to Hugging Face commit
-[`7ff732fc3c4418a480c7bf49d860b4a4a3082755`](https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance/commit/7ff732fc3c4418a480c7bf49d860b4a4a3082755).
+[`987913bacae1a169bb39587b22dd002f74293177`](https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance/commit/987913bacae1a169bb39587b22dd002f74293177).
 Downloaded payloads are ignored by Git and are never recommitted to this repository.
 
 ### Croissant 1.1 Release
