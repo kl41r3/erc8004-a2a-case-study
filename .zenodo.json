@@ -1,0 +1,33 @@
+{
+  "title": "Agentic Analysis for Agentic Infrastructure: An LLM-Powered Pipeline for Comparative Governance of DAO and Corporate AI Protocols",
+  "description": "Computational pipeline for the comparative governance study of ERC-8004 (DAO / EIP rough consensus) and Google A2A (corporate TSC): scraping, multi-model LLM annotation, discourse metrics, and social network analysis. The accompanying dataset is published on Hugging Face (kl41r3/erc8004-vs-a2a-governance, CC BY-NC 4.0) under a pinned revision.",
+  "upload_type": "software",
+  "version": "v1.0.1",
+  "creators": [
+    {
+      "name": "Wang, Yutian",
+      "affiliation": "Duke Kunshan University"
+    },
+    {
+      "name": "Zhang, Luyao",
+      "affiliation": "Duke Kunshan University"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "governance",
+    "DAO",
+    "AI agents",
+    "standardization",
+    "LLM annotation",
+    "computational social science"
+  ],
+  "related_identifiers": [
+    {
+      "scheme": "url",
+      "identifier": "https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance",
+      "relation": "isSupplementedBy",
+      "resource_type": "dataset"
+    }
+  ]
+}
