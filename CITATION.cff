@@ -9,6 +9,7 @@ authors:
     given-names: Luyao
     affiliation: Duke Kunshan University
     email: lz183@duke.edu
+version: 1.1.0
 year: 2026
 type: software
 license: MIT
@@ -21,4 +22,9 @@ keywords:
   - AI agents
   - standardization
   - LLM annotation
-notes: Dataset released under CC BY-NC 4.0 on Hugging Face (kl41r3/erc8004-vs-a2a-governance).
+  - reproducibility
+notes: >
+  Version 1.1.0 adds the equal-size robustness tables and the stratified
+  human-validation worksheet on top of the v1.0 R1/R2 pipeline release. The
+  dataset is released under CC BY-NC 4.0 on Hugging Face
+  (kl41r3/erc8004-vs-a2a-governance).

@@ -19,9 +19,12 @@ wheels/
 
 # LaTeX build artifacts
 *.aux
+*.bbl
+*.blg
 *.fdb_latexmk
 *.fls
 *.log
+*.out
 *.synctex.gz
 
 # Local-only directories
