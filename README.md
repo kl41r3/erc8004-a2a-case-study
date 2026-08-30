@@ -1,6 +1,10 @@
 # Agentic Analysis for Agentic Infrastructure: An LLM-Powered Pipeline for Comparative Governance of DAO and Corporate AI Protocols
 
-> **🎉 Paper accepted at KDD 2026** (ACM workshop).
+> **🎉 Paper accepted at KDD 2026** (ACM workshop) — original v1.0 release.
+>
+> **📊 v1.1.0:** five non-visual robustness tables, a stratified human-validation
+> worksheet, and an extended release verifier are included in `analysis/metrics/neurips26/`,
+> `validation/`, and `scripts/verify_neurips26.py`.
 >
 > **📦 Archive:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830235.svg)](https://doi.org/10.5281/zenodo.21830235) (Zenodo, all versions)
 >
@@ -12,6 +16,30 @@
 
 ---
 
+## Release versions
+
+| Version | Contents |
+|---|---|
+| **v1.0** (KDD 2026 workshop, accepted) | R1 pairwise pipeline, R2 34-ERC cluster expansion, Croissant 1.1 release |
+| **v1.1.0** (this release) | Everything in v1.0, plus five non-visual robustness tables (`analysis/metrics/neurips26/`), the stratified 50-record human-validation worksheet (`validation/`), the equal-size bootstrap and tie-threshold robustness script, and the extended release verifier (`scripts/verify_neurips26.py`) |
+
+Both versions share the same frozen R1/R2 data. v1.1.0 is a backward-compatible
+addition: no v1.0 file, checksum, or Hugging Face payload is modified.
+
+This release deliberately distributes **no manuscript**: the NeurIPS 2026 paper that
+these robustness tables accompany is under anonymous review and will be published
+separately after the review period.
+
+### Scope boundary of v1.1.0
+
+The nine-protocol (R3) analysis layer — its 7,458-record corpus, per-protocol topic fits,
+and governance-index construct checks — remains in the private research tree and is **not**
+part of this repository or the Hugging Face dataset. The pairwise study, the ERC-cluster
+expansion, the robustness tables, and the human-validation worksheet **are** reproducible
+from this repository.
+
+---
+
 ## Research Context
 
 **Research Question:** Compared to corporations, how does the governance structure of permissionless DAOs shape participation patterns, discourse composition, and network topology in AI agent protocol standardization?
@@ -20,12 +48,16 @@
 
 **Case B — Google A2A** (Agent-to-Agent protocol): Corporate-initiated AI agent protocol under Linux Foundation governance with an 8-seat Technical Steering Committee that vests binding decision authority.
 
-The paper reports results at two scopes:
+The pipeline reports results at two scopes:
 
-| Pipeline | Scope | Records | Annotators | 
+| Pipeline | Scope | Records | Annotators |
 |---|---|---|---|
 | **Main-text (R1)** | Single ERC-8004 vs. A2A | Paper reports ERC 142 / A2A 4,181; stored annotation archive has 5,421 rows | MiniMax-M2.5 |
 | **Appendix (R2)** | 34-ERC cluster + cross-model + cross-round consensus | Cross-model ERC 1,664 / A2A 4,058; current cross-round ERC 1,664 / A2A 4,187 | 3 models × 3 rounds |
+
+The v1.1.0 robustness layer extends this design toward a nine-protocol comparison
+(A2A, ACP, AP2, ERC-8004, ERC-8183, MCP, MPP, UCP, x402); that R3 layer is pending
+public release (see the scope boundary above).
 
 ---
 
@@ -34,28 +66,35 @@ The paper reports results at two scopes:
 ```
 workspace/
 ├── README.md                       ← This file
-├── pyproject.toml                  ← Dependency specification (uv)
-├── uv.lock                         ← Locked dependency versions (exact)
-├── .env.example                    ← Environment variable template
-├── data/
-│   ├── README.md                   ← Dataset card and Hugging Face pointer
-│   └── croissant/                  ← Tracked metadata, checksums, and validator evidence
+├── Makefile                        ← verify / manifest / robustness / reproduce / all
+├── ASSET_LICENSES.md               ← Asset and data ledger
+├── CITATION.cff / .zenodo.json     ← Citation and archival metadata
+├── validation/
+│   ├── sample_50.csv               ← Stratified 50-record human-validation worksheet (blank)
+│   └── INTER_RATER_GUIDE.md        ← Inter-rater coding guide
+├── analysis/
+│   ├── metrics/r1/                 ← R1 network tables (tracked)
+│   ├── metrics/r2/                 ← R2 network tables (tracked)
+│   └── metrics/neurips26/          ← Five robustness tables + summary.json (tracked)
 ├── scripts/
+│   ├── verify_repository.py        ← v1.0 repository verifier
+│   ├── verify_neurips26.py         ← v1.1.0 robustness-release verifier
+│   ├── reproduce_release.py        ← Exact R1/R2 reproduction entry point
+│   ├── analyse/run_neurips26_robustness.py  ← Regenerates the five robustness tables
 │   ├── scrape/                     ← Data collection (curl-based scrapers)
 │   ├── process/                    ← LLM annotation, consensus, enrichment
 │   ├── analyse/                    ← Analysis: metrics, topics, networks
-│   │   ├── topic_discovery/        ← BERTopic, Thematic-LM, CryptoBERT
-│   │   └── network_discourse/      ← DNA, Socio-semantic bipartite
-│   ├── visualise/                  ← Figure generation, interactive HTML
-│   ├── pipeline/                   ← Full-pipeline orchestrators
-│   └── lib/                        ← Shared utilities (paths, models, I/O)
-└── analysis/                      ← Analysis outputs (metrics, CSVs, reports)
+│   └── visualise/                  ← Figure generation, interactive HTML
+└── data/
+    ├── README.md                   ← Dataset card and Hugging Face pointer
+    └── croissant/                  ← Tracked metadata, checksums, and validator evidence
 ```
 
 **Key distinction:**
 
 - **Main-text pipeline** (R1) uses `data/raw/` files and `data/annotated/r1/`. Scripts without `_r2` suffix.
 - **Appendix pipeline** (R2) uses `data/raw/r2/` and `data/annotated/r2/`. Scripts with `_r2` suffix or in `scripts/pipeline/run_r2.py`.
+- **v1.1.0 robustness layer** uses the frozen R1 manifest via `scripts/analyse/run_neurips26_robustness.py` and writes `analysis/metrics/neurips26/`.
 
 ### Reproducibility Contract
 
@@ -65,23 +104,35 @@ The repository supports two different operations that should not be conflated:
    Hugging Face revision pinned in `scripts/publish/download_hf_dataset.py`. This path requires
    no API keys and reconstructs the 4,323-row R1 paper manifest and Croissant release before
    validating checksums, row counts, RecordSet counts, and the GitHub distribution boundary.
+   The v1.1.0 robustness tables, network tables, and model-reliability values are additionally
+   checked by `scripts/verify_neurips26.py`.
 2. **Provenance reruns**, using live source APIs and hosted LLMs. These commands document
    how the archived artifacts were produced, but upstream content and hosted model behavior
    can change. A later live rerun is therefore not expected to be byte-identical to the
-   frozen March 2026 release.
+   frozen release.
 
-For the exact path, start from a fresh clone and run:
+**One shortest command for the exact path** (from a fresh clone):
 
 ```bash
 git clone https://github.com/kl41r3/erc8004-a2a-case-study.git
 cd erc8004-a2a-case-study
 uv sync --frozen
-uv run python scripts/reproduce_release.py
+make reproduce
 ```
 
 No `.env` file or paid service is required for this command. A successful run ends with
 `Exact R1/R2 release reproduction passed.` The expected R1 manifest SHA-256 is
 `0445428da7b67f6c7a62b5bb83014dccdd92433fc8e66819f55d4839e5ec92cb`.
+
+**Component commands** (all runnable independently):
+
+| Command | What it does | Needs API key |
+|---|---|---|
+| `make verify` | Runs `verify_repository.py` + `verify_neurips26.py` (code, tables, metadata, boundary) | No |
+| `make reproduce` | Downloads the pinned Hugging Face payloads, rebuilds the manifest and Croissant release, verifies everything | No |
+| `make manifest` | Rebuilds the frozen 4,323-row R1 paper manifest from the downloaded raw payloads | No |
+| `make robustness` | Regenerates the five NeurIPS robustness tables (seed 20260826, 2,000 bootstrap repetitions) | No |
+| `make all` | manifest + robustness + verify | No |
 
 To download the data without rebuilding the release:
 
@@ -93,6 +144,51 @@ uv run python scripts/verify_repository.py --with-data
 The downloader is pinned to Hugging Face commit
 [`987913bacae1a169bb39587b22dd002f74293177`](https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance/commit/987913bacae1a169bb39587b22dd002f74293177).
 Downloaded payloads are ignored by Git and are never recommitted to this repository.
+
+### Resource requirements
+
+The exact reproduction path was validated on a 10-core Apple M4 with 32 GB RAM running
+macOS 26.6.2, Python 3.14, and `uv` 0.12.6. Measured wall-clock times on that machine:
+`make verify` ≈ 4 s, `make reproduce` ≈ 19 s (including the Hugging Face download),
+and `make robustness` ≈ 1 s; allow extra time for the initial dependency download (the
+installed environment is ≈ 1.2 GB). Expect roughly 2 GB of free disk space for the cloned
+repository, the virtual environment, and the downloaded Hugging Face payloads. No GPU and
+no paid model calls are needed for the exact path. The historical hosted-annotation run
+consumed 1,161,411 prompt tokens and 205,688 completion tokens; a live rerun requires the
+corresponding API keys and is not expected to be byte-identical.
+
+### Validity limits
+
+The released artifact is observational and descriptive. Cross-model reliability is moderate
+(Fleiss' κ 0.545–0.541 for argument type) and is **not** a human gold-standard validation:
+the 50-record worksheet in `validation/` is deliberately blank, and no label accuracy, F1,
+or human–model agreement is claimed. Equal-size bootstrap intervals quantify
+record-resampling uncertainty only; they do not balance case maturity, platform
+affordances, or organizational resources. Network edges encode platform-specific
+affordances and are not a harmonized edge definition. The analyses separate formal
+authority, observed influence, and public observability, and claim no causal effect of
+governance form.
+
+---
+
+## The NeurIPS 2026 robustness tables (v1.1.0)
+
+`analysis/metrics/neurips26/` holds the five non-visual robustness outputs behind the
+NeurIPS 2026 study — corpus-stage counts (6 rows), equal-size bootstrap intervals
+(5 rows), channel composition (27 rows), quarterly composition (36 rows), and
+network tie-threshold sensitivity (8 rows). `validation/` holds the stratified
+50-record human-validation worksheet (deliberately blank) and the inter-rater
+coding guide.
+
+```bash
+make robustness   # deterministic: seed 20260826, 2,000 bootstrap repetitions
+make verify       # integrity checks over the release
+```
+
+`scripts/verify_neurips26.py` checks the robustness tables, the R1/R2 network tables,
+the four-model reliability values, the human-validation boundary, repository metadata,
+and the public distribution boundary (including that no manuscript file is tracked in
+this release).
 
 ### Croissant 1.1 Release
 
@@ -579,6 +675,7 @@ The R2 pipeline has 10 phases: (1) A2A ICR validation, (2) consensus building, (
 | Cross-model (R2) | 3 vendors | 1 | Current artifact: ERC 1,664 / A2A 4,058 | argument_type Fleiss' κ = 0.683 (ERC Substantial) / 0.619 (A2A Substantial) |
 | Cross-round | 3 models | 3 | Paper snapshot: ERC 1,664 / A2A 3,844; current artifact: ERC 1,664 / A2A 4,187 | GLM-4-Plus κ = 0.86–0.93 (most stable); DeepSeek κ = 0.49–0.63 |
 | 4-model (R1 + cross-round) | +MiniMax-M2.5 | 1 | Paper snapshot: ERC 144 / A2A 3,844 | 4-way Fleiss' κ ≈ 0.46–0.51 (Moderate); model choice dominates stochastic noise |
+| Equal-size bootstrap (v1.1.0) | — | 2,000 reps | Pairwise: 142 vs 142 per draw | Every 95% interval for the principal argument-type differences includes zero |
 
 **What replicates** (3 of 4 findings): (i) discourse remains technically dominated across models; (ii) participation inequality persists (Gini ≈ 0.8); (iii) DAO attains denser within-community consensus.
 
