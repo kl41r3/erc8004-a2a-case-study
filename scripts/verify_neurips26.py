@@ -2,10 +2,11 @@
 
 This is the public counterpart of the review-artifact verifier. It checks the
 five robustness tables, the R1/R2 network tables, the four-model reliability
-values, the human-validation boundary, repository metadata, and the public
-boundary of tracked files — including that no manuscript file is distributed
-in this release. It does not require network access; dataset payloads are
-optional and verified by ``verify_repository.py --with-data`` after download.
+values, repository metadata, and the public boundary of tracked files —
+including that no manuscript file and no human-validation worksheet are
+distributed in this release. It does not require network access; dataset
+payloads are optional and verified by ``verify_repository.py --with-data``
+after download.
 
 Usage:
     uv run python scripts/verify_neurips26.py
@@ -34,10 +35,12 @@ EXPECTED_FLEISS_KAPPA = {
 
 EXPECTED_ROW_COUNTS = {"stage_rows": 6, "bootstrap_rows": 5, "channel_rows": 27, "temporal_rows": 36, "network_rows": 8}
 
-# Manuscript files must not be distributed in this release.
+# Manuscript files and the unpublished human-validation worksheet must not be
+# distributed in this release.
 FORBIDDEN_TRACKED_PREFIXES = (
     "paper/",
     "paper-acm/",
+    "validation/",
 )
 
 FORBIDDEN_LOCAL_PATH_MARKERS = (
@@ -110,11 +113,9 @@ def verify_model_reliability() -> None:
 
 
 def verify_human_boundary() -> None:
-    rows = list(csv.DictReader((ROOT / "validation" / "sample_50.csv").open()))
-    require(len(rows) == 50, "human-validation worksheet must contain 50 records")
-    human_fields = [name for name in rows[0] if name.startswith("human_")]
-    require(all(not str(row[field]).strip() for row in rows for field in human_fields),
-            "worksheet is no longer blank; adjudicate and update the release before claiming validity")
+    """The release claims no human validation, so no worksheet may ship."""
+    require(not (ROOT / "validation").is_dir(),
+            "validation/ must not be distributed: the release claims no human validation")
 
 
 def verify_metadata() -> None:
@@ -154,12 +155,10 @@ def verify_public_boundary() -> None:
     tracked = releasable_files()
     require(any(line.startswith("analysis/metrics/neurips26/") for line in tracked),
             "robustness tables are not tracked in git")
-    require(any(line.startswith("validation/") for line in tracked),
-            "validation worksheet is not tracked in git")
 
     for relative in tracked:
         require(not relative.startswith(FORBIDDEN_TRACKED_PREFIXES),
-                f"manuscript path is tracked but this release distributes no manuscript: {relative}")
+                f"excluded release path is tracked: {relative}")
         path = ROOT / relative
         if not path.is_file():
             continue
@@ -196,8 +195,8 @@ def main() -> int:
     verify_frozen_manifest_if_present()
     print("PASS: NeurIPS 2026 robustness release verification")
     print("Checked robustness tables, network tables, model reliability,")
-    print("human-validation boundary, metadata, public boundary (no manuscript")
-    print("distributed), and the frozen pairwise manifest when present.")
+    print("metadata, public boundary (no manuscript and no human-validation")
+    print("worksheet distributed), and the frozen pairwise manifest when present.")
     return 0
 
 

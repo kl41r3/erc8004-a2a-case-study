@@ -24,7 +24,6 @@ keywords:
   - LLM annotation
   - reproducibility
 notes: >
-  Version 1.1.0 adds the equal-size robustness tables and the stratified
-  human-validation worksheet on top of the v1.0 R1/R2 pipeline release. The
-  dataset is released under CC BY-NC 4.0 on Hugging Face
+  Version 1.1.0 adds the equal-size robustness tables on top of the v1.0 R1/R2
+  pipeline release. The dataset is released under CC BY-NC 4.0 on Hugging Face
   (kl41r3/erc8004-vs-a2a-governance).

@@ -2,9 +2,8 @@
 
 > **🎉 Paper accepted at KDD 2026** (ACM workshop) — original v1.0 release.
 >
-> **📊 v1.1.0:** five non-visual robustness tables, a stratified human-validation
-> worksheet, and an extended release verifier are included in `analysis/metrics/neurips26/`,
-> `validation/`, and `scripts/verify_neurips26.py`.
+> **📊 v1.1.0:** five non-visual robustness tables and an extended release verifier
+> are included in `analysis/metrics/neurips26/` and `scripts/verify_neurips26.py`.
 >
 > **📦 Archive:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830235.svg)](https://doi.org/10.5281/zenodo.21830235) (Zenodo, all versions)
 >
@@ -21,7 +20,7 @@
 | Version | Contents |
 |---|---|
 | **v1.0** (KDD 2026 workshop, accepted) | R1 pairwise pipeline, R2 34-ERC cluster expansion, Croissant 1.1 release |
-| **v1.1.0** (this release) | Everything in v1.0, plus five non-visual robustness tables (`analysis/metrics/neurips26/`), the stratified 50-record human-validation worksheet (`validation/`), the equal-size bootstrap and tie-threshold robustness script, and the extended release verifier (`scripts/verify_neurips26.py`) |
+| **v1.1.0** (this release) | Everything in v1.0, plus five non-visual robustness tables (`analysis/metrics/neurips26/`), the equal-size bootstrap and tie-threshold robustness script, and the extended release verifier (`scripts/verify_neurips26.py`) |
 
 Both versions share the same frozen R1/R2 data. v1.1.0 is a backward-compatible
 addition: no v1.0 file, checksum, or Hugging Face payload is modified.
@@ -35,8 +34,9 @@ separately after the review period.
 The nine-protocol (R3) analysis layer — its 7,458-record corpus, per-protocol topic fits,
 and governance-index construct checks — remains in the private research tree and is **not**
 part of this repository or the Hugging Face dataset. The pairwise study, the ERC-cluster
-expansion, the robustness tables, and the human-validation worksheet **are** reproducible
-from this repository.
+expansion, and the robustness tables **are** reproducible
+from this repository. No human gold-standard validation of the LLM labels exists; none
+is claimed, and no validation worksheet is distributed.
 
 ---
 
@@ -69,9 +69,6 @@ workspace/
 ├── Makefile                        ← verify / manifest / robustness / reproduce / all
 ├── ASSET_LICENSES.md               ← Asset and data ledger
 ├── CITATION.cff / .zenodo.json     ← Citation and archival metadata
-├── validation/
-│   ├── sample_50.csv               ← Stratified 50-record human-validation worksheet (blank)
-│   └── INTER_RATER_GUIDE.md        ← Inter-rater coding guide
 ├── analysis/
 │   ├── metrics/r1/                 ← R1 network tables (tracked)
 │   ├── metrics/r2/                 ← R2 network tables (tracked)
@@ -161,9 +158,9 @@ corresponding API keys and is not expected to be byte-identical.
 
 The released artifact is observational and descriptive. Cross-model reliability is moderate
 (Fleiss' κ 0.545–0.541 for argument type) and is **not** a human gold-standard validation:
-the 50-record worksheet in `validation/` is deliberately blank, and no label accuracy, F1,
-or human–model agreement is claimed. Equal-size bootstrap intervals quantify
-record-resampling uncertainty only; they do not balance case maturity, platform
+no human audit of the LLM labels exists, no label accuracy, F1, or human–model agreement
+is claimed, and no validation worksheet is distributed. Equal-size bootstrap intervals
+quantify record-resampling uncertainty only; they do not balance case maturity, platform
 affordances, or organizational resources. Network edges encode platform-specific
 affordances and are not a harmonized edge definition. The analyses separate formal
 authority, observed influence, and public observability, and claim no causal effect of
@@ -176,9 +173,7 @@ governance form.
 `analysis/metrics/neurips26/` holds the five non-visual robustness outputs behind the
 NeurIPS 2026 study — corpus-stage counts (6 rows), equal-size bootstrap intervals
 (5 rows), channel composition (27 rows), quarterly composition (36 rows), and
-network tie-threshold sensitivity (8 rows). `validation/` holds the stratified
-50-record human-validation worksheet (deliberately blank) and the inter-rater
-coding guide.
+network tie-threshold sensitivity (8 rows).
 
 ```bash
 make robustness   # deterministic: seed 20260826, 2,000 bootstrap repetitions
@@ -186,9 +181,8 @@ make verify       # integrity checks over the release
 ```
 
 `scripts/verify_neurips26.py` checks the robustness tables, the R1/R2 network tables,
-the four-model reliability values, the human-validation boundary, repository metadata,
-and the public distribution boundary (including that no manuscript file is tracked in
-this release).
+the four-model reliability values, repository metadata, and the public distribution
+boundary (including that no manuscript file is tracked in this release).
 
 ### Croissant 1.1 Release
 
