@@ -1,0 +1,7 @@
+case,stage,records,interpretation
+ERC-8004,annotation_archive,149,Stored LLM annotation archive; not the paper denominator.
+ERC-8004,archive_refiltered,142,Later analysis subset obtained by reapplying the visible filter; not the frozen paper manifest.
+ERC-8004,frozen_paper_manifest,142,Exact R1 paper subset after the frozen text and bot filter.
+Google-A2A,annotation_archive,5272,Stored LLM annotation archive; not the paper denominator.
+Google-A2A,archive_refiltered,4230,Later analysis subset obtained by reapplying the visible filter; not the frozen paper manifest.
+Google-A2A,frozen_paper_manifest,4181,Exact R1 paper subset after the frozen text and bot filter.

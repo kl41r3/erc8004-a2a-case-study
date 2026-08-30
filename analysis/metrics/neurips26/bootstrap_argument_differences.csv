@@ -1,0 +1,6 @@
+argument_type,sample_per_case,bootstrap_repetitions,mean_difference_a2a_minus_erc,ci95_low,ci95_high,probability_difference_above_zero
+Technical,142,2000,-0.018493,-0.119718,0.084507,0.346500
+Governance-Principle,142,2000,-0.031905,-0.070599,0.007042,0.038000
+Economic,142,2000,-0.026954,-0.056338,0.000000,0.010000
+Process,142,2000,0.036338,-0.049296,0.119718,0.773000
+Off-topic,142,2000,0.038965,-0.014085,0.091549,0.904500

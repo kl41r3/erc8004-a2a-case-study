@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "generated_by": "scripts/analyse/run_neurips26_robustness.py",
+  "seed": 20260826,
+  "bootstrap_repetitions": 2000,
+  "paper_corpus": {
+    "ERC-8004": 142,
+    "Google-A2A": 4181
+  },
+  "date_range": {
+    "minimum": "2025-04-08T19:32:21+00:00",
+    "maximum": "2026-03-12T00:40:20+00:00"
+  },
+  "outputs": [
+    "corpus_stage_counts.csv",
+    "bootstrap_argument_differences.csv",
+    "channel_argument_distributions.csv",
+    "temporal_argument_distributions.csv",
+    "network_tie_threshold_sensitivity.csv"
+  ],
+  "validity_boundary": "All checks are descriptive. Equal-size resampling addresses denominator imbalance but does not balance case maturity, platform affordances, or organizational resources. The network inputs use platform-specific edge semantics, so threshold sensitivity is not a harmonized edge-definition test.",
+  "row_counts": {
+    "stage_rows": 6,
+    "bootstrap_rows": 5,
+    "channel_rows": 27,
+    "temporal_rows": 36,
+    "network_rows": 8
+  }
+}
