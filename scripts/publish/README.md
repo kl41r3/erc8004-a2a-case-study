@@ -10,9 +10,11 @@ uv run python scripts/publish/download_hf_dataset.py
 uv run python scripts/verify_repository.py --with-data
 ```
 
-The downloader writes `raw/`, `annotated/`, and the five Parquet payloads into the local
-`data/` directory. These payloads are ignored by Git. The pinned Hugging Face commit prevents
-an exact reproduction from silently following a changing `main` branch.
+The downloader restores the frozen `raw/`, `annotated/`, `manifests/`, and five Croissant
+Parquet payloads into the local `data/` directory. `make reproduce` then rebuilds the local
+`neurips26/` layer from tracked robustness CSVs. These payloads are ignored by Git. The pinned
+Hugging Face commit prevents exact R1/R2 reproduction from silently following a changing
+`main` branch.
 
 Prepare the Hugging Face dataset repository in a new or empty directory:
 
@@ -20,6 +22,6 @@ Prepare the Hugging Face dataset repository in a new or empty directory:
 uv run python scripts/publish/prepare_hf_dataset.py --output /private/tmp/rq1-hf-release
 ```
 
-Run the downloader first. The staging package then contains only the dataset card, `raw/`, `annotated/`, `croissant/`,
-and a generated `PUBLISH_MANIFEST.json`. Review that manifest before any separately
-approved upload.
+Run `make reproduce` first. The staging package then contains only the dataset card, `raw/`,
+`annotated/`, `manifests/`, `croissant/`, the rebuilt `neurips26/` layer, and a generated
+`PUBLISH_MANIFEST.json`. Review that manifest before any separately approved upload.

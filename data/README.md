@@ -18,26 +18,46 @@ tags:
 size_categories:
 - 100K<n<1M
 configs:
-- config_name: r1-annotation-archive
+- config_name: r1-baseline-annotations
   data_files:
   - split: full
     path: croissant/v1/r1_annotations.parquet
-- config_name: r2-cross-model-consensus
+- config_name: r2-consensus-cross-model
   data_files:
   - split: full
     path: croissant/v1/r2_cross_model_consensus.parquet
-- config_name: r2-cross-model-votes
-  data_files:
-  - split: full
-    path: croissant/v1/r2_cross_model_votes.parquet
-- config_name: r2-cross-round-consensus
+- config_name: r2-consensus-test-retest
   data_files:
   - split: full
     path: croissant/v1/r2_cross_round_consensus.parquet
-- config_name: r2-cross-round-votes
+- config_name: r2-votes-cross-model
+  data_files:
+  - split: full
+    path: croissant/v1/r2_cross_model_votes.parquet
+- config_name: r2-votes-test-retest
   data_files:
   - split: full
     path: croissant/v1/r2_cross_round_votes.parquet
+- config_name: neurips26-corpus-stage-counts
+  data_files:
+  - split: full
+    path: neurips26/corpus_stage_counts.parquet
+- config_name: neurips26-bootstrap-differences
+  data_files:
+  - split: full
+    path: neurips26/bootstrap_argument_differences.parquet
+- config_name: neurips26-channel-distributions
+  data_files:
+  - split: full
+    path: neurips26/channel_argument_distributions.parquet
+- config_name: neurips26-temporal-distributions
+  data_files:
+  - split: full
+    path: neurips26/temporal_argument_distributions.parquet
+- config_name: neurips26-network-threshold-sensitivity
+  data_files:
+  - split: full
+    path: neurips26/network_tie_threshold_sensitivity.parquet
 ---
 
 # ERC-8004 vs Google A2A Governance Dataset
@@ -45,15 +65,6 @@ configs:
 Full raw + annotated dataset for **RQ1: DAO governance vs. corporate governance in technology
 standardization** — comparing **ERC-8004** (Trustless Agents, EIP/DAO process) against **Google A2A**
 (Agent-to-Agent protocol, corporate hierarchy).
-
-> **Hosting boundary:** Dataset payloads are hosted on
-> [Hugging Face](https://huggingface.co/datasets/kl41r3/erc8004-vs-a2a-governance),
-> not in Git. This GitHub directory retains the dataset card, Croissant metadata, checksums,
-> and validation evidence. Download the frozen release with:
->
-> ```bash
-> uv run python scripts/publish/download_hf_dataset.py
-> ```
 
 > **GitHub repository:** [kl41r3/erc8004-a2a-case-study](https://github.com/kl41r3/erc8004-a2a-case-study) — complete computational pipeline (scraping → LLM annotation → analysis → figures).
 
@@ -89,23 +100,67 @@ Licensed **CC BY-NC 4.0** (attribution, non-commercial).
 
 ---
 
+## Dataset Viewer subsets: which one should I load?
+
+The Dataset Viewer shows five subsets (configs). They are five related tables, not five
+copies of the same data. Three are analysis-ready consensus/annotation tables; two are
+long-format vote tables that exist only for auditing agreement statistics.
+
+| Subset | Rows | Use it for | Content |
+|---|---:|---|---|
+| `r1-baseline-annotations` | 5,421 | Main-text replication | R1 archive: single-model (MiniMax-M2.5) labels for ERC-8004 vs A2A, five fields including `stakeholder_institution` and `key_point` |
+| `r2-consensus-cross-model` | 5,722 | Appendix analysis (analysis-ready) | R2 majority consensus across 3 independent models, four categorical fields |
+| `r2-consensus-test-retest` | 5,851 | Stability analysis (analysis-ready) | R2 test-retest consensus from 3 models x 3 repeated rounds, three categorical fields |
+| `r2-votes-cross-model` | 68,664 | Recomputing agreement / Fleiss' kappa (audit only) | Long-format per-model votes behind `r2-consensus-cross-model`; not an extra corpus |
+| `r2-votes-test-retest` | 52,659 | Recomputing agreement / Fleiss' kappa (audit only) | Long-format per-model per-round votes behind `r2-consensus-test-retest`; not an extra corpus |
+
+Why the two R2 consensus subsets look duplicated: 5,499 of their source records are shared
+(the same public discussions), but the labels come from two different robustness
+experiments. Cross-model consensus asks "do independent models agree with each other?" and
+keeps `stakeholder_institution`. Test-retest consensus asks "is each model stable across
+repeated runs of the same input?" and uses a later canonical A2A input, so the row counts
+(5,722 vs 5,851) and part of the labels legitimately differ. Join across subsets with
+`source_record_id`; `record_id` additionally encodes the pipeline layer, so the same
+discussion intentionally has different `record_id`s in different subsets.
+
+For most analyses, load the three `*-annotations` / `r2-consensus-*` subsets only. The
+`r2-votes-*` subsets are needed solely to recompute agreement statistics.
+
+The v1.1.0 release introduced five small `neurips26-*` subsets (non-visual robustness
+tables). They are derived summaries, not additional corpora:
+
+| Subset | Rows | Use it for |
+|---|---:|---|
+| `neurips26-corpus-stage-counts` | 6 | Corpus-stage reconciliation (archive vs. refiltered vs. frozen manifest) |
+| `neurips26-bootstrap-differences` | 5 | Equal-size bootstrap intervals for argument-type differences |
+| `neurips26-channel-distributions` | 27 | Argument composition by source channel |
+| `neurips26-temporal-distributions` | 36 | Argument composition by calendar quarter |
+| `neurips26-network-threshold-sensitivity` | 8 | Co-participation network summaries under varying tie weight |
+
+---
+
 ## Directory map
 
 ```
 data/
-├── README.md                    ← Tracked dataset card and hosting boundary
-├── manifests/                   Downloaded or deterministically rebuilt, ignored by Git
+├── README.md                    ← This file (dataset card)
+├── neurips26/                   NeurIPS 2026 robustness layer (v1.1.x)
+│   ├── *.parquet                Five non-visual robustness tables
+│   ├── SCHEMA.md                Schemas and validity boundary
+│   ├── release_manifest.json    Version, seed, corpus, boundary statement
+│   └── CHECKSUMS.json           SHA-256, byte sizes, row counts
+├── manifests/                   Frozen paper-analysis membership
 │   ├── r1_paper_v1.jsonl        Exact 4,323 retained R1 rows
 │   └── r1_paper_v1_summary.json Input hashes, policy provenance, and manifest hash
-├── croissant/v1/                Tracked metadata plus downloaded Parquet payloads
+├── croissant/v1/                Croissant 1.1 machine-readable release
 │   ├── croissant.json           Versioned metadata + 5 RecordSets
 │   ├── *.parquet                R1, R2 consensus, and normalized vote tables
 │   ├── release_manifest.json    Source hashes, counts, and alignment decisions
 │   └── CHECKSUMS.json           Release-file SHA-256 checksums
-├── raw/                         Downloaded original records, ignored by Git
+├── raw/                         Original scraped records (R1 + R2)
 │   ├── (R1 files at root)
 │   └── r2/                      R2 expanded scrape data (tier1 + tier2)
-├── annotated/                   Downloaded annotations, ignored by Git
+├── annotated/                   LLM-annotated + manually enriched
 │   ├── r1/                      R1 baseline annotations
 │   │   ├── annotated_records.json      All R1 records with LLM labels
 │   │   └── author_profiles.json        Per-author institution profiles
@@ -124,11 +179,6 @@ data/
 ```
 
 ★ = final analysis-grade data used by the paper.
-
-After download, the raw archive preserves public source text for research traceability. Source text can
-contain strings that resemble credentials or configuration examples. They are not repository
-credentials and must not be reused. Repository-owned secrets are excluded by `.gitignore` and
-the public-boundary verifier.
 
 ---
 
@@ -153,14 +203,40 @@ The R1 archive contains 30 pairs that refer to the same public GitVote comments 
 different annotation events. `source_record_id` identifies the shared source; `record_id`
 identifies each pipeline-layer annotation event.
 
-Download the frozen payloads and rebuild locally:
+Rebuild locally:
 
 ```bash
-uv run python scripts/publish/download_hf_dataset.py
 uv run python scripts/process/build_croissant_release.py
 ```
 
 See `croissant/v1/SCHEMA.md` for the R1/R2 alignment decision and field semantics.
+
+---
+
+## neurips26/ — NeurIPS 2026 robustness layer (v1.1.x)
+
+This layer was introduced in v1.1.0 and is packaged reproducibly by v1.1.1. The layer
+contains the five non-visual robustness tables of the NeurIPS 2026 study. No manuscript
+is distributed in this release:
+
+| File | Rows | Content |
+|---|---:|---|
+| `corpus_stage_counts.parquet` | 6 | Annotation archive vs. refiltered archive vs. frozen paper manifest (142 ERC-8004 / 4,181 A2A; the 4,230-record subset is a later archive artifact) |
+| `bootstrap_argument_differences.parquet` | 5 | Equal-size bootstrap (2,000 repetitions, seed 20260826) A2A-minus-ERC differences in argument-type shares with 95% intervals; every principal interval includes zero |
+| `channel_argument_distributions.parquet` | 27 | Argument-type composition by source channel |
+| `temporal_argument_distributions.parquet` | 36 | Argument-type composition by calendar quarter |
+| `network_tie_threshold_sensitivity.parquet` | 8 | Co-participation network summaries under varying minimum tie weight |
+
+Regenerate deterministically in the GitHub repository with
+`make robustness` (`scripts/analyse/run_neurips26_robustness.py`), then rebuild this layer
+with `uv run python scripts/publish/build_neurips26_parquet.py --output <dir>`.
+
+**Boundaries.** All results are descriptive. Equal-size resampling addresses the
+142-versus-4,181 denominator imbalance but does not balance case maturity, platform
+affordances, or organizational resources. The network inputs use platform-specific edge
+semantics, so tie-threshold sensitivity is not a harmonized edge-definition test. No file
+in this layer is a human gold-standard validation result. The nine-protocol (R3) corpus
+is **not** part of this dataset layer; its public release is pending.
 
 ---
 
@@ -209,7 +285,7 @@ Single-model (MiniMax-M2.5) annotations for the original 1:1 case comparison.
 
 | File | Records | Description |
 |------|---------|-------------|
-| `annotated_records.json` | 5,421 | Complete stored R1 annotation artifact with LLM labels: `stakeholder_institution`, `argument_type`, `stance`, `consensus_signal`, `key_point`. Actual archive: ERC 149 / A2A 5,272. The paper-reported retained subset is ERC 142 / A2A 4,181, but no exact row-level membership manifest was preserved. |
+| `annotated_records.json` | 5,421 | Complete stored R1 annotation artifact with LLM labels: `stakeholder_institution`, `argument_type`, `stance`, `consensus_signal`, `key_point`. Actual archive: ERC 149 / A2A 5,272. The paper-reported retained subset is ERC 142 / A2A 4,181; exact row-level membership is frozen in `manifests/r1_paper_v1.jsonl` (4,323 rows), with input hashes and policy provenance in `manifests/r1_paper_v1_summary.json`. |
 | `author_profiles.json` | 626 | One entry per unique canonical author. Fields: `institution_final`, `institution_source`, `institution_confidence`, `institution_lm`, `institution_evidence`. 107 authors enriched from manual R07 investigation; 2 from EIP header email. |
 
 ---
@@ -230,6 +306,12 @@ test-retest with 3 rounds per model measures self-consistency.
 | `consensus/erc_annotations.json` | 1,664 | ERC 34-cluster majority-vote consensus. Fields: `argument_type`, `stance`, `consensus_signal`, `stakeholder_institution`. |
 | `consensus/a2a_annotations.json` | 4,058 | A2A majority-vote consensus. Same four fields as ERC. |
 | `consensus/consensus_stats.json` | — | Agreement statistics: 3/3 vs 2/3 agreement rates per field. |
+
+A2A count reconciliation: per-model files contain 4,059 rows each, including one
+duplicated or malformed source record per file (a duplicated issue #1207 comment
+in two files, one record with a missing URL in the third). The consensus table
+keeps the 4,058 well-formed unique records. ICR validation reports N = 4,045,
+the intersection validly annotated by all three models.
 
 **Inter-coder reliability reports:**
 
@@ -369,3 +451,12 @@ non-commercial use only.
 
 If you use this dataset, please cite the accompanying paper and link to the
 [GitHub repository](https://github.com/kl41r3/erc8004-a2a-case-study).
+
+```bibtex
+@inproceedings{wang2026agentic,
+  author    = {Wang, Yutian and Zhang, Luyao},
+  title     = {Agentic Analysis for Agentic Infrastructure: An LLM-Powered Pipeline for Comparative Governance of DAO and Corporate AI Protocols},
+  booktitle = {KDD 2026 Workshop on SciSoc Agents \& LLMs},
+  year      = {2026}
+}
+```

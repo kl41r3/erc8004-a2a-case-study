@@ -1,7 +1,7 @@
 [project]
-name = "workspace"
-version = "0.1.0"
-description = "Add your description here"
+name = "erc8004-a2a-case-study"
+version = "1.1.1"
+description = "Reproducible comparative governance analysis of ERC-8004 and Google A2A"
 requires-python = ">=3.14"
 dependencies = [
     "anthropic>=0.84.0",

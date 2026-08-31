@@ -2,8 +2,8 @@
 
 > **🎉 Paper accepted at KDD 2026** (ACM workshop) — original v1.0 release.
 >
-> **📊 v1.1.0:** five non-visual robustness tables and an extended release verifier
-> are included in `analysis/metrics/neurips26/` and `scripts/verify_neurips26.py`.
+> **📊 v1.1.1:** complete one-command reproduction and Hugging Face staging for
+> the five non-visual v1.1 robustness tables.
 >
 > **📦 Archive:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830235.svg)](https://doi.org/10.5281/zenodo.21830235) (Zenodo, all versions)
 >
@@ -20,16 +20,17 @@
 | Version | Contents |
 |---|---|
 | **v1.0** (KDD 2026 workshop, accepted) | R1 pairwise pipeline, R2 34-ERC cluster expansion, Croissant 1.1 release |
-| **v1.1.0** (this release) | Everything in v1.0, plus five non-visual robustness tables (`analysis/metrics/neurips26/`), the equal-size bootstrap and tie-threshold robustness script, and the extended release verifier (`scripts/verify_neurips26.py`) |
+| **v1.1.0** | Everything in v1.0, plus five non-visual robustness tables (`analysis/metrics/neurips26/`), the equal-size bootstrap and tie-threshold robustness script, and the extended release verifier (`scripts/verify_neurips26.py`) |
+| **v1.1.1** (this release) | Reproducibility packaging fix: one command rebuilds and verifies R1, R2, Croissant, and the v1.1 robustness layer; the local Hugging Face staging command now emits the complete ten-config dataset tree |
 
-Both versions share the same frozen R1/R2 data. v1.1.0 is a backward-compatible
-addition: no v1.0 file, checksum, or Hugging Face payload is modified.
+All versions share the same frozen R1/R2 data. v1.1.1 changes release tooling and
+metadata only; the v1.1 scientific tables, checksums, row counts, and conclusions are unchanged.
 
 This release deliberately distributes **no manuscript**: the NeurIPS 2026 paper that
 these robustness tables accompany is under anonymous review and will be published
 separately after the review period.
 
-### Scope boundary of v1.1.0
+### Scope boundary of v1.1.x
 
 The nine-protocol (R3) analysis layer — its 7,458-record corpus, per-protocol topic fits,
 and governance-index construct checks — remains in the private research tree and is **not**
@@ -55,9 +56,8 @@ The pipeline reports results at two scopes:
 | **Main-text (R1)** | Single ERC-8004 vs. A2A | Paper reports ERC 142 / A2A 4,181; stored annotation archive has 5,421 rows | MiniMax-M2.5 |
 | **Appendix (R2)** | 34-ERC cluster + cross-model + cross-round consensus | Cross-model ERC 1,664 / A2A 4,058; current cross-round ERC 1,664 / A2A 4,187 | 3 models × 3 rounds |
 
-The v1.1.0 robustness layer extends this design toward a nine-protocol comparison
-(A2A, ACP, AP2, ERC-8004, ERC-8183, MCP, MPP, UCP, x402); that R3 layer is pending
-public release (see the scope boundary above).
+The v1.1.0 robustness layer adds bounded checks around the released pairwise design.
+It does not publish or reproduce the private nine-protocol R3 analytical package.
 
 ---
 
@@ -76,7 +76,7 @@ workspace/
 ├── scripts/
 │   ├── verify_repository.py        ← v1.0 repository verifier
 │   ├── verify_neurips26.py         ← v1.1.0 robustness-release verifier
-│   ├── reproduce_release.py        ← Exact R1/R2 reproduction entry point
+│   ├── reproduce_release.py        ← Complete v1.1.1 reproduction entry point
 │   ├── analyse/run_neurips26_robustness.py  ← Regenerates the five robustness tables
 │   ├── scrape/                     ← Data collection (curl-based scrapers)
 │   ├── process/                    ← LLM annotation, consensus, enrichment
@@ -100,9 +100,8 @@ The repository supports two different operations that should not be conflated:
 1. **Exact release reproduction**, using R1 and R2 payloads downloaded from the immutable
    Hugging Face revision pinned in `scripts/publish/download_hf_dataset.py`. This path requires
    no API keys and reconstructs the 4,323-row R1 paper manifest and Croissant release before
-   validating checksums, row counts, RecordSet counts, and the GitHub distribution boundary.
-   The v1.1.0 robustness tables, network tables, and model-reliability values are additionally
-   checked by `scripts/verify_neurips26.py`.
+   regenerating the v1.1.0 robustness tables and validating checksums, row counts, RecordSet
+   counts, robustness outputs, metadata, and the GitHub distribution boundary.
 2. **Provenance reruns**, using live source APIs and hosted LLMs. These commands document
    how the archived artifacts were produced, but upstream content and hosted model behavior
    can change. A later live rerun is therefore not expected to be byte-identical to the
@@ -118,7 +117,7 @@ make reproduce
 ```
 
 No `.env` file or paid service is required for this command. A successful run ends with
-`Exact R1/R2 release reproduction passed.` The expected R1 manifest SHA-256 is
+`Complete v1.1.1 release reproduction passed.` The expected R1 manifest SHA-256 is
 `0445428da7b67f6c7a62b5bb83014dccdd92433fc8e66819f55d4839e5ec92cb`.
 
 **Component commands** (all runnable independently):
@@ -126,10 +125,10 @@ No `.env` file or paid service is required for this command. A successful run en
 | Command | What it does | Needs API key |
 |---|---|---|
 | `make verify` | Runs `verify_repository.py` + `verify_neurips26.py` (code, tables, metadata, boundary) | No |
-| `make reproduce` | Downloads the pinned Hugging Face payloads, rebuilds the manifest and Croissant release, verifies everything | No |
+| `make reproduce` | Downloads the pinned payloads, rebuilds R1/Croissant and v1.1.0 robustness outputs, then verifies the full release | No |
 | `make manifest` | Rebuilds the frozen 4,323-row R1 paper manifest from the downloaded raw payloads | No |
 | `make robustness` | Regenerates the five NeurIPS robustness tables (seed 20260826, 2,000 bootstrap repetitions) | No |
-| `make all` | manifest + robustness + verify | No |
+| `make all` | Alias for the complete `make reproduce` workflow | No |
 
 To download the data without rebuilding the release:
 
@@ -197,8 +196,9 @@ uvx --from mlcroissant mlcroissant validate --jsonld data/croissant/v1/croissant
 ```
 
 GitHub retains `croissant.json`, `SCHEMA.md`, `release_manifest.json`, `CHECKSUMS.json`, and
-the validator screenshot. The five Parquet payloads are hosted on Hugging Face and appear
-locally only after the download command.
+the validator screenshot. Five Croissant Parquet payloads are restored from the pinned
+Hugging Face revision; the five `neurips26/` Parquet tables are rebuilt locally from tracked
+robustness CSVs by `make reproduce`.
 
 ### GitHub Education assisted publication workflow
 
@@ -209,11 +209,12 @@ refactoring and documentation. All substantive schema choices, count reconciliat
 interpretation boundaries were reviewed against the source artifacts and verified by the
 repository checks.
 
-The publication process reformats heterogeneous JSON artifacts into five homogeneous Parquet
-tables before publishing them to Hugging Face. GitHub does not track raw, annotated, manifest,
-or Parquet payloads. It retains the code, the immutable Hugging Face pointer, Croissant metadata,
-checksums, and validation evidence. Hugging Face exposes each Parquet table as a separate Dataset
-Viewer config so incompatible R1, cross-model, and cross-round scopes are not silently merged.
+The publication process reformats heterogeneous JSON artifacts into five Croissant Parquet
+tables and builds five v1.1.0 robustness Parquet tables before staging them for Hugging Face.
+GitHub does not track raw, annotated, manifest, or Parquet payloads. It retains the code, the
+immutable R1/R2 Hugging Face pointer, Croissant metadata, checksums, and validation evidence.
+Hugging Face exposes each table as a separate Dataset Viewer config so incompatible pipeline
+stages are not silently merged.
 
 The checked metadata file is [`data/croissant/v1/croissant.json`](data/croissant/v1/croissant.json).
 The NeurIPS Croissant Validator evidence is stored at

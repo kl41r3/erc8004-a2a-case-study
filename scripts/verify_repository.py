@@ -34,6 +34,7 @@ FORBIDDEN_TRACKED_PREFIXES = (
     "data/raw/",
     "data/annotated/",
     "data/manifests/",
+    "data/neurips26/",
 )
 
 FORBIDDEN_TRACKED_FILES = {
@@ -71,6 +72,8 @@ REQUIRED_REPOSITORY_PATHS = (
     ROOT / "data" / "croissant" / "v1" / "CHECKSUMS.json",
     ROOT / "data" / "croissant" / "neurips-croissant-validator-pass.png",
     ROOT / "scripts" / "publish" / "download_hf_dataset.py",
+    ROOT / "scripts" / "publish" / "build_neurips26_parquet.py",
+    ROOT / "scripts" / "publish" / "neurips26_schema.md",
     ROOT / "scripts" / "process" / "build_croissant_release.py",
     ROOT / "scripts" / "process" / "build_r1_paper_manifest.py",
     ROOT / "scripts" / "reproduce_release.py",
@@ -266,11 +269,34 @@ def verify_r1_paper_manifest(errors: list[str]) -> None:
 def verify_dataset_card(errors: list[str]) -> None:
     card = (ROOT / "data" / "README.md").read_text(encoding="utf-8")
     paths = re.findall(r"^\s+path:\s+(.+\.parquet)\s*$", card, flags=re.MULTILINE)
-    if len(paths) != 5:
-        errors.append(f"Dataset card must declare five Parquet configs, found {len(paths)}")
+    if len(paths) != 10:
+        errors.append(f"Dataset card must declare ten Parquet configs, found {len(paths)}")
     for relative in paths:
         if not (ROOT / "data" / relative).is_file():
             errors.append(f"Downloaded dataset-card path is missing: data/{relative}")
+
+
+def verify_neurips26_layer(errors: list[str]) -> None:
+    base = ROOT / "data" / "neurips26"
+    checksums_path = base / "CHECKSUMS.json"
+    manifest_path = base / "release_manifest.json"
+    schema_path = base / "SCHEMA.md"
+    if not checksums_path.is_file() or not manifest_path.is_file() or not schema_path.is_file():
+        errors.append("Rebuilt neurips26 dataset layer is incomplete")
+        return
+    checksums = json.loads(checksums_path.read_text(encoding="utf-8"))
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("release") != "neurips26-v1.1.1":
+        errors.append("neurips26 release version drift")
+    for filename, metadata in checksums.items():
+        path = base / filename
+        if not path.is_file():
+            errors.append(f"neurips26 table is missing: {filename}")
+            continue
+        if sha256(path) != metadata.get("sha256"):
+            errors.append(f"neurips26 checksum mismatch: {filename}")
+        if pq.ParquetFile(path).metadata.num_rows != metadata.get("rows"):
+            errors.append(f"neurips26 row-count mismatch: {filename}")
 
 
 def verify_public_boundary(errors: list[str]) -> None:
@@ -301,6 +327,7 @@ def main() -> int:
         verify_croissant(errors)
         verify_r1_paper_manifest(errors)
         verify_dataset_card(errors)
+        verify_neurips26_layer(errors)
 
     if errors:
         print("Repository verification failed:", file=sys.stderr)
@@ -310,7 +337,7 @@ def main() -> int:
 
     if args.with_data:
         print("Repository and downloaded Hugging Face dataset verification passed.")
-        print("Verified 6 checksum manifests, 5 Croissant RecordSets, and the 4,323-row R1 manifest.")
+        print("Verified 6 checksum manifests, 5 Croissant RecordSets, the 4,323-row R1 manifest, and 5 neurips26 tables.")
     else:
         print("Code-only GitHub release verification passed.")
         print("No dataset payload is tracked; the downloader pins an immutable Hugging Face revision.")

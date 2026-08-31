@@ -6,13 +6,15 @@ import argparse
 import hashlib
 import json
 import shutil
+import subprocess
+import sys
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data"
-SOURCE_DIRS = ("raw", "annotated", "croissant")
-ALLOWED_TOP_LEVEL = {"README.md", "raw", "annotated", "croissant"}
+SOURCE_DIRS = ("raw", "annotated", "croissant", "manifests")
+ALLOWED_TOP_LEVEL = {"README.md", "raw", "annotated", "croissant", "manifests", "neurips26"}
 
 
 def sha256(path: Path) -> str:
@@ -56,6 +58,17 @@ def main() -> None:
     shutil.copy2(DATA / "README.md", output / "README.md")
     for dirname in SOURCE_DIRS:
         shutil.copytree(DATA / dirname, output / dirname)
+
+    subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "publish" / "build_neurips26_parquet.py"),
+            "--output",
+            str(output),
+        ],
+        cwd=ROOT,
+        check=True,
+    )
 
     actual_top_level = {path.name for path in output.iterdir()}
     if actual_top_level != ALLOWED_TOP_LEVEL:

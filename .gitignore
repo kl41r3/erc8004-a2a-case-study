@@ -67,5 +67,6 @@ data/annotated/r2/cross-round/**/shard_*.json
 data/raw/
 data/annotated/
 data/manifests/
+data/neurips26/
 data/croissant/v1/*.parquet
 data/.cache/

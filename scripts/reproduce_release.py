@@ -1,4 +1,4 @@
-"""Download, rebuild, and verify the exact frozen R1 and R2 public release.
+"""Download, rebuild, and verify the complete public v1.1.1 release.
 
 Dataset payloads come from an immutable Hugging Face revision. This command does
 not scrape live platforms or call hosted LLMs, whose content and behavior can
@@ -28,8 +28,11 @@ def main() -> int:
     run("scripts/publish/download_hf_dataset.py")
     run("scripts/process/build_r1_paper_manifest.py")
     run("scripts/process/build_croissant_release.py")
+    run("scripts/analyse/run_neurips26_robustness.py")
+    run("scripts/publish/build_neurips26_parquet.py", "--output", "data")
     run("scripts/verify_repository.py", "--with-data")
-    print("\nExact R1/R2 release reproduction passed.")
+    run("scripts/verify_neurips26.py")
+    print("\nComplete v1.1.1 release reproduction passed.")
     return 0
 
 

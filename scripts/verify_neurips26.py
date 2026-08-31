@@ -1,4 +1,4 @@
-"""Verify the NeurIPS 2026 robustness release layer (v1.1.0).
+"""Verify the NeurIPS 2026 robustness release layer (v1.1.1).
 
 This is the public counterpart of the review-artifact verifier. It checks the
 five robustness tables, the R1/R2 network tables, the four-model reliability
@@ -19,12 +19,13 @@ import hashlib
 import json
 import re
 import subprocess
+import tomllib
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 
-RELEASE_VERSION = "1.1.0"
+RELEASE_VERSION = "1.1.1"
 
 # Frozen pairwise corpus (unchanged from the review artifact).
 EXPECTED_MANIFEST_SHA256 = "0445428da7b67f6c7a62b5bb83014dccdd92433fc8e66819f55d4839e5ec92cb"
@@ -119,6 +120,10 @@ def verify_human_boundary() -> None:
 
 
 def verify_metadata() -> None:
+    project = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))["project"]
+    require(project["name"] == "erc8004-a2a-case-study", "pyproject package name drift")
+    require(project["version"] == RELEASE_VERSION, f"pyproject version must be {RELEASE_VERSION}")
+
     cff = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     require(re.search(r"^cff-version:\s*\S+", cff, flags=re.MULTILINE) is not None,
             "CITATION.cff is missing cff-version")

@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import shutil
 from pathlib import Path
 
 import pandas as pd
@@ -22,8 +23,9 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE_DIR = ROOT / "analysis" / "metrics" / "neurips26"
+SCHEMA_SOURCE = ROOT / "scripts" / "publish" / "neurips26_schema.md"
 
-RELEASE_VERSION = "neurips26-v1.1.0"
+RELEASE_VERSION = "neurips26-v1.1.1"
 
 # filename -> (row count, column dtypes applied after read)
 TABLES: dict[str, tuple[int, dict[str, str]]] = {
@@ -121,7 +123,7 @@ def main() -> int:
     release_manifest = {
         "release": RELEASE_VERSION,
         "generated_by": "scripts/publish/build_neurips26_parquet.py",
-        "source": "analysis/metrics/neurips26/ (GitHub repository v1.1.0)",
+        "source": "analysis/metrics/neurips26/ (GitHub repository v1.1.1)",
         "seed": summary["seed"],
         "bootstrap_repetitions": summary["bootstrap_repetitions"],
         "paper_corpus": summary["paper_corpus"],
@@ -131,6 +133,7 @@ def main() -> int:
     (target / "release_manifest.json").write_text(
         json.dumps(release_manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
+    shutil.copy2(SCHEMA_SOURCE, target / "SCHEMA.md")
 
     print(f"\nneurips26 release layer written to {target}")
     print(f"version: {RELEASE_VERSION}")

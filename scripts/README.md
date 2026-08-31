@@ -158,8 +158,9 @@ uv run python scripts/publish/prepare_hf_dataset.py --output /private/tmp/rq1-hf
 ```
 
 The first command validates the code-only GitHub boundary. The downloader restores the frozen
-Hugging Face payloads, and the third command verifies their checksums and row counts. The final
-command creates a data-only local staging directory and never uploads it.
+R1/R2 Hugging Face payloads. Rebuild the release with `make reproduce`; the third command can
+then verify the frozen data and rebuilt `neurips26/` checksums and row counts. The final command
+creates a complete data-only v1.1.1 staging directory and never uploads it.
 
 ---
 

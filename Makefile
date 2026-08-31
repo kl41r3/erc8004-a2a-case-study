@@ -13,4 +13,4 @@ robustness:
 reproduce:
 	uv run python scripts/reproduce_release.py
 
-all: manifest robustness verify
+all: reproduce
